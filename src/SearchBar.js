@@ -1,5 +1,5 @@
 import React from 'react';
-import HouseDetails from './HouseDetails';
+import SearchResult from './SearchResult';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -36,10 +36,15 @@ class SearchBar extends React.Component {
 
   renderHouses ()
   {
-    return(this.state.houseList.map((houseItem) =>
-      <HouseDetails key={houseItem.id} title={houseItem.title} price={houseItem.price} location={houseItem.address} image ={"https://www.trypinn.com" + houseItem.preview} />)
-    );
+    return(this.state.houseList.map((houseItem) => {
+      return(
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <SearchResult  key={houseItem.id} title={houseItem.title} price={houseItem.price} location={houseItem.address} image ={"https://www.trypinn.com" + houseItem.preview} />
+        </div>
+      );
+    }));
   }
+
   setToken()
   {
     this.setState({
@@ -88,12 +93,12 @@ class SearchBar extends React.Component {
   render()
   {
     return (
-      <div>
-        <div>
+      <div class="container-fluid">
+        <div class="row">
           {this.renderHouses()}
         </div>
         <div>
-          <button onClick={this.handleClick}>
+          <button id="something-btn" class="btn btn-success btn-sm" onClick={this.handleClick}>
           search!!!
           </button>
         </div>
