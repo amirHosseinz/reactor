@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchResult from './SearchResult';
+// import { BrowserRouter,Route} from 'react-router-dom';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -16,42 +17,39 @@ class SearchBar extends React.Component {
     };
     this.handleClick = this.handleClick.bind(this)
   }
-
-  componentWillMount()
-  {
+  componentWillMount() {
     this.setState({
       token: "2df579cfc86d929b9a9228bdcd265345addf8cb4",
     }, () => {
-      // this.handleClick();
     });
   }
-
-  renderData(houseData)
-  {
+  renderData(houseData) {
     console.log(houseData)
    this.setState({
      houseList: houseData.room,
    });
   }
-
-  renderHouses ()
-  {
+  renderHouses () {
     return(this.state.houseList.map((houseItem) => {
       return(
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <SearchResult  key={houseItem.id} title={houseItem.title} price={houseItem.price} location={houseItem.address} image ={"https://www.trypinn.com" + houseItem.preview} />
-        </div>
+          <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3"
+           key = {houseItem.id}>
+           <SearchResult
+            key={houseItem.id}
+            title={houseItem.title}
+            id = {houseItem.id}
+            price={houseItem.price}
+            location={houseItem.address}
+            preview ={"https://www.trypinn.com" + houseItem.preview}/>
+          </div>
       );
     }));
   }
-
-  setToken()
-  {
+  setToken() {
     this.setState({
       token: "2df579cfc86d929b9a9228bdcd265345addf8cb4",});
   }
-  setSearchParams()
-  {
+  setSearchParams() {
     var spar = {
       location: document.getElementById('location').value,
       start_date: new Date(),
@@ -64,8 +62,7 @@ class SearchBar extends React.Component {
     this.getDataFromServer();
     });
   }
-  getDataFromServer()
-  {
+  getDataFromServer(){
     var request = new Request('https://www.trypinn.com/api/search/', {
       method: 'POST',
       body: JSON.stringify({
@@ -85,27 +82,25 @@ class SearchBar extends React.Component {
      this.renderData(homeData);
    });
   }
-   handleClick()
-   {
+   handleClick(){
      this.setSearchParams();
    }
 
-  render()
-  {
+  render() {
     return (
-      <div class="container-fluid">
-        <div class="row">
-          {this.renderHouses()}
-        </div>
+      <div className="container-fluid">
         <div>
-          <button id="something-btn" class="btn btn-success btn-sm" onClick={this.handleClick}>
-          search!!!
+          <button id="something-btn" className="btn btn-success btn-sm" onClick={this.handleClick}>
+          جست وجو
           </button>
         </div>
         <div>
         <input id = "location"/>
         </div>
+        <div className="row">
+          {this.renderHouses()}
         </div>
+      </div>
     );
   }
 }
