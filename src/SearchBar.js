@@ -105,6 +105,8 @@ class SearchBar extends React.Component {
         <div>
         <input id = "location"/>
         </div>
+        <div>
+        </div>
         </div>
     );
   }
