@@ -24,7 +24,6 @@ class SearchBar extends React.Component {
     });
   }
   renderData(houseData) {
-    console.log(houseData)
    this.setState({
      houseList: houseData.room,
    });

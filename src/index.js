@@ -2,11 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Route} from 'react-router-dom';
 
-import SearchBar from './SearchBar.js';
 import HouseDetails from './HouseDetails';
+//import HouseDetails from './HouseDetails.js';
+import SearchBar from './SearchBar.js';
+import Header from './Header.js';
+import Footer from './Footer.js';
 //import bootstrap!
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 //import './index.css';
+
+
 class SearchPage extends React.Component{
   constructor(props){
     super(props);
@@ -21,9 +26,13 @@ class SearchPage extends React.Component{
   {
     return (
       <BrowserRouter>
-        <div>
-          <Route exact path = {"/"} component={SearchBar} />
+        <div className="main">
+          <Route path={"/"} component={Header} />
+          <Route path = {"/"} component={SearchBar} />
           <Route path = {'/56'} component = {HouseDetails}/>
+          <div className="footer navbar-fixed-bottom">
+          <Route path={"/"} component={Footer} />
+          </div>
         </div>
       </BrowserRouter>
     );
