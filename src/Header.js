@@ -9,13 +9,13 @@ class Header extends React.Component{
   render()
   {
     return (
-      <div class='header'>
-        <div class='headerchild' >
-          <div class='logodiv'>
+      <div className='header'>
+        <div className='headerchild' >
+          <div className='logodiv'>
              <a href="www.tryppin.com"><img src="http://svgshare.com/i/4C0.svg" className="LogoImage"></img></a>
           </div>
           <div>
-            <a class='logolink' href="www.tryppin.com">  <p className='logofont'>تریپین</p></a>
+            <a className='logolink' href="www.tryppin.com">  <p className='logofont'>تریپین</p></a>
           </div>
         </div>
       </div>
