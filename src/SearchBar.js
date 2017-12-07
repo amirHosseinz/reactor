@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchResult from './SearchResult';
-// import { BrowserRouter,Route} from 'react-router-dom';
+//import { BrowserRouter,Route} from 'react-router-dom';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -34,11 +34,7 @@ class SearchBar extends React.Component {
           <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3"
            key = {houseItem.id}>
            <SearchResult
-            key={houseItem.id}
-            title={houseItem.title}
-            id = {houseItem.id}
-            price={houseItem.price}
-            location={houseItem.address}
+            room = {houseItem}
             preview ={"https://www.trypinn.com" + houseItem.preview}/>
           </div>
       );
@@ -48,7 +44,7 @@ class SearchBar extends React.Component {
     this.setState({
       token: "2df579cfc86d929b9a9228bdcd265345addf8cb4",});
   }
-  setSearchParams() {
+  setSearchParams(){
     var spar = {
       location: document.getElementById('location').value,
       start_date: new Date(),
@@ -103,5 +99,4 @@ class SearchBar extends React.Component {
     );
   }
 }
-
 export default SearchBar;
