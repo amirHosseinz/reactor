@@ -1,24 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import HouseDetails from './HouseDetails.js';
-import SearchBar from './SearchBar.js';
+import MainPage from './MainPage.js';
 
-//import bootstrap!
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-
-//import './index.css';
-class SearchPage extends React.Component{
-
+class Main extends React.Component{
   render()
   {
     return (
-      <div>
-      the program is running ok!
-        <SearchBar />
-      </div>
+      <MainPage />
     );
   }
 }
 ReactDOM.render(
-  <SearchPage />, document.getElementById('root')
+  <Main />, document.getElementById('root')
 );

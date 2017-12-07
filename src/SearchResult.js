@@ -2,41 +2,43 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import './Images.css';
 
+// import HouseDetails from './HouseDetails'
+// import {BrowserRouter,Route} from 'react-router-dom';
 const styles = {
   height :80,
 }
-
-class SearchResult extends React.Component
-
-
- {
-  price()
-  {
-    return this.props.price
+class SearchResult extends React.Component {
+  constructor(props){
+    super(props);
+    this.showHouseDetails = this.showHouseDetail.bind(this);
   }
-  rating()
-  {
-    return this.props.rating
+  id(){
+    return this.props.room.id;
   }
-  location()
-  {
-    return this.props.location
+  price(){
+    return this.props.room.price;
   }
-  title()
-  {
-    return this.props.title
+  rating(){
+    return this.props.toom.rating;
   }
-  image()
-  {
-    return this.props.image
+  location(){
+    return this.props.room.location;
+  }
+  title(){
+    return this.props.room.title;
+  }
+  preview(){
+    return this.props.preview;
+  }
+  showHouseDetail(){
+    window.open('./rooms/' + this.props.room.id);
   }
   render ()
    {
     return(
         <div  style={{marginBottom:100}}>
           <div className = "image">
-            <img src= {this.props.image}  responsive  className="SearchResultPreview" alt = "" />
-
+            <img src= {this.props.preview}  responsive = "true"  className="SearchResultPreview" alt = "" />
           </div>
           <div className = "title">
             <p align = "left">{this.title()}</p>
@@ -45,15 +47,15 @@ class SearchResult extends React.Component
             <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
           </div>
           <div className = "price">
-            <p> {this.price()} تومان / هر شب  </p>
+            <p> {this.price()} تومان / هر شب </p>
           </div>
           <div className = "location">
             <p>{this.location()} </p>
           </div>
-          <Button style={styles}> بزن بریم </Button>
+          <Button style={styles} onClick = {() => this.showHouseDetail()}>
+          بزن بریم </Button>
         </div>
     );
   }
 }
-
 export default SearchResult;
