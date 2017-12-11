@@ -13,7 +13,6 @@ class MainPage extends React.Component{
       houseDetail: null,
     };
   }
-
   renderSearchBar() {
     return (<SearchBar />
     );

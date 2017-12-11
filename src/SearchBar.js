@@ -19,6 +19,7 @@ class SearchBar extends React.Component {
   }
   componentWillMount() {
     this.setState({
+      // token : "460b152177ab02716faa0d7795ff60f12d7cbd9d",
       token: "2df579cfc86d929b9a9228bdcd265345addf8cb4",
     }, () => {
     });
@@ -35,7 +36,7 @@ class SearchBar extends React.Component {
            key = {houseItem.id}>
            <SearchResult
             room = {houseItem}
-            preview ={"https://www.trypinn.com" + houseItem.preview}/>
+            preview ={"https://www.trypinn.com/"+houseItem.preview}/>
           </div>
       );
     }));
@@ -58,7 +59,7 @@ class SearchBar extends React.Component {
     });
   }
   getDataFromServer(){
-    var request = new Request('https://www.trypinn.com/api/search/', {
+    var request = new Request('https://www.trypinn.com/api/search/',{
       method: 'POST',
       body: JSON.stringify({
         location: this.state.searchParams.location,

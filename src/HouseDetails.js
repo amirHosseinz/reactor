@@ -1,19 +1,23 @@
 import React from 'react';
+import ReservePanel from './ReservePanel.js';
 class HouseDetails extends React.Component {
   constructor(props){
     super(props);
     this.state ={
       homeData : '',
+      showReservePanel : false,
       token: null,
       searchParams : {
         id: null,
       }
     };
+    this.handleClick = this.handleClick.bind(this);
   }
   componentWillMount() {
     this.setState({
       token: "2df579cfc86d929b9a9228bdcd265345addf8cb4",
-    }, () => {this.setSearchParams(56)
+    }, () => {
+      this.setSearchParams(this.getHouseId());
     });
   }
   setSearchParams(houseId){
@@ -33,7 +37,7 @@ class HouseDetails extends React.Component {
     var request = new Request('https://www.trypinn.com/api/get/room/', {
       method: 'POST',
       body: JSON.stringify({
-        room_id : this.getHouseId(),
+        room_id : this.state.searchParams.id,
     }),
       headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
       'Authorization': 'Token '+this.state.token,})
@@ -51,14 +55,21 @@ class HouseDetails extends React.Component {
       token: "2df579cfc86d929b9a9228bdcd265345addf8cb4",});
   }
   renderData(houseData) {
-    // console.log(houseData.room)
     this.setState({homeData:houseData.room});
+   }
+   handleClick(){
+     this.setState({showReservePanel : true});
+   }
+   renderReservePanel(){
+     if (this.state.showReservePanel === true){
+       return <ReservePanel homeData = {this.state.homeData}/>
+     }
    }
   render() {
     return(
       <div>
       <div className = "image">
-        <img src= {"https://www.trypinn.com" + this.state.homeData.preview}  responsive = "true"  className="SearchResultPreview" alt = "" />
+        <img src= {"https://www.trypinn.com/" +this.state.homeData.preview}  responsive = "true"  className="SearchResultPreview" alt = "" />
       </div>
         <div className="title">
           <p align="left">{this.state.homeData.title}</p>
@@ -71,6 +82,12 @@ class HouseDetails extends React.Component {
         </div>
         <div className = "address">
           <p>{this.state.homeData.address} </p>
+        </div>
+        <div>
+          <button className="button" onClick ={this.handleClick}>Reserve House </button>
+        </div>
+        <div>
+          {this.renderReservePanel()}
         </div>
       </div>
     );
