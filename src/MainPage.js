@@ -10,6 +10,7 @@ class MainPage extends React.Component{
   constructor(props){
     super(props);
     this.state ={
+      loginPanelVisible: false,
       houseDetail: null,
     };
   }
@@ -37,13 +38,14 @@ class MainPage extends React.Component{
   getHouseId(){
     return window.location.href.split("/")[window.location.href.split("/").length-1];
   }
+
   render(){
     return(
       <BrowserRouter>
         <div className="main">
           <Route path={"/"} render = {()=> {return (this.renderHeader())}} />
-          <Route exact path = {"/"} render = {()=> {return (this.renderSearchBar())}}/>
-          <Route path = {'/rooms/' + this.getHouseId()} render ={()=> {return (this.renderHouseDetails())}} />
+          <Route exact path={'/'} render={()=> {return (this.renderSearchBar())}}/>
+          <Route path={'/rooms/' + this.getHouseId()} render ={()=> {return (this.renderHouseDetails())}}/>
           <Route path={"/"} render = {()=> {return(this.renderFooter())}}/>
         </div>
       </BrowserRouter>

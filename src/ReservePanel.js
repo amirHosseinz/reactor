@@ -131,7 +131,7 @@ class ReservePanel extends React.Component{
      return response.json();
    })
    .then((bookData) => {
-     console.log(bookData)
+     console.log(bookData);
    });
   }
   showBookButton(){
