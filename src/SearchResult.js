@@ -42,7 +42,7 @@ class SearchResult extends React.Component {
     return this.props.longitude;
   }
   changeURL(){
-    if (window.location.href.indexOf('house') === -1){
+    if (window.location.href.indexOf('rooms') === -1){
       window.location.href = '/'+ this.props.id;
     }
     else{

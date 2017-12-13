@@ -1,6 +1,8 @@
 import React from 'react';
 import SearchResult from './SearchResult';
-// import { BrowserRouter,Route} from 'react-router-dom';
+//import { BrowserRouter,Route} from 'react-router-dom';
+import {Typeahead} from 'react-bootstrap-typeahead'; // ES2015
+import { Button,Icon} from 'semantic-ui-react'
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -29,28 +31,38 @@ class SearchBar extends React.Component {
    });
   }
   renderHouses () {
+    var counter = -1;
     return(this.state.houseList.map((houseItem) => {
-      return(
-          <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3"
-           key = {houseItem.id}>
-           <SearchResult
-            key={houseItem.id}
-            title={houseItem.title}
-            id = {houseItem.id}
-            price={houseItem.price}
-            location={houseItem.address}
-            preview ={"https://www.trypinn.com" + houseItem.preview}/>
-          </div>
-      );
+      counter++;
+      if (counter % 5 == 0) {
+        return(
+            <div className="mamadx col-md-2 col-md-offset-1"
+             key = {houseItem.id}>
+             <SearchResult
+              room = {houseItem}
+              preview ={"https://www.trypinn.com" + houseItem.preview}/>
+            </div>
+        );
+      } else {
+        return(
+            <div className="mamadx col-md-2 col-md-offset-.5"
+             key = {houseItem.id}>
+             <SearchResult
+              room = {houseItem}
+              preview ={"https://www.trypinn.com" + houseItem.preview}/>
+            </div>
+        );
+      }
     }));
   }
   setToken() {
     this.setState({
       token: "2df579cfc86d929b9a9228bdcd265345addf8cb4",});
   }
-  setSearchParams() {
+  setSearchParams(){
     var spar = {
-      location: document.getElementById('location').value,
+      // location: document.getElementById('location').value,
+      location: '',
       start_date: new Date(),
       end_date: new Date(),
       capacity: 1,
@@ -87,21 +99,111 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div className="container-fluid">
-        <div>
-          <button id="something-btn" className="btn btn-success btn-sm" onClick={this.handleClick}>
-          جست وجو
-          </button>
-        </div>
-        <div>
-        <input id = "location"/>
-        </div>
-        <div className="row">
-          {this.renderHouses()}
-        </div>
+      <div>
+          <div className="container-fluid hidden-xs visible-xl">
+              <div className='row'>
+                <div className="free-zone col-md-3"></div>
+                <div className="main-zone col-md-6">
+                  <div className="row">
+                  <div className="xxxz col-md-2"></div>
+                  <div className="xxx col-md-8">
+                    <div className="seach-top-slogan-container">
+                      <img src="  http://image.ibb.co/miywub/trypinn_suitcase.png" className='suitcase-image'></img>
+                      <div className="slogan-container">
+                        <p className='slogan-1' >!سفرت رو شیرین‌تر کن</p>
+                        <p className='slogan-2' >!اجاره اقامتگاه و ویلا از همیشه آسون‌تر شده</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="xxxz col-md-2"></div>
+                  </div>
+                    <div className="searchbar-zone">
+                      <Typeahead
+                        className='typehead'
+                        onChange={(selected) => {
+                        // Handle selections...
+                        }}
+                        options={[
+                          'مازندران',
+                          'شمال',
+                          'رشت',
+                          'نوشهر',
+                          'اصفهان',
+                          'کاشان',
+                          'بابلسر',
+                          'سلمان‌شهر (متل قو)',
+                         ]}
+                        align="right"
+                        delay='100'
+                        bsSize='lg'
+                        emptyLabel='.مقصدی یافت  نشد'
+                        placeholder='مثلاً: بابلسر'
+                        minLength='1'
+                        maxResults='3'
+                        paginationText='نمایش نتایج بیشتر'
+                        submitFormOnEnter='false'
+                        selectHintOnEnter='true'
+                      />
+                      <Button color='blue' className="search-btn"  onClick={this.handleClick} data-reactid="99">
+                        <span className='searchicon'>
+                          <img src="http://image.ibb.co/fjdMQG/trpinn_search.png" className='search-image'></img>
+                        </span>
+                      </Button>
+                    </div>
+                </div>
+                <div className="free-zone col-md-3"></div>
+              </div>
+              <div className="row">
+                  <div className="render-houses-row">
+                    {this.renderHouses()}
+                  </div>
+              </div>
+          </div>
+          <div className="container-fluid hidden-xl visible-xs">
+              <div className='row'>
+                <div className="main-zone-xs col-md-12">
+                  <div className="row">
+                    <div className="seach-top-slogan-xs-container">
+                        <p className='slogan-xs'>.مقصد خود برای رزرو اقامتگاه را جستجو کنید</p>
+                        <p className='slogan-xs'></p>
+                    </div>
+                  </div>
+                    <div className="searchbar-zone-mobile">
+                      <Typeahead
+                        className='typehead-mobile'
+                        onChange={(selected) => {
+                        // Handle selections...
+                        }}
+                        options={[
+                          'مازندران',
+                          'شمال',
+                          'رشت',
+                          'نوشهر',
+                          'اصفهان',
+                          'کاشان',
+                          'متل قو',
+                          'بابلسر',
+                          'سلمان‌شهر (متل قو)',
+                        ]}
+                        align="right"
+                        delay='100'
+                        bsSize='sm'
+                        emptyLabel='.موردی یافت نشد'
+                      />
+                      <Button color='blue' className="search-btn-xs "  onClick={this.handleClick} data-reactid="99">
+                        <span className='searchicon'>
+                          <img src="http://image.ibb.co/fjdMQG/trpinn_search.png" className='search-image-xs'></img>
+                        </span>
+                      </Button>
+                    </div>
+                </div>
+              </div>
+            <div className="row">
+              {this.renderHouses()}
+            </div>
+          </div>
       </div>
     );
   }
 }
-
 export default SearchBar;
