@@ -3,9 +3,6 @@ import ReservePanel from './ReservePanel.js';
 import MainStarRating from './StarRating.js';
 import Map from './Map.js';
 import MainCarousel from './Carousel.js';
-import Messages from './Messages';
-import Requests from './Requests';
-import Trips from './Trips';
 
 class HouseDetails extends React.Component {
   constructor(props){
@@ -149,34 +146,18 @@ class HouseDetails extends React.Component {
  return null;
  }
 
- renderMessages(){
-   return(
-     <div className="Messages">
-       <Messages />
-     </div>
-   );
- }
- renderRequests(){
-   return(
-     <div className='requests'>
-     <Requests/>
-     </div>
-   )
- }
- renderTrips(){
-   return(
-     <div className='trips'>
-     <Trips/>
-     </div>
-   )
+ renderPreview(){
+   if(this.state.homeData!==''){
+     return(<div className = "image">
+             <img src= {"https://www.trypinn.com" + this.state.homeData.preview}  responsive = "true"  className="SearchResultPreview" alt = "" />
+             </div>);
+   }
  }
 
   render() {
     return(
       <div>
-        <div className = "image">
-        <img src= {"https://www.trypinn.com" + this.state.homeData.preview}  responsive = "true"  className="SearchResultPreview" alt = "" />
-        </div>
+        {this.renderPreview()}
         {this.renderHomeTitle()}
         <div className="rating">
           <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
@@ -216,12 +197,12 @@ class HouseDetails extends React.Component {
         <div className="rating-number"><p>{this.state.homeData.rating_no}</p></div>
         <Map
           zoom={8}
-          lat={this.state.homeData.latitude}
-          lng={this.state.homeData.longitude}
-          isMarkerShown
-          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+          lat={parseFloat(this.state.homeData.latitude)}
+          lng={parseFloat(this.state.homeData.longitude)}
+          isMarkerShown={true}
+          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYdvxvYa5_HuFrQMlTNWpbhan7nqIJuOE&v=3.exp&libraries=geometry,drawing,places"
          loadingElement={<div style={{ height: `100%` }} />}
-         containerElement={<div style={{ height: `400px` }} />}
+         containerElement={<div style={{ height:`400px`,width:`100%`}} />}
          mapElement={<div style={{ height: `100%` }} />} />
 
        <MainCarousel

@@ -11,6 +11,7 @@ class MainPage extends React.Component{
   constructor(props){
     super(props);
     this.state ={
+      loginPanelVisible: false,
       houseDetail: null,
     };
   }
@@ -49,8 +50,8 @@ class MainPage extends React.Component{
         <div className="main">
           <Route exact path = {"/"} render ={()=> {return (this.renderUserPanel())}}/>
           <Route path={"/"} render = {()=> {return (this.renderHeader())}} />
-          <Route exact path = {"/"} render = {()=> {return (this.renderSearchBar())}}/>
-          <Route path = {'/rooms/' + this.getHouseId()} render ={()=> {return (this.renderHouseDetails())}} />
+          <Route exact path={'/'} render={()=> {return (this.renderSearchBar())}}/>
+          <Route path={'/rooms/' + this.getHouseId()} render ={()=> {return (this.renderHouseDetails())}}/>
           <Route path={"/"} render = {()=> {return(this.renderFooter())}}/>
         </div>
       </BrowserRouter>
