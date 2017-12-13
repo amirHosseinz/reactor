@@ -3,12 +3,14 @@ import ReservePanel from './ReservePanel.js';
 import MainStarRating from './StarRating.js';
 import Map from './Map.js';
 import MainCarousel from './Carousel.js';
-
+import Messages from './Messages';
+import Requests from './Requests';
+import Trips from './Trips';
 
 class HouseDetails extends React.Component {
   constructor(props){
     super(props);
-    this.state ={
+    this.state = {
       homeData : '',
       showReservePanel : false,
       token: null,
@@ -147,6 +149,28 @@ class HouseDetails extends React.Component {
  return null;
  }
 
+ renderMessages(){
+   return(
+     <div className="Messages">
+       <Messages />
+     </div>
+   );
+ }
+ renderRequests(){
+   return(
+     <div className='requests'>
+     <Requests/>
+     </div>
+   )
+ }
+ renderTrips(){
+   return(
+     <div className='trips'>
+     <Trips/>
+     </div>
+   )
+ }
+
   render() {
     return(
       <div>
@@ -209,6 +233,10 @@ class HouseDetails extends React.Component {
         <div>
           {this.renderReservePanel()}
         </div>
+
+        {this.renderMessages()}
+        {this.renderRequests()}
+        {this.renderTrips()}
 
         <div><p>nothing</p><p>nothing</p></div>
 
