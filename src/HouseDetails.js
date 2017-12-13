@@ -25,7 +25,6 @@ class HouseDetails extends React.Component {
       this.setSearchParams(this.getHouseId());
     });
   }
-
   setSearchParams(houseId){
     var spar = {
       id : houseId,
@@ -101,6 +100,7 @@ class HouseDetails extends React.Component {
    }
 
    renderUtilities () {
+     return ;
      if (this.state.homeData.private_util_options) {
        const util1=this.state.homeData.private_util_options;
        const util1list=util1.map((util1)=><ul key={util1}>{util1}</ul>);
@@ -214,13 +214,7 @@ class HouseDetails extends React.Component {
         <div>
           {this.renderReservePanel()}
         </div>
-
-        {this.renderMessages()}
-        {this.renderRequests()}
-        {this.renderTrips()}
-
         <div><p>nothing</p><p>nothing</p></div>
-
       </div>
     );
     }

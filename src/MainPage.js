@@ -48,9 +48,9 @@ class MainPage extends React.Component{
     return(
       <BrowserRouter>
         <div className="main">
-          <Route exact path = {"/"} render ={()=> {return (this.renderUserPanel())}}/>
           <Route path={"/"} render = {()=> {return (this.renderHeader())}} />
           <Route exact path={'/'} render={()=> {return (this.renderSearchBar())}}/>
+          <Route exact path={'/dashboard'} render={()=>{return(this.renderUserPanel())}}/>
           <Route path={'/rooms/' + this.getHouseId()} render ={()=> {return (this.renderHouseDetails())}}/>
           <Route path={"/"} render = {()=> {return(this.renderFooter())}}/>
         </div>

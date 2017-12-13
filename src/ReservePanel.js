@@ -8,7 +8,7 @@ class ReservePanel extends React.Component{
     this.token = '';
     this.state = {
       reserveData : '',
-      token : null,
+      token:null,
       requestParams :{
         startDate : moment(new Date()),
         endDate : moment(new Date()).add(1,'days'),

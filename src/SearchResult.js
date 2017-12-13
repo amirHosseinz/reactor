@@ -37,11 +37,11 @@ class SearchResult extends React.Component {
    {
     return(
         <div  style={{marginBottom:100}}>
-          <div className = "image">
+          <div className="image">
             <img src= {this.props.preview}  responsive = "true"  className="SearchResultPreview" alt = "" />
           </div>
           <div className = "title">
-            <p align = "left">{this.title()}</p>
+            <p align="left">{this.title()}</p>
           </div>
           <div className ="rating">
             <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
@@ -50,9 +50,9 @@ class SearchResult extends React.Component {
             <p> {this.price()} تومان / هر شب </p>
           </div>
           <div className = "location">
-            <p>{this.location()} </p>
+            <p>{this.location()}</p>
           </div>
-          <Button style={styles} onClick = {() => this.showHouseDetail()}>
+          <Button style={styles} onClick={() => this.showHouseDetail()}>
           بزن بریم </Button>
         </div>
     );

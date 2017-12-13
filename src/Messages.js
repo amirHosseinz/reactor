@@ -33,12 +33,10 @@ class Messages extends React.Component{
 
    })
    .then((messages) => {
-     console.log(messages);
      this.renderData(messages);
    });
   }
   renderData(messages){
-    console.log('5555555555555555555555555555');
     this.setState({requestList:messages});
   }
   renderRequests(){
@@ -52,8 +50,8 @@ class Messages extends React.Component{
   render(){
     return(
       <div>
-            <button onClick={this.handleRequestClick.bind(this)}>
-              messages
+      <button onClick={this.handleRequestClick.bind(this)}>
+          messages
 			</button>
       </div>
 

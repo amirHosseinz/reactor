@@ -1,13 +1,12 @@
 import React from 'react';
 import Login from './Login.js';
-import UserPanel from './UserPanel.js'
+// import UserPanel from './UserPanel.js';
 class Header extends React.Component{
   constructor (props) {
     super(props);
     this.state={
       isLoggedIn : true,
       loginPanelVisible:false,
-      userPanelVisible:false,
     };
   }
   renderLoginButton(){
@@ -32,13 +31,14 @@ class Header extends React.Component{
     this.setState({loginPanelVisible:true});
   }
   handleUserButton(){
-    this.setState({userPanelVisible:true});
+    if (window.location.pathname !== '/dashboard'){
+      window.open('/dashboard');
+    }
+    else {
+      window.location.href = '/dashboard';
+    }
   }
-  renderUserPanel(){
-      if(this.state.userPanelVisible===true){
-        return(<UserPanel />)
-      }
-  }
+
   renderLoginPanel(){
     if(this.state.loginButtonVisible===true){
       return(
@@ -66,9 +66,6 @@ class Header extends React.Component{
             {this.renderLoginButton()}
           </div>
           <div>
-            {this.renderUserPanel()}
-          </div>
-          <div>
             {this.renderLoginPanel()}
           </div>
         </div>
@@ -76,6 +73,4 @@ class Header extends React.Component{
     );
   }
 }
-
-
 export default Header;
