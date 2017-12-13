@@ -7,7 +7,7 @@ import MainCarousel from './Carousel.js';
 class HouseDetails extends React.Component {
   constructor(props){
     super(props);
-    this.state ={
+    this.state = {
       homeData : '',
       showReservePanel : false,
       token: null,
@@ -145,6 +145,7 @@ class HouseDetails extends React.Component {
  }
  return null;
  }
+
  renderPreview(){
    if(this.state.homeData!==''){
      return(<div className = "image">
@@ -152,6 +153,7 @@ class HouseDetails extends React.Component {
              </div>);
    }
  }
+
   render() {
     return(
       <div>
@@ -212,6 +214,10 @@ class HouseDetails extends React.Component {
         <div>
           {this.renderReservePanel()}
         </div>
+
+        {this.renderMessages()}
+        {this.renderRequests()}
+        {this.renderTrips()}
 
         <div><p>nothing</p><p>nothing</p></div>
 

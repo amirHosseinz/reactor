@@ -5,6 +5,7 @@ import Header from './Header.js';
 import Footer from './Footer.js';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter, Route} from 'react-router-dom';
+import UserPanel from './UserPanel';
 
 class MainPage extends React.Component{
   constructor(props){
@@ -38,11 +39,16 @@ class MainPage extends React.Component{
   getHouseId(){
     return window.location.href.split("/")[window.location.href.split("/").length-1];
   }
-
+  renderUserPanel(){
+    return(
+      <UserPanel/>
+    );
+  }
   render(){
     return(
       <BrowserRouter>
         <div className="main">
+          <Route exact path = {"/"} render ={()=> {return (this.renderUserPanel())}}/>
           <Route path={"/"} render = {()=> {return (this.renderHeader())}} />
           <Route exact path={'/'} render={()=> {return (this.renderSearchBar())}}/>
           <Route path={'/rooms/' + this.getHouseId()} render ={()=> {return (this.renderHouseDetails())}}/>
