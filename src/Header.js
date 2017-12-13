@@ -72,7 +72,6 @@ class Header extends React.Component{
             {this.renderLoginPanel()}
           </div>
         </div>
-      </div>
       <div className='header hidden-xl visible-xs'>
         <div className='headermobile'>
           <div className='jafar'>

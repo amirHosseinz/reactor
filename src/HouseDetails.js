@@ -215,10 +215,6 @@ class HouseDetails extends React.Component {
           {this.renderReservePanel()}
         </div>
 
-        {this.renderMessages()}
-        {this.renderRequests()}
-        {this.renderTrips()}
-
         <div><p>nothing</p><p>nothing</p></div>
 
       </div>
