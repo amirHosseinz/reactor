@@ -10,44 +10,28 @@ const styles = {
 class SearchResult extends React.Component {
   constructor(props){
     super(props);
+    this.showHouseDetails = this.showHouseDetail.bind(this);
   }
   id(){
-    return this.props.id;
+    return this.props.room.id;
   }
   price(){
-    return this.props.price;
+    return this.props.room.price;
   }
   rating(){
-    return this.props.rating;
+    return this.props.toom.rating;
   }
   location(){
-    return this.props.location;
+    return this.props.room.location;
   }
   title(){
-    return this.props.title;
+    return this.props.room.title;
   }
   preview(){
     return this.props.preview;
   }
-  images(){
-    return this.props.images;
-  }
-  owner(){
-    return this.props.owner;
-  }
-  latitude(){
-    return this.props.latitude;
-  }
-  longitude(){
-    return this.props.longitude;
-  }
-  changeURL(){
-    if (window.location.href.indexOf('rooms') === -1){
-      window.location.href = '/'+ this.props.id;
-    }
-    else{
-      return;
-    }
+  showHouseDetail(){
+    window.open('./rooms/' + this.props.room.id);
   }
   render ()
    {
@@ -68,7 +52,7 @@ class SearchResult extends React.Component {
           <div className = "location">
             <p>{this.location()} </p>
           </div>
-          <Button style={styles} onClick = {() => this.changeURL()}>
+          <Button style={styles} onClick = {() => this.showHouseDetail()}>
           بزن بریم </Button>
         </div>
     );
