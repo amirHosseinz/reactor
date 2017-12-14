@@ -2,7 +2,7 @@ import React from 'react';
 import SearchResult from './SearchResult';
 //import { BrowserRouter,Route} from 'react-router-dom';
 import {Typeahead} from 'react-bootstrap-typeahead'; // ES2015
-import { Button,Icon} from 'semantic-ui-react'
+import { Button,Icon} from 'semantic-ui-react';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -145,7 +145,7 @@ class SearchBar extends React.Component {
                         submitFormOnEnter='false'
                         selectHintOnEnter='true'
                       />
-                      <Button color='blue' className="search-btn"  onClick={this.handleClick} data-reactid="99">
+                      <Button color='blue' className="search-btn btn"  onClick={this.handleClick} data-reactid="99">
                         <span className='searchicon'>
                           <img src="http://image.ibb.co/fjdMQG/trpinn_search.png" className='search-image'></img>
                         </span>

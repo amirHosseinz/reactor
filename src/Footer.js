@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button,Icon} from 'semantic-ui-react'
 
 class Footer extends React.Component{
   //
@@ -14,9 +15,9 @@ class Footer extends React.Component{
             <div className='footerchild' >
               <div className='footer1'>
                   <div className="footer-menu-and-dl col-md-6 hidden-xs">
-                    <div className='downloadbotton btn btn-large btn-warning padding-left'>
-                    <a className='logolink' href="hwww.tryppin.com">  <p className='download-app-text'>دریافت اپلیکیشن</p></a>
-                    </div>
+                      <div>
+                        <Button color='blue' className="downloadd btn">دانلود اپلیکیشن</Button>
+                      </div>
                     <div className='footer-menu'>
                       <a class='logolink' href="www.tryppin.com">  <p className='logo-menu-font'>قوانین و شرایط استفاده</p></a>
                       <a class='logolink' href="hwww.tryppin.com">  <p className='logo-menu-font'>!میزبان شوید</p></a>
