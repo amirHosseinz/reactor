@@ -67,7 +67,7 @@ class UserPanel extends React.Component{
       return(
         <Requests changeRequestDetail={this.changeRequestDetail} />
       );
-      case 'trips':
+      case 'trip':
       return(
         <Trips />
       );

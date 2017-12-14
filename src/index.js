@@ -8,6 +8,7 @@ class Main extends React.Component{
     return (
       <MainPage />
     );
+
   }
 }
 ReactDOM.render(
