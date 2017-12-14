@@ -145,7 +145,7 @@ class SearchBar extends React.Component {
                         submitFormOnEnter='false'
                         selectHintOnEnter='true'
                       />
-                      <Button color='blue' className="search-btn"  onClick={this.handleClick} data-reactid="99">
+                      <Button color='blue' className="search-btn btn"  onClick={this.handleClick} data-reactid="99">
                         <span className='searchicon'>
                           <img src="http://image.ibb.co/fjdMQG/trpinn_search.png" className='search-image' alt=""></img>
                         </span>

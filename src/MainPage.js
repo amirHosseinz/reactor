@@ -26,7 +26,7 @@ class MainPage extends React.Component{
   }
   renderFooter() {
     return(
-      <div className="footer navbar-fixed-bottom">
+      <div className="footer">
         <Footer />
       </div>
     );

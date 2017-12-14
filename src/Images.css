@@ -115,6 +115,8 @@
   display: flex;
   margin: auto;
   flex-direction: row-reverse;
+  margin-top: -5px;
+  margin-button: -5px;
 }
 .logo-menu-font{
   font-family: IRANSans;
@@ -355,6 +357,12 @@ margin-top: 150px;
 
 .dropdown-menu{
   text-align: right !important
+}
+.downloadbotton-bordered{
+width:34%;
+height:40px;
+background-color: #f26c4f;
+border-radius: 40px;
 }
 @font-face {
 	font-family: IRANSans;
