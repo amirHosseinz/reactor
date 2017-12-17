@@ -90,13 +90,21 @@ class HouseDetails extends React.Component {
      const smoking=this.state.homeData.smoking_allowed
      const pet=this.state.homeData.pet_allowed
      const party=this.state.homeData.party_allowed
-     if (smoking===false && party===false && pet===false) {
+     if (smoking===false){
        return(
-         <div className="rules"><p>no smoking</p>
-         <p>no pet</p>
-         <p>no party</p><p>{this.state.homeData.special_rules}</p></div>
-       );
-     }
+         <div className="smoking">no smoking</div>
+       )}
+       if(party===false){
+         return(
+          <div className="party">no party</div>
+         )
+       }
+       if(pet===false){
+         return(
+          <div className="pet">no pet</div>
+         )
+       }
+
    }
 
    renderUtilities () {

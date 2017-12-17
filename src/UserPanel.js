@@ -2,7 +2,7 @@ import React from 'react';
 import Messages from './Messages';
 import Trips from './Trips';
 import Requests from './Requests';
-import RequestItem from './RequestItem.js';
+import RequestItem from './RequestItem.js'
 
 
 class UserPanel extends React.Component{
