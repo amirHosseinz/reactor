@@ -16,7 +16,7 @@ class Requests extends React.Component{
     this.setState({token:"460b152177ab02716faa0d7795ff60f12d7cbd9d"},()=>{this.setSearchParams(this.getRole())});
   }
   setSearchParams(person_role){
-    this.setState({role :person_role } ,()=>this.getDataFromServer())
+    this.setState({role :person_role },()=>this.getDataFromServer())
   }
   getDataFromServer(){
     var request = new Request('https://www.trypinn.com/api/request/list/',{
@@ -68,7 +68,7 @@ class Requests extends React.Component{
         )
         return(
           <ul>{list}</ul>
-        )
+        );
       }
   }
   render(){
@@ -84,5 +84,4 @@ class Requests extends React.Component{
     );
   }
 }
-
 export default Requests;

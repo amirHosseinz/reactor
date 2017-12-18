@@ -101,7 +101,7 @@ class HouseDetails extends React.Component {
 
    renderUtilities () {
      return ;
-     if (this.state.homeData.private_util_options) {
+     if (this.state.homeData.private_util_options!= null) {
        const util1=this.state.homeData.private_util_options;
        const util1list=util1.map((util1)=><ul key={util1}>{util1}</ul>);
        const util2=this.state.homeData.general_util_options;
@@ -153,7 +153,16 @@ class HouseDetails extends React.Component {
              </div>);
    }
  }
-
+  renderHostPhoto(){
+    if (this.state.homeData !== ''){
+      console.log(this.state.homeData.owner);
+      return(
+        <div className="host-photo">
+         <p><img src={"https://www.trypinn.com/" +this.state.homeData.owner.profile_picture} alt="تصویر میزبان"/></p>
+        </div>
+      );
+    }
+  }
   render() {
     return(
       <div>
@@ -169,9 +178,7 @@ class HouseDetails extends React.Component {
           <p>{this.state.homeData.address} </p>
         </div>
         {this.renderHost()}
-        <div className="host-photo">
-         <p><img src="{this.state.homeData.owner.profile_picture}" alt="تصویر میزبان"/></p>
-        </div>
+        {this.renderHostPhoto()}
         <div className="capacity">
          <p>ظرفیت: {this.state.homeData.capacity}</p>
         </div>
