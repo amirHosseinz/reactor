@@ -89,7 +89,6 @@ class HouseDetails extends React.Component {
   }
 
   renderData(houseData) {
-    console.log(houseData.room);
     this.setState({homeData:houseData.room});
    }
 
@@ -116,19 +115,42 @@ class HouseDetails extends React.Component {
      const party=this.state.homeData.party_allowed;
      if (smoking===false){
             return(
-              <div className="smoking">no smoking</div>
+              <div className="smoking">
+
+              <p>
+              ممنوعیت استعمال دخانیات
+              </p>
+              </div>
             )}
     if(party===false){
       return(
-      <div className="party">no party</div>
+      <div className="party">
+      <p>
+      ممنوعیت برگزاری جشن
+      </p>
+      </div>
     );
       }
       if(pet===false){
         return(
-       <div className="pet">no pet</div>
+       <div className="pet">
+       <p>
+       ممنوعیت ورود حیوان به خانه
+       </p>
+       </div>
      );
             }
           }
+
+  renderSpecialRoles ()
+  {
+    return (
+      <div className='special-rules'>
+          <p> قوانین خاص این خانه </p>
+          <p>{this.state.homeData.special_rules}</p>
+      </div>
+    );
+  }
    renderUtilities () {
      return ;
      if (this.state.homeData.private_util_options!= null) {
@@ -153,12 +175,18 @@ class HouseDetails extends React.Component {
    }
    renderHostPhoto(){
        if (this.state.homeData !== ''){
-         console.log(this.state.homeData.owner);
-         return(
-           <div className="host-photo">
-            <p><img className="host-img" src={"https://www.trypinn.com/" +this.state.homeData.owner.profile_picture} alt="تصویر میزبان"/></p>
-           </div>
-         );
+         if (this.state.homeData.owner.profile_picture === null){
+           return(
+             <img src="http://svgshare.com/i/4V0.svg"  className="avatar-icon" alt = "" />
+           );
+         }
+         else{
+           return(
+             <div className="host-photo">
+              <p><img className="host-img" src={"https://www.trypinn.com/" +this.state.homeData.owner.profile_picture} alt=""/></p>
+             </div>
+           );
+         }
        }
      }
    renderCheckOut(){
@@ -192,18 +220,8 @@ class HouseDetails extends React.Component {
              </div>);
    }
  }
-  renderHostPhoto(){
-    if (this.state.homeData !== ''){
-      console.log(this.state.homeData.owner);
-      return(
-        <div className="host-photo">
-         <p><img src={"https://www.trypinn.com/" +this.state.homeData.owner.profile_picture} alt="تصویر میزبان"/></p>
-        </div>
-      );
-    }
-  }
-  render() {
 
+  render() {
     return(
       <div className='housedetail container-fluid'>
         <div className="house-detail-top">
@@ -216,10 +234,12 @@ class HouseDetails extends React.Component {
             </div>
             <div> {this.renderHomeTitle()}</div>
             <div className='row-reverse-house-adress-type'>
-              <MainStarRating
+              <div className="rating-div">
+                <MainStarRating
               value={this.state.homeData.rating}/>
-              <p>{this.state.homeData.rating_no}</p>
+                </div>
             </div>
+
             <div className='navigation-menu-housedetails'>
               <p className='navigation-menu-items'>مشخصات</p>
               <p className='navigation-menu-items'>تصاویر</p>
@@ -254,19 +274,19 @@ class HouseDetails extends React.Component {
             <div className="main-amanities row">
               <div className='main-amanities-item col-md-3'>
                   <img src="http://image.ibb.co/fWec9m/baths.png"  className="main-amanities-icon" alt = "" />
-                  <p>حمام {this.state.homeData.bath_room_number} </p>
+                  <p className='aminities-text'>حمام {this.state.homeData.bath_room_number} </p>
               </div>
               <div className='main-amanities-item col-md-3'>
                   <img src="http://image.ibb.co/kWoth6/beds.png"  className="main-amanities-icon" alt = "" />
-                  <p>تخت {this.state.homeData.beds_number} </p>
+                  <p className='aminities-text'>تخت {this.state.homeData.beds_number} </p>
               </div>
               <div className='main-amanities-item col-md-3'>
                   <img src="http://image.ibb.co/dNn8FR/rooms.png"  className="main-amanities-icon" alt = "" />
-                  <p>اتاق {this.state.homeData.rooms_number} </p>
+                  <p className='aminities-text'>اتاق {this.state.homeData.rooms_number} </p>
               </div>
               <div className='main-amanities-item col-md-3'>
                  <img src="http://image.ibb.co/hx4oFR/persons.png"  className="main-amanities-icon" alt = "" />
-                 <p>مهمان {this.state.homeData.capacity} </p>
+                 <p className='aminities-text'>مهمان {this.state.homeData.capacity} </p>
               </div>
               </div>
             <div className="main-descriptions row">
@@ -277,7 +297,6 @@ class HouseDetails extends React.Component {
             <div className="host-info">
                 <div className="host-avatar">
                     {this.renderHostPhoto()}
-                   <img src="http://svgshare.com/i/4V0.svg"  className="avatar-icon" alt = "" />
                 </div>
                 <div className="host-texts">
                   <p className="text-011">به میزبانی </p>
@@ -290,30 +309,32 @@ class HouseDetails extends React.Component {
 
               <p className='des-main'> {this.state.homeData.description} </p>
 
+            </div>
 
-              <div className="rating">
-                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-              </div>
-
-
-              <div className="host-photo">
-               <p><img src="{this.state.homeData.owner.profile_picture}" alt="تصویر میزبان"/></p>
-              </div>
-
-              <div className="max-capacity"><p> حداکثر ظرفیت: {this.state.homeData.max_capacity}</p></div>
-              {this.renderRules()}
-              {this.renderUtilities()}
+            <div className="main-descriptions row">
+              <p className='des-header'>قوانین و مقررات</p>
               {this.renderCheckIn()}
               {this.renderCheckOut()}
-
-
-            <div className='special-rules'> {this.state.homeData.special_rules}</div>
-
+              <div className="max-capacity"><p> حداکثر ظرفیت: {this.state.homeData.max_capacity}</p></div>
+              {this.renderRules()}
+              {this.renderSpecialRoles()}
+              </div>
             </div>
 
 
+            <div className="main-descriptions row">
+
+
+
+
+
+              {this.renderUtilities()}
+
+
+
+
             <Map
-              zoom={8}
+              zoom={13}
               lat={parseFloat(this.state.homeData.latitude)}
               lng={parseFloat(this.state.homeData.longitude)}
               isMarkerShown={true}
@@ -322,18 +343,10 @@ class HouseDetails extends React.Component {
              containerElement={<div style={{ height:`400px`,width:`100%`}} />}
              mapElement={<div style={{ height: `100%` }} />} />
 
-
-
             </div>
             </div>
           </div>
       </div>
-
-
-       <MainCarousel
-        pic={this.state.homeData.images} />
-
-
       </div>
     );
     }

@@ -381,6 +381,8 @@ border-radius: 40px;
   color: #454545;
   text-align: left;
   margin-top: 20px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 .house-detail-titles{
   font-family: IRANSans;
@@ -389,6 +391,8 @@ border-radius: 40px;
   font-weight: 500;
   margin-top: 0;
   color: #454545;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 .housedetail-main1{
   background-color: red;
@@ -409,6 +413,7 @@ border-radius: 40px;
   text-align: left;
   border-radius: 5px;
   border-color: red;
+  margin-right: 15px;
 }
 .navigation-menu-items{
   margin-left: 15px;
@@ -469,7 +474,7 @@ border-radius: 40px;
   color: #ffffff;
 }
 .main-amanities{
-  margin-top: 50px;
+  margin-top: 30px;
 }
 .main-amanities-item{
   height: 30px;
@@ -526,6 +531,15 @@ border-radius: 40px;
 .host-img{
 height: 75px;
 border-radius: 50px;
+}
+
+.rating-div{
+  margin-bottom:15px;
+}
+.aminities-text{
+  margin-top: 14px;
+  font-size: 18px;
+  font-weight: 400;
 }
 @font-face {
 	font-family: IRANSans;
