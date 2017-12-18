@@ -89,10 +89,8 @@ class HouseDetails extends React.Component {
   }
 
   renderData(houseData) {
-    console.log(houseData.room);
     this.setState({homeData:houseData.room});
-   }
-
+  }
    handleClick(){
      this.setState({showReservePanel : true});
    }
@@ -194,7 +192,6 @@ class HouseDetails extends React.Component {
  }
   renderHostPhoto(){
     if (this.state.homeData !== ''){
-      console.log(this.state.homeData.owner);
       return(
         <div className="host-photo">
          <p><img src={"https://www.trypinn.com/" +this.state.homeData.owner.profile_picture} alt="تصویر میزبان"/></p>
@@ -203,7 +200,6 @@ class HouseDetails extends React.Component {
     }
   }
   render() {
-
     return(
       <div className='housedetail container-fluid'>
         <div className="house-detail-top">
