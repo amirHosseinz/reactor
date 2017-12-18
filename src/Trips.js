@@ -12,7 +12,7 @@ class Trips extends React.Component{
   getRole(){
     return 'guest';
   }
-  handleTripClick(){
+  handleRequestClick(){
     this.setState({token:"460b152177ab02716faa0d7795ff60f12d7cbd9d"},()=>{this.setSearchParams(this.getRole())});
   }
   setSearchParams(person_role){
@@ -32,15 +32,15 @@ class Trips extends React.Component{
      return response.json();
    })
    .then((trips) => {
-     console.log(trips);
+
      this.renderData(trips);
    });
   }
-
   renderData(trips){
+    console.log(trips);
     this.setState({requestList:trips});
   }
-  renderRequests(){
+  renderTrips(){
     if (this.state.requestList!== null){
       return (
         <div>
@@ -51,9 +51,9 @@ class Trips extends React.Component{
   render(){
     return(
       <div>
-        <button onClick={this.handleTripClick.bind(this)}>
+      <button onClick={this.handleRequestClick.bind(this)}>
           trips
-			  </button>
+			</button>
       </div>
 
     );

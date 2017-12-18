@@ -6,6 +6,7 @@ class RequestItem extends React.Component{
     this.state= {
       request:null,
       requestStatus:null,
+      token:'460b152177ab02716faa0d7795ff60f12d7cbd9d'
     };
   }
 
@@ -13,6 +14,8 @@ class RequestItem extends React.Component{
     this.setState({
       request:nextProps.requestDetail,requestStatus:nextProps.requestDetail.status
     });
+    console.log(nextProps);
+
   }
 
   getRequestStatus(){
@@ -38,9 +41,7 @@ class RequestItem extends React.Component{
   getRelevantButton(){
     switch (this.state.requestStatus){
       case "WAIT_FOR_HOST":
-        return (<button> لغو درخواست </button>);
-      case "GUEST_CANCELED":
-        return null;
+        return null
       case "HOST_REJECTED":
         return (<button>حذف درخواست </button>);
       case "WAIT_FOR_GUEST_PAY":
@@ -48,8 +49,6 @@ class RequestItem extends React.Component{
           <button>حذف درخواست </button>
           <button>پرداخت</button>
           </div>);
-      case "HOST_ACCEPTED_GUEST_CANCELED":
-        return (<button>حذف درخواست </button>);;
       case "HOST_ACCEPTED_GUEST_PAYED":
         return (<button>حذف درخواست </button>);;
       case "HOST_ACCEPTED_HOST_CANCELED":
@@ -101,6 +100,16 @@ class RequestItem extends React.Component{
         return null;
     }
 }
+renderCancelButton(){
+  if(this.state.requestStatus!=="GUEST_CANCELED"){
+   return (<button onClick={this.handleCancelClick.bind(this)}> لغو درخواست </button>);
+  }
+}
+renderDeleteButton(){
+  if(this.state.requestStatus!=="HOST_ACCEPTED_GUEST_CANCELED"){
+   return (<button onClick={this.handleDeleteClick.bind(this)}>حذف درخواست</button>);
+  }
+}
   renderRequestDetail(){
     if (this.state.request!=null && this.state.requestStatus!=null){
       return (
@@ -119,6 +128,8 @@ class RequestItem extends React.Component{
         <div className='request-details'>
           <p>{this.state.request.guest_person.last_name} </p>
           <p>{this.state.request.number_of_guests} </p>
+          {this.renderCancelButton()}
+          {this.renderDeleteButton()}
           <p>{this.state.request.start_date} </p>
           <p>{this.state.request.end_date} </p>
         </div>
@@ -127,11 +138,66 @@ class RequestItem extends React.Component{
         </div>
         <div className='relevant button'>
           {this.getRelevantButton()}
+
         </div>
         </div>
       );
     }
   }
+
+  handleCancelClick(){
+    console.log("sdfghjkl");
+    console.log(this.state.requestStatus);
+    if(this.state.request!=null){
+      console.log('QOP:LKJHGFDSAZXCVBNM<>');
+      console.log(this.state.request.id);
+    var request = new Request('https://www.trypinn.com/api/request/cancel/',{
+      method: 'POST',
+      body: JSON.stringify({
+      request_id:this.state.request.id,
+      role:'guest'
+    }),
+      headers: new Headers({'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'Authorization': 'Token '+this.state.token,})
+    });
+   fetch(request)
+   .then((response) => {
+     return response.json();
+   })
+   .then((request_status) => {
+   console.log('333333333');
+   console.log(request_status);
+   console.log('333333333');
+  });
+}
+  }
+  handleDeleteClick(){
+    console.log("injaaaaaaaaaa");
+    var request = new Request('https://www.trypinn.com/api/request/archive/',{
+      method: 'POST',
+      body: JSON.stringify({
+      request_id:this.state.request.id,
+      role:'guest'
+
+    }),
+      headers: new Headers({'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'Authorization': 'Token ' +this.state.token,})
+    });
+   fetch(request)
+   .then((response) => {
+     return response.json();
+   })
+   .then((request_status) => {
+   console.log(request_status)
+   console.log('444444444');
+  });
+
+  }
+
+
+
   render(){
     return(
       <div>

@@ -7,6 +7,7 @@ class Requests extends React.Component{
       token:null,
       role:null,
       requestList:null,
+
     };
   }
   getRole(){
@@ -44,6 +45,7 @@ class Requests extends React.Component{
   }
 
   renderRequests(){
+
       if(this.state.requestList!==null){
         var request_list = this.state.requestList.request_list;
         var list = request_list.map((item)=>

@@ -111,25 +111,24 @@ class HouseDetails extends React.Component {
    }
 
    renderRules(){
-     const smoking=this.state.homeData.smoking_allowed
-     const pet=this.state.homeData.pet_allowed
-     const party=this.state.homeData.party_allowed
+     const smoking=this.state.homeData.smoking_allowed;
+     const pet=this.state.homeData.pet_allowed;
+     const party=this.state.homeData.party_allowed;
      if (smoking===false){
             return(
               <div className="smoking">no smoking</div>
             )}
-            if(party===false){
-              return(
-               <div className="party">no party</div>
-              )
-            }
-            if(pet===false){
-              return(
-               <div className="pet">no pet</div>
-              )
+    if(party===false){
+      return(
+      <div className="party">no party</div>
+    );
+      }
+      if(pet===false){
+        return(
+       <div className="pet">no pet</div>
+     );
             }
           }
-
    renderUtilities () {
      if (this.state.homeData.private_util_options) {
        const util1=this.state.homeData.private_util_options;
