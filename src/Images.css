@@ -212,7 +212,7 @@ i.big.icon,
 i.big.icons {
   line-height: 1;
   vertical-align: middle;
-  font-size: 2.5em !important;
+  font-size: 1.8em !important;
 }
 
 .search-btn-xs{
@@ -234,7 +234,7 @@ i.big.icons {
   margin: auto;
   flex-direction: row-reverse;
   margin-top: 3rem;
-  height: 6rem;
+  height: 4rem;
   background-color: white;
     box-shadow: 0 .2rem 1rem rgba(0,0,0,.15);
 }
@@ -250,7 +250,7 @@ i.big.icons {
   margin-bottom: 85px;
 }
 .suitcase-image{
-  height: 10.6rem;
+  height: 8.6rem;
   margin-right: 2rem;
 }
 .seach-top-slogan-container{
@@ -277,7 +277,7 @@ i.big.icons {
 }
 .slogan-1{
   font-family: IRANSans;
-  font-size: 3.85rem;
+  font-size: 40px;
   font-style: normal;
   font-weight: 500;
   margin-top: 0;
@@ -287,16 +287,16 @@ i.big.icons {
 }
 .slogan-2{
   font-family: IRANSans;
-  font-size: 2rem;
+  font-size: 18px;
   font-style: normal;
   font-weight: 300;
   margin-top: 0;
   color: #454545;
-  text-align: left;
+  text-align: right;
   margin-right: 1.5rem;
 }
 .slogan-container{
-  margin-top: .7rem;
+  margin-top: .8rem;
 }
 .xxx{
 margin-right:8em;
@@ -364,6 +364,169 @@ height:40px;
 background-color: #f26c4f;
 border-radius: 40px;
 }
+.mamadnaboodi{
+  margin-top: 1000px;
+}
+.row-reverse-house-adress-type{
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
+  display: flex;
+  margin: auto;
+  flex-direction: row-reverse;
+  font-family: IRANSans;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 300;
+  margin-top: 0;
+  color: #454545;
+  text-align: left;
+  margin-top: 20px;
+}
+.house-detail-titles{
+  font-family: IRANSans;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 500;
+  margin-top: 0;
+  color: #454545;
+}
+.housedetail-main1{
+  background-color: red;
+}
+.navigation-menu-housedetails{
+  height: 30px;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
+  display: flex;
+  margin: auto;
+  flex-direction: row-reverse;
+  font-family: IRANSans;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  margin-top: 0;
+  color: #737373;
+  text-align: left;
+  border-radius: 5px;
+  border-color: red;
+}
+.navigation-menu-items{
+  margin-left: 15px;
+}
+.house-detail-top{
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
+
+}
+.house-detail-top-margined{
+  margin:auto;
+  width: 80%;
+  margin-top: 15px;
+}
+.main-details{
+  background-color: grey;
+}
+.container-fluid{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.house-details-preview{
+  height: 500px;
+   width: 100%;
+   object-fit: cover;
+}
+.reserve-card{
+  background-color: #f6f6f6;
+  height: 500px;
+  padding: 25px;
+}
+.text-011{
+  font-family: IRANSans;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  color: #737373;
+  text-align: right;
+}
+.text-012{
+  font-family: IRANSans;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  color: #292929;
+  text-align: left;
+  margin-top: 20px;
+}
+
+.reserve-request{
+
+}
+.reserve-button{
+  width: 100% !important;
+  font-family: IRANSans !important;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: 500;
+  color: #ffffff;
+}
+.main-amanities{
+  margin-top: 50px;
+}
+.main-amanities-item{
+  height: 30px;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
+  display: flex;
+  margin: auto;
+  flex-direction: row-reverse;
+  font-family: IRANSans;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  margin-top: 0;
+  color: #737373;
+  text-align: left;
+
+}
+.main-amanities-icon{
+  height: 30px;
+  margin: 10px;
+}
+.col-details-house{
+}
+.main-descriptions{
+  margin-top: 60px;
+  text-align: right;
+  font-family: IRANSans;
+  padding: 18px;
+
+}
+.des-header{
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  color: #737373;
+}
+.des-main{
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 300;
+  color: #737373;
+}
+.host-info{
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
+  display: flex;
+  margin: auto;
+  flex-direction: row-reverse;
+}
+.avatar-icon{
+  height: 75px;
+}
+
+.host-img{
+height: 75px;
+border-radius: 50px;
+}
 @font-face {
 	font-family: IRANSans;
 	font-style: normal;
@@ -423,4 +586,14 @@ border-radius: 40px;
 		 url('./fonts/woff2/IRANSansWeb.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
 		 url('./fonts/woff/IRANSansWeb.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
 		 url('./fonts/ttf/IRANSansWeb.ttf') format('truetype');
+}
+@font-face {
+	font-family: IRANSansFarsi;
+	font-style: normal;
+	font-weight: normal;
+	src: url('./fonts/eot/IRANSansWeb(FaNum).eot');
+	src: url('./fonts/eot/IRANSansWeb(FaNum).eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
+		 url('./fonts/woff2/IRANSansWeb(FaNum).woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+		 url('./fonts/woff/IRANSansWeb(FaNum).woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+		 url('./fonts/ttf/IRANSansWeb(FaNum).ttf') format('truetype');
 }
