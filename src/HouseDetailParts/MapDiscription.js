@@ -1,6 +1,6 @@
 import React from 'react';
 import Map from './Map.js';
-class MapDiscription extends React.Component{
+class MapDiscription extends React.Component {
   render(){
     return(
       <div>

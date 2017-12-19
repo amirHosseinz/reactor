@@ -2,7 +2,6 @@ import React from 'react';
 
 import { Icon,Button} from 'semantic-ui-react';
 import Lightbox from 'react-image-lightbox';
-
 import ReservePanel from './HouseDetailParts/ReservePanel.js';
 import MainDiscription from './HouseDetailParts/MainDiscription';
 import AddressDiscription from './HouseDetailParts/AddressDiscription';
@@ -143,8 +142,6 @@ class HouseDetails extends React.Component {
   render(){
     return(
       <div className='housedetail container-fluid'>
-
-
         <div className="house-detail-top">
           <div className="house-detail-top-margined">
             <AddressDiscription homeData={this.state.homeData}/>
@@ -153,26 +150,26 @@ class HouseDetails extends React.Component {
             </div>
             <div className='row-reverse-house-adress-type'>
               <RatingDiscription homeData={this.state.homeData}/>
-              <ScrollPanel homeData={this.state.homeData}/>
+                <ScrollPanel homeData={this.state.homeData}/>
             </div>
           </div>
         </div>
-          <div className='house-detail-top'>
-            <div className="house-detail-top-margined">
-              <div className='reserve-card col-md-3'>
-                <p className="text-011">:هزینه هرشب اقامت</p>
-                <div className = "price">
-                  <p className='text-012'> تومان {this.state.homeData.price}</p>
-                </div>
-                <div className='reserve-button-div'>
-                  <Button color='twitter' className='reserve-button' onClick ={this.handleClick}>
-                  !رزرو کنید
-                  </Button>
-                </div>
-                <div>
-                  {this.renderReservePanel()}
-                </div>
+        <div className='house-detail-top'>
+          <div className="house-detail-top-margined">
+            <div className='reserve-card col-md-3'>
+              <p className="text-011">:هزینه هرشب اقامت</p>
+              <div className = "price">
+                <p className='text-012'> تومان {this.state.homeData.price}</p>
               </div>
+              <div className='reserve-button-div'>
+                <Button color='twitter' className='reserve-button' onClick ={this.handleClick}>
+                  !رزرو کنید
+                </Button>
+              </div>
+              <div>
+                {this.renderReservePanel()}
+              </div>
+            </div>
          <div className='housedetail-img col-md-9'>
            <div>
           {this.renderPreview()}
@@ -181,7 +178,7 @@ class HouseDetails extends React.Component {
            <div className="col-details-house">
              <AmenitiesDiscription homeData={this.state.homeData} />
              <div className="main-descriptions row">
-              <p className='des-header'> درباره این خانه </p>
+              <p className='des-header' style={{color:'red',}}> درباره این خانه </p>
               <p className='des-main'> {this.state.homeData.description} </p>
              </div>
              <HostInfoDiscription homeData={this.state.homeData}/>
@@ -190,7 +187,7 @@ class HouseDetails extends React.Component {
             </div>
           </div>
         </div>
-      </div>
+      </div>y
     </div>
     );
     }
