@@ -2,14 +2,16 @@ import React from 'react';
 
 import { Icon,Button} from 'semantic-ui-react';
 import Lightbox from 'react-image-lightbox';
+import scrollToComponent from 'react-scroll-to-component';
+
 import ReservePanel from './HouseDetailParts/ReservePanel.js';
 import MainDiscription from './HouseDetailParts/MainDiscription';
 import AddressDiscription from './HouseDetailParts/AddressDiscription';
 import AmenitiesDiscription from './HouseDetailParts/AmenitiesDiscription';
 import MapDiscription from './HouseDetailParts/MapDiscription';
 import RatingDiscription from './HouseDetailParts/RatingDiscription';
-import ScrollPanel from './HouseDetailParts/ScrollPanel';
 import HostInfoDiscription from './HouseDetailParts/HostInfoDiscription';
+
 
 class HouseDetails extends React.Component {
   constructor(props){
@@ -26,6 +28,7 @@ class HouseDetails extends React.Component {
     };
     this.handleClick = this.handleClick.bind(this);
   }
+
   componentWillMount() {
     this.setState({
       token: "2df579cfc86d929b9a9228bdcd265345addf8cb4",
@@ -150,7 +153,14 @@ class HouseDetails extends React.Component {
             </div>
             <div className='row-reverse-house-adress-type'>
               <RatingDiscription homeData={this.state.homeData}/>
-                <ScrollPanel homeData={this.state.homeData}/>
+            </div>
+            <div>
+            <div className='navigation-menu-housedetails'>
+              <a onClick={() => scrollToComponent(this.Dis, { offset: 0, align: 'top', duration: 1500})}> <p className='navigation-menu-items'  >مشخصات</p></a>
+              <a onClick={() => scrollToComponent(this.Gallery, { offset: 0, align: 'top', duration: 1500})}>   <p className='navigation-menu-items' >تصاویر</p></a>
+              <a onClick={() => scrollToComponent(this.Laws, { offset: 0, align: 'top', duration: 1500})}> <p className='navigation-menu-items'>امکانات و قوانین</p></a>
+              <a onClick={() => scrollToComponent(this.Map, { offset: 0, align: 'top', duration: 1500})}>   <p className='navigation-menu-items'>موقعیت روی نقشه</p></a>
+            </div>
             </div>
           </div>
         </div>
@@ -171,18 +181,23 @@ class HouseDetails extends React.Component {
               </div>
             </div>
          <div className='housedetail-img col-md-9'>
+          <section className='gallery-scroller' ref={(section) => { this.Gallery = section; }}></section>
            <div>
           {this.renderPreview()}
           {this.renderHouseGallery()}
            </div>
            <div className="col-details-house">
+              <section className='about-scroller' ref={(section) => { this.Dis = section; }}></section>
              <AmenitiesDiscription homeData={this.state.homeData} />
              <div className="main-descriptions row">
               <p className='des-header' style={{color:'red',}}> درباره این خانه </p>
               <p className='des-main'> {this.state.homeData.description} </p>
              </div>
+               <section className='violet' ref={(section) => { this.Violet = section; }}>Violet</section>
              <HostInfoDiscription homeData={this.state.homeData}/>
+             <section className='law-scroller' ref={(section) => { this.Laws = section; }}></section>
              <MainDiscription homeData={this.state.homeData} />
+             <section className='map-scroller' ref={(section) => { this.Map = section; }}></section>
              <MapDiscription homeData={this.state.homeData}/>
             </div>
           </div>
