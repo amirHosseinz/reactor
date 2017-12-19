@@ -332,7 +332,6 @@ class HouseDetails extends React.Component {
 
 
 
-
             <Map
               zoom={13}
               lat={parseFloat(this.state.homeData.latitude)}
