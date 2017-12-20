@@ -1,6 +1,7 @@
 import React from 'react';
 // import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import GuestNumber from './GuestNumber.js';
 
 class ReservePanel extends React.Component{
   constructor(props){
@@ -27,7 +28,7 @@ class ReservePanel extends React.Component{
   getDataFromUser(){
     return({startDate : moment(new Date()),
             endDate : moment(new Date()).add(5,'days'),
-            numberOfGuests : document.getElementById('numberOfGuests').value,
+            numberOfGuests : document.getElementById('guest-number').value,
             discountCode : 'salam_trypinn',});
     }
   setSearchParams(reqpar){
@@ -143,7 +144,7 @@ class ReservePanel extends React.Component{
     return(
       <div>
         <div>
-          <input id="numberOfGuests" type="number" min="1" max="100" step="1"/>
+          <GuestNumber/>
         </div>
         <div>
           <button onClick={this.handleClick.bind(this)}>Price Request</button>
