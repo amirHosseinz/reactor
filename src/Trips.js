@@ -6,7 +6,7 @@ class Trips extends React.Component{
     this.state={
       token:null,
       role:null,
-      requestList:null,
+      tripList:null,
     };
   }
   getRole(){
@@ -32,32 +32,53 @@ class Trips extends React.Component{
      return response.json();
    })
    .then((trips) => {
-
      this.renderData(trips);
    });
   }
   renderData(trips){
-    console.log(trips);
-    this.setState({requestList:trips});
+    this.setState({tripList:trips});
+  }
+  showTripItemClick(item){
+    this.props.changeTripDetail(item);
   }
   renderTrips(){
-    if (this.state.requestList!== null){
-      return (
-        <div>
-        </div>
+    if (this.state.tripList!== null){
+      var reserve_list = this.state.tripList.reserve_list;
+      var list = reserve_list.map((item) => {
+        <button key={item.id} onClick={() =>{
+          this.showTripItemClick(item)
+        }}>
+        <li>
+          <div className="preview">
+          <img src={"https:/trypinn.com"+ item.room.preview}
+          height="50" width="50"
+          alt=""/>
+          </div>
+          <div className="title">
+            {item.room.title}
+            </div>
+            <div className="location">
+            {item.room.address}
+            </div>
+            </li>
+        </button>
+      });
+      return(
+        <ul>{list}</ul>
       );
-    }
-  }
+  }}
   render(){
     return(
       <div>
       <button onClick={this.handleRequestClick.bind(this)}>
           trips
-			</button>
+			 </button>
+      <div>
+        {this.renderTrips()}
+      </div>
       </div>
 
     );
   }
 }
-
 export default Trips;

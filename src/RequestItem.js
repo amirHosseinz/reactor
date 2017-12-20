@@ -119,7 +119,7 @@ renderDeleteButton(){
           <p> {this.getRequestStatus()} </p>
           <p>{this.getRequestStatusDiscription()} </p>
         </div>
-        <div className='house-prewview-linked-to-house-detail'>
+        <div className='house-preview-linked-to-house-detail'>
           <img scr={"https://www.trypinn.com/"+this.state.request.room.preview}></img>
           <p>{this.state.request.room.title} </p>
           <p>{this.state.request.room.owner.first_name} {this.state.request.room.owner.last_name}</p>

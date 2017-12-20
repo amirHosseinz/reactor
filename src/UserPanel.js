@@ -2,7 +2,8 @@ import React from 'react';
 import Messages from './Messages';
 import Trips from './Trips';
 import Requests from './Requests';
-import RequestItem from './RequestItem.js'
+import RequestItem from './RequestItem.js';
+import TripItem from './TripItem.js';
 
 
 class UserPanel extends React.Component{
@@ -16,11 +17,11 @@ class UserPanel extends React.Component{
     };
   }
 
-  changeRequestDetail= (request_detail) => {
+  changeRequestDetail = (request_detail) => {
     this.setState({requestDetail:request_detail});
   }
 
-  changeTripDetail(trip_detail){
+  changeTripDetail = (trip_detail) => {
     this.setState({tripDetail:trip_detail});
   }
 
@@ -36,7 +37,7 @@ class UserPanel extends React.Component{
       );
       case 'trip':
       return(
-        <div> </div>
+        <TripItem reserveDetail={this.state.tripDetail}/>
       );
       default:
       return null;
@@ -69,7 +70,7 @@ class UserPanel extends React.Component{
       );
       case 'trip':
       return(
-        <Trips />
+        <Trips changeTripDetail={this.changeTripDetail}/>
       );
       default:
       return null;
