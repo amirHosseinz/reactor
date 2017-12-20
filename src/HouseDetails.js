@@ -1,9 +1,7 @@
 import React from 'react';
-
 import { Icon,Button} from 'semantic-ui-react';
 import Lightbox from 'react-image-lightbox';
 import scrollToComponent from 'react-scroll-to-component';
-
 import ReservePanel from './HouseDetailParts/ReservePanel.js';
 import MainDiscription from './HouseDetailParts/MainDiscription';
 import AddressDiscription from './HouseDetailParts/AddressDiscription';
@@ -11,7 +9,6 @@ import AmenitiesDiscription from './HouseDetailParts/AmenitiesDiscription';
 import MapDiscription from './HouseDetailParts/MapDiscription';
 import RatingDiscription from './HouseDetailParts/RatingDiscription';
 import HostInfoDiscription from './HouseDetailParts/HostInfoDiscription';
-
 
 class HouseDetails extends React.Component {
   constructor(props){
@@ -177,8 +174,6 @@ class HouseDetails extends React.Component {
                   <Button color='twitter' className='reserve-button' onClick ={this.handleClick}>
                   !رزرو کنید
                   </Button>
-                </div>
-                <div>
                   {this.renderReservePanel()}
                 </div>
               </div>
