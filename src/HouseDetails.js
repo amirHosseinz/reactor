@@ -190,7 +190,7 @@ class HouseDetails extends React.Component {
               <section className='about-scroller' ref={(section) => { this.Dis = section; }}></section>
              <AmenitiesDiscription homeData={this.state.homeData} />
              <div className="main-descriptions row">
-              <p className='des-header' style={{color:'red',}}> درباره این خانه </p>
+              <p className='des-header'> درباره این خانه </p>
               <p className='des-main'> {this.state.homeData.description} </p>
              </div>
                <section className='violet' ref={(section) => { this.Violet = section; }}>Violet</section>
