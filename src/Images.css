@@ -39,7 +39,7 @@
   .headermobile{
     height:50px;
     margin: auto;
-    width:94%;
+    width:90%;
     margin-top:.6em;
     }
 .logoname-mobile{
@@ -65,8 +65,9 @@
   font-style: normal;
   font-weight: 600;
   margin-top:.17em;
+  padding-top: 3px;
   color: #12b2ce;
-  margin-right: .2em;
+  margin-right: .3em;
 }
 .logodiv0{
   display: -webkit-flex; /* Safari */
@@ -88,7 +89,7 @@
   margin: auto;
 }
 .footer-mobile-container{
-  width:94%;
+  width:90%;
   margin: auto;
   padding-top: 10px;
   background-color: #f2f2f2;
@@ -497,6 +498,7 @@ border-radius: 40px;
   margin: 10px;
 }
 .col-details-house{
+  margin-bottom: 180px;
 }
 .main-descriptions{
   margin-top: 60px;
@@ -535,12 +537,74 @@ border-radius: 50px;
 
 .rating-div{
   margin-bottom:15px;
+  -moz-transform: scale(-1, 1);
+-webkit-transform: scale(-1, 1);
+-o-transform: scale(-1, 1);
+-ms-transform: scale(-1, 1);
+transform: scale(-1, 1);
 }
 .aminities-text{
   margin-top: 14px;
   font-size: 18px;
   font-weight: 400;
 }
+.result-detail{
+  font-family: IRANSans;
+  text-align: right;
+}
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 30px;
+  height: 22px;
+  left: 12px;
+  top: 20px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #373a47;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #12b2ce;
+  -ms-transform: scale(3, 3); /* IE 9 */
+-webkit-transform: scale(3, 3); /* Safari */
+transform: scale(3, 3);
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: rgba(255, 255, 255, 1);
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+
 @font-face {
 	font-family: IRANSans;
 	font-style: normal;

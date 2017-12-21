@@ -3,6 +3,7 @@ import React from 'react';
 import { Icon,Button} from 'semantic-ui-react';
 import Lightbox from 'react-image-lightbox';
 import scrollToComponent from 'react-scroll-to-component';
+import Sticky from 'react-sticky-el';
 
 import ReservePanel from './HouseDetailParts/ReservePanel.js';
 import MainDiscription from './HouseDetailParts/MainDiscription';
@@ -163,24 +164,29 @@ class HouseDetails extends React.Component {
               <a onClick={() => scrollToComponent(this.Laws, { offset: 0, align: 'top', duration: 1500})}> <p className='navigation-menu-items'>امکانات و قوانین</p></a>
               <a onClick={() => scrollToComponent(this.Map, { offset: 0, align: 'top', duration: 1500})}>   <p className='navigation-menu-items'>موقعیت روی نقشه</p></a>
             </div>
+
             </div>
           </div>
         </div>
           <div className='house-detail-top'>
             <div className="house-detail-top-margined">
-              <div className='reserve-card col-md-3'>
-                <p className="text-011">:هزینه هرشب اقامت</p>
-                <div className = "price">
-                  <p className='text-012'> تومان {this.state.homeData.price}</p>
-                </div>
-                <div className='reserve-button-div'>
-                  <Button color='twitter' className='reserve-button' onClick ={this.handleClick}>
-                  !رزرو کنید
-                  </Button>
-                </div>
-                <div>
-                  {this.renderReservePanel()}
-                </div>
+              <div className="col-md-3">
+                <Sticky>
+                  <div className='reserve-card'>
+                    <p className="text-011">:هزینه هرشب اقامت</p>
+                    <div className = "price">
+                      <p className='text-012'> تومان {this.state.homeData.price}</p>
+                    </div>
+                    <div className='reserve-button-div'>
+                      <Button color='twitter' className='reserve-button' onClick ={this.handleClick}>
+                      !رزرو کنید
+                      </Button>
+                    </div>
+                    <div>
+                      {this.renderReservePanel()}
+                    </div>
+                  </div>
+                </Sticky>
               </div>
          <div className='housedetail-img col-md-9'>
           <section className='gallery-scroller' ref={(section) => { this.Gallery = section; }}></section>
@@ -195,7 +201,7 @@ class HouseDetails extends React.Component {
               <p className='des-header'> درباره این خانه </p>
               <p className='des-main'> {this.state.homeData.description} </p>
              </div>
-               <section className='violet' ref={(section) => { this.Violet = section; }}>Violet</section>
+               <section className='violet' ref={(section) => { this.Violet = section; }}></section>
              <HostInfoDiscription homeData={this.state.homeData}/>
              <section className='law-scroller' ref={(section) => { this.Laws = section; }}></section>
              <MainDiscription homeData={this.state.homeData} />

@@ -1,19 +1,22 @@
 import React from 'react';
 import Login from './Login.js';
+import { slide as Menu } from 'react-burger-menu'
+
 // import UserPanel from './UserPanel.js';
 class Header extends React.Component{
   constructor (props) {
     super(props);
     this.state={
-      isLoggedIn : true,
+      isLoggedIn : false,
       loginPanelVisible:false,
+      hidden: false
     };
   }
   renderLoginButton(){
     if (this.state.isLoggedIn===false){
       return(
         <div>
-          <button onClick={this.handleLoginButton.bind(this)}>Login</button>
+          <button onClick={this.handleLoginButton.bind(this)}>ورود</button>
         </div>
       );
     }
@@ -51,6 +54,7 @@ class Header extends React.Component{
   render()
   {
     return (
+      <div>
       <div className='header hidden-xs visible-xl'>
         <div className='headerchild'>
           <div className='logodiv'>
@@ -69,11 +73,23 @@ class Header extends React.Component{
             {this.renderLoginPanel()}
           </div>
         </div>
-      <div className='header hidden-xl visible-xs'>
+        </div>
+      <div className='header hidden-xl visible-xs navbar-fixed-top'>
+      <div className="burger-menu">
+         <Menu className="burger" width={ '100%' }>
+           <a id="home" className="menu-item" href="/">خانه</a>
+           {this.renderLoginButton()}
+           <a onClick={ this.showSettings } className="menu-item" href="/">ورود</a>
+           <a  className="menu-item--small" href="">Settings</a>
+         </Menu>
+      </div>
         <div className='headermobile'>
+
           <div className='jafar'>
+
              <a href="www.tryppin.com"><img src="http://svgshare.com/i/4C0.svg" className="LogoImage-mobile" alt=""></img></a>
              <a className='logolink' href="www.tryppin.com">  <p className='logofont-mobile'>تریپین</p></a>
+
           </div>
         </div>
       </div>

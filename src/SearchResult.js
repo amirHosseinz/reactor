@@ -36,12 +36,12 @@ class SearchResult extends React.Component {
   render ()
    {
     return(
-        <div  style={{marginBottom:100}}>
+        <div  className="result-detail">
           <div className="image">
             <img src= {this.props.preview}  responsive = "true"  className="SearchResultPreview" alt = "" />
           </div>
           <div className = "title">
-            <p align="left">{this.title()}</p>
+            <p>{this.title()}</p>
           </div>
           <div className ="rating">
             <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
