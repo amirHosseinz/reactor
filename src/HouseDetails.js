@@ -184,9 +184,12 @@ class HouseDetails extends React.Component {
                     <div className="reserve-card-child">
                       <p className="text-011">:هزینه هرشب اقامت</p>
                       <div className = "price">
-                        <p className='text-012'> تومان {englishToPersianDigits(this.state.homeData.price)}</p>
+                        <p className='text-012'> تومان</p>
+                        <p className='text-012'> {englishToPersianDigits(this.state.homeData.price)} </p>
                       </div>
-                      <div className="divider"></div>
+                      <div className="divider-card"></div>
+                      <p className="text-011">:تعداد مهمان</p>
+
                       <div>
                         {this.renderReservePanel()}
                       </div>
