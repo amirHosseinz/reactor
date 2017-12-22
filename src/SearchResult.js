@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import './Images.css';
+import { englishToPersianDigits } from './tools/EnglishToPersianDigits';
 
 // import HouseDetails from './HouseDetails'
 // import {BrowserRouter,Route} from 'react-router-dom';
@@ -15,9 +16,11 @@ class SearchResult extends React.Component {
   id(){
     return this.props.room.id;
   }
-  price(){
-    return this.props.room.price;
+
+  price () {
+    return englishToPersianDigits(this.props.room.price);
   }
+
   rating(){
     return this.props.toom.rating;
   }

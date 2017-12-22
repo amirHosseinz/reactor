@@ -5,9 +5,10 @@ class Facilities extends React.Component {
     if (this.props.utility.indexOf('FRIDGE') > -1) {
       return(
 
-        <div>
-          یخچال فریزر
-          </div>
+        <div className="facilities-item">
+          <img src={require('./facilities/refrigerator.png')}   className="other-amanities-icon" alt = "" />
+          <p className="facility-text">یخچال فریزر</p>
+        </div>
 
       );
     }
@@ -16,8 +17,9 @@ class Facilities extends React.Component {
   renderParking () {
     if (this.props.utility.indexOf('PARKING') > -1) {
       return(
-        <div>
-            پارکینگ
+        <div className="facilities-item">
+          <img src={require('./facilities/parking.png')} className="other-amanities-icon" alt = "" />
+          <p className="facility-text">  پارکینگ </p>
           </div>
       );
     }
@@ -26,9 +28,9 @@ class Facilities extends React.Component {
   renderBarbecue () {
     if (this.props.utility.indexOf('BARBECUE') > -1) {
       return(
-        <div>
-
-          باربیکیو
+        <div className="facilities-item">
+        <img src={require('./facilities/Barbecue.png')}   className="other-amanities-icon" alt = "" />
+        <p className="facility-text">باربیکیو </p>
         </div>
       );
     }
@@ -37,8 +39,9 @@ class Facilities extends React.Component {
   renderBlanket () {
     if (this.props.utility.indexOf('EXTRA_SLEEP_UTILS') > -1) {
       return(
-        <div>
-            پتو و بالش اضافه
+        <div className="facilities-item">
+          <img src={require('./facilities/blanket.png')}   className="other-amanities-icon" alt = "" />
+          <p className="facility-text">پتو و بالش اضافه</p>
         </div>
       );
     }
@@ -48,8 +51,9 @@ class Facilities extends React.Component {
   renderCanape () {
     if (this.props.utility.indexOf('SOFA') > -1) {
       return(
-        <div>
-        مبلمان
+        <div className="facilities-item">
+          <img src={require('./facilities/canape.png')}  className="other-amanities-icon" alt = "" />
+          <p className="facility-text">مبلمان </p>
         </div>
       );
     }
@@ -57,8 +61,9 @@ class Facilities extends React.Component {
   renderDinnerTable () {
     if (this.props.utility.indexOf('DINING_TABLE') > -1) {
       return(
-        <div>
-میز ناهارخوری
+        <div className="facilities-item">
+        <img src={require('./facilities/dinnertable.png')}    className="other-amanities-icon" alt = "" />
+        <p className="facility-text">  میز ناهارخوری </p>
         </div>
       );
     }
@@ -67,8 +72,9 @@ class Facilities extends React.Component {
   renderConditioner () {
     if (this.props.utility.indexOf('COOLER') > -1) {
       return(
-        <div>
-            کولر
+        <div className="facilities-item">
+          <img src={require('./facilities/conditioner.png')}   className="other-amanities-icon" alt = "" />
+          <p className="facility-text"> کولر </p>
         </div>
       );
     }
@@ -77,8 +83,9 @@ class Facilities extends React.Component {
   renderElevator () {
     if (this.props.utility.indexOf('ELEVATOR') > -1) {
       return(
-        <div>
-            آسانسور
+        <div className="facilities-item">
+          <img src={require('./facilities/elevator.png')}  className="other-amanities-icon" alt = "" />
+          <p className="facility-text">  آسانسور </p>
         </div>
       );
     }
@@ -87,8 +94,9 @@ class Facilities extends React.Component {
   renderFoosball () {
     if (this.props.utility.indexOf('TABLE_FOOTBALL') > -1) {
       return(
-        <div>
-فوتبال دستی
+        <div className="facilities-item">
+          <img src={require('./facilities/foosball.png')}   className="other-amanities-icon" alt = "" />
+          <p className="facility-text">فوتبال دستی </p>
         </div>
       );
     }
@@ -97,8 +105,9 @@ class Facilities extends React.Component {
   renderHanger () {
     if (this.props.utility.indexOf('HANGER') > -1) {
       return(
-        <div>
-چوب لباسی
+        <div className="facilities-item">
+          <img src={require('./facilities/hanger.png')}   className="other-amanities-icon" alt = "" />
+          <p className="facility-text">  چوب لباسی </p>
         </div>
       );
     }
@@ -107,8 +116,9 @@ class Facilities extends React.Component {
   renderHeater () {
     if (this.props.utility.indexOf('HEATER') > -1) {
       return(
-        <div>
-بخاری - شوفاژ
+        <div className="facilities-item">
+          <img src={require('./facilities/heater.png')}  className="other-amanities-icon" alt = "" />
+          <p className="facility-text">بخاری - شوفاژ</p>
         </div>
       );
     }
@@ -117,8 +127,9 @@ class Facilities extends React.Component {
   renderKitchenware () {
     if (this.props.utility.indexOf('KITCHEN_DISH') > -1) {
       return(
-        <div>
-            ظروف آشپزخانه
+        <div className="facilities-item">
+          <img src={require('./facilities/kitchenware.png')}   className="other-amanities-icon" alt = "" />
+          <p className="facility-text"> ظروف آشپزخانه </p>
         </div>
       );
     }
@@ -127,8 +138,9 @@ class Facilities extends React.Component {
   renderMicrowave () {
     if (this.props.utility.indexOf('MICROWAVE_OVEN') > -1) {
       return(
-        <div>
-ماکروویو
+        <div className="facilities-item">
+          <img src={require('./facilities/mircowave.png')}   className="other-amanities-icon" alt = "" />
+          <p className="facility-text">  ماکروویو </p>
         </div>
       );
     }
@@ -137,8 +149,9 @@ class Facilities extends React.Component {
   renderPavilion () {
     if (this.props.utility.indexOf('PERGOLA') > -1) {
       return(
-        <div>
-            آلاچیق
+        <div className="facilities-item">
+          <img src={require('./facilities/pavilion.png')} className="other-amanities-icon" alt = "" />
+          <p className="facility-text">    آلاچیق </p>
         </div>
       );
     }
@@ -147,8 +160,9 @@ class Facilities extends React.Component {
   renderPingpong () {
     if (this.props.utility.indexOf('PING_PONG') > -1) {
       return(
-        <div>
-          میز پینگ پنگ
+        <div className="facilities-item">
+          <img src={require('./facilities/pingpong.png')}   className="other-amanities-icon" alt = "" />
+          <p className="facility-text"> میز پینگ پنگ </p>
         </div>
       );
     }
@@ -157,9 +171,11 @@ class Facilities extends React.Component {
   renderPool () {
     if (this.props.utility.indexOf('POOL') > -1) {
       return(
-        <div>
-            استخر
- </div>
+        <div className="facilities-item">
+        <img src={require('./facilities/pool.png')}   className="other-amanities-icon" alt = "" />
+
+              <p className="facility-text"> استخر</p>
+        </div>
       );
     }
   }
@@ -167,9 +183,11 @@ class Facilities extends React.Component {
   renderStove () {
     if (this.props.utility.indexOf('OVEN') > -1) {
       return(
-        <div>
-
+        <div className="facilities-item">
+          <img src={require('./facilities/stove.png')}   className="other-amanities-icon" alt = "" />
+          <p className="facility-text">
           اجاق گاز
+          </p>
         </div>
       );
     }
@@ -178,8 +196,12 @@ class Facilities extends React.Component {
   renderTeamaker () {
     if (this.props.utility.indexOf('TEA_MAKER') > -1) {
       return(
-        <div>
-چای ساز
+        <div className="facilities-item">
+        <img src={require('./facilities/teamaker.png')}   className="other-amanities-icon" alt = "" />
+
+        <p className="facility-text">
+        چای ساز
+        </p>
         </div>
       );
     }
@@ -188,8 +210,12 @@ class Facilities extends React.Component {
   renderTv () {
     if (this.props.utility.indexOf('TV') > -1) {
       return(
-       <div>
+      <div className="facilities-item">
+       <img src={require('./facilities/tv.png')}  className="other-amanities-icon" alt = "" />
+
+        <p className="facility-text">
 تلویزیون
+        </p>
         </div>
       );
     }
@@ -198,8 +224,12 @@ class Facilities extends React.Component {
   renderForeigntoilet () {
     if (this.props.utility.indexOf('FOREIGN_TOILET') > -1) {
       return(
-        <div>
-توالت فرنگی
+        <div className="facilities-item">
+        <img src={require('./facilities/wc-1.png')}   className="other-amanities-icon" alt = "" />
+
+        <p className="facility-text">
+        توالت فرنگی
+        </p>
         </div>
       );
     }
@@ -208,10 +238,11 @@ class Facilities extends React.Component {
   renderWifi () {
     if (this.props.utility.indexOf('NET') > -1) {
       return(
-        <div>
-
+        <div className="facilities-item">
+          <img src={require('./facilities/wifi.png')}  className="other-amanities-icon" alt = "" />
+          <p className="facility-text">
             اینترنت بیسیم
-
+          </p>
         </div>
       );
     }

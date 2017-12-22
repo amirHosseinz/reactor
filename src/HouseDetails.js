@@ -11,6 +11,7 @@ import AmenitiesDiscription from './HouseDetailParts/AmenitiesDiscription';
 import MapDiscription from './HouseDetailParts/MapDiscription';
 import RatingDiscription from './HouseDetailParts/RatingDiscription';
 import HostInfoDiscription from './HouseDetailParts/HostInfoDiscription';
+import { englishToPersianDigits } from './tools/EnglishToPersianDigits';
 
 class HouseDetails extends React.Component {
   constructor(props){
@@ -183,7 +184,7 @@ class HouseDetails extends React.Component {
                     <div className="reserve-card-child">
                       <p className="text-011">:هزینه هرشب اقامت</p>
                       <div className = "price">
-                        <p className='text-012'> تومان {this.state.homeData.price}</p>
+                        <p className='text-012'> تومان {englishToPersianDigits(this.state.homeData.price)}</p>
                       </div>
                       <div className="divider"></div>
                       <div>
@@ -212,7 +213,6 @@ class HouseDetails extends React.Component {
                   <section className='law-scroller' ref={(section) => { this.Laws = section; }}></section>
 
                   <MainDiscription homeData={this.state.homeData} />
-                  <div className="divider"></div>
 
                   <section className='map-scroller' ref={(section) => { this.Map = section; }}></section>
                   <MapDiscription homeData={this.state.homeData}/>

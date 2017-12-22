@@ -1,10 +1,9 @@
 import React from 'react';
-// import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import GuestNumber from './GuestNumber.js';
 import {Button} from 'semantic-ui-react';
 import Modal from 'react-modal';
-
+import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
 
 class ReservePanel extends React.Component{
   constructor(props){
@@ -32,7 +31,7 @@ class ReservePanel extends React.Component{
     return({startDate : moment(new Date()),
             endDate : moment(new Date()).add(5,'days'),
             numberOfGuests : document.getElementById('guest-number').value,
-            discountCode : 'salam_trypinn',});
+            discountCode : 'salam_tripinn',});
     }
   setSearchParams(reqpar){
     if (reqpar.numberOfGuests === ''){
@@ -69,7 +68,7 @@ class ReservePanel extends React.Component{
     if (this.state.reserveData !=='' && this.state.reserveData.is_available){
       return(
         <p>
-        هزینه کل : {this.state.reserveData.total_price}
+        هزینه کل : {englishToPersianDigits(this.state.reserveData.total_price)}
         </p>
 );
     }
@@ -78,7 +77,7 @@ class ReservePanel extends React.Component{
     if (this.state.reserveData !=='' && this.state.reserveData.is_available){
       return(
         <p>
-        هزینه تریپین:{this.state.reserveData.trypinn_service_price}
+        هزینه تریپین:{englishToPersianDigits(this.state.reserveData.trypinn_service_price)}
         </p>);
     }
   }
@@ -86,7 +85,7 @@ class ReservePanel extends React.Component{
     if (this.state.reserveData !=='' && this.state.reserveData.is_available){
       return(
         <p>
-        هزینه میزبان : {this.state.reserveData.host_price}
+        هزینه میزبان : {englishToPersianDigits(this.state.reserveData.host_price)}
         </p>);
     }
   }
@@ -94,7 +93,7 @@ class ReservePanel extends React.Component{
     if (this.state.reserveData !==''&& this.state.reserveData.is_available){
       return(
         <p>
-         تخفیف تریپین:{this.state.reserveData.trypinn_service_discount}
+         تخفیف تریپین:{englishToPersianDigits(this.state.reserveData.trypinn_service_discount)}
         </p>);
     }
   }
@@ -102,7 +101,7 @@ class ReservePanel extends React.Component{
     if (this.state.reserveData !==''&& this.state.reserveData.is_available){
       return(
         <p>
-        تخفیف کل : {this.state.reserveData.total_discount}
+        تخفیف کل : {englishToPersianDigits(this.state.reserveData.total_discount)}
         </p>);
     }
   }

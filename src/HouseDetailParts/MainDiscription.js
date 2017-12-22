@@ -1,5 +1,7 @@
 import React from 'react';
 import Facilities from './Facilities.js';
+import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
+
 class MainDiscription extends React.Component{
 
   renderCheckIn(){
@@ -9,7 +11,9 @@ class MainDiscription extends React.Component{
     const checkin1=checkin.split(":", 2);
     const checkintill1=checkintill.split(":", 2);
     return(
-      <div className="check-in"> ساعت ورود: {checkin1[0]+":"+checkin1[1]+" تا "+checkintill1[0]+":"+checkintill1[1]}</div>
+      <div className="check-in">
+       ساعت ورود: {englishToPersianDigits(checkin1[0]+":"+checkin1[1]+" تا "+checkintill1[0]+":"+checkintill1[1])}
+       </div>
     );
   }
   return null;
@@ -19,7 +23,9 @@ class MainDiscription extends React.Component{
     const checkout=this.props.homeData.check_out;
     const checkout1=checkout.split(":", 2);
     return(
-      <div className="check-out"> ساعت خروج: {checkout1[0]+":"+checkout1[1]}</div>
+      <div className="check-out">
+       ساعت خروج: {englishToPersianDigits(checkout1[0]+":"+checkout1[1])}
+      </div>
     );
   }
   return null;
@@ -59,7 +65,7 @@ renderUtilities () {
       <div>
         <Facilities utility={util1}/>
         <Facilities utility={util2}/>
-      </div>    
+      </div>
     );
   }
 }
@@ -77,20 +83,26 @@ renderSpecialRules ()
       <div>
         <div className="main-descriptions row">
           <p className='des-header'>سایر امکانات</p>
+          <div className="main-descriptions row">
+            {this.renderUtilities()}
+          </div>
+          <div className="divider"></div>
+
           <p className='des-main'> {this.props.homeData.description}</p>
         </div>
         <div className="main-descriptions row">
           <p className='des-header'>قوانین و مقررات</p>
           {this.renderCheckIn()}
           {this.renderCheckOut()}
-          <div className="max-capacity"><p> حداکثر ظرفیت: {this.props.homeData.max_capacity}</p>
+          <div className="max-capacity">
+            <p>
+             حداکثر ظرفیت: {englishToPersianDigits(this.props.homeData.max_capacity)}
+            </p>
             {this.renderRules()}
             {this.renderSpecialRules()}
           </div>
         </div>
-        <div className="main-descriptions row">
-          {this.renderUtilities()}
-        </div>
+
       </div>
     );
   }
