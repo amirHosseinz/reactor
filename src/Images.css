@@ -584,6 +584,7 @@ transform: scale(-1, 1);
   margin-top: 14px;
   font-size: 18px;
   font-weight: 400;
+  margin-left: 5px;
 }
 .result-detail{
   font-family: IRANSans;
