@@ -59,7 +59,7 @@ renderUtilities () {
       <div>
         <Facilities utility={util1}/>
         <Facilities utility={util2}/>
-      </div>    
+      </div>
     );
   }
 }
@@ -77,6 +77,11 @@ renderSpecialRules ()
       <div>
         <div className="main-descriptions row">
           <p className='des-header'>سایر امکانات</p>
+          <div className="main-descriptions row">
+            {this.renderUtilities()}
+          </div>
+          <div className="divider"></div>
+
           <p className='des-main'> {this.props.homeData.description}</p>
         </div>
         <div className="main-descriptions row">
@@ -88,9 +93,7 @@ renderSpecialRules ()
             {this.renderSpecialRules()}
           </div>
         </div>
-        <div className="main-descriptions row">
-          {this.renderUtilities()}
-        </div>
+
       </div>
     );
   }

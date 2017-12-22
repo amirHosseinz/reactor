@@ -16,7 +16,6 @@
     "react-hamburger-menu": "^1.0.0",
     "react-image-lightbox": "^4.4.0",
     "react-modal": "^3.1.8",
-    "react-persian": "^1.1.1",
     "react-refetch": "^1.0.4",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
@@ -33,5 +32,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "file-loader": "^1.1.6",
+    "url-loader": "^0.6.2"
   }
 }
