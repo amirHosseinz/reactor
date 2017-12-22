@@ -164,7 +164,7 @@ class SearchBar extends React.Component {
         );
       } else {
         return(
-            <div className="mamadx col-md-2 col-md-offset-.5"
+            <div className="mamadx col-md-2 col-md-offset-1"
              key = {houseItem.id}>
              <SearchResult
               room = {houseItem}
