@@ -9,6 +9,7 @@ class SearchBar extends React.Component {
     super(props);
     this.state = {
       token: null,
+      showOnlyCitySearchBar:true,
       houseList: [],
       searchParams : {
         location: null,
@@ -17,7 +18,6 @@ class SearchBar extends React.Component {
         capacity: null,
       },
     };
-    this.handleClick = this.handleClick.bind(this)
   }
   getRelevantToken(){
     return localStorage['token'];
@@ -35,6 +35,119 @@ class SearchBar extends React.Component {
    this.setState({
      houseList: houseData.room,
    });
+  }
+  renderRelevantSearchBar(){
+    if (this.state.showOnlyCitySearchBar ===true){
+      return (
+        <div className='only-city-search-bar row'>
+          <div className="free-zone col-md-3"></div>
+          <div className="main-zone col-md-6">
+            <div className="row">
+            <div className="xxxz col-md-2"></div>
+            <div className="xxx col-md-8">
+              <div className="seach-top-slogan-container">
+                <img src="  http://image.ibb.co/miywub/trypinn_suitcase.png" className='suitcase-image' alt=""></img>
+                <div className="slogan-container">
+                  <p className='slogan-1' >!سفرت رو شیرین‌تر کن</p>
+                  <p className='slogan-2' >!اجاره اقامتگاه و ویلا از همیشه آسون‌تر شده</p>
+                </div>
+              </div>
+            </div>
+            <div className="xxxz col-md-2"></div>
+            </div>
+              <div className="searchbar-zone">
+                <Typeahead
+                  className='typehead'
+                  onChange={(selected) => {
+                  // Handle selections...
+                  }}
+                  options={[
+                    'مازندران',
+                    'شمال',
+                    'رشت',
+                    'نوشهر',
+                    'اصفهان',
+                    'کاشان',
+                    'بابلسر',
+                    'سلمان‌شهر (متل قو)',
+                   ]}
+                  align="right"
+                  delay='100'
+                  bsSize='lg'
+                  emptyLabel='.مقصدی یافت  نشد'
+                  placeholder='مثلاً: بابلسر'
+                  minLength={1}
+                  maxResults={3}
+                  paginationText='نمایش نتایج بیشتر'
+                  submitFormOnEnter={false}
+                  selectHintOnEnter={true}
+                />
+                <Button color='blue' className="search-btn btn"  onClick={this.handleClick.bind(this)} data-reactid="99">
+                  <span className='searchicon'>
+                    <img src="http://image.ibb.co/fjdMQG/trpinn_search.png" className='search-image' alt=""></img>
+                  </span>
+                </Button>
+              </div>
+          </div>
+          <div className="free-zone col-md-3"></div>
+        </div>
+      );
+    }
+    else{
+      return (
+        <div className="render-results row">
+              <div className="results-search">
+                <div className="results-serach-child">
+                  <div className="col-md-3">
+                  </div>
+                  <div className="search-inputs col-md-9">
+                    <div className="multi-input-1 col-md-2">
+                    <Typeahead
+                      className='typehead-results'
+                      onChange={(selected) => {
+                      // Handle selections...
+                      }}
+                      options={[
+                        'مازندران',
+                        'شمال',
+                        'رشت',
+                        'نوشهر',
+                        'اصفهان',
+                        'کاشان',
+                        'بابلسر',
+                        'سلمان‌شهر (متل قو)',
+                       ]}
+                      align="right"
+                      delay='100'
+                      bsSize='lg'
+                      emptyLabel='.مقصدی یافت  نشد'
+                      placeholder='مثلاً: بابلسر'
+                      minLength='1'
+                      maxResults='3'
+                      paginationText='نمایش نتایج بیشتر'
+                      submitFormOnEnter='false'
+                      selectHintOnEnter='true'
+                    />
+                    </div>
+                    <div className="multi-input-1 col-md-2">
+                    </div>
+                    <div className="multi-input-1 col-md-2">
+                    </div>
+                    <div className="multi-input-1 col-md-2">
+                    </div>
+                    <div className="multi-input-2 col-md-1">
+                    </div>
+                    <div className=" col-md-6">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <div className="render-houses-row">
+              {this.renderHouses()}
+            </div>
+        </div>
+      );
+    }
   }
   renderHouses () {
     var counter = -1;
@@ -67,7 +180,6 @@ class SearchBar extends React.Component {
   }
   setSearchParams(){
     var spar = {
-      // location: document.getElementById('location').value,
       location: '',
       start_date: new Date(),
       end_date: new Date(),
@@ -100,117 +212,14 @@ class SearchBar extends React.Component {
    });
   }
    handleClick(){
-     this.setSearchParams();
+     this.setState({showOnlyCitySearchBar : false} , ()=> {this.setSearchParams()});
    }
 
   render() {
     return (
       <div>
           <div className="container-fluid hidden-xs visible-xl">
-              <div className='row'>
-                <div className="free-zone col-md-3"></div>
-                <div className="main-zone col-md-6">
-                  <div className="row">
-                  <div className="xxxz col-md-2"></div>
-                  <div className="xxx col-md-8">
-                    <div className="seach-top-slogan-container">
-                      <img src="  http://image.ibb.co/miywub/trypinn_suitcase.png" className='suitcase-image' alt=""></img>
-                      <div className="slogan-container">
-                        <p className='slogan-1' >!سفرت رو شیرین‌تر کن</p>
-                        <p className='slogan-2' >!اجاره اقامتگاه و ویلا از همیشه آسون‌تر شده</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="xxxz col-md-2"></div>
-                  </div>
-                    <div className="searchbar-zone">
-                      <Typeahead
-                        className='typehead'
-                        onChange={(selected) => {
-                        // Handle selections...
-                        }}
-                        options={[
-                          'مازندران',
-                          'شمال',
-                          'رشت',
-                          'نوشهر',
-                          'اصفهان',
-                          'کاشان',
-                          'بابلسر',
-                          'سلمان‌شهر (متل قو)',
-                         ]}
-                        align="right"
-                        delay='100'
-                        bsSize='lg'
-                        emptyLabel='.مقصدی یافت  نشد'
-                        placeholder='مثلاً: بابلسر'
-                        minLength={1}
-                        maxResults={3}
-                        paginationText='نمایش نتایج بیشتر'
-                        submitFormOnEnter={false}
-                        selectHintOnEnter={true}
-                      />
-                      <Button color='blue' className="search-btn btn"  onClick={this.handleClick} data-reactid="99">
-                        <span className='searchicon'>
-                          <img src="http://image.ibb.co/fjdMQG/trpinn_search.png" className='search-image' alt=""></img>
-                        </span>
-                      </Button>
-                    </div>
-                </div>
-                <div className="free-zone col-md-3"></div>
-              </div>
-              <div className="render-results row">
-                    <div className="results-search">
-                      <div className="results-serach-child">
-                        <div className="col-md-3">
-                        </div>
-                        <div className="search-inputs col-md-9">
-                          <div className="multi-input-1 col-md-2">
-                          <Typeahead
-                            className='typehead-results'
-                            onChange={(selected) => {
-                            // Handle selections...
-                            }}
-                            options={[
-                              'مازندران',
-                              'شمال',
-                              'رشت',
-                              'نوشهر',
-                              'اصفهان',
-                              'کاشان',
-                              'بابلسر',
-                              'سلمان‌شهر (متل قو)',
-                             ]}
-                            align="right"
-                            delay='100'
-                            bsSize='lg'
-                            emptyLabel='.مقصدی یافت  نشد'
-                            placeholder='مثلاً: بابلسر'
-                            minLength='1'
-                            maxResults='3'
-                            paginationText='نمایش نتایج بیشتر'
-                            submitFormOnEnter='false'
-                            selectHintOnEnter='true'
-                          />
-                          </div>
-                          <div className="multi-input-1 col-md-2">
-                          </div>
-                          <div className="multi-input-1 col-md-2">
-                          </div>
-                          <div className="multi-input-1 col-md-2">
-                          </div>
-                          <div className="multi-input-2 col-md-1">
-                          </div>
-                          <div className=" col-md-6">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                  <div className="render-houses-row">
-                    {this.renderHouses()}
-                  </div>
-              </div>
+          {this.renderRelevantSearchBar()}
           </div>
           <div className="container-fluid hidden-xl visible-xs">
               <div className='row'>
@@ -243,7 +252,7 @@ class SearchBar extends React.Component {
                         bsSize='sm'
                         emptyLabel='.موردی یافت نشد'
                       />
-                      <Button color='blue' className="search-btn-xs "  onClick={this.handleClick} data-reactid="99">
+                      <Button color='blue' className="search-btn-xs "  onClick={this.handleClick.bind(this)} data-reactid="99">
                         <span className='searchicon'>
                           <img src="http://image.ibb.co/fjdMQG/trpinn_search.png" className='search-image-xs' alt=""></img>
                         </span>
