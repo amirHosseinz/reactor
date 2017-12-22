@@ -19,10 +19,15 @@ class SearchBar extends React.Component {
     };
     this.handleClick = this.handleClick.bind(this)
   }
-  componentWillMount() {
+  getRelevantToken(){
+    return localStorage['token'];
+  }
+  getTestTokenFromServer(){
+
+  }
+  componentWillMount(){
     this.setState({
-      token : "460b152177ab02716faa0d7795ff60f12d7cbd9d",
-      //token: "2df579cfc86d929b9a9228bdcd265345addf8cb4",
+      token : this.getRelevantToken(),
     }, () => {
     });
   }
@@ -58,7 +63,7 @@ class SearchBar extends React.Component {
   }
   setToken() {
     this.setState({
-      token: "2df579cfc86d929b9a9228bdcd265345addf8cb4",});
+      token: localStorage['token'],});
   }
   setSearchParams(){
     var spar = {
@@ -139,11 +144,11 @@ class SearchBar extends React.Component {
                         bsSize='lg'
                         emptyLabel='.مقصدی یافت  نشد'
                         placeholder='مثلاً: بابلسر'
-                        minLength='1'
-                        maxResults='3'
+                        minLength={1}
+                        maxResults={3}
                         paginationText='نمایش نتایج بیشتر'
-                        submitFormOnEnter='false'
-                        selectHintOnEnter='true'
+                        submitFormOnEnter={false}
+                        selectHintOnEnter={true}
                       />
                       <Button color='blue' className="search-btn btn"  onClick={this.handleClick} data-reactid="99">
                         <span className='searchicon'>
