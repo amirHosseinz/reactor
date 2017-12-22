@@ -30,9 +30,9 @@ class Footer extends React.Component{
                   </div>
                   <div className="col-md-2">
                     <div className='footer-menu'>
-                    <a href="https://t.me/trypinn_team"><img src="https://image.ibb.co/kqZaZb/trypinn_telegram_channel.png" className='social-image' alt=""></img></a>
-                    <a href="https://instagram.com/tripinn"><img src="https://image.ibb.co/gkG00G/trypinn_instagram.png" className='social-image' alt=""></img></a>
-                    <a href="https://www.twitter.com/tripinn"><img src="https://image.ibb.co/jzwNEb/trypinn_twitter.png" className='social-image' alt=""></img></a>
+                    <a href="https://t.me/"><img src={require('./Images/trypinn-telegram-channel.png')} className='social-image' alt=""></img></a>
+                    <a href="https://instagram.com/"><img src={require('./Images/trypinn-instagram.png')} className='social-image' alt=""></img></a>
+                    <a href="https://www.twitter.com/"><img src={require('./Images/trypinn-twitter.png')} className='social-image' alt=""></img></a>
                     </div>
                   </div>
               </div>
@@ -61,9 +61,9 @@ class Footer extends React.Component{
                 </div>
               </a>
                 <div className='footer-menu-mobile-social'>
-                  <a href="https://t.me/trypinn_team"><img src="https://image.ibb.co/kqZaZb/trypinn_telegram_channel.png" className='social-image' alt=""></img></a>
-                  <a href="https://instagram.com/tripinn"><img src="https://image.ibb.co/gkG00G/trypinn_instagram.png" className='social-image' alt=""></img></a>
-                  <a href="https://www.twitter.com/tripinn"><img src="https://image.ibb.co/jzwNEb/trypinn_twitter.png" className='social-image' alt=""></img></a>
+                  <a href="https://t.me/"><img src={require('./Images/trypinn-telegram-channel.png')} className='social-image' alt=""></img></a>
+                  <a href="https://instagram.com/"><img src={require('./Images/trypinn-instagram.png')} className='social-image' alt=""></img></a>
+                  <a href="https://www.twitter.com/"><img src={require('./Images/trypinn-twitter.png')} className='social-image' alt=""></img></a>
                 </div>
             </div>
           </div>

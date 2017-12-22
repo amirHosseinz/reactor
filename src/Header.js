@@ -52,7 +52,6 @@ class Header extends React.Component{
         method: 'POST',
         body: JSON.stringify({
           cell_phone : this.state.searchParams.phoneNumber,
-
       }),
         headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
         'Authorization': 'Token '+this.state.token,})
@@ -147,10 +146,10 @@ class Header extends React.Component{
           <div className="logo col-md-2">
               <div className='headerchild'>
                 <div className='logodiv'>
-                   <a href="www.tryppin.com"><img src="http://svgshare.com/i/4C0.svg" className="LogoImage" alt = ''></img></a>
+                   <a href="http://tripinn.ir"><img src={require('./Images/tripinn_logo.svg')} className="LogoImage" alt = 'تریپین'></img></a>
                 </div>
                 <div>
-                  <a className='logolink' href="www.tryppin.com">  <p className='logofont'>تریپین</p></a>
+                  <a className='logolink' href="http://tripinn.ir">  <p className='logofont'>تریپین</p></a>
                 </div>
               </div>
           </div>
@@ -170,8 +169,8 @@ class Header extends React.Component{
 
           <div className='jafar'>
 
-             <a href="www.tryppin.com"><img src="http://svgshare.com/i/4C0.svg" className="LogoImage-mobile" alt=""></img></a>
-             <a className='logolink' href="www.tryppin.com">  <p className='logofont-mobile'>تریپین</p></a>
+             <a href="http://tripinn.ir"><img src={require('./Images/tripinn_logo.svg')}  className="LogoImage-mobile" alt="تریپین"></img></a>
+             <a className='logolink' href="http://tripinn.ir">  <p className='logofont-mobile'>تریپین</p></a>
 
           </div>
         </div>
