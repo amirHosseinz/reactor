@@ -154,7 +154,54 @@ class SearchBar extends React.Component {
                 </div>
                 <div className="free-zone col-md-3"></div>
               </div>
-              <div className="row">
+              <div className="render-results row">
+                    <div className="results-search">
+                      <div className="results-serach-child">
+                        <div className="col-md-3">
+                        </div>
+                        <div className="search-inputs col-md-9">
+                          <div className="multi-input-1 col-md-2">
+                          <Typeahead
+                            className='typehead-results'
+                            onChange={(selected) => {
+                            // Handle selections...
+                            }}
+                            options={[
+                              'مازندران',
+                              'شمال',
+                              'رشت',
+                              'نوشهر',
+                              'اصفهان',
+                              'کاشان',
+                              'بابلسر',
+                              'سلمان‌شهر (متل قو)',
+                             ]}
+                            align="right"
+                            delay='100'
+                            bsSize='lg'
+                            emptyLabel='.مقصدی یافت  نشد'
+                            placeholder='مثلاً: بابلسر'
+                            minLength='1'
+                            maxResults='3'
+                            paginationText='نمایش نتایج بیشتر'
+                            submitFormOnEnter='false'
+                            selectHintOnEnter='true'
+                          />
+                          </div>
+                          <div className="multi-input-1 col-md-2">
+                          </div>
+                          <div className="multi-input-1 col-md-2">
+                          </div>
+                          <div className="multi-input-1 col-md-2">
+                          </div>
+                          <div className="multi-input-2 col-md-1">
+                          </div>
+                          <div className=" col-md-6">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
                   <div className="render-houses-row">
                     {this.renderHouses()}
                   </div>

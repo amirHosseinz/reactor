@@ -4,7 +4,7 @@ class HostInfoDiscription extends React.Component{
   renderHost () {
     if (this.props.homeData.owner) {
       return(
-        <div> <p className="text-011">{this.props.homeData.owner.first_name} {this.props.homeData.owner.last_name}</p></div>
+        <div> <p className="text-013">{this.props.homeData.owner.first_name} {this.props.homeData.owner.last_name}</p></div>
       );
     }
   }

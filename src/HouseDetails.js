@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Icon,Button} from 'semantic-ui-react';
 import Lightbox from 'react-image-lightbox';
 import scrollToComponent from 'react-scroll-to-component';
@@ -12,7 +11,6 @@ import AmenitiesDiscription from './HouseDetailParts/AmenitiesDiscription';
 import MapDiscription from './HouseDetailParts/MapDiscription';
 import RatingDiscription from './HouseDetailParts/RatingDiscription';
 import HostInfoDiscription from './HouseDetailParts/HostInfoDiscription';
-
 
 class HouseDetails extends React.Component {
   constructor(props){
@@ -146,8 +144,6 @@ class HouseDetails extends React.Component {
   render(){
     return(
       <div className='housedetail container-fluid'>
-
-
         <div className="house-detail-top">
           <div className="house-detail-top-margined">
             <AddressDiscription homeData={this.state.homeData}/>
@@ -168,50 +164,62 @@ class HouseDetails extends React.Component {
             </div>
           </div>
         </div>
-          <div className='house-detail-top'>
+        <div className='house-detail-top'>
             <div className="house-detail-top-margined">
               <div className="col-md-3">
                 <Sticky>
                   <div className='reserve-card'>
-                    <p className="text-011">:هزینه هرشب اقامت</p>
-                    <div className = "price">
-                      <p className='text-012'> تومان {this.state.homeData.price}</p>
-                    </div>
-                    <div className='reserve-button-div'>
-                      <Button color='twitter' className='reserve-button' onClick ={this.handleClick}>
-                      !رزرو کنید
-                      </Button>
-                    </div>
-                    <div>
-                      {this.renderReservePanel()}
+                    <div className="reserve-card-child">
+                      <p className="text-011">:هزینه هرشب اقامت</p>
+                      <div className = "price">
+                        <p className='text-012'> تومان {this.state.homeData.price}</p>
+                      </div>
+                      <div className="divider"></div>
+                      <div>
+                        {this.renderReservePanel()}
+                      </div>
+                      <div className="divider"></div>
+                      <div className='reserve-button-div'>
+                        <Button color='twitter' className='reserve-button' onClick ={this.handleClick}>
+                        !رزرو کنید
+                        </Button>
+                      </div>
+
                     </div>
                   </div>
                 </Sticky>
               </div>
-         <div className='housedetail-img col-md-9'>
-          <section className='gallery-scroller' ref={(section) => { this.Gallery = section; }}></section>
-           <div>
-          {this.renderPreview()}
-          {this.renderHouseGallery()}
-           </div>
-           <div className="col-details-house">
-              <section className='about-scroller' ref={(section) => { this.Dis = section; }}></section>
-             <AmenitiesDiscription homeData={this.state.homeData} />
-             <div className="main-descriptions row">
-              <p className='des-header'> درباره این خانه </p>
-              <p className='des-main'> {this.state.homeData.description} </p>
-             </div>
-               <section className='violet' ref={(section) => { this.Violet = section; }}></section>
-             <HostInfoDiscription homeData={this.state.homeData}/>
-             <section className='law-scroller' ref={(section) => { this.Laws = section; }}></section>
-             <MainDiscription homeData={this.state.homeData} />
-             <section className='map-scroller' ref={(section) => { this.Map = section; }}></section>
-             <MapDiscription homeData={this.state.homeData}/>
-            </div>
+              <div className='housedetail-img col-md-9'>
+               <section className='gallery-scroller' ref={(section) => { this.Gallery = section; }}></section>
+                <div>
+               {this.renderPreview()}
+               {this.renderHouseGallery()}
+                </div>
+                <div className="col-details-house">
+                   <section className='about-scroller' ref={(section) => { this.Dis = section; }}></section>
+                  <AmenitiesDiscription homeData={this.state.homeData} />
+                  <div className="main-descriptions row">
+                   <p className='des-header'> درباره این خانه </p>
+                   <p className='des-main'> {this.state.homeData.description} </p>
+                  </div>
+                    <section className='violet' ref={(section) => { this.Violet = section; }}></section>
+                  <HostInfoDiscription homeData={this.state.homeData}/>
+                  <div className="divider"></div>
+                  <section className='law-scroller' ref={(section) => { this.Laws = section; }}></section>
+
+                  <MainDiscription homeData={this.state.homeData} />
+                  <div className="divider"></div>
+
+                  <section className='map-scroller' ref={(section) => { this.Map = section; }}></section>
+                  <MapDiscription homeData={this.state.homeData}/>
+                 </div>
+               </div>
           </div>
-        </div>
+            </div>
+
+
+
       </div>
-    </div>
     );
     }
   }
