@@ -7,20 +7,39 @@ class Header extends React.Component{
     super(props);
     this.state={
       token: null,
-      isLoggedIn : false,
+      reloadPage: false,
+      isLoggedIn : localStorage['isLoggedIn'],
       loginPanelVisible:false,
-      loginPanelVisible:false,
+      loginPanelVisible2:false,
       hasPassword: null,
       searchParams:{
         phoneNumber: null,
       },
     };
   }
+  componentDidMount(){
+    this.interval = setInterval(() => this.reloadHeader(), 1000);
+  }
+  reloadHeader(){
+    if (this.state.isLoggedIn!== localStorage['isLoggedIn']){
+      this.setState({isLoggedIn:localStorage['isLoggedIn']});
+    }
+  }
   getUserHasPassword(){
     this.setToken();
   }
+  getRelevantToken(){
+    console.log(localStorage['isLoggedIn']);
+    console.log(localStorage['isLoggedIn']);
+    if (localStorage['isLoggedIn']==='true'){
+      this.setState({token:localStorage['token']},()=>{this.setSearchParams()});
+    }
+    else{
+      this.setState({token:localStorage['token']},()=>{this.setSearchParams()});
+    }
+  }
   setToken(){
-    this.setState({token:'2df579cfc86d929b9a9228bdcd265345addf8cb4'},()=>{this.setSearchParams()});
+    this.getRelevantToken();
   }
   setSearchParams(){
     var spar = {phoneNumber : document.getElementById("tel-number").value};
@@ -48,7 +67,7 @@ class Header extends React.Component{
      });
   }
   renderLoginButton(){
-    if (this.state.isLoggedIn===false){
+    if (this.state.isLoggedIn==='false' || this.state.isLoggedIn===undefined){
       return(
         <div>
           <button onClick={this.handleLoginButton.bind(this)}>Login</button>
@@ -56,11 +75,18 @@ class Header extends React.Component{
       );
     }
   }
+  handleSignOutButton(){
+    localStorage['token']='';
+    localStorage['isLoggedIn']='false';
+    console.log(this.state.isLoggedIn);
+    window.location.reload(true);
+  }
   renderUserButton(){
-    if (this.state.isLoggedIn===true){
+    if (this.state.isLoggedIn==='true'){
       return(
         <div>
           <button onClick={this.handleUserButton.bind(this)}>Panel</button>
+          <button onClick={this.handleSignOutButton.bind(this)}>Sign Out</button>
         </div>
       );
     }

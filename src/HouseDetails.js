@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon,Button} from 'semantic-ui-react';
+import {Button} from 'semantic-ui-react';
 import Lightbox from 'react-image-lightbox';
 import scrollToComponent from 'react-scroll-to-component';
 import ReservePanel from './HouseDetailParts/ReservePanel.js';
@@ -25,13 +25,25 @@ class HouseDetails extends React.Component {
     };
     this.handleClick = this.handleClick.bind(this);
   }
+  getRelevantToken(){
+    if (this.state.isLoggedIn ==='true'){
+      this.setState({
+        token: localStorage['token'],
+      }, () => {
+        this.setSearchParams(this.getHouseId());
+      });
+    }
+    else{
+      this.setState({
+        token: localStorage['token'],
+      }, () => {
+        this.setSearchParams(this.getHouseId());
+      });
+    }
+  }
 
   componentWillMount() {
-    this.setState({
-      token: "2df579cfc86d929b9a9228bdcd265345addf8cb4",
-    }, () => {
-      this.setSearchParams(this.getHouseId());
-    });
+    this.getRelevantToken();
   }
   setSearchParams(houseId){
     var spar = {

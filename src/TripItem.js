@@ -179,11 +179,11 @@ class TripItem extends React.Component{
       <button onClick={this.handleCancelTripButton.bind(this)}> لغو سفر</button>
     );
   }
-  getTripDeleteButton(){{
+  getTripDeleteButton(){
     return (
       <button onClick={this.handleDeleteTripButton.bind(this)}> حذف سفر</button>
     );
-  }}
+  }
   renderTripDetail(){
     if (this.state.trip!=null && this.state.tripStatus!=null){
       return (

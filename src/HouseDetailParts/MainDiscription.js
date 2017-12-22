@@ -52,17 +52,14 @@ class MainDiscription extends React.Component{
 renderUtilities () {
   if (this.props.homeData.private_util_options!= null) {
     const util1=this.props.homeData.private_util_options;
-    const util1list=util1.map((util1)=><div className={util1}><ul key={util1}>{util1}</ul></div>);
+    // const util1list=util1.map((util1)=><div className={util1}><ul key={util1}>{util1}</ul></div>);
     const util2=this.props.homeData.general_util_options;
-    const util2list=util2.map((util2)=><div className={util2}><ul key={util2}>{util2}</ul></div>);
+    // const util2list=util2.map((util2)=><div className={util2}><ul key={util2}>{util2}</ul></div>);
     return(
-     <Facilities
-      utility={util1}/>
-
-    );
-    return(
-      <Facilities
-       utility={util2}/>
+      <div>
+        <Facilities utility={util1}/>
+        <Facilities utility={util2}/>
+      </div>    
     );
   }
 }
@@ -98,5 +95,4 @@ renderSpecialRules ()
     );
   }
 }
-
 export default MainDiscription;

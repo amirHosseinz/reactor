@@ -1,4 +1,6 @@
 import React from 'react';
+
+
 class Login extends React.Component{
     constructor(props){
       super(props);
@@ -16,6 +18,9 @@ class Login extends React.Component{
         },
       }
     }
+    renderData(request_list){
+      this.setState({requestList:request_list});
+    }
     handleLoginClick(){
       this.setTokenForLogin();
     }
@@ -23,10 +28,10 @@ class Login extends React.Component{
       this.setTokenForSignup();
     }
     setTokenForLogin(){
-      this.setState({token:'2df579cfc86d929b9a9228bdcd265345addf8cb4'},()=>{this.setReqParamsForLogin()});
+      this.setState({token:localStorage['token']},()=>{this.setReqParamsForLogin()});
     }
     setTokenForSignup(){
-      this.setState({token:'2df579cfc86d929b9a9228bdcd265345addf8cb4'},()=>{this.setReqParamsForSignup()});
+      this.setState({token:localStorage['token']},()=>{this.setReqParamsForSignup()});
     }
     setReqParamsForLogin(){
       var spar = {phoneNumber:localStorage['phone-number'],
@@ -55,8 +60,18 @@ class Login extends React.Component{
        return response.json();
      })
      .then((loginResponse) => {
-       console.log(loginResponse);
+       this.handleLoginResponse(loginResponse);
      });
+    }
+    handleLoginResponse(loginResponse){
+      if(loginResponse.is_successful){
+        localStorage['isLoggedIn']= 'true';
+        localStorage['token'] = loginResponse.token;
+        window.location.reload(true);
+      }
+      else{
+        alert('رمز عبور وارد شده نادرست است. لطفا دوباره تلاش کنید');
+      }
     }
     getResponseForSignUp(){
       var request = new Request('https://www.trypinn.com/auth/api/user/login/', {

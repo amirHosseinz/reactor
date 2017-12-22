@@ -44,7 +44,24 @@ class MainPage extends React.Component{
       <UserPanel/>
     );
   }
+  getGuestTokenFromServer(){
+    if (localStorage['isLoggedIn']!=='true'){
+      var request = new Request('https://www.trypinn.com/auth/api/user/login_guest/',{
+        method: 'POST',
+        headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+                              })
+      });
+     fetch(request)
+     .then((response) => {
+       return response.json();
+     })
+     .then((response) => {
+       localStorage['token']= response.token;
+     });
+    }
+  }
   render(){
+    this.getGuestTokenFromServer();
     return(
       <BrowserRouter>
         <div className="main">

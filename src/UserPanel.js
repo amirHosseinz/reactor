@@ -7,7 +7,6 @@ import TripItem from './TripItem.js';
 
 
 class UserPanel extends React.Component{
-
   constructor(props){
     super(props);
     this.state={

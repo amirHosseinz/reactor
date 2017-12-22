@@ -23,6 +23,8 @@ class AddressDiscription extends React.Component{
         return 'اتاق اختصاصی';
       case "SHARED_ROOM":
         return 'اتاق مشترک';
+      default :
+        return null;
     }
   }
   render(){

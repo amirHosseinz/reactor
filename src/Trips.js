@@ -10,9 +10,11 @@ class Trips extends React.Component{
     };
   }
   componentWillMount() {
-      this.setState({token:"460b152177ab02716faa0d7795ff60f12d7cbd9d"},()=>{this.setSearchParams(this.getRole())});
+      this.setState({token:this.getRelevantToken()},()=>{this.setSearchParams(this.getRole())});
   }
-
+  getRelevantToken(){
+    return localStorage['token'];
+  }
   getRole(){
     return 'guest';
   }
@@ -46,23 +48,25 @@ class Trips extends React.Component{
     if (this.state.tripList!== null){
       var reserve_list = this.state.tripList.reserve_list;
       var list = reserve_list.map((item) => {
-        <button key={item.id} onClick={() =>{
-          this.showTripItemClick(item)
-        }}>
-        <li>
-          <div className="preview">
-          <img src={"https:/trypinn.com"+ item.room.preview}
-          height="50" width="50"
-          alt=""/>
-          </div>
-          <div className="title">
-            {item.room.title}
+        return (
+          <button key={item.id} onClick={() =>{
+            this.showTripItemClick(item)
+          }}>
+          <li>
+            <div className="preview">
+            <img src={"https:/trypinn.com"+ item.room.preview}
+            height="50" width="50"
+            alt=""/>
             </div>
-            <div className="location">
-            {item.room.address}
-            </div>
-            </li>
-        </button>
+            <div className="title">
+              {item.room.title}
+              </div>
+              <div className="location">
+              {item.room.address}
+              </div>
+              </li>
+          </button>
+        );
       });
       return(
         <ul>{list}</ul>

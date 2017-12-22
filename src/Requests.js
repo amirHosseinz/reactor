@@ -7,18 +7,25 @@ class Requests extends React.Component{
       token:null,
       role:null,
       requestList:null,
-
     };
   }
   componentWillMount() {
-      this.setState({token:"460b152177ab02716faa0d7795ff60f12d7cbd9d"},()=>{this.setSearchParams(this.getRole())});
+      this.setState({token:this.getRelevantToken()},()=>{this.setSearchParams(this.getRole())});
+  }
+  getRelevantToken(){
+    if(localStorage['isLoggedIn']==='true'){
+      return localStorage['token'];
+    }
+    else{
+      return localStorage['token'];
+    }
   }
   getRole(){
     return 'guest';
   }
 
   setSearchParams(person_role){
-    this.setState({role :person_role },()=>this.getDataFromServer())
+    this.setState({role :person_role},()=>this.getDataFromServer())
   }
   getDataFromServer(){
     var request = new Request('https://www.trypinn.com/api/request/list/',{
@@ -77,7 +84,6 @@ class Requests extends React.Component{
   render(){
     return(
       <div>
-
         <div>
           {this.renderRequests()}
         </div>

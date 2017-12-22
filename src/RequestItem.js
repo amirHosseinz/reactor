@@ -6,18 +6,18 @@ class RequestItem extends React.Component{
     this.state= {
       request:null,
       requestStatus:null,
-      token:'460b152177ab02716faa0d7795ff60f12d7cbd9d'
+      token:null
     };
   }
 
   componentWillReceiveProps(nextProps){
     this.setState({
-      request:nextProps.requestDetail,requestStatus:nextProps.requestDetail.status
+      request:nextProps.requestDetail,requestStatus:nextProps.requestDetail.status,
     });
-    console.log(nextProps);
-
   }
-
+  getRelevantToken(){
+    return localStorage['token'];
+  }
   getRequestStatus(){
         switch (this.state.requestStatus){
           case "WAIT_FOR_HOST":
@@ -45,17 +45,44 @@ class RequestItem extends React.Component{
       case "HOST_REJECTED":
         return (<button>حذف درخواست </button>);
       case "WAIT_FOR_GUEST_PAY":
-        return (<div>
-          <button>حذف درخواست </button>
-          <button>پرداخت</button>
-          </div>);
+        return(
+          <div>
+            <button onClick={this.setTokenForPayment.bind(this)}>پرداخت</button>
+          </div>
+        );
       case "HOST_ACCEPTED_GUEST_PAYED":
-        return (<button>حذف درخواست </button>);;
+        return (<button>حذف درخواست </button>);
       case "HOST_ACCEPTED_HOST_CANCELED":
-        return (<button>حذف درخواست </button>);;
+        return (<button>حذف درخواست </button>);
       default:
         return null;
     }
+  }
+  setTokenForPayment(){
+    this.setState({token:this.getRelevantToken()},()=>{this.sendPaymentRequestToServer()});
+  }
+  sendPaymentRequestToServer(){
+    console.log(this.state.token);
+    var request = new Request('https://www.trypinn.com/api/payment/web_payment_request/',{
+      method: 'POST',
+      body: JSON.stringify({
+        request_id: this.state.request.id,
+        mobile: null,
+        email: null,
+    }),
+      headers: new Headers({'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Token '+this.state.token,})
+    });
+   fetch(request)
+   .then((response) => {
+     return response.json();
+   })
+   .then((paymentResponse) => {
+     if (paymentResponse.is_successful===true){
+       window.location.href = paymentResponse.payment_url;
+     }
+   });
   }
   getRequestStatusDiscription(){
     switch (this.state.requestStatus){
@@ -102,12 +129,12 @@ class RequestItem extends React.Component{
 }
 renderCancelButton(){
   if(this.state.requestStatus!=="GUEST_CANCELED"){
-   return (<button onClick={this.handleCancelClick.bind(this)}> لغو درخواست </button>);
+   return (<button onClick={this.setTokenForDelete.bind(this)}> لغو درخواست </button>);
   }
 }
 renderDeleteButton(){
   if(this.state.requestStatus!=="HOST_ACCEPTED_GUEST_CANCELED"){
-   return (<button onClick={this.handleDeleteClick.bind(this)}>حذف درخواست</button>);
+   return (<button onClick={this.setTokenForCancel.bind(this)}>حذف درخواست</button>);
   }
 }
   renderRequestDetail(){
@@ -120,7 +147,11 @@ renderDeleteButton(){
           <p>{this.getRequestStatusDiscription()} </p>
         </div>
         <div className='house-preview-linked-to-house-detail'>
-          <img scr={"https://www.trypinn.com/"+this.state.request.room.preview}></img>
+          <img
+            src={"https://www.trypinn.com/"+this.state.request.room.preview}
+            alt=""
+            >
+          </img>
           <p>{this.state.request.room.title} </p>
           <p>{this.state.request.room.owner.first_name} {this.state.request.room.owner.last_name}</p>
           <p>{this.state.request.room.city} </p>
@@ -144,13 +175,14 @@ renderDeleteButton(){
       );
     }
   }
-
+  setTokenForCancel(){
+    this.setState({token:this.getRelevantToken()},()=>{this.handleCancelClick()});
+  }
+  setTokenForDelete(){
+    this.setState({token:this.getRelevantToken()},()=>{this.handleDeleteClick()});
+  }
   handleCancelClick(){
-    console.log("sdfghjkl");
-    console.log(this.state.requestStatus);
     if(this.state.request!=null){
-      console.log('QOP:LKJHGFDSAZXCVBNM<>');
-      console.log(this.state.request.id);
     var request = new Request('https://www.trypinn.com/api/request/cancel/',{
       method: 'POST',
       body: JSON.stringify({
@@ -166,20 +198,15 @@ renderDeleteButton(){
      return response.json();
    })
    .then((request_status) => {
-   console.log('333333333');
-   console.log(request_status);
-   console.log('333333333');
   });
 }
   }
   handleDeleteClick(){
-    console.log("injaaaaaaaaaa");
     var request = new Request('https://www.trypinn.com/api/request/archive/',{
       method: 'POST',
       body: JSON.stringify({
       request_id:this.state.request.id,
       role:'guest'
-
     }),
       headers: new Headers({'Accept': 'application/json',
               'Content-Type': 'application/json',
@@ -190,13 +217,8 @@ renderDeleteButton(){
      return response.json();
    })
    .then((request_status) => {
-   console.log(request_status)
-   console.log('444444444');
   });
-
   }
-
-
 
   render(){
     return(
