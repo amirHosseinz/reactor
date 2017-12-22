@@ -1,10 +1,12 @@
 import React from 'react';
+import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
+
 
 class GuestNumber extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      number:0,
+      number:1,
     };
 }
 renderAdd(){
@@ -24,16 +26,26 @@ this.setState({number:1});
 }
 render(){
   return(
-    <div>
-      <div className='add-circle' onClick={this.renderAdd.bind(this)} align='center'>
-      +
+    <div className="number-zone">
+
+      <div className="reserve-number-box" >
+        <button className="btn-plus" onClick={this.renderAdd.bind(this)}>
+            <p className="number-inputer" >
+            +
+            </p>
+        </button>
+        <div id='guest-number'>
+        <p className="imput-number">
+        {englishToPersianDigits(this.state.number)}
+        </p>
+        </div>
+        <button className="btn-sub" onClick={this.renderSub.bind(this)}>
+            <p className="number-inputer" >
+            -
+            </p>
+        </button>
       </div>
-      <div id='guest-number' align='center'>
-      {this.state.number}
-      </div>
-      <div className='sub-circle' onClick={this.renderSub.bind(this)} align='center'>
-      -
-      </div>
+
     </div>
   );
 }
