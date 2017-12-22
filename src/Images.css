@@ -366,7 +366,7 @@ margin-top: 150px;
 }
 .render-houses-row{
   margin-top: 70px;
-  width: 94%;
+  width: 100%;
   margin: auto;
 }
 
@@ -792,4 +792,7 @@ margin:100px;
   height:30px;
   width:30px;
   margin:100px;
+}
+.full-width{
+  width: 100%;
 }
