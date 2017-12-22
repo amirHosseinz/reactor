@@ -137,7 +137,7 @@ class SearchBar extends React.Component {
                     </div>
                     <div className="multi-input-2 col-md-1">
                     </div>
-                    <div className=" col-md-6">
+                    <div className="col-md-6">
                     </div>
                   </div>
                 </div>
@@ -150,30 +150,41 @@ class SearchBar extends React.Component {
     }
   }
   renderHouses () {
-    var counter = -1;
-    return(this.state.houseList.map((houseItem) => {
+    var results = [];
+    var initList = this.state.houseList.map((houseItem) => {
+      return(
+        <div className="col-md-2"
+         key = {houseItem.id}>
+         <SearchResult
+          room = {houseItem}
+          preview ={"https://www.trypinn.com" + houseItem.preview}/>
+        </div>
+      );
+    });
+    var counter = 0;
+    var listOfFive = [];
+    initList.map((item) => {
       counter++;
-      if (counter%5===0) {
-        return(
-            <div className="mamadx col-md-2 col-md-offset-1"
-             key = {houseItem.id}>
-             <SearchResult
-              room = {houseItem}
-              preview ={"https://www.trypinn.com" + houseItem.preview}/>
-            </div>
-        );
-      } else {
-        return(
-            <div className="mamadx col-md-2 col-md-offset-1"
-             key = {houseItem.id}>
-             <SearchResult
-              room = {houseItem}
-              preview ={"https://www.trypinn.com" + houseItem.preview}/>
-            </div>
+      if (counter===1) {
+        listOfFive.push(
+          <div className="full-width col-md-1">
+          </div>
         );
       }
-    }));
+      listOfFive.push(item);
+      if (counter===5) {
+        counter = 0;
+        results.push(
+          <div className="row">
+          {listOfFive}
+          </div>
+        );
+        listOfFive = [];
+      }
+    });
+    return results;
   }
+
   setToken() {
     this.setState({
       token: localStorage['token'],});
@@ -260,9 +271,7 @@ class SearchBar extends React.Component {
                     </div>
                 </div>
               </div>
-            <div className="row">
-              {this.renderHouses()}
-            </div>
+            {this.renderHouses()}
           </div>
       </div>
     );
