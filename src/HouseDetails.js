@@ -152,7 +152,7 @@ class HouseDetails extends React.Component {
  }
   render(){
     if (this.state.homeData !== ''){
-      document.title = "تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.city; 
+      document.title = "تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.city;
     }
     return(
       <div className='housedetail container-fluid'>
@@ -220,9 +220,6 @@ class HouseDetails extends React.Component {
                </div>
           </div>
             </div>
-
-
-
       </div>
     );
     }
