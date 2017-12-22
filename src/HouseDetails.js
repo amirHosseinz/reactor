@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button} from 'semantic-ui-react';
+
 import Lightbox from 'react-image-lightbox';
 import scrollToComponent from 'react-scroll-to-component';
 import Sticky from 'react-sticky-el';
@@ -19,13 +19,12 @@ class HouseDetails extends React.Component {
       photoIndex: 0,
       isOpen: false,
       homeData : '',
-      showReservePanel : false,
+      showReservePanel : true,
       token: null,
       searchParams : {
         id: null,
       }
     };
-    this.handleClick = this.handleClick.bind(this);
   }
   getRelevantToken(){
     if (this.state.isLoggedIn ==='true'){
@@ -80,16 +79,13 @@ class HouseDetails extends React.Component {
 
   setToken() {
     this.setState({
-      token: "2df579cfc86d929b9a9228bdcd265345addf8cb4",});
+      token: localStorage['token'],});
   }
 
   renderData(houseData) {
     this.setState({homeData:houseData.room});
   }
 
-   handleClick(){
-     this.setState({showReservePanel : true});
-   }
 
    renderReservePanel(){
      if (this.state.showReservePanel === true){
@@ -154,6 +150,9 @@ class HouseDetails extends React.Component {
    }
  }
   render(){
+    if (this.state.homeData !== ''){
+      document.title = "تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.city; 
+    }
     return(
       <div className='housedetail container-fluid'>
         <div className="house-detail-top">
@@ -190,14 +189,7 @@ class HouseDetails extends React.Component {
                       <div>
                         {this.renderReservePanel()}
                       </div>
-                      <div className="divider"></div>
-                      <div className='reserve-button-div'>
-                        <Button color='twitter' className='reserve-button' onClick ={this.handleClick}>
-                        !رزرو کنید
-                        </Button>
-                      </div>
-
-                    </div>
+                  </div>
                   </div>
                 </Sticky>
               </div>

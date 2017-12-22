@@ -4,7 +4,7 @@ class GuestNumber extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      number:0,
+      number:1,
     };
 }
 renderAdd(){

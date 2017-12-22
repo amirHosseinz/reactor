@@ -2,6 +2,9 @@ import React from 'react';
 // import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import GuestNumber from './GuestNumber.js';
+import {Button} from 'semantic-ui-react';
+import Modal from 'react-modal';
+
 
 class ReservePanel extends React.Component{
   constructor(props){
@@ -10,6 +13,7 @@ class ReservePanel extends React.Component{
     this.state = {
       reserveData : '',
       token:null,
+      isOpen:false,
       requestParams :{
         startDate : moment(new Date()),
         endDate : moment(new Date()).add(1,'days'),
@@ -20,8 +24,7 @@ class ReservePanel extends React.Component{
   }
   setToken() {
     this.setState({
-      token : "460b152177ab02716faa0d7795ff60f12d7cbd9d",
-      // token: "2df579cfc86d929b9a9228bdcd265345addf8cb4",
+      token : localStorage['token'],
     },
       ()=>this.setSearchParams(this.getDataFromUser()));
   }
@@ -112,7 +115,7 @@ class ReservePanel extends React.Component{
     }
   }
   handleClick(){
-    this.setToken()
+    this.setState({isOpen : true},()=>{this.setToken()});
   }
   sendBookRequest(){
     var request = new Request('https://www.trypinn.com/api/room/request/book/', {
@@ -146,30 +149,41 @@ class ReservePanel extends React.Component{
         <div>
           <GuestNumber/>
         </div>
-        <div>
-          <button onClick={this.handleClick.bind(this)}>Price Request</button>
-        </div>
-        <div>
-          {this.showHostPrice()}
-        </div>
-        <div>
-          {this.showTrypinnPrice()}
-        </div>
-        <div>
-          {this.showIsAvailable()}
-        </div>
-        <div>
-          {this.showTrypinnDiscount()}
-        </div>
-        <div>
-          {this.showTotalDiscount()}
-        </div>
-        <div>
-          {this.showTotalPrice()}
-        </div>
-        <div>
-          {this.showBookButton()}
-        </div>
+          <div className='reserve-button-div'>
+            <Button color='twitter' className='reserve-button' onClick ={this.handleClick.bind(this)}>
+              !رزرو کنید
+            </Button>
+          </div>
+        <Modal
+          isOpen={this.state.isOpen}
+          onRequestClose={()=>{this.setState({isOpen:false})}}
+          >
+          <div>
+            {this.showHostPrice()}
+          </div>
+          <div>
+            {this.showTrypinnPrice()}
+          </div>
+          <div>
+            {this.showIsAvailable()}
+          </div>
+          <div>
+            {this.showTrypinnDiscount()}
+          </div>
+          <div>
+            {this.showTotalDiscount()}
+          </div>
+          <div>
+            {this.showTotalPrice()}
+          </div>
+          <div>
+            <p> در حال حاضر امکان رزرو اقامتگاه از طریق وبسایت وجود ندارد. برای رزرو اقامتگاه ها لطفا اپلیکیشن را دانلود کنید.</p>
+          </div>
+          <div>
+            {this.showBookButton()}
+          </div>
+        </Modal>
+
       </div>
     );
   }
