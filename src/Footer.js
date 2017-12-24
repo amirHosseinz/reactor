@@ -16,7 +16,9 @@ class Footer extends React.Component{
               <div className='footer1'>
                   <div className="footer-menu-and-dl col-md-6 hidden-xs">
                       <div>
-                        <Button color='blue' className="downloadd btn">دانلود اپلیکیشن</Button>
+                        <a target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
+                        <Button color='blue' className="downloadd btn" >دانلود اپلیکیشن</Button>
+                        </a>
                       </div>
                     <div className='footer-menu'>
                       <a className='logolink' href="www.tryppin.com">  <p className='logo-menu-font'>قوانین و شرایط استفاده</p></a>
