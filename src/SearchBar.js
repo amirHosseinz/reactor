@@ -63,7 +63,7 @@ class SearchBar extends React.Component {
             <div className="xxxz col-md-2"></div>
             <div className="xxx col-md-8">
               <div className="seach-top-slogan-container">
-                <img src="  http://image.ibb.co/miywub/trypinn_suitcase.png" className='suitcase-image' alt=""></img>
+                <img src={require('./Images/tripinn_suitcase.png')} className='suitcase-image' alt="Trippin-Suitcase"></img>
                 <div className="slogan-container">
                   <p className='slogan-1' >!سفرت رو شیرین‌تر کن</p>
                   <p className='slogan-2' >!اجاره اقامتگاه و ویلا از همیشه آسون‌تر شده</p>
@@ -153,6 +153,11 @@ class SearchBar extends React.Component {
                     <div className="multi-input-1 col-md-2">
                     </div>
                     <div className="multi-input-2 col-md-1">
+                    <Button color='blue' className="btn"  onClick={this.handleClick.bind(this)} data-reactid="99">
+                      <span className='searchicon'>
+                        <img src="http://image.ibb.co/fjdMQG/trpinn_search.png" className='search-image' alt=""></img>
+                      </span>
+                    </Button>
                     </div>
                     <div className="col-md-6">
                     </div>
@@ -160,7 +165,11 @@ class SearchBar extends React.Component {
                 </div>
               </div>
             <div className="render-houses-row">
+              <div className="padding-search-results-top">
+              </div>
               {this.renderHouses()}
+              <div className="padding-search-results">
+              </div>
             </div>
         </div>
       );
@@ -170,7 +179,7 @@ class SearchBar extends React.Component {
     var results = [];
     var initList = this.state.houseList.map((houseItem) => {
       return(
-        <div className="col-md-2"
+        <div className="pre-img-result col-md-2"
          key = {houseItem.id}>
          <SearchResult
           room = {houseItem}
