@@ -3,6 +3,7 @@ import SearchResult from './SearchResult';
 //import { BrowserRouter,Route} from 'react-router-dom';
 import {Typeahead} from 'react-bootstrap-typeahead'; // ES2015
 import { Button} from 'semantic-ui-react';
+import $ from 'jquery';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -22,13 +23,29 @@ class SearchBar extends React.Component {
   getRelevantToken(){
     return localStorage['token'];
   }
-  getTestTokenFromServer(){
-
-  }
   componentWillMount(){
+
     this.setState({
       token : this.getRelevantToken(),
     }, () => {
+    });
+  }
+  DatePicker(){
+    $(document).ready(function() {
+        $("#fromdatepicker").datepicker();
+        $("#fromdatepicker").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            isRTL: true,
+            dateFormat: "yy/m/d",
+        });
+        $("#tilldatepicker").datepicker();
+        $("#tilldatepicker").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            isRTL: true,
+            dateFormat: "yy/m/d",
+        });
     });
   }
   renderData(houseData) {
@@ -238,6 +255,18 @@ class SearchBar extends React.Component {
   render() {
     return (
       <div>
+        <div>
+        <div className="col-lg col-sm-12 mb-10">
+                                <div className="control-group">
+                                    <div className="controls">
+                                        <div className="input-append">
+                                            <input id="fromdatepicker" className="form-control transparent-input" name="start_date" type="text" placeholder="از؟"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        </div>
+        {this.DatePicker()}
           <div className="container-fluid hidden-xs visible-xl">
           {this.renderRelevantSearchBar()}
           </div>
