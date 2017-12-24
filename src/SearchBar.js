@@ -30,24 +30,6 @@ class SearchBar extends React.Component {
     }, () => {
     });
   }
-  DatePicker(){
-    $(document).ready(function() {
-        $("#fromdatepicker").datepicker();
-        $("#fromdatepicker").datepicker({
-            changeMonth: true,
-            changeYear: true,
-            isRTL: true,
-            dateFormat: "yy/m/d",
-        });
-        $("#tilldatepicker").datepicker();
-        $("#tilldatepicker").datepicker({
-            changeMonth: true,
-            changeYear: true,
-            isRTL: true,
-            dateFormat: "yy/m/d",
-        });
-    });
-  }
   renderData(houseData) {
    this.setState({
      houseList: houseData.room,
@@ -255,18 +237,7 @@ class SearchBar extends React.Component {
   render() {
     return (
       <div>
-        <div>
-        <div className="col-lg col-sm-12 mb-10">
-                                <div className="control-group">
-                                    <div className="controls">
-                                        <div className="input-append">
-                                            <input id="fromdatepicker" className="form-control transparent-input" name="start_date" type="text" placeholder="از؟"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-        </div>
-        {this.DatePicker()}
+  
           <div className="container-fluid hidden-xs visible-xl">
           {this.renderRelevantSearchBar()}
           </div>
