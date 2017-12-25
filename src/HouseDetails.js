@@ -106,10 +106,13 @@ class HouseDetails extends React.Component {
  renderPreview(){
    if(this.state.homeData!==''){
      return(<div className = "housedetail-img">
+            <a href="#" onClick = {this.showHouseGallery.bind(this)}>
              <img
              src= {"https://www.trypinn.com" + this.state.homeData.preview}  className="house-details-preview"
              alt = ""
-             onClick = {this.showHouseGallery.bind(this)}/>
+            >
+             </img>
+             </a>
              </div>);
    }
  }
@@ -167,10 +170,10 @@ class HouseDetails extends React.Component {
             </div>
             <div>
             <div className='navigation-menu-housedetails'>
-              <a onClick={() => scrollToComponent(this.Dis, { offset: 0, align: 'top', duration: 1500})}> <p className='navigation-menu-items'  >مشخصات</p></a>
-              <a onClick={() => scrollToComponent(this.Gallery, { offset: 0, align: 'top', duration: 1500})}>   <p className='navigation-menu-items' >تصاویر</p></a>
-              <a onClick={() => scrollToComponent(this.Laws, { offset: 0, align: 'top', duration: 1500})}> <p className='navigation-menu-items'>امکانات و قوانین</p></a>
-              <a onClick={() => scrollToComponent(this.Map, { offset: 0, align: 'top', duration: 1500})}>   <p className='navigation-menu-items'>موقعیت روی نقشه</p></a>
+              <a href="#" onClick={() => scrollToComponent(this.Dis, { offset: 0, align: 'top', duration: 1500})}> <p className='navigation-menu-items'  >مشخصات</p></a>
+              <a href="#" onClick={() => scrollToComponent(this.Gallery, { offset: 0, align: 'top', duration: 1500})}>   <p className='navigation-menu-items' >تصاویر</p></a>
+              <a href="#" onClick={() => scrollToComponent(this.Laws, { offset: 0, align: 'top', duration: 1500})}> <p className='navigation-menu-items'>امکانات و قوانین</p></a>
+              <a href="#" onClick={() => scrollToComponent(this.Map, { offset: 0, align: 'top', duration: 1500})}>   <p className='navigation-menu-items'>موقعیت روی نقشه</p></a>
             </div>
 
             </div>

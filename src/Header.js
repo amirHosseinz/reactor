@@ -133,15 +133,7 @@ class Header extends React.Component{
       <div className='header container hidden-xs visible-xl'>
        <div className='hearder-child-margined'>
           <div className="header-menu-desktop col-md-10">
-            <div>
-              {this.renderUserButton()}
-            </div>
-            <div>
-              {this.renderLoginButton()}
-            </div>
-            <div>
-              {this.renderLoginPanel()}
-            </div>
+
           </div>
           <div className="logo col-md-2">
               <div className='headerchild'>
@@ -156,14 +148,9 @@ class Header extends React.Component{
         </div>
       </div>
 
-      <div className='header hidden-xl visible-xs navbar-fixed-top'>
+      <div className='header hidden-xl visible-xs '>
       <div className="burger-menu">
-         <Menu className="burger" width={ '100%' }>
-           <a id="home" className="menu-item" href="/">خانه</a>
-           {this.renderLoginButton()}
-           <a onClick={ this.showSettings } className="menu-item" href="/">ورود</a>
-           <a  className="menu-item--small" href="">Settings</a>
-         </Menu>
+
       </div>
         <div className='headermobile'>
 
