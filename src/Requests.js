@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactScrollableList from 'react-scrollable-list'
 
 class Requests extends React.Component{
   constructor(props){
@@ -53,32 +54,31 @@ class Requests extends React.Component{
   }
 
   renderRequests(){
-
       if(this.state.requestList!==null){
         var request_list = this.state.requestList.request_list;
         var list = request_list.map((item)=>
         <button key={item.id} onClick={() =>{
           this.showRequestItemClick(item)
         }}>
-          <li>
-            <div className="preview">
-              <img
-              src={"https://www.trypinn.com/"+item.room.preview}
-              alt=""
-              height="50" width="50"/>
-            </div>
-            <div className="title">
-              {item.room.title}
-            </div>
-            <div className="host_name">
-              <p>{item.room.owner.first_name} {item.room.owner.last_name}</p>
-            </div>
-          </li>
-        </button>
-        )
-        return(
-          <ul>{list}</ul>
-        );
+      <li>
+      <div className="preview">
+      <img
+      src={"https://www.trypinn.com/"+item.room.preview}
+      alt=""
+      height="50" width="50"/>
+      </div>
+      <div className="title">
+      {item.room.title}
+      </div>
+      <div className="host_name">
+      <p>{item.room.owner.first_name} {item.room.owner.last_name}</p>
+      </div>
+      </li>
+      </button>
+    );
+      return(
+       <ul>{list}</ul>
+         );
       }
   }
   render(){
