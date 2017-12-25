@@ -1,9 +1,13 @@
 import React from 'react';
 import SearchResult from './SearchResult';
-//import { BrowserRouter,Route} from 'react-router-dom';
 import {Typeahead} from 'react-bootstrap-typeahead'; // ES2015
 import { Button} from 'semantic-ui-react';
+import {findDOMNode} from 'react-dom';
 import $ from 'jquery';
+import './tools/DatePicker/bootstrap-datepicker.fa.js';
+import './tools/DatePicker/bootstrap-datepicker.js';
+import './tools/DatePicker/bootstrap-datepicker.css';
+
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -11,7 +15,7 @@ class SearchBar extends React.Component {
     this.state = {
       token: null,
       showOnlyCitySearchBar:true,
-      houseList: [],
+      houseList:[],
       searchParams : {
         location: null,
         start_date: null,
@@ -30,24 +34,7 @@ class SearchBar extends React.Component {
     }, () => {
     });
   }
-  DatePicker(){
-    $(document).ready(function() {
-        $("#fromdatepicker").datepicker();
-        $("#fromdatepicker").datepicker({
-            changeMonth: true,
-            changeYear: true,
-            isRTL: true,
-            dateFormat: "yy/m/d",
-        });
-        $("#tilldatepicker").datepicker();
-        $("#tilldatepicker").datepicker({
-            changeMonth: true,
-            changeYear: true,
-            isRTL: true,
-            dateFormat: "yy/m/d",
-        });
-    });
-  }
+
   renderData(houseData) {
    this.setState({
      houseList: houseData.room,
@@ -242,24 +229,64 @@ class SearchBar extends React.Component {
    handleClick(){
      this.setState({showOnlyCitySearchBar : false} , ()=> {this.setSearchParams()});
    }
-
-  render() {
+   renderFromDatePicker(){
+     const fromDatePicker = findDOMNode(this.refs.fromdatepicker);
+     $(document).ready(function(){
+       $(fromDatePicker).datepicker({
+         changeMonth: true,
+         changeYear: true,
+         isRTL: true,
+         dateFormat: "yy/m/d",
+        });
+     });
+   }
+   renderToDatePicker(){
+     const toDatePicker = findDOMNode(this.refs.todatepicker);
+     $(document).ready(function(){
+       $(toDatePicker).datepicker({
+         changeMonth: true,
+         changeYear: true,
+         isRTL: true,
+         dateFormat: "yy/m/d",
+        });
+     });
+   }
+  render(){
     return (
       <div>
-        <div>
-        <div className="col-lg col-sm-12 mb-10">
-                                <div className="control-group">
-                                    <div className="controls">
-                                        <div className="input-append">
-                                            <input id="fromdatepicker" className="form-control transparent-input" name="start_date" type="text" placeholder="از؟"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-        </div>
-        {this.DatePicker()}
           <div className="container-fluid hidden-xs visible-xl">
           {this.renderRelevantSearchBar()}
+          <div className="col-lg col-sm-12 mb-10">
+            <div className="control-group">
+              <div className="controls">
+                <div className="input-append">
+                  <input ref="fromdatepicker"
+                         className="form-control transparent-input"
+                         name="start_date"
+                         type="text"
+                         placeholder="از؟"
+                         style={{width:500}}
+                         onClick = {this.renderFromDatePicker.bind(this)}/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg col-sm-12 mb-10">
+            <div className="control-group">
+              <div className="controls">
+                <div className="input-append">
+                  <input ref="todatepicker"
+                         className="form-control transparent-input"
+                         name="end_date"
+                         type="text"
+                         placeholder="تا"
+                         style={{width:500}}
+                         onClick={this.renderToDatePicker.bind(this)}/>
+                </div>
+              </div>
+            </div>
+          </div>
+
           </div>
           <div className="container-fluid hidden-xl visible-xs">
               <div className='row'>
