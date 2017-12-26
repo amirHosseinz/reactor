@@ -3,6 +3,7 @@ import Login from './Login.js';
 import { slide as Menu } from 'react-burger-menu';
 import Modal from 'react-modal';
 // import UserPanel from './UserPanel.js';
+import {Button} from 'semantic-ui-react';
 class Header extends React.Component{
   constructor (props) {
     super(props);
@@ -16,7 +17,7 @@ class Header extends React.Component{
       searchParams:{
         phoneNumber: null,
       },
-      hidden: false
+      hidden:false
     };
   }
   componentDidMount(){
@@ -31,8 +32,6 @@ class Header extends React.Component{
     this.setToken();
   }
   getRelevantToken(){
-    console.log(localStorage['isLoggedIn']);
-    console.log(localStorage['isLoggedIn']);
     if (localStorage['isLoggedIn']==='true'){
       this.setState({token:localStorage['token']},()=>{this.setSearchParams()});
     }
@@ -53,7 +52,7 @@ class Header extends React.Component{
         body: JSON.stringify({
           cell_phone : this.state.searchParams.phoneNumber,
       }),
-        headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+        headers: new Headers({'Accept':'application/json','Content-Type': 'application/json',
         'Authorization': 'Token '+this.state.token,})
       });
      fetch(request)
@@ -71,7 +70,7 @@ class Header extends React.Component{
     if (this.state.isLoggedIn==='false' || this.state.isLoggedIn===undefined){
       return(
         <div>
-          <button onClick={this.handleLoginButton.bind(this)}>ورود</button>
+          <p onClick={this.handleLoginButton.bind(this)}> ورود</p>
         </div>
       );
     }
@@ -86,8 +85,8 @@ class Header extends React.Component{
     if (this.state.isLoggedIn==='true'){
       return(
         <div>
-          <button onClick={this.handleUserButton.bind(this)}>Panel</button>
-          <button onClick={this.handleSignOutButton.bind(this)}>Sign Out</button>
+          <Button onClick={this.handleUserButton.bind(this)}>Panel</Button>
+          <Button onClick={this.handleSignOutButton.bind(this)}>Sign Out</Button>
         </div>
       );
     }
@@ -133,7 +132,6 @@ class Header extends React.Component{
       <div className='header container hidden-xs visible-xl'>
        <div className='hearder-child-margined'>
           <div className="header-menu-desktop col-md-10">
-
           </div>
           <div className="logo col-md-2">
               <div className='headerchild'>
@@ -143,6 +141,9 @@ class Header extends React.Component{
                 <div>
                   <a className='logolink' href="http://tripinn.ir">  <p className='logofont'>تریپین</p></a>
                 </div>
+                {this.renderUserButton()}
+                {this.renderLoginButton()}
+                {this.renderLoginPanel()}
               </div>
           </div>
         </div>

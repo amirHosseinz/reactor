@@ -57,6 +57,7 @@ class MainPage extends React.Component{
      })
      .then((response) => {
        localStorage['token']= response.token;
+       console.log('guest token');
      });
     }
   }
