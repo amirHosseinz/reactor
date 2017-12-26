@@ -4,12 +4,13 @@ import Trips from './Trips';
 import Requests from './Requests';
 import RequestItem from './RequestItem.js';
 import TripItem from './TripItem.js';
-
+import UserProfile from './UserProfile.js';
 
 class UserPanel extends React.Component{
   constructor(props){
     super(props);
     this.state={
+      ProfileDetail:'',
       requestDetail:'',
       tripDetail:'',
       defaultSelection:'request',
@@ -22,6 +23,9 @@ class UserPanel extends React.Component{
 
   changeTripDetail = (trip_detail) => {
     this.setState({tripDetail:trip_detail});
+  }
+  changeProfileDetail = (Profile_Detail) => {
+    this.setState({ProfileDetail:Profile_Detail});
   }
 
   showContent(){
@@ -37,6 +41,10 @@ class UserPanel extends React.Component{
       case 'trip':
       return(
         <TripItem reserveDetail={this.state.tripDetail}/>
+      );
+      case 'userprofile':
+      return(
+        <div></div>
       );
       default:
       return null;
@@ -57,6 +65,11 @@ class UserPanel extends React.Component{
       this.setState({defaultSelection:'request'});
     }
   }
+  handleUserProfileClick(){
+    if (this.state.defaultSelection!=='userprofile'){
+      this.setState({defaultSelection:'userprofile'});
+    }
+  }
   renderSelectedPanel(){
     switch (this.state.defaultSelection){
       case 'message':
@@ -71,12 +84,17 @@ class UserPanel extends React.Component{
       return(
         <Trips changeTripDetail={this.changeTripDetail}/>
       );
+      case 'userprofile':
+      return(
+        <UserProfile changeProfileDetail={this.changeProfileDetail}/>
+      );
       default:
       return null;
     }
   }
   render() {
     return (
+
       <div>
         <button className="messages" onClick={this.handleMessageClick.bind(this)}>
           پیام ها
@@ -86,6 +104,9 @@ class UserPanel extends React.Component{
         </button>
         <button className="trips" onClick={this.handleTripClick.bind(this)}>
           سفرها
+        </button>
+        <button className="userprofile" onClick={this.handleUserProfileClick.bind(this)}>
+         اطلاعت کاربر
         </button>
         {this.renderSelectedPanel()}
         {this.showContent()}

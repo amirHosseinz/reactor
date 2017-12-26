@@ -2,7 +2,7 @@ import React from 'react';
 import Login from './Login.js';
 import { slide as Menu } from 'react-burger-menu';
 import Modal from 'react-modal';
-// import UserPanel from './UserPanel.js';
+import UserPanel from './UserPanel.js';
 class Header extends React.Component{
   constructor (props) {
     super(props);
@@ -133,7 +133,6 @@ class Header extends React.Component{
       <div className='header container hidden-xs visible-xl'>
        <div className='hearder-child-margined'>
           <div className="header-menu-desktop col-md-10">
-
           </div>
           <div className="logo col-md-2">
               <div className='headerchild'>
