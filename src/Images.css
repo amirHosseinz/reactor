@@ -376,6 +376,7 @@ margin-top: 150px;
   margin-top: 70px;
   width: 100%;
   margin: auto;
+
 }
 
 .dropdown-menu{
@@ -939,4 +940,19 @@ justify-content: center;
 }
 .more-photo{
   margin-top: -100px;
+}
+.imgcontainer{
+  background-color: grey;
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+.imgresult{
+  display: inline-block;
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+    height: auto;
+  margin: auto;
+  text-align: center;
 }

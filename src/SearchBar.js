@@ -336,6 +336,7 @@ class SearchBar extends React.Component {
                     </div>
                 </div>
               </div>
+
             {this.renderHouses()}
           </div>
       </div>
