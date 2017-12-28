@@ -1,4 +1,5 @@
 import React from 'react';
+import { englishToPersianDigits } from './tools/EnglishToPersianDigits';
 
 class UserProfile extends React.Component{
   constructor(props){
@@ -40,31 +41,63 @@ class UserProfile extends React.Component{
   renderData(profile){
     this.setState({ProfileInfo:profile});
   }
+  renderProfilePhoto(){
+      if (this.state.ProfileInfo !== ''){
+        if (this.state.ProfileInfo.user.profile_picture === null){
+          return(
+            <div className="profilebox">
+              <img src={require('./HouseDetailParts/facilities/prof_avatar_tripinn.svg')}  className="profile-avataricon" alt = "" />
+            </div>
+          );
+        }
+        else{
+          return(
+            <div className="host-photo">
+              <img className="profile-avatarimg" src={"https://www.trypinn.com/" +this.state.ProfileInfo.user.profile_picture} alt=""/>
+            </div>
+          );
+        }
+      }
+    }
+
   renderUserProfile(){
     if (this.state.ProfileInfo!== null){
+
       return(
         <div className='profile-container'>
-        <div className='username'>
-        {this.state.ProfileInfo.user.first_name}
-        {this.state.ProfileInfo.user.last_name}
-        </div>
-        <div className='user-mail'>
-        {this.state.ProfileInfo.user.email}
-        </div>
-        <div className='user-cell-phone'>
-        {this.state.ProfileInfo.user.cell_phone}
-        </div>
-        <img className='user-profile-picture' src={this.state.ProfileInfo.user.profile_picture} alt='user-profile-picture'/>
+
+              <div className='user-mail'>
+                {this.state.ProfileInfo.user.email}
+              </div>
+
+
+              {this.renderProfilePhoto()}
+
+              <div className='username_offical'>
+                {this.state.ProfileInfo.user.first_name}
+                <p>  </p>
+                <div className="profile-lastname">
+                  {this.state.ProfileInfo.user.last_name}
+                </div>
+              </div>
+              <div className='user-cell-phone'>
+               {englishToPersianDigits(this.state.ProfileInfo.user.cell_phone)}
+              </div>
         </div>
       );
     }
 }
 
-
   render(){
     return(
       <div>
-        {this.renderUserProfile()}
+          <div className="profile-container-margined">
+            <div className="col-md-9">
+            </div>
+            <div className="col-md-3">
+                {this.renderUserProfile()}
+            </div>
+          </div>
       </div>
     );
   }

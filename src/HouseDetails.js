@@ -11,7 +11,8 @@ import AmenitiesDiscription from './HouseDetailParts/AmenitiesDiscription';
 import MapDiscription from './HouseDetailParts/MapDiscription';
 import RatingDiscription from './HouseDetailParts/RatingDiscription';
 import HostInfoDiscription from './HouseDetailParts/HostInfoDiscription';
-import { englishToPersianDigits } from './tools/EnglishToPersianDigits';
+import {englishToPersianDigits} from './tools/EnglishToPersianDigits';
+
 
 class HouseDetails extends React.Component {
   constructor(props){
@@ -153,6 +154,7 @@ class HouseDetails extends React.Component {
      );
    }
  }
+
   render(){
     if (this.state.homeData !== ''){
       document.title = "تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.city;
@@ -169,20 +171,21 @@ class HouseDetails extends React.Component {
               <RatingDiscription homeData={this.state.homeData}/>
             </div>
             <div>
-            <div className='navigation-menu-housedetails'>
-              <a href="#" onClick={() => scrollToComponent(this.Dis, { offset: 0, align: 'top', duration: 1500})}> <p className='navigation-menu-items'  >مشخصات</p></a>
-              <a href="#" onClick={() => scrollToComponent(this.Gallery, { offset: 0, align: 'top', duration: 1500})}>   <p className='navigation-menu-items' >تصاویر</p></a>
-              <a href="#" onClick={() => scrollToComponent(this.Laws, { offset: 0, align: 'top', duration: 1500})}> <p className='navigation-menu-items'>امکانات و قوانین</p></a>
-              <a href="#" onClick={() => scrollToComponent(this.Map, { offset: 0, align: 'top', duration: 1500})}>   <p className='navigation-menu-items'>موقعیت روی نقشه</p></a>
+            <div className="sticky-top">
+              <div className='navigation-menu-housedetails'>
+                <a href="#" onClick={() => scrollToComponent(this.Dis, { offset: 0, align: 'top', duration: 1500})}> <p className='navigation-menu-items'  >مشخصات</p></a>
+                <a href="#" onClick={() => scrollToComponent(this.Gallery, { offset: 0, align: 'top', duration: 1500})}>   <p className='navigation-menu-items' >تصاویر</p></a>
+                <a href="#" onClick={() => scrollToComponent(this.Laws, { offset: 0, align: 'top', duration: 1500})}> <p className='navigation-menu-items'>امکانات و قوانین</p></a>
+                <a href="#" onClick={() => scrollToComponent(this.Map, { offset: 0, align: 'top', duration: 1500})}>   <p className='navigation-menu-items'>موقعیت روی نقشه</p></a>
+              </div>
             </div>
-
             </div>
           </div>
         </div>
         <div className='house-detail-top'>
             <div className="house-detail-top-margined">
               <div className="col-md-3">
-                <Sticky>
+                <Sticky stickyStyle={{marginTop:'110px'}}>
                   <div className='reserve-card'>
                     <div className="reserve-card-child">
                       <p className="text-011">:هزینه هرشب اقامت</p>
