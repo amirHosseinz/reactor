@@ -20,9 +20,9 @@ class Header extends React.Component{
       searchParams:{
       phoneNumber: null,
       },
-      hidden:false
     };
   }
+
   componentDidMount(){
     this.interval = setInterval(() => this.reloadHeader(), 1000);
   }
@@ -73,7 +73,7 @@ class Header extends React.Component{
     if (this.state.isLoggedIn !== 'true'){
       return(
         <div>
-          <p onClick={this.handleLoginButton.bind(this)}> ورود</p>
+          <p className="main-menu-login-button" onClick={this.handleLoginButton.bind(this)}> ورود</p>
         </div>
       );
     }

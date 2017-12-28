@@ -8,8 +8,9 @@ import './tools/DatePicker/bootstrap-datepicker.fa.js';
 import './tools/DatePicker/bootstrap-datepicker.js';
 import './tools/DatePicker/bootstrap-datepicker.css';
 import {Search} from 'semantic-ui-react';
+import _ from 'lodash';
 
-
+const source = [{name:'erfan'} , {name:'mohsen'} , {name:'mehrdad'}];
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -22,8 +23,17 @@ class SearchBar extends React.Component {
         start_date: null,
         end_date: null,
         capacity: null,
+        SearchBarResults:null,
+        searchBarIsLoading: null,
+        SearchBarValue: null,
       },
     };
+  }
+  componentWillMount(){
+    this.resetSearchBar();
+  }
+  resetSearchBar(){
+    this.setState({ searchBarIsLoading: false, SearchBarResults: [], SearchBarValue: '' });
   }
   getRelevantToken(){
     return localStorage['token'];
@@ -41,10 +51,33 @@ class SearchBar extends React.Component {
      houseList: houseData.room,
    });
   }
+
+  handleResultSelect = (e, { result }) => this.setState({ searchBarValue: result });
+
+  handleSearchChange= (e , { value }) => {
+    this.setState({SearchBarIsLoading: true, SearchBarValue:value } ,
+    ()=> setTimeout(() => {
+          if (this.state.SearchBarValue.length < 1) return this.resetSearchBar()
+
+        const re = new RegExp(_.escapeRegExp(this.state.searchBarValue), 'i')
+        const isMatch = result => re.test(result)
+        this.setState({
+          searchBarIsLoading: false,
+          searchBarResults: _.filter(source, isMatch),
+            });
+        }, 500)
+      );
+}
   renderSearchBar(){
     return (
       <div>
-        <Search icon={null}/>
+      <Search
+        loading={this.state.searchBarIsLoading}
+        onResultSelect={this.handleResultSelect.bind(this)}
+        onSearchChange={this.handleSearchChange.bind(this)}
+        results={this.state.SearchBarResults}
+        value={this.state.SearchBarValue}
+        />
       </div>
 
     );
@@ -89,7 +122,7 @@ class SearchBar extends React.Component {
     );
   }
   renderSearchBarOnlycity(){
-    return (
+    return(
       <div className='only-city-search-bar row'>
         <div className="free-zone col-md-3"></div>
         <div className="main-zone col-md-6">

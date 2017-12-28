@@ -1,4 +1,7 @@
-
+.main-menu-login-button{
+  cursor :pointer;
+  text-align : left;
+}
 .main-menu-user{
   cursor :pointer;
   text-align : center;
