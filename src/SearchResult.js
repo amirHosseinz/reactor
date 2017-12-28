@@ -26,7 +26,7 @@ class SearchResult extends React.Component {
     return this.props.toom.rating;
   }
   location(){
-    return this.props.room.location;
+    return this.props.room.address;
   }
   title(){
     return this.props.room.title;
@@ -37,6 +37,34 @@ class SearchResult extends React.Component {
   showHouseDetail(){
     window.open('./rooms/' + this.props.room.id);
   }
+
+  getRoomType(){
+    switch(this.props.room.room_type){
+      case "HOUSE":
+        return 'خانه';
+      case "SUITE":
+        return 'سوییت';
+      case "VILLA":
+        return 'ویلای';
+      case "APT":
+        return 'آپارتمان';
+      default:
+        return null;
+    }
+  }
+  getServiceType(){
+    switch(this.props.room.service_type){
+      case "ENTIRE_HOME":
+        return 'دربست';
+      case "PRIVATE_ROOM":
+        return 'اتاق اختصاصی';
+      case "SHARED_ROOM":
+        return 'اتاق مشترک';
+      default :
+        return null;
+    }
+  }
+
   render ()
    {
     return(
@@ -44,16 +72,29 @@ class SearchResult extends React.Component {
           <AspectRatio ratio="16/11" style={{maxWidth: '400px'}}>
                 <img src= {this.props.preview}   className="imgresult" alt = "پیشنمایش خانه "  />
           </AspectRatio>
-          <div className = "result-title">
-            <a  href="#" onClick={() => this.showHouseDetail()}> <p >{this.title()}</p> </a>
-          </div>
-          <div className ="rating">
-            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-          </div>
-          <div className = "result-price">
-            <p> {this.price()}</p>
-            <p className="toman-per-night-result">  تومان / هر شب </p>
-          </div>
+            <div className="result-without-price">
+
+              <div className = "result-room-type">
+                <p className="rooms_type_result"> {this.getRoomType()} </p>
+                <p className="rooms_type_result"> {this.getServiceType()} </p>
+                <p className="rooms_type_result"> {englishToPersianDigits(this.props.room.rooms_number)}</p>
+                <p className="rooms_type_result">خوابه</p>
+              </div>
+              <div className = "result-title">
+                <a  className="title-a"href="#" onClick={() => this.showHouseDetail()}> <p >{this.title()}</p> </a>
+              </div>
+              <div className="room_address_results">
+
+                <p>{this.props.room.address}</p>
+              </div>
+
+            </div>
+              <div className = "result-price">
+                <p className="toman-per-night-result"> هر شب </p>
+                <p className="toman-per-night-result">/</p>
+                <p className="toman-result">تومان  </p>
+                <p className="toman-result"> {this.price()}</p>
+              </div>
           <div className="result-card-margins">
           </div>
         </div>

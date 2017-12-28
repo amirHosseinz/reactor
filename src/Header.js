@@ -17,7 +17,7 @@ class Header extends React.Component{
       loginPanelVisible2:false,
       hasPassword: null,
       searchParams:{
-        phoneNumber: null,
+      phoneNumber: null,
       },
       hidden:false
     };
@@ -69,7 +69,8 @@ class Header extends React.Component{
      });
   }
   renderLoginButton(){
-    if (this.state.isLoggedIn==='false' || this.state.isLoggedIn===undefined){
+    console.log(this.state.isLoggedIn);
+    if (this.state.isLoggedIn !== 'true'){
       return(
         <div>
           <p onClick={this.handleLoginButton.bind(this)}> ورود</p>
@@ -134,6 +135,8 @@ class Header extends React.Component{
       <div className='header container hidden-xs visible-xl'>
        <div className='hearder-child-margined'>
           <div className="header-menu-desktop col-md-10">
+            {this.renderLoginButton()}
+            {this.renderLoginPanel()}
           </div>
           <div className="logo col-md-2">
               <div className='headerchild'>
@@ -151,19 +154,19 @@ class Header extends React.Component{
         </div>
       </div>
 
-      <div className='header hidden-xl visible-xs '>
-      <div className="burger-menu">
-
-      </div>
+      <div className='header hidden-xl visible-xs navbar-fixed-top'>
         <div className='headermobile'>
-
-          <div className='jafar'>
-
-             <a href="http://tripinn.ir"><img src={require('./Images/tripinn_logo.svg')}  className="LogoImage-mobile" alt="تریپین"></img></a>
-             <a className='logolink' href="http://tripinn.ir">  <p className='logofont-mobile'>تریپین</p></a>
-
-          </div>
+             <img src={require('./Images/tripinn_logo.svg')}  className="LogoImage-mobile" alt="تریپین"></img>
         </div>
+        <div className="burger-menu">
+           <Menu className="burger" width={ '100%' }>
+             <a id="home" className="menu-item" href="/">خانه</a>
+             {this.renderLoginButton()}
+             <a onClick={ this.showSettings} className="menu-item" href="/">ورود</a>
+             <a  className="menu-item--small" href="">Settings</a>
+           </Menu>
+        </div>
+
       </div>
     </div>
     );

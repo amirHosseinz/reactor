@@ -15,9 +15,10 @@ class Footer extends React.Component{
             <div className='footerchild' >
               <div className='footer1'>
                   <div className="footer-menu-and-dl col-md-6 hidden-xs">
-                      <div>
+                      <div className="dl-div">
                         <a target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
-                        <Button color='blue' className="downloadd btn" >دانلود اپلیکیشن</Button>
+                          <button className="download-tripinn" >دانلود اپلیکیشن
+                          </button>
                         </a>
                       </div>
                     <div className='footer-menu'>
