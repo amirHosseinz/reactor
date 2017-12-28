@@ -117,10 +117,9 @@ class Header extends React.Component{
   signOutAndProfile(){
     return (
         <div>
-           <Dropdown text={localStorage['user-first-name'] +' '+ localStorage['user-last-name']} icon={require('./favicon.ico')}>
+           <Dropdown icon='dropdown' text={localStorage['user-first-name'] +' '+ localStorage['user-last-name']} icon={require('./favicon.ico')}>
             <Dropdown.Menu>
             <p className="main-menu-user" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
-            <Dropdown.Divider/>
             <p className="main-menu-user" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
             </Dropdown.Menu>
            </Dropdown>
@@ -131,6 +130,8 @@ class Header extends React.Component{
     if(this.state.isLoggedIn==='true'){
       return (
         <div className='main-menu-header'>
+          {this.signOutAndProfile()}
+
           <button className="messages" onClick={this.handleMessageClick.bind(this)}>
             پیام ها
           </button>
@@ -140,7 +141,6 @@ class Header extends React.Component{
           <button className="trips" onClick={this.handleTripClick.bind(this)}>
             سفرها
           </button>
-          {this.signOutAndProfile()}
         </div>
       );
     }
@@ -177,9 +177,11 @@ class Header extends React.Component{
       <div className='header container hidden-xs visible-xl'>
        <div className='hearder-child-margined'>
           <div className="header-menu-desktop col-md-10">
-            {this.renderLoginButton()}
-            {this.renderLoginPanel()}
             {this.renderMainMenu()}
+          {this.renderLoginPanel()}
+
+
+            {this.renderLoginButton()}
           </div>
           <div className="logo col-md-2">
               <div className='headerchild'>

@@ -9,6 +9,8 @@
   display: flex;
   margin: auto;
   flex-direction: row;
+  margin-top: 38px;
+  font-family: IRANSans;
 }
 .LogoImage{
   height:60px;
@@ -1042,10 +1044,12 @@ padding-bottom: 28px;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
-	font-size:17px;
-	padding:8px 53px;
+	font-family:IRANSans;
+	font-size:14px;
+  font-weight: 500;
+	padding:8px 60px;
 	text-decoration:none;
+
 }
 .download-tripinn:hover {
 	background-color:#e4441e;
@@ -1208,4 +1212,7 @@ text-align:center;
   margin-bottom: 15px;
 }
 .profile_photobox{
+}
+.footer-menu-and-dl{
+  font-family: IRANSans;
 }
