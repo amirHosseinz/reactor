@@ -60,13 +60,14 @@ class MainPage extends React.Component{
      });
     }
   }
+  
   render(){
     this.getGuestTokenFromServer();
     document.title = "تریپین | سامانه رزرو ویلا";
     return(
       <BrowserRouter>
         <div className="main">
-          <Route path={"/"} render = {()=> {return (this.renderHeader())}} />
+          <Route path={"/"} render = {()=> {return (this.renderHeader())}}/>
           <Route exact path={'/'} render={()=> {return (this.renderSearchBar())}}/>
           <Route exact path={'/dashboard'} render={()=>{return(this.renderUserPanel())}}/>
           <Route path={'/rooms/' + this.getHouseId()} render ={()=> {return (this.renderHouseDetails())}}/>

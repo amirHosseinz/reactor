@@ -29,7 +29,7 @@ class UserPanel extends React.Component{
   }
 
   showContent(){
-    switch (this.state.defaultSelection){
+    switch (localStorage['default-panel']){
       case 'request':
       return(
         <RequestItem requestDetail={this.state.requestDetail}/>
@@ -50,28 +50,8 @@ class UserPanel extends React.Component{
       return null;
     }
   }
-  handleMessageClick(){
-    if (this.state.defaultSelection!=='message'){
-       this.setState({defaultSelection:'message'});
-    }
-  }
-  handleTripClick(){
-    if (this.state.defaultSelection!=='trip'){
-      this.setState({defaultSelection:'trip'});
-    }
-  }
-  handleRequestClick(){
-    if (this.state.defaultSelection!=='request'){
-      this.setState({defaultSelection:'request'});
-    }
-  }
-  handleUserProfileClick(){
-    if (this.state.defaultSelection!=='userprofile'){
-      this.setState({defaultSelection:'userprofile'});
-    }
-  }
   renderSelectedPanel(){
-    switch (this.state.defaultSelection){
+    switch (localStorage['default-panel']){
       case 'message':
         return(
           <Messages />
@@ -96,18 +76,6 @@ class UserPanel extends React.Component{
     return (
 
       <div>
-        <button className="messages" onClick={this.handleMessageClick.bind(this)}>
-          پیام ها
-        </button>
-        <button className="requests" onClick={this.handleRequestClick.bind(this)}>
-          درخواست ها
-        </button>
-        <button className="trips" onClick={this.handleTripClick.bind(this)}>
-          سفرها
-        </button>
-        <button className="userprofile" onClick={this.handleUserProfileClick.bind(this)}>
-         اطلاعت کاربر
-        </button>
         {this.renderSelectedPanel()}
         {this.showContent()}
       </div>
