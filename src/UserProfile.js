@@ -92,7 +92,7 @@ class UserProfile extends React.Component{
               </div>
         </div>
       );
-}
+    }
 }
 
   render(){
@@ -106,7 +106,6 @@ class UserProfile extends React.Component{
             </div>
           </div>
       </div>
-
     );
   }
 }

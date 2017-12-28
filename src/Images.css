@@ -706,8 +706,8 @@ transform: scale(2, 2);
   display: -webkit-flex; /* Safari */
   -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
   display: flex;
+  padding: 2px;
   flex-direction: row-reverse;
-  margin-bottom: 10px;
 }
 .facility-text{
   margin-top: 5px;
