@@ -1111,25 +1111,33 @@ padding-bottom: 28px;
 .profile-container-margined{
   width: 80%;
   margin:auto;
-  height: 600px;
   margin-top: 30px;
 
 }
 .profile-container{
-  background-color: rgba(0, 0, 0, .1)   ;
+  background-color: rgba(255, 255, 255, 1)   ;
     padding:16px;
+    border-width: 3px;
+    padding-bottom: 60px;
+
+
 }
 .profile-avataricon{
   height: 200px;
   margin: auto;
 }
 .profile-avatarimg{
-  height: 180px;
-  width: 180px;
-  border-radius: 90px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
   object-fit: cover;
 }
-.profilebox{
+.userprofilebox{
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 100%;
 }
 .username_offical{
   font-size: 20px;
@@ -1137,10 +1145,10 @@ padding-bottom: 28px;
   color: #484848;
   text-align: center;
   font-weight: 500;
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
-  display: flex;
-  flex-direction: row-reverse;
+
+  width: 100%;
+  margin: auto;
+margin-top: 5px;
 }
 .profile-lastname{
   margin-right: 4px;
@@ -1165,16 +1173,39 @@ padding-bottom: 28px;
 }
 .prof_menu_item_rtl{
   text-align: right;
+  padding-bottom: 10px;
 }
 .profile_static_bar{
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
+  border-radius: 0px 4px 4px 0px;
 
+}
+.profile_dynamic_edit{
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
+  height: 600px;
 }
 .host-photo{
 width: 100%;
 margin: auto;
 text-align:center;
 }
+.profilebox{
+  text-align:center;
+}
 .profile-avatarimg{
   float: none;
   margin: 0 auto;
+}
+.profile_after_username{
+  font-family: IRANSans;
+  padding: 0px;
+  padding-top: 15px;
+}
+.divider-profile{
+  height: .8px;
+  background-color:#b4b4b4;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.profile_photobox{
 }

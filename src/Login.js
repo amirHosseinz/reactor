@@ -5,6 +5,7 @@ class Login extends React.Component{
     constructor(props){
       super(props);
       this.state={
+        role : null,
         reqParamsForLogin:{
           phoneNumber:null,
           password:null,
@@ -67,11 +68,43 @@ class Login extends React.Component{
       if(loginResponse.is_successful){
         localStorage['isLoggedIn']= 'true';
         localStorage['token'] = loginResponse.token;
-        window.location.reload(true);
+        this.setUserNameInHeader();
       }
       else{
         alert('رمز عبور وارد شده نادرست است. لطفا دوباره تلاش کنید');
       }
+    }
+    setUserNameInHeader(){
+      this.getUserInfo();
+    }
+    getRole(){
+      return 'guest';
+    }
+    getUserInfo(){
+      if(localStorage['isLoggedIn']==='true'){
+        this.setState({token:localStorage['token']},()=>{this.setSearchParamsForUserInfo(this.getRole())});
+      }
+    }
+
+    setSearchParamsForUserInfo(person_role){
+      this.setState({role :person_role} ,()=>this.getUserInfoFromServer());
+    }
+
+    getUserInfoFromServer(){
+      var request = new Request('https://www.trypinn.com/auth/api/user/get_info/',{ //
+        method: 'POST',
+        headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+        'Authorization': 'Token '+ this.state.token,})
+      });
+     fetch(request)
+     .then((response) => {
+       return response.json();
+     })
+     .then((data) => {
+       localStorage['user-first-name']=data.user.first_name;
+       localStorage['user-last-name']=data.user.last_name;
+       window.location.href = '/dashboard';
+     });
     }
     getResponseForSignUp(){
       var request = new Request('https://www.trypinn.com/auth/api/user/login/', {
