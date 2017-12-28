@@ -1101,9 +1101,12 @@ padding-bottom: 28px;
   width: 80%;
   margin:auto;
   height: 600px;
+  margin-top: 30px;
+
 }
 .profile-container{
   background-color: rgba(0, 0, 0, .1)   ;
+    padding:16px;
 }
 .profile-avataricon{
   height: 200px;
@@ -1148,4 +1151,19 @@ padding-bottom: 28px;
 /* selected link */
 .card_anchor:active {
     color: #484848;
+}
+.prof_menu_item_rtl{
+  text-align: right;
+}
+.profile_static_bar{
+
+}
+.host-photo{
+width: 100%;
+margin: auto;
+text-align:center;
+}
+.profile-avatarimg{
+  float: none;
+  margin: 0 auto;
 }

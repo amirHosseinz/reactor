@@ -52,7 +52,7 @@ class UserProfile extends React.Component{
         }
         else{
           return(
-            <div className="host-photo">
+            <div className="host-photo" style={{justifyContent:"center"}}>
               <img className="profile-avatarimg" src={"https://www.trypinn.com/" +this.state.ProfileInfo.user.profile_picture} alt=""/>
             </div>
           );
@@ -66,13 +66,8 @@ class UserProfile extends React.Component{
       return(
         <div className='profile-container'>
 
-              <div className='user-mail'>
-                {this.state.ProfileInfo.user.email}
-              </div>
 
-
-              {this.renderProfilePhoto()}
-
+              <div className="profile_photobox">  {this.renderProfilePhoto()}</div>
               <div className='username_offical'>
                 {this.state.ProfileInfo.user.first_name}
                 <p>  </p>
@@ -81,7 +76,16 @@ class UserProfile extends React.Component{
                 </div>
               </div>
               <div className='user-cell-phone'>
-               {englishToPersianDigits(this.state.ProfileInfo.user.cell_phone)}
+                <p className="prof_menu_item_rtl">: شماره تلفن</p>
+                {englishToPersianDigits(this.state.ProfileInfo.user.cell_phone)}
+              </div>
+              <div className='user-mail'>
+                <p className="prof_menu_item_rtl">: ایمیل </p>
+                {this.state.ProfileInfo.user.email}
+              </div>
+              <div className='user-mail'>
+                <p className="prof_menu_item_rtl">: کد ملی </p>
+                {englishToPersianDigits(this.state.ProfileInfo.user.national_id)}
               </div>
         </div>
       );
@@ -94,7 +98,7 @@ class UserProfile extends React.Component{
           <div className="profile-container-margined">
             <div className="col-md-9">
             </div>
-            <div className="col-md-3">
+            <div className="profile_static_bar col-md-3">
                 {this.renderUserProfile()}
             </div>
           </div>
