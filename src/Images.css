@@ -1,4 +1,15 @@
 
+.main-menu-user{
+  cursor :pointer;
+  text-align : center;
+}
+.main-menu-header{
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  margin: auto;
+  flex-direction: row;
+}
 .LogoImage{
   height:60px;
   margin-top: .7em;
