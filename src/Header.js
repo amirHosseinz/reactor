@@ -2,7 +2,10 @@ import React from 'react';
 import Login from './Login.js';
 import { slide as Menu } from 'react-burger-menu';
 import Modal from 'react-modal';
+import {Button} from 'semantic-ui-react';
 import UserPanel from './UserPanel.js';
+
+
 class Header extends React.Component{
   constructor (props) {
     super(props);
@@ -16,7 +19,7 @@ class Header extends React.Component{
       searchParams:{
       phoneNumber: null,
       },
-      hidden: false
+      hidden:false
     };
   }
   componentDidMount(){
@@ -31,8 +34,6 @@ class Header extends React.Component{
     this.setToken();
   }
   getRelevantToken(){
-    console.log(localStorage['isLoggedIn']);
-    console.log(localStorage['isLoggedIn']);
     if (localStorage['isLoggedIn']==='true'){
       this.setState({token:localStorage['token']},()=>{this.setSearchParams()});
     }
@@ -53,7 +54,7 @@ class Header extends React.Component{
         body: JSON.stringify({
           cell_phone : this.state.searchParams.phoneNumber,
       }),
-        headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+        headers: new Headers({'Accept':'application/json','Content-Type': 'application/json',
         'Authorization': 'Token '+this.state.token,})
       });
      fetch(request)
@@ -72,7 +73,7 @@ class Header extends React.Component{
     if (this.state.isLoggedIn !== 'true'){
       return(
         <div>
-          <button onClick={this.handleLoginButton.bind(this)}>ورود</button>
+          <p onClick={this.handleLoginButton.bind(this)}> ورود</p>
         </div>
       );
     }
@@ -80,15 +81,13 @@ class Header extends React.Component{
   handleSignOutButton(){
     localStorage['token']='';
     localStorage['isLoggedIn']='false';
-    console.log(this.state.isLoggedIn);
-    window.location.reload(true);
+    window.location.href = '/';
   }
   renderUserButton(){
     if (this.state.isLoggedIn==='true'){
       return(
         <div>
-          <button onClick={this.handleUserButton.bind(this)}>Panel</button>
-          <button onClick={this.handleSignOutButton.bind(this)}>Sign Out</button>
+          <Button onClick={this.handleSignOutButton.bind(this)}>Sign Out</Button>
         </div>
       );
     }
@@ -96,14 +95,8 @@ class Header extends React.Component{
   handleLoginButton(){
     this.setState({loginPanelVisible:true});
   }
-  handleUserButton(){
-    if (window.location.pathname !== '/dashboard'){
-      window.open('/dashboard');
-    }
-    else {
-      window.location.href = '/dashboard';
-    }
-  }
+
+
   renderLoginPanel(){
     return(
       <div>
@@ -127,6 +120,57 @@ class Header extends React.Component{
       </div>
     );
   }
+
+  signOutAndProfile(){
+    return (
+      <button className="userprofile" onClick={this.handleUserProfileClick.bind(this)}>
+       اطلاعت کاربر
+      </button>
+    );
+
+  }
+  renderMainMenu(){
+    if(this.state.isLoggedIn==='true'){
+      return (
+        <div>
+          <button className="messages" onClick={this.handleMessageClick.bind(this)}>
+            پیام ها
+          </button>
+          <button className="requests" onClick={this.handleRequestClick.bind(this)}>
+            درخواست ها
+          </button>
+          <button className="trips" onClick={this.handleTripClick.bind(this)}>
+            سفرها
+          </button>
+          {this.signOutAndProfile()}
+        </div>
+      );
+    }
+  }
+  handleMessageClick(){
+    if (localStorage['default-panel']!=='message'){
+       localStorage['default-panel']='message';
+       window.location.href = '/dashboard';
+    }
+  }
+  handleTripClick(){
+    if (localStorage['default-panel']!=='trip'){
+      localStorage['default-panel']='trip';
+      window.location.href = '/dashboard';
+    }
+  }
+  handleRequestClick(){
+    if (localStorage['default-panel']!=='request'){
+      localStorage['default-panel']='request';
+      window.location.href = '/dashboard';
+    }
+  }
+  handleUserProfileClick(){
+    if (localStorage['default-panel']!=='userprofile'){
+      localStorage['default-panel']='userprofile';
+      window.location.href = '/dashboard';
+    }
+  }
   render()
   {
     return (
@@ -136,15 +180,17 @@ class Header extends React.Component{
           <div className="header-menu-desktop col-md-10">
             {this.renderLoginButton()}
             {this.renderLoginPanel()}
+            {this.renderMainMenu()}
           </div>
           <div className="logo col-md-2">
               <div className='headerchild'>
                 <div className='logodiv'>
-                   <a href="http://tripinn.ir"><img src={require('./Images/tripinn_logo.svg')} className="LogoImage" alt = 'تریپین'></img></a>
+                   <a href="http://localhost:3000"><img src={require('./Images/tripinn_logo.svg')} className="LogoImage" alt = 'تریپین'></img></a>
                 </div>
                 <div>
-                  <a className='logolink' href="http://tripinn.ir">  <p className='logofont'>تریپین</p></a>
+                  <a className='logolink' href="http://localhost:3000">  <p className='logofont'>تریپین</p></a>
                 </div>
+                {this.renderUserButton()}
               </div>
           </div>
         </div>
