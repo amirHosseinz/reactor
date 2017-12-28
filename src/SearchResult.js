@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import './Images.css';
 import { englishToPersianDigits } from './tools/EnglishToPersianDigits';
+import AspectRatio from 'react-aspect-ratio';
 
 // import HouseDetails from './HouseDetails'
 // import {BrowserRouter,Route} from 'react-router-dom';
@@ -40,11 +41,9 @@ class SearchResult extends React.Component {
    {
     return(
         <div  className="result-detail">
-          <div className="search-result-image">
-            <a  href="#" onClick={() => this.showHouseDetail()}>
-              <img src= {this.props.preview}   className="SearchResultPreview" alt = "پیشنمایش خانه "  />
-             </a>
-          </div>
+          <AspectRatio ratio="16/11" style={{maxWidth: '400px'}}>
+                <img src= {this.props.preview}   className="imgresult" alt = "پیشنمایش خانه "  />
+          </AspectRatio>
           <div className = "result-title">
             <a  href="#" onClick={() => this.showHouseDetail()}> <p >{this.title()}</p> </a>
           </div>

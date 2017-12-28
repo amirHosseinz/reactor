@@ -2,8 +2,10 @@ import React from 'react';
 import Login from './Login.js';
 import { slide as Menu } from 'react-burger-menu';
 import Modal from 'react-modal';
-// import UserPanel from './UserPanel.js';
 import {Button} from 'semantic-ui-react';
+import UserPanel from './UserPanel.js';
+
+
 class Header extends React.Component{
   constructor (props) {
     super(props);
