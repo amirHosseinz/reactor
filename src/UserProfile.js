@@ -1,4 +1,5 @@
 import React from 'react';
+import { englishToPersianDigits } from './tools/EnglishToPersianDigits';
 
 class UserProfile extends React.Component{
   constructor(props){
@@ -68,15 +69,19 @@ class UserProfile extends React.Component{
               <div className='user-mail'>
                 {this.state.ProfileInfo.user.email}
               </div>
-              <div className='user-cell-phone'>
-                {this.state.ProfileInfo.user.cell_phone}
-              </div>
-                {this.renderProfilePhoto()}
+
+
+              {this.renderProfilePhoto()}
 
               <div className='username_offical'>
                 {this.state.ProfileInfo.user.first_name}
-                
-                {this.state.ProfileInfo.user.last_name}
+                <p>  </p>
+                <div className="profile-lastname">
+                  {this.state.ProfileInfo.user.last_name}
+                </div>
+              </div>
+              <div className='user-cell-phone'>
+               {englishToPersianDigits(this.state.ProfileInfo.user.cell_phone)}
               </div>
         </div>
       );

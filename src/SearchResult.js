@@ -68,36 +68,40 @@ class SearchResult extends React.Component {
   render ()
    {
     return(
-        <div  className="result-detail">
-          <AspectRatio ratio="16/11" style={{maxWidth: '400px'}}>
-                <img src= {this.props.preview}   className="imgresult" alt = "پیشنمایش خانه "  />
-          </AspectRatio>
-            <div className="result-without-price">
+      <div>
+        <a href="#" onClick={() => this.showHouseDetail()} className="card_anchor">
+          <div  className="result-detail">
+            <AspectRatio ratio="16/11" style={{maxWidth: '400px'}}>
+                  <img src= {this.props.preview}   className="imgresult" alt = "پیشنمایش خانه "  />
+            </AspectRatio>
+              <div className="result-without-price">
 
-              <div className = "result-room-type">
-                <p className="rooms_type_result"> {this.getRoomType()} </p>
-                <p className="rooms_type_result"> {this.getServiceType()} </p>
-                <p className="rooms_type_result"> {englishToPersianDigits(this.props.room.rooms_number)}</p>
-                <p className="rooms_type_result">خوابه</p>
-              </div>
-              <div className = "result-title">
-                <a  className="title-a"href="#" onClick={() => this.showHouseDetail()}> <p >{this.title()}</p> </a>
-              </div>
-              <div className="room_address_results">
+                <div className = "result-room-type">
+                  <p className="rooms_type_result"> {this.getRoomType()} </p>
+                  <p className="rooms_type_result"> {this.getServiceType()} </p>
+                  <p className="rooms_type_result"> {englishToPersianDigits(this.props.room.rooms_number)}</p>
+                  <p className="rooms_type_result">خوابه</p>
+                </div>
+                <div className = "result-title">
+                  <a  className="title-a"href="#" onClick={() => this.showHouseDetail()}> <p >{this.title()}</p> </a>
+                </div>
+                <div className="room_address_results">
 
-                <p>{this.props.room.address}</p>
-              </div>
+                  <p>{this.props.room.address}</p>
+                </div>
 
+              </div>
+                <div className = "result-price">
+                  <p className="toman-per-night-result"> هر شب </p>
+                  <p className="toman-per-night-result">/</p>
+                  <p className="toman-result">تومان  </p>
+                  <p className="toman-result"> {this.price()}</p>
+                </div>
+            <div className="result-card-margins">
             </div>
-              <div className = "result-price">
-                <p className="toman-per-night-result"> هر شب </p>
-                <p className="toman-per-night-result">/</p>
-                <p className="toman-result">تومان  </p>
-                <p className="toman-result"> {this.price()}</p>
-              </div>
-          <div className="result-card-margins">
           </div>
-        </div>
+          </a>
+      </div>
     );
   }
 }
