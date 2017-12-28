@@ -262,49 +262,27 @@ class SearchBar extends React.Component {
    }
   render(){
     return (
-      <div>
+      <div className="searchbarmain">
           <div className="container-fluid hidden-xs visible-xl">
           {this.renderRelevantSearchBar()}
           <div className="col-lg col-sm-12 mb-10">
-            <div className="control-group">
-              <div className="controls">
-                <div className="input-append">
-                  <input ref="fromdatepicker"
-                         className="form-control transparent-input"
-                         name="start_date"
-                         type="text"
-                         placeholder="از؟"
-                         style={{width:500}}
-                         onClick = {this.renderFromDatePicker.bind(this)}/>
-                </div>
-              </div>
-            </div>
+
           </div>
           <div className="col-lg col-sm-12 mb-10">
-            <div className="control-group">
-              <div className="controls">
-                <div className="input-append">
-                  <input ref="todatepicker"
-                         className="form-control transparent-input"
-                         name="end_date"
-                         type="text"
-                         placeholder="تا"
-                         style={{width:500}}
-                         onClick={this.renderToDatePicker.bind(this)}/>
-                </div>
-              </div>
-            </div>
+
           </div>
 
           </div>
           <div className="container-fluid hidden-xl visible-xs">
-              <div className='row'>
+              <div className='mobile-margined-search'>
                 <div className="main-zone-xs col-md-12">
                   <div className="row">
-                    <div className="seach-top-slogan-xs-container">
-                        <p className='slogan-xs'>.مقصد خود برای رزرو اقامتگاه را جستجو کنید</p>
-                        <p className='slogan-xs'></p>
+                    <div className="seach-top-slogan-xs-container col-md-12">
+                        <p className='slogan-xs'>تریپین</p>
                     </div>
+                  <div className="row col-md-12">
+                    <p className='slogan-xss'>سامانه رزرو ویلا و اقامتگاه</p>
+                  </div>
                   </div>
                     <div className="searchbar-zone-mobile">
                       <Typeahead
@@ -333,11 +311,27 @@ class SearchBar extends React.Component {
                           <img src="http://image.ibb.co/fjdMQG/trpinn_search.png" className='search-image-xs' alt=""></img>
                         </span>
                       </Button>
+
                     </div>
+                    {this.renderHouses()}
+
                 </div>
               </div>
+              <div className="downlaod-app-mobile">
+                <div className='mobile-margined-search'>
 
-            {this.renderHouses()}
+
+                  <div className="img-iphone col-xs-5">
+                    <img src={require('./Images/phone-app.png')} className='iphone' alt="اپلیکیشن تریپین"></img>
+                  </div>
+                  <div className="img-download col-xs-6">
+                    <img src={require('./Images/bazaar.svg')} className='bazar-ico' alt="دانلود از بازار"></img>
+                    <img src={require('./Images/button-app-store.svg')} className='bazar-ico' alt=" دانلود از سیب‌اپ"></img>
+                  </div>
+                </div>
+
+              </div>
+
           </div>
       </div>
     );

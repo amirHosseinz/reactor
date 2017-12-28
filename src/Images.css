@@ -1,10 +1,4 @@
-.SearchResultPreview{
-    height: 170px;
-    width: 100%;
-   object-fit: cover;
-   border-radius: 4px;
 
-}
 .LogoImage{
   height:60px;
   margin-top: .7em;
@@ -12,13 +6,14 @@
 }
 .LogoImage-mobile{
   height:40px;
-  margin-top: .7em;
-  margin-left: 10px;
-  margin: auto;
-}
+  display: block;
+    margin-left: auto;
+    margin-right: auto
+  }
 .header{
   width:100% !important;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
+  background-color: white;
   }
   .hearder-child-margined{
     width:92%;
@@ -43,12 +38,8 @@
   background-color: white;
   vertical-align:middle;
   }
-  .jafar{
+  .logomobile{
     margin: auto;
-    display: -webkit-flex; /* Safari */
-    -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
-    display: flex;
-    flex-direction: row-reverse;
   }
   .headermobile{
     height:50px;
@@ -110,7 +101,7 @@
   background-color: #f2f2f2;
 }
 .footer-menu-mobile-item{
-  height:2.5em;
+  height:2.6rem;
   border-bottom-style: solid;
   border-color: grey;
  border-width: 0.05em;
@@ -148,7 +139,7 @@
   font-size: 1em;
   font-style: normal;
   font-weight: 300;
-  margin-top: .9em;
+  padding-top:8px;
   color: #646464;
   text-align: right;
 }
@@ -276,21 +267,6 @@ i.big.icons {
   margin: auto;
   flex-direction: row-reverse;
 }
-.seach-top-slogan-xs-container{
-  text-align: right;
-  margin-top: 20px;
-  margin-bottom: 14px;
-}
-.slogan-xs{
-  font-family: IRANSans;
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 400;
-  margin-top: 0;
-  color: #454545;
-  text-align: center;
-  margin: auto;
-}
 .slogan-1{
   font-family: IRANSans;
   font-size: 38px;
@@ -368,7 +344,6 @@ text-indent: -9999px
 margin-top: 150px;
 }
 .main-zone-xs{
-  width: 94%;
   margin: auto;
   margin-top: 50px;
 }
@@ -376,7 +351,9 @@ margin-top: 150px;
   margin-top: 70px;
   width: 100%;
   margin: auto;
-
+  display: block;
+  justify-content: center;
+  align-items: center;
 }
 
 .dropdown-menu{
@@ -604,29 +581,32 @@ transform: scale(-1, 1);
 /* Position and sizing of burger button */
 .bm-burger-button {
   position: fixed;
-  width: 30px;
+  width: 26px;
   height: 22px;
-  left: 12px;
-  top: 20px;
+  left: 16px;
+  top: 22px;
 }
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: #373a47;
+  height: 12% !important;
+  background-color: #0090aa;
+
+
 }
 
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
-  height: 24px;
-  width: 24px;
+  height: 100px;
+  width: 22px;
 }
 
 /* Color/shape of close button cross */
 .bm-cross {
   background: #12b2ce;
-  -ms-transform: scale(3, 3); /* IE 9 */
--webkit-transform: scale(3, 3); /* Safari */
-transform: scale(3, 3);
+  -ms-transform: scale(2, 2); /* IE 9 */
+-webkit-transform: scale(2, 2); /* Safari */
+transform: scale(2, 2);
 }
 
 /* General sidebar styles */
@@ -644,12 +624,12 @@ transform: scale(3, 3);
 /* Wrapper for item list */
 .bm-item-list {
   color: #b8b7ad;
-  padding: 0.8em;
+  padding: 0.2em;
 }
 
 /* Styling of overlay */
 .bm-overlay {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
 }
 .header-menu-desktop{
   width:100%;
@@ -916,27 +896,32 @@ justify-content: center;
   padding-right: 7px !important;
 }
 .result-title{
-  margin-top: 10px;
+  margin-top: 4px;
+  margin-bottom: 4px;
   font-family:IRANSans;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 16px;
+  margin-right: 8px;
 }
 .result-price{
   margin-top: 8px;
+  margin-left: 4px;
+  height: 26px;
   font-family:IRANSans;
-  font-weight: 350;
-  font-size: 12px;
-  margin: auto;
+  font-weight: 500;
+  font-size: 13px;
   display: -webkit-flex; /* Safari */
-  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
   display: flex;
-  flex-direction: row-reverse;
-
+  flex-direction: row;
 }
 .toman-per-night-result{
-  margin-right: 3px;
+  margin-right: 0px;
+  margin-left: 8px;
+  color:#656565;
 }
 .result-card-margins{
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 .more-photo{
   margin-top: -100px;
@@ -955,4 +940,155 @@ justify-content: center;
     height: auto;
   margin: auto;
   text-align: center;
+  object-fit: cover;
+  border-radius: 4px 4px 0px 0px;
+}
+.mobile-margined-search {
+  width: 94%;
+  margin: auto;
+}
+
+.dl-app{
+  font-size: 20px;
+  font-family: IRANSans;
+}
+.img-iphone{
+
+}
+.logo-grey{
+  height: 90px;
+  margin-left:8px;
+}
+.slogan-xss{
+  font-family:IRANSans;
+  font-size: 18px;
+  color: #616161;
+  text-align: center;
+padding-bottom: 28px;
+}
+
+.slogan-xs{
+  font-family: IRANSans;
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 500;
+  color: #616161;
+  text-align: right;
+}
+
+.seach-top-slogan-xs-container{
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row-reverse;
+  text-align: right;
+  margin-top: 20px;
+  margin-bottom: 14px;
+  justify-content: center;
+  align-items: center;
+}
+.downlaod-app-mobile{
+  background-color: #f2f4f4;
+  height: 190px;
+  margin-top: 60px;
+  justify-content: center;
+  align-items: center;
+}
+.iphone{
+  display: relative;
+  padding-bottom: 50px;
+  margin-top: -30px;
+  height: 300px;
+  transform: rotate(-5deg);
+}
+.bazar-ico{
+  margin-top: 6px;
+  width: 80%;
+  margin-left: 20px;
+}
+
+.img-download{
+  margin-top: 30px;
+  align-self: right;
+}
+.searchbarmain{
+  background-color: #f9f9f9;
+}
+
+
+.download-tripinn {
+	background-color:#f56c4e;
+	-moz-border-radius:23px;
+	-webkit-border-radius:23px;
+	border-radius:23px;
+	border:3px solid #f5fff6;
+  padding: 5px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:8px 53px;
+	text-decoration:none;
+}
+.download-tripinn:hover {
+	background-color:#e4441e;
+}
+.download-tripinn:active {
+	position:relative;
+	top:1px;
+}
+.downloadborder{
+  border-radius:23px;
+  padding:-2px -2px;
+}
+.dl-div{
+  margin: auto;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+}
+.rooms_type_result{
+  margin-left: 4px;
+  margin-bottom: 0px;
+  margin-bottom: 3px;
+}
+.room_address_results{
+  font-size: 11px;
+  margin-top: 8px;
+  margin-right: 8px;
+  font-weight: 500;
+}
+.result-room-type{
+  font-size: 10px;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 4px;
+  margin-right: 8px;
+}
+.title-a{
+  margin-top: 0;
+  color: #484848;
+}
+.title-a:hover{
+  color:#f56c4e;
+}
+.toman-result{
+  margin-right: 3px;
+}
+.result-without-price{
+  height:85px;
+}
+.result-detail{
+  background-color: white;
+  border-radius: 4px;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
+}
+.price-div-results{
+  height: 30px;
 }
