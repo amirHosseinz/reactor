@@ -57,14 +57,15 @@ class UserProfile extends React.Component{
         <img className='user-profile-picture' src={this.state.ProfileInfo.user.profile_picture} alt='user-profile-picture'/>
         </div>
       );
+    }
 }
-}
+
+
   render(){
     return(
       <div>
         {this.renderUserProfile()}
       </div>
-
     );
   }
 }
