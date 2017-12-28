@@ -42,6 +42,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "case-sensitive-paths-webpack-plugin": "^2.1.1",
     "file-loader": "^1.1.6",
     "url-loader": "^0.6.2"
   }

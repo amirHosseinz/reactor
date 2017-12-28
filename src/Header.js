@@ -5,6 +5,10 @@ import Modal from 'react-modal';
 import {Button} from 'semantic-ui-react';
 import UserPanel from './UserPanel.js';
 import {Dropdown} from 'semantic-ui-react';
+import {Divider} from 'semantic-ui-react';
+import {Input} from 'semantic-ui-react'
+
+import {loginPasswordStyle, loginPhoneNumberStyle} from './Styles.js';
 
 
 class Header extends React.Component{
@@ -90,22 +94,37 @@ class Header extends React.Component{
   }
 
   renderLoginPanel(){
+    console.log(loginPhoneNumberStyle);
     return(
-      <div>
+      <div className="login-modal-main">
+
         <Modal isOpen={this.state.loginPanelVisible}
           ariaHideApp={false}
+          style={loginPhoneNumberStyle}
           onRequestClose={()=>{this.setState({loginPanelVisible:false})}}>
-          <p> شماره تلفن همراه خود را وارد کنید </p>
-          <input
-            id="tel-number"
-            type="text">
-            </input>
-            <button onClick = {this.getUserHasPassword.bind(this)}>
-              ورود/ثبت نام
-            </button>
+          <div>
+            <p className="login-title-in-modal"> ورود/ عضویت </p>
+            <Divider/>
+            <p className="enter-phone-number-inmodal"> :برای ورود یا ثبت‌نام شماره تلفن همراه خود را وارد کنید </p>
+              <div className="enter-number-main">
+                <Input
+                  id="tel-number"
+                  type="text"
+                  className="login-input"
+                  placeholder='مثلا : 09121212222'>
+                  </Input>
+                  <br/>
+                  <br/>
+                  <Button onClick = {this.getUserHasPassword.bind(this)} className="login-modal-button">
+                    ورود/ثبت نام
+                  </Button>
+              </div>
+            </div>
         </Modal>
+
         <Modal isOpen={this.state.loginPanelVisible2}
           ariaHideApp={false}
+          style={loginPasswordStyle}
           onRequestClose={()=>{this.setState({loginPanelVisible2:false})}}>
           <Login loginStatus={this.state.hasPassword} />
         </Modal>
