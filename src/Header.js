@@ -4,10 +4,11 @@ import { slide as Menu } from 'react-burger-menu';
 import Modal from 'react-modal';
 import {Button} from 'semantic-ui-react';
 import UserPanel from './UserPanel.js';
+import {Dropdown} from 'semantic-ui-react';
 
 
 class Header extends React.Component{
-  constructor (props) {
+  constructor (props){
     super(props);
     this.state={
       token: null,
@@ -69,7 +70,6 @@ class Header extends React.Component{
      });
   }
   renderLoginButton(){
-    console.log(this.state.isLoggedIn);
     if (this.state.isLoggedIn !== 'true'){
       return(
         <div>
@@ -81,28 +81,20 @@ class Header extends React.Component{
   handleSignOutButton(){
     localStorage['token']='';
     localStorage['isLoggedIn']='false';
+    localStorage['default-panel']='';
     window.location.href = '/';
   }
-  renderUserButton(){
-    if (this.state.isLoggedIn==='true'){
-      return(
-        <div>
-          <Button onClick={this.handleSignOutButton.bind(this)}>Sign Out</Button>
-        </div>
-      );
-    }
-  }
+
   handleLoginButton(){
     this.setState({loginPanelVisible:true});
   }
-
 
   renderLoginPanel(){
     return(
       <div>
         <Modal isOpen={this.state.loginPanelVisible}
           ariaHideApp={false}
-        onRequestClose={()=>{this.setState({loginPanelVisible:false})}}>
+          onRequestClose={()=>{this.setState({loginPanelVisible:false})}}>
           <p> شماره تلفن همراه خود را وارد کنید </p>
           <input
             id="tel-number"
@@ -123,16 +115,21 @@ class Header extends React.Component{
 
   signOutAndProfile(){
     return (
-      <button className="userprofile" onClick={this.handleUserProfileClick.bind(this)}>
-       اطلاعت کاربر
-      </button>
+        <div>
+           <Dropdown text='erfan korki' icon={require('./favicon.ico')}>
+            <Dropdown.Menu>
+            <p className="main-menu-user" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
+            <Dropdown.Divider/>
+            <p className="main-menu-user" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
+            </Dropdown.Menu>
+           </Dropdown>
+        </div>
     );
-
   }
   renderMainMenu(){
     if(this.state.isLoggedIn==='true'){
       return (
-        <div>
+        <div className='main-menu-header'>
           <button className="messages" onClick={this.handleMessageClick.bind(this)}>
             پیام ها
           </button>
@@ -166,6 +163,8 @@ class Header extends React.Component{
     }
   }
   handleUserProfileClick(){
+    console.log('clicked!!!');
+    console.log(localStorage['default-panel']);
     if (localStorage['default-panel']!=='userprofile'){
       localStorage['default-panel']='userprofile';
       window.location.href = '/dashboard';
@@ -190,7 +189,6 @@ class Header extends React.Component{
                 <div>
                   <a className='logolink' href="http://localhost:3000">  <p className='logofont'>تریپین</p></a>
                 </div>
-                {this.renderUserButton()}
               </div>
           </div>
         </div>
