@@ -75,8 +75,10 @@ class UserProfile extends React.Component{
 
               <div className='username_offical'>
                 {this.state.ProfileInfo.user.first_name}
-                
-                {this.state.ProfileInfo.user.last_name}
+                <p>  </p>
+                <div className="profile-lastname">
+                  {this.state.ProfileInfo.user.last_name}
+                </div>
               </div>
         </div>
       );
