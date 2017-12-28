@@ -1092,3 +1092,27 @@ padding-bottom: 28px;
 .price-div-results{
   height: 30px;
 }
+.profile-container-margined{
+  width: 80%;
+  margin:auto;
+  height: 600px;
+}
+.profile-container{
+  background-color: rgba(0, 0, 0, .1)   ;
+}
+.profile-avataricon{
+  height: 200px;
+  margin: auto;
+}
+.profile-avatarimg{
+  height: 240px;
+}
+.profilebox{
+}
+.username_offical{
+  font-size: 18px;
+  font-family: IRANSans;
+  color: #484848;
+  text-align: center;
+  font-weight: 500;
+}

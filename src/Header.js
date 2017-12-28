@@ -14,7 +14,7 @@ class Header extends React.Component{
       loginPanelVisible2:false,
       hasPassword: null,
       searchParams:{
-        phoneNumber: null,
+      phoneNumber: null,
       },
       hidden: false
     };
@@ -68,7 +68,8 @@ class Header extends React.Component{
      });
   }
   renderLoginButton(){
-    if (this.state.isLoggedIn==='false' || this.state.isLoggedIn===undefined){
+    console.log(this.state.isLoggedIn);
+    if (this.state.isLoggedIn !== 'true'){
       return(
         <div>
           <button onClick={this.handleLoginButton.bind(this)}>ورود</button>
@@ -133,6 +134,8 @@ class Header extends React.Component{
       <div className='header container hidden-xs visible-xl'>
        <div className='hearder-child-margined'>
           <div className="header-menu-desktop col-md-10">
+            {this.renderLoginButton()}
+            {this.renderLoginPanel()}
           </div>
           <div className="logo col-md-2">
               <div className='headerchild'>
@@ -155,7 +158,7 @@ class Header extends React.Component{
            <Menu className="burger" width={ '100%' }>
              <a id="home" className="menu-item" href="/">خانه</a>
              {this.renderLoginButton()}
-             <a onClick={ this.showSettings } className="menu-item" href="/">ورود</a>
+             <a onClick={ this.showSettings} className="menu-item" href="/">ورود</a>
              <a  className="menu-item--small" href="">Settings</a>
            </Menu>
         </div>

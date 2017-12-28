@@ -12,7 +12,7 @@ class HostInfoDiscription extends React.Component{
       if (this.props.homeData !== ''){
         if (this.props.homeData.owner.profile_picture === null){
           return(
-            <img src="http://svgshare.com/i/4V0.svg"  className="avatar-icon" alt = "" />
+            <img src={require('./facilities/prof_avatar_tripinn.svg')}  className="avatar-icon" alt = "" />
           );
         }
         else{
