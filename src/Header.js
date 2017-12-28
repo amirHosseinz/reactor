@@ -24,7 +24,8 @@ class Header extends React.Component{
       searchParams:{
       phoneNumber: null,
       },
-      hidden:false
+      role:null,
+      ProfileInfo:null,
     };
   }
   componentDidMount(){
@@ -73,6 +74,7 @@ class Header extends React.Component{
        this.setState({hasPassword: loginStatus.has_pass});
      });
   }
+
   renderLoginButton(){
     if (this.state.isLoggedIn !== 'true'){
       return(
@@ -92,7 +94,6 @@ class Header extends React.Component{
   handleLoginButton(){
     this.setState({loginPanelVisible:true});
   }
-
   renderLoginPanel(){
     console.log(loginPhoneNumberStyle);
     return(
@@ -135,7 +136,7 @@ class Header extends React.Component{
   signOutAndProfile(){
     return (
         <div>
-           <Dropdown text='erfan korki' icon={require('./favicon.ico')}>
+           <Dropdown text={localStorage['user-first-name'] +' '+ localStorage['user-last-name']} icon={require('./favicon.ico')}>
             <Dropdown.Menu>
             <p className="main-menu-user" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
             <Dropdown.Divider/>
@@ -182,8 +183,6 @@ class Header extends React.Component{
     }
   }
   handleUserProfileClick(){
-    console.log('clicked!!!');
-    console.log(localStorage['default-panel']);
     if (localStorage['default-panel']!=='userprofile'){
       localStorage['default-panel']='userprofile';
       window.location.href = '/dashboard';
@@ -191,6 +190,7 @@ class Header extends React.Component{
   }
   render()
   {
+
     return (
       <div>
       <div className='header container hidden-xs visible-xl'>

@@ -1,4 +1,5 @@
 import React from 'react';
+
 class Facilities extends React.Component {
 
   renderRefrig () {
@@ -226,7 +227,6 @@ class Facilities extends React.Component {
       return(
         <div className="facilities-item">
         <img src={require('./facilities/wc-1.png')}   className="other-amanities-icon" alt = "" />
-
         <p className="facility-text">
         توالت فرنگی
         </p>
@@ -248,35 +248,53 @@ class Facilities extends React.Component {
     }
   }
 
-
-
-
   render () {
     return(
-          <div>
-            {this.renderRefrig()}
-            {this.renderParking()}
-            {this.renderBarbecue()}
-            {this.renderBlanket()}
-            {this.renderCanape()}
-            {this.renderConditioner()}
-            {this.renderDinnerTable()}
-            {this.renderElevator()}
-            {this.renderFoosball()}
-            {this.renderHanger()}
-            {this.renderHeater()}
-            {this.renderKitchenware()}
-            {this.renderMicrowave()}
-            {this.renderPavilion()}
-            {this.renderPingpong()}
-            {this.renderPool()}
-            {this.renderStove()}
-            {this.renderTeamaker()}
-            {this.renderTv()}
-            {this.renderForeigntoilet()}
 
+      <div id="content">
+
+          {this.renderFoosball()}
+
+          {this.renderBarbecue()}
+
+          {this.renderHeater()}
+
+          {this.renderBlanket()}
+
+          {this.renderCanape()}
+
+          {this.renderElevator()}
+
+          {this.renderHanger()}
+
+          {this.renderPavilion()}
+
+          {this.renderTv()}
+
+          {this.renderForeigntoilet()}
+
+          {this.renderStove()}
+
+          {this.renderKitchenware()}
+
+          {this.renderRefrig()}
+
+          {this.renderDinnerTable()}
+
+          {this.renderMicrowave()}
+
+          {this.renderTeamaker()}
+
+          {this.renderConditioner()}
+
+          {this.renderPingpong()}
+
+          {this.renderPool()}
+
+          {this.renderParking()}
 
           </div>
+
     );
   }
 }
