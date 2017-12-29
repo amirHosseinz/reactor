@@ -11,7 +11,7 @@ export const loginPhoneNumberStyle = {
     top                        : '15%',
     left                       : '35%',
     right                      : '35%',
-    bottom                     : '30%',
+    bottom                     : '42%',
     outline                    : '0',
     padding                    : '5px',
     transform                  : 'translate(0%, 0%)'

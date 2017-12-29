@@ -1,6 +1,7 @@
 import React from 'react';
 import { englishToPersianDigits } from './tools/EnglishToPersianDigits';
-import { Divider } from 'semantic-ui-react';
+import { Divider,Button,Input } from 'semantic-ui-react';
+
 class UserProfile extends React.Component{
   constructor(props){
     super(props);
@@ -91,28 +92,48 @@ class UserProfile extends React.Component{
               <div className="edit-profile-xl-inputs" dir="rtl">
               <div className="edit-prof-row1 row">
                   <div className="col-md-4">
-                      <input className="last_name_edit input-sm form-control" placeholder="کد ملی"/>
+                    <p className="profile-labels">نام:</p>
+                    <input className="first_name_edit input-sm form-control" placeholder="نام"/>
                   </div>
                 <div className="col-md-4">
+                  <p className="profile-labels">نام خانوادگی:</p>
                   <input className="last_name_edit input-sm form-control"  placeholder="نام خانوادگی"/>
                 </div>
                 <div className="col-md-4">
-                  <input className="first_name_edit input-sm form-control" placeholder="نام"/>
+                  <p className="profile-labels">کد ملی:</p>
+                  <input className="last_name_edit input-sm form-control" placeholder="کد ملی"/>
                 </div>
               </div>
-              <div className="row">
+              <div className="edit-prof-row1 row">
+
                 <div className="col-md-4">
+                  <p className="profile-labels">شماره همراه: </p>
+                  <input className="last_name_edit input-sm form-control"  placeholder="شماره تلفن همراه"/>
                 </div>
                 <div className="col-md-4">
+                  <p className="profile-labels">ایمیل:</p>
                   <input className="last_name_edit input-sm form-control"  placeholder="ایمیل"/>
                 </div>
                 <div className="col-md-4">
-                  <input className="last_name_edit input-sm form-control"  placeholder="شماره تلفن همراه"/>
                 </div>
               </div>
+              <div className="edit-prof-row1 row">
+
+                <div className="col-md-4">
+                  <p className="profile-labels">رمز عبور : </p>
+                  <input className="last_name_edit input-sm form-control" type="password" placeholder="رمز عبور"/>
+                </div>
+                <div className="col-md-4">
+                  <p className="profile-labels">تکرار رمز عبور:</p>
+                  <input className="last_name_edit input-sm form-control" type="password" placeholder="تکرار رمز عبور"/>
+                </div>
+                <div className="col-md-4">
+                </div>
+              </div>
+
               <div className="row">
                 <div className="col-md-12">
-                  <button> ذخیره </button>
+                  <Button className="save-edit" color="blue"> ذخیره </Button>
                 </div>
               </div>
               </div>

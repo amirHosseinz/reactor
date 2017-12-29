@@ -105,16 +105,22 @@ class Header extends React.Component{
             <Divider/>
             <p className="enter-phone-number-inmodal"> :برای ورود یا ثبت‌نام شماره تلفن همراه خود را وارد کنید </p>
               <div  dir="rtl" className="enter-number-main" >
-                <Input
+                <input
+                  maxlength="11"
                   id="tel-number"
-                  size="big"
-                  type="text"
+                  autocomplete="off"
                   className="login-input"
-                  placeholder='مثلا : 09121212222'>
-                  </Input>
+                  placeholder="مثال: ۰۹۱۲۰۰۰۰۰۰۰"
+                  type="numeric"
+                  >
+                  </input>
+
+                  <div className="divider-x"></div>
+
                   <br/>
                   <br/>
-                  <Button onClick = {this.getUserHasPassword.bind(this)} className="login-modal-button">
+
+                  <Button color="blue" onClick = {this.getUserHasPassword.bind(this)} className="login-modal-button">
                   ورود / ثبت‌نام
                   </Button>
               </div>
