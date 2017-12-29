@@ -62,7 +62,6 @@ renderUtilities () {
     // const util1list=util1.map((util1)=><div className={util1}><ul key={util1}>{util1}</ul></div>);
     const util2=this.props.homeData.general_util_options;
     // const util2list=util2.map((util2)=><div className={util2}><ul key={util2}>{util2}</ul></div>);
-console.log('injaaaaaaaaaaaaaa');
 
     var list1=[];
     var list2=[];
@@ -98,9 +97,6 @@ console.log('injaaaaaaaaaaaaaa');
      }
 else{i+=1}
 }
-console.log('here');
-
-
     return(
       <div>
       <div>

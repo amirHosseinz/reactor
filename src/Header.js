@@ -93,7 +93,6 @@ class Header extends React.Component{
     this.setState({loginPanelVisible:true});
   }
   renderLoginPanel(){
-    console.log(loginPhoneNumberStyle);
     return(
       <div className="login-modal-main">
 

@@ -28,3 +28,21 @@ export const loginPasswordStyle = {
     transform             : 'translate(-50%, -50%)'
   }
 };
+
+export const fixedReservePanelHouseDetails = {
+  backgroundColor: '#fff',
+}
+
+export const normalReservePanelHouseDetails ={
+  backgroundColor: '#fff',
+}
+
+export const fixedScrollListHouseDetails={
+  backgroundColor: '#fff',
+  border: '1px solid #ddd',
+  boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.2)',
+}
+
+export const normalScrolllListHouseDetails={
+  backgroundColor: '#fff',
+}
