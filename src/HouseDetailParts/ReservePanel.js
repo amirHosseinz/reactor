@@ -44,15 +44,15 @@ class ReservePanel extends React.Component{
   setSearchParams(reqpar){
     console.log(reqpar);
     if(reqpar.startDate=== null || reqpar.startDate==='' ){
-      alert('please enter start date');
+      alert('.لطفا تاریخ ورود و خروج خود را دقیق وارد نمایید');
       return;
     }
     if(reqpar.endDate===null || reqpar.endDate===''){
-      alert('please enter end date');
+      alert('.لطفا تاریخ ورود و خروج خود را دقیق وارد نمایید');
       return ;
     }
     if (reqpar.numberOfGuests === ''){
-      alert('please enter number of guests');
+      alert('.لطفا تعداد مهمان‌های خود را وارد نمایید');
       return;
     }
     this.setState({requestParams:reqpar},() => {this.getDataFromServer()});
@@ -186,17 +186,20 @@ class ReservePanel extends React.Component{
     {this.renderFromDatePicker()}
     return(
       <div>
-        <div>
+        <div className="guestnumber-div">
           <GuestNumber />
         </div>
+        <div className="divider-card"></div>
+
         <div>
-          <input id='fromdatepicker' ref='fromdatepicker' placeholder='از'style={{direction:'rtl',textAlign:'center'}}/>
+          <input className="date-picker-input input-sm form-control" id='fromdatepicker' ref='fromdatepicker' placeholder='تاریخ ورود'style={{direction:'rtl',textAlign:'center'}}/>
         </div>
         <div>
-          <input id='todatepicker' ref='todatepicker' placeholder='تا'style={{direction:'rtl',textAlign:'center'}}/>
+          <input className="date-picker-input input-sm form-control" id='todatepicker' ref='todatepicker' placeholder='تاریخ خروج'style={{direction:'rtl',textAlign:'center'}}/>
         </div>
+
           <div className='reserve-button-div'>
-            <Button color='twitter' className='reserve-button' onClick ={this.handleClick.bind(this)}>
+            <Button color='blue' className='reserve-button' onClick ={this.handleClick.bind(this)}>
               !رزرو کنید
             </Button>
           </div>
@@ -204,29 +207,31 @@ class ReservePanel extends React.Component{
           isOpen={this.state.isOpen}
           onRequestClose={()=>{this.setState({isOpen:false})}}
           >
-          <div>
-            {this.showHostPrice()}
-          </div>
-          <div>
-            {this.showTrypinnPrice()}
-          </div>
-          <div>
-            {this.showIsAvailable()}
-          </div>
-          <div>
-            {this.showTrypinnDiscount()}
-          </div>
-          <div>
-            {this.showTotalDiscount()}
-          </div>
-          <div>
-            {this.showTotalPrice()}
-          </div>
-          <div>
-            <p> در حال حاضر امکان رزرو اقامتگاه از طریق وبسایت وجود ندارد. برای رزرو اقامتگاه ها لطفا اپلیکیشن را دانلود کنید.</p>
-          </div>
-          <div>
-            {this.showBookButton()}
+          <div dir="rtl" className="reserve-modal">
+              <div>
+                {this.showHostPrice()}
+              </div>
+              <div>
+                {this.showTrypinnPrice()}
+              </div>
+              <div>
+                {this.showIsAvailable()}
+              </div>
+              <div>
+                {this.showTrypinnDiscount()}
+              </div>
+              <div>
+                {this.showTotalDiscount()}
+              </div>
+              <div>
+                {this.showTotalPrice()}
+              </div>
+              <div>
+                <p> در حال حاضر امکان رزرو اقامتگاه از طریق وبسایت وجود ندارد. برای رزرو اقامتگاه ها لطفا اپلیکیشن را دانلود کنید.</p>
+              </div>
+              <div>
+                {this.showBookButton()}
+              </div>
           </div>
         </Modal>
 

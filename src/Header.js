@@ -138,8 +138,8 @@ class Header extends React.Component{
         <div>
            <Dropdown icon='dropdown' floating="right" text={localStorage['user-first-name'] +' '+ localStorage['user-last-name']} >
             <Dropdown.Menu>
-            <p className="main-menu-user" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
-            <p className="main-menu-user" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
+            <p className="main-menu-user1" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
+            <p className="main-menu-user2" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
             </Dropdown.Menu>
            </Dropdown>
         </div>

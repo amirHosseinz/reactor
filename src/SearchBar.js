@@ -62,8 +62,10 @@ class SearchBar extends React.Component {
                       />
                   </div>
                   <div className="multi-input-1 col-md-2">
+
                   </div>
                   <div className="multi-input-1 col-md-2">
+                    
                   </div>
                   <div className="multi-input-1 col-md-2">
                   </div>
