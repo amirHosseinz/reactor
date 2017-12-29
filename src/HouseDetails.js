@@ -2,7 +2,7 @@ import React from 'react';
 
 import Lightbox from 'react-image-lightbox';
 import scrollToComponent from 'react-scroll-to-component';
-import Sticky from 'react-sticky-el';
+// import Sticky from 'react-sticky-el';
 
 import ReservePanel from './HouseDetailParts/ReservePanel.js';
 import MainDiscription from './HouseDetailParts/MainDiscription';
@@ -12,6 +12,7 @@ import MapDiscription from './HouseDetailParts/MapDiscription';
 import RatingDiscription from './HouseDetailParts/RatingDiscription';
 import HostInfoDiscription from './HouseDetailParts/HostInfoDiscription';
 import {englishToPersianDigits} from './tools/EnglishToPersianDigits';
+import {Sticky} from 'semantic-ui-react';
 
 
 class HouseDetails extends React.Component {
@@ -185,7 +186,7 @@ class HouseDetails extends React.Component {
         <div className='house-detail-top'>
             <div className="house-detail-top-margined">
               <div className="col-md-3">
-                <Sticky stickyStyle={{marginTop:'110px'}}>
+                <Sticky>
                   <div className='reserve-card'>
                     <div className="reserve-card-child">
                       <p className="text-011">:هزینه هرشب اقامت</p>

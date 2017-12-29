@@ -76,8 +76,8 @@ class Header extends React.Component{
   renderLoginButton(){
     if (this.state.isLoggedIn !== 'true'){
       return(
-        <div>
-          <p className="main-menu-login-button" onClick={this.handleLoginButton.bind(this)}> ورود</p>
+        <div className="main-menu-header">
+          <p className="clickable-p"  onClick={this.handleLoginButton.bind(this)}>ورود / ثبت‌نام</p>
         </div>
       );
     }
@@ -101,13 +101,14 @@ class Header extends React.Component{
           ariaHideApp={false}
           style={loginPhoneNumberStyle}
           onRequestClose={()=>{this.setState({loginPanelVisible:false})}}>
-          <div>
+          <div className="login1-modal">
             <p className="login-title-in-modal"> ورود/ عضویت </p>
             <Divider/>
             <p className="enter-phone-number-inmodal"> :برای ورود یا ثبت‌نام شماره تلفن همراه خود را وارد کنید </p>
-              <div className="enter-number-main">
+              <div  dir="rtl" className="enter-number-main" >
                 <Input
                   id="tel-number"
+                  size="big"
                   type="text"
                   className="login-input"
                   placeholder='مثلا : 09121212222'>
@@ -115,7 +116,7 @@ class Header extends React.Component{
                   <br/>
                   <br/>
                   <Button onClick = {this.getUserHasPassword.bind(this)} className="login-modal-button">
-                    ورود/ثبت نام
+                  ورود / ثبت‌نام
                   </Button>
               </div>
             </div>
@@ -134,7 +135,7 @@ class Header extends React.Component{
   signOutAndProfile(){
     return (
         <div>
-           <Dropdown icon='dropdown' text={localStorage['user-first-name'] +' '+ localStorage['user-last-name']} icon={require('./favicon.ico')}>
+           <Dropdown icon='dropdown' floating="right" text={localStorage['user-first-name'] +' '+ localStorage['user-last-name']} >
             <Dropdown.Menu>
             <p className="main-menu-user" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
             <p className="main-menu-user" onClick={this.handleSignOutButton.bind(this)}>خروج</p>

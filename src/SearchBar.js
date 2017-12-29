@@ -10,7 +10,6 @@ import './tools/DatePicker/bootstrap-datepicker.css';
 
 import {Search} from 'semantic-ui-react';
 
-const source = [{name:'erfan'} , {name:'mohsen'} , {name:'mehrdad'}];
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -44,14 +43,6 @@ class SearchBar extends React.Component {
    });
   }
 
-  renderSearchBar(){
-    return (
-      <div>
-
-      </div>
-
-    );
-  }
   renderSearchBarInDetails(){
     return(
       <div className="render-results row">
@@ -61,7 +52,14 @@ class SearchBar extends React.Component {
                 </div>
                 <div className="search-inputs col-md-9">
                   <div className="multi-input-1 col-md-2">
-                    {this.renderSearchBar()}
+                    <Typeahead
+                      className="typeahead-indetail-xl"
+                      align="right"
+                      onChange={(selected) => {
+                        // Handle selections...
+                      }}
+                      options={[ /* Array of objects or strings */ ]}
+                      />
                   </div>
                   <div className="multi-input-1 col-md-2">
                   </div>
@@ -110,7 +108,15 @@ class SearchBar extends React.Component {
           <div className="xxxz col-md-2"></div>
           </div>
             <div className="searchbar-zone">
-              {this.renderSearchBar()}
+                <Typeahead
+                  bsSize="large"
+                  align="right"
+                  className="typeahead-onlycity-xl"
+                  onChange={(selected) => {
+                    // Handle selections...
+                  }}
+                  options={[ /* Array of objects or strings */ ]}
+                  />
               <Button color='blue' className="search-btn btn"  onClick={this.handleClick.bind(this)} data-reactid="99">
                 <span className='searchicon'>
                   <img src="http://image.ibb.co/fjdMQG/trpinn_search.png" className='search-image' alt=""></img>
