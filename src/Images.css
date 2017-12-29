@@ -1,4 +1,6 @@
+.main{
 
+}
 .login-title-in-modal{
   font-family: IRANSans;
   font-size: 20px;
@@ -18,13 +20,30 @@
   padding-top: 10px;
   padding-bottom: 20px;
 }
+.enter-phone-number-inmodal2{
+  font-family: IRANSans;
+  font-size: 14x;
+  font-weight: 500;
+  text-align: center;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
 .login-input{
   text-align: right !important;
   font-family: IRANSans !important;
   width: 60%;
   box-shadow: none;
-  font-size: 14px;
-  height: 41px;
+  font-size: 18px;
+  height: 48px;
+  border:0px;
+}
+.login-input-code{
+  text-align: center !important;
+  font-family: IRANSans !important;
+  width: 20%;
+  box-shadow: none;
+  font-size: 16px;
+  height: 38px;
   border:0px;
 }
 .divider-x{
@@ -34,11 +53,26 @@
   width: 60%;
   padding-top:-5px;
 }
+.divider-x2{
+  height:1px;
+  background-color: #000;
+  margin: auto;
+  width: 30%;
+  padding-top:-5px;
+}
 
 .login-modal-button{
   width: 90%;
   font-family: IRANSans !important;
 }
+
+.login-modal-button-2{
+  width: 90%;
+  font-family: IRANSans !important;
+  padding-top: 40px;
+}
+
+
 .form-control::-moz-placeholder{
 
 }
@@ -308,6 +342,9 @@ i.big.icons {
 .search-image-xs{
   height: 2rem;
 }
+.search-image-result{
+  height: 1.4rem;
+}
 
 .searchbar-zone{
   display: -webkit-flex; /* Safari */
@@ -365,6 +402,7 @@ i.big.icons {
   color: #454545;
   text-align: right;
   margin-right: 1.5rem;
+  margin-top: -20px;
 }
 .slogan-container{
   margin-top: .8rem;
@@ -720,7 +758,7 @@ transform: scale(2, 2);
   margin-top: 0px;
 }
 .results-search{
-  height: 80px;
+  height: 60px;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
 
 }
@@ -756,7 +794,7 @@ transform: scale(2, 2);
 .multi-input-2{
   height: 38px;
   margin-top: 10px;
-  margin-right: 10px;
+  margin-right: 0px;
 }
 .reserve-button-div{
   margin-top: 20px;
@@ -1094,7 +1132,7 @@ padding-bottom: 28px;
   align-self: right;
 }
 .searchbarmain{
-  background-color: #f9f9f9;
+
 }
 
 
@@ -1333,4 +1371,8 @@ text-align:center;
   font-family: IRANSans;
   margin-top:-5px;
   color:#4e4e4e;
+}
+.search-btn-result{
+  height: 38px !important;
+  width: 68px;
 }

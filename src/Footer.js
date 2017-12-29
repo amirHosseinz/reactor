@@ -22,10 +22,10 @@ class Footer extends React.Component{
                         </a>
                       </div>
                     <div className='footer-menu'>
-                      <a className='logolink' href="www.tryppin.com">  <p className='logo-menu-font'>قوانین و شرایط استفاده</p></a>
-                      <a className='logolink' href="hwww.tryppin.com">  <p className='logo-menu-font'>!میزبان شوید</p></a>
-                      <a className='logolink' href="www.tryppin.com">  <p className='logo-menu-font'>درباره تریپین</p></a>
-                      <a className='logolink' href="www.tryppin.com">  <p className='logo-menu-font' >تماس با ما</p></a>
+                      <a className='logolink' href="http://tripinn.ir">  <p className='logo-menu-font'>قوانین و شرایط استفاده</p></a>
+                      <a className='logolink' href="http://tripinn.ir">  <p className='logo-menu-font'>!میزبان شوید</p></a>
+                      <a className='logolink' href="http://tripinn.ir">  <p className='logo-menu-font'>درباره تریپین</p></a>
+                      <a className='logolink' href="mailto:support@tripinn.ir">  <p className='logo-menu-font' >تماس با ما</p></a>
                     </div>
                   </div>
                   <div className="col-md-4">

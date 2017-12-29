@@ -2,11 +2,10 @@ import React from 'react';
 import Login from './Login.js';
 import { slide as Menu } from 'react-burger-menu';
 import Modal from 'react-modal';
-import {Button} from 'semantic-ui-react';
+import {Button,Divider} from 'semantic-ui-react';
 import UserPanel from './UserPanel.js';
 import {Dropdown} from 'semantic-ui-react';
-import {Divider} from 'semantic-ui-react';
-import {Input} from 'semantic-ui-react'
+import {Input} from 'semantic-ui-react';
 
 import {loginPasswordStyle, loginPhoneNumberStyle} from './Styles.js';
 
@@ -114,12 +113,9 @@ class Header extends React.Component{
                   type="numeric"
                   >
                   </input>
-
                   <div className="divider-x"></div>
-
                   <br/>
                   <br/>
-
                   <Button color="blue" onClick = {this.getUserHasPassword.bind(this)} className="login-modal-button">
                   ورود / ثبت‌نام
                   </Button>
