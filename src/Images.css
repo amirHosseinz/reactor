@@ -1,29 +1,45 @@
 
 .login-title-in-modal{
   font-family: IRANSans;
-  font-size: 22px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 500;
   text-align: center;
   padding-top: 10px;
+  color:#484848;
 }
 .login1-modal{
-  padding: 10px;
+  padding: 18px;
 }
 .enter-phone-number-inmodal{
   font-family: IRANSans;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 14x;
+  font-weight: 500;
   text-align: center;
   padding-top: 10px;
+  padding-bottom: 20px;
 }
 .login-input{
   text-align: right !important;
   font-family: IRANSans !important;
-  width: 80%;
+  width: 60%;
+  box-shadow: none;
+  font-size: 14px;
+  height: 41px;
+  border:0px;
 }
+.divider-x{
+  height:1px;
+  background-color: #000;
+  margin: auto;
+  width: 60%;
+  padding-top:-5px;
+}
+
 .login-modal-button{
-  width: 100%;
+  width: 90%;
   font-family: IRANSans !important;
+}
+.form-control::-moz-placeholder{
 
 }
 .enter-number-main{
@@ -287,7 +303,7 @@ i.big.icons {
   border-bottom-right-radius: 0px !important;
 }
 .search-image{
-  height: 2.6rem;
+  height: 2rem;
 }
 .search-image-xs{
   height: 2rem;
@@ -1283,10 +1299,38 @@ text-align:center;
 }
 .edit-profile-xl{
   padding: 20px;
+
 }
 .edit-profile-xl-inputs{
   padding: 20px;
+
 }
 .edit-prof-row1{
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row;
+}
+.input-sm{
+  font-family: IRANSans !important;
+  padding-right: 8px !important;
+  border-radius: 5px !important;
+  background-color: #f5f5f5 !important;
+  width: 90% !important;
+}
+.save-edit{
+    font-family: IRANSans !important;
+}
+.ui.blue.button{
+  background-color: #42b0c6 !important;
+}
+.ui.blue.button:hover{
+  background-color: #1796b4 !important;
+}
+.profile-labels{
+  font-size: 10px;
+  font-family: IRANSans;
+  margin-top:-5px;
+  color:#4e4e4e;
 }

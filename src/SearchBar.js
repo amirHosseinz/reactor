@@ -119,7 +119,7 @@ class SearchBar extends React.Component {
                   />
               <Button color='blue' className="search-btn btn"  onClick={this.handleClick.bind(this)} data-reactid="99">
                 <span className='searchicon'>
-                  <img src="http://image.ibb.co/fjdMQG/trpinn_search.png" className='search-image' alt=""></img>
+                  <img src={require('./Images/trpinn_search.png')} className='search-image' alt=""></img>
                 </span>
               </Button>
             </div>
