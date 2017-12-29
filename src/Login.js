@@ -134,9 +134,9 @@ class Login extends React.Component{
               <p>کد تایید</p>
               <input id='verify-code' />
               <p>رمز عبور </p>
-              <input id='password' />
+              <input id='password' type="password"/>
               <p> تکرار رمز عبور </p>
-              <input id='confirm-password' />
+              <input id='confirm-password' type="password"/>
               <button onClick={this.handleSignupClick.bind(this)}>ثبت رمز عبور </button>
             </div>
           );
@@ -145,7 +145,7 @@ class Login extends React.Component{
           return (
             <div>
               <p>رمز عبور </p>
-              <input id='password'/>
+              <input id='password' type="password"/>
               <button onClick={this.handleLoginClick.bind(this)}> ورود</button>
             </div>
           );

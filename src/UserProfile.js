@@ -1,7 +1,6 @@
 import React from 'react';
 import { englishToPersianDigits } from './tools/EnglishToPersianDigits';
 import { Divider } from 'semantic-ui-react';
-
 class UserProfile extends React.Component{
   constructor(props){
     super(props);
@@ -65,7 +64,6 @@ class UserProfile extends React.Component{
       return(
         <div className='profile-container'>
 
-
               <div className="profile_photobox">  {this.renderProfilePhoto()}</div>
               <div className="userprofilebox">
                 <div className='username_offical'>
@@ -75,20 +73,7 @@ class UserProfile extends React.Component{
 
               <div className="profile_after_username">
                 <Divider />
-                <div className='user-cell-phone'>
-                  <p className="prof_menu_item_rtl">: شماره تلفن</p>
-                  {englishToPersianDigits(this.state.ProfileInfo.user.cell_phone)}
-                </div>
-                <Divider />
-                <div className='user-mail'>
-                  <p className="prof_menu_item_rtl">: ایمیل </p>
-                  {this.state.ProfileInfo.user.email}
-                </div>
-                <Divider />
-                <div className='user-mail'>
-                  <p className="prof_menu_item_rtl">: کد ملی </p>
-                  {englishToPersianDigits(this.state.ProfileInfo.user.national_id)}
-                </div>
+
               </div>
         </div>
       );
@@ -100,6 +85,37 @@ class UserProfile extends React.Component{
       <div>
           <div className="profile-container-margined">
             <div className="profile_dynamic_edit col-md-9">
+              <div className="edit-profile-xl row">
+                  <p className="dashboard-header"> ویرایش حساب کاربری </p>
+              </div>
+              <div className="edit-profile-xl-inputs" dir="rtl">
+              <div className="edit-prof-row1 row">
+                  <div className="col-md-4">
+                      <input className="last_name_edit input-sm form-control" placeholder="کد ملی"/>
+                  </div>
+                <div className="col-md-4">
+                  <input className="last_name_edit input-sm form-control"  placeholder="نام خانوادگی"/>
+                </div>
+                <div className="col-md-4">
+                  <input className="first_name_edit input-sm form-control" placeholder="نام"/>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-4">
+                </div>
+                <div className="col-md-4">
+                  <input className="last_name_edit input-sm form-control"  placeholder="ایمیل"/>
+                </div>
+                <div className="col-md-4">
+                  <input className="last_name_edit input-sm form-control"  placeholder="شماره تلفن همراه"/>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-12">
+                  <button> ذخیره </button>
+                </div>
+              </div>
+              </div>
             </div>
             <div className="profile_static_bar col-md-3">
                 {this.renderUserProfile()}
