@@ -9,8 +9,6 @@ import './tools/DatePicker/bootstrap-datepicker.js';
 import './tools/DatePicker/bootstrap-datepicker.css';
 import {Search} from 'semantic-ui-react';
 
-
-
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -23,8 +21,17 @@ class SearchBar extends React.Component {
         start_date: null,
         end_date: null,
         capacity: null,
+        SearchBarResults:null,
+        searchBarIsLoading: null,
+        SearchBarValue: null,
       },
     };
+  }
+  componentWillMount(){
+    this.resetSearchBar();
+  }
+  resetSearchBar(){
+    this.setState({ searchBarIsLoading: false, SearchBarResults: [], SearchBarValue: '' });
   }
   getRelevantToken(){
     return localStorage['token'];
@@ -42,12 +49,21 @@ class SearchBar extends React.Component {
      houseList: houseData.room,
    });
   }
+
+  handleResultSelect = (e, { result }) => this.setState({ searchBarValue: result });
+
+
   renderSearchBar(){
     return (
       <div>
-        <Search size="big"  aligned="right" noResultsMessage="!نتیجه‌ای پیدا نشد" icon={null}/>
+      <Search
+        loading={this.state.searchBarIsLoading}
+        onResultSelect={this.handleResultSelect.bind(this)}
+        onSearchChange={this.handleSearchChange.bind(this)}
+        results={this.state.SearchBarResults}
+        value={this.state.SearchBarValue}
+        />
       </div>
-
     );
   }
   renderSearchBarInDetails(){
@@ -97,7 +113,7 @@ class SearchBar extends React.Component {
     );
   }
   renderSearchBarOnlycity(){
-    return (
+    return(
       <div className='only-city-search-bar row'>
         <div className="free-zone col-md-3"></div>
         <div className="main-zone col-md-6">

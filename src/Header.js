@@ -24,10 +24,9 @@ class Header extends React.Component{
       searchParams:{
       phoneNumber: null,
       },
-      role:null,
-      ProfileInfo:null,
     };
   }
+
   componentDidMount(){
     this.interval = setInterval(() => this.reloadHeader(), 1000);
   }

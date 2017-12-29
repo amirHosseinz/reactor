@@ -1,4 +1,3 @@
-
 export const loginPhoneNumberStyle = {
   overlay : {
     position          : 'fixed',
@@ -14,18 +13,11 @@ export const loginPhoneNumberStyle = {
     left                       : '35%',
     right                      : '35%',
     bottom                     : '30%',
-
-//    border                     : 'none',
-    //background                 : 'blue',
-    //border                     : '10px solid #ccc',
-    //borderRadius               : '30px',
     outline                    : '0',
     padding                    : '5px',
     transform                  : 'translate(0%, 0%)'
   }
 };
-
-
 
 export const loginPasswordStyle = {
   content : {
