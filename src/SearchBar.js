@@ -7,8 +7,8 @@ import $ from 'jquery';
 import './tools/DatePicker/bootstrap-datepicker.fa.js';
 import './tools/DatePicker/bootstrap-datepicker.js';
 import './tools/DatePicker/bootstrap-datepicker.css';
+
 import {Search} from 'semantic-ui-react';
-import _ from 'lodash';
 
 const source = [{name:'erfan'} , {name:'mohsen'} , {name:'mehrdad'}];
 class SearchBar extends React.Component {
@@ -23,18 +23,10 @@ class SearchBar extends React.Component {
         start_date: null,
         end_date: null,
         capacity: null,
-        SearchBarResults:null,
-        searchBarIsLoading: null,
-        SearchBarValue: null,
       },
     };
   }
-  componentWillMount(){
-    this.resetSearchBar();
-  }
-  resetSearchBar(){
-    this.setState({ searchBarIsLoading: false, SearchBarResults: [], SearchBarValue: '' });
-  }
+
   getRelevantToken(){
     return localStorage['token'];
   }
@@ -52,32 +44,10 @@ class SearchBar extends React.Component {
    });
   }
 
-  handleResultSelect = (e, { result }) => this.setState({ searchBarValue: result });
-
-  handleSearchChange= (e , { value }) => {
-    this.setState({SearchBarIsLoading: true, SearchBarValue:value } ,
-    ()=> setTimeout(() => {
-          if (this.state.SearchBarValue.length < 1) return this.resetSearchBar()
-
-        const re = new RegExp(_.escapeRegExp(this.state.searchBarValue), 'i')
-        const isMatch = result => re.test(result)
-        this.setState({
-          searchBarIsLoading: false,
-          searchBarResults: _.filter(source, isMatch),
-            });
-        }, 500)
-      );
-}
   renderSearchBar(){
     return (
       <div>
-      <Search
-        loading={this.state.searchBarIsLoading}
-        onResultSelect={this.handleResultSelect.bind(this)}
-        onSearchChange={this.handleSearchChange.bind(this)}
-        results={this.state.SearchBarResults}
-        value={this.state.SearchBarValue}
-        />
+
       </div>
 
     );
@@ -91,7 +61,7 @@ class SearchBar extends React.Component {
                 </div>
                 <div className="search-inputs col-md-9">
                   <div className="multi-input-1 col-md-2">
-                  {this.renderSearchBar()}
+                    {this.renderSearchBar()}
                   </div>
                   <div className="multi-input-1 col-md-2">
                   </div>
@@ -262,14 +232,11 @@ class SearchBar extends React.Component {
     return (
       <div className="searchbarmain">
           <div className="container-fluid hidden-xs visible-xl">
-          {this.renderRelevantSearchBar()}
-          <div className="col-lg col-sm-12 mb-10">
-
-          </div>
-          <div className="col-lg col-sm-12 mb-10">
-
-          </div>
-
+            {this.renderRelevantSearchBar()}
+            <div className="col-lg col-sm-12 mb-10">
+            </div>
+            <div className="col-lg col-sm-12 mb-10">
+            </div>
           </div>
           <div className="container-fluid hidden-xl visible-xs">
               <div className='mobile-margined-search'>

@@ -26,7 +26,6 @@ class Header extends React.Component{
       },
     };
   }
-
   componentDidMount(){
     this.interval = setInterval(() => this.reloadHeader(), 1000);
   }

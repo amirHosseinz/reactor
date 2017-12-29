@@ -1,6 +1,8 @@
 .main-menu-login-button{
   cursor :pointer;
-  text-align : left;.login-modal-main{
+  text-align : left;}
+  
+.login-modal-main{
   font-family: IRANSans;
 }
 .login-title-in-modal{

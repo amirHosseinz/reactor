@@ -4,6 +4,12 @@ import GuestNumber from './GuestNumber.js';
 import {Button} from 'semantic-ui-react';
 import Modal from 'react-modal';
 import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
+import {findDOMNode} from 'react-dom';
+import $ from 'jquery';
+import '../tools/DatePicker/bootstrap-datepicker.fa.js';
+import '../tools/DatePicker/bootstrap-datepicker.js';
+import '../tools/DatePicker/bootstrap-datepicker.css';
+
 
 class ReservePanel extends React.Component{
   constructor(props){
@@ -14,9 +20,9 @@ class ReservePanel extends React.Component{
       token:null,
       isOpen:false,
       requestParams :{
-        startDate : moment(new Date()),
-        endDate : moment(new Date()).add(1,'days'),
-        numberOfGuests : '',
+        numberOfGuests : 1,
+        startDate:null,
+        endDate:null,
         discountCode : null,
       },
     };
@@ -28,12 +34,23 @@ class ReservePanel extends React.Component{
       ()=>this.setSearchParams(this.getDataFromUser()));
   }
   getDataFromUser(){
-    return({startDate : moment(new Date()),
-            endDate : moment(new Date()).add(5,'days'),
-            numberOfGuests : document.getElementById('guest-number').value,
-            discountCode : 'salam_tripinn',});
-    }
+      console.log('ghahbe sefat');
+      return({startDate : document.getElementById('fromdatepicker').value,
+              endDate : document.getElementById('todatepicker').value,
+              numberOfGuests : 1,
+              discountCode : 'salam_tripinn'});
+  }
+
   setSearchParams(reqpar){
+    console.log(reqpar);
+    if(reqpar.startDate=== null || reqpar.startDate==='' ){
+      alert('please enter start date');
+      return;
+    }
+    if(reqpar.endDate===null || reqpar.endDate===''){
+      alert('please enter end date');
+      return ;
+    }
     if (reqpar.numberOfGuests === ''){
       alert('please enter number of guests');
       return;
@@ -58,7 +75,7 @@ class ReservePanel extends React.Component{
      return response.json();
    })
    .then((reserveData) => {
-     this.renderData(reserveData);
+     this.setState({isOpen:true} , ()=>{this.renderData(reserveData)});
    });
  }
   renderData(reserve_data){
@@ -114,7 +131,7 @@ class ReservePanel extends React.Component{
     }
   }
   handleClick(){
-    this.setState({isOpen : true},()=>{this.setToken()});
+    this.setToken();
   }
   sendBookRequest(){
     var request = new Request('https://www.trypinn.com/api/room/request/book/', {
@@ -142,11 +159,41 @@ class ReservePanel extends React.Component{
       return <button onClick={this.sendBookRequest.bind(this)}> Book Request</button>
     }
   }
+  renderFromDatePicker(){
+    const fromDatePicker = findDOMNode(this.refs.fromdatepicker);
+    $(document).ready(function(){
+      $(fromDatePicker).datepicker({
+        changeMonth: true,
+        changeYear: true,
+        isRTL: true,
+        dateFormat: "yy/m/d",
+       });
+    });
+  }
+  renderToDatePicker(){
+    const toDatePicker = findDOMNode(this.refs.todatepicker);
+    $(document).ready(function(){
+      $(toDatePicker).datepicker({
+        changeMonth: true,
+        changeYear: true,
+        isRTL: true,
+        dateFormat: "yy/m/d",
+       });
+    });
+  }
   render(){
+    {this.renderToDatePicker()}
+    {this.renderFromDatePicker()}
     return(
       <div>
         <div>
-          <GuestNumber/>
+          <GuestNumber />
+        </div>
+        <div>
+          <input id='fromdatepicker' ref='fromdatepicker' placeholder='از'style={{direction:'rtl',textAlign:'center'}}/>
+        </div>
+        <div>
+          <input id='todatepicker' ref='todatepicker' placeholder='تا'style={{direction:'rtl',textAlign:'center'}}/>
         </div>
           <div className='reserve-button-div'>
             <Button color='twitter' className='reserve-button' onClick ={this.handleClick.bind(this)}>

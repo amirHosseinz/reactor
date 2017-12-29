@@ -8,7 +8,6 @@ export const loginPhoneNumberStyle = {
     backgroundColor   : 'rgba(0, 0, 0, 0.7)'
   },
   content : {
-    //position                   : 'absolute',
     top                        : '15%',
     left                       : '35%',
     right                      : '35%',
