@@ -1,6 +1,6 @@
 import React from 'react';
 import { englishToPersianDigits } from './tools/EnglishToPersianDigits';
-import { Divider,Button,Input } from 'semantic-ui-react';
+import { Divider,Button } from 'semantic-ui-react';
 
 class UserProfile extends React.Component{
   constructor(props){
@@ -8,7 +8,14 @@ class UserProfile extends React.Component{
     this.state={
       token:null,
       role:null,
-      ProfileInfo:null,
+      profileInfo:null,
+      firstName:'',
+      lastName:'',
+      cellPhone:'',
+      email:'',
+      password : '',
+      confirmPassword:'',
+      nationalId:'',
     };
   }
   componentWillMount() {
@@ -38,11 +45,16 @@ class UserProfile extends React.Component{
    });
   }
   renderData(profile){
-    this.setState({ProfileInfo:profile});
+    this.setState({profileInfo:profile,
+      firstName:profile.user.first_name,
+      lastName:profile.user.last_name,
+      cellPhone:profile.user.cell_phone,
+      email:profile.user.email,
+      nationalId:profile.user.national_id,});
   }
   renderProfilePhoto(){
-      if (this.state.ProfileInfo !== ''){
-        if (this.state.ProfileInfo.user.profile_picture === null){
+      if (this.state.profileInfo !== ''){
+        if (this.state.profileInfo.user.profile_picture === null){
           return(
             <div className="profilebox">
               <img src={require('./HouseDetailParts/facilities/prof_avatar_tripinn.svg')}  className="profile-avataricon" alt = "" />
@@ -52,7 +64,7 @@ class UserProfile extends React.Component{
         else{
           return(
             <div className="host-photo">
-              <img className="profile-avatarimg" src={"https://www.trypinn.com/" +this.state.ProfileInfo.user.profile_picture} alt=""/>
+              <img className="profile-avatarimg" src={"https://www.trypinn.com/" +this.state.profileInfo.user.profile_picture} alt=""/>
             </div>
           );
         }
@@ -60,27 +72,72 @@ class UserProfile extends React.Component{
     }
 
   renderUserProfile(){
-    if (this.state.ProfileInfo!== null){
+    if (this.state.profileInfo!== null){
 
       return(
         <div className='profile-container'>
 
-              <div className="profile_photobox">  {this.renderProfilePhoto()}</div>
+              <div className="profile_photobox">
+                {this.renderProfilePhoto()}
+              </div>
               <div className="userprofilebox">
                 <div className='username_offical'>
-                    <p>{this.state.ProfileInfo.user.first_name} {this.state.ProfileInfo.user.last_name}</p>
+                    <p>{this.state.profileInfo.user.first_name} {this.state.profileInfo.user.last_name}</p>
                 </div>
               </div>
-
               <div className="profile_after_username">
                 <Divider />
-
               </div>
         </div>
       );
     }
 }
-
+  handleSaveInfo(){
+        this.setState({role :this.getRole()} ,()=>this.changeInfOnServer());
+  }
+  changeInfOnServer(){
+    var request = new Request('https://www.trypinn.com/auth/api/user/edit/',{ //
+      method: 'POST',
+      body: JSON.stringify(
+        {
+          first_name:document.getElementById('first-name').value,
+          last_name:document.getElementById('last-name').value,
+          cell_phone:document.getElementById('cell-phone').value,
+          email:document.getElementById('email').value,
+          national_id:document.getElementById('national-id').value,
+        }
+      ),
+      headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+      'Authorization': 'Token '+this.state.token,})
+    });
+   fetch(request)
+   .then((response) => {
+     return response.json();
+   })
+   .then((response) => {
+     localStorage['user-first-name']=this.state.firstName;
+     localStorage['user-last-name']=this.state.lastName;
+     window.location.reload();
+   });
+  }
+  editFirstName(event){
+    this.setState({firstName : event.target.value});
+  }
+  editLastName(event){
+    this.setState({lastName:event.target.value});
+  }
+  editEmail(event){
+    this.setState({email:event.target.value});
+  }
+  editCellPhone(event){
+    this.setState({cellPhone:event.target.value});
+  }
+  editNationalId(event){
+    this.setState({nationalId:event.target.value});
+  }
+  editPassword(event){
+    this.setState({password:event.target.value});
+  }
   render(){
     return(
       <div>
@@ -93,26 +150,26 @@ class UserProfile extends React.Component{
               <div className="edit-prof-row1 row">
                   <div className="col-md-4">
                     <p className="profile-labels">نام:</p>
-                    <input className="first_name_edit input-sm form-control" placeholder="نام"/>
+                    <input id='first-name' onChange={this.editFirstName.bind(this)} className="first_name_edit input-sm form-control"  value={this.state.firstName}/>
                   </div>
                 <div className="col-md-4">
                   <p className="profile-labels">نام خانوادگی:</p>
-                  <input className="last_name_edit input-sm form-control"  placeholder="نام خانوادگی"/>
+                  <input id='last-name'onChange={this.editLastName.bind(this)} className="last_name_edit input-sm form-control"  value={this.state.lastName}/>
                 </div>
                 <div className="col-md-4">
                   <p className="profile-labels">کد ملی:</p>
-                  <input className="last_name_edit input-sm form-control" placeholder="کد ملی"/>
+                  <input id='national-id' onChange={this.editNationalId.bind(this)}className="last_name_edit input-sm form-control" value={this.state.nationalId}/>
                 </div>
               </div>
               <div className="edit-prof-row1 row">
 
                 <div className="col-md-4">
                   <p className="profile-labels">شماره همراه: </p>
-                  <input className="last_name_edit input-sm form-control"  placeholder="شماره تلفن همراه"/>
+                  <input id='cell-phone' onChange={this.editCellPhone.bind(this)} className="last_name_edit input-sm form-control" value={this.state.cellPhone}/>
                 </div>
                 <div className="col-md-4">
                   <p className="profile-labels">ایمیل:</p>
-                  <input className="last_name_edit input-sm form-control"  placeholder="ایمیل"/>
+                  <input id='email' onChange={this.editEmail.bind(this)} className="last_name_edit input-sm form-control"  value={this.state.email}/>
                 </div>
                 <div className="col-md-4">
                 </div>
@@ -121,11 +178,11 @@ class UserProfile extends React.Component{
 
                 <div className="col-md-4">
                   <p className="profile-labels">رمز عبور : </p>
-                  <input className="last_name_edit input-sm form-control" type="password" placeholder="رمز عبور"/>
+                  <input id='password'onChange={this.editPassword.bind(this)} className="last_name_edit input-sm form-control" type="password"/>
                 </div>
                 <div className="col-md-4">
                   <p className="profile-labels">تکرار رمز عبور:</p>
-                  <input className="last_name_edit input-sm form-control" type="password" placeholder="تکرار رمز عبور"/>
+                  <input id='confirm-password' className="last_name_edit input-sm form-control" type="password" value={this.state.confirmPassword}/>
                 </div>
                 <div className="col-md-4">
                 </div>
@@ -133,7 +190,7 @@ class UserProfile extends React.Component{
 
               <div className="row">
                 <div className="col-md-12">
-                  <Button className="save-edit" color="blue"> ذخیره </Button>
+                  <Button className="save-edit" color="blue" onClick={this.handleSaveInfo.bind(this)}> ذخیره </Button>
                 </div>
               </div>
               </div>

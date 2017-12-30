@@ -104,6 +104,7 @@ class Login extends React.Component{
      .then((data) => {
        localStorage['user-first-name']=data.user.first_name;
        localStorage['user-last-name']=data.user.last_name;
+       localStorage['default-panel']='userprofile';
        window.location.href = '/dashboard';
      });
     }

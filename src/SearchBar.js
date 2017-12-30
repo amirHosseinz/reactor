@@ -7,8 +7,7 @@ import $ from 'jquery';
 import './tools/DatePicker/bootstrap-datepicker.fa.js';
 import './tools/DatePicker/bootstrap-datepicker.js';
 import './tools/DatePicker/bootstrap-datepicker.css';
-
-import {Search} from 'semantic-ui-react';
+import {removeDuplicatesFromList} from './tools/RemoveDuplicatesFromLists.js';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -17,8 +16,11 @@ class SearchBar extends React.Component {
       token: null,
       showOnlyCitySearchBar:true,
       houseList:[],
+      cityList:[],
+      cityListFromServer:null,
+      city:null,
       searchParams : {
-        location: null,
+        location: '',
         start_date: null,
         end_date: null,
         capacity: null,
@@ -30,13 +32,10 @@ class SearchBar extends React.Component {
     return localStorage['token'];
   }
   componentWillMount(){
-
     this.setState({
       token : this.getRelevantToken(),
-    }, () => {
-    });
+    }, () => {this.getCityListFromServer()});
   }
-
   renderData(houseData) {
    this.setState({
      houseList: houseData.room,
@@ -55,17 +54,17 @@ class SearchBar extends React.Component {
                     <Typeahead
                       className="typeahead-indetail-xl"
                       align="right"
-                      onChange={(selected) => {
-                        // Handle selections...
-                      }}
-                      options={[ /* Array of objects or strings */ ]}
+                      placeholder={this.state.city}
+                      onChange={(selected) => {this.setState({city:selected[0]}
+                      )}}
+                      options={this.state.cityList}
                       />
                   </div>
                   <div className="multi-input-1 col-md-2">
 
                   </div>
                   <div className="multi-input-1 col-md-2">
-                    
+
                   </div>
                   <div className="multi-input-1 col-md-2">
                   </div>
@@ -112,12 +111,13 @@ class SearchBar extends React.Component {
             <div className="searchbar-zone">
                 <Typeahead
                   bsSize="large"
+                  placeholder="شهر خود را انتخاب کنید"
                   align="right"
+                  lableKey="name"
                   className="typeahead-onlycity-xl"
-                  onChange={(selected) => {
-                    // Handle selections...
+                  onChange={(selected) => {this.setState({city:selected[0]})
                   }}
-                  options={[ /* Array of objects or strings */ ]}
+                  options={this.state.cityList}
                   />
               <Button color='blue' className="search-btn btn"  onClick={this.handleClick.bind(this)} data-reactid="99">
                 <span className='searchicon'>
@@ -156,7 +156,7 @@ class SearchBar extends React.Component {
       counter++;
       if (counter===1) {
         listOfFive.push(
-          <div className="full-width col-md-1">
+          <div id={item.id} className="full-width col-md-1">
           </div>
         );
       }
@@ -180,7 +180,7 @@ class SearchBar extends React.Component {
   }
   setSearchParams(){
     var spar = {
-      location: '',
+      location: this.state.city,
       start_date: new Date(),
       end_date: new Date(),
       capacity: 1,
@@ -212,6 +212,7 @@ class SearchBar extends React.Component {
    });
   }
    handleClick(){
+     console.log('clicked');
      this.setState({showOnlyCitySearchBar : false} , ()=> {this.setSearchParams()});
    }
    renderFromDatePicker(){
@@ -235,6 +236,34 @@ class SearchBar extends React.Component {
          dateFormat: "yy/m/d",
         });
      });
+   }
+   getCityListFromServer(){
+     var request = new Request('https://www.trypinn.com/api/homepage/',{
+       method: 'POST',
+       headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+       'Authorization': 'Token '+this.state.token,})
+     });
+    fetch(request)
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
+      this.setState({cityListFromServer:response.room},()=>{this.fillSearchBarOptions()});
+    });
+   }
+   fillSearchBarOptions(){
+     var list = [];
+     if(this.state.cityListFromServer!==null){
+       for (var i=0 ; i<this.state.cityListFromServer.length; i++){
+        list.push({name : this.state.cityListFromServer[i].city});
+       }
+     }
+     list = removeDuplicatesFromList(list);
+     var list2 = [];
+     for (var i=0 ; i<list.length ; i++) {
+       list2.push(list[i].name);
+     }
+     this.setState({cityList : list2});
    }
   render(){
     return (
@@ -281,9 +310,7 @@ class SearchBar extends React.Component {
                     <img src={require('./Images/button-app-store.svg')} className='bazar-ico' alt=" دانلود از سیب‌اپ"></img>
                   </div>
                 </div>
-
               </div>
-
           </div>
       </div>
     );

@@ -3,9 +3,7 @@ import Login from './Login.js';
 import { slide as Menu } from 'react-burger-menu';
 import Modal from 'react-modal';
 import {Button,Divider} from 'semantic-ui-react';
-import UserPanel from './UserPanel.js';
 import {Dropdown} from 'semantic-ui-react';
-import {Input} from 'semantic-ui-react';
 
 import {loginPasswordStyle, loginPhoneNumberStyle} from './Styles.js';
 
@@ -136,7 +134,7 @@ class Header extends React.Component{
   signOutAndProfile(){
     return (
         <div>
-           <Dropdown icon='dropdown' floating="right" text={localStorage['user-first-name'] +' '+ localStorage['user-last-name']} >
+           <Dropdown icon='dropdown' floating={true} text={localStorage['user-first-name'] +' '+ localStorage['user-last-name']} >
             <Dropdown.Menu>
             <p className="main-menu-user1" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
             <p className="main-menu-user2" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
@@ -175,14 +173,12 @@ class Header extends React.Component{
     }
   }
   handleUserProfileClick(){
-    if (localStorage['default-panel']!=='userprofile'){
       localStorage['default-panel']='userprofile';
       window.location.href = '/dashboard';
-    }
   }
+
   render()
   {
-
     return (
       <div>
       <div className='header container hidden-xs visible-xl'>
@@ -190,9 +186,7 @@ class Header extends React.Component{
           <div className="header-menu-desktop col-md-10">
             {this.renderMainMenu()}
           {this.renderLoginPanel()}
-
-
-            {this.renderLoginButton()}
+          {this.renderLoginButton()}
           </div>
           <div className="logo col-md-2">
               <div className='headerchild'>
