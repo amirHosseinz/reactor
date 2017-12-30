@@ -151,15 +151,7 @@ class Header extends React.Component{
         <div className='main-menu-header'>
           {this.signOutAndProfile()}
 
-          <button className="messages" onClick={this.handleMessageClick.bind(this)}>
-            پیام ها
-          </button>
-          <button className="requests" onClick={this.handleRequestClick.bind(this)}>
-            درخواست ها
-          </button>
-          <button className="trips" onClick={this.handleTripClick.bind(this)}>
-            سفرها
-          </button>
+
         </div>
       );
     }
