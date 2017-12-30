@@ -62,15 +62,17 @@ class SearchBar extends React.Component {
                       />
                   </div>
                   <div className="multi-input-1 col-md-2">
+
                   </div>
                   <div className="multi-input-1 col-md-2">
+                    
                   </div>
                   <div className="multi-input-1 col-md-2">
                   </div>
                   <div className="multi-input-2 col-md-1">
-                  <Button color='blue' className="btn"  onClick={this.handleClick.bind(this)} data-reactid="99">
+                  <Button color='blue' className="search-btn-result"  onClick={this.handleClick.bind(this)} data-reactid="99">
                     <span className='searchicon'>
-                      <img src="http://image.ibb.co/fjdMQG/trpinn_search.png" className='search-image' alt=""></img>
+                      <img src={require('./Images/trpinn_search.png')} className='search-image-result' alt=""></img>
                     </span>
                   </Button>
                   </div>
