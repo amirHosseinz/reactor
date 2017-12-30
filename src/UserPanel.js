@@ -13,7 +13,7 @@ class UserPanel extends React.Component{
       ProfileDetail:'',
       requestDetail:'',
       tripDetail:'',
-      defaultSelection:'request',
+      defaultSelection:'userprofile',
     };
   }
 
@@ -46,15 +46,16 @@ class UserPanel extends React.Component{
       return(
         <TripItem reserveDetail={this.state.tripDetail}/>
       );
-      case 'userprofile':
-      return(
-        <div></div>
-      );
+      // case 'userprofile':
+      // return(
+      //   <div></div>
+      // );
       default:
       return null;
     }
   }
   renderSelectedPanel(){
+    console.log(localStorage['default-panel']);
     switch (localStorage['default-panel']){
       case 'message':
         return(

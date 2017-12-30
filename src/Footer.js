@@ -1,11 +1,8 @@
 import React from 'react';
-import { Button} from 'semantic-ui-react'
+// import { Button} from 'semantic-ui-react';
+
 
 class Footer extends React.Component{
-  //
-  // constructor (props) {
-  //   super(props);
-  // }
 
   render()
   {
@@ -16,7 +13,7 @@ class Footer extends React.Component{
               <div className='footer1'>
                   <div className="footer-menu-and-dl col-md-6 hidden-xs">
                       <div className="dl-div">
-                        <a target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
+                        <a rel="noopener noreferrer" target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
                           <button className="download-tripinn" >دانلود اپلیکیشن
                           </button>
                         </a>

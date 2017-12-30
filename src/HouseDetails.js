@@ -173,10 +173,11 @@ class HouseDetails extends React.Component {
     this.setState({scrollListFixed:false});
   }
   render(){
+    console.log('fuck!');
+    console.clear();
     if (this.state.homeData !== ''){
       document.title = "تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.city;
     }
-    console.log(this.state.reservePanelFixed);
     return(
       <div className='housedetail container-fluid' ref={this.handleContextRef}>
         <div className="house-detail-top">
