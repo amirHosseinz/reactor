@@ -136,7 +136,7 @@ class Header extends React.Component{
   signOutAndProfile(){
     return (
         <div>
-           <Dropdown icon='dropdown' floating="right" text={localStorage['user-first-name'] +' '+ localStorage['user-last-name']} >
+           <Dropdown icon='dropdown' floating={true} text={localStorage['user-first-name'] +' '+ localStorage['user-last-name']} >
             <Dropdown.Menu>
             <p className="main-menu-user1" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
             <p className="main-menu-user2" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
