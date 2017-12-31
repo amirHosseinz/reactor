@@ -102,8 +102,10 @@ class Login extends React.Component{
        return response.json();
      })
      .then((data) => {
+       console.log(data.user);
        localStorage['user-first-name']=data.user.first_name;
        localStorage['user-last-name']=data.user.last_name;
+       localStorage['user-profile-picture']=data.user.profile_picture;
        localStorage['default-panel']='userprofile';
        window.location.href = '/dashboard';
      });
@@ -145,7 +147,7 @@ class Login extends React.Component{
                   <br/>
                   <br/>
                   <p className="enter-phone-number-inmodal2" >رمز عبور </p>
-                  <input id='password'    className="login-input" type="password"/>
+                  <inpu t id='password'    className="login-input" type="password"/>
                   <div className="divider-x"></div>
                   <br/>
                   <br/>
@@ -176,7 +178,7 @@ class Login extends React.Component{
                   className="login-input"
                   id='password'
                   type="password"
-                  autocomplete="off"
+                  autoComplete="off"
                   />
                   <div className="divider-x"></div>
                   <br/>

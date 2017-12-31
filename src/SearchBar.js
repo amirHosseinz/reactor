@@ -55,7 +55,7 @@ class SearchBar extends React.Component {
                       className="typeahead-indetail-xl"
                       align="right"
                       placeholder={this.state.city}
-                      onChange={(selected) => {this.setState({city:selected[0]}
+                      onChange={(selected)=>{this.setState({city:selected[0]}
                       )}}
                       options={this.state.cityList}
                       />
@@ -156,7 +156,7 @@ class SearchBar extends React.Component {
       counter++;
       if (counter===1) {
         listOfFive.push(
-          <div id={item.id} className="full-width col-md-1">
+          <div className="full-width col-md-1">
           </div>
         );
       }

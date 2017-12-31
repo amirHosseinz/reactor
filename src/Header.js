@@ -4,7 +4,7 @@ import { slide as Menu } from 'react-burger-menu';
 import Modal from 'react-modal';
 import {Button,Divider} from 'semantic-ui-react';
 import {Dropdown} from 'semantic-ui-react';
-
+import { Image } from 'semantic-ui-react';
 import {loginPasswordStyle, loginPhoneNumberStyle} from './Styles.js';
 
 
@@ -82,6 +82,9 @@ class Header extends React.Component{
   handleSignOutButton(){
     localStorage['token']='';
     localStorage['isLoggedIn']='false';
+    localStorage['user-profile-picture']='';
+    localStorage['user-first-name']='';
+    localStorage['user-last-name']='';
     localStorage['default-panel']='';
     window.location.href = '/';
   }
@@ -103,9 +106,9 @@ class Header extends React.Component{
             <p className="enter-phone-number-inmodal"> :برای ورود یا ثبت‌نام شماره تلفن همراه خود را وارد کنید </p>
               <div  dir="rtl" className="enter-number-main" >
                 <input
-                  maxlength="11"
+                  maxLength="11"
                   id="tel-number"
-                  autocomplete="off"
+                  autoComplete="off"
                   className="login-input"
                   placeholder="مثال: ۰۹۱۲۰۰۰۰۰۰۰"
                   type="numeric"
@@ -134,12 +137,17 @@ class Header extends React.Component{
   signOutAndProfile(){
     return (
         <div>
-           <Dropdown icon='dropdown' floating={true} text={localStorage['user-first-name'] +' '+ localStorage['user-last-name']} >
-            <Dropdown.Menu>
-            <p className="main-menu-user1" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
-            <p className="main-menu-user2" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
-            </Dropdown.Menu>
-           </Dropdown>
+          <div style={{float:'left'}}>
+            <Image src={'https://www.trypinn.com/' + localStorage['user-profile-picture']} avatar={true} />
+          </div>
+          <div style={{float:'left'}}>
+            <Dropdown icon='dropdown' floating={true} text={localStorage['user-first-name'] +' '+ localStorage['user-last-name']} >
+             <Dropdown.Menu>
+             <p className="main-menu-user1" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
+             <p className="main-menu-user2" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
+             </Dropdown.Menu>
+            </Dropdown>
+          </div>
         </div>
     );
   }

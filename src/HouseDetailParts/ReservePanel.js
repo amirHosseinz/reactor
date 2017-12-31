@@ -163,6 +163,9 @@ class ReservePanel extends React.Component{
         changeMonth: true,
         changeYear: true,
         isRTL: true,
+        numberOfMonths:1,
+        showOtherMonths:false,
+        showButtonPanel:true,
         dateFormat: "yy/m/d",
        });
     });
@@ -174,6 +177,8 @@ class ReservePanel extends React.Component{
         changeMonth: true,
         changeYear: true,
         isRTL: true,
+        numberOfMonths:1,
+        showButtonPanel:true,
         dateFormat: "yy/m/d",
        });
     });
