@@ -148,7 +148,7 @@
     margin: auto;
   }
   .headermobile{
-    height:50px;
+    height:47px;
     margin: auto;
     width:90%;
     margin-top:.6em;
@@ -347,12 +347,16 @@ i.big.icons {
   background-color: #3fd4ee;
   border-top-right-radius: 0px !important;
   border-bottom-right-radius: 0px !important;
+  width: 20% !important;
+  height: 45px !important;
+  padding: 4px !important;
+
 }
 .search-image{
   height: 2rem;
 }
 .search-image-xs{
-  height: 2rem;
+  height: 1.6rem;
 }
 .search-image-result{
   height: 1.4rem;
@@ -380,10 +384,11 @@ i.big.icons {
   display: flex;
   margin: auto;
   flex-direction: row-reverse;
-  height: 4rem;
+  height: 45px;
   background-color: white;
   box-shadow: 0 .2rem 1rem rgba(0,0,0,.15);
   margin-bottom: 85px;
+  border-radius: 4px;
 }
 .suitcase-image{
   height: 8.6rem;
@@ -463,14 +468,13 @@ text-indent: -9999px
 }
 
 .input-sm {
-  height: 38px !important;
+  height: 45px !important;
   padding: 5px 0px !important;
   line-height: 2 !important;
   border-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
   border-width: 0px !important;
   font-size: 14px !important;
-  width: 180px !important;
 }
 .main-zone{
 margin-top: 150px;
@@ -478,6 +482,9 @@ margin-top: 150px;
 .main-zone-xs{
   margin: auto;
   margin-top: 50px;
+  justify-content:center;
+  text-align: center;
+  align-items: center;
 }
 .render-houses-row{
   margin-top: 70px;
@@ -1344,6 +1351,7 @@ text-align:center;
   width: 100%;
   text-align: right;
 }
+
 .dashboard-header{
   text-align: right;
   font-size: 20px;
@@ -1366,10 +1374,12 @@ text-align:center;
 }
 .input-sm{
   font-family: IRANSans !important;
-  padding-right: 8px !important;
-  border-radius: 5px !important;
-  background-color: #f5f5f5 !important;
-  width: 90% !important;
+  border-radius: 0px 0px 0px 0px!important;
+  background-color: white !important;
+  border-width: 0px !important;
+  box-shadow: 0 0 0 rgb(0, 0, 0);
+  text-align: right;
+  padding-top:9px !important;
 }
 .save-edit{
     font-family: IRANSans !important;
@@ -1401,4 +1411,18 @@ text-align:center;
 .reserve-modal{
   border-radius: 4px;
   padding: 14px;
+}
+.rbt-highlight-text{
+  background-color: #3fd4ee !important;
+}
+.dropdown-menu-right{
+  font-family: IRANSans !important;
+}
+.typeahead-onlycity-sm{
+  width: 80%;
+}
+.searchicon{
+  justify-content:center;
+  text-align: center;
+  align-items: center;
 }
