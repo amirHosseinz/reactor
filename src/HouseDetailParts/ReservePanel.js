@@ -184,7 +184,6 @@ class ReservePanel extends React.Component{
     });
   }
   render(){
-    console.clear();
     {this.renderToDatePicker()}
     {this.renderFromDatePicker()}
     return(
