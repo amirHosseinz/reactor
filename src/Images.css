@@ -1,3 +1,7 @@
+.rules{
+  margin:0 0 15px 0;
+}
+
 .main{
 
 }
@@ -1513,6 +1517,7 @@ text-align:center;
   margin-right: 5px;
 }
 .public-rules-div{
+  padding: 0 0 15px 0;
   display: -webkit-flex; /* Safari */
   -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
   display: flex;
