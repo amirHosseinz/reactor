@@ -196,12 +196,12 @@ class Header extends React.Component{
       <div>
       <div className='header container hidden-xs visible-xl'>
        <div className='hearder-child-margined'>
-          <div className="header-menu-desktop col-md-10">
+          <div className="header-menu-desktop col-md-10 col-sm-8">
             {this.renderMainMenu()}
           {this.renderLoginPanel()}
           {this.renderLoginButton()}
           </div>
-          <div className="logo col-md-2">
+          <div className="logo col-md-2 col-sm-4">
               <div className='headerchild'>
                 <div className='logodiv'>
                    <a href="http://localhost:3000"><img src={require('./Images/tripinn_logo.svg')} className="LogoImage" alt = 'تریپین'></img></a>
@@ -213,7 +213,6 @@ class Header extends React.Component{
           </div>
         </div>
       </div>
-
       <div className='header hidden-xl visible-xs navbar-fixed-top'>
         <div className='headermobile'>
              <img src={require('./Images/tripinn_logo.svg')}  className="LogoImage-mobile" alt="تریپین"></img>
@@ -222,7 +221,6 @@ class Header extends React.Component{
            <Menu  className="burger" width={ '70%' }>
              <a id="home" className="menu-item" href="http://localhost:3000">خانه</a>
              {this.renderLoginButtonXs()}
-
            </Menu>
         </div>
       </div>
