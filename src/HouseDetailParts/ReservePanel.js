@@ -184,7 +184,6 @@ class ReservePanel extends React.Component{
     });
   }
   render(){
-    console.clear();
     {this.renderToDatePicker()}
     {this.renderFromDatePicker()}
     return(
@@ -203,7 +202,7 @@ class ReservePanel extends React.Component{
 
           <div className='reserve-button-div'>
             <Button color='blue' className='reserve-button' onClick ={this.handleClick.bind(this)}>
-              !رزرو کنید
+              مشاهده قیمت
             </Button>
           </div>
         <Modal

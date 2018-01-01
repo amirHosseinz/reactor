@@ -102,12 +102,11 @@ class Login extends React.Component{
        return response.json();
      })
      .then((data) => {
-       console.log(data.user);
        localStorage['user-first-name']=data.user.first_name;
        localStorage['user-last-name']=data.user.last_name;
        localStorage['user-profile-picture']=data.user.profile_picture;
        localStorage['default-panel']='userprofile';
-       window.location.href = '/dashboard';
+       window.location.href = '/';
      });
     }
     getResponseForSignUp(){
