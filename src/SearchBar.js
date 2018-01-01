@@ -67,7 +67,7 @@ class SearchBar extends React.Component {
                     <input className="date-picker-input input-sm form-control" id='fromdatepicker' ref='fromdatepicker' placeholder='تاریخ ورود'style={{direction:'rtl',textAlign:'center'}}/>
                   </div>
                   <div className="multi-input-1 col-md-2">
-                    <input className="date-picker-input input-sm form-control" id='todatepicker' ref='todatepicker' placeholder='تاریخ ورود'style={{direction:'rtl',textAlign:'center'}}/>
+                    <input className="date-picker-input input-sm form-control" id='todatepicker' ref='todatepicker' placeholder='تاریخ خروج'style={{direction:'rtl',textAlign:'center'}}/>
                   </div>
                   <div className="multi-input-number col-md-2" dir="rtl" >
                    <select className="form-control" id="sel1">
@@ -82,7 +82,6 @@ class SearchBar extends React.Component {
                      <option>9 مهمان</option>
                      <option>10 مهمان و بیشتر</option>
                    </select>
-
                  </div>
                   <div className="multi-input-2 col-md-1">
                   <Button color='blue' className="search-btn-result"  onClick={this.handleClick.bind(this)} data-reactid="99">

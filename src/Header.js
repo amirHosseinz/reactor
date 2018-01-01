@@ -145,15 +145,15 @@ class Header extends React.Component{
     return (
         <div>
           <div style={{float:'left'}}>
-            <Image src={'https://www.trypinn.com/' + localStorage['user-profile-picture']} avatar={true} />
-          </div>
-          <div style={{float:'left'}}>
-            <Dropdown icon='dropdown' floating={true} text={localStorage['user-first-name'] +' '+ localStorage['user-last-name']} >
+            <Dropdown className="header-drop-down-texts" icon='dropdown' floating={true} text={localStorage['user-first-name'] +' '+ localStorage['user-last-name']} >
              <Dropdown.Menu>
              <p className="main-menu-user1" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
              <p className="main-menu-user2" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
              </Dropdown.Menu>
             </Dropdown>
+          </div>
+          <div style={{float:'left'}}>
+            <Image className="avatar-header" src={'https://www.trypinn.com/' + localStorage['user-profile-picture']} avatar={true} />
           </div>
         </div>
     );
@@ -163,8 +163,6 @@ class Header extends React.Component{
       return (
         <div className='main-menu-header'>
           {this.signOutAndProfile()}
-
-
         </div>
       );
     }

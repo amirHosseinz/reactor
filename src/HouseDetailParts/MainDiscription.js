@@ -23,37 +23,51 @@ class MainDiscription extends React.Component{
     const checkout=this.props.homeData.check_out;
     const checkout1=checkout.split(":", 2);
     return(
+
       <div className="check-out">
        ساعت خروج: {englishToPersianDigits(checkout1[0]+":"+checkout1[1])}
+                   <div className="divider-card"></div>
       </div>
     );
   }
   return null;
 }
-  renderRules(){
+  renderSmoking(){
     const smoking=this.props.homeData.smoking_allowed;
-    const pet=this.props.homeData.pet_allowed;
-    const party=this.props.homeData.party_allowed;
     if (smoking===false){
       return(
-        <div className="smoking">
-          <p>ممنوعیت استعمال دخانیات</p>
-        </div>
-        )}
-    if(party===false){
-      return(
-        <div className="party">
-          <p>ممنوعیت برگزاری جشن </p>
+        <div className="public-rules-div">
+          <img src={require('./rules/cigarette.png')}   className="other-amanities-icon" alt = "" />
+          <p className="facility-text">ممنوعیت استعمال دخانیات </p>
         </div>
       );
     }
-    if(pet===false){
-      return(
-        <div className="pet">
-          <p>ممنوعیت ورود حیوان به خانه</p>
-          </div>
-      );
-    }
+  }
+
+
+renderPet(){
+  const pet=this.props.homeData.pet_allowed;
+  if(pet===false){
+    return(
+      <div className="public-rules-div">
+        <img src={require('./rules/dog.png')}   className="other-amanities-icon" alt = "" />
+        <p className="facility-text">ممنوعیت ورود حیوان به خانه</p>
+        </div>
+    );
+  }
+}
+
+
+renderParty(){
+  const party=this.props.homeData.party_allowed;
+  if(party===false){
+    return(
+      <div className="public-rules-div">
+      <img src={require('./rules/singles.png')}   className="other-amanities-icon" alt = "" />
+        <p className="facility-text">ممنوعیت برگزاری جشن </p>
+      </div>
+    );
+  }
 }
 
 
@@ -116,14 +130,17 @@ renderUtilities () {
 
 
 
-renderSpecialRules ()
-{
-  return (
-    <div className='special-rules'>
-        <p> قوانین خاص این خانه </p>
-        <p>{this.props.homeData.special_rules}</p>
-    </div>
-  );
+renderSpecialRules (){
+  if(this.props.homeData.special_rules!==''){
+    console.log('here');
+    console.log(this.props.homeData.special_rules);
+    return (
+      <div className='special-rules'>
+          <p> :قوانین خاص این خانه </p>
+          <p>{this.props.homeData.special_rules}</p>
+      </div>
+    );
+  }
 }
   render(){
     return(
@@ -138,14 +155,23 @@ renderSpecialRules ()
           <p className='des-main'> {this.props.homeData.description}</p>
         </div>
         <div className="main-descriptions row">
+        <div>
+        {this.renderCheckIn()}
+        {this.renderCheckOut()}
+        </div>
+        <div className="max-capacity">
+        <p>
+         حداکثر ظرفیت: {englishToPersianDigits(this.props.homeData.max_capacity)}
+        </p>
+        </div>
+        <div className="divider"></div>
           <p className='des-header'>قوانین و مقررات</p>
-          {this.renderCheckIn()}
-          {this.renderCheckOut()}
-          <div className="max-capacity">
-            <p>
-             حداکثر ظرفیت: {englishToPersianDigits(this.props.homeData.max_capacity)}
-            </p>
-            {this.renderRules()}
+          <div className="rules">
+          {this.renderParty()}
+          {this.renderPet()}
+          {this.renderSmoking()}
+         </div>
+         <div>
             {this.renderSpecialRules()}
           </div>
         </div>
