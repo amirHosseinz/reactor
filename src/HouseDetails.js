@@ -256,7 +256,6 @@ class HouseDetails extends React.Component {
         </div>
         <div className="reserve-bottom-xs navbar-fixed-bottom">
             <div className="price-div-xs">
-
               <div className = "price-xs">
                 <p className="text-017">   هر شب / </p>
                 <p className='text-018'> تومان</p>
