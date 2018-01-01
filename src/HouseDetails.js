@@ -159,7 +159,10 @@ class HouseDetails extends React.Component {
      );
    }
  }
-  handleContextRef = (contextReference) => this.setState({ contextRef : contextReference });
+  handleContextRef (contextReference) {
+    this.setState({ contextRef : contextReference });
+  }
+
   handleStickReservePanel(){
     this.setState({reservePanelFixed:true});
   }
@@ -178,7 +181,7 @@ class HouseDetails extends React.Component {
     }
     console.log(this.state.reservePanelFixed);
     return(
-      <div className='housedetail container-fluid' ref={this.handleContextRef}>
+      <div className='housedetail container-fluid' ref={this.handleContextRef.bind(this)}>
         <div className="house-detail-top">
           <div className="house-detail-top-margined">
             <AddressDiscription homeData={this.state.homeData}/>
