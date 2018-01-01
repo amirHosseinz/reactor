@@ -231,7 +231,6 @@ class SearchBar extends React.Component {
    });
   }
    handleClick(){
-     console.log('clicked');
      this.setState({showOnlyCitySearchBar : false} , ()=> {this.setSearchParams()});
    }
    renderFromDatePicker(){
@@ -267,21 +266,22 @@ class SearchBar extends React.Component {
       return response.json();
     })
     .then((response) => {
-      this.setState({cityListFromServer:response.room},()=>{this.fillSearchBarOptions()});
+      this.setState({cityListFromServer:response.location},()=>{this.fillSearchBarOptions()});
     });
    }
    fillSearchBarOptions(){
      var list = [];
      if(this.state.cityListFromServer!==null){
        for (var i=0 ; i<this.state.cityListFromServer.length; i++){
-        list.push({name : this.state.cityListFromServer[i].city});
+        list.push(this.state.cityListFromServer[i]);
        }
      }
-     list = removeDuplicatesFromList(list);
+     // list = removeDuplicatesFromList(list);
      var list2 = [];
      for (var i=0 ; i<list.length ; i++) {
-       list2.push(list[i].name);
+       list2.push(list[i].text);
      }
+     console.log(list2);
      this.setState({cityList : list2});
    }
   render(){

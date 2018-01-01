@@ -113,12 +113,12 @@ class HouseDetails extends React.Component {
  renderPreview(){
    if(this.state.homeData!==''){
      return(<div className = "housedetail-img">
-            <a href="#" onClick = {this.showHouseGallery.bind(this)}>
+            <a onClick={this.showHouseGallery.bind(this)}>
               <AspectRatio ratio="16/11" style={{maxWidth: '100%'}}>
                  <img
                  src={"https://www.trypinn.com"+this.state.homeData.preview}  className="house-details-preview"
                  alt = ""
-                >
+                 >
                  </img>
               </AspectRatio>
              </a>
