@@ -5,6 +5,9 @@
 .main{
 
 }
+.housedetail-img{
+  cursor: pointer;
+}
 .login-title-in-modal{
   font-family: IRANSans;
   font-size: 20px;
@@ -1504,4 +1507,7 @@ text-align:center;
   -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
   display: flex;
   flex-direction: row-reverse;
+}
+.burger-menu{
+  font-family: IRANSans;
 }
