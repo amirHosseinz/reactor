@@ -1370,6 +1370,8 @@ text-align:center;
 .typeahead-onlycity-xl{
   width: 100%;
   text-align: right;
+  z-index: 0;
+
 }
 
 .dashboard-header{
@@ -1450,6 +1452,7 @@ text-align:center;
 }
 .typeahead-onlycity-sm{
   width: 80%;
+  z-index: 0;
 }
 .searchicon{
   justify-content:center;
@@ -1539,4 +1542,13 @@ text-align:center;
 }
 .search-image-result-xs{
   height: 15px;
+}
+.burger-in-div{
+  margin-top: 20px;
+}
+.burger-item{
+  margin-bottom: 10px;
+}
+.login1-modal{
+padding-top: 80px;
 }
