@@ -207,7 +207,7 @@ class SearchBar extends React.Component {
     };
     this.setState({
       searchParams: spar
-    }, () => {
+    },() => {
     this.getDataFromServer();
     });
   }
@@ -232,7 +232,7 @@ class SearchBar extends React.Component {
    });
   }
    handleClick(){
-     this.setState({showOnlyCitySearchBar : false} , ()=> {this.setSearchParams()});
+     this.setState({showOnlyCitySearchBar:false} , ()=> {this.setSearchParams()});
    }
    renderFromDatePicker(){
      const fromDatePicker = findDOMNode(this.refs.fromdatepicker);

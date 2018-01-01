@@ -223,8 +223,8 @@ class Header extends React.Component{
         <div className="burger-menu" >
            <Menu  className="burger" width={ '70%' }>
              <a id="home" className="menu-item" href="http://localhost:3000">خانه</a>
-            {this.renderLoginButtonXs()}
-             <a onClick={ this.showSettings} className="menu-item">ورود</a>
+             {this.renderLoginButtonXs()}
+
            </Menu>
         </div>
       </div>

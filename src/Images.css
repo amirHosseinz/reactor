@@ -1,6 +1,9 @@
 .main{
 
 }
+.housedetail-img{
+  cursor: pointer;
+}
 .login-title-in-modal{
   font-family: IRANSans;
   font-size: 20px;
