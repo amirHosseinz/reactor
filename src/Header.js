@@ -1,6 +1,7 @@
 import React from 'react';
 import Login from './Login.js';
-import { slide as Menu } from 'react-burger-menu';
+import { slide as Menu} from 'react-burger-menu';
+import customBurgerIcon  from 'react-burger-menu';
 import Modal from 'react-modal';
 import {Button,Divider} from 'semantic-ui-react';
 import {Dropdown} from 'semantic-ui-react';
@@ -14,12 +15,14 @@ class Header extends React.Component{
     this.state={
       token: null,
       reloadPage: false,
+      showBurgerMenu:false,
       isLoggedIn : localStorage['isLoggedIn'],
       loginPanelVisible:false,
       loginPanelVisible2:false,
       hasPassword: null,
       searchParams:{
       phoneNumber: null,
+      showMobileLoginPanel:false,
       },
     };
   }
@@ -79,10 +82,15 @@ class Header extends React.Component{
       );
     }
   }
+  handleLoginButtonXs(){
+    this.setState({showBurgerMenu:false, showMobileLoginPanel:true});
+
+  }
+
   renderLoginButtonXs(){
     if (this.state.isLoggedIn !== 'true'){
       return(
-          <a className="clickable-p"  onClick={this.handleLoginButton.bind(this)}>ورود / ثبت‌نام</a>
+          <p className="clickable-p" onClick={this.handleLoginButtonXs.bind(this)}>ورود / ثبت‌نام</p>
       );
     }
   }
@@ -190,6 +198,9 @@ class Header extends React.Component{
       window.location.href = '/dashboard';
   }
 
+  toggleBurgerMenu(){
+    this.setState({showBurgerMenu:true});
+  }
   render()
   {
     return (
@@ -198,8 +209,8 @@ class Header extends React.Component{
        <div className='hearder-child-margined'>
           <div className="header-menu-desktop col-md-10">
             {this.renderMainMenu()}
-          {this.renderLoginPanel()}
-          {this.renderLoginButton()}
+            {this.renderLoginPanel()}
+            {this.renderLoginButton()}
           </div>
           <div className="logo col-md-2">
               <div className='headerchild'>
@@ -219,11 +230,14 @@ class Header extends React.Component{
              <img src={require('./Images/tripinn_logo.svg')}  className="LogoImage-mobile" alt="تریپین"></img>
         </div>
         <div className="burger-menu" >
-           <Menu  className="burger" width={ '70%' }>
+           <Menu isOpen={this.state.showBurgerMenu} customBurgerIcon={<img onClick={this.toggleBurgerMenu.bind(this)} src={require('./Images/tripinn_logo.svg')}/>} className="burger" width={ '70%' }>
              <a id="home" className="menu-item" href="http://localhost:3000">خانه</a>
              {this.renderLoginButtonXs()}
-
            </Menu>
+           <Modal isOpen={this.state.showMobileLoginPanel}
+           className="container fluid"
+           onRequestClose={()=>{this.setState({showMobileLoginPanel:false})}}>
+           </Modal>
         </div>
       </div>
     </div>
