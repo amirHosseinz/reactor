@@ -54,6 +54,7 @@ class HouseDetails extends React.Component {
   componentWillMount() {
     this.getRelevantToken();
   }
+
   setSearchParams(houseId){
     var spar = {
       id : houseId,
@@ -155,7 +156,11 @@ class HouseDetails extends React.Component {
      );
    }
  }
-  handleContextRef = (contextReference) => this.setState({ contextRef : contextReference });
+
+  handleContextRef (contextReference) {
+    this.setState({ contextRef : contextReference });
+  }
+
   handleStickReservePanel(){
     this.setState({reservePanelFixed:true});
   }
@@ -173,7 +178,7 @@ class HouseDetails extends React.Component {
       document.title = "تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.city;
     }
     return(
-      <div className='housedetail container-fluid' ref={this.handleContextRef}>
+      <div className='housedetail container-fluid'>
         <div className="house-detail-top">
           <div className="house-detail-top-margined">
             <AddressDiscription homeData={this.state.homeData}/>

@@ -21,14 +21,14 @@ class UserPanel extends React.Component{
     this.setState({Name: event.target.value});
   }
 
-  changeRequestDetail = (request_detail) => {
+  changeRequestDetail (request_detail) {
     this.setState({requestDetail:request_detail});
   }
 
-  changeTripDetail = (trip_detail) => {
+  changeTripDetail (trip_detail) {
     this.setState({tripDetail:trip_detail});
   }
-  changeProfileDetail = (Profile_Detail) => {
+  changeProfileDetail (Profile_Detail) {
     this.setState({ProfileDetail:Profile_Detail});
   }
 
@@ -63,15 +63,15 @@ class UserPanel extends React.Component{
         );
       case 'request':
       return(
-        <Requests changeRequestDetail={this.changeRequestDetail} />
+        <Requests changeRequestDetail={this.changeRequestDetail.bind(this)} />
       );
       case 'trip':
       return(
-        <Trips changeTripDetail={this.changeTripDetail}/>
+        <Trips changeTripDetail={this.changeTripDetail.bind(this)}/>
       );
       case 'userprofile':
       return(
-        <UserProfile changeProfileDetail={this.changeProfileDetail}/>
+        <UserProfile changeProfileDetail={this.changeProfileDetail.bind(this)}/>
       );
       default:
       return null;
