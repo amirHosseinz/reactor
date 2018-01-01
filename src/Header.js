@@ -79,6 +79,13 @@ class Header extends React.Component{
       );
     }
   }
+  renderLoginButtonXs(){
+    if (this.state.isLoggedIn !== 'true'){
+      return(
+          <a className="clickable-p"  onClick={this.handleLoginButton.bind(this)}>ورود / ثبت‌نام</a>
+      );
+    }
+  }
   handleSignOutButton(){
     localStorage['token']='';
     localStorage['isLoggedIn']='false';
@@ -205,15 +212,13 @@ class Header extends React.Component{
         <div className='headermobile'>
              <img src={require('./Images/tripinn_logo.svg')}  className="LogoImage-mobile" alt="تریپین"></img>
         </div>
-        <div className="burger-menu">
-           <Menu className="burger" width={ '100%' }>
-             <a id="home" className="menu-item" href="/">خانه</a>
-             {this.renderLoginButton()}
-             <a onClick={ this.showSettings} className="menu-item" href="/">ورود</a>
-             <a  className="menu-item--small" href="">Settings</a>
+        <div className="burger-menu" >
+           <Menu  className="burger" width={ '70%' }>
+             <a id="home" className="menu-item" href="http://localhost:3000">خانه</a>
+            {this.renderLoginButtonXs()}
+             <a onClick={ this.showSettings} className="menu-item">ورود</a>
            </Menu>
         </div>
-
       </div>
     </div>
     );

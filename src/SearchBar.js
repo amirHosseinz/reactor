@@ -64,13 +64,25 @@ class SearchBar extends React.Component {
                       />
                   </div>
                   <div className="multi-input-1 col-md-2">
-
                   </div>
                   <div className="multi-input-1 col-md-2">
 
                   </div>
-                  <div className="multi-input-1 col-md-2">
-                  </div>
+                  <div className="multi-input-number col-md-2" dir="rtl" >
+                   <select className="form-control" id="sel1">
+                     <option>1 مهمان</option>
+                     <option>2 مهمان</option>
+                     <option>3 مهمان </option>
+                     <option>4 مهمان</option>
+                     <option>5 مهمان</option>
+                     <option>6 مهمان</option>
+                     <option>7 مهمان </option>
+                     <option>8 مهمان</option>
+                     <option>9 مهمان</option>
+                     <option>10 مهمان و بیشتر</option>
+                   </select>
+
+                 </div>
                   <div className="multi-input-2 col-md-1">
                   <Button color='blue' className="search-btn-result"  onClick={this.handleClick.bind(this)} data-reactid="99">
                     <span className='searchicon'>
