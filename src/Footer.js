@@ -1,11 +1,8 @@
 import React from 'react';
-import { Button} from 'semantic-ui-react'
+// import { Button} from 'semantic-ui-react';
+
 
 class Footer extends React.Component{
-  //
-  // constructor (props) {
-  //   super(props);
-  // }
 
   render()
   {
@@ -16,16 +13,16 @@ class Footer extends React.Component{
               <div className='footer1'>
                   <div className="footer-menu-and-dl col-md-6 hidden-xs">
                       <div className="dl-div">
-                        <a target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
+                        <a rel="noopener noreferrer" target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
                           <button className="download-tripinn" >دانلود اپلیکیشن
                           </button>
                         </a>
                       </div>
                     <div className='footer-menu'>
-                      <a className='logolink' href="www.tryppin.com">  <p className='logo-menu-font'>قوانین و شرایط استفاده</p></a>
-                      <a className='logolink' href="hwww.tryppin.com">  <p className='logo-menu-font'>!میزبان شوید</p></a>
-                      <a className='logolink' href="www.tryppin.com">  <p className='logo-menu-font'>درباره تریپین</p></a>
-                      <a className='logolink' href="www.tryppin.com">  <p className='logo-menu-font' >تماس با ما</p></a>
+                      <a className='logolink' href="http://tripinn.ir">  <p className='logo-menu-font'>قوانین و شرایط استفاده</p></a>
+                      <a className='logolink' href="http://tripinn.ir">  <p className='logo-menu-font'>!میزبان شوید</p></a>
+                      <a className='logolink' href="http://tripinn.ir">  <p className='logo-menu-font'>درباره تریپین</p></a>
+                      <a className='logolink' href="mailto:support@tripinn.ir">  <p className='logo-menu-font' >تماس با ما</p></a>
                     </div>
                   </div>
                   <div className="col-md-4">

@@ -1,4 +1,3 @@
-
 export function englishToPersianDigits (input) {
   if (typeof input !== "undefined") {
     input = input.toString();

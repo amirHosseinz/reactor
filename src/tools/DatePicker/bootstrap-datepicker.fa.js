@@ -18,8 +18,8 @@ function mod(a, b) {return a - (b * Math.floor(a / b));}
 */
 function leap_gregorian(year)
 {
-    return ((year % 4) == 0) &&
-            (!(((year % 100) == 0) && ((year % 400) != 0)));
+    return ((year % 4) === 0) &&
+            (!(((year % 100) === 0) && ((year % 400) !== 0)));
 }
 var GREGORIAN_EPOCH = 1721425.5;
 function gregorian_to_jd(year, month, day)
@@ -49,7 +49,7 @@ function jd_to_gregorian(jd) {
     dquad = mod(dcent, 1461);
     yindex = Math.floor(dquad / 365);
     year = (quadricent * 400) + (cent * 100) + (quad * 4) + yindex;
-    if (!((cent == 4) || (yindex == 4))) {
+    if (!((cent === 4) || (yindex === 4))) {
         year++;
     }
     yearday = wjd - gregorian_to_jd(year, 1, 1);
@@ -121,7 +121,7 @@ function jd_to_persian(jd)
     depoch = jd - persian_to_jd(475, 1, 1);
     cycle = Math.floor(depoch / 1029983);
     cyear = mod(depoch, 1029983);
-    if (cyear == 1029982) {
+    if (cyear === 1029982) {
         ycycle = 2820;
     } else {
         aux1 = Math.floor(cyear / 366);
@@ -171,7 +171,7 @@ function JalaliDate(p0, p1, p2) {
         if (date && date.getGregorianDate) date = date.getGregorianDate();
         gregorianDate = new Date(date);
 		gregorianDate.setHours(gregorianDate.getHours() > 12 ? gregorianDate.getHours() + 2 : 0)
-        if (!gregorianDate || gregorianDate == 'Invalid Date' || isNaN(gregorianDate || !gregorianDate.getDate())) {
+        if (!gregorianDate || gregorianDate === 'Invalid Date' || isNaN(gregorianDate || !gregorianDate.getDate())) {
             gregorianDate = new Date();
         }
         jalaliDate = gregorian_to_jalali([

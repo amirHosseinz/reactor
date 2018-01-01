@@ -6,7 +6,7 @@
     "bootstrap": "^3.3.7",
     "bootstrap-jalali-datepicker": "^1.0.1",
     "datepicker": "0.0.0",
-    "jQuery": "^1.7.4",
+    "express": "^4.16.2",
     "jquery": "^3.2.1",
     "moment": "^2.20.1",
     "react": "^16.2.0",
@@ -33,6 +33,7 @@
     "react-sticky": "^6.0.1",
     "react-sticky-el": "^1.0.15",
     "reactstrap": "^4.8.0",
+    "rtl-css-js": "^1.8.0",
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.77.1"
   },

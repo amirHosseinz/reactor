@@ -60,7 +60,7 @@ class MainPage extends React.Component{
      });
     }
   }
-  
+
   render(){
     this.getGuestTokenFromServer();
     document.title = "تریپین | سامانه رزرو ویلا";

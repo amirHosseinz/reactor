@@ -1,7 +1,100 @@
+.main{
 
-.main-menu-user{
+}
+.login-title-in-modal{
+  font-family: IRANSans;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  padding-top: 10px;
+  color:#484848;
+}
+.login1-modal{
+  padding: 18px;
+}
+.enter-phone-number-inmodal{
+  font-family: IRANSans;
+  font-size: 14x;
+  font-weight: 500;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+.enter-phone-number-inmodal2{
+  font-family: IRANSans;
+  font-size: 14x;
+  font-weight: 500;
+  text-align: center;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.login-input{
+  text-align: right !important;
+  font-family: IRANSans !important;
+  width: 60%;
+  box-shadow: none;
+  font-size: 18px;
+  height: 48px;
+  border:0px;
+}
+.login-input-code{
+  text-align: center !important;
+  font-family: IRANSans !important;
+  width: 20%;
+  box-shadow: none;
+  font-size: 16px;
+  height: 38px;
+  border:0px;
+}
+.divider-x{
+  height:1px;
+  background-color: #000;
+  margin: auto;
+  width: 60%;
+  padding-top:-5px;
+}
+.divider-x2{
+  height:1px;
+  background-color: #000;
+  margin: auto;
+  width: 30%;
+  padding-top:-5px;
+}
+
+.login-modal-button{
+  width: 90%;
+  font-family: IRANSans !important;
+}
+
+.login-modal-button-2{
+  width: 90%;
+  font-family: IRANSans !important;
+  padding-top: 40px;
+}
+
+
+.form-control::-moz-placeholder{
+
+}
+.enter-number-main{
+    margin: auto;
+  text-align: center;
+}
+.main-menu-user1{
   cursor :pointer;
   text-align : center;
+  font-size: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 8px;
+}
+.main-menu-user2{
+  cursor :pointer;
+  text-align : center;
+  font-size: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 8px;
 }
 .main-menu-header{
   display: -webkit-flex; /* Safari */
@@ -9,6 +102,8 @@
   display: flex;
   margin: auto;
   flex-direction: row;
+  margin-top: 38px;
+  font-family: IRANSans;
 }
 .LogoImage{
   height:60px;
@@ -53,7 +148,7 @@
     margin: auto;
   }
   .headermobile{
-    height:50px;
+    height:47px;
     margin: auto;
     width:90%;
     margin-top:.6em;
@@ -133,7 +228,7 @@
   display: flex;
   margin: auto;
   flex-direction: row-reverse;
-  margin-top: -5px;
+  margin-top: -10px;
   margin-button: -5px;
 }
 .logo-menu-font{
@@ -144,6 +239,15 @@
   margin-top: 1em;
   margin-left: 1em;
   color: #646464;
+}
+.logo-menu-font:hover{
+  font-family: IRANSans;
+  font-size: 1em;
+  font-style: normal;
+	font-weight: 500;
+  margin-left: 1em;
+  color: #f56c4e;
+
 }
 .logo-footer-menu-font-mobile{
   font-family: IRANSans;
@@ -159,11 +263,17 @@
   margin-right: 1em;
   margin-top: 2em;
   margin-bottom: 2em;
-
+}
+.social-image .redO{
+  	position:relative;
+    height:1.6em;
+    opacity:0;
+}
+.social-image:hover{
+  opacity:0.7;
 }
 .freezone{
   width:100%;
-  background-color: red;
 }
 :root {
     --space: 1.5em 0;
@@ -237,12 +347,19 @@ i.big.icons {
   background-color: #3fd4ee;
   border-top-right-radius: 0px !important;
   border-bottom-right-radius: 0px !important;
+  width: 20% !important;
+  height: 45px !important;
+  padding: 4px !important;
+
 }
 .search-image{
-  height: 2.6rem;
+  height: 2rem;
 }
 .search-image-xs{
-  height: 2rem;
+  height: 1.6rem;
+}
+.search-image-result{
+  height: 1.4rem;
 }
 
 .searchbar-zone{
@@ -267,10 +384,11 @@ i.big.icons {
   display: flex;
   margin: auto;
   flex-direction: row-reverse;
-  height: 4rem;
+  height: 45px;
   background-color: white;
   box-shadow: 0 .2rem 1rem rgba(0,0,0,.15);
   margin-bottom: 85px;
+  border-radius: 4px;
 }
 .suitcase-image{
   height: 8.6rem;
@@ -301,6 +419,7 @@ i.big.icons {
   color: #454545;
   text-align: right;
   margin-right: 1.5rem;
+  margin-top: -20px;
 }
 .slogan-container{
   margin-top: .8rem;
@@ -323,7 +442,7 @@ margin-right:8em;
   font-weight: 450;
   color: #454545;
   text-align: right;
-  margin-right: 18px;
+  margin-right: 12px;
 }
 .typehead-mobile{
   height:100%;
@@ -335,9 +454,9 @@ margin-right:8em;
 }
 .input-lg {
   height: 100% !important;
-  padding: 12px 0px !important;
+  padding: 8px 0px !important;
   padding-right: 100px;
-  font-size: 18px;
+  font-size: 18px !important;
   line-height: 2 !important;
   border-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
@@ -349,12 +468,13 @@ text-indent: -9999px
 }
 
 .input-sm {
-  height: 100% !important;
-  padding: 8px 8px !important;
+  height: 45px !important;
+  padding: 5px 0px !important;
   line-height: 2 !important;
   border-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
   border-width: 0px !important;
+  font-size: 14px !important;
 }
 .main-zone{
 margin-top: 150px;
@@ -362,6 +482,9 @@ margin-top: 150px;
 .main-zone-xs{
   margin: auto;
   margin-top: 50px;
+  justify-content:center;
+  text-align: center;
+  align-items: center;
 }
 .render-houses-row{
   margin-top: 70px;
@@ -654,7 +777,7 @@ transform: scale(2, 2);
   margin-top: 0px;
 }
 .results-search{
-  height: 80px;
+  height: 60px;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
 
 }
@@ -680,17 +803,19 @@ transform: scale(2, 2);
 }
 
 .multi-input-1{
-  height: 60px;
-  width: 100px;
+  height: 38px;
+  width: 120px;
   background-color: white;
   margin-top: 10px;
   margin-left: 7px;
-  box-shadow: 0 .2rem 1rem rgba(0,0,0,.15);
+  text-align: right !important;
+  background-color: #f5f5f5;
+
 }
 .multi-input-2{
-  height: 55px;
+  height: 38px;
   margin-top: 10px;
-  margin-right: 10px;
+  margin-right: 0px;
 }
 .reserve-button-div{
   margin-top: 20px;
@@ -1028,7 +1153,7 @@ padding-bottom: 28px;
   align-self: right;
 }
 .searchbarmain{
-  background-color: #f9f9f9;
+
 }
 
 
@@ -1042,10 +1167,12 @@ padding-bottom: 28px;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
-	font-size:17px;
-	padding:8px 53px;
+	font-family:IRANSans;
+	font-size:14px;
+  font-weight: 500;
+	padding:8px 60px;
 	text-decoration:none;
+
 }
 .download-tripinn:hover {
 	background-color:#e4441e;
@@ -1111,22 +1238,34 @@ padding-bottom: 28px;
 .profile-container-margined{
   width: 80%;
   margin:auto;
-  height: 600px;
+  margin-top: 30px;
+
+
 }
 .profile-container{
-  background-color: rgba(0, 0, 0, .1)   ;
+  background-color: rgba(255, 255, 255, 1)   ;
+    padding:16px;
+    border-width: 3px;
+    padding-bottom: 60px;
+    height:500px;
+
 }
 .profile-avataricon{
   height: 200px;
   margin: auto;
 }
 .profile-avatarimg{
-  height: 180px;
-  width: 180px;
-  border-radius: 90px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
   object-fit: cover;
 }
-.profilebox{
+.userprofilebox{
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 100%;
 }
 .username_offical{
   font-size: 20px;
@@ -1134,10 +1273,10 @@ padding-bottom: 28px;
   color: #484848;
   text-align: center;
   font-weight: 500;
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
-  display: flex;
-  flex-direction: row-reverse;
+
+  width: 100%;
+  margin: auto;
+margin-top: 20px;
 }
 .profile-lastname{
   margin-right: 4px;
@@ -1159,4 +1298,131 @@ padding-bottom: 28px;
 /* selected link */
 .card_anchor:active {
     color: #484848;
+}
+.prof_menu_item_rtl{
+  text-align: right;
+  padding-bottom: 10px;
+}
+.profile_static_bar{
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, .1);
+  border-radius: 0px 4px 4px 0px;
+
+}
+.profile_dynamic_edit{
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
+  height: 500px;
+
+}
+.host-photo{
+width: 100%;
+margin: auto;
+text-align:center;
+}
+.profilebox{
+  text-align:center;
+}
+.profile-avatarimg{
+  float: none;
+  margin: 0 auto;
+}
+.profile_after_username{
+  font-family: IRANSans;
+  padding: 0px;
+  padding-top: 15px;
+}
+.divider-profile{
+  height: .8px;
+  background-color:#b4b4b4;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.profile_photobox{
+}
+.footer-menu-and-dl{
+  font-family: IRANSans;
+}
+.clickable-p{
+  cursor : pointer;
+}
+.search-input-semantic{
+  width: 300px;
+}
+.typeahead-onlycity-xl{
+  width: 100%;
+  text-align: right;
+}
+
+.dashboard-header{
+  text-align: right;
+  font-size: 20px;
+  font-family: IRANSans;
+}
+.edit-profile-xl{
+  padding: 20px;
+
+}
+.edit-profile-xl-inputs{
+  padding: 20px;
+
+}
+.edit-prof-row1{
+  margin-bottom: 40px;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row;
+}
+.input-sm{
+  font-family: IRANSans !important;
+  border-radius: 0px 0px 0px 0px!important;
+  background-color: white !important;
+  border-width: 0px !important;
+  box-shadow: 0 0 0 rgb(0, 0, 0);
+  text-align: right;
+  padding-top:9px !important;
+}
+.save-edit{
+    font-family: IRANSans !important;
+}
+.ui.blue.button{
+  background-color: #42b0c6 !important;
+}
+.ui.blue.button:hover{
+  background-color: #1796b4 !important;
+}
+.profile-labels{
+  font-size: 10px;
+  font-family: IRANSans;
+  margin-top:-5px;
+  color:#4e4e4e;
+}
+.search-btn-result{
+  height: 38px !important;
+  width: 68px;
+}
+.guestnumber-div{
+  margin-bottom: 20px;
+}
+.date-picker-input{
+  margin: auto;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.reserve-modal{
+  border-radius: 4px;
+  padding: 14px;
+}
+.rbt-highlight-text{
+  background-color: #3fd4ee !important;
+}
+.dropdown-menu-right{
+  font-family: IRANSans !important;
+}
+.typeahead-onlycity-sm{
+  width: 80%;
+}
+.searchicon{
+  justify-content:center;
+  text-align: center;
+  align-items: center;
 }

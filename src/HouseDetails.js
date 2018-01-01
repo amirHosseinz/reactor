@@ -2,7 +2,7 @@ import React from 'react';
 
 import Lightbox from 'react-image-lightbox';
 import scrollToComponent from 'react-scroll-to-component';
-import Sticky from 'react-sticky-el';
+// import Sticky from 'react-sticky-el';
 
 import ReservePanel from './HouseDetailParts/ReservePanel.js';
 import MainDiscription from './HouseDetailParts/MainDiscription';
@@ -12,6 +12,8 @@ import MapDiscription from './HouseDetailParts/MapDiscription';
 import RatingDiscription from './HouseDetailParts/RatingDiscription';
 import HostInfoDiscription from './HouseDetailParts/HostInfoDiscription';
 import {englishToPersianDigits} from './tools/EnglishToPersianDigits';
+import {Sticky} from 'semantic-ui-react';
+import {normalReservePanelHouseDetails, fixedReservePanelHouseDetails,normalScrolllListHouseDetails , fixedScrollListHouseDetails} from './Styles.js';
 
 
 class HouseDetails extends React.Component {
@@ -21,6 +23,9 @@ class HouseDetails extends React.Component {
       photoIndex: 0,
       isOpen: false,
       homeData : '',
+      contextRef:'',
+      reservePanelFixed : false,
+      scrollListFixed:false,
       showReservePanel : true,
       token: null,
       searchParams : {
@@ -109,7 +114,7 @@ class HouseDetails extends React.Component {
      return(<div className = "housedetail-img">
             <a href="#" onClick = {this.showHouseGallery.bind(this)}>
              <img
-             src= {"https://www.trypinn.com" + this.state.homeData.preview}  className="house-details-preview"
+             src={"https://www.trypinn.com"+this.state.homeData.preview}  className="house-details-preview"
              alt = ""
             >
              </img>
@@ -154,13 +159,27 @@ class HouseDetails extends React.Component {
      );
    }
  }
-
+  handleContextRef = (contextReference) => this.setState({ contextRef : contextReference });
+  handleStickReservePanel(){
+    this.setState({reservePanelFixed:true});
+  }
+  handleUnstickReservePanel(){
+    this.setState({reservePanelFixed:false});
+  }
+  handleStickScrollList(){
+    this.setState({scrollListFixed:true});
+  }
+  handleUnstickScrollList(){
+    this.setState({scrollListFixed:false});
+  }
   render(){
+    console.log('fuck!');
+    console.clear();
     if (this.state.homeData !== ''){
       document.title = "تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.city;
     }
     return(
-      <div className='housedetail container-fluid'>
+      <div className='housedetail container-fluid' ref={this.handleContextRef}>
         <div className="house-detail-top">
           <div className="house-detail-top-margined">
             <AddressDiscription homeData={this.state.homeData}/>
@@ -171,13 +190,15 @@ class HouseDetails extends React.Component {
               <RatingDiscription homeData={this.state.homeData}/>
             </div>
             <div>
-            <div className="sticky-top">
-              <div className='navigation-menu-housedetails'>
-                <a href="#" onClick={() => scrollToComponent(this.Dis, { offset: 0, align: 'top', duration: 1500})}> <p className='navigation-menu-items'  >مشخصات</p></a>
-                <a href="#" onClick={() => scrollToComponent(this.Gallery, { offset: 0, align: 'top', duration: 1500})}>   <p className='navigation-menu-items' >تصاویر</p></a>
+            <div>
+              <div className='navigation-menu-housedetails' style={this.state.scrollListFixed?fixedScrollListHouseDetails:normalScrolllListHouseDetails}>
+                <a href="#" onClick={() => scrollToComponent(this.Dis, { offset: 0, align: 'top', duration: 1500})}> <p className='navigation-menu-items'>مشخصات</p></a>
+                <a href="#" onClick={() => scrollToComponent(this.Gallery, { offset: 0, align: 'top', duration: 1500})}><p className='navigation-menu-items' >تصاویر</p></a>
                 <a href="#" onClick={() => scrollToComponent(this.Laws, { offset: 0, align: 'top', duration: 1500})}> <p className='navigation-menu-items'>امکانات و قوانین</p></a>
                 <a href="#" onClick={() => scrollToComponent(this.Map, { offset: 0, align: 'top', duration: 1500})}>   <p className='navigation-menu-items'>موقعیت روی نقشه</p></a>
               </div>
+            </div>
+            <div style={{textAlign:'right'}}>
             </div>
             </div>
           </div>
@@ -185,7 +206,11 @@ class HouseDetails extends React.Component {
         <div className='house-detail-top'>
             <div className="house-detail-top-margined">
               <div className="col-md-3">
-                <Sticky stickyStyle={{marginTop:'110px'}}>
+                <Sticky context={this.state.contextRef}
+                onStick={this.handleStickReservePanel.bind(this)}
+                onUnstick={this.handleUnstickReservePanel.bind(this)}
+                offset={40}
+                style={this.state.reservePanelFixed ? fixedReservePanelHouseDetails:normalReservePanelHouseDetails}>
                   <div className='reserve-card'>
                     <div className="reserve-card-child">
                       <p className="text-011">:هزینه هرشب اقامت</p>
@@ -195,7 +220,6 @@ class HouseDetails extends React.Component {
                       </div>
                       <div className="divider-card"></div>
                       <p className="text-011">:تعداد مهمان</p>
-
                       <div>
                         {this.renderReservePanel()}
                       </div>
@@ -204,10 +228,9 @@ class HouseDetails extends React.Component {
                 </Sticky>
               </div>
               <div className='housedetail-img col-md-9'>
-               <section className='gallery-scroller' ref={(section) => { this.Gallery = section; }}></section>
+               <section className='gallery-scroller' ref={(section) => {this.Gallery = section; }}></section>
                 <div>
-               {this.renderPreview()}
-               {this.renderHouseGallery()}
+                  {this.renderPreview()}
                 </div>
                 <div className="col-details-house">
                    <section className='about-scroller' ref={(section) => { this.Dis = section; }}></section>
@@ -220,15 +243,14 @@ class HouseDetails extends React.Component {
                   <HostInfoDiscription homeData={this.state.homeData}/>
                   <div className="divider"></div>
                   <section className='law-scroller' ref={(section) => { this.Laws = section; }}></section>
-
                   <MainDiscription homeData={this.state.homeData} />
-
-                  <section className='map-scroller' ref={(section) => { this.Map = section; }}></section>
+                  <section className='map-scroller' ref={(section) => { this.Map = section; }}>
+                  </section>
                   <MapDiscription homeData={this.state.homeData}/>
                  </div>
                </div>
           </div>
-            </div>
+        </div>
       </div>
     );
     }

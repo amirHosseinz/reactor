@@ -1,14 +1,9 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
 import './Images.css';
 import { englishToPersianDigits } from './tools/EnglishToPersianDigits';
 import AspectRatio from 'react-aspect-ratio';
 
-// import HouseDetails from './HouseDetails'
-// import {BrowserRouter,Route} from 'react-router-dom';
-const styles = {
-  height :80,
-}
+
 class SearchResult extends React.Component {
   constructor(props){
     super(props);

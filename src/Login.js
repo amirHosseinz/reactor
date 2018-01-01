@@ -1,10 +1,12 @@
 import React from 'react';
+import {Button,Divider} from 'semantic-ui-react';
 
 
 class Login extends React.Component{
     constructor(props){
       super(props);
       this.state={
+        role : null,
         reqParamsForLogin:{
           phoneNumber:null,
           password:null,
@@ -67,11 +69,44 @@ class Login extends React.Component{
       if(loginResponse.is_successful){
         localStorage['isLoggedIn']= 'true';
         localStorage['token'] = loginResponse.token;
-        window.location.reload(true);
+        this.setUserNameInHeader();
       }
       else{
         alert('رمز عبور وارد شده نادرست است. لطفا دوباره تلاش کنید');
       }
+    }
+    setUserNameInHeader(){
+      this.getUserInfo();
+    }
+    getRole(){
+      return 'guest';
+    }
+    getUserInfo(){
+      if(localStorage['isLoggedIn']==='true'){
+        this.setState({token:localStorage['token']},()=>{this.setSearchParamsForUserInfo(this.getRole())});
+      }
+    }
+
+    setSearchParamsForUserInfo(person_role){
+      this.setState({role :person_role} ,()=>this.getUserInfoFromServer());
+    }
+
+    getUserInfoFromServer(){
+      var request = new Request('https://www.trypinn.com/auth/api/user/get_info/',{ //
+        method: 'POST',
+        headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+        'Authorization': 'Token '+ this.state.token,})
+      });
+     fetch(request)
+     .then((response) => {
+       return response.json();
+     })
+     .then((data) => {
+       localStorage['user-first-name']=data.user.first_name;
+       localStorage['user-last-name']=data.user.last_name;
+       localStorage['default-panel']='userprofile';
+       window.location.href = '/dashboard';
+     });
     }
     getResponseForSignUp(){
       var request = new Request('https://www.trypinn.com/auth/api/user/login/', {
@@ -97,24 +132,60 @@ class Login extends React.Component{
       if (this.props.loginStatus !== null){
         if (!this.props.loginStatus){
           return (
-            <div>
-              <p>کد تایید</p>
-              <input id='verify-code' />
-              <p>رمز عبور </p>
-              <input id='password' />
-              <p> تکرار رمز عبور </p>
-              <input id='confirm-password' />
-              <button onClick={this.handleSignupClick.bind(this)}>ثبت رمز عبور </button>
+            <div className="login1-modal">
+                <p className="enter-phone-number-inmodal2">:کد تایید ارسال شده را وارد نمایید</p>
+                <div  dir="rtl" className="enter-number-main" >
+                  <input
+                  className="login-input-code"
+                   id='verify-code'
+                   maxlength="4"
+                   type="numeric"
+                    />
+                  <div className="divider-x2"></div>
+                  <br/>
+                  <br/>
+                  <p className="enter-phone-number-inmodal2" >رمز عبور </p>
+                  <input id='password'    className="login-input" type="password"/>
+                  <div className="divider-x"></div>
+                  <br/>
+                  <br/>
+
+
+                  <p className="enter-phone-number-inmodal2" > تکرار رمز عبور </p>
+                  <input id='confirm-password'   className="login-input"  type="password"/>
+
+                  <div className="divider-x"></div>
+                  <br/>
+                  <br/>
+                  <Button color="blue" onClick={this.handleSignupClick.bind(this)} className="login-modal-button-2">
+                    ادامه
+                  </Button>
+                </div>
+
             </div>
           );
         }
         else{
           return (
-            <div>
-              <p>رمز عبور </p>
-              <input id='password'/>
-              <button onClick={this.handleLoginClick.bind(this)}> ورود</button>
-            </div>
+            <div className="login1-modal">
+              <p className="login-title-in-modal"> ورود </p>
+              <Divider/>
+              <p className="enter-phone-number-inmodal">:رمز عبور خود را وارد کنید </p>
+                <div  dir="rtl" className="enter-number-main" >
+                <input
+                  className="login-input"
+                  id='password'
+                  type="password"
+                  autocomplete="off"
+                  />
+                  <div className="divider-x"></div>
+                  <br/>
+                  <br/>
+                    <Button color="blue" onClick={this.handleLoginClick.bind(this)} className="login-modal-button">
+                      ورود
+                    </Button>
+                </div>
+              </div>
           );
         }
       }

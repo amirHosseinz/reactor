@@ -56,6 +56,7 @@ class MainDiscription extends React.Component{
     }
 }
 
+
 renderUtilities () {
   if (this.props.homeData.private_util_options!= null) {
     const util1=this.props.homeData.private_util_options;
@@ -94,10 +95,10 @@ renderUtilities () {
           </div>
         <div className='col-md-6'>
           <Facilities utility={index[1]}/>
-        </div>
-        </div>
-      );
-    }
+          </div>
+          </div>
+        );
+}
    else {
      return(
        <div>
@@ -112,6 +113,7 @@ renderUtilities () {
    }
     }
   }
+
 
 
 renderSpecialRules ()
