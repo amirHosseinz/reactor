@@ -3,7 +3,7 @@ import React from 'react';
 import Lightbox from 'react-image-lightbox';
 import scrollToComponent from 'react-scroll-to-component';
 // import Sticky from 'react-sticky-el';
-
+import {Button} from 'semantic-ui-react';
 import ReservePanel from './HouseDetailParts/ReservePanel.js';
 import MainDiscription from './HouseDetailParts/MainDiscription';
 import AddressDiscription from './HouseDetailParts/AddressDiscription';
@@ -14,6 +14,7 @@ import HostInfoDiscription from './HouseDetailParts/HostInfoDiscription';
 import {englishToPersianDigits} from './tools/EnglishToPersianDigits';
 import {Sticky} from 'semantic-ui-react';
 import {normalReservePanelHouseDetails, fixedReservePanelHouseDetails,normalScrolllListHouseDetails , fixedScrollListHouseDetails} from './Styles.js';
+import AspectRatio from 'react-aspect-ratio';
 
 
 class HouseDetails extends React.Component {
@@ -53,6 +54,7 @@ class HouseDetails extends React.Component {
   componentWillMount() {
     this.getRelevantToken();
   }
+
   setSearchParams(houseId){
     var spar = {
       id : houseId,
@@ -112,13 +114,12 @@ class HouseDetails extends React.Component {
  renderPreview(){
    if(this.state.homeData!==''){
      return(<div className = "housedetail-img">
-            <a href="#" onClick = {this.showHouseGallery.bind(this)}>
-             <img
-             src={"https://www.trypinn.com"+this.state.homeData.preview}  className="house-details-preview"
-             alt = ""
-            >
-             </img>
-             </a>
+              <AspectRatio ratio="16/11" style={{maxWidth: '100%'}}>
+                 <img
+                 onClick={this.showHouseGallery.bind(this)}
+                 src={"https://www.trypinn.com"+this.state.homeData.preview}  className="house-details-preview"
+                 alt = ""/>
+              </AspectRatio>
              </div>);
    }
  }
@@ -131,17 +132,13 @@ class HouseDetails extends React.Component {
       );
      }
      const photoIndex= this.state.photoIndex;
-     const isOpen = this.state.isOpen;
      return (
        <div>
-       {isOpen && (
+       {this.state.isOpen && (
          <Lightbox
            mainSrc={imageList[photoIndex]}
            nextSrc={imageList[(photoIndex + 1) % imageList.length]}
            prevSrc={imageList[(photoIndex + imageList.length - 1) % imageList.length]}
-           mainSrcThumbnail={imageList[photoIndex]}
-           nextSrcThumbnail={imageList[(photoIndex + 1) % imageList.length]}
-           prevSrcThumbnail={imageList[(photoIndex + imageList.length - 1) % imageList.length]}
            onCloseRequest={() => this.setState({ isOpen: false })}
            onMovePrevRequest={() =>
              this.setState({
@@ -159,6 +156,7 @@ class HouseDetails extends React.Component {
      );
    }
  }
+
   handleContextRef (contextReference) {
     this.setState({ contextRef : contextReference });
   }
@@ -179,9 +177,8 @@ class HouseDetails extends React.Component {
     if (this.state.homeData !== ''){
       document.title = "تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.city;
     }
-    console.log(this.state.reservePanelFixed);
     return(
-      <div className='housedetail container-fluid' ref={this.handleContextRef.bind(this)}>
+      <div className='housedetail container-fluid'>
         <div className="house-detail-top">
           <div className="house-detail-top-margined">
             <AddressDiscription homeData={this.state.homeData}/>
@@ -207,7 +204,7 @@ class HouseDetails extends React.Component {
         </div>
         <div className='house-detail-top'>
             <div className="house-detail-top-margined">
-              <div className="col-md-3">
+              <div className="col-md-3 hidden-xs visible-xl">
                 <Sticky context={this.state.contextRef}
                 onStick={this.handleStickReservePanel.bind(this)}
                 onUnstick={this.handleUnstickReservePanel.bind(this)}
@@ -233,6 +230,7 @@ class HouseDetails extends React.Component {
                <section className='gallery-scroller' ref={(section) => {this.Gallery = section; }}></section>
                 <div>
                   {this.renderPreview()}
+                  {this.renderHouseGallery()}
                 </div>
                 <div className="col-details-house">
                    <section className='about-scroller' ref={(section) => { this.Dis = section; }}></section>
@@ -252,6 +250,18 @@ class HouseDetails extends React.Component {
                  </div>
                </div>
           </div>
+        </div>
+        <div className="reserve-bottom-xs navbar-fixed-bottom">
+            <div className="price-div-xs">
+              <div className = "price-xs">
+                <p className="text-017">   هر شب / </p>
+                <p className='text-018'> تومان</p>
+                <p className='text-018'> {englishToPersianDigits(this.state.homeData.price)} </p>
+              </div>
+            </div>
+          <Button color='blue' className='reserve-button-xs'>
+            !رزرو کنید
+          </Button>
         </div>
       </div>
     );

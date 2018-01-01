@@ -1,6 +1,6 @@
 import React from 'react';
 import { englishToPersianDigits } from './tools/EnglishToPersianDigits';
-import { Divider,Button,Input } from 'semantic-ui-react';
+import { Divider,Button } from 'semantic-ui-react';
 
 class UserProfile extends React.Component{
   constructor(props){
@@ -9,12 +9,13 @@ class UserProfile extends React.Component{
       token:null,
       role:null,
       profileInfo:null,
-      firstName:null,
-      lastName:null,
-      cellPhone:null,
-      email:null,
-      password : null,
-      nationalId:null,
+      firstName:'',
+      lastName:'',
+      cellPhone:'',
+      email:'',
+      password : '',
+      confirmPassword:'',
+      nationalId:'',
     };
   }
   componentWillMount() {
@@ -91,41 +92,6 @@ class UserProfile extends React.Component{
       );
     }
 }
-  renderFirstNameEdit(){
-    if (this.state.profileInfo!== null){
-      return (
-        this.state.firstName
-      );
-    }
-  }
-  renderLastNameEdit(){
-    if (this.state.profileInfo!== null){
-      return (
-        this.state.lastName
-      );
-    }
-  }
-  renderEmailEdit(){
-    if (this.state.profileInfo!== null){
-      return (
-        this.state.email
-      );
-    }
-  }
-  renderNationalIdEdit(){
-    if (this.state.profileInfo!== null){
-      return (
-        englishToPersianDigits(this.state.nationalId)
-      );
-    }
-  }
-  renderCellPhoneEdit(){
-    if (this.state.profileInfo!== null){
-      return (
-        this.state.profileInfo.cellPhone
-      );
-    }
-  }
   handleSaveInfo(){
         this.setState({role :this.getRole()} ,()=>this.changeInfOnServer());
   }
@@ -149,10 +115,8 @@ class UserProfile extends React.Component{
      return response.json();
    })
    .then((response) => {
-     console.log(response);
      localStorage['user-first-name']=this.state.firstName;
      localStorage['user-last-name']=this.state.lastName;
-     console.log(localStorage['user-first-name']);
      window.location.reload();
    });
   }
@@ -186,7 +150,7 @@ class UserProfile extends React.Component{
               <div className="edit-prof-row1 row">
                   <div className="col-md-4">
                     <p className="profile-labels">نام:</p>
-                    <input id='first-name' onChange={this.editFirstName.bind(this)} className="first_name_edit input-sm form-control" value={this.state.firstName}/>
+                    <input id='first-name' onChange={this.editFirstName.bind(this)} className="first_name_edit input-sm form-control"  value={this.state.firstName}/>
                   </div>
                 <div className="col-md-4">
                   <p className="profile-labels">نام خانوادگی:</p>
@@ -218,7 +182,7 @@ class UserProfile extends React.Component{
                 </div>
                 <div className="col-md-4">
                   <p className="profile-labels">تکرار رمز عبور:</p>
-                  <input className="last_name_edit input-sm form-control" type="password"/>
+                  <input id='confirm-password' className="last_name_edit input-sm form-control" type="password" value={this.state.confirmPassword}/>
                 </div>
                 <div className="col-md-4">
                 </div>

@@ -489,7 +489,7 @@ import jQuery from 'jquery';
                 }
             }
             var nodeName = target.nodeName.toLowerCase();
-            var inline = (nodeName == 'div' || nodeName == 'span');
+            var inline = (nodeName === 'div' || nodeName === 'span');
             if (!target.id) {
                 this.uuid += 1;
                 target.id = 'dp' + this.uuid;
@@ -983,7 +983,7 @@ import jQuery from 'jquery';
         /* Synchronise manual entry and field/alternate field. */
         _doKeyUp: function(event) {
             var inst = $.datepicker._getInst(event.target);
-            if (inst.input.val() != inst.lastVal) {
+            if (inst.input.val() !== inst.lastVal) {
                 try {
                     var date = $.datepicker.parseDate($.datepicker._get(inst, 'dateFormat'),
                         (inst.input ? inst.input.val() : null),
@@ -1007,12 +1007,12 @@ import jQuery from 'jquery';
 	                  event - if triggered by focus */
         _showDatepicker: function(input) {
             input = input.target || input;
-            if (input.nodeName.toLowerCase() != 'input') // find from button/image trigger
+            if (input.nodeName.toLowerCase() !== 'input') // find from button/image trigger
                 input = $('input', input.parentNode)[0];
-            if ($.datepicker._isDisabledDatepicker(input) || $.datepicker._lastInput == input) // already here
+            if ($.datepicker._isDisabledDatepicker(input) || $.datepicker._lastInput === input) // already here
                 return;
             var inst = $.datepicker._getInst(input);
-            if ($.datepicker._curInst && $.datepicker._curInst != inst) {
+            if ($.datepicker._curInst && $.datepicker._curInst !== inst) {
                 $.datepicker._curInst.dpDiv.stop(true, true);
                 if ( inst && $.datepicker._datepickerShowing ) {
                     $.datepicker._hideDatepicker( $.datepicker._curInst.input[0] );
@@ -1036,7 +1036,7 @@ import jQuery from 'jquery';
             }
             var isFixed = false;
             $(input).parents().each(function() {
-                isFixed |= $(this).css('position') == 'fixed';
+                isFixed |= $(this).css('position') === 'fixed';
                 return !isFixed;
             });
             var offset = {
@@ -1117,14 +1117,14 @@ import jQuery from 'jquery';
             inst.dpDiv.removeClass('ui-datepicker-multi-2 ui-datepicker-multi-3 ui-datepicker-multi-4').width('');
             if (cols > 1)
                 inst.dpDiv.addClass('ui-datepicker-multi-' + cols).css('width', (width * cols) + 'em');
-            inst.dpDiv[(numMonths[0] != 1 || numMonths[1] != 1 ? 'add' : 'remove') +
+            inst.dpDiv[(numMonths[0] !== 1 || numMonths[1] !== 1 ? 'add' : 'remove') +
             'Class']('ui-datepicker-multi');
             inst.dpDiv[(this._get(inst, 'isRTL') ? 'add' : 'remove') +
             'Class']('ui-datepicker-rtl');
-            if (inst == $.datepicker._curInst && $.datepicker._datepickerShowing && inst.input &&
+            if (inst === $.datepicker._curInst && $.datepicker._datepickerShowing && inst.input &&
                 // #6694 - don't focus the input if it's already focused
                 // this breaks the change event in IE
-                inst.input.is(':visible') && !inst.input.is(':disabled') && inst.input[0] != document.activeElement)
+                inst.input.is(':visible') && !inst.input.is(':disabled') && inst.input[0] !== document.activeElement)
                 inst.input.focus();
             // deffered render of the years select (to avoid flashes on Firefox)
             if( inst.yearshtml ){
@@ -1165,8 +1165,8 @@ import jQuery from 'jquery';
             var viewHeight = document.documentElement.clientHeight + (isFixed ? 0 : $(document).scrollTop());
 
             offset.left -= (this._get(inst, 'isRTL') ? (dpWidth - inputWidth) : 0);
-            offset.left -= (isFixed && offset.left == inst.input.offset().left) ? $(document).scrollLeft() : 0;
-            offset.top -= (isFixed && offset.top == (inst.input.offset().top + inputHeight)) ? $(document).scrollTop() : 0;
+            offset.left -= (isFixed && offset.left === inst.input.offset().left) ? $(document).scrollLeft() : 0;
+            offset.top -= (isFixed && offset.top === (inst.input.offset().top + inputHeight)) ? $(document).scrollTop() : 0;
 
             // now check if datepicker is showing outside window viewport - move to a better place if so.
             offset.left -= Math.min(offset.left, (offset.left + dpWidth > viewWidth && viewWidth > dpWidth) ?
@@ -1181,7 +1181,7 @@ import jQuery from 'jquery';
         _findPos: function(obj) {
             var inst = this._getInst(obj);
             var isRTL = this._get(inst, 'isRTL');
-            while (obj && (obj.type == 'hidden' || obj.nodeType != 1 || $.expr.filters.hidden(obj))) {
+            while (obj && (obj.type === 'hidden' || obj.nodeType !== 1 || $.expr.filters.hidden(obj))) {
                 obj = obj[isRTL ? 'previousSibling' : 'nextSibling'];
             }
             var position = $(obj).offset();
@@ -1192,7 +1192,7 @@ import jQuery from 'jquery';
 	   @param  input  element - the input field attached to the date picker */
         _hideDatepicker: function(input) {
             var inst = this._curInst;
-            if (!inst || (input && inst != $.data(input, PROP_NAME)))
+            if (!inst || (input && inst !== $.data(input, PROP_NAME)))
                 return;
             if (this._datepickerShowing) {
                 var showAnim = this._get(inst, 'showAnim');
@@ -1205,8 +1205,8 @@ import jQuery from 'jquery';
                 if ( $.effects && ( $.effects.effect[ showAnim ] || $.effects[ showAnim ] ) )
                     inst.dpDiv.hide(showAnim, $.datepicker._get(inst, 'showOptions'), duration, postProcess);
                 else
-                    inst.dpDiv[(showAnim == 'slideDown' ? 'slideUp' :
-                        (showAnim == 'fadeIn' ? 'fadeOut' : 'hide'))]((showAnim ? duration : null), postProcess);
+                    inst.dpDiv[(showAnim === 'slideDown' ? 'slideUp' :
+                        (showAnim === 'fadeIn' ? 'fadeOut' : 'hide'))]((showAnim ? duration : null), postProcess);
                 if (!showAnim)
                     postProcess();
                 this._datepickerShowing = false;
@@ -1243,12 +1243,12 @@ import jQuery from 'jquery';
             var $target = $(event.target),
             inst = $.datepicker._getInst($target[0]);
 
-            if ( ( ( $target[0].id != $.datepicker._mainDivId &&
-                $target.parents('#' + $.datepicker._mainDivId).length == 0 &&
+            if ( ( ( $target[0].id !== $.datepicker._mainDivId &&
+                $target.parents('#' + $.datepicker._mainDivId).length === 0 &&
                 !$target.hasClass($.datepicker.markerClassName) &&
                 !$target.closest("." + $.datepicker._triggerClass).length &&
                 $.datepicker._datepickerShowing && !($.datepicker._inDialog && $.blockUI) ) ) ||
-            ( $target.hasClass($.datepicker.markerClassName) && $.datepicker._curInst != inst ) )
+            ( $target.hasClass($.datepicker.markerClassName) && $.datepicker._curInst !== inst ) )
                 $.datepicker._hideDatepicker();
         },
 
@@ -1260,7 +1260,7 @@ import jQuery from 'jquery';
                 return;
             }
             this._adjustInstDate(inst, offset +
-                (period == 'M' ? this._get(inst, 'showCurrentAtPos') : 0), // undo positioning
+                (period === 'M' ? this._get(inst, 'showCurrentAtPos') : 0), // undo positioning
                 period);
             this._updateDatepicker(inst);
         },
@@ -1288,8 +1288,8 @@ import jQuery from 'jquery';
         _selectMonthYear: function(id, select, period) {
             var target = $(id);
             var inst = this._getInst(target[0]);
-            inst['selected' + (period == 'M' ? 'Month' : 'Year')] =
-            inst['draw' + (period == 'M' ? 'Month' : 'Year')] =
+            inst['selected' + (period === 'M' ? 'Month' : 'Year')] =
+            inst['draw' + (period === 'M' ? 'Month' : 'Year')] =
             parseInt(select.options[select.selectedIndex].value,10);
             this._notifyChange(inst);
             this._adjustDate(target);
@@ -1320,7 +1320,7 @@ import jQuery from 'jquery';
         _selectDate: function(id, dateStr) {
             var target = $(id);
             var inst = this._getInst(target[0]);
-            dateStr = (dateStr != null ? dateStr : this._formatDate(inst));
+            dateStr = (dateStr !== null ? dateStr : this._formatDate(inst));
             if (inst.input)
                 inst.input.val(dateStr);
             this._updateAlternate(inst);
@@ -1334,7 +1334,7 @@ import jQuery from 'jquery';
             else {
                 this._hideDatepicker();
                 this._lastInput = inst.input[0];
-                if (typeof(inst.input[0]) != 'object')
+                if (typeof(inst.input[0]) !== 'object')
                     inst.input.focus(); // restore focus
                 this._lastInput = null;
             }
@@ -1387,13 +1387,13 @@ import jQuery from 'jquery';
 	                     monthNames       string[12] - names of the months (optional)
 	   @return  Date - the extracted date value or null if value is blank */
         parseDate: function (format, value, settings) {
-            if (format == null || value == null)
+            if (format === null || value === null)
                 throw 'Invalid arguments';
-            value = (typeof value == 'object' ? value.toString() : value + '');
-            if (value == '')
+            value = (typeof value === 'object' ? value.toString() : value + '');
+            if (value === '')
                 return null;
             var shortYearCutoff = (settings ? settings.shortYearCutoff : null) || this._defaults.shortYearCutoff;
-            shortYearCutoff = (typeof shortYearCutoff != 'string' ? shortYearCutoff :
+            shortYearCutoff = (typeof shortYearCutoff !== 'string' ? shortYearCutoff :
                 new this.CDate().getFullYear() % 100 + parseInt(shortYearCutoff, 10));
 
             var dayNamesShort = (settings ? settings.dayNamesShort : null) || this._defaults.dayNamesShort;
@@ -1407,7 +1407,7 @@ import jQuery from 'jquery';
             var literal = false;
             // Check whether a format character is doubled
             var lookAhead = function(match) {
-                var matches = (iFormat + 1 < format.length && format.charAt(iFormat + 1) == match);
+                var matches = (iFormat + 1 < format.length && format.charAt(iFormat + 1) === match);
                 if (matches)
                     iFormat++;
                 return matches;
@@ -1415,8 +1415,8 @@ import jQuery from 'jquery';
             // Extract a number from the string value
             var getNumber = function(match) {
                 var isDoubled = lookAhead(match);
-                var size = (match == '@' ? 14 : (match == '!' ? 20 :
-                    (match == 'y' && isDoubled ? 4 : (match == 'o' ? 3 : 2))));
+                var size = (match === '@' ? 14 : (match === '!' ? 20 :
+                    (match === 'y' && isDoubled ? 4 : (match === 'o' ? 3 : 2))));
                 var digits = new RegExp('^\\d{1,' + size + '}');
                 var num = value.substring(iValue).match(digits);
                 if (!num)
@@ -1434,27 +1434,27 @@ import jQuery from 'jquery';
                 var index = -1;
                 $.each(names, function (i, pair) {
                     var name = pair[1];
-                    if (value.substr(iValue, name.length).toLowerCase() == name.toLowerCase()) {
+                    if (value.substr(iValue, name.length).toLowerCase() === name.toLowerCase()) {
                         index = pair[0];
                         iValue += name.length;
                         return false;
                     }
                 });
-                if (index != -1)
+                if (index !== -1)
                     return index + 1;
                 else
                     throw 'Unknown name at position ' + iValue;
             };
             // Confirm that a literal character matches the string value
             var checkLiteral = function() {
-                if (value.charAt(iValue) != format.charAt(iFormat))
+                if (value.charAt(iValue) !== format.charAt(iFormat))
                     throw 'Unexpected literal at position ' + iValue;
                 iValue++;
             };
             var iValue = 0;
             for (var iFormat = 0; iFormat < format.length; iFormat++) {
                 if (literal)
-                    if (format.charAt(iFormat) == "'" && !lookAhead("'"))
+                    if (format.charAt(iFormat) === "'" && !lookAhead("'"))
                         literal = false;
                     else
                         checkLiteral();
@@ -1506,7 +1506,7 @@ import jQuery from 'jquery';
                     throw "Extra/unparsed characters found in date: " + extra;
                 }
             }
-            if (year == -1)
+            if (year === -1)
                 year = new this.CDate().getFullYear();
 
             else if (year < 100)
@@ -1524,7 +1524,7 @@ import jQuery from 'jquery';
                 } while (true);
             }
             var date = this._daylightSavingAdjust(new this.CDate(year, month - 1, day));
-            if (date.getFullYear() != year || date.getMonth() + 1 != month || date.getDate() != day)
+            if (date.getFullYear() !== year || date.getMonth() + 1 !== month || date.getDate() !== day)
                 throw 'Invalid date'; // E.g. 31/02/00
             return date;
         },
@@ -1582,7 +1582,7 @@ import jQuery from 'jquery';
             var monthNames = (settings ? settings.monthNames : null) || this._defaults.monthNames;
             // Check whether a format character is doubled
             var lookAhead = function(match) {
-                var matches = (iFormat + 1 < format.length && format.charAt(iFormat + 1) == match);
+                var matches = (iFormat + 1 < format.length && format.charAt(iFormat + 1) === match);
                 if (matches)
                     iFormat++;
                 return matches;
@@ -1604,7 +1604,7 @@ import jQuery from 'jquery';
             if (date)
                 for (var iFormat = 0; iFormat < format.length; iFormat++) {
                     if (literal)
-                        if (format.charAt(iFormat) == "'" && !lookAhead("'"))
+                        if (format.charAt(iFormat) === "'" && !lookAhead("'"))
                             literal = false;
                         else
                             output += format.charAt(iFormat);
@@ -1655,14 +1655,14 @@ import jQuery from 'jquery';
             var literal = false;
             // Check whether a format character is doubled
             var lookAhead = function(match) {
-                var matches = (iFormat + 1 < format.length && format.charAt(iFormat + 1) == match);
+                var matches = (iFormat + 1 < format.length && format.charAt(iFormat + 1) === match);
                 if (matches)
                     iFormat++;
                 return matches;
             };
             for (var iFormat = 0; iFormat < format.length; iFormat++)
                 if (literal)
-                    if (format.charAt(iFormat) == "'" && !lookAhead("'"))
+                    if (format.charAt(iFormat) === "'" && !lookAhead("'"))
                         literal = false;
                     else
                         chars += format.charAt(iFormat);
@@ -1684,7 +1684,6 @@ import jQuery from 'jquery';
                     }
             return chars;
         },
-
         /* Get a setting value, defaulting if necessary. */
         _get: function(inst, name) {
             return inst.settings[name] !== undefined ?
@@ -1693,7 +1692,7 @@ import jQuery from 'jquery';
 
         /* Parse existing date and initialise date picker. */
         _setDateFromField: function(inst, noDefault) {
-            if (inst.input.val() == inst.lastVal) {
+            if (inst.input.val() === inst.lastVal) {
                 return;
             }
             var dateFormat = this._get(inst, 'dateFormat');
@@ -1767,9 +1766,9 @@ import jQuery from 'jquery';
                 }
                 return new Date(year, month, day);
             };
-            var newDate = (date == null || date === '' ? defaultDate : (typeof date == 'string' ? offsetString(date) :
-                (typeof date == 'number' ? (isNaN(date) ? defaultDate : offsetNumeric(date)) : new Date(date.getTime()))));
-            newDate = (newDate && newDate.toString() == 'Invalid Date' ? defaultDate : newDate);
+            var newDate = (date === null || date === '' ? defaultDate : (typeof date === 'string' ? offsetString(date) :
+                (typeof date === 'number' ? (isNaN(date) ? defaultDate : offsetNumeric(date)) : new Date(date.getTime()))));
+            newDate = (newDate && newDate.toString() === 'Invalid Date' ? defaultDate : newDate);
             if (newDate) {
                 newDate.setHours(0);
                 newDate.setMinutes(0);
@@ -1801,7 +1800,7 @@ import jQuery from 'jquery';
             inst.selectedDay = inst.currentDay = newDate.getDate();
             inst.drawMonth = inst.selectedMonth = inst.currentMonth = newDate.getMonth();
             inst.drawYear = inst.selectedYear = inst.currentYear = newDate.getFullYear();
-            if ((origMonth != inst.selectedMonth || origYear != inst.selectedYear) && !noChange)
+            if ((origMonth !== inst.selectedMonth || origYear !== inst.selectedYear) && !noChange)
                 this._notifyChange(inst);
             this._adjustInstDate(inst);
             if (inst.input) {
@@ -1812,7 +1811,7 @@ import jQuery from 'jquery';
         /* Retrieve the date(s) directly. */
         _getDate: function(inst) {
             this.CDate = this._get(inst, 'calendar');
-            var startDate = (!inst.currentYear || (inst.input && inst.input.val() == '') ? null :
+            var startDate = (!inst.currentYear || (inst.input && inst.input.val() === '') ? null :
                 this._daylightSavingAdjust(new this.CDate(
                     inst.currentYear, inst.currentMonth, inst.currentDay)));
             return startDate;
@@ -1867,7 +1866,7 @@ import jQuery from 'jquery';
             var numMonths = this._getNumberOfMonths(inst);
             var showCurrentAtPos = this._get(inst, 'showCurrentAtPos');
             var stepMonths = this._get(inst, 'stepMonths');
-            var isMultiMonth = (numMonths[0] != 1 || numMonths[1] != 1);
+            var isMultiMonth = (numMonths[0] !== 1 || numMonths[1] !== 1);
             var currentDate = this._daylightSavingAdjust((!inst.currentDay ? new Date(9999, 9, 9) :
                 new this.CDate(inst.currentYear, inst.currentMonth, inst.currentDay)));
             var minDate = this._getMinMaxDate(inst, 'min');
@@ -1958,8 +1957,8 @@ import jQuery from 'jquery';
                         calender += '">';
                     }
                     calender += '<div class="ui-datepicker-header ui-widget-header ui-helper-clearfix' + cornerClass + '">' +
-                    (/all|left/.test(cornerClass) && row == 0 ? (isRTL ? next : prev) : '') +
-                    (/all|right/.test(cornerClass) && row == 0 ? (isRTL ? prev : next) : '') +
+                    (/all|left/.test(cornerClass) && row === 0 ? (isRTL ? next : prev) : '') +
+                    (/all|right/.test(cornerClass) && row === 0 ? (isRTL ? prev : next) : '') +
                     this._generateMonthYearHeader(inst, drawMonth, drawYear, minDate, maxDate,
                         row > 0 || col > 0, monthNames, monthNamesShort) + // draw month headers
                     '</div><table class="ui-datepicker-calendar"><thead>' +
@@ -1972,7 +1971,7 @@ import jQuery from 'jquery';
                     }
                     calender += thead + '</tr></thead><tbody>';
                     var daysInMonth = this._getDaysInMonth(drawYear, drawMonth);
-                    if (drawYear == inst.selectedYear && drawMonth == inst.selectedMonth)
+                    if (drawYear === inst.selectedYear && drawMonth === inst.selectedMonth)
                         inst.selectedDay = Math.min(inst.selectedDay, daysInMonth);
                     var leadDays = (this._getFirstDayOfMonth(drawYear, drawMonth) - firstDay + 7) % 7;
                     var curRows = Math.ceil((leadDays + daysInMonth) / 7); // calculate the number of rows to generate
@@ -1986,27 +1985,27 @@ import jQuery from 'jquery';
                         for (var dow = 0; dow < 7; dow++) { // create date picker days
                             var daySettings = (beforeShowDay ?
                                 beforeShowDay.apply((inst.input ? inst.input[0] : null), [printDate]) : [true, '']);
-                            var otherMonth = (printDate.getMonth() != drawMonth);
+                            var otherMonth = (printDate.getMonth() !== drawMonth);
                             var unselectable = (otherMonth && !selectOtherMonths) || !daySettings[0] ||
                                ((minDate && this._compareDate(printDate, '<', minDate)) || (maxDate && this._compareDate(printDate, '>', maxDate)));
 
                             tbody += '<td class="' +
                             ((dow + firstDay + 6) % 7 >= 5 ? ' ui-datepicker-week-end' : '') + // highlight weekends
                             (otherMonth ? ' ui-datepicker-other-month' : '') + // highlight days from other months
-                            ((printDate.getTime() == selectedDate.getTime() && drawMonth == inst.selectedMonth && inst._keyEvent) || // user pressed key
-                                (defaultDate.getTime() == printDate.getTime() && defaultDate.getTime() == selectedDate.getTime()) ?
+                            ((printDate.getTime() === selectedDate.getTime() && drawMonth === inst.selectedMonth && inst._keyEvent) || // user pressed key
+                                (defaultDate.getTime() === printDate.getTime() && defaultDate.getTime() == selectedDate.getTime()) ?
                                 // or defaultDate is current printedDate and defaultDate is selectedDate
                                 ' ' + this._dayOverClass : '') + // highlight selected day
                             (unselectable ? ' ' + this._unselectableClass + ' ui-state-disabled': '') +  // highlight unselectable days
                             (otherMonth && !showOtherMonths ? '' : ' ' + daySettings[1] + // highlight custom dates
-                                (printDate.getTime() == currentDate.getTime() ? ' ' + this._currentClass : '') + // highlight selected day
-                                (printDate.getTime() == today.getTime() ? ' ui-datepicker-today' : '')) + '"' + // highlight today (if different)
+                                (printDate.getTime() === currentDate.getTime() ? ' ' + this._currentClass : '') + // highlight selected day
+                                (printDate.getTime() === today.getTime() ? ' ui-datepicker-today' : '')) + '"' + // highlight today (if different)
                             ((!otherMonth || showOtherMonths) && daySettings[2] ? ' title="' + daySettings[2] + '"' : '') + // cell title
                             (unselectable ? '' : ' data-handler="selectDay" data-event="click" data-month="' + printDate.getMonth() + '" data-year="' + printDate.getFullYear() + '"') + '>' + // actions
                             (otherMonth && !showOtherMonths ? '&#xa0;' : // display for other months
                                 (unselectable ? '<span class="ui-state-default">' + printDate.getDate() + '</span>' : '<a class="ui-state-default' +
-                                    (printDate.getTime() == today.getTime() ? ' ui-state-highlight' : '') +
-                                    (printDate.getTime() == currentDate.getTime() ? ' ui-state-active' : '') + // highlight selected day
+                                    (printDate.getTime() === today.getTime() ? ' ui-state-highlight' : '') +
+                                    (printDate.getTime() === currentDate.getTime() ? ' ui-state-active' : '') + // highlight selected day
                                     (otherMonth ? ' ui-priority-secondary' : '') + // distinguish dates from other months
                                     '" href="#">' + printDate.getDate() + '</a>')) + '</td>'; // display selectable date
                             printDate.setDate(printDate.getDate() + 1);
@@ -2020,7 +2019,7 @@ import jQuery from 'jquery';
                         drawYear++;
                     }
                     calender += '</tbody></table>' + (isMultiMonth ? '</div>' +
-                        ((numMonths[0] > 0 && col == numMonths[1]-1) ? '<div class="ui-datepicker-row-break"></div>' : '') : '');
+                        ((numMonths[0] > 0 && col === numMonths[1]-1) ? '<div class="ui-datepicker-row-break"></div>' : '') : '');
                     group += calender;
                 }
                 html += group;
@@ -2043,14 +2042,14 @@ import jQuery from 'jquery';
             if (secondary || !changeMonth)
                 monthHtml += '<span class="ui-datepicker-month">' + monthNames[drawMonth] + '</span>';
             else {
-                var inMinYear = (minDate && minDate.getFullYear() == drawYear);
-                var inMaxYear = (maxDate && maxDate.getFullYear() == drawYear);
+                var inMinYear = (minDate && minDate.getFullYear() === drawYear);
+                var inMaxYear = (maxDate && maxDate.getFullYear() === drawYear);
                 monthHtml += '<select class="ui-datepicker-month" data-handler="selectMonth" data-event="change">';
                 for (var month = 0; month < 12; month++) {
                     if ((!inMinYear || month >= minDate.getMonth()) &&
                         (!inMaxYear || month <= maxDate.getMonth()))
                         monthHtml += '<option value="' + month + '"' +
-                        (month == drawMonth ? ' selected="selected"' : '') +
+                        (month === drawMonth ? ' selected="selected"' : '') +
                         '>' + monthNamesShort[month] + '</option>';
                 }
                 monthHtml += '</select>';
@@ -2079,7 +2078,7 @@ import jQuery from 'jquery';
                     inst.yearshtml += '<select class="ui-datepicker-year" data-handler="selectYear" data-event="change">';
                     for (; year <= endYear; year++) {
                         inst.yearshtml += '<option value="' + year + '"' +
-                        (year == drawYear ? ' selected="selected"' : '') +
+                        (year === drawYear ? ' selected="selected"' : '') +
                         '>' + year + '</option>';
                     }
                     inst.yearshtml += '</select>';
@@ -2097,16 +2096,16 @@ import jQuery from 'jquery';
 
         /* Adjust one of the date sub-fields. */
         _adjustInstDate: function(inst, offset, period) {
-            var year = inst.drawYear + (period == 'Y' ? offset : 0);
-            var month = inst.drawMonth + (period == 'M' ? offset : 0);
+            var year = inst.drawYear + (period === 'Y' ? offset : 0);
+            var month = inst.drawMonth + (period === 'M' ? offset : 0);
             var day = Math.min(inst.selectedDay, this._getDaysInMonth(year, month)) +
-            (period == 'D' ? offset : 0);
+            (period === 'D' ? offset : 0);
             var date = this._restrictMinMax(inst,
                 this._daylightSavingAdjust(new this.CDate(year, month, day)));
             inst.selectedDay = date.getDate();
             inst.drawMonth = inst.selectedMonth = date.getMonth();
             inst.drawYear = inst.selectedYear = date.getFullYear();
-            if (period == 'M' || period == 'Y')
+            if (period === 'M' || period === 'Y')
                 this._notifyChange(inst);
         },
 
@@ -2130,7 +2129,7 @@ import jQuery from 'jquery';
         /* Determine the number of months to show. */
         _getNumberOfMonths: function(inst) {
             var numMonths = this._get(inst, 'numberOfMonths');
-            return (numMonths == null ? [1, 1] : (typeof numMonths == 'number' ? [1, numMonths] : numMonths));
+            return (numMonths === null ? [1, 1] : (typeof numMonths === 'number' ? [1, numMonths] : numMonths));
         },
 
         /* Determine the current maximum date - ensure no time components are set. */
@@ -2170,7 +2169,7 @@ import jQuery from 'jquery';
         _getFormatConfig: function(inst) {
             var shortYearCutoff = this._get(inst, 'shortYearCutoff');
             this.CDate = this._get(inst, 'calendar');
-            shortYearCutoff = (typeof shortYearCutoff != 'string' ? shortYearCutoff :
+            shortYearCutoff = (typeof shortYearCutoff !== 'string' ? shortYearCutoff :
                 new this.CDate().getFullYear() % 100 + parseInt(shortYearCutoff, 10));
             return {
                 shortYearCutoff: shortYearCutoff,
@@ -2188,7 +2187,7 @@ import jQuery from 'jquery';
                 inst.currentMonth = inst.selectedMonth;
                 inst.currentYear = inst.selectedYear;
             }
-            var date = (day ? (typeof day == 'object' ? day :
+            var date = (day ? (typeof day === 'object' ? day :
                 this._daylightSavingAdjust(new this.CDate(year, month, day))) :
                 this._daylightSavingAdjust(new this.CDate(inst.currentYear, inst.currentMonth, inst.currentDay)));
             return this.formatDate(this._get(inst, 'dateFormat'), date, this._getFormatConfig(inst));
@@ -2198,7 +2197,7 @@ import jQuery from 'jquery';
             if(d1 && d2) {
                 if(d1.getGregorianDate) d1 = d1.getGregorianDate();
                 if(d2.getGregorianDate) d2 = d2.getGregorianDate();
-                if(op == '<') return d1 < d2;
+                if(op === '<') return d1 < d2;
                 return d1 > d2;
             } else {
                 return null;
@@ -2215,15 +2214,15 @@ import jQuery from 'jquery';
         var selector = 'button, .ui-datepicker-prev, .ui-datepicker-next, .ui-datepicker-calendar td a';
         return dpDiv.delegate(selector, 'mouseout', function() {
             $(this).removeClass('ui-state-hover');
-            if (this.className.indexOf('ui-datepicker-prev') != -1) $(this).removeClass('ui-datepicker-prev-hover');
-            if (this.className.indexOf('ui-datepicker-next') != -1) $(this).removeClass('ui-datepicker-next-hover');
+            if (this.className.indexOf('ui-datepicker-prev') !== -1) $(this).removeClass('ui-datepicker-prev-hover');
+            if (this.className.indexOf('ui-datepicker-next') !== -1) $(this).removeClass('ui-datepicker-next-hover');
         })
         .delegate(selector, 'mouseover', function(){
             if (!$.datepicker._isDisabledDatepicker( instActive.inline ? dpDiv.parent()[0] : instActive.input[0])) {
                 $(this).parents('.ui-datepicker-calendar').find('a').removeClass('ui-state-hover');
                 $(this).addClass('ui-state-hover');
-                if (this.className.indexOf('ui-datepicker-prev') != -1) $(this).addClass('ui-datepicker-prev-hover');
-                if (this.className.indexOf('ui-datepicker-next') != -1) $(this).addClass('ui-datepicker-next-hover');
+                if (this.className.indexOf('ui-datepicker-prev') !== -1) $(this).addClass('ui-datepicker-prev-hover');
+                if (this.className.indexOf('ui-datepicker-next') !== -1) $(this).addClass('ui-datepicker-next-hover');
             }
         });
     }
@@ -2232,7 +2231,7 @@ import jQuery from 'jquery';
     function extendRemove(target, props) {
         $.extend(target, props);
         for (var name in props)
-            if (props[name] == null || props[name] == undefined)
+            if (props[name] === null || props[name] === undefined)
                 target[name] = props[name];
         return target;
     };
@@ -2250,23 +2249,19 @@ import jQuery from 'jquery';
 
         /* Initialise the date picker. */
         if (!$.datepicker.initialized) {
-            $(document).mousedown($.datepicker._checkExternalClick).
-            find(document.body).append($.datepicker.dpDiv);
+            $(document).mousedown($.datepicker._checkExternalClick).find(document.body).append($.datepicker.dpDiv);
             $.datepicker.initialized = true;
         }
 
         var otherArgs = Array.prototype.slice.call(arguments, 1);
-        if (typeof options == 'string' && (options == 'isDisabled' || options == 'getDate' || options == 'widget'))
-            return $.datepicker['_' + options + 'Datepicker'].
-            apply($.datepicker, [this[0]].concat(otherArgs));
-        if (options == 'option' && arguments.length == 2 && typeof arguments[1] == 'string')
-            return $.datepicker['_' + options + 'Datepicker'].
-            apply($.datepicker, [this[0]].concat(otherArgs));
+        if (typeof options === 'string' && (options === 'isDisabled' || options === 'getDate' || options === 'widget'))
+            return $.datepicker['_' + options + 'Datepicker'].apply($.datepicker, [this[0]].concat(otherArgs));
+        if (options === 'option' && arguments.length === 2 && typeof arguments[1] === 'string')
+            return $.datepicker['_' + options + 'Datepicker'].apply($.datepicker, [this[0]].concat(otherArgs));
         return this.each(function() {
-            typeof options == 'string' ?
+            typeof options === 'string' ?
             $.datepicker['_' + options + 'Datepicker'].
-            apply($.datepicker, [this].concat(otherArgs)) :
-            $.datepicker._attachDatepicker(this, options);
+            apply($.datepicker, [this].concat(otherArgs)) :$.datepicker._attachDatepicker(this, options);
         });
     };
 
@@ -2278,5 +2273,4 @@ import jQuery from 'jquery';
     // Workaround for #4055
     // Add another global to avoid noConflict issues with inline event handlers
     window['DP_jQuery_' + dpuuid] = $;
-
 })(jQuery);

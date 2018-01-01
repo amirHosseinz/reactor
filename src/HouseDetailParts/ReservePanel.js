@@ -1,5 +1,4 @@
 import React from 'react';
-import moment from 'moment';
 import GuestNumber from './GuestNumber.js';
 import {Button} from 'semantic-ui-react';
 import Modal from 'react-modal';
@@ -9,7 +8,6 @@ import $ from 'jquery';
 import '../tools/DatePicker/bootstrap-datepicker.fa.js';
 import '../tools/DatePicker/bootstrap-datepicker.js';
 import '../tools/DatePicker/bootstrap-datepicker.css';
-
 
 class ReservePanel extends React.Component{
   constructor(props){
@@ -34,7 +32,6 @@ class ReservePanel extends React.Component{
       ()=>this.setSearchParams(this.getDataFromUser()));
   }
   getDataFromUser(){
-      console.log('ghahbe sefat');
       return({startDate : document.getElementById('fromdatepicker').value,
               endDate : document.getElementById('todatepicker').value,
               numberOfGuests : 1,
@@ -166,6 +163,9 @@ class ReservePanel extends React.Component{
         changeMonth: true,
         changeYear: true,
         isRTL: true,
+        numberOfMonths:1,
+        showOtherMonths:false,
+        showButtonPanel:true,
         dateFormat: "yy/m/d",
        });
     });
@@ -177,6 +177,8 @@ class ReservePanel extends React.Component{
         changeMonth: true,
         changeYear: true,
         isRTL: true,
+        numberOfMonths:1,
+        showButtonPanel:true,
         dateFormat: "yy/m/d",
        });
     });
@@ -200,7 +202,7 @@ class ReservePanel extends React.Component{
 
           <div className='reserve-button-div'>
             <Button color='blue' className='reserve-button' onClick ={this.handleClick.bind(this)}>
-              !رزرو کنید
+              مشاهده قیمت
             </Button>
           </div>
         <Modal

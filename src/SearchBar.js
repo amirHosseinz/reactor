@@ -8,7 +8,6 @@ import './tools/DatePicker/bootstrap-datepicker.fa.js';
 import './tools/DatePicker/bootstrap-datepicker.js';
 import './tools/DatePicker/bootstrap-datepicker.css';
 
-import {Search} from 'semantic-ui-react';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -17,8 +16,11 @@ class SearchBar extends React.Component {
       token: null,
       showOnlyCitySearchBar:true,
       houseList:[],
+      cityList:[],
+      cityListFromServer:null,
+      city:null,
       searchParams : {
-        location: null,
+        location: '',
         start_date: null,
         end_date: null,
         capacity: null,
@@ -30,13 +32,10 @@ class SearchBar extends React.Component {
     return localStorage['token'];
   }
   componentWillMount(){
-
     this.setState({
       token : this.getRelevantToken(),
-    }, () => {
-    });
+    }, () => {this.getCityListFromServer()});
   }
-
   renderData(houseData) {
    this.setState({
      houseList: houseData.room,
@@ -54,21 +53,38 @@ class SearchBar extends React.Component {
                   <div className="multi-input-1 col-md-2">
                     <Typeahead
                       className="typeahead-indetail-xl"
+                      minLength="2"
                       align="right"
-                      onChange={(selected) => {
-                        // Handle selections...
-                      }}
-                      options={[ /* Array of objects or strings */ ]}
+                      emptyLabel="نتیجه‌ای یافت نشد"
+                      maxResults="5"
+                      placeholder={this.state.city}
+                      onChange={(selected)=>{this.setState({city:selected[0]}
+                      )}}
+                      options={this.state.cityList}
                       />
                   </div>
                   <div className="multi-input-1 col-md-2">
-
                   </div>
                   <div className="multi-input-1 col-md-2">
-
+                    <input className="date-picker-input input-sm form-control" id='fromdatepicker' ref='fromdatepicker' placeholder='تاریخ ورود'style={{direction:'rtl',textAlign:'center'}}/>
                   </div>
                   <div className="multi-input-1 col-md-2">
+                    <input className="date-picker-input input-sm form-control" id='todatepicker' ref='todatepicker' placeholder='تاریخ خروج'style={{direction:'rtl',textAlign:'center'}}/>
                   </div>
+                  <div className="multi-input-number col-md-2" dir="rtl" >
+                   <select className="form-control" id="sel1">
+                     <option>1 مهمان</option>
+                     <option>2 مهمان</option>
+                     <option>3 مهمان </option>
+                     <option>4 مهمان</option>
+                     <option>5 مهمان</option>
+                     <option>6 مهمان</option>
+                     <option>7 مهمان </option>
+                     <option>8 مهمان</option>
+                     <option>9 مهمان</option>
+                     <option>10 مهمان و بیشتر</option>
+                   </select>
+                 </div>
                   <div className="multi-input-2 col-md-1">
                   <Button color='blue' className="search-btn-result"  onClick={this.handleClick.bind(this)} data-reactid="99">
                     <span className='searchicon'>
@@ -84,7 +100,12 @@ class SearchBar extends React.Component {
           <div className="render-houses-row">
             <div className="padding-search-results-top">
             </div>
-            {this.renderHouses()}
+            <div className="renderresults-main hidden-sm">
+              {this.renderHouses()}
+            </div>
+            <div className="renderresults-main visible-sm">
+              {this.renderHouses()}
+            </div>
             <div className="padding-search-results">
             </div>
           </div>
@@ -94,30 +115,38 @@ class SearchBar extends React.Component {
   renderSearchBarOnlycity(){
     return(
       <div className='only-city-search-bar row'>
-        <div className="free-zone col-md-3"></div>
-        <div className="main-zone col-md-6">
+        <div className="free-zone col-md-3 col-sm-2"></div>
+        <div className="main-zone col-md-6 col-sm-8">
           <div className="row">
-          <div className="xxxz col-md-2"></div>
-          <div className="xxx col-md-8">
-            <div className="seach-top-slogan-container">
-              <img src={require('./Images/tripinn_suitcase.png')} className='suitcase-image' alt="Trippin-Suitcase"></img>
-              <div className="slogan-container">
-                <p className='slogan-1' >!سفرت رو شیرین‌تر کن</p>
-                <p className='slogan-2' >!اجاره اقامتگاه و ویلا از همیشه آسون‌تر شده</p>
+          <div className="xxxz col-md-2 col-sm-1"></div>
+          <div className="xxx col-md-8 col-sm-10">
+            <div className="slogenholder">
+              <div className="seach-top-slogan-container">
+                <img src={require('./Images/tripinn_suitcase.png')} className='suitcase-image' alt="Trippin-Suitcase"></img>
+                <div className="slogan-container">
+                  <p className='slogan-1' >!سفرت رو شیرین‌تر کن</p>
+                  <p className='slogan-2' >!اجاره اقامتگاه و ویلا از همیشه آسون‌تر شده</p>
+                </div>
               </div>
             </div>
+
           </div>
-          <div className="xxxz col-md-2"></div>
+          <div className="xxxz col-md-2 col-sm-1"></div>
           </div>
             <div className="searchbar-zone">
                 <Typeahead
                   bsSize="large"
+                  placeholder="!مقصد خود را وارد نمایید"
                   align="right"
+                  lableKey="name"
+                  minLength="2"
+                  emptyLabel="نتیجه‌ای یافت نشد"
+                  maxResults="5"
+                  emptyLabel="نتیجه‌ای یافت نشد"
                   className="typeahead-onlycity-xl"
-                  onChange={(selected) => {
-                    // Handle selections...
+                  onChange={(selected) => {this.setState({city:selected[0]})
                   }}
-                  options={[ /* Array of objects or strings */ ]}
+                  options={this.state.cityList}
                   />
               <Button color='blue' className="search-btn btn"  onClick={this.handleClick.bind(this)} data-reactid="99">
                 <span className='searchicon'>
@@ -180,14 +209,14 @@ class SearchBar extends React.Component {
   }
   setSearchParams(){
     var spar = {
-      location: '',
+      location: this.state.city,
       start_date: new Date(),
       end_date: new Date(),
       capacity: 1,
     };
     this.setState({
       searchParams: spar
-    }, () => {
+    },() => {
     this.getDataFromServer();
     });
   }
@@ -212,7 +241,7 @@ class SearchBar extends React.Component {
    });
   }
    handleClick(){
-     this.setState({showOnlyCitySearchBar : false} , ()=> {this.setSearchParams()});
+     this.setState({showOnlyCitySearchBar:false} , ()=> {this.setSearchParams()});
    }
    renderFromDatePicker(){
      const fromDatePicker = findDOMNode(this.refs.fromdatepicker);
@@ -221,6 +250,8 @@ class SearchBar extends React.Component {
          changeMonth: true,
          changeYear: true,
          isRTL: true,
+         numberOfMonths:1,
+         showButtonPanel:true,
          dateFormat: "yy/m/d",
         });
      });
@@ -231,12 +262,44 @@ class SearchBar extends React.Component {
        $(toDatePicker).datepicker({
          changeMonth: true,
          changeYear: true,
+         numberOfMonths:1,
+         showButtonPanel:true,
          isRTL: true,
          dateFormat: "yy/m/d",
         });
      });
    }
+   getCityListFromServer(){
+     var request = new Request('https://www.trypinn.com/api/homepage/',{
+       method: 'POST',
+       headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+       'Authorization': 'Token '+this.state.token,})
+     });
+    fetch(request)
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
+      this.setState({cityListFromServer:response.location},()=>{this.fillSearchBarOptions()});
+    });
+   }
+   fillSearchBarOptions(){
+     var list = [];
+     if(this.state.cityListFromServer!==null){
+       for (var i=0 ; i<this.state.cityListFromServer.length; i++){
+        list.push(this.state.cityListFromServer[i]);
+       }
+     }
+     // list = removeDuplicatesFromList(list);
+     var list2 = [];
+     for (var i=0 ; i<list.length ; i++) {
+       list2.push(list[i].text);
+     }
+     this.setState({cityList : list2});
+   }
   render(){
+    {this.renderToDatePicker()}
+    {this.renderFromDatePicker()}
     return (
       <div className="searchbarmain">
           <div className="container-fluid hidden-xs visible-xl">
@@ -258,15 +321,60 @@ class SearchBar extends React.Component {
                   </div>
                   </div>
                     <div className="searchbar-zone-mobile">
-                      <Button color='blue' className="search-btn-xs "  onClick={this.handleClick.bind(this)} data-reactid="99">
-                        <span className='searchicon'>
-                          <img src="http://image.ibb.co/fjdMQG/trpinn_search.png" className='search-image-xs' alt=""></img>
-                        </span>
-                      </Button>
-
+                      <Typeahead
+                        bsSize="sm"
+                        placeholder="!مقصد خود را وارد نمایید"
+                        align="right"
+                        lableKey="name"
+                        minLength="2"
+                        emptyLabel="نتیجه‌ای یافت نشد"
+                        maxResults="5"
+                        className="typeahead-onlycity-sm"
+                        onChange={(selected) => {this.setState({city:selected[0]})
+                        }}
+                        options={this.state.cityList}
+                        />
+                        <Button color='blue' className="search-btn-xs" onClick={this.handleClick.bind(this)} data-reactid="99">
+                          <span className='searchicon'>
+                            <img src="http://image.ibb.co/fjdMQG/trpinn_search.png" className='search-image-xs' alt=""></img>
+                          </span>
+                        </Button>
+                    </div>
+                    <div className="serachbar-indetail-xs">
+                      <Typeahead
+                        className="typeahead-indetail-sm"
+                        minLength="2"
+                        align="right"
+                        emptyLabel="نتیجه‌ای یافت نشد"
+                        maxResults="5"
+                        placeholder={this.state.city}
+                        onChange={(selected)=>{this.setState({city:selected[0]}
+                        )}}
+                        options={this.state.cityList}
+                        />
+                      <input className="date-picker-input" id='fromdatepicker' ref='fromdatepicker' placeholder='تاریخ ورود'style={{direction:'rtl',textAlign:'center'}}/>
+                      <input className="date-picker-input" id='todatepicker' ref='todatepicker' placeholder='تاریخ خروج'style={{direction:'rtl',textAlign:'center'}}/>
+                      <div className="multi-input-number col-md-2" dir="rtl" >
+                       <select className="form-control" id="sel1">
+                         <option>1 مهمان</option>
+                         <option>2 مهمان</option>
+                         <option>3 مهمان </option>
+                         <option>4 مهمان</option>
+                         <option>5 مهمان</option>
+                         <option>6 مهمان</option>
+                         <option>7 مهمان </option>
+                         <option>8 مهمان</option>
+                         <option>9 مهمان</option>
+                         <option>10 مهمان و بیشتر</option>
+                       </select>
+                       <Button color='blue' className="search-btn-result-xs"  onClick={this.handleClick.bind(this)} data-reactid="99">
+                         <span className='searchicon'>
+                           <img src={require('./Images/trpinn_search.png')} className='search-image-result-xs' alt=""></img>
+                         </span>
+                       </Button>
+                     </div>
                     </div>
                     {this.renderHouses()}
-
                 </div>
               </div>
               <div className="downlaod-app-mobile">
@@ -277,13 +385,13 @@ class SearchBar extends React.Component {
                     <img src={require('./Images/phone-app.png')} className='iphone' alt="اپلیکیشن تریپین"></img>
                   </div>
                   <div className="img-download col-xs-6">
-                    <img src={require('./Images/bazaar.svg')} className='bazar-ico' alt="دانلود از بازار"></img>
+                    <a href="https://cafebazaar.ir/app/com.trypinn/">
+                      <img src={require('./Images/bazaar.svg')} className='bazar-ico' alt="دانلود از بازار"></img>
+                    </a>
                     <img src={require('./Images/button-app-store.svg')} className='bazar-ico' alt=" دانلود از سیب‌اپ"></img>
                   </div>
                 </div>
-
               </div>
-
           </div>
       </div>
     );
