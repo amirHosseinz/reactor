@@ -3,7 +3,7 @@ import React from 'react';
 import Lightbox from 'react-image-lightbox';
 import scrollToComponent from 'react-scroll-to-component';
 // import Sticky from 'react-sticky-el';
-
+import {Button} from 'semantic-ui-react';
 import ReservePanel from './HouseDetailParts/ReservePanel.js';
 import MainDiscription from './HouseDetailParts/MainDiscription';
 import AddressDiscription from './HouseDetailParts/AddressDiscription';
@@ -14,6 +14,7 @@ import HostInfoDiscription from './HouseDetailParts/HostInfoDiscription';
 import {englishToPersianDigits} from './tools/EnglishToPersianDigits';
 import {Sticky} from 'semantic-ui-react';
 import {normalReservePanelHouseDetails, fixedReservePanelHouseDetails,normalScrolllListHouseDetails , fixedScrollListHouseDetails} from './Styles.js';
+import AspectRatio from 'react-aspect-ratio';
 
 
 class HouseDetails extends React.Component {
@@ -113,11 +114,13 @@ class HouseDetails extends React.Component {
    if(this.state.homeData!==''){
      return(<div className = "housedetail-img">
             <a href="#" onClick = {this.showHouseGallery.bind(this)}>
-             <img
-             src={"https://www.trypinn.com"+this.state.homeData.preview}  className="house-details-preview"
-             alt = ""
-            >
-             </img>
+              <AspectRatio ratio="16/11" style={{maxWidth: '100%'}}>
+                 <img
+                 src={"https://www.trypinn.com"+this.state.homeData.preview}  className="house-details-preview"
+                 alt = ""
+                >
+                 </img>
+              </AspectRatio>
              </a>
              </div>);
    }
@@ -205,7 +208,7 @@ class HouseDetails extends React.Component {
         </div>
         <div className='house-detail-top'>
             <div className="house-detail-top-margined">
-              <div className="col-md-3">
+              <div className="col-md-3 hidden-xs visible-xl">
                 <Sticky context={this.state.contextRef}
                 onStick={this.handleStickReservePanel.bind(this)}
                 onUnstick={this.handleUnstickReservePanel.bind(this)}
@@ -250,6 +253,19 @@ class HouseDetails extends React.Component {
                  </div>
                </div>
           </div>
+        </div>
+        <div className="reserve-bottom-xs navbar-fixed-bottom">
+            <div className="price-div-xs">
+
+              <div className = "price-xs">
+                <p className="text-017">   هر شب / </p>
+                <p className='text-018'> تومان</p>
+                <p className='text-018'> {englishToPersianDigits(this.state.homeData.price)} </p>
+              </div>
+            </div>
+          <Button color='blue' className='reserve-button-xs'>
+            !رزرو کنید
+          </Button>
         </div>
       </div>
     );

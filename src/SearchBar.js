@@ -53,7 +53,10 @@ class SearchBar extends React.Component {
                   <div className="multi-input-1 col-md-2">
                     <Typeahead
                       className="typeahead-indetail-xl"
+                      minLength="2"
                       align="right"
+                      emptyLabel="نتیجه‌ای یافت نشد"
+                      maxResults="5"
                       placeholder={this.state.city}
                       onChange={(selected)=>{this.setState({city:selected[0]}
                       )}}
@@ -61,13 +64,25 @@ class SearchBar extends React.Component {
                       />
                   </div>
                   <div className="multi-input-1 col-md-2">
-
                   </div>
                   <div className="multi-input-1 col-md-2">
 
                   </div>
-                  <div className="multi-input-1 col-md-2">
-                  </div>
+                  <div className="multi-input-number col-md-2" dir="rtl" >
+                   <select className="form-control" id="sel1">
+                     <option>1 مهمان</option>
+                     <option>2 مهمان</option>
+                     <option>3 مهمان </option>
+                     <option>4 مهمان</option>
+                     <option>5 مهمان</option>
+                     <option>6 مهمان</option>
+                     <option>7 مهمان </option>
+                     <option>8 مهمان</option>
+                     <option>9 مهمان</option>
+                     <option>10 مهمان و بیشتر</option>
+                   </select>
+
+                 </div>
                   <div className="multi-input-2 col-md-1">
                   <Button color='blue' className="search-btn-result"  onClick={this.handleClick.bind(this)} data-reactid="99">
                     <span className='searchicon'>
@@ -111,9 +126,13 @@ class SearchBar extends React.Component {
             <div className="searchbar-zone">
                 <Typeahead
                   bsSize="large"
-                  placeholder="شهر خود را انتخاب کنید"
+                  placeholder="!مقصد خود را وارد نمایید"
                   align="right"
                   lableKey="name"
+                  minLength="2"
+                  emptyLabel="نتیجه‌ای یافت نشد"
+                  maxResults="5"
+                  emptyLabel="نتیجه‌ای یافت نشد"
                   className="typeahead-onlycity-xl"
                   onChange={(selected) => {this.setState({city:selected[0]})
                   }}
@@ -287,13 +306,26 @@ class SearchBar extends React.Component {
                   </div>
                   </div>
                     <div className="searchbar-zone-mobile">
-                      <Button color='blue' className="search-btn-xs "  onClick={this.handleClick.bind(this)} data-reactid="99">
-                        <span className='searchicon'>
-                          <img src="http://image.ibb.co/fjdMQG/trpinn_search.png" className='search-image-xs' alt=""></img>
-                        </span>
-                      </Button>
-
+                      <Typeahead
+                        bsSize="sm"
+                        placeholder="!مقصد خود را وارد نمایید"
+                        align="right"
+                        lableKey="name"
+                        minLength="2"
+                        emptyLabel="نتیجه‌ای یافت نشد"
+                        maxResults="5"
+                        className="typeahead-onlycity-sm"
+                        onChange={(selected) => {this.setState({city:selected[0]})
+                        }}
+                        options={this.state.cityList}
+                        />
+                        <Button color='blue' className="search-btn-xs" onClick={this.handleClick.bind(this)} data-reactid="99">
+                          <span className='searchicon'>
+                            <img src="http://image.ibb.co/fjdMQG/trpinn_search.png" className='search-image-xs' alt=""></img>
+                          </span>
+                        </Button>
                     </div>
+
                     {this.renderHouses()}
 
                 </div>
@@ -306,7 +338,9 @@ class SearchBar extends React.Component {
                     <img src={require('./Images/phone-app.png')} className='iphone' alt="اپلیکیشن تریپین"></img>
                   </div>
                   <div className="img-download col-xs-6">
-                    <img src={require('./Images/bazaar.svg')} className='bazar-ico' alt="دانلود از بازار"></img>
+                    <a href="https://cafebazaar.ir/app/com.trypinn/">
+                      <img src={require('./Images/bazaar.svg')} className='bazar-ico' alt="دانلود از بازار"></img>
+                    </a>
                     <img src={require('./Images/button-app-store.svg')} className='bazar-ico' alt=" دانلود از سیب‌اپ"></img>
                   </div>
                 </div>

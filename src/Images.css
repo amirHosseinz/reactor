@@ -133,6 +133,14 @@
     margin: auto;
     flex-direction: row;
   }
+  .price-xs {
+    display: -webkit-flex; /* Safari */
+    -webkit-flex-direction: row; /* Safari 6.1+ */
+    display: flex;
+    margin: auto;
+    flex-direction: row;
+    padding-top: 8px;
+  }
 .headerchild{
   display: -webkit-flex; /* Safari */
   -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
@@ -148,7 +156,7 @@
     margin: auto;
   }
   .headermobile{
-    height:50px;
+    height:47px;
     margin: auto;
     width:90%;
     margin-top:.6em;
@@ -347,12 +355,16 @@ i.big.icons {
   background-color: #3fd4ee;
   border-top-right-radius: 0px !important;
   border-bottom-right-radius: 0px !important;
+  width: 20% !important;
+  height: 45px !important;
+  padding: 4px !important;
+
 }
 .search-image{
   height: 2rem;
 }
 .search-image-xs{
-  height: 2rem;
+  height: 1.6rem;
 }
 .search-image-result{
   height: 1.4rem;
@@ -380,10 +392,11 @@ i.big.icons {
   display: flex;
   margin: auto;
   flex-direction: row-reverse;
-  height: 4rem;
+  height: 45px;
   background-color: white;
   box-shadow: 0 .2rem 1rem rgba(0,0,0,.15);
   margin-bottom: 85px;
+  border-radius: 4px;
 }
 .suitcase-image{
   height: 8.6rem;
@@ -438,6 +451,7 @@ margin-right:8em;
   color: #454545;
   text-align: right;
   margin-right: 12px;
+  z-index: 0 !important;
 }
 .typehead-mobile{
   height:100%;
@@ -463,14 +477,13 @@ text-indent: -9999px
 }
 
 .input-sm {
-  height: 38px !important;
+  height: 45px !important;
   padding: 5px 0px !important;
   line-height: 2 !important;
   border-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
   border-width: 0px !important;
   font-size: 14px !important;
-  width: 180px !important;
 }
 .main-zone{
 margin-top: 150px;
@@ -478,6 +491,9 @@ margin-top: 150px;
 .main-zone-xs{
   margin: auto;
   margin-top: 50px;
+  justify-content:center;
+  text-align: center;
+  align-items: center;
 }
 .render-houses-row{
   margin-top: 70px;
@@ -800,9 +816,7 @@ transform: scale(2, 2);
   width: 120px;
   background-color: white;
   margin-top: 10px;
-  margin-left: 7px;
-  text-align: right !important;
-  background-color: #f5f5f5;
+] text-align: right !important;
 
 }
 .multi-input-2{
@@ -1344,6 +1358,7 @@ text-align:center;
   width: 100%;
   text-align: right;
 }
+
 .dashboard-header{
   text-align: right;
   font-size: 20px;
@@ -1366,10 +1381,12 @@ text-align:center;
 }
 .input-sm{
   font-family: IRANSans !important;
-  padding-right: 8px !important;
-  border-radius: 5px !important;
-  background-color: #f5f5f5 !important;
-  width: 90% !important;
+  border-radius: 0px 0px 0px 0px!important;
+  background-color: white !important;
+  border-width: 0px !important;
+  box-shadow: 0 0 0 rgb(0, 0, 0);
+  text-align: right;
+  padding-top:9px !important;
 }
 .save-edit{
     font-family: IRANSans !important;
@@ -1401,4 +1418,70 @@ text-align:center;
 .reserve-modal{
   border-radius: 4px;
   padding: 14px;
+}
+.rbt-highlight-text{
+  background-color: #3fd4ee !important;
+}
+.dropdown-menu-right{
+  font-family: IRANSans !important;
+}
+.typeahead-onlycity-sm{
+  width: 80%;
+}
+.searchicon{
+  justify-content:center;
+  text-align: center;
+  align-items: center;
+}
+.reserve-bottom-xs{
+  height: 55px;
+  background-color: rgba(255, 255, 255, .8);
+  font-family: IRANSans !important;
+  padding: 10px;
+  margin: auto;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row-reverse;
+
+}
+.reserve-button-xs{
+  width: 36%;
+    font-family: IRANSans !important;
+}
+.text-017{
+  font-family: IRANSans;
+  font-size: 12px;
+}
+.text-018{
+  font-family: IRANSans;
+  font-size: 17px;
+  font-weight: 600;
+  margin-left: 3px;
+  text-align: left;
+
+}
+.price-div-xs{
+  width: 80%;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.menu-item{
+}
+.input-number-results{
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+  font-family: IRANSans !important;
+
+}
+.multi-input-number{
+  height: 38px;
+  background-color: white;
+  margin-top: 10px;
+  text-align: right !important;
+  width: 100%;
+}
+.form-control{
+  height: 100% !important;
 }
