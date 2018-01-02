@@ -7,6 +7,7 @@ import $ from 'jquery';
 import './tools/DatePicker/bootstrap-datepicker.fa.js';
 import './tools/DatePicker/bootstrap-datepicker.js';
 import './tools/DatePicker/bootstrap-datepicker.css';
+import keydown from 'react-keydown';
 
 
 class SearchBar extends React.Component {
@@ -125,20 +126,20 @@ class SearchBar extends React.Component {
           </div>
             <div className="searchbar-zone">
                 <Typeahead
-                  bsSize="large"
-                  placeholder="!مقصد خود را وارد نمایید"
-                  align="right"
-                  lableKey="name"
-                  minLength="2"
-                  emptyLabel="نتیجه‌ای یافت نشد"
-                  maxResults="5"
-                  emptyLabel="نتیجه‌ای یافت نشد"
-                  className="typeahead-onlycity-xl"
-                  onChange={(selected) => {this.setState({city:selected[0]})
-                  }}
+                              bsSize="large"
+                              placeholder="!مقصد خود را وارد نمایید"
+                              align="right"
+                              lableKey="name"
+                              minLength="2"
+                              emptyLabel="نتیجه‌ای یافت نشد"
+                              maxResults="5"
+                              emptyLabel="نتیجه‌ای یافت نشد"
+                              className="typeahead-onlycity-xl"
+                              onChange={(selected) => {this.setState({city:selected[0]})
+                              }}
                   options={this.state.cityList}
                   />
-              <Button color='blue' className="search-btn btn"  onClick={this.handleClick.bind(this)} data-reactid="99">
+              <Button type='submit' color='blue' className="search-btn btn"  onClick={this.handleClick.bind(this)} data-reactid="99">
                 <span className='searchicon'>
                   <img src={require('./Images/trpinn_search.png')} className='search-image' alt=""></img>
                 </span>
