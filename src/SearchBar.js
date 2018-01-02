@@ -59,8 +59,9 @@ class SearchBar extends React.Component {
                       emptyLabel="نتیجه‌ای یافت نشد"
                       maxResults="5"
                       placeholder={this.state.city}
-                      onChange={(selected)=>{this.setState({city:selected[0]}
-                      )}}
+                      onChange={(selected)=>{
+                        this.setState({city:selected[0]}, this.handleClick());
+                      }}
                       options={this.state.cityList}
                       />
                   </div>
@@ -126,6 +127,7 @@ class SearchBar extends React.Component {
           </div>
             <div className="searchbar-zone">
                 <Typeahead
+                             id='searchbox'
                               bsSize="large"
                               placeholder="!مقصد خود را وارد نمایید"
                               align="right"
@@ -135,21 +137,23 @@ class SearchBar extends React.Component {
                               maxResults="5"
                               emptyLabel="نتیجه‌ای یافت نشد"
                               className="typeahead-onlycity-xl"
-                              onChange={(selected) => {this.setState({city:selected[0]})
+                              onChange={(selected) => {
+                                this.setState({city:selected[0]}, this.handleClick());
                               }}
                   options={this.state.cityList}
                   />
-              <Button type='submit' color='blue' className="search-btn btn"  onClick={this.handleClick.bind(this)} data-reactid="99">
+              <button type='button' color='blue' className="search-btn btn"  onClick={this.handleClick.bind(this)} data-reactid="99">
                 <span className='searchicon'>
                   <img src={require('./Images/trpinn_search.png')} className='search-image' alt=""></img>
                 </span>
-              </Button>
+                </button>
             </div>
         </div>
         <div className="free-zone col-md-3"></div>
       </div>
     );
   }
+
   renderRelevantSearchBar(){
     if (this.state.showOnlyCitySearchBar ===true){
       return this.renderSearchBarOnlycity();
@@ -231,9 +235,11 @@ class SearchBar extends React.Component {
      this.renderData(homeData);
    });
   }
-   handleClick(){
-     this.setState({showOnlyCitySearchBar:false} , ()=> {this.setSearchParams()});
-   }
+
+  handleClick() {
+    this.setState({showOnlyCitySearchBar:false} , ()=> {this.setSearchParams()});
+  }
+
    renderFromDatePicker(){
      const fromDatePicker = findDOMNode(this.refs.fromdatepicker);
      $(document).ready(function(){
@@ -288,6 +294,7 @@ class SearchBar extends React.Component {
      }
      this.setState({cityList : list2});
    }
+
   render(){
     {this.renderToDatePicker()}
     {this.renderFromDatePicker()}
@@ -321,11 +328,12 @@ class SearchBar extends React.Component {
                         emptyLabel="نتیجه‌ای یافت نشد"
                         maxResults="5"
                         className="typeahead-onlycity-sm"
-                        onChange={(selected) => {this.setState({city:selected[0]})
+                        onChange={(selected) => {
+                          this.setState({city:selected[0]}, this.handleClick());
                         }}
                         options={this.state.cityList}
                         />
-                        <Button color='blue' className="search-btn-xs" onClick={this.handleClick.bind(this)} data-reactid="99">
+                        <Button color='blue' className="search-btn-xs" data-reactid="99" onClick={this.handleClick.bind(this)}>
                           <span className='searchicon'>
                             <img src="http://image.ibb.co/fjdMQG/trpinn_search.png" className='search-image-xs' alt=""></img>
                           </span>
