@@ -7,7 +7,6 @@ import $ from 'jquery';
 import './tools/DatePicker/bootstrap-datepicker.fa.js';
 import './tools/DatePicker/bootstrap-datepicker.js';
 import './tools/DatePicker/bootstrap-datepicker.css';
-import keydown from 'react-keydown';
 
 
 class SearchBar extends React.Component {
@@ -104,10 +103,10 @@ class SearchBar extends React.Component {
             <div className="padding-search-results-top">
             </div>
             <div className="renderresults-main hidden-sm">
-              {this.renderHouses()}
+              {this.renderHousesCol5()}
             </div>
             <div className="renderresults-main visible-sm">
-              {this.renderHouses()}
+              {this.renderHousesCol3()}
             </div>
             <div className="padding-search-results">
             </div>
@@ -173,7 +172,8 @@ class SearchBar extends React.Component {
       return this.renderSearchBarInDetails();
     }
   }
-  renderHouses () {
+
+  renderHousesCol5 () {
     var results = [];
     var initList = this.state.houseList.map((houseItem) => {
       return(
@@ -204,6 +204,36 @@ class SearchBar extends React.Component {
           </div>
         );
         listOfFive = [];
+      }
+    });
+    return results;
+  }
+
+  renderHousesCol3 () {
+    var results = [];
+    var initList = this.state.houseList.map((houseItem) => {
+      return(
+        <div className="pre-img-result col-sm-4"
+         key = {houseItem.id}>
+         <SearchResult
+          room = {houseItem}
+          preview ={"https://www.trypinn.com" + houseItem.preview} />
+        </div>
+      );
+    });
+    var counter = 0;
+    var listOfThree = [];
+    initList.map((item) => {
+      counter++;
+      listOfThree.push(item);
+      if (counter===3) {
+        counter = 0;
+        results.push(
+          <div className="row">
+          {listOfThree}
+          </div>
+        );
+        listOfThree = [];
       }
     });
     return results;
@@ -441,7 +471,7 @@ class SearchBar extends React.Component {
 
             <div className='mobile-margined-search'>
               <div className="main-zone-xs col-md-12">
-                {this.renderHouses()}
+                {this.renderHousesCol3()}
               </div>
             </div>
 
