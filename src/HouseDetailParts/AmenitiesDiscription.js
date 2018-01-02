@@ -4,6 +4,7 @@ import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
 
 class AmenitiesDiscription extends React.Component{
   render(){
+    console.log(this.props.homeData);
     return(
       <div className="main-amanities row">
         <div className='main-amanities-item col-md-3'>
@@ -13,7 +14,7 @@ class AmenitiesDiscription extends React.Component{
         </div>
         <div className='main-amanities-item col-md-3'>
             <img src={require('./facilities/beds.png')}  className="main-amanities-icon" alt = "" />
-            <p className='aminities-text'> {englishToPersianDigits(this.props.homeData.beds_number)} </p>
+            <p className='aminities-text'> {englishToPersianDigits(this.props.homeData.beds_number + 2 * this.props.homeData.double_beds_number)} </p>
             <p className='aminities-text'>تخت</p>
         </div>
         <div className='main-amanities-item col-md-3'>

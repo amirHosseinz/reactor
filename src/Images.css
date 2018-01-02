@@ -364,7 +364,8 @@ i.big.icons {
   border-bottom-right-radius: 0px !important;
   width: 20% !important;
   height: 45px !important;
-  padding: 4px !important;
+  padding: 0px !important;
+  margin-right: 0px;
 
 }
 .search-image{
@@ -413,8 +414,14 @@ i.big.icons {
   display: -webkit-flex; /* Safari */
   -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
   display: flex;
-  margin: auto;
   flex-direction: row-reverse;
+  align-items: center;
+  margin-right: 10px;
+
+}
+.slogenholder{
+  margin: 0 auto;
+      width: 100%;
 }
 .slogan-1{
   font-family: IRANSans;
@@ -434,13 +441,13 @@ i.big.icons {
   color: #454545;
   text-align: right;
   margin-right: 1.5rem;
-  margin-top: -20px;
+  margin-top: -28px;
 }
 .slogan-container{
   margin-top: .8rem;
 }
 .xxx{
-margin-right:8em;
+
 }
 .typehead{
   height:100%;
@@ -488,6 +495,8 @@ text-indent: -9999px
 }
 .main-zone{
 margin-top: 150px;
+justify-content: center;
+
 }
 .main-zone-xs{
   margin: auto;
@@ -841,6 +850,7 @@ transform: scale(2, 2);
   display: flex;
   padding: 2px;
   flex-direction: row-reverse;
+  height: 28px;
 }
 .facility-text{
   margin-top: 5px;
@@ -851,6 +861,8 @@ transform: scale(2, 2);
 }
 .other-amanities-icon{
   height:22px;
+  align-items: center;
+  justify-content: center;
 }
 
 @font-face {
@@ -1358,6 +1370,8 @@ text-align:center;
 .typeahead-onlycity-xl{
   width: 100%;
   text-align: right;
+  z-index: 0;
+
 }
 
 .dashboard-header{
@@ -1401,9 +1415,12 @@ text-align:center;
 }
 .ui.blue.button{
   background-color: #42b0c6 !important;
+  margin-right: 0px !important;
 }
 .ui.blue.button:hover{
   background-color: #1796b4 !important;
+  margin-right: 0px !important;
+
 }
 .profile-labels{
   font-size: 10px;
@@ -1435,6 +1452,7 @@ text-align:center;
 }
 .typeahead-onlycity-sm{
   width: 80%;
+  z-index: 0;
 }
 .searchicon{
   justify-content:center;
@@ -1510,4 +1528,29 @@ text-align:center;
 }
 .burger-menu{
   font-family: IRANSans;
+}
+.serachbar-indetail-xs{
+    width:100%;
+  background-color: lightgreen;
+  margin-top:75px;
+  margin-bottom:70px;
+
+}
+.search-btn-result-xs{
+  width: 100%;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+}
+.search-image-result-xs{
+  height: 15px;
+}
+.burger-in-div{
+  margin-top: 20px;
+}
+.burger-item{
+  margin-bottom: 10px;
+}
+.login1-modal{
+padding-top: 80px;
 }

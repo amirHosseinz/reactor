@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchResult from './SearchResult';
-import {Typeahead} from 'react-bootstrap-typeahead'; // ES2015
+import {Typeahead} from 'react-bootstrap-typeahead';
 import { Button} from 'semantic-ui-react';
 import {findDOMNode} from 'react-dom';
 import $ from 'jquery';
@@ -16,6 +16,7 @@ class SearchBar extends React.Component {
     this.state = {
       token: null,
       showOnlyCitySearchBar:true,
+      showOnlyCitySearchBarMobile:true,
       houseList:[],
       cityList:[],
       cityListFromServer:null,
@@ -66,6 +67,8 @@ class SearchBar extends React.Component {
                       />
                   </div>
                   <div className="multi-input-1 col-md-2">
+                  </div>
+                  <div className="multi-input-1 col-md-2">
                     <input className="date-picker-input input-sm form-control" id='fromdatepicker' ref='fromdatepicker' placeholder='تاریخ ورود'style={{direction:'rtl',textAlign:'center'}}/>
                   </div>
                   <div className="multi-input-1 col-md-2">
@@ -100,7 +103,12 @@ class SearchBar extends React.Component {
           <div className="render-houses-row">
             <div className="padding-search-results-top">
             </div>
-            {this.renderHouses()}
+            <div className="renderresults-main hidden-sm">
+              {this.renderHouses()}
+            </div>
+            <div className="renderresults-main visible-sm">
+              {this.renderHouses()}
+            </div>
             <div className="padding-search-results">
             </div>
           </div>
@@ -110,20 +118,23 @@ class SearchBar extends React.Component {
   renderSearchBarOnlycity(){
     return(
       <div className='only-city-search-bar row'>
-        <div className="free-zone col-md-3"></div>
-        <div className="main-zone col-md-6">
+        <div className="free-zone col-md-3 col-sm-2"></div>
+        <div className="main-zone col-md-6 col-sm-8">
           <div className="row">
-          <div className="xxxz col-md-2"></div>
-          <div className="xxx col-md-8">
-            <div className="seach-top-slogan-container">
-              <img src={require('./Images/tripinn_suitcase.png')} className='suitcase-image' alt="Trippin-Suitcase"></img>
-              <div className="slogan-container">
-                <p className='slogan-1' >!سفرت رو شیرین‌تر کن</p>
-                <p className='slogan-2' >!اجاره اقامتگاه و ویلا از همیشه آسون‌تر شده</p>
+          <div className="xxxz col-md-2 col-sm-1"></div>
+          <div className="xxx col-md-8 col-sm-10">
+            <div className="slogenholder">
+              <div className="seach-top-slogan-container">
+                <img src={require('./Images/tripinn_suitcase.png')} className='suitcase-image' alt="Trippin-Suitcase"></img>
+                <div className="slogan-container">
+                  <p className='slogan-1' >!سفرت رو شیرین‌تر کن</p>
+                  <p className='slogan-2' >!اجاره اقامتگاه و ویلا از همیشه آسون‌تر شده</p>
+                </div>
               </div>
             </div>
+
           </div>
-          <div className="xxxz col-md-2"></div>
+          <div className="xxxz col-md-2 col-sm-1"></div>
           </div>
             <div className="searchbar-zone">
                 <Typeahead
@@ -236,9 +247,13 @@ class SearchBar extends React.Component {
    });
   }
 
-  handleClick() {
-    this.setState({showOnlyCitySearchBar:false} , ()=> {this.setSearchParams()});
-  }
+   handleClick(){
+     this.setState({showOnlyCitySearchBar:false},()=>{this.setSearchParams()});
+   }
+
+   handleClickXs(){
+      this.setState({showOnlyCitySearchBarMobile:false},()=>{this.setSearchParams()});
+   }
 
    renderFromDatePicker(){
      const fromDatePicker = findDOMNode(this.refs.fromdatepicker);
@@ -253,6 +268,7 @@ class SearchBar extends React.Component {
         });
      });
    }
+
    renderToDatePicker(){
      const toDatePicker = findDOMNode(this.refs.todatepicker);
      $(document).ready(function(){
@@ -293,6 +309,88 @@ class SearchBar extends React.Component {
        list2.push(list[i].text);
      }
      this.setState({cityList : list2});
+   }
+   renderSearchBarOnlycityXs(){
+      return(
+        <div className='mobile-margined-search'>
+          <div className="main-zone-xs col-md-12">
+            <div className="row">
+              <div className="seach-top-slogan-xs-container col-md-12">
+                  <p className='slogan-xs'>تریپین</p>
+              </div>
+            <div className="row col-md-12">
+              <p className='slogan-xss'>سامانه رزرو ویلا و اقامتگاه</p>
+            </div>
+            </div>
+              <div className="searchbar-zone-mobile">
+                <Typeahead
+                  bsSize="sm"
+                  placeholder="!مقصد خود را وارد نمایید"
+                  align="right"
+                  lableKey="name"
+                  minLength="2"
+                  emptyLabel="نتیجه‌ای یافت نشد"
+                  maxResults="5"
+                  className="typeahead-onlycity-sm"
+                  onChange={(selected) => {this.setState({city:selected[0]})
+                  }}
+                  options={this.state.cityList}
+                  />
+                  <Button color='blue' className="search-btn-xs" onClick={this.handleClickXs.bind(this)} data-reactid="99">
+                    <span className='searchicon'>
+                      <img src="http://image.ibb.co/fjdMQG/trpinn_search.png" className='search-image-xs' alt=""></img>
+                    </span>
+                  </Button>
+              </div>
+          </div>
+        </div>
+      );
+   }
+   renderSearchBarInDetailsXs(){
+      return(
+        <div className="serachbar-indetail-xs">
+          <Typeahead
+            className="typeahead-indetail-sm"
+            minLength="2"
+            align="right"
+            emptyLabel="نتیجه‌ای یافت نشد"
+            maxResults="5"
+            placeholder={this.state.city}
+            onChange={(selected)=>{this.setState({city:selected[0]}
+            )}}
+            options={this.state.cityList}
+            />
+          <input className="date-picker-input" id='fromdatepicker' ref='fromdatepicker' placeholder='تاریخ ورود'style={{direction:'rtl',textAlign:'center'}}/>
+          <input className="date-picker-input" id='todatepicker' ref='todatepicker' placeholder='تاریخ خروج'style={{direction:'rtl',textAlign:'center'}}/>
+          <div className="multi-input-number col-md-2" dir="rtl" >
+           <select className="form-control" id="sel1">
+             <option>1 مهمان</option>
+             <option>2 مهمان</option>
+             <option>3 مهمان </option>
+             <option>4 مهمان</option>
+             <option>5 مهمان</option>
+             <option>6 مهمان</option>
+             <option>7 مهمان </option>
+             <option>8 مهمان</option>
+             <option>9 مهمان</option>
+             <option>10 مهمان و بیشتر</option>
+           </select>
+           <Button color='blue' className="search-btn-result-xs"  onClick={this.handleClickXs.bind(this)} data-reactid="99">
+             <span className='searchicon'>
+               <img src={require('./Images/trpinn_search.png')} className='search-image-result-xs' alt=""></img>
+             </span>
+           </Button>
+         </div>
+        </div>
+      );
+   }
+   renderRelevantSearchBarXs(){
+     if(this.state.showOnlyCitySearchBarMobile===true){
+       return this.renderSearchBarOnlycityXs();
+     }
+     else{
+       return this.renderSearchBarInDetailsXs();
+     }
    }
 
   render(){
@@ -339,11 +437,15 @@ class SearchBar extends React.Component {
                           </span>
                         </Button>
                     </div>
+            {this.renderRelevantSearchBarXs()}
 
-                    {this.renderHouses()}
-
-                </div>
+            <div className='mobile-margined-search'>
+              <div className="main-zone-xs col-md-12">
+                {this.renderHouses()}
               </div>
+            </div>
+
+
               <div className="downlaod-app-mobile">
                 <div className='mobile-margined-search'>
 
