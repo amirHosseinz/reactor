@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchResult from './SearchResult';
-import {Typeahead} from 'react-bootstrap-typeahead'; // ES2015
+import {Typeahead} from 'react-bootstrap-typeahead'; 
 import { Button} from 'semantic-ui-react';
 import {findDOMNode} from 'react-dom';
 import $ from 'jquery';
@@ -258,6 +258,7 @@ class SearchBar extends React.Component {
         });
      });
    }
+
    renderToDatePicker(){
      const toDatePicker = findDOMNode(this.refs.todatepicker);
      $(document).ready(function(){

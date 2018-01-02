@@ -4,6 +4,7 @@ import Lightbox from 'react-image-lightbox';
 import scrollToComponent from 'react-scroll-to-component';
 // import Sticky from 'react-sticky-el';
 import {Button} from 'semantic-ui-react';
+
 import ReservePanel from './HouseDetailParts/ReservePanel.js';
 import MainDiscription from './HouseDetailParts/MainDiscription';
 import AddressDiscription from './HouseDetailParts/AddressDiscription';

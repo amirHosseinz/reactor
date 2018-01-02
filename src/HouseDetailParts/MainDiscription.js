@@ -128,12 +128,8 @@ renderUtilities () {
     }
   }
 
-
-
 renderSpecialRules (){
   if(this.props.homeData.special_rules!==''){
-    console.log('here');
-    console.log(this.props.homeData.special_rules);
     return (
       <div className='special-rules'>
           <p> :قوانین خاص این خانه </p>
@@ -150,14 +146,14 @@ renderSpecialRules (){
           <div className="main-descriptions row">
             {this.renderUtilities()}
           </div>
-          <div className="divider"></div>
+          <div className="divider">
 
-          <p className='des-main'> {this.props.homeData.description}</p>
+          </div>
         </div>
         <div className="main-descriptions row">
         <div>
-        {this.renderCheckIn()}
-        {this.renderCheckOut()}
+          {this.renderCheckIn()}
+          {this.renderCheckOut()}
         </div>
         <div className="max-capacity">
         <p>
