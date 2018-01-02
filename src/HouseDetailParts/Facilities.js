@@ -252,47 +252,26 @@ class Facilities extends React.Component {
     return(
 
       <div id="content">
-
           {this.renderFoosball()}
-
           {this.renderBarbecue()}
-
           {this.renderHeater()}
-
           {this.renderBlanket()}
-
           {this.renderCanape()}
-
           {this.renderElevator()}
-
           {this.renderHanger()}
-
           {this.renderPavilion()}
-
           {this.renderTv()}
-
           {this.renderForeigntoilet()}
-
           {this.renderStove()}
-
           {this.renderKitchenware()}
-
           {this.renderRefrig()}
-
           {this.renderDinnerTable()}
-
           {this.renderMicrowave()}
-
           {this.renderTeamaker()}
-
           {this.renderConditioner()}
-
           {this.renderPingpong()}
-
           {this.renderPool()}
-
           {this.renderParking()}
-
           </div>
 
     );

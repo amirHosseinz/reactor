@@ -41,7 +41,7 @@ class MainPage extends React.Component{
   }
   renderUserPanel(){
     return(
-      <UserPanel/>
+      <UserPanel />
     );
   }
   getGuestTokenFromServer(){
