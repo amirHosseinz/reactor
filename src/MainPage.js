@@ -7,6 +7,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter, Route} from 'react-router-dom';
 import UserPanel from './UserPanel';
 
+
 class MainPage extends React.Component{
   constructor(props){
     super(props);
@@ -16,8 +17,7 @@ class MainPage extends React.Component{
     };
   }
   renderSearchBar() {
-    return (<SearchBar />
-    );
+    return (<SearchBar />);
   }
   renderHeader(){
     return (

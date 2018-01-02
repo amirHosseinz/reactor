@@ -7,7 +7,11 @@
     "bootstrap-jalali-datepicker": "^1.0.1",
     "datepicker": "0.0.0",
     "express": "^4.16.2",
+<<<<<<< HEAD
     "google-maps-react": "^1.1.2",
+=======
+    "http-server": "^0.10.0",
+>>>>>>> 5cce27ec9d377abd69217c3f3e082851aa216c8f
     "jquery": "^3.2.1",
     "moment": "^2.20.1",
     "react": "^16.2.0",
@@ -23,6 +27,7 @@
     "react-image-lightbox": "^4.4.0",
     "react-infinite-grid": "^0.4.0",
     "react-modal": "^3.1.8",
+    "react-redux": "^5.0.6",
     "react-refetch": "^1.0.4",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
@@ -34,6 +39,7 @@
     "react-sticky": "^6.0.1",
     "react-sticky-el": "^1.0.15",
     "reactstrap": "^4.8.0",
+    "redux": "^3.7.2",
     "rtl-css-js": "^1.8.0",
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.77.1"
@@ -42,11 +48,25 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "babel-node server.js --presets es2015,stage-2",
+    "serve": "nodemon server.js --exec babel-node --presets es2015,stage-2",
+    "production": "webpack -p --progress"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^0.28.7",
     "file-loader": "^1.1.6",
+    "html-loader": "^0.5.1",
+    "nodemon": "^1.14.6",
     "react-datatable": "0.0.31",
-    "url-loader": "^0.6.2"
+    "url-loader": "^0.6.2",
+    "webpack": "^3.10.0"
   }
 }
