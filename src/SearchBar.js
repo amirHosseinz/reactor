@@ -1,12 +1,13 @@
 import React from 'react';
 import SearchResult from './SearchResult';
-import {Typeahead} from 'react-bootstrap-typeahead'; 
+import {Typeahead} from 'react-bootstrap-typeahead';
 import { Button} from 'semantic-ui-react';
 import {findDOMNode} from 'react-dom';
 import $ from 'jquery';
 import './tools/DatePicker/bootstrap-datepicker.fa.js';
 import './tools/DatePicker/bootstrap-datepicker.js';
 import './tools/DatePicker/bootstrap-datepicker.css';
+import keydown from 'react-keydown';
 
 
 class SearchBar extends React.Component {
@@ -59,8 +60,9 @@ class SearchBar extends React.Component {
                       emptyLabel="نتیجه‌ای یافت نشد"
                       maxResults="5"
                       placeholder={this.state.city}
-                      onChange={(selected)=>{this.setState({city:selected[0]}
-                      )}}
+                      onChange={(selected)=>{
+                        this.setState({city:selected[0]}, this.handleClick());
+                      }}
                       options={this.state.cityList}
                       />
                   </div>
@@ -136,30 +138,33 @@ class SearchBar extends React.Component {
           </div>
             <div className="searchbar-zone">
                 <Typeahead
-                  bsSize="large"
-                  placeholder="!مقصد خود را وارد نمایید"
-                  align="right"
-                  lableKey="name"
-                  minLength="2"
-                  emptyLabel="نتیجه‌ای یافت نشد"
-                  maxResults="5"
-                  emptyLabel="نتیجه‌ای یافت نشد"
-                  className="typeahead-onlycity-xl"
-                  onChange={(selected) => {this.setState({city:selected[0]})
-                  }}
+                             id='searchbox'
+                              bsSize="large"
+                              placeholder="!مقصد خود را وارد نمایید"
+                              align="right"
+                              lableKey="name"
+                              minLength="2"
+                              emptyLabel="نتیجه‌ای یافت نشد"
+                              maxResults="5"
+                              emptyLabel="نتیجه‌ای یافت نشد"
+                              className="typeahead-onlycity-xl"
+                              onChange={(selected) => {
+                                this.setState({city:selected[0]}, this.handleClick());
+                              }}
                   options={this.state.cityList}
                   />
-              <Button color='blue' className="search-btn btn"  onClick={this.handleClick.bind(this)} data-reactid="99">
+              <button type='button' color='blue' className="search-btn btn"  onClick={this.handleClick.bind(this)} data-reactid="99">
                 <span className='searchicon'>
                   <img src={require('./Images/trpinn_search.png')} className='search-image' alt=""></img>
                 </span>
-              </Button>
+                </button>
             </div>
         </div>
         <div className="free-zone col-md-3"></div>
       </div>
     );
   }
+
   renderRelevantSearchBar(){
     if (this.state.showOnlyCitySearchBar ===true){
       return this.renderSearchBarOnlycity();
@@ -241,12 +246,15 @@ class SearchBar extends React.Component {
      this.renderData(homeData);
    });
   }
+
    handleClick(){
      this.setState({showOnlyCitySearchBar:false},()=>{this.setSearchParams()});
    }
+
    handleClickXs(){
       this.setState({showOnlyCitySearchBarMobile:false},()=>{this.setSearchParams()});
    }
+
    renderFromDatePicker(){
      const fromDatePicker = findDOMNode(this.refs.fromdatepicker);
      $(document).ready(function(){
@@ -398,6 +406,37 @@ class SearchBar extends React.Component {
             </div>
           </div>
           <div className="container-fluid hidden-xl visible-xs">
+              <div className='mobile-margined-search'>
+                <div className="main-zone-xs col-md-12">
+                  <div className="row">
+                    <div className="seach-top-slogan-xs-container col-md-12">
+                        <p className='slogan-xs'>تریپین</p>
+                    </div>
+                  <div className="row col-md-12">
+                    <p className='slogan-xss'>سامانه رزرو ویلا و اقامتگاه</p>
+                  </div>
+                  </div>
+                    <div className="searchbar-zone-mobile">
+                      <Typeahead
+                        bsSize="sm"
+                        placeholder="!مقصد خود را وارد نمایید"
+                        align="right"
+                        lableKey="name"
+                        minLength="2"
+                        emptyLabel="نتیجه‌ای یافت نشد"
+                        maxResults="5"
+                        className="typeahead-onlycity-sm"
+                        onChange={(selected) => {
+                          this.setState({city:selected[0]}, this.handleClick());
+                        }}
+                        options={this.state.cityList}
+                        />
+                        <Button color='blue' className="search-btn-xs" data-reactid="99" onClick={this.handleClick.bind(this)}>
+                          <span className='searchicon'>
+                            <img src="http://image.ibb.co/fjdMQG/trpinn_search.png" className='search-image-xs' alt=""></img>
+                          </span>
+                        </Button>
+                    </div>
             {this.renderRelevantSearchBarXs()}
 
             <div className='mobile-margined-search'>
@@ -424,6 +463,9 @@ class SearchBar extends React.Component {
               </div>
           </div>
       </div>
+      </div>
+      </div>
+
     );
   }
 }
