@@ -206,6 +206,13 @@ class SearchBar extends React.Component {
         listOfFive = [];
       }
     });
+    if (listOfFive.length > 0) {
+      results.push(
+        <div className="row">
+        {listOfFive}
+        </div>
+      );
+    }
     return results;
   }
 
@@ -236,6 +243,13 @@ class SearchBar extends React.Component {
         listOfThree = [];
       }
     });
+    if (listOfThree.length > 0) {
+      results.push(
+        <div className="row">
+        {listOfThree}
+        </div>
+      );
+    }
     return results;
   }
 
