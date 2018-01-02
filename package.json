@@ -7,11 +7,8 @@
     "bootstrap-jalali-datepicker": "^1.0.1",
     "datepicker": "0.0.0",
     "express": "^4.16.2",
-<<<<<<< HEAD
     "google-maps-react": "^1.1.2",
-=======
     "http-server": "^0.10.0",
->>>>>>> 5cce27ec9d377abd69217c3f3e082851aa216c8f
     "jquery": "^3.2.1",
     "moment": "^2.20.1",
     "react": "^16.2.0",
@@ -21,11 +18,11 @@
     "react-burger-menu": "^2.1.11",
     "react-datepicker": "^0.61.0",
     "react-dom": "^16.2.0",
-    "react-google-maps": "^9.4.2",
     "react-hamburger-button": "0.0.1",
     "react-hamburger-menu": "^1.0.0",
     "react-image-lightbox": "^4.4.0",
     "react-infinite-grid": "^0.4.0",
+    "react-keydown": "^1.9.6",
     "react-modal": "^3.1.8",
     "react-redux": "^5.0.6",
     "react-refetch": "^1.0.4",

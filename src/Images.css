@@ -1532,7 +1532,9 @@ text-align:center;
 .serachbar-indetail-xs{
     width:100%;
   background-color: lightgreen;
-  margin-bottom:100px;
+  margin-top:75px;
+  margin-bottom:70px;
+
 }
 .search-btn-result-xs{
   width: 100%;
