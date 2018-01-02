@@ -9,13 +9,15 @@ import ReservePanel from './HouseDetailParts/ReservePanel.js';
 import MainDiscription from './HouseDetailParts/MainDiscription';
 import AddressDiscription from './HouseDetailParts/AddressDiscription';
 import AmenitiesDiscription from './HouseDetailParts/AmenitiesDiscription';
-import MapDiscription from './HouseDetailParts/MapDiscription';
+
 import RatingDiscription from './HouseDetailParts/RatingDiscription';
 import HostInfoDiscription from './HouseDetailParts/HostInfoDiscription';
 import {englishToPersianDigits} from './tools/EnglishToPersianDigits';
 import {Sticky} from 'semantic-ui-react';
 import {normalReservePanelHouseDetails, fixedReservePanelHouseDetails,normalScrolllListHouseDetails , fixedScrollListHouseDetails} from './Styles.js';
 import AspectRatio from 'react-aspect-ratio';
+
+import GoogleApiWrapper from './HouseDetailParts/MapRenderer.js';
 
 
 class HouseDetails extends React.Component {
@@ -174,6 +176,15 @@ class HouseDetails extends React.Component {
   handleUnstickScrollList(){
     this.setState({scrollListFixed:false});
   }
+  renderMap(){
+    if(this.state.homeData!==''){
+      return (
+        <GoogleApiWrapper
+          position={{lat: parseFloat(this.state.homeData.latitude).toFixed(4), lng: parseFloat(this.state.homeData.longitude).toFixed(4)}}
+        />
+      );
+    }
+  }
   render(){
     if (this.state.homeData !== ''){
       document.title = "تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.city;
@@ -193,7 +204,7 @@ class HouseDetails extends React.Component {
             <div>
               <div className='navigation-menu-housedetails' style={this.state.scrollListFixed?fixedScrollListHouseDetails:normalScrolllListHouseDetails}>
                 <a href="#" onClick={() => scrollToComponent(this.Dis, { offset: 0, align: 'top', duration: 1500})}> <p className='navigation-menu-items'>مشخصات</p></a>
-                <a href="#" onClick={() => scrollToComponent(this.Gallery, { offset: 0, align: 'top', duration: 1500})}><p className='navigation-menu-items' >تصاویر</p></a>
+                <a href="#" onClick={() => scrollToComponent(this.Gallery, { offset: 0, align: 'top', duration: 1500})}> <p className='navigation-menu-items' >تصاویر</p></a>
                 <a href="#" onClick={() => scrollToComponent(this.Laws, { offset: 0, align: 'top', duration: 1500})}> <p className='navigation-menu-items'>امکانات و قوانین</p></a>
                 <a href="#" onClick={() => scrollToComponent(this.Map, { offset: 0, align: 'top', duration: 1500})}>   <p className='navigation-menu-items'>موقعیت روی نقشه</p></a>
               </div>
@@ -234,7 +245,7 @@ class HouseDetails extends React.Component {
                   {this.renderHouseGallery()}
                 </div>
                 <div className="col-details-house">
-                   <section className='about-scroller' ref={(section) => { this.Dis = section; }}></section>
+                  <section className='about-scroller' ref={(section) => { this.Dis = section; }}></section>
                   <AmenitiesDiscription homeData={this.state.homeData} />
                   <div className="main-descriptions row">
                    <p className='des-header'> درباره این خانه </p>
@@ -245,11 +256,10 @@ class HouseDetails extends React.Component {
                   <div className="divider"></div>
                   <section className='law-scroller' ref={(section) => { this.Laws = section; }}></section>
                   <MainDiscription homeData={this.state.homeData} />
-                  <section className='map-scroller' ref={(section) => { this.Map = section; }}>
-                  </section>
-                  <MapDiscription homeData={this.state.homeData}/>
-                 </div>
-               </div>
+                  <section className='map-scroller' ref={(section) => { this.Map = section; }}></section>
+                    {this.renderMap()}
+                </div>
+              </div>
           </div>
         </div>
         <div className="reserve-bottom-xs navbar-fixed-bottom">
