@@ -17,8 +17,7 @@ class MainPage extends React.Component{
     };
   }
   renderSearchBar() {
-    return (<SearchBar />
-    );
+    return (<SearchBar />);
   }
   renderHeader(){
     return (

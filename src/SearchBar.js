@@ -65,6 +65,8 @@ class SearchBar extends React.Component {
                       />
                   </div>
                   <div className="multi-input-1 col-md-2">
+                  </div>
+                  <div className="multi-input-1 col-md-2">
                     <input className="date-picker-input input-sm form-control" id='fromdatepicker' ref='fromdatepicker' placeholder='تاریخ ورود'style={{direction:'rtl',textAlign:'center'}}/>
                   </div>
                   <div className="multi-input-1 col-md-2">
