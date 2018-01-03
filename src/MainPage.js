@@ -6,7 +6,10 @@ import Footer from './Footer.js';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter, Route} from 'react-router-dom';
 import UserPanel from './UserPanel';
-
+import BecomeHost from './BecomeHost.js'
+import ContactUs from './ContactUs.js'
+import AboutUs from './AboutUs.js'
+import Terms from './Terms.js'
 
 class MainPage extends React.Component{
   constructor(props){
@@ -44,6 +47,28 @@ class MainPage extends React.Component{
       <UserPanel/>
     );
   }
+
+  renderBecomeHost(){
+  return(
+    <BecomeHost/>
+  ) ;
+  }
+  renderAboutUs(){
+  return(
+    <AboutUs/>
+  ) ;
+  }
+  renderTerms(){
+  return(
+    <Terms/>
+  ) ;
+  }
+  renderContactUs(){
+  return(
+    <ContactUs/>
+  ) ;
+  }
+
   getGuestTokenFromServer(){
     if (localStorage['isLoggedIn']!=='true'){
       var request = new Request('https://www.trypinn.com/auth/api/user/login_guest/',{
@@ -72,6 +97,10 @@ class MainPage extends React.Component{
           <Route exact path={'/dashboard'} render={()=>{return(this.renderUserPanel())}}/>
           <Route path={'/rooms/' + this.getHouseId()} render ={()=> {return (this.renderHouseDetails())}}/>
           <Route path={"/"} render = {()=> {return(this.renderFooter())}}/>
+          <Route path={"/becomehost"} render = {()=> {return(this.renderBecomeHost())}}/>
+          <Route path={"aboutus"} render = {()=> {return(this.renderAboutUs())}}/>
+          <Route path={"/terms&conditions"} render = {()=> {return(this.renderTerms())}}/>
+          <Route path={"/contactus"} render = {()=> {return(this.renderContactUs())}}/>
         </div>
       </BrowserRouter>
     );
