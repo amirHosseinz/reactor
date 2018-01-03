@@ -6,6 +6,7 @@ import RequestItem from './RequestItem.js';
 import TripItem from './TripItem.js';
 import UserProfile from './UserProfile.js';
 
+
 class UserPanel extends React.Component{
   constructor(props){
     super(props);
@@ -55,7 +56,6 @@ class UserPanel extends React.Component{
     }
   }
   renderSelectedPanel(){
-    console.log(localStorage['default-panel']);
     switch (localStorage['default-panel']){
       case 'message':
         return(

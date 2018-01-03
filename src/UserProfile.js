@@ -150,39 +150,38 @@ class UserProfile extends React.Component{
               <div className="edit-prof-row1 row">
                   <div className="col-md-4">
                     <p className="profile-labels">نام:</p>
-                    <input id='first-name' onChange={this.editFirstName.bind(this)} className="first_name_edit input-sm form-control"  value={this.state.firstName}/>
+                    <input id='first-name' onChange={this.editFirstName.bind(this)} className="first-name input-sm form-control"  value={this.state.firstName}/>
                   </div>
                 <div className="col-md-4">
                   <p className="profile-labels">نام خانوادگی:</p>
-                  <input id='last-name'onChange={this.editLastName.bind(this)} className="last_name_edit input-sm form-control"  value={this.state.lastName}/>
+                  <input id='last-name'onChange={this.editLastName.bind(this)} className="last-name input-sm form-control"  value={this.state.lastName}/>
                 </div>
                 <div className="col-md-4">
                   <p className="profile-labels">کد ملی:</p>
-                  <input id='national-id' onChange={this.editNationalId.bind(this)}className="last_name_edit input-sm form-control" value={this.state.nationalId}/>
+                  <input id='national-id' onChange={this.editNationalId.bind(this)} className="national-id input-sm form-control" value={this.state.nationalId}/>
                 </div>
               </div>
               <div className="edit-prof-row1 row">
 
                 <div className="col-md-4">
                   <p className="profile-labels">شماره همراه: </p>
-                  <input id='cell-phone' onChange={this.editCellPhone.bind(this)} className="last_name_edit input-sm form-control" value={this.state.cellPhone}/>
+                  <input id='cell-phone' onChange={this.editCellPhone.bind(this)} className="cell-phone input-sm form-control" value={this.state.cellPhone}/>
                 </div>
                 <div className="col-md-4">
                   <p className="profile-labels">ایمیل:</p>
-                  <input id='email' onChange={this.editEmail.bind(this)} className="last_name_edit input-sm form-control"  value={this.state.email}/>
+                  <input id='email' onChange={this.editEmail.bind(this)} className="email input-sm form-control"  value={this.state.email}/>
                 </div>
                 <div className="col-md-4">
                 </div>
               </div>
               <div className="edit-prof-row1 row">
-
                 <div className="col-md-4">
-                  <p className="profile-labels">رمز عبور : </p>
-                  <input id='password'onChange={this.editPassword.bind(this)} className="last_name_edit input-sm form-control" type="password"/>
+                  <p className="profile-labels">sرمز عبور : </p>
+                  <input id='password'onChange={this.editPassword.bind(this)} className="password input-sm form-control" type="password"/>
                 </div>
                 <div className="col-md-4">
                   <p className="profile-labels">تکرار رمز عبور:</p>
-                  <input id='confirm-password' className="last_name_edit input-sm form-control" type="password" value={this.state.confirmPassword}/>
+                  <input id='confirm-password' className="profile-labels input-sm form-control" type="password" value={this.state.confirmPassword}/>
                 </div>
                 <div className="col-md-4">
                 </div>

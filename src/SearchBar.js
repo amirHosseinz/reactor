@@ -412,9 +412,9 @@ class SearchBar extends React.Component {
                     <div className="seach-top-slogan-xs-container col-md-12">
                         <p className='slogan-xs'>تریپین</p>
                     </div>
-                  <div className="row col-md-12">
-                    <p className='slogan-xss'>سامانه رزرو ویلا و اقامتگاه</p>
-                  </div>
+                    <div className="row col-md-12">
+                      <p className='slogan-xss'>سامانه رزرو ویلا و اقامتگاه</p>
+                    </div>
                   </div>
                     <div className="searchbar-zone-mobile">
                       <Typeahead
@@ -438,14 +438,11 @@ class SearchBar extends React.Component {
                         </Button>
                     </div>
             {this.renderRelevantSearchBarXs()}
-
             <div className='mobile-margined-search'>
               <div className="main-zone-xs col-md-12">
                 {this.renderHouses()}
               </div>
             </div>
-
-
               <div className="downlaod-app-mobile">
                 <div className='mobile-margined-search'>
 
