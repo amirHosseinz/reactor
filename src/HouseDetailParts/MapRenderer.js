@@ -1,17 +1,22 @@
 import React from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import {Map, InfoWindow, Marker, GoogleApiWrapper, HeatMap} from 'google-maps-react';
 
 export class MapRenderer extends React.Component{
     render(){
+      console.log(this.props.Style)
       return(
         <Map
           google={this.props.google}
-          zoom={14}
-          className='house-google-map'
+          zoom={this.props.zoom}
+          style={this.props.style}
           initialCenter={this.props.position}>
           <Marker
-            name={'Villa'}
             position={this.props.position}
+          />
+          <HeatMap
+            gradient={1}
+            radius={20}
+            opacity={0.2}
           />
         </Map>
       );
