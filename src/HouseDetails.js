@@ -160,7 +160,7 @@ class HouseDetails extends React.Component {
  }
 
   handleContextRef = (contextReference) => {
-    this.setState({ contextRef : contextReference });
+    this.setState({ contextRef : contextReference});
   }
 
   handleStickReservePanel(){
@@ -223,7 +223,6 @@ class HouseDetails extends React.Component {
                 <Sticky context={this.state.contextRef}
                 onStick={this.handleStickReservePanel.bind(this)}
                 onUnstick={this.handleUnstickReservePanel.bind(this)}
-                pushing={true}
                 style={this.state.reservePanelFixed ? fixedReservePanelHouseDetails:normalReservePanelHouseDetails}>
                   <div className='reserve-card'>
                     <div className="reserve-card-child">

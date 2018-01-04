@@ -11,6 +11,7 @@ export class MapRenderer extends React.Component{
           initialCenter={this.props.position}>
           <Marker
             position={this.props.position}
+            icon={{url:require('./dayere.png')}}
           />
           <HeatMap
             gradient={1}
