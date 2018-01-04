@@ -216,10 +216,10 @@ class Header extends React.Component{
           <div className="logo col-md-2 col-sm-4">
               <div className='headerchild'>
                 <div className='logodiv'>
-                   <a href="http://www.tripinn.ir"><img src={require('./Images/tripinn_logo.svg')} className="LogoImage" alt = 'تریپین'></img></a>
+                   <a href="http://tripinn.ir"><img src={require('./Images/tripinn_logo.svg')} className="LogoImage" alt = 'تریپین'></img></a>
                 </div>
                 <div>
-                  <a className='logolink' href="http://www.tripinn.ir">  <p className='logofont'>تریپین</p></a>
+                  <a className='logolink' href="http://tripinn.ir">  <p className='logofont'>تریپین</p></a>
                 </div>
               </div>
           </div>
@@ -227,13 +227,13 @@ class Header extends React.Component{
       </div>
       <div className='header hidden-xl visible-xs navbar-fixed-top'>
         <div className='headermobile'>
-             <img src={require('./Images/tripinn_logo.svg')}  className="LogoImage-mobile" alt="تریپین"></img>
+             <a href="http://tripinn.ir"><img src={require('./Images/tripinn_logo.svg')}  className="LogoImage-mobile" alt="تریپین"></img></a>
         </div>
         <div className="burger-menu" >
            <Menu isOpen={this.state.showBurgerMenu} customBurgerIcon={<img onClick={this.toggleBurgerMenu.bind(this)} src={require('./Images/tripinn_burger.svg')}/>} className="burger" width={ '70%' }>
             <div className="burger-in-div" dir="rtl">
               <div className="burger-item">
-               <a id="home" className="menu-item" href="http://localhost:3000">خانه</a>
+               <a id="home" className="menu-item" href="http://tripinn.ir">خانه</a>
               </div>
               <div className="burger-item">
                {this.renderLoginButtonXs()}

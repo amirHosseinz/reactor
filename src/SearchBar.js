@@ -51,7 +51,7 @@ class SearchBar extends React.Component {
                 <div className="col-md-3">
                 </div>
                 <div className="search-inputs col-md-9">
-                  <div className="multi-input-1 col-md-2">
+                  <div className="multi-input-typeahead">
                     <Typeahead
                       className="typeahead-indetail-xl"
                       minLength="2"
@@ -65,30 +65,29 @@ class SearchBar extends React.Component {
                       options={this.state.cityList}
                       />
                   </div>
-                  <div className="multi-input-1 col-md-2">
+
+                  <div className="multi-input-1">
+                    <input className="date-picker-input  form-control1" id='fromdatepicker' ref='fromdatepicker' placeholder='تاریخ ورود'style={{direction:'rtl',textAlign:'center'}}/>
                   </div>
-                  <div className="multi-input-1 col-md-2">
-                    <input className="date-picker-input input-sm form-control" id='fromdatepicker' ref='fromdatepicker' placeholder='تاریخ ورود'style={{direction:'rtl',textAlign:'center'}}/>
+                  <div className="multi-input-1">
+                    <input className="date-picker-input  form-control1" id='todatepicker' ref='todatepicker' placeholder='تاریخ خروج'style={{direction:'rtl',textAlign:'center'}}/>
                   </div>
-                  <div className="multi-input-1 col-md-2">
-                    <input className="date-picker-input input-sm form-control" id='todatepicker' ref='todatepicker' placeholder='تاریخ خروج'style={{direction:'rtl',textAlign:'center'}}/>
-                  </div>
-                  <div className="multi-input-number col-md-2" dir="rtl" >
-                   <select className="form-control" id="sel1">
-                     <option>1 مهمان</option>
-                     <option>2 مهمان</option>
-                     <option>3 مهمان </option>
-                     <option>4 مهمان</option>
-                     <option>5 مهمان</option>
-                     <option>6 مهمان</option>
-                     <option>7 مهمان </option>
-                     <option>8 مهمان</option>
-                     <option>9 مهمان</option>
-                     <option>10 مهمان و بیشتر</option>
+                  <div className="multi-input-1" dir="rtl" >
+                   <select className="form-control1" id="sel1">
+                     <option className="guestnumber-option">1 مهمان</option>
+                     <option className="guestnumber-option">2 مهمان</option>
+                     <option className="guestnumber-option">3 مهمان </option>
+                     <option className="guestnumber-option">4 مهمان</option>
+                     <option className="guestnumber-option">5 مهمان</option>
+                     <option className="guestnumber-option">6 مهمان</option>
+                     <option className="guestnumber-option">7 مهمان </option>
+                     <option className="guestnumber-option">8 مهمان</option>
+                     <option className="guestnumber-option">9 مهمان</option>
+                     <option className="guestnumber-option">10 مهمان و بیشتر</option>
                    </select>
                  </div>
-                  <div className="multi-input-2 col-md-1">
-                  <Button color='blue' className="search-btn-result"  onClick={this.handleClick.bind(this)} data-reactid="99">
+                  <div className="multi-input-2">
+                  <Button color='blue' type="button" className="search-btn-result"  onClick={this.handleClick.bind(this)} data-reactid="99">
                     <span className='searchicon'>
                       <img src={require('./Images/trpinn_search.png')} className='search-image-result' alt=""></img>
                     </span>
@@ -394,7 +393,7 @@ class SearchBar extends React.Component {
       return(
         <div className="serachbar-indetail-xs">
           <Typeahead
-            className="typeahead-indetail-sm"
+            className="typeahead-indetail-sm "
             minLength="2"
             align="right"
             emptyLabel="نتیجه‌ای یافت نشد"
@@ -404,10 +403,10 @@ class SearchBar extends React.Component {
             )}}
             options={this.state.cityList}
             />
-          <input className="date-picker-input" id='fromdatepicker' ref='fromdatepicker' placeholder='تاریخ ورود'style={{direction:'rtl',textAlign:'center'}}/>
-          <input className="date-picker-input" id='todatepicker' ref='todatepicker' placeholder='تاریخ خروج'style={{direction:'rtl',textAlign:'center'}}/>
-          <div className="multi-input-number col-md-2" dir="rtl" >
-           <select className="form-control" id="sel1">
+          <input className="date-picker-input form-control1" id='fromdatepicker' ref='fromdatepicker' placeholder='تاریخ ورود'style={{direction:'rtl',textAlign:'center'}}/>
+          <input className="date-picker-input form-control1" id='todatepicker' ref='todatepicker' placeholder='تاریخ خروج'style={{direction:'rtl',textAlign:'center'}}/>
+          <div className="guestholder-xs" dir="rtl">
+           <select className="form-control1" id="sel1">
              <option>1 مهمان</option>
              <option>2 مهمان</option>
              <option>3 مهمان </option>
@@ -419,15 +418,16 @@ class SearchBar extends React.Component {
              <option>9 مهمان</option>
              <option>10 مهمان و بیشتر</option>
            </select>
+           </div>
            <Button color='blue' className="search-btn-result-xs"  onClick={this.handleClickXs.bind(this)} data-reactid="99">
              <span className='searchicon'>
                <img src={require('./Images/trpinn_search.png')} className='search-image-result-xs' alt=""></img>
              </span>
            </Button>
-         </div>
         </div>
       );
    }
+
    renderRelevantSearchBarXs(){
      if(this.state.showOnlyCitySearchBarMobile===true){
        return this.renderSearchBarOnlycityXs();
@@ -449,60 +449,35 @@ class SearchBar extends React.Component {
             <div className="col-lg col-sm-12 mb-10">
             </div>
           </div>
+
+
+
           <div className="container-fluid hidden-xl visible-xs">
               <div className='mobile-margined-search'>
                 <div className="main-zone-xs col-md-12">
                   <div className="row">
-                    <div className="seach-top-slogan-xs-container col-md-12">
-                        <p className='slogan-xs'>تریپین</p>
-                    </div>
-                    <div className="row col-md-12">
-                      <p className='slogan-xss'>سامانه رزرو ویلا و اقامتگاه</p>
-                    </div>
                   </div>
-                    <div className="searchbar-zone-mobile">
-                      <Typeahead
-                        bsSize="sm"
-                        placeholder="!مقصد خود را وارد نمایید"
-                        align="right"
-                        lableKey="name"
-                        minLength="2"
-                        emptyLabel="نتیجه‌ای یافت نشد"
-                        maxResults="5"
-                        className="typeahead-onlycity-sm"
-                        onChange={(selected) => {
-                          this.setState({city:selected[0]}, this.handleClick());
-                        }}
-                        options={this.state.cityList}
-                        />
-                        <Button color='blue' className="search-btn-xs" data-reactid="99" onClick={this.handleClick.bind(this)}>
-                          <span className='searchicon'>
-                            <img src="http://image.ibb.co/fjdMQG/trpinn_search.png" className='search-image-xs' alt=""></img>
-                          </span>
-                        </Button>
-                    </div>
             {this.renderRelevantSearchBarXs()}
+            {this.renderHousesCol3()}
+
             <div className='mobile-margined-search'>
               <div className="main-zone-xs col-md-12">
-                {this.renderHousesCol3()}
               </div>
             </div>
-              <div className="downlaod-app-mobile">
-                <div className='mobile-margined-search'>
-
-
-                  <div className="img-iphone col-xs-5">
-                    <img src={require('./Images/phone-app.png')} className='iphone' alt="اپلیکیشن تریپین"></img>
-                  </div>
-                  <div className="img-download col-xs-6">
-                    <a href="https://cafebazaar.ir/app/com.trypinn/">
-                      <img src={require('./Images/bazaar.svg')} className='bazar-ico' alt="دانلود از بازار"></img>
-                    </a>
-                    <img src={require('./Images/button-app-store.svg')} className='bazar-ico' alt=" دانلود از سیب‌اپ"></img>
-                  </div>
-                </div>
-              </div>
           </div>
+      </div>
+      <div className="downlaod-app-mobile">
+        <div className='mobile-margined-search'>
+          <div className="img-iphone col-xs-5">
+            <img src={require('./Images/phone-app.png')} className='iphone' alt="اپلیکیشن تریپین"></img>
+          </div>
+          <div className="img-download col-xs-6">
+            <a href="https://cafebazaar.ir/app/com.trypinn/">
+              <img src={require('./Images/bazaar.svg')} className='bazar-ico' alt="دانلود از بازار"></img>
+            </a>
+            <img src={require('./Images/button-app-store.svg')} className='bazar-ico' alt=" دانلود از سیب‌اپ"></img>
+          </div>
+        </div>
       </div>
       </div>
       </div>
