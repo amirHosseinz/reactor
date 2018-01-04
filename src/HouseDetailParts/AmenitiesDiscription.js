@@ -4,7 +4,6 @@ import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
 
 class AmenitiesDiscription extends React.Component{
   render(){
-    console.log(this.props.homeData);
     return(
       <div className="main-amanities row">
         <div className='main-amanities-item col-md-3'>

@@ -5,32 +5,36 @@ class BecomeHost extends React.Component {
     super(props);
     this.state = {
          token:null,
-          role:null,
           firstName:'',
           lastName:'',
           cellPhone:'',
           email:'',
-          city:'',};
+          city:'',
+        };
 
+  }
+
+  componentWillMount() {
+      this.setState({token:this.getRelevantToken()});
   }
 
   getRelevantToken(){
     return localStorage['token'];
   }
 
-  handleSaveInfo(){
-        this.setState({role :this.getRole()} ,()=>this.changeInfOnServer());
-  }
+
   changeInfOnServer(){
-    var request = new Request('https://www.trypinn.com/auth/api/user/edit/',{ //
+         console.log('injaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+         console.log(this.state);
+    var request = new Request('https://www.trypinn.com/host-submit/',{ //
       method: 'POST',
       body: JSON.stringify(
         {
           first_name:this.state.firstName,
           last_name:this.state.lastName,
-          cell_phone:this.state.cellPhone,
+          phone_no:this.state.cellPhone,
           email:this.state.email,
-          national_id:this.state.city,
+          city:this.state.city,
         }
       ),
       headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
@@ -38,12 +42,12 @@ class BecomeHost extends React.Component {
     });
    fetch(request)
    .then((response) => {
+     console.log('injaaaaa');
      return response.json();
+     console.log('injaaaaa');
    })
    .then((response) => {
-     localStorage['user-first-name']=this.state.firstName;
-     localStorage['user-last-name']=this.state.lastName;
-     window.location.reload();
+     return response;
    });
   }
 
@@ -60,7 +64,7 @@ class BecomeHost extends React.Component {
     this.setState({cellPhone:event.target.value});
   }
   editCity(event){
-    this.setState({nationalId:event.target.value});
+    this.setState({city:event.target.value});
   }
 
   render() {
@@ -70,7 +74,7 @@ class BecomeHost extends React.Component {
       <div className="profile-container-margined">
         <div className="profile_dynamic_edit col-md-9">
           <div className="edit-profile-xl row">
-      <form onSubmit={this.handleSubmit}>
+      <form>
         <label>
           نام:
           <input type="text" id='your_name' value={this.state.firstName} onChange={this.editFirstName.bind(this)} required  />
@@ -92,7 +96,7 @@ class BecomeHost extends React.Component {
     <input type="text" value={this.state.email} onChange={this.editEmail.bind(this)} />
     </label>
     <div>
-   <button className="save-edit" color="blue" onClick={this.handleSaveInfo.bind(this)}> ذخیره </button>
+   <button className="save-edit" color="blue" onClick={this.changeInfOnServer.bind(this)}> ذخیره </button>
     </div>
       </form>
       </div>
