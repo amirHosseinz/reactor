@@ -266,7 +266,6 @@ class Header extends React.Component{
                 </div>
               </div>
             </div>
-
            </Modal>
         </div>
       </div>

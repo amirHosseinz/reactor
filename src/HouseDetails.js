@@ -2,7 +2,6 @@ import React from 'react';
 
 import Lightbox from 'react-image-lightbox';
 import scrollToComponent from 'react-scroll-to-component';
-// import Sticky from 'react-sticky-el';
 import {Button} from 'semantic-ui-react';
 
 import ReservePanel from './HouseDetailParts/ReservePanel.js';
@@ -27,7 +26,7 @@ class HouseDetails extends React.Component {
       photoIndex: 0,
       isOpen: false,
       homeData : '',
-      contextRef:'',
+      contextRef: '',
       reservePanelFixed : false,
       scrollListFixed:false,
       showReservePanel : true,
@@ -160,8 +159,8 @@ class HouseDetails extends React.Component {
    }
  }
 
-  handleContextRef (contextReference) {
-    this.setState({ contextRef : contextReference });
+  handleContextRef = (contextReference) => {
+    this.setState({ contextRef : contextReference});
   }
 
   handleStickReservePanel(){
@@ -194,7 +193,7 @@ class HouseDetails extends React.Component {
       document.title = "تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.city;
     }
     return(
-      <div className='housedetail container-fluid'>
+      <div className='housedetail container-fluid' ref={this.handleContextRef}>
         <div className="house-detail-top">
           <div className="house-detail-top-margined">
             <AddressDiscription homeData={this.state.homeData}/>
@@ -207,10 +206,10 @@ class HouseDetails extends React.Component {
             <div>
             <div>
               <div className='navigation-menu-housedetails' style={this.state.scrollListFixed?fixedScrollListHouseDetails:normalScrolllListHouseDetails}>
-                <a href="#" onClick={() => scrollToComponent(this.Dis, { offset: 0, align: 'top', duration: 1500})}> <p className='navigation-menu-items'>مشخصات</p></a>
-                <a href="#" onClick={() => scrollToComponent(this.Gallery, { offset: 0, align: 'top', duration: 1500})}> <p className='navigation-menu-items' >تصاویر</p></a>
-                <a href="#" onClick={() => scrollToComponent(this.Laws, { offset: 0, align: 'top', duration: 1500})}> <p className='navigation-menu-items'>امکانات و قوانین</p></a>
-                <a href="#" onClick={() => scrollToComponent(this.Map, { offset: 0, align: 'top', duration: 1500})}>   <p className='navigation-menu-items'>موقعیت روی نقشه</p></a>
+                <p onClick={() => scrollToComponent(this.Dis, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items'>مشخصات</p>
+                <p onClick={() => scrollToComponent(this.Gallery, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items' >تصاویر</p>
+                <p onClick={() => scrollToComponent(this.Laws, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items'>امکانات و قوانین</p>
+                <p onClick={() => scrollToComponent(this.Map, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items'>موقعیت روی نقشه</p>
               </div>
             </div>
             <div style={{textAlign:'right'}}>
@@ -224,7 +223,6 @@ class HouseDetails extends React.Component {
                 <Sticky context={this.state.contextRef}
                 onStick={this.handleStickReservePanel.bind(this)}
                 onUnstick={this.handleUnstickReservePanel.bind(this)}
-                offset={40}
                 style={this.state.reservePanelFixed ? fixedReservePanelHouseDetails:normalReservePanelHouseDetails}>
                   <div className='reserve-card'>
                     <div className="reserve-card-child">
@@ -242,9 +240,9 @@ class HouseDetails extends React.Component {
                   </div>
                 </Sticky>
               </div>
-              <div className='housedetail-img col-md-9'>
-               <section className='gallery-scroller' ref={(section) => {this.Gallery = section; }}></section>
-                <div>
+              <div className='col-md-9'>
+               <section className='gallery-scroller' ref={(section) => {this.Gallery = section;}}></section>
+                <div className='housedetail-img'>
                   {this.renderPreview()}
                   {this.renderHouseGallery()}
                 </div>
