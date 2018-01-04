@@ -64,7 +64,9 @@ class SearchBar extends React.Component {
                       maxResults={5}
                       placeholder={this.state.city}
                       onChange={(selected)=>{
-                        this.setState({city:selected[0]}, this.handleClick());
+                        this.setState({city:selected[0]}, () => {
+                          this.handleClick();
+                        });
                       }}
                       options={this.state.cityList}
                       />
@@ -151,7 +153,9 @@ class SearchBar extends React.Component {
                               emptyLabel="نتیجه‌ای یافت نشد"
                               className="typeahead-onlycity-xl"
                               onChange={(selected) => {
-                                this.setState({city:selected[0]}, this.handleClick());
+                                this.setState({city:selected[0]}, () => {
+                                  this.handleClick();
+                                });
                               }}
                   options={this.state.cityList}
                   />
