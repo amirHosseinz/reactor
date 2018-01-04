@@ -2,7 +2,6 @@ import React from 'react';
 
 import Lightbox from 'react-image-lightbox';
 import scrollToComponent from 'react-scroll-to-component';
-// import Sticky from 'react-sticky-el';
 import {Button} from 'semantic-ui-react';
 
 import ReservePanel from './HouseDetailParts/ReservePanel.js';
@@ -27,7 +26,7 @@ class HouseDetails extends React.Component {
       photoIndex: 0,
       isOpen: false,
       homeData : '',
-      contextRef:'',
+      contextRef: '',
       reservePanelFixed : false,
       scrollListFixed:false,
       showReservePanel : true,
@@ -160,7 +159,7 @@ class HouseDetails extends React.Component {
    }
  }
 
-  handleContextRef (contextReference) {
+  handleContextRef = (contextReference) => {
     this.setState({ contextRef : contextReference });
   }
 
@@ -194,7 +193,7 @@ class HouseDetails extends React.Component {
       document.title = "تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.city;
     }
     return(
-      <div className='housedetail container-fluid'>
+      <div className='housedetail container-fluid' ref={this.handleContextRef}>
         <div className="house-detail-top">
           <div className="house-detail-top-margined">
             <AddressDiscription homeData={this.state.homeData}/>
@@ -224,7 +223,8 @@ class HouseDetails extends React.Component {
                 <Sticky context={this.state.contextRef}
                 onStick={this.handleStickReservePanel.bind(this)}
                 onUnstick={this.handleUnstickReservePanel.bind(this)}
-                offset={40}
+                bottomOffset={50}
+                pushing={true}
                 style={this.state.reservePanelFixed ? fixedReservePanelHouseDetails:normalReservePanelHouseDetails}>
                   <div className='reserve-card'>
                     <div className="reserve-card-child">
