@@ -28,6 +28,10 @@ class SearchBar extends React.Component {
       },
     };
   }
+  componentWillMount(){
+    this.renderToDatePicker();
+    this.renderFromDatePicker();
+  }
 
   getRelevantToken(){
     return localStorage['token'];
@@ -54,10 +58,10 @@ class SearchBar extends React.Component {
                   <div className="multi-input-typeahead">
                     <Typeahead
                       className="typeahead-indetail-xl"
-                      minLength="2"
+                      minLength={2}
                       align="right"
                       emptyLabel="نتیجه‌ای یافت نشد"
-                      maxResults="5"
+                      maxResults={5}
                       placeholder={this.state.city}
                       onChange={(selected)=>{
                         this.setState({city:selected[0]}, this.handleClick());
@@ -141,9 +145,9 @@ class SearchBar extends React.Component {
                               placeholder="!مقصد خود را وارد نمایید"
                               align="right"
                               lableKey="name"
-                              minLength="2"
+                              minLength={2}
                               emptyLabel="نتیجه‌ای یافت نشد"
-                              maxResults="5"
+                              maxResults={5}
                               emptyLabel="نتیجه‌ای یافت نشد"
                               className="typeahead-onlycity-xl"
                               onChange={(selected) => {
@@ -151,11 +155,11 @@ class SearchBar extends React.Component {
                               }}
                   options={this.state.cityList}
                   />
-              <button type='button' color='blue' className="search-btn btn"  onClick={this.handleClick.bind(this)} data-reactid="99">
+              <Button type='button' color='blue' className="search-btn btn"  onClick={this.handleClick.bind(this)} data-reactid="99">
                 <span className='searchicon'>
                   <img src={require('./Images/trpinn_search.png')} className='search-image' alt=""></img>
                 </span>
-                </button>
+                </Button>
             </div>
         </div>
         <div className="free-zone col-md-3"></div>
@@ -371,9 +375,9 @@ class SearchBar extends React.Component {
                   placeholder="!مقصد خود را وارد نمایید"
                   align="right"
                   lableKey="name"
-                  minLength="2"
+                  minLength={2}
                   emptyLabel="نتیجه‌ای یافت نشد"
-                  maxResults="5"
+                  maxResults={5}
                   className="typeahead-onlycity-sm"
                   onChange={(selected) => {this.setState({city:selected[0]})
                   }}
@@ -438,8 +442,8 @@ class SearchBar extends React.Component {
    }
 
   render(){
-    {this.renderToDatePicker()}
-    {this.renderFromDatePicker()}
+    this.renderToDatePicker();
+    this.renderFromDatePicker();
     return (
       <div className="searchbarmain">
           <div className="container-fluid hidden-xs visible-xl">
