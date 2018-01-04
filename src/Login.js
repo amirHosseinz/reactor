@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button,Divider} from 'semantic-ui-react';
 import Modal from 'react-modal';
+import {loginVerifySmsXl , registerNewUser , setPasswordStyle} from './Styles.js';
 
 class Login extends React.Component{
     constructor(props){
@@ -255,31 +256,33 @@ class Login extends React.Component{
       return(
         <Modal isOpen={this.state.showSignUpOrSetPasswordModal}
                ariaHideApp={false}
+               style={setPasswordStyle}
                onRequestClose={()=>{this.setState({showSignUpOrSetPasswordModal:false})}}>
          <div className="login1-modal">
+            <p className="login-title-in-modal">تعیین رمز عبور</p>
+            <Divider/>
+              <p className="enter-phone-number-inmodal">شما کاربر تریپین بوده‌اید. برای استفاده از سایت تریپین کافی است رمز عبور خود را تعیین نمایید</p>
+              <div  className="signup-div">
              <div  dir="rtl" className="enter-number-main" >
-               <p className="enter-phone-number-inmodal2" >رمز عبور </p>
+              <p className="signup-form-lable">رمز عبور </p>
                <input id='password'
-                      className="login-input"
+                      className="password  form-control"
                       type="password"
                       value={this.state.inputForSetPassword.password}
                       onChange={this.changePasswordForSetPassword.bind(this)}/>
-               <div className="divider-x"></div>
-               <br/>
-               <br/>
-               <p className="enter-phone-number-inmodal2" >تکرار رمز عبور </p>
-               <input id='confirm-password'
-                      className="login-input"
+                        <br/>
+                  <p className="signup-form-lable"> تکرار رمز عبور </p>
+                 <input id='confirm-password'
+                    className="password  form-control"
                       type="password"
                       value={this.state.inputForSetPassword.confirmPassword}
                       onChange={this.changeConfirmPasswordForSetPassword.bind(this)}/>
-               <div className="divider-x">
-               </div>
+                      <br/>
                <br/>
-               <br/>
-               <Button color="blue" onClick={this.handleSetPasswordClick.bind(this)} className="login-modal-button-2">
-                 ادامه
+               <Button color="blue" onClick={this.handleSetPasswordClick.bind(this)} className="login-modal-button-3">
+                 ذخیره
                </Button>
+               </div>
              </div>
          </div>
         </Modal>
@@ -287,43 +290,48 @@ class Login extends React.Component{
     }
     renderSignUpModal(){
       return(
-        <Modal isOpen={true}
+        <Modal isOpen={this.state.showSignUpOrSetPasswordModal}
                ariaHideApp={false}
+               style={registerNewUser}
                onRequestClose={()=>{this.setState({showSignUpOrSetPasswordModal:false})}}>
                <div className="login1-modal">
-                    <p> نام:</p>
-                    <input value={this.state.inputForSignUp.firstName}
-                           onChange={this.changeFirstNameForSignUp.bind(this)}/>
-                    <br/>
-                    <br/>
-                    <p> نام خانوادگی:</p>
-                    <input value={this.state.inputForSignUp.lastName}
-                            onChange={this.changeLastNameForSignUp.bind(this)}/>
-                    <br/>
-                    <br/>
-                   <div  dir="rtl" className="enter-number-main" >
-                     <p className="enter-phone-number-inmodal2" >رمز عبور </p>
-                     <input id='password'
-                            className="login-input"
-                            type="password"
-                            value={this.state.inputForSignUp.password}
-                            onChange={this.changePasswordForSignUp.bind(this)}/>
-                     <div className="divider-x"></div>
-                     <br/>
-                     <br/>
-                     <p className="enter-phone-number-inmodal2" > تکرار رمز عبور </p>
-                     <input id='confirm-password'
-                            className="login-input"
-                            type="password"
-                            value={this.state.inputForSignUp.confirmPassword}
-                            onChange={this.changeConfirmPasswordForSignUp.bind(this)}/>
-                     <div className="divider-x">
-                     </div>
-                     <br/>
-                     <br/>
-                     <Button color="blue" onClick={this.handleSignupClick.bind(this)} className="login-modal-button-2">
-                       ادامه
-                     </Button>
+                   <p className="login-title-in-modal">ثبت‌نام کاربر جدید</p>
+                   <Divider/>
+                      <div  className="signup-div">
+
+                        <p className="signup-form-lable"> نام</p>
+                        <input value={this.state.inputForSignUp.firstName}
+                               onChange={this.changeFirstNameForSignUp.bind(this)}
+                               className="singup-fa-input form-control"
+                               />
+                        <br/>
+
+                        <p className="signup-form-lable"> نام خانوادگی</p>
+                        <input value={this.state.inputForSignUp.lastName}
+                                onChange={this.changeLastNameForSignUp.bind(this)}
+                                className="singup-fa-input form-control"
+                                />
+                        <br/>
+                         <p className="signup-form-lable">رمز عبور </p>
+
+                         <input id='password'
+                                className="password  form-control"
+                                type="password"
+                                value={this.state.inputForSignUp.password}
+                                onChange={this.changePasswordForSignUp.bind(this)}/>
+                          <br/>
+                         <p className="signup-form-lable"> تکرار رمز عبور </p>
+                         <input id='confirm-password'
+                                className="password  form-control"
+                                type="password"
+                                value={this.state.inputForSignUp.confirmPassword}
+                                onChange={this.changeConfirmPasswordForSignUp.bind(this)}/>
+                          <br/>
+
+                         <Button color="blue" onClick={this.handleSignupClick.bind(this)} className="login-modal-button-3">
+                           ثبت‌نام و ورود
+                         </Button>
+
                    </div>
                </div>
         </Modal>
@@ -343,30 +351,35 @@ class Login extends React.Component{
       this.setTokenForVerification();
     }
     renderVerificationModal(){
-      return(<Modal isOpen={this.state.showVerificationModal}
-        ariaHideApp={false}
-        onRequestClose={()=>{this.setState({showVerificationModal:false})}}>
-        <div>
-          <p className="enter-phone-number-inmodal2">:کد تایید ارسال شده را وارد نمایید
-          </p>
-          <div className='enter-number-main'>
-            <input className='login-input'
-            value={this.state.inputForVerification.verificatinCode}
-            onChange={this.changeVerificationCode.bind(this)}
-            className="login-input-code"
-             id='verify-code'
-             maxLength="4"
-             type="numeric"/>
-            <div className="divider-x2">
+      return(
+        <Modal isOpen={this.state.showVerificationModal}
+          style={loginVerifySmsXl}
+          ariaHideApp={false}
+          onRequestClose={()=>{this.setState({showVerificationModal:false})}}>
+          <div className="login1-modal">
+            <p className="login-title-in-modal">کد تایید</p>
+            <Divider/>
+            <p className="enter-phone-number-inmodal">:کد چهار رقمی تایید پیامک شده به تلفن خود را وارد نمایید
+            </p>
+            <div className='enter-number-main'>
+              <input className='login-input'
+              value={this.state.inputForVerification.verificatinCode}
+              onChange={this.changeVerificationCode.bind(this)}
+              className="login-input-code"
+               id='verify-code'
+               maxLength="4"
+               type="numeric"/>
+              <div className="divider-x2">
+              </div>
+              <br/>
+              <br/>
+              <Button color="blue" onClick={this.handleVerificationClick.bind(this)} className="login-modal-button">
+              ادامه
+              </Button>
             </div>
-            <br/>
-            <br/>
+
           </div>
 
-          <Button color="blue" onClick={this.handleVerificationClick.bind(this)} className="login-modal-button-2">
-            ادامه
-          </Button>
-        </div>
       </Modal>);
 
     }

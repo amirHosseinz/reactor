@@ -71,6 +71,8 @@
 .login-modal-button{
   width: 90%;
   font-family: IRANSans !important;
+  margin: auto;
+
 }
 
 .login-modal-button-2{
@@ -79,7 +81,12 @@
   padding-top: 40px;
 }
 
-
+.login-modal-button-3{
+  width: 100%;
+  font-family: IRANSans !important;
+  margin-top: 10px !important;
+  padding: 14px !important;
+}
 
 .enter-number-main{
     margin: auto;
@@ -1566,6 +1573,7 @@ text-align:center;
 }
 .login1-modal{
 padding-top: 80px;
+
 }
 .typeahead-indetail-xl{
   text-align: right;
@@ -1600,4 +1608,22 @@ padding-top: 80px;
 }
 .guestholder-xs{
   text-align: right;
+}
+.signup-div{
+  font-family: IRANSans;
+  width: 80%;
+  margin: auto;
+}
+.signup-form-lable{
+  font-size: 14px;
+  margin-bottom: 5px !important;
+  margin-top: 3px;
+  text-align: right;
+}
+.password{
+  text-align: left !important;
+}
+.singup-fa-input{
+  text-align: right !important;
+  font-family: IRANSans !important;
 }
