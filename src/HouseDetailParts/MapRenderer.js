@@ -3,7 +3,6 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper, HeatMap} from 'google-maps-re
 
 export class MapRenderer extends React.Component{
     render(){
-      console.log(this.props.Style)
       return(
         <Map
           google={this.props.google}

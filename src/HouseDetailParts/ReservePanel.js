@@ -39,7 +39,6 @@ class ReservePanel extends React.Component{
   }
 
   setSearchParams(reqpar){
-    console.log(reqpar);
     if(reqpar.startDate=== null || reqpar.startDate==='' ){
       alert('.لطفا تاریخ ورود و خروج خود را دقیق وارد نمایید');
       return;
