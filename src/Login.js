@@ -144,6 +144,7 @@ class Login extends React.Component{
        return response.json();
      })
      .then((loginResponse) => {
+       console.log(loginResponse);
        this.handleLoginResponse(loginResponse);
      });
     }
@@ -198,7 +199,7 @@ class Login extends React.Component{
      });
     }
     getResponseForSignUp(){
-      var request = new Request('https://www.trypinn.com/auth/api/user/login/', {
+      var request = new Request('https://www.trypinn.com/auth/api/signup/set_account/', {
         method: 'POST',
         body: JSON.stringify({
           cell_phone : this.state.reqParamsForSignup.phoneNumber,
@@ -217,7 +218,15 @@ class Login extends React.Component{
      })
      .then((signUpresponse) => {
        console.log(signUpresponse);
+       this.handleSignUpResponse(signUpresponse);
      });
+    }
+    handleSignUpResponse(signUpresponse){
+      if(signUpresponse.successful===true){
+        localStorage['isLoggedIn']= 'true';
+        localStorage['token'] = signUpresponse.token;
+        this.setUserNameInHeader();
+      }
     }
     getResponseForVerification(){
       var request = new Request('https://www.trypinn.com/auth/api/user/verification/', {
@@ -297,8 +306,8 @@ class Login extends React.Component{
                      <input id='password'
                             className="login-input"
                             type="password"
-                            value={this.state.inputForSignUp.password}/>
-                            onChange={this.changePasswordForSignUp.bind(this)}
+                            value={this.state.inputForSignUp.password}
+                            onChange={this.changePasswordForSignUp.bind(this)}/>
                      <div className="divider-x"></div>
                      <br/>
                      <br/>
@@ -413,7 +422,7 @@ class Login extends React.Component{
     changePasswordForSignUp(event){
       var inputSignUp={password : event.target.value ,
                    confirmPassword: this.state.inputForSignUp.confirmPassword,
-                   firstName : this.state.inputSignUp.firstName,
+                   firstName : this.state.inputForSignUp.firstName,
                    lastName : this.state.inputForSignUp.lastName
                  }
       this.setState({inputForSignUp : inputSignUp});
@@ -421,7 +430,7 @@ class Login extends React.Component{
     changeConfirmPasswordForSignUp(event){
       var inputSignUp={password : this.state.inputForSignUp.password ,
                    confirmPassword: event.target.value,
-                   firstName : this.state.inputSignUp.firstName,
+                   firstName : this.state.inputForSignUp.firstName,
                    lastName : this.state.inputForSignUp.lastName
                  }
       this.setState({inputForSignUp : inputSignUp});
@@ -437,7 +446,7 @@ class Login extends React.Component{
     changeLastNameForSignUp(event){
       var inputSignUp={password :this.state.inputForSignUp.password ,
                    confirmPassword: this.state.inputForSignUp.confirmPassword,
-                   firstName : this.state.inputSignUp.firstName,
+                   firstName : this.state.inputForSignUp.firstName,
                    lastName : event.target.value,
                  }
       this.setState({inputForSignUp : inputSignUp});
