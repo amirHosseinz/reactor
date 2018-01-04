@@ -114,8 +114,8 @@ class Login extends React.Component{
         method: 'POST',
         body: JSON.stringify({
           cell_phone : this.state.reqParamsForSetPassword.phoneNumber,
-          pass : this.state.reqParamsForSetPassword.password,
-          confirm_pass : this.state.reqParamsForSetPassword.confirmPassword,
+          password : this.state.reqParamsForSetPassword.password,
+          confirm_password : this.state.reqParamsForSetPassword.confirmPassword,
           verification_code :this.state.reqParamsForSetPassword.verificationCode,
       }),
         headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
@@ -133,8 +133,8 @@ class Login extends React.Component{
       var request = new Request('https://www.trypinn.com/auth/api/user/login/', {
         method: 'POST',
         body: JSON.stringify({
-          cell_phone : this.state.reqParamsForLogin.phoneNumber,
-          pass : this.state.reqParamsForLogin.password,
+          cell_phone:this.state.reqParamsForLogin.phoneNumber,
+          password:this.state.reqParamsForLogin.password,
       }),
         headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
         'Authorization': 'Token '+this.state.token,})
