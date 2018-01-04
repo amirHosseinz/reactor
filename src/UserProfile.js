@@ -68,7 +68,9 @@ t
         }
       }
     }
-
+    getRelevantToken(){
+       return localStorage['token'];
+     }
   renderUserProfile(){
     if (this.state.profileInfo!== null){
 

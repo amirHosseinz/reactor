@@ -80,9 +80,7 @@
 }
 
 
-.form-control::-moz-placeholder{
 
-}
 .enter-number-main{
     margin: auto;
   text-align: center;
@@ -351,6 +349,7 @@
     background-color:#3fd4ee ;
 }
 
+
 i.big.icon,
 i.big.icons {
   line-height: 1;
@@ -375,7 +374,7 @@ i.big.icons {
   height: 1.6rem;
 }
 .search-image-result{
-  height: 1.4rem;
+  height: 1.2rem;
 }
 
 .searchbar-zone{
@@ -819,19 +818,30 @@ transform: scale(2, 2);
   -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
   display: flex;
   flex-direction: row-reverse;
+  height: 44px;
 }
 
 .multi-input-1{
-  height: 38px;
+  height: 44px;
   width: 120px;
   background-color: white;
-  margin-top: 10px;
-] text-align: right !important;
-
+  margin-top: 14px;
+  margin-left: 6px;
+ text-align: right !important;
+ font-family: IRANSans !important;
+}
+.multi-input-typeahead{
+  height: 44px;
+  width: 180px;
+  background-color: white;
+  margin-top: 14px;
+  margin-left: 6px;
+ text-align: right !important;
+ font-family: IRANSans !important;
 }
 .multi-input-2{
-  height: 38px;
-  margin-top: 10px;
+  height: 44px !important;
+  margin-top: 14px;
   margin-right: 0px;
 }
 .reserve-button-div{
@@ -1429,8 +1439,14 @@ text-align:center;
   color:#4e4e4e;
 }
 .search-btn-result{
-  height: 38px !important;
-  width: 68px;
+
+  height: 34px;
+  width: 60px;
+  background-color: white;
+  margin-top: 14px;
+  margin-left: 6px;
+ text-align: right !important;
+ font-family: IRANSans !important;
 }
 .guestnumber-div{
   margin-bottom: 20px;
@@ -1439,6 +1455,7 @@ text-align:center;
   margin: auto;
   margin-bottom: 10px;
   width: 100%;
+  height: 100%;
 }
 .reserve-modal{
   border-radius: 4px;
@@ -1501,16 +1518,7 @@ text-align:center;
   font-family: IRANSans !important;
 
 }
-.multi-input-number{
-  height: 38px;
-  background-color: white;
-  margin-top: 10px;
-  text-align: right !important;
-  width: 100%;
-}
-.form-control{
-  height: 80% !important;
-}
+
 .avatar-header{
   object-fit: cover;
 
@@ -1531,9 +1539,8 @@ text-align:center;
 }
 .serachbar-indetail-xs{
     width:100%;
-  background-color: lightgreen;
-  margin-top:75px;
-  margin-bottom:70px;
+  margin-top:55px;
+  margin-bottom:50px;
 
 }
 .search-btn-result-xs{
@@ -1541,9 +1548,11 @@ text-align:center;
   height: 30px;
   align-items: center;
   justify-content: center;
+  margin-top: 10px !important;
 }
 .search-image-result-xs{
-  height: 15px;
+  height: 14px;
+  margin-bottom: 10px;
 }
 .burger-in-div{
   margin-top: 20px;
@@ -1553,4 +1562,38 @@ text-align:center;
 }
 .login1-modal{
 padding-top: 80px;
+}
+.typeahead-indetail-xl{
+  text-align: right;
+}
+.form-control1{
+  font-family: IRANSans !important;
+  font-size: 12px !important;
+  display: block;
+  text-align: center;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.guestnumber-option{
+  font-family: IRANSans !important;
+  font-size: 12px !important;
+}
+.typeahead-indetail-sm {
+  margin-bottom: 10px;
+  text-align: right;
+}
+.guestholder-xs{
+  text-align: right;
 }
