@@ -73,7 +73,9 @@ class UserProfile extends React.Component{
         }
       }
     }
-
+    getRelevantToken(){
+       return localStorage['token'];
+     }
   renderUserProfile(){
     if (this.state.profileInfo!== null){
 
