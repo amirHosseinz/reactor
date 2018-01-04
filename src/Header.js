@@ -20,6 +20,7 @@ class Header extends React.Component{
       loginPanelVisible:false,
       loginPanelVisible2:false,
       hasPassword: null,
+      hasAccount:null,
       searchParams:{
       phoneNumber: null,
       showMobileLoginPanel:false,
@@ -66,10 +67,12 @@ class Header extends React.Component{
        return response.json();
      })
      .then((loginStatus) => {
-       this.setState({loginPanelVisible2 : true});
-       this.setState({loginPanelVisible: false});
        localStorage['phone-number'] = this.state.searchParams.phoneNumber;
        this.setState({hasPassword: loginStatus.has_pass});
+       this.setState({hasAccount:loginStatus.has_account});
+       this.setState({loginPanelVisible2 : true});
+       this.setState({loginPanelVisible: false});
+
      });
   }
 
@@ -95,7 +98,7 @@ class Header extends React.Component{
     }
   }
   handleSignOutButton(){
-    localStorage['token']='';
+    // localStorage['token']='';
     localStorage['isLoggedIn']='false';
     localStorage['user-profile-picture']='';
     localStorage['user-first-name']='';
@@ -110,7 +113,6 @@ class Header extends React.Component{
   renderLoginPanel(){
     return(
       <div className="login-modal-main">
-
         <Modal isOpen={this.state.loginPanelVisible}
           ariaHideApp={false}
           style={loginPhoneNumberStyle}
@@ -138,12 +140,11 @@ class Header extends React.Component{
               </div>
             </div>
         </Modal>
-
         <Modal isOpen={this.state.loginPanelVisible2}
           ariaHideApp={false}
           style={loginPasswordStyle}
           onRequestClose={()=>{this.setState({loginPanelVisible2:false})}}>
-          <Login loginStatus={this.state.hasPassword} />
+          <Login hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
         </Modal>
       </div>
     );
@@ -254,8 +255,7 @@ class Header extends React.Component{
                     autoComplete="off"
                     className="login-input"
                     placeholder="مثال: ۰۹۱۲۰۰۰۰۰۰۰"
-                    type="numeric"
-                    >
+                    type="numeric">
                     </input>
                     <div className="divider-x"></div>
                     <br/>

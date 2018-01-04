@@ -179,9 +179,13 @@ class HouseDetails extends React.Component {
   renderMap(){
     if(this.state.homeData!==''){
       return (
-        <GoogleApiWrapper
-          position={{lat: parseFloat(this.state.homeData.latitude).toFixed(4), lng: parseFloat(this.state.homeData.longitude).toFixed(4)}}
-        />
+          <div className='house-google-map'>
+            <GoogleApiWrapper
+              position={{lat: parseFloat(this.state.homeData.latitude).toFixed(4), lng: parseFloat(this.state.homeData.longitude).toFixed(4)}}
+              zoom={14}
+              style={{width:'70%',height:'35%'}}
+            />
+          </div>
       );
     }
   }
