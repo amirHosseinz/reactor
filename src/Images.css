@@ -782,7 +782,7 @@ transform: scale(2, 2);
 
 /* Wrapper for item list */
 .bm-item-list {
-  color: #b8b7ad;
+  color: #5d5d5d;
   padding: 0.2em;
 }
 
@@ -1513,6 +1513,7 @@ text-align:center;
   padding-right: 40px;
 }
 .menu-item{
+  color:#5b5b5b;
 }
 .input-number-results{
   width: 100%;

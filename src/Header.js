@@ -245,9 +245,9 @@ class Header extends React.Component{
            style={loginPanelmobileStyle}
            onRequestClose={()=>{this.setState({showMobileLoginPanel:false})}}>
             <div>
-            <div className="login1-modal">
+            <div className="login1-modal" dir="rtl">
               <p className="login-title-in-modal"> ورود/ عضویت </p>
-              <p className="enter-phone-number-inmodal"> :برای ورود یا ثبت‌نام شماره تلفن همراه خود را وارد کنید </p>
+              <p className="enter-phone-number-inmodal"> برای ورود یا ثبت‌نام شماره تلفن همراه خود را وارد کنید :</p>
                 <div  dir="rtl" className="enter-number-main" >
                   <input
                     maxLength="11"
