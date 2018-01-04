@@ -21,7 +21,12 @@ class UserProfile extends React.Component{
   componentWillMount() {
       this.setState({token:this.getRelevantToken()},()=>{this.setSearchParams(this.getRole())});
   }
-t
+
+  getRelevantToken(){
+    return localStorage['token'];
+  }
+
+
   getRole(){
     return 'guest';
   }

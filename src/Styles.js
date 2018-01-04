@@ -11,7 +11,7 @@ export const loginPhoneNumberStyle = {
     top                        : '15%',
     left                       : '35%',
     right                      : '35%',
-    bottom                     : '42%',
+    bottom                     : '35%',
     outline                    : '0',
     padding                    : '5px',
     transform                  : 'translate(0%, 0%)'
@@ -46,7 +46,7 @@ export const loginPanelmobileStyle = {
     bottom            : 0,
     backgroundColor   : 'rgba(255, 255, 255, 1)'
   },
-  
+
 }
 export const fixedReservePanelHouseDetails = {
   backgroundColor: '#fff',

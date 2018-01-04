@@ -193,10 +193,10 @@ class ReservePanel extends React.Component{
         <div className="divider-card"></div>
 
         <div>
-          <input className="date-picker-input input-sm form-control" id='fromdatepicker' ref='fromdatepicker' placeholder='تاریخ ورود'style={{direction:'rtl',textAlign:'center'}}/>
+          <input className="date-picker-input  form-control1" id='fromdatepicker' ref='fromdatepicker' placeholder='تاریخ ورود'style={{direction:'rtl',textAlign:'center'}}/>
         </div>
         <div>
-          <input className="date-picker-input input-sm form-control" id='todatepicker' ref='todatepicker' placeholder='تاریخ خروج'style={{direction:'rtl',textAlign:'center'}}/>
+          <input className="date-picker-input  form-control1" id='todatepicker' ref='todatepicker' placeholder='تاریخ خروج'style={{direction:'rtl',textAlign:'center'}}/>
         </div>
 
           <div className='reserve-button-div'>
