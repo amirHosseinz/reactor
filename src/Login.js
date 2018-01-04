@@ -109,7 +109,6 @@ class Login extends React.Component{
       this.setState({reqParamsForSetPassword:spar},()=>{this.getResponseForSetPassword()});
     }
     getResponseForSetPassword(){
-      console.log(this.state.reqParamsForSetPassword);
       var request = new Request('https://www.trypinn.com/auth/api/user/login/', {
         method: 'POST',
         body: JSON.stringify({
@@ -126,6 +125,7 @@ class Login extends React.Component{
        return response.json();
      })
      .then((setPasswordResponse) => {
+       console.log(setPasswordResponse);
        this.handleSetPasswordResponse(setPasswordResponse);
      });
     }
