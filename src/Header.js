@@ -60,7 +60,7 @@ class Header extends React.Component{
           cell_phone : this.state.searchParams.phoneNumber,
       }),
         headers: new Headers({'Accept':'application/json','Content-Type': 'application/json',
-        'Authorization': 'Token '+this.state.token,})
+        })
       });
      fetch(request)
      .then((response) => {
