@@ -234,6 +234,8 @@ class Header extends React.Component{
             <div className="burger-in-div" dir="rtl">
               <div className="burger-item">
                <a id="home" className="menu-item" href="http://tripinn.ir">خانه</a>
+               <p className="menu-item" href="/dashboard" onClick={this.handleUserProfileClick.bind(this)}> حساب کاربری </p>
+               <p className="menu-item" onClick={this.handleSignOutButton.bind(this)}> خروج</p>
               </div>
               <div className="burger-item">
                {this.renderLoginButtonXs()}

@@ -1532,6 +1532,7 @@ text-align:center;
 }
 .menu-item{
   color:#5b5b5b;
+  cursor:pointer;
 }
 .input-number-results{
   width: 100%;
