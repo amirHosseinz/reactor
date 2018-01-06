@@ -19,12 +19,16 @@ class ReservePanel extends React.Component{
       isOpen:false,
       requestParams :{
         numberOfGuests : 1,
-        startDate:null,
-        endDate:null,
+        fromDate:null,
+        toDate:null,
         discountCode : null,
       },
     };
   }
+  componentDidMount(){
+    this.interval = setInterval(() => this.setToken(), 1000);
+  }
+
   setToken() {
     this.setState({
       token : localStorage['token'],
@@ -32,23 +36,22 @@ class ReservePanel extends React.Component{
       ()=>this.setSearchParams(this.getDataFromUser()));
   }
   getDataFromUser(){
-      return({startDate : document.getElementById('fromdatepicker').value,
-              endDate : document.getElementById('todatepicker').value,
+      return({fromDate :document.getElementById('fromdatepicker').value,
+              toDate :document.getElementById('todatepicker').value,
               numberOfGuests : 1,
-              discountCode : 'salam_tripinn'});
+              discountCode : ''});
   }
-
   setSearchParams(reqpar){
-    if(reqpar.startDate=== null || reqpar.startDate==='' ){
-      alert('.لطفا تاریخ ورود و خروج خود را دقیق وارد نمایید');
+    if(reqpar.fromDate=== null || reqpar.fromDate==='' ){
+      // alert('.لطفا تاریخ ورود و خروج خود را دقیق وارد نمایید');
       return;
     }
-    if(reqpar.endDate===null || reqpar.endDate===''){
-      alert('.لطفا تاریخ ورود و خروج خود را دقیق وارد نمایید');
+    if(reqpar.toDate===null || reqpar.toDate===''){
+      // alert('.لطفا تاریخ ورود و خروج خود را دقیق وارد نمایید');
       return ;
     }
     if (reqpar.numberOfGuests === ''){
-      alert('.لطفا تعداد مهمان‌های خود را وارد نمایید');
+      // alert('.لطفا تعداد مهمان‌های خود را وارد نمایید');
       return;
     }
     this.setState({requestParams:reqpar},() => {this.getDataFromServer()});
@@ -58,8 +61,8 @@ class ReservePanel extends React.Component{
       method: 'POST',
       body: JSON.stringify({
         room_id : this.props.homeData.id,
-        start_date : this.state.requestParams.startDate,
-        end_date : this.state.requestParams.endDate,
+        start_date : this.state.requestParams.fromDate,
+        end_date : this.state.requestParams.toDate,
         number_of_guests : this.state.requestParams.numberOfGuests,
         discount_code: this.state.requestParams.discountCode,
     }),
@@ -71,7 +74,7 @@ class ReservePanel extends React.Component{
      return response.json();
    })
    .then((reserveData) => {
-     this.setState({isOpen:true} , ()=>{this.renderData(reserveData)});
+     this.renderData(reserveData);
    });
  }
   renderData(reserve_data){
@@ -126,16 +129,17 @@ class ReservePanel extends React.Component{
       }
     }
   }
+
   handleClick(){
-    this.setToken();
+    this.setState({isOpen:true});
   }
   sendBookRequest(){
     var request = new Request('https://www.trypinn.com/api/room/request/book/', {
       method: 'POST',
       body: JSON.stringify({
         room_id : this.props.homeData.id,
-        start_date : this.state.requestParams.startDate,
-        end_date : this.state.requestParams.endDate,
+        start_date : this.state.requestParams.fromDate,
+        end_date : this.state.requestParams.toDate,
         number_of_guests : this.state.requestParams.numberOfGuests,
         discount_code: this.state.requestParams.discountCode,
     }),
@@ -152,7 +156,7 @@ class ReservePanel extends React.Component{
   }
   showBookButton(){
     if(this.state.reserveData !=='' && this.state.reserveData.is_available){
-      return <button onClick={this.sendBookRequest.bind(this)}> Book Request</button>
+      return <button onClick={this.sendBookRequest.bind(this)}> رزرو کنید</button>
     }
   }
   renderFromDatePicker(){
@@ -182,32 +186,8 @@ class ReservePanel extends React.Component{
        });
     });
   }
-  render(){
-    {this.renderToDatePicker()}
-    {this.renderFromDatePicker()}
-    return(
-      <div>
-        <div className="guestnumber-div">
-          <GuestNumber />
-        </div>
-        <div className="divider-card"></div>
-
-        <div>
-          <input className="date-picker-input  form-control1" id='fromdatepicker' ref='fromdatepicker' placeholder='تاریخ ورود'style={{direction:'rtl',textAlign:'center'}}/>
-        </div>
-        <div>
-          <input className="date-picker-input  form-control1" id='todatepicker' ref='todatepicker' placeholder='تاریخ خروج'style={{direction:'rtl',textAlign:'center'}}/>
-        </div>
-
-          <div className='reserve-button-div'>
-            <Button color='blue' className='reserve-button' onClick ={this.handleClick.bind(this)}>
-              مشاهده قیمت
-            </Button>
-          </div>
-        <Modal
-          isOpen={this.state.isOpen}
-          onRequestClose={()=>{this.setState({isOpen:false})}}
-          >
+  renderPriceDetails(){
+        return(
           <div dir="rtl" className="reserve-modal">
               <div>
                 {this.showHostPrice()}
@@ -227,15 +207,67 @@ class ReservePanel extends React.Component{
               <div>
                 {this.showTotalPrice()}
               </div>
-              <div>
-                <p> در حال حاضر امکان رزرو اقامتگاه از طریق وبسایت وجود ندارد. برای رزرو اقامتگاه ها لطفا اپلیکیشن را دانلود کنید.</p>
-              </div>
-              <div>
-                {this.showBookButton()}
-              </div>
-          </div>
-        </Modal>
 
+          </div>
+        );
+      }
+  renderReserveButton(){
+    if(this.state.reserveData !==''){
+      return(
+        <div className='reserve-button-div'>
+          <Button color='blue' className='reserve-button active' onClick ={this.handleClick.bind(this)}>
+            رزرو کنید
+          </Button>
+        </div>
+      );
+    }
+      else{
+        return(
+          <div className='reserve-button-div'>
+            <Button color='blue' className='reserve-button disabled' onClick ={this.handleClick.bind(this)}>
+              رزرو کنید
+            </Button>
+          </div>
+        );
+      }
+
+  }
+  render(){
+  {this.renderToDatePicker()}
+  {this.renderFromDatePicker()}
+    return(
+      <div>
+        <div className="guestnumber-div">
+          <GuestNumber />
+        </div>
+        <div className="divider-card"></div>
+
+        <div>
+          <input className="date-picker-input  form-control1"
+                id='fromdatepicker'
+                ref='fromdatepicker'
+                placeholder='تاریخ ورود'
+                style={{direction:'rtl',textAlign:'center'}}/>
+        </div>
+        <div>
+          <input className="date-picker-input  form-control1"
+                 id='todatepicker'
+                 ref='todatepicker'
+                 placeholder='تاریخ خروج'
+                 style={{direction:'rtl',textAlign:'center'}}/>
+        </div>
+          {this.renderPriceDetails()}
+          {this.renderReserveButton()}
+          <Modal isOpen={this.state.isOpen}
+            onRequestClose={()=>{this.setState({isOpen:false})}}
+            style={{margin:'auto'}}>
+
+            <div>
+              <div>
+                آیا مایل به رزرو خانه هستید؟
+              </div>
+            </div>
+          </Modal>
       </div>
     );
   }

@@ -60,7 +60,7 @@ class SearchResult extends React.Component {
    {
     return(
       <div>
-        <a href={"/rooms/"+ this.props.room.id} className="card_anchor">
+        <a target="_blank" href={"/rooms/"+ this.props.room.id} className="card_anchor">
           <div  className="result-detail">
             <AspectRatio ratio="16/11" style={{maxWidth: '400px'}}>
                   <img src= {this.props.preview}   className="imgresult" alt = "پیشنمایش خانه "  />
@@ -74,7 +74,7 @@ class SearchResult extends React.Component {
                   <p className="rooms_type_result">خوابه</p>
                 </div>
                 <div className = "result-title">
-                  <a  className="title-a" href={"/rooms/"+ this.props.id}> <p >{this.title()}</p> </a>
+                  <a  className="title-a" href={"/rooms/"+ this.props.id} target="_blank"> <p >{this.title()}</p> </a>
                 </div>
                 <div className="room_address_results">
 

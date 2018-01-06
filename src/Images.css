@@ -15,6 +15,13 @@
   text-align: center;
   color:#484848;
 }
+.show-gallery-button-house-details{
+  position:absolute;
+  font-family:IRANSans !important;
+  bottom:5px;
+  left:5px;
+  background-color:'twitter' !important;
+}
 .login1-modal{
   padding: 18px;
   padding-top: 25px !important;
@@ -604,6 +611,7 @@ border-radius: 40px;
 .house-details-preview{
   height: 500px;
    width: 100%;
+   position:relative;
    object-fit: cover;
 }
 .reserve-card{
@@ -1470,6 +1478,7 @@ text-align:center;
   height: 100%;
 }
 .reserve-modal{
+  font-family : IRANSans;
   border-radius: 4px;
   padding: 14px;
 }

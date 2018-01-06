@@ -121,6 +121,7 @@ class HouseDetails extends React.Component {
                  onClick={this.showHouseGallery.bind(this)}
                  src={"https://www.trypinn.com"+this.state.homeData.preview}  className="house-details-preview"
                  alt = ""/>
+                 <Button onClick={this.showHouseGallery.bind(this)} className="show-gallery-button-house-details"> مشاهده تصاویر </Button>
               </AspectRatio>
              </div>);
    }
