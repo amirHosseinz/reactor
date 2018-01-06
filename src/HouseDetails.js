@@ -1,21 +1,16 @@
 import React from 'react';
-
 import Lightbox from 'react-image-lightbox';
 import scrollToComponent from 'react-scroll-to-component';
-import {Button} from 'semantic-ui-react';
-
+import {Button,Sticky} from 'semantic-ui-react';
 import ReservePanel from './HouseDetailParts/ReservePanel.js';
 import MainDiscription from './HouseDetailParts/MainDiscription';
 import AddressDiscription from './HouseDetailParts/AddressDiscription';
 import AmenitiesDiscription from './HouseDetailParts/AmenitiesDiscription';
-
 import RatingDiscription from './HouseDetailParts/RatingDiscription';
 import HostInfoDiscription from './HouseDetailParts/HostInfoDiscription';
 import {englishToPersianDigits} from './tools/EnglishToPersianDigits';
-import {Sticky} from 'semantic-ui-react';
 import {normalReservePanelHouseDetails, fixedReservePanelHouseDetails,normalScrolllListHouseDetails , fixedScrollListHouseDetails} from './Styles.js';
 import AspectRatio from 'react-aspect-ratio';
-
 import GoogleApiWrapper from './HouseDetailParts/MapRenderer.js';
 
 
@@ -183,7 +178,6 @@ class HouseDetails extends React.Component {
             <GoogleApiWrapper
               position={{lat: parseFloat(this.state.homeData.latitude).toFixed(4), lng: parseFloat(this.state.homeData.longitude).toFixed(4)}}
               zoom={14}
-              style={{width:'70%',height:'35%'}}
             />
           </div>
       );
@@ -261,6 +255,8 @@ class HouseDetails extends React.Component {
                   <MainDiscription homeData={this.state.homeData} />
                   <section className='map-scroller' ref={(section) => { this.Map = section; }}></section>
                     {this.renderMap()}
+                  <div className="padding100">
+                  </div>
                 </div>
               </div>
           </div>

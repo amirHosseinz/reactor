@@ -698,6 +698,11 @@ border-width: 2px;
   margin-bottom: 180px;
 }
 .house-google-map{
+  height: 100px;
+}
+.house-detail-map{
+  height: 400px !important;
+  width: 100%;
 }
 .main-descriptions{
   margin-top: 20px;
@@ -1638,4 +1643,11 @@ padding-top: 80px;
 .singup-fa-input{
   text-align: right !important;
   font-family: IRANSans !important;
+}
+.kolsoom{
+  height: 25% !important;
+  margin-bottom: 400px !important;
+}
+.padding100{
+  padding-bottom: 400px;
 }

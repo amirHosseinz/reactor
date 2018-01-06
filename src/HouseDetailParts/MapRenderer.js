@@ -7,7 +7,7 @@ export class MapRenderer extends React.Component{
         <Map
           google={this.props.google}
           zoom={this.props.zoom}
-          style={this.props.style}
+          className="kolsoom"
           initialCenter={this.props.position}>
           <Marker
             position={this.props.position}
