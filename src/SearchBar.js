@@ -8,7 +8,15 @@ import './tools/DatePicker/bootstrap-datepicker.fa.js';
 import './tools/DatePicker/bootstrap-datepicker.js';
 import './tools/DatePicker/bootstrap-datepicker.css';
 
-
+const listOfCity = ['اصفهان',
+'چابکسر',
+'نوشهر',
+'گیلان',
+'رامسر',
+'کیش',
+'مازندران',
+'بابلسر',
+'فریدون کنار'];
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -28,15 +36,13 @@ class SearchBar extends React.Component {
       },
     };
   }
-  componentWillMount(){
-    this.renderToDatePicker();
-    this.renderFromDatePicker();
-  }
 
   getRelevantToken(){
     return localStorage['token'];
   }
   componentWillMount(){
+    this.renderToDatePicker();
+    this.renderFromDatePicker();
     this.setState({
       token : this.getRelevantToken(),
     }, () => {this.getCityListFromServer()});
@@ -60,15 +66,18 @@ class SearchBar extends React.Component {
                       className="typeahead-indetail-xl"
                       minLength={2}
                       align="right"
+                      onInputChange={(input)=> {this.setState({city:input})}}
                       emptyLabel="نتیجه‌ای یافت نشد"
                       maxResults={5}
+                      selectHintOnEnter={true}
+                      submitFormOnEnter={true}
                       placeholder={this.state.city}
                       onChange={(selected)=>{
                         this.setState({city:selected[0]}, () => {
                           this.handleClick();
                         });
                       }}
-                      options={this.state.cityList}
+                    options={listOfCity}
                       />
                   </div>
 
@@ -119,6 +128,7 @@ class SearchBar extends React.Component {
       </div>
     );
   }
+
   renderSearchBarOnlycity(){
     return(
       <div className='only-city-search-bar row'>
@@ -136,28 +146,32 @@ class SearchBar extends React.Component {
                 </div>
               </div>
             </div>
-
           </div>
           <div className="xxxz col-md-2 col-sm-1"></div>
           </div>
             <div className="searchbar-zone">
                 <Typeahead
-                             id='searchbox'
-                              bsSize="large"
-                              placeholder="!مقصد خود را وارد نمایید"
-                              align="right"
-                              lableKey="name"
-                              minLength={2}
-                              emptyLabel="نتیجه‌ای یافت نشد"
-                              maxResults={5}
-                              emptyLabel="نتیجه‌ای یافت نشد"
-                              className="typeahead-onlycity-xl"
-                              onChange={(selected) => {
-                                this.setState({city:selected[0]}, () => {
-                                  this.handleClick();
-                                });
-                              }}
-                  options={this.state.cityList}
+                    id="searchbox"
+                    bsSize="large"
+                    onInputChange={(input)=> {this.setState({city:input})}}
+                    placeholder="!مقصد خود را وارد نمایید"
+                    align="right"
+                    lableKey="name"
+                    minLength={2}
+                    selectHintOnEnter={true}
+                    submitFormOnEnter={true}
+                    emptyLabel="نتیجه‌ای یافت نشد"
+                    maxResults={5}
+                    emptyLabel="نتیجه‌ای یافت نشد"
+                    className="typeahead-onlycity-xl"
+                    selectHintOnEnter={true}
+                    submitFormOnEnter={true}
+                    onChange={(selected) => {
+                      this.setState({city:selected[0]}, () => {
+                        this.handleClick();
+                      });
+                    }}
+                              options={listOfCity}
                   />
               <Button type='button' color='blue' className="search-btn btn"  onClick={this.handleClick.bind(this)} data-reactid="99">
                 <span className='searchicon'>
@@ -378,14 +392,17 @@ class SearchBar extends React.Component {
                   bsSize="sm"
                   placeholder="!مقصد خود را وارد نمایید"
                   align="right"
+                  onInputChange={(input)=> {this.setState({city:input})}}
                   lableKey="name"
                   minLength={2}
+                  selectHintOnEnter={true}
+                  submitFormOnEnter={true}
                   emptyLabel="نتیجه‌ای یافت نشد"
                   maxResults={5}
                   className="typeahead-onlycity-sm"
-                  onChange={(selected) => {this.setState({city:selected[0]})
+                  onChange={(selected) => {this.setState({city:selected[0]} , ()=>this.handleClick())
                   }}
-                  options={this.state.cityList}
+                  options={listOfCity}
                   />
                   <Button color='blue' className="search-btn-xs" onClick={this.handleClickXs.bind(this)} data-reactid="99">
                     <span className='searchicon'>
@@ -402,14 +419,17 @@ class SearchBar extends React.Component {
         <div className="serachbar-indetail-xs">
           <Typeahead
             className="typeahead-indetail-sm "
-            minLength="2"
+            minLength={2}
             align="right"
             emptyLabel="نتیجه‌ای یافت نشد"
-            maxResults="5"
+            maxResults={5}
+            selectHintOnEnter={true}
+            submitFormOnEnter={true}
+            onInputChange={(input)=> {this.setState({city:input})}}
             placeholder={this.state.city}
-            onChange={(selected)=>{this.setState({city:selected[0]}
+            onChange={(selected)=>{this.setState({city:selected[0]} , ()=>{this.handleClick()}
             )}}
-            options={this.state.cityList}
+            options={listOfCity}
             />
           <input className="date-picker-input form-control1" id='fromdatepicker' ref='fromdatepicker' placeholder='تاریخ ورود'style={{direction:'rtl',textAlign:'center'}}/>
           <input className="date-picker-input form-control1" id='todatepicker' ref='todatepicker' placeholder='تاریخ خروج'style={{direction:'rtl',textAlign:'center'}}/>

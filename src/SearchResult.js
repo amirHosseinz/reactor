@@ -66,7 +66,6 @@ class SearchResult extends React.Component {
                   <img src= {this.props.preview}   className="imgresult" alt = "پیشنمایش خانه "  />
             </AspectRatio>
               <div className="result-without-price">
-
                 <div className = "result-room-type">
                   <p className="rooms_type_result"> {this.getRoomType()} </p>
                   <p className="rooms_type_result"> {this.getServiceType()} </p>
