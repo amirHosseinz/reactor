@@ -178,7 +178,6 @@ class HouseDetails extends React.Component {
             <GoogleApiWrapper
               position={{lat: parseFloat(this.state.homeData.latitude).toFixed(4), lng: parseFloat(this.state.homeData.longitude).toFixed(4)}}
               zoom={14}
-              style={{width:'100%',height:'400px'}}
             />
           </div>
       );
@@ -256,6 +255,8 @@ class HouseDetails extends React.Component {
                   <MainDiscription homeData={this.state.homeData} />
                   <section className='map-scroller' ref={(section) => { this.Map = section; }}></section>
                     {this.renderMap()}
+                  <div className="padding100">
+                  </div>
                 </div>
               </div>
           </div>
