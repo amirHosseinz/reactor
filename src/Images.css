@@ -698,6 +698,11 @@ border-width: 2px;
   margin-bottom: 180px;
 }
 .house-google-map{
+  height: 100px;
+}
+.house-detail-map{
+  height: 400px !important;
+  width: 100%;
 }
 .main-descriptions{
   margin-top: 20px;
