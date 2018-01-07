@@ -9,6 +9,7 @@
 # production
 /build
 /buildim
+/buildom
 
 # misc
 .DS_Store
