@@ -120,6 +120,11 @@ class Header extends React.Component{
   handleLoginButton(){
     this.setState({loginPanelVisible:true});
   }
+  getUserHasPasswordByEnter(event){
+   if(event.key === 'Enter'){
+     this.getUserHasPassword();
+   }
+ }
   renderLoginPanel(){
     return(
       <div className="login-modal-main">
@@ -139,6 +144,7 @@ class Header extends React.Component{
                   className="login-input"
                   placeholder="مثال: ۰۹۱۲۰۰۰۰۰۰۰"
                   type="numeric"
+                  onKeyDown ={(event)=>{this.getUserHasPasswordByEnter(event)}}
                   >
                   </input>
                   <div className="divider-x"></div>
@@ -159,7 +165,20 @@ class Header extends React.Component{
       </div>
     );
   }
-
+  renderUserPhoto(){
+     if(localStorage['user-profile-picture']==='null'||localStorage['user-profile-picture']===undefined){
+       return(
+         <Image className='avatar-header' src={require('./HouseDetailParts/facilities/prof_avatar_tripinn.svg')} avatar={true}/>
+       );
+     }
+       else{
+         return(
+           <div style={{float:'left'}}>
+             <Image className="avatar-header" src={'https://www.trypinn.com/' + localStorage['user-profile-picture']} avatar={true} />
+           </div>
+         );
+       }
+    }
   signOutAndProfile(){
     return (
         <div>
@@ -171,9 +190,7 @@ class Header extends React.Component{
              </Dropdown.Menu>
             </Dropdown>
           </div>
-          <div style={{float:'left'}}>
-            <Image className="avatar-header" src={'https://www.trypinn.com/' + localStorage['user-profile-picture']} avatar={true} />
-          </div>
+            {this.renderUserPhoto()}
         </div>
     );
   }
