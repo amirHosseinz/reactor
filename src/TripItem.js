@@ -183,7 +183,7 @@ class TripItem extends React.Component{
   }
   getTripDeleteButton(){
     return (
-      <Button className="request-userpanel-button" onClick={this.handleDeleteTripButton.bind(this)}> حذف سفر</Button>
+      <div></div>
     );
   }
   renderTripDetail(){
