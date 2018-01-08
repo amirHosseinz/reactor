@@ -908,9 +908,7 @@ transform: scale(2, 2);
 	src: url('./fonts/eot/IRANSansWeb_Black.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
 		 url('./fonts/woff2/IRANSansWeb_Black.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
 		 url('./fonts/woff/IRANSansWeb_Black.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-		 url('./fonts/ttf/IRANSansWeb_Black.ttf') format('truetype'),
-     url('./fonts/IRAN-Sans.svg') format('svg');
-
+		 url('./fonts/ttf/IRANSansWeb_Black.ttf') format('truetype');
 }
 @font-face {
 	font-family: IRANSans;
@@ -920,8 +918,7 @@ transform: scale(2, 2);
 	src: url('./fonts/eot/IRANSansWeb_Bold.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
 		 url('./fonts/woff2/IRANSansWeb_Bold.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
 		 url('./fonts/woff/IRANSansWeb_Bold.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-		 url('./fonts/ttf/IRANSansWeb_Bold.ttf') format('truetype'),
-     url('./fonts/IRAN-Sans.svg') format('svg');
+		 url('./fonts/ttf/IRANSansWeb_Bold.ttf') format('truetype');
 }
 @font-face {
 	font-family: IRANSans;
@@ -931,8 +928,7 @@ transform: scale(2, 2);
 	src: url('./fonts/eot/IRANSansWeb_Medium.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
 		 url('./fonts/woff2/IRANSansWeb_Medium.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
 		 url('./fonts/woff/IRANSansWeb_Medium.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-		 url('./fonts/ttf/IRANSansWeb_Medium.ttf') format('truetype'),
-     url('./fonts/IRAN-Sans.svg') format('svg');
+		 url('./fonts/ttf/IRANSansWeb_Medium.ttf') format('truetype');
 }
 @font-face {
 	font-family: IRANSans;
@@ -942,8 +938,7 @@ transform: scale(2, 2);
 	src: url('./fonts/eot/IRANSansWeb_Light.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
 		 url('./fonts/woff2/IRANSansWeb_Light.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
 		 url('./fonts/woff/IRANSansWeb_Light.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-		 url('./fonts/ttf/IRANSansWeb_Light.ttf') format('truetype'),
-     url('./fonts/IRAN-Sans.svg') format('svg');
+		 url('./fonts/ttf/IRANSansWeb_Light.ttf') format('truetype');
 }
 @font-face {
 	font-family: IRANSans;
@@ -953,8 +948,7 @@ transform: scale(2, 2);
 	src: url('./fonts/eot/IRANSansWeb_UltraLight.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
 		 url('./fonts/woff2/IRANSansWeb_UltraLight.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
 		 url('./fonts/woff/IRANSansWeb_UltraLight.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-		 url('./fonts/ttf/IRANSansWeb_UltraLight.ttf') format('truetype'),
-     url('./fonts/IRAN-Sans.svg') format('svg');
+		 url('./fonts/ttf/IRANSansWeb_UltraLight.ttf') format('truetype');
 }
 @font-face {
 	font-family: IRANSans;
@@ -964,13 +958,8 @@ transform: scale(2, 2);
 	src: url('./fonts/eot/IRANSansWeb.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
 		 url('./fonts/woff2/IRANSansWeb.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
 		 url('./fonts/woff/IRANSansWeb.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-		 url('./fonts/ttf/IRANSansWeb.ttf') format('truetype'),
-     url('./fonts/IRAN-Sans.svg') format('svg');
+		 url('./fonts/ttf/IRANSansWeb.ttf') format('truetype');
 }
-@media screen and (-webkit-min-device-pixel-ratio:0) {@font-face {font-family: 'IRANSans';
-src: url('./fonts/IRAN-Sans.svg') format('svg');
-}}
-
 .divider-card{
   height: 1px;
   margin-top: 10px;
@@ -1376,8 +1365,7 @@ margin-top: 20px;
 }
 .profile_dynamic_edit{
   box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
-  height: 500px;
-
+  padding-bottom: 200px;
 }
 .host-photo{
 width: 100%;
@@ -1661,4 +1649,70 @@ padding-top: 80px;
 }
 .padding100{
   padding-bottom: 400px;
+}
+.userpanel-item-list{
+  height:95px;
+  margin-bottom: 15px;
+  width: 100%;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row;
+}
+.reserve-status-h1{
+  font-family: IRANSans;
+  font-size: 20px;
+  color: #454545;
+  text-align: center;
+  margin-top: 40px;
+  font-weight: 500;
+}
+.reserve-status-h2{
+  font-family: IRANSans;
+  font-size: 18px;
+  color: #f56c4e;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 400;
+}
+.reserve-status-descriptions{
+  font-family: IRANSans;
+  font-size: 14px;
+  color: #f56c4e;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 400;
+}
+.house-preview-linked-to-house-detail{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-family: IRANSans;
+  font-size: 14px;
+  color: #454545;
+  text-align: right;
+  font-weight: 500;
+}
+.request-header{
+  margin-top: 30px;
+}
+.request-status{
+  margin-bottom: 30px;
+}
+.final-details{
+  text-align: right;
+  font-size: 16px;
+  font-family: IRANSans;
+  font-weight: 600;
+  margin-top: 20px;
+}
+.relevant-button{
+  text-align: center;
+  margin-top: 50px;
+}
+.request-userpanel-button{
+  font-family: IRANSans !important;
+}
+.request-detail-userpanel{
+  width: 82%;
+  margin: auto;
 }
