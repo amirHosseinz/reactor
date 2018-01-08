@@ -1,4 +1,6 @@
 import React from 'react';
+import { Divider,Button } from 'semantic-ui-react';
+import {englishToPersianDigits} from './tools/EnglishToPersianDigits';
 
 class TripItem extends React.Component{
   constructor(props){
@@ -176,7 +178,7 @@ class TripItem extends React.Component{
   }
   getTripCancelButton(){
     return (
-      <button onClick={this.handleCancelTripButton.bind(this)}> لغو سفر</button>
+      <Button className="request-userpanel-button" onClick={this.handleCancelTripButton.bind(this)}> لغو سفر</Button>
     );
   }
   getTripDeleteButton(){
@@ -188,27 +190,40 @@ class TripItem extends React.Component{
     if (this.state.trip!=null && this.state.tripStatus!=null){
       return (
         <div>
+          <div className="request-header">
           <div className='request-status'>
-            <p className="reserve-status-h1"> وضعیت درخواست رزرو </p>
-            <p> {this.getTripStatus()} </p>
+            <p className="reserve-status-h1"> وضعیت سفر   </p>
+            <p className="reserve-status-h2"> {this.getTripStatus()} </p>
+            <p className="reserve-status-descriptions">{this.getTripStatusDescription()}</p>
+
           </div>
-          <div className='house-preview-linked-to-house-detail'>
-            <p>{this.state.trip.room.title} </p>
-            <p>{this.state.trip.room.address} </p>
-            <p>{this.state.trip.room.owner.first_name} {this.state.trip.room.owner.last_name}</p>
+          <div className="request-detail-userpanel">
+            <Divider/>
+            <div className='house-preview-linked-to-house-detail' dir="rtl">
+              <p> نام اقامتگاه : {this.state.trip.room.title} </p>
+              <p>شهر مقصد: {this.state.trip.room.city}  </p>
+              <p> به میزبانی  {this.state.trip.room.owner.first_name} {this.state.trip.room.owner.last_name}</p>
+              <p> رزرو کننده: {this.state.trip.guest_person.last_name} </p>
+              <p>تعداد میهمان: {englishToPersianDigits(this.state.trip.number_of_guests)} </p>
+
+
+              <p> آدرس اقامت‌گاه: {this.state.trip.room.address} </p>
+
+              <p>تاریخ ورود: {englishToPersianDigits(this.state.trip.start_date)}</p>
+              <p>تاریخ خروج:{englishToPersianDigits(this.state.trip.end_date)} </p>
+            </div>
+            <div className='request-details'>
+            </div>
+            <Divider/>
+            <div className='final-details'>
+              <p> هزینه پرداخت شده: {englishToPersianDigits(this.state.trip.total_price)} </p>
+            </div>
           </div>
-          <div className='trip-details'>
-            <p>{this.state.trip.start_date} </p>
-            <p>{this.state.trip.end_date} </p>
-            <p>{this.state.trip.number_of_guests} </p>
+
+          <div className='relevant-button'>
+            {this.getRelevantButton()}
           </div>
-          <div>
-            <p>هزینه پرداخت شده : {this.state.trip.total_price}</p>
           </div>
-          <div className='relevant button'>
-            {this.getTripStatusDescription()}
-          </div>
-          {this.getRelevantButton()}
         </div>
       );
   }
