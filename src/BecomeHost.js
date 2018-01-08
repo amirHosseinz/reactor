@@ -23,10 +23,25 @@ class BecomeHost extends React.Component {
   }
 
 
+  getCookie(name){
+    if(!document.cookie){
+      return null;
+    }
+    const token =document.cookie.split(';')
+    .map(c => c.trim())
+    .filter(c => c.startsWith(name+'='));
+    if(token.length===0){
+      return null;
+    }
+    return decodeURIComponent(token[0].split('=')[1]);
+  }
+
   changeInfOnServer(){
-         console.log('injaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+        console.log('injaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+        const csrftoken= this.getCookie('csrftoken');
+        console.log(csrftoken);
          console.log(this.state);
-    var request = new Request('https://www.trypinn.com/host-submit/',{ //
+    var request = new Request('https://www.trypinn.com/api/host-submit/',{ //
       method: 'POST',
       body: JSON.stringify(
         {
@@ -37,19 +52,28 @@ class BecomeHost extends React.Component {
           city:this.state.city,
         }
       ),
-      headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
-      'Authorization': 'Token '+this.state.token,})
+      headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',})
     });
    fetch(request)
    .then((response) => {
+     console.log(response);
      console.log('injaaaaa');
-     return response.json();
-     console.log('injaaaaa');
+     return response;
+     console.log(response);
    })
    .then((response) => {
-     return response;
+     this.renderOk(response);
    });
   }
+
+  renderOk(response){
+    if(response==='ok'){
+      return(
+        <div>شما میزبان شدید :)</div>
+      )
+    };
+  }
+
 
   editFirstName(event){
     this.setState({firstName : event.target.value});
@@ -74,31 +98,31 @@ class BecomeHost extends React.Component {
       <div className="profile-container-margined">
         <div className="profile_dynamic_edit col-md-9">
           <div className="edit-profile-xl row">
-      <form>
+
         <label>
           نام:
-          <input type="text" id='your_name' value={this.state.firstName} onChange={this.editFirstName.bind(this)} required  />
+          <input type="text" id='your_name' value={this.state.firstName} onChange={this.editFirstName.bind(this)} />
         </label>
         <label>
         نام خانوادگی:
-        <input type="text" value={this.state.lastName} onChange={this.editLastName.bind(this)} required/>
-      </label>
-      <label>
-     شماره تلفن:
-      <input type="text" value={this.state.cellphone} onChange={this.editCellPhone.bind(this)} required />
-    </label>
-    <label>
+        <input type="text" value={this.state.lastName} onChange={this.editLastName.bind(this)} />
+       </label>
+       <label>
+      شماره تلفن:
+      <input type="text" value={this.state.cellphone} onChange={this.editCellPhone.bind(this)} />
+     </label>
+     <label>
      شهر:
-    <input type="text" value={this.state.city} onChange={this.editCity.bind(this)} required/>
-    </label>
-    <label>
-  ( ایمیل (اختیاری
+     <input type="text" value={this.state.city} onChange={this.editCity.bind(this)} />
+     </label>
+     <label>
+    ( ایمیل (اختیاری
     <input type="text" value={this.state.email} onChange={this.editEmail.bind(this)} />
     </label>
     <div>
    <button className="save-edit" color="blue" onClick={this.changeInfOnServer.bind(this)}> ذخیره </button>
     </div>
-      </form>
+
       </div>
       </div>
       </div>
