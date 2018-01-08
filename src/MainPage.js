@@ -7,10 +7,10 @@ import UserProfile from './UserProfile.js';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter, Route} from 'react-router-dom';
 import UserPanel from './UserPanel';
-import BecomeHost from './BecomeHost.js'
-import ContactUs from './ContactUs.js'
-import AboutUs from './AboutUs.js'
-import Terms from './Terms.js'
+import BecomeHost from './BecomeHost.js';
+import ContactUs from './ContactUs.js';
+import AboutUs from './AboutUs.js';
+import Terms from './Terms.js';
 
 class MainPage extends React.Component{
   constructor(props){

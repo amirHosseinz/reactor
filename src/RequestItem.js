@@ -11,7 +11,6 @@ class RequestItem extends React.Component{
       token:null
     };
   }
-
   componentWillReceiveProps(nextProps){
     this.setState({
       request:nextProps.requestDetail,requestStatus:nextProps.requestDetail.status,
@@ -45,7 +44,7 @@ class RequestItem extends React.Component{
       case "WAIT_FOR_HOST":
         return null
       case "HOST_REJECTED":
-        return (<Button className="request-userpanel-button" >حذف درخواست </Button>);
+        return (<div></div>);
       case "WAIT_FOR_GUEST_PAY":
         return(
           <div>
@@ -53,9 +52,9 @@ class RequestItem extends React.Component{
           </div>
         );
       case "HOST_ACCEPTED_GUEST_PAYED":
-        return (<Button className="request-userpanel-button" >حذف درخواست </Button>);
+        return (<div></div>);
       case "HOST_ACCEPTED_HOST_CANCELED":
-        return (<Button className="request-userpanel-button" >حذف درخواست </Button>);
+        return (<div></div>);
       default:
         return null;
     }
@@ -136,7 +135,7 @@ renderCancelButton(){
 }
 renderDeleteButton(){
   if(this.state.requestStatus!=="HOST_ACCEPTED_GUEST_CANCELED"){
-   return (<Button className="request-userpanel-button" onClick={this.setTokenForCancel.bind(this)}>حذف درخواست</Button>);
+   return (<div></div>);
   }
 }
   renderRequestDetail(){
