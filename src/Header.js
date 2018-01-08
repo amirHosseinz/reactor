@@ -182,15 +182,16 @@ class Header extends React.Component{
   signOutAndProfile(){
     return (
         <div>
-          <div style={{float:'left'}}>
-            <Dropdown className="header-drop-down-texts" icon='dropdown' floating={true} text={localStorage['user-first-name'] +' '+ localStorage['user-last-name']} >
+          <div>
+            {this.renderUserPhoto()}
+            <Dropdown className="header-drop-down-texts" icon='dropdown' dir="rtl" floating={true} text={localStorage['user-first-name'] +' '+ localStorage['user-last-name']  } >
              <Dropdown.Menu>
              <p className="main-menu-user1" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
              <p className="main-menu-user2" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
              </Dropdown.Menu>
             </Dropdown>
           </div>
-            {this.renderUserPhoto()}
+
         </div>
     );
   }
@@ -237,12 +238,13 @@ class Header extends React.Component{
        <div className='hearder-child-margined'>
           <div className="header-menu-desktop col-md-10 col-sm-8">
             {this.renderMainMenu()}
-            {this.renderLoginPanel()}
             {this.renderLoginButton()}
-            <p className="clickable-p"  onClick={this.handleRequestClick.bind(this)}>درخواست‌‌ها</p>
-            <p className="clickable-p"  onClick={this.handleTripClick.bind(this)}>سفرها</p>
-            <p className="clickable-p"  onClick={this.handleMessageClick.bind(this)}>پیام‌ها</p>
+            <p className="clickable-p xl-menu-item"  onClick={this.handleRequestClick.bind(this)}>درخواست‌‌ها</p>
+            <p className="clickable-p xl-menu-item"  onClick={this.handleTripClick.bind(this)}>سفرها</p>
+            <p className="clickable-p xl-menu-item"  onClick={this.handleMessageClick.bind(this)}>پیام‌ها</p>
           </div>
+          {this.renderLoginPanel()}
+
           <div className="logo col-md-2 col-sm-4">
               <div className='headerchild'>
                 <div className='logodiv'>

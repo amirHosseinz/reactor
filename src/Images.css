@@ -102,7 +102,7 @@
 .main-menu-user1{
   cursor :pointer;
   text-align : center;
-  font-size: 12px;
+  font-size: 13px;
   padding-left: 12px;
   padding-right: 12px;
   padding-top: 8px;
@@ -116,12 +116,7 @@
   padding-bottom: 8px;
 }
 .main-menu-header{
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-direction: row; /* Safari 6.1+ */
-  display: flex;
-  margin: auto;
-  flex-direction: row;
-  margin-top: 42px;
+  padding-top: 37px;
   font-family: IRANSans;
 }
 .LogoImage{
@@ -813,7 +808,18 @@ transform: scale(2, 2);
   background: rgba(255, 255, 255, 0.2);
 }
 .header-menu-desktop{
+  font-family: IRANSans;
   width:100%;
+  margin: auto;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row;
+}
+.xl-menu-item{
+  margin-right: 6px;
+  margin-left: 6px;
+  padding-top: 44px;
 }
 .render-results{
   margin-top: 0px;
