@@ -383,12 +383,14 @@ class Login extends React.Component{
       </Modal>);
 
     }
+
     handleLoginClickByEnter(event){
       if(event.key === 'Enter'){
         this.handleLoginClick();
       }
     }
-    renderLoginPanel(){
+
+    renderLoginPanel () {
       if (this.state.hasPassword !== null){
         if (!this.state.hasPassword){
           return (this.renderVerificationModal());
