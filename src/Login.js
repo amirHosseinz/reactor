@@ -313,14 +313,12 @@ class Login extends React.Component{
                    <p className="login-title-in-modal">ثبت‌نام کاربر جدید</p>
                    <Divider/>
                       <div  className="signup-div">
-
-                        <p className="signup-form-lable"> نام</p>
+                        <p className="signup-form-lable">نام </p>
                         <input value={this.state.inputForSignUp.firstName}
                                onChange={this.changeFirstNameForSignUp.bind(this)}
                                className="singup-fa-input form-control"
-                               />
+                        />
                         <br/>
-
                         <p className="signup-form-lable"> نام خانوادگی</p>
                         <input value={this.state.inputForSignUp.lastName}
                                 onChange={this.changeLastNameForSignUp.bind(this)}
@@ -363,18 +361,18 @@ class Login extends React.Component{
       }
     }
     handleVerificationClick(){
-      this.setTokenForVerification();
+      if(this.state.inputForVerification.verificationCode.length<4){
+        alert('لطفا کد تایید را به طور کامل وارد نمایید');
+      }
+      else{
+        this.setTokenForVerification();
+      }
     }
 
 
     handleVerificationClickByEnter(event){
       if(event.key==='Enter'){
-        if(this.state.inputForVerification.verificationCode.length<4){
-          alert('لطفا کد تایید را به طور کامل وارد نمایید')
-        }
-        else{
-          this.handleVerificationClick();
-        }
+        this.handleVerificationClick();
       }
     }
     renderVerificationModal(){
