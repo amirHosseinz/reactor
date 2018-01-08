@@ -242,8 +242,8 @@ class Header extends React.Component{
             {this.renderMainMenu()}
             {this.renderLoginButton()}
             <p className="clickable-p xl-menu-item"  onClick={this.handleRequestClick.bind(this)}>درخواست‌‌ها</p>
-            <p className="clickable-p xl-menu-item"  onClick={this.handleTripClick.bind(this)}>سفرها</p>
             <p className="clickable-p xl-menu-item"  onClick={this.handleMessageClick.bind(this)}>پیام‌ها</p>
+            <p className="clickable-p xl-menu-item"  onClick={this.handleTripClick.bind(this)}>سفرها</p>
           </div>
           {this.renderLoginPanel()}
 

@@ -102,22 +102,23 @@
 .main-menu-user1{
   cursor :pointer;
   text-align : center;
-  font-size: 13px;
-  padding-left: 12px;
-  padding-right: 12px;
+  font-size: 14px;
+  padding-left: 20px;
+  padding-right: 20px;
   padding-top: 8px;
 }
 .main-menu-user2{
   cursor :pointer;
   text-align : center;
-  font-size: 12px;
-  padding-left: 12px;
-  padding-right: 12px;
+  font-size: 14px;
+  padding-left: 20px;
+  padding-right: 20px;
   padding-bottom: 8px;
 }
 .main-menu-header{
   padding-top: 37px;
   font-family: IRANSans;
+  font-size: 16px;
 }
 .LogoImage{
   height:60px;
@@ -216,11 +217,12 @@
 .footer{
   width:100%;
   background-color: #f2f2f2;
-  vertical-align:middle;
 }
 .footerchild{
-  width:94%;
+  width:91%;
   margin: auto;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 .footer-mobile-container{
   width:90%;
@@ -244,22 +246,20 @@
   margin: auto;
   flex-direction: row-reverse;
 }
-.footer1{
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
-  display: flex;
-  margin: auto;
-  flex-direction: row-reverse;
-  margin-top: -10px;
-  margin-button: -5px;
+.footer-menu-social{
+  padding-top: 6px;
 }
+.download-app-footer-anchor{
+  margin-left: 10px;
+}
+
 .logo-menu-font{
   font-family: IRANSans;
   font-size: 1em;
   font-style: normal;
 	font-weight: 500;
-  margin-top: 1em;
   margin-left: 1em;
+  padding-top: 7px;
   color: #646464;
 }
 .logo-menu-font:hover{
@@ -280,6 +280,13 @@
   color: #646464;
   text-align: right;
 }
+
+.social-image-xl{
+  height:1.6em;
+  margin-right: 1em;
+
+}
+
 .social-image{
   height:1.6em;
   margin-right: 1em;
@@ -306,17 +313,15 @@
 }
 .footer-menu-and-dl{
   display: -webkit-flex; /* Safari */
-  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
   display: flex;
-  margin: auto;
-  flex-direction: row-reverse;
+  flex-direction: row;
 }
 .download-app-text{
   font-family: IRANSans;
   font-size: 1em;
   font-style: normal;
   font-weight: 500;
-  padding-top: 1em;
   color: #ffffff;
   margin: auto;
 }
@@ -817,9 +822,13 @@ transform: scale(2, 2);
   flex-direction: row;
 }
 .xl-menu-item{
-  margin-right: 6px;
-  margin-left: 6px;
-  padding-top: 44px;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding-top: 41px;
+  font-size: 16px;
+}
+.xl-menu-item:hover{
+color: #42b0c6;
 }
 .render-results{
   margin-top: 0px;
@@ -1233,7 +1242,6 @@ padding-bottom: 28px;
   font-weight: 500;
 	padding:8px 60px;
 	text-decoration:none;
-
 }
 .download-tripinn:hover {
 	background-color:#e4441e;
@@ -1554,7 +1562,6 @@ text-align:center;
 
 .avatar-header{
   object-fit: cover;
-
 }
 .header-drop-down-texts{
   margin-top: 6px;
