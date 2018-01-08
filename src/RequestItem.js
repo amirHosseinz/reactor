@@ -11,7 +11,6 @@ class RequestItem extends React.Component{
       token:null
     };
   }
-
   componentWillReceiveProps(nextProps){
     this.setState({
       request:nextProps.requestDetail,requestStatus:nextProps.requestDetail.status,
