@@ -383,6 +383,11 @@ class Login extends React.Component{
       </Modal>);
 
     }
+    handleLoginClickByEnter(event){
+      if(event.key === 'Enter'){
+        this.handleLoginClick();
+      }
+    }
     renderLoginPanel(){
       if (this.state.hasPassword !== null){
         if (!this.state.hasPassword){
@@ -402,6 +407,7 @@ class Login extends React.Component{
                   id='password'
                   type="password"
                   autoComplete="off"
+                  onKeyDown ={(event)=>{this.handleLoginClickByEnter(event)}}
                   >
                   </input>
                   <div className="divider-x"></div>
