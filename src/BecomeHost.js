@@ -14,6 +14,7 @@ class BecomeHost extends React.Component {
 
   }
 
+
   componentWillMount() {
       this.setState({token:this.getRelevantToken()});
   }
@@ -58,22 +59,36 @@ class BecomeHost extends React.Component {
    .then((response) => {
      console.log(response);
      console.log('injaaaaa');
-     return response;
+     return response.json();
      console.log(response);
    })
    .then((response) => {
-     this.renderOk(response);
+    console.log('hello from here! -_-');
+    console.log(response);
+    const message=response.error;
+    this.renderAlreadyHost(message);
+    this.renderError(message);
+    this.renderSuccessful(message)
    });
   }
 
-  renderOk(response){
-    if(response==='ok'){
-      return(
-        <div>شما میزبان شدید :)</div>
-      )
-    };
+renderAlreadyHost(message){
+  if(message==="account exists."){
+    alert ("قبلا شماره دادی دگ!")
   }
+}
 
+renderError(message){
+  if(message==="error"){
+    alert ('یه چی مشکل داره متاسفانه')
+  }
+}
+
+renderSuccessful(message){
+  if(message===null){
+    alert ('اوکیه الحمدلله')
+  }
+}
 
   editFirstName(event){
     this.setState({firstName : event.target.value});
