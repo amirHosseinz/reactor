@@ -47,10 +47,6 @@ class UserPanel extends React.Component{
       return(
         <TripItem reserveDetail={this.state.tripDetail}/>
       );
-      // case 'userprofile':
-      // return(
-      //   <div></div>
-      // );
       default:
       return null;
     }
@@ -69,10 +65,10 @@ class UserPanel extends React.Component{
       return(
         <Trips changeTripDetail={this.changeTripDetail.bind(this)}/>
       );
-      case 'userprofile':
-      return(
-        <UserProfile changeProfileDetail={this.changeProfileDetail.bind(this)}/>
-      );
+      // case 'userprofile':
+      // return(
+      //   <UserProfile/>
+      // );
       default:
       return null;
     }

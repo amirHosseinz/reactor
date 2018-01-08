@@ -3,6 +3,7 @@ import HouseDetails from './HouseDetails';
 import SearchBar from './SearchBar.js';
 import Header from './Header.js';
 import Footer from './Footer.js';
+import UserProfile from './UserProfile.js';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter, Route} from 'react-router-dom';
 import UserPanel from './UserPanel';
@@ -85,7 +86,11 @@ class MainPage extends React.Component{
      });
     }
   }
-
+  renderUserProfile(){
+    return(
+      <UserProfile />
+    );
+  }
   render(){
     this.getGuestTokenFromServer();
     document.title = "تریپین | سامانه رزرو ویلا";
@@ -101,6 +106,7 @@ class MainPage extends React.Component{
           <Route path={"/aboutus"} render = {()=> {return(this.renderAboutUs())}}/>
           <Route path={"/terms&conditions"} render = {()=> {return(this.renderTerms())}}/>
           <Route path={"/contactus"} render = {()=> {return(this.renderContactUs())}}/>
+          <Route path={"/userprofile"} render={()=> {return(this.renderUserProfile())}}/>
         </div>
       </BrowserRouter>
     );

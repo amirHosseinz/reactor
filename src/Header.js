@@ -101,7 +101,7 @@ class Header extends React.Component{
     if (localStorage['isLoggedIn']==='true'){
       return(
         <div>
-          <p className="menu-item" href="/dashboard" onClick={this.handleUserProfileClick.bind(this)}> حساب کاربری </p>
+          <p className="menu-item" onClick={this.handleUserProfileClick.bind(this)}> حساب کاربری </p>
           <p className="menu-item" onClick={this.handleSignOutButton.bind(this)}> خروج</p>
         </div>
       );
@@ -205,26 +205,28 @@ class Header extends React.Component{
     }
   }
   handleMessageClick(){
+    window.location.href = '/dashboard';
     if (localStorage['default-panel']!=='message'){
        localStorage['default-panel']='message';
-       window.location.href = '/dashboard';
     }
   }
   handleTripClick(){
+    window.location.href = '/dashboard';
     if (localStorage['default-panel']!=='trip'){
       localStorage['default-panel']='trip';
-      window.location.href = '/dashboard';
+
     }
   }
   handleRequestClick(){
+    window.location.href = '/dashboard';
     if (localStorage['default-panel']!=='request'){
       localStorage['default-panel']='request';
-      window.location.href = '/dashboard';
+
     }
   }
   handleUserProfileClick(){
-      localStorage['default-panel']='userprofile';
-      window.location.href = '/dashboard';
+      // localStorage['default-panel']='userprofile';
+      window.location.href = '/userprofile';
   }
 
   toggleBurgerMenu(){
@@ -251,7 +253,7 @@ class Header extends React.Component{
                    <a href="http://tripinn.ir"><img src={require('./Images/tripinn_logo.svg')} className="LogoImage" alt = 'تریپین'></img></a>
                 </div>
                 <div>
-                  <a className='logolink' href="http://tripinn.ir">  <p className='logofont'>تریپین</p></a>
+                  <a className='logolink' href="http://tripinn.ir"><p className='logofont'>تریپین</p></a>
                 </div>
               </div>
           </div>

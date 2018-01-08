@@ -252,6 +252,21 @@ class Login extends React.Component{
        }
      });
    }
+   handleSetPasswordClickByenter(event){
+     if(event.key==='Enter'){
+       if(this.state.inputForSetPassword.password===''){
+         alert('لطفا رمز عبور خود را وارد نمایید');
+       }
+       else{
+         if(this.state.inputForSetPassword.confirmPassword!==this.state.inputForSetPassword.password){
+           alert('رمز عبور و تکرار آن یکسان نیستند');
+         }
+         else{
+           this.handleSetPasswordClick();
+         }
+       }
+     }
+   }
     renderSetPasswordModal(){
       return(
         <Modal isOpen={this.state.showSignUpOrSetPasswordModal}
@@ -263,22 +278,22 @@ class Login extends React.Component{
             <Divider/>
               <p className="enter-phone-number-inmodal">شما کاربر تریپین بوده‌اید. برای استفاده از سایت تریپین کافی است رمز عبور خود را تعیین نمایید</p>
               <div  className="signup-div">
-             <div  dir="rtl" className="enter-number-main" >
+             <div  dir="rtl" className="enter-number-main" onKeyDown={(event)=>{this.handleSetPasswordClickByenter(event)}}>
               <p className="signup-form-lable">رمز عبور </p>
                <input id='password'
-                      className="password  form-control"
-                      type="password"
-                      value={this.state.inputForSetPassword.password}
-                      onChange={this.changePasswordForSetPassword.bind(this)}/>
-                        <br/>
+                  className="password  form-control"
+                  type="password"
+                  value={this.state.inputForSetPassword.password}
+                  onChange={this.changePasswordForSetPassword.bind(this)}/>
+                  <br/>
                   <p className="signup-form-lable"> تکرار رمز عبور </p>
-                 <input id='confirm-password'
+                  <input id='confirm-password'
                     className="password  form-control"
                       type="password"
                       value={this.state.inputForSetPassword.confirmPassword}
                       onChange={this.changeConfirmPasswordForSetPassword.bind(this)}/>
-                      <br/>
-               <br/>
+                  <br/>
+                  <br/>
                <Button color="blue" onClick={this.handleSetPasswordClick.bind(this)} className="login-modal-button-3">
                  ذخیره
                </Button>
@@ -298,14 +313,12 @@ class Login extends React.Component{
                    <p className="login-title-in-modal">ثبت‌نام کاربر جدید</p>
                    <Divider/>
                       <div  className="signup-div">
-
-                        <p className="signup-form-lable"> نام</p>
+                        <p className="signup-form-lable">نام </p>
                         <input value={this.state.inputForSignUp.firstName}
                                onChange={this.changeFirstNameForSignUp.bind(this)}
                                className="singup-fa-input form-control"
-                               />
+                        />
                         <br/>
-
                         <p className="signup-form-lable"> نام خانوادگی</p>
                         <input value={this.state.inputForSignUp.lastName}
                                 onChange={this.changeLastNameForSignUp.bind(this)}
@@ -348,7 +361,19 @@ class Login extends React.Component{
       }
     }
     handleVerificationClick(){
-      this.setTokenForVerification();
+      if(this.state.inputForVerification.verificationCode.length<4){
+        alert('لطفا کد تایید را به طور کامل وارد نمایید');
+      }
+      else{
+        this.setTokenForVerification();
+      }
+    }
+
+
+    handleVerificationClickByEnter(event){
+      if(event.key==='Enter'){
+        this.handleVerificationClick();
+      }
     }
     renderVerificationModal(){
       return(
@@ -363,6 +388,7 @@ class Login extends React.Component{
             </p>
             <div className='enter-number-main'>
               <input className='login-input'
+              onKeyDown= {(event)=>{this.handleVerificationClickByEnter(event)}}
               value={this.state.inputForVerification.verificatinCode}
               onChange={this.changeVerificationCode.bind(this)}
               className="login-input-code"
