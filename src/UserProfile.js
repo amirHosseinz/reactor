@@ -181,7 +181,7 @@ class UserProfile extends React.Component{
               </div>
               <div className="edit-prof-row1 row">
                 <div className="col-md-4">
-                  <p className="profile-labels">sرمز عبور : </p>
+                  <p className="profile-labels">رمز عبور : </p>
                   <input id='password'onChange={this.editPassword.bind(this)} className="password input-sm form-control" type="password"/>
                 </div>
                 <div className="col-md-4">

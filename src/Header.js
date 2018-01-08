@@ -221,16 +221,38 @@ class Header extends React.Component{
     window.location.href = '/dashboard';
     if (localStorage['default-panel']!=='request'){
       localStorage['default-panel']='request';
-
     }
   }
   handleUserProfileClick(){
-      // localStorage['default-panel']='userprofile';
       window.location.href = '/userprofile';
   }
 
   toggleBurgerMenu(){
     this.setState({showBurgerMenu:true});
+  }
+
+  renderRequestButton(){
+    if(localStorage['isLoggedIn']==='true'){
+      return (
+        <p className="clickable-p xl-menu-item"  onClick={this.handleRequestClick.bind(this)}>درخواست‌‌ها</p>
+      );
+    }
+  }
+
+  renderTripButton(){
+    if(localStorage['isLoggedIn']==='true'){
+      return(
+        <p className="clickable-p xl-menu-item"  onClick={this.handleTripClick.bind(this)}>سفرها</p>
+      );
+    }
+  }
+
+  renderMessageButton(){
+    if(localStorage['isLoggedIn']==='true'){
+      return(
+        <p className="clickable-p xl-menu-item"  onClick={this.handleMessageClick.bind(this)}>پیام‌ها</p>
+      );
+    }
   }
   render()
   {
@@ -241,12 +263,11 @@ class Header extends React.Component{
           <div className="header-menu-desktop col-md-10 col-sm-8">
             {this.renderMainMenu()}
             {this.renderLoginButton()}
-            <p className="clickable-p xl-menu-item"  onClick={this.handleRequestClick.bind(this)}>درخواست‌‌ها</p>
-            <p className="clickable-p xl-menu-item"  onClick={this.handleTripClick.bind(this)}>سفرها</p>
-            <p className="clickable-p xl-menu-item"  onClick={this.handleMessageClick.bind(this)}>پیام‌ها</p>
+            {this.renderRequestButton()}
+            {this.renderTripButton()}
+            {this.renderMessageButton()}
           </div>
           {this.renderLoginPanel()}
-
           <div className="logo col-md-2 col-sm-4">
               <div className='headerchild'>
                 <div className='logodiv'>
