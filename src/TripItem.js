@@ -189,7 +189,7 @@ class TripItem extends React.Component{
       return (
         <div>
           <div className='request-status'>
-            <p> وضعیت درخواست رزرو </p>
+            <p className="reserve-status-h1"> وضعیت درخواست رزرو </p>
             <p> {this.getTripStatus()} </p>
           </div>
           <div className='house-preview-linked-to-house-detail'>

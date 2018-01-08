@@ -1,4 +1,5 @@
 import React from 'react';
+import { Divider,Button } from 'semantic-ui-react';
 
 
 class Requests extends React.Component{
@@ -57,24 +58,25 @@ class Requests extends React.Component{
       if(this.state.requestList!==null){
         var request_list = this.state.requestList.request_list;
         var list = request_list.map((item)=>
-        <button key={item.id} onClick={() =>{
+        <div
+          className="userpanel-item-list"
+          key={item.id} onClick={() =>{
           this.showRequestItemClick(item)
-        }}>
-      <li>
-      <div className="preview">
-      <img
-      src={"https://www.trypinn.com/"+item.room.preview}
-      alt=""
-      height="50" width="50"/>
+          }}>
+              <div className="preview">
+                <img
+                src={"https://www.trypinn.com/"+item.room.preview}
+                alt=""
+                height="100%" width="80px"/>
+              </div>
+              <div className="title">
+                {item.room.title}
+              </div>
+              <div className="host_name">
+                <p>{item.room.owner.first_name} {item.room.owner.last_name}</p>
+              </div>
+              <Divider/>
       </div>
-      <div className="title">
-      {item.room.title}
-      </div>
-      <div className="host_name">
-      <p>{item.room.owner.first_name} {item.room.owner.last_name}</p>
-      </div>
-      </li>
-      </button>
     );
       return(
        <ul>{list}</ul>
@@ -83,10 +85,8 @@ class Requests extends React.Component{
   }
   render(){
     return(
-      <div>
-        <div>
+      <div dir="rtl" >
           {this.renderRequests()}
-        </div>
       </div>
     );
   }

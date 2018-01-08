@@ -1,4 +1,6 @@
 import React from 'react';
+import { Divider,Button } from 'semantic-ui-react';
+import {englishToPersianDigits} from './tools/EnglishToPersianDigits';
 
 class RequestItem extends React.Component{
   constructor(props){
@@ -43,17 +45,17 @@ class RequestItem extends React.Component{
       case "WAIT_FOR_HOST":
         return null
       case "HOST_REJECTED":
-        return (<button>حذف درخواست </button>);
+        return (<Button className="request-userpanel-button" >حذف درخواست </Button>);
       case "WAIT_FOR_GUEST_PAY":
         return(
           <div>
-            <button onClick={this.setTokenForPayment.bind(this)}>پرداخت</button>
+            <Button className="request-userpanel-button" onClick={this.setTokenForPayment.bind(this)}>پرداخت</Button>
           </div>
         );
       case "HOST_ACCEPTED_GUEST_PAYED":
-        return (<button>حذف درخواست </button>);
+        return (<Button className="request-userpanel-button" >حذف درخواست </Button>);
       case "HOST_ACCEPTED_HOST_CANCELED":
-        return (<button>حذف درخواست </button>);
+        return (<Button className="request-userpanel-button" >حذف درخواست </Button>);
       default:
         return null;
     }
@@ -129,47 +131,46 @@ class RequestItem extends React.Component{
 }
 renderCancelButton(){
   if(this.state.requestStatus!=="GUEST_CANCELED"){
-   return (<button onClick={this.setTokenForDelete.bind(this)}> لغو درخواست </button>);
+   return (<Button className="request-userpanel-button" onClick={this.setTokenForDelete.bind(this)}> لغو درخواست </Button>);
   }
 }
 renderDeleteButton(){
   if(this.state.requestStatus!=="HOST_ACCEPTED_GUEST_CANCELED"){
-   return (<button onClick={this.setTokenForCancel.bind(this)}>حذف درخواست</button>);
+   return (<Button className="request-userpanel-button" onClick={this.setTokenForCancel.bind(this)}>حذف درخواست</Button>);
   }
 }
   renderRequestDetail(){
     if (this.state.request!=null && this.state.requestStatus!=null){
       return (
-        <div>
+        <div className="request-header">
         <div className='request-status'>
-          <p> وضعیت درخواست رزرو </p>
-          <p> {this.getRequestStatus()} </p>
-          <p>{this.getRequestStatusDiscription()} </p>
+          <p className="reserve-status-h1"> :وضعیت درخواست رزرو </p>
+          <p className="reserve-status-h2"> {this.getRequestStatus()} </p>
+          <p className="reserve-status-descriptions">{this.getRequestStatusDiscription()} </p>
         </div>
-        <div className='house-preview-linked-to-house-detail'>
-          <img
-            src={"https://www.trypinn.com/"+this.state.request.room.preview}
-            alt=""
-            >
-          </img>
-          <p>{this.state.request.room.title} </p>
-          <p>{this.state.request.room.owner.first_name} {this.state.request.room.owner.last_name}</p>
-          <p>{this.state.request.room.city} </p>
+        <div className="request-detail-userpanel">
+          <Divider/>
+          <div className='house-preview-linked-to-house-detail' dir="rtl">
+            <p> نام اقامتگاه : {this.state.request.room.title} </p>
+            <p>شهر مقصد: {this.state.request.room.city}  </p>
+            <p> به میزبانی  {this.state.request.room.owner.first_name} {this.state.request.room.owner.last_name}</p>
+            <p> رزرو کننده: {this.state.request.guest_person.last_name} </p>
+            <p>تعداد میهمان: {englishToPersianDigits(this.state.request.number_of_guests)} </p>
+            <p>تاریخ ورود: {englishToPersianDigits(this.state.request.start_date)}</p>
+            <p>تاریخ خروج:{englishToPersianDigits(this.state.request.end_date)} </p>
+          </div>
+          <div className='request-details'>
+          </div>
+          <Divider/>
+          <div className='final-details'>
+            <p>جمع هزینه ها: {englishToPersianDigits(this.state.request.total_price)} </p>
+          </div>
         </div>
-        <div className='request-details'>
-          <p>{this.state.request.guest_person.last_name} </p>
-          <p>{this.state.request.number_of_guests} </p>
+
+        <div className='relevant-button'>
           {this.renderCancelButton()}
           {this.renderDeleteButton()}
-          <p>{this.state.request.start_date} </p>
-          <p>{this.state.request.end_date} </p>
-        </div>
-        <div className='final-details'>
-          <p> {this.state.request.total_price} </p>
-        </div>
-        <div className='relevant button'>
           {this.getRelevantButton()}
-
         </div>
         </div>
       );
