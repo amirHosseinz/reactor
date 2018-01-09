@@ -1,3 +1,12 @@
+.scroll-list-trips{
+
+}
+.scroll-list-requests{
+
+}
+
+
+
 .rules{
   margin:0 0 15px 0;
 }
@@ -1305,9 +1314,11 @@ padding-bottom: 28px;
   height: 30px;
 }
 .profile-container-margined{
+  height : 900px;
   width: 80%;
   margin:auto;
   margin-top: 30px;
+
 
 
 }
