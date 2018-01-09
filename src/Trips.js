@@ -1,4 +1,5 @@
 import React from 'react';
+import {ListGroup, ListGroupItem} from 'react-bootstrap';
 
 class Trips extends React.Component{
   constructor(props){
@@ -49,13 +50,13 @@ class Trips extends React.Component{
       var reserve_list = this.state.tripList.reserve_list;
       var list = reserve_list.map((item) => {
         return (
-          <button key={item.id} onClick={() =>{
+          <div key={item.id} onClick={() =>{
             this.showTripItemClick(item)
           }}>
-          <li>
+          <ListGroupItem className="scroll-list-trips">
             <div className="preview">
             <img src={"https:/trypinn.com"+ item.room.preview}
-            height="50" width="50"
+
             alt=""/>
             </div>
             <div className="title">
@@ -64,12 +65,16 @@ class Trips extends React.Component{
               <div className="location">
               {item.room.address}
               </div>
-              </li>
-          </button>
+            </ListGroupItem>
+          </div>
         );
       });
+      console.log("reserve_list:::::::::::::::::::::")
+      console.log(reserve_list);
+      console.log("list:::::::::::::::::::::")
+      console.log(list);
       return(
-        <ul>{list}</ul>
+        <ListGroup>{list}</ListGroup>
       );
   }}
   render(){
