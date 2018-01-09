@@ -8,15 +8,12 @@ export class MapRenderer extends React.Component{
           google={this.props.google}
           zoom={this.props.zoom}
           className="kolsoom"
-          initialCenter={this.props.position}>
+          initialCenter={this.props.position}
+          >
           <Marker
             position={this.props.position}
-            icon={{url:require('./dayere.png')}}
-          />
-          <HeatMap
-            gradient={1}
-            radius={20}
-            opacity={0.2}
+            icon={{url:require('./dayere.png'),
+          }}
           />
         </Map>
       );
