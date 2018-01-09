@@ -1,5 +1,10 @@
 import React from 'react';
 import { Divider,Button } from 'semantic-ui-react';
+import {ListGroup, ListGroupItem} from 'react-bootstrap';
+import 'react-virtualized/styles.css'
+import { Column, Table } from 'react-virtualized'
+import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer'
+import List from 'react-virtualized/dist/commonjs/List'
 
 
 class Requests extends React.Component{
@@ -63,6 +68,7 @@ class Requests extends React.Component{
           key={item.id} onClick={() =>{
           this.showRequestItemClick(item)
           }}>
+            <ListGroupItem className="scroll-list-requests">
               <div className="preview">
                 <img
                 src={"https://www.trypinn.com/"+item.room.preview}
@@ -76,10 +82,11 @@ class Requests extends React.Component{
                 <p>{item.room.owner.first_name} {item.room.owner.last_name}</p>
               </div>
               <Divider/>
+            </ListGroupItem>
       </div>
     );
       return(
-       <ul>{list}</ul>
+       <ListGroup>{list}</ListGroup>
          );
       }
   }
