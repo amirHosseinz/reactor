@@ -69,6 +69,7 @@ class SearchBar extends React.Component {
                       onInputChange={(input)=> {this.setState({city:input})}}
                       emptyLabel="نتیجه‌ای یافت نشد"
                       maxResults={5}
+                      autoFocus={true}
                       selectHintOnEnter={true}
                       submitFormOnEnter={true}
                       placeholder={this.state.city}
@@ -154,6 +155,7 @@ class SearchBar extends React.Component {
                     id="searchbox"
                     bsSize="large"
                     onInputChange={(input)=> {this.setState({city:input})}}
+                    autoFocus={true}
                     placeholder="!مقصد خود را وارد نمایید"
                     align="right"
                     lableKey="name"
@@ -393,6 +395,7 @@ class SearchBar extends React.Component {
                   placeholder="!مقصد خود را وارد نمایید"
                   align="right"
                   onInputChange={(input)=> {this.setState({city:input})}}
+                  autoFocus={true}
                   lableKey="name"
                   minLength={2}
                   selectHintOnEnter={true}
@@ -426,6 +429,7 @@ class SearchBar extends React.Component {
             selectHintOnEnter={true}
             submitFormOnEnter={true}
             onInputChange={(input)=> {this.setState({city:input})}}
+            autoFocus={true}
             placeholder={this.state.city}
             onChange={(selected)=>{this.setState({city:selected[0]} , ()=>{this.handleClick()}
             )}}

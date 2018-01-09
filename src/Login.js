@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button,Divider} from 'semantic-ui-react';
-import Modal from 'react-modal';
+import {Modal} from 'react-bootstrap';
 import {loginVerifySmsXl , registerNewUser , setPasswordStyle} from './Styles.js';
 
 class Login extends React.Component{
@@ -126,7 +126,6 @@ class Login extends React.Component{
        return response.json();
      })
      .then((setPasswordResponse) => {
-       console.log(setPasswordResponse);
        this.handleSetPasswordResponse(setPasswordResponse);
      });
     }
@@ -145,12 +144,10 @@ class Login extends React.Component{
        return response.json();
      })
      .then((loginResponse) => {
-       console.log(loginResponse);
        this.handleLoginResponse(loginResponse);
      });
     }
     handleSetPasswordResponse(setPasswordResponse){
-      console.log(setPasswordResponse);
       if(setPasswordResponse.is_successful){
         localStorage['isLoggedIn']= 'true';
         localStorage['token'] = setPasswordResponse.token;
@@ -195,7 +192,7 @@ class Login extends React.Component{
        localStorage['user-first-name']=data.user.first_name;
        localStorage['user-last-name']=data.user.last_name;
        localStorage['user-profile-picture']=data.user.profile_picture;
-       localStorage['default-panel']='userprofile';
+       // localStorage['default-panel']='userprofile';
        window.location.href = '/';
      });
     }
@@ -218,7 +215,6 @@ class Login extends React.Component{
        return response.json();
      })
      .then((signUpresponse) => {
-       console.log(signUpresponse);
        this.handleSignUpResponse(signUpresponse);
      });
     }
@@ -269,10 +265,9 @@ class Login extends React.Component{
    }
     renderSetPasswordModal(){
       return(
-        <Modal isOpen={this.state.showSignUpOrSetPasswordModal}
-               ariaHideApp={false}
+        <Modal show={this.state.showSignUpOrSetPasswordModal}
                style={setPasswordStyle}
-               onRequestClose={()=>{this.setState({showSignUpOrSetPasswordModal:false})}}>
+               onHide={()=>{this.setState({showSignUpOrSetPasswordModal:false})}}>
          <div className="login1-modal">
             <p className="login-title-in-modal">تعیین رمز عبور</p>
             <Divider/>
@@ -283,6 +278,7 @@ class Login extends React.Component{
                <input id='password'
                   className="password  form-control"
                   type="password"
+                  autoFocus={true}
                   value={this.state.inputForSetPassword.password}
                   onChange={this.changePasswordForSetPassword.bind(this)}/>
                   <br/>
@@ -303,20 +299,26 @@ class Login extends React.Component{
         </Modal>
       );
     }
+
+    handleSignupClickByEnter(event){
+      if(event.key==="Enter"){
+        this.handleSignupClick();
+      }
+    }
     renderSignUpModal(){
       return(
-        <Modal isOpen={this.state.showSignUpOrSetPasswordModal}
-               ariaHideApp={false}
+        <Modal show={this.state.showSignUpOrSetPasswordModal}
                style={registerNewUser}
-               onRequestClose={()=>{this.setState({showSignUpOrSetPasswordModal:false})}}>
+               onHide={()=>{this.setState({showSignUpOrSetPasswordModal:false})}}>
                <div className="login1-modal">
                    <p className="login-title-in-modal">ثبت‌نام کاربر جدید</p>
                    <Divider/>
-                      <div  className="signup-div">
+                      <div  className="signup-div" onKeyDown={(event)=>{this.handleSignupClickByEnter(event)}}>
                         <p className="signup-form-lable">نام </p>
                         <input value={this.state.inputForSignUp.firstName}
                                onChange={this.changeFirstNameForSignUp.bind(this)}
                                className="singup-fa-input form-control"
+                               autoFocus={true}
                         />
                         <br/>
                         <p className="signup-form-lable"> نام خانوادگی</p>
@@ -335,10 +337,10 @@ class Login extends React.Component{
                           <br/>
                          <p className="signup-form-lable"> تکرار رمز عبور </p>
                          <input id='confirm-password'
-                                className="password  form-control"
-                                type="password"
-                                value={this.state.inputForSignUp.confirmPassword}
-                                onChange={this.changeConfirmPasswordForSignUp.bind(this)}/>
+                            className="password  form-control"
+                            type="password"
+                            value={this.state.inputForSignUp.confirmPassword}
+                            onChange={this.changeConfirmPasswordForSignUp.bind(this)}/>
                           <br/>
 
                          <Button color="blue" onClick={this.handleSignupClick.bind(this)} className="login-modal-button-3">
@@ -377,10 +379,9 @@ class Login extends React.Component{
     }
     renderVerificationModal(){
       return(
-        <Modal isOpen={this.state.showVerificationModal}
+        <Modal show={this.state.showVerificationModal}
           style={loginVerifySmsXl}
-          ariaHideApp={false}
-          onRequestClose={()=>{this.setState({showVerificationModal:false})}}>
+          onHide={()=>{this.setState({showVerificationModal:false})}}>
           <div className="login1-modal">
             <p className="login-title-in-modal">کد تایید</p>
             <Divider/>
@@ -394,6 +395,7 @@ class Login extends React.Component{
               className="login-input-code"
                id='verify-code'
                maxLength="4"
+               autoFocus={true}
                type="numeric"/>
               <div className="divider-x2">
               </div>
@@ -416,37 +418,37 @@ class Login extends React.Component{
       }
     }
 
-    renderLoginPanel () {
+    renderLoginPanel() {
       if (this.state.hasPassword !== null){
         if (!this.state.hasPassword){
           return (this.renderVerificationModal());
         }
         else{
           return (
-            <div className="login1-modal">
-              <p className="login-title-in-modal"> ورود </p>
-              <Divider/>
-              <p className="enter-phone-number-inmodal">:رمز عبور خود را وارد کنید </p>
-                <div  dir="rtl" className="enter-number-main">
-                <input
-                  className="login-input"
-                  onChange={this.changePasswordForLogin.bind(this)}
-                  value={this.state.inputForLogin.password}
-                  id='password'
-                  type="password"
-                  autoComplete="off"
-                  onKeyDown ={(event)=>{this.handleLoginClickByEnter(event)}}
-                  >
-                  </input>
-                  <div className="divider-x"></div>
-                  <br/>
-                  <br/>
-                    <Button color="blue" onClick={this.handleLoginClick.bind(this)} className="login-modal-button">
-                      ورود
-                    </Button>
+              <div className="login1-modal">
+                <p className="login-title-in-modal"> ورود </p>
+                <Divider/>
+                <p className="enter-phone-number-inmodal">:رمز عبور خود را وارد کنید </p>
+                  <div dir="rtl" className="enter-number-main">
+                  <input
+                    className="login-input"
+                    onChange={this.changePasswordForLogin.bind(this)}
+                    value={this.state.inputForLogin.password}
+                    id='password'
+                    type="password"
+                    autoComplete="off"
+                    onKeyDown ={(event)=>{this.handleLoginClickByEnter(event)}}
+                    >
+                    </input>
+                    <div className="divider-x"></div>
+                    <br/>
+                    <br/>
+                      <Button color="blue" onClick={this.handleLoginClick.bind(this)} className="login-modal-button">
+                        ورود
+                      </Button>
+                  </div>
                 </div>
-              </div>
-          );
+            );
         }
       }
     }

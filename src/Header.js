@@ -2,11 +2,12 @@ import React from 'react';
 import Login from './Login.js';
 import { slide as Menu} from 'react-burger-menu';
 import customBurgerIcon  from 'react-burger-menu';
-import Modal from 'react-modal';
+// import Modal from 'react-modal';
 import {Button,Divider} from 'semantic-ui-react';
 import {Dropdown} from 'semantic-ui-react';
 import { Image } from 'semantic-ui-react';
 import {loginPasswordStyle, loginPhoneNumberStyle, loginPanelmobileStyle} from './Styles.js';
+import {Modal} from 'react-bootstrap';
 
 
 class Header extends React.Component{
@@ -128,10 +129,9 @@ class Header extends React.Component{
   renderLoginPanel(){
     return(
       <div className="login-modal-main">
-        <Modal isOpen={this.state.loginPanelVisible}
-          ariaHideApp={false}
+        <Modal show={this.state.loginPanelVisible}
           style={loginPhoneNumberStyle}
-          onRequestClose={()=>{this.setState({loginPanelVisible:false})}}>
+          onHide={()=>{this.setState({loginPanelVisible:false})}}>
           <div className="login1-modal">
             <p className="login-title-in-modal"> ورود/ عضویت </p>
             <Divider/>
@@ -141,12 +141,11 @@ class Header extends React.Component{
                   maxLength="11"
                   id="tel-number"
                   autoComplete="off"
+                  autoFocus={true}
                   className="login-input"
                   placeholder="مثال: ۰۹۱۲۰۰۰۰۰۰۰"
                   type="numeric"
-                  onKeyDown ={(event)=>{this.getUserHasPasswordByEnter(event)}}
-                  >
-                  </input>
+                  onKeyDown ={(event)=> {this.getUserHasPasswordByEnter(event)}}/>
                   <div className="divider-x"></div>
                   <br/>
                   <br/>
@@ -156,10 +155,9 @@ class Header extends React.Component{
               </div>
             </div>
         </Modal>
-        <Modal isOpen={this.state.loginPanelVisible2}
-          ariaHideApp={false}
+        <Modal show={this.state.loginPanelVisible2}
           style={loginPasswordStyle}
-          onRequestClose={()=>{this.setState({loginPanelVisible2:false})}}>
+          onHide={()=>{this.setState({loginPanelVisible2:false})}}>
           <Login hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
         </Modal>
       </div>
@@ -311,8 +309,9 @@ class Header extends React.Component{
                     autoComplete="off"
                     className="login-input"
                     placeholder="مثال: ۰۹۱۲۰۰۰۰۰۰۰"
-                    type="numeric">
-                    </input>
+                    onKeyDown={(event)=>{this.getUserHasPasswordByEnter(event)}}
+                    type="numeric"/>
+
                     <div className="divider-x"></div>
                     <br/>
                     <br/>
