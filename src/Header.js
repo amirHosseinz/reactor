@@ -89,7 +89,6 @@ class Header extends React.Component{
   }
   handleLoginButtonXs(){
     this.setState({showBurgerMenu:false, showMobileLoginPanel:true});
-
   }
 
   renderLoginButtonXs(){
@@ -123,10 +122,14 @@ class Header extends React.Component{
     this.setState({loginPanelVisible:true});
   }
   getUserHasPasswordByEnter(event){
-    console.log(event.key);
-   if(event.key === 'Enter'){
-     this.getUserHasPassword();
-   }
+    if(event.key === 'Enter'){
+      this.getUserHasPassword();
+    }
+    if (event.keyCode<48 || event.keyCode>57){
+      if(event.key!=="Backspace"){
+        event.preventDefault();
+      }
+    }
  }
   renderLoginPanel(){
     return(

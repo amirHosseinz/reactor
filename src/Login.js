@@ -329,7 +329,7 @@ class Login extends React.Component{
                         <br/>
                          <p className="signup-form-lable">رمز عبور </p>
 
-                         <input id='password'
+                         <input id='password'  
                                 className="password  form-control"
                                 type="password"
                                 value={this.state.inputForSignUp.password}
@@ -373,10 +373,16 @@ class Login extends React.Component{
 
 
     handleVerificationClickByEnter(event){
-      if(event.key==='Enter'){
+      if(event.key === 'Enter'){
         this.handleVerificationClick();
       }
+      if (event.keyCode<48 ||event.keyCode>57){
+        if(event.key!=="Backspace"){
+          event.preventDefault();
+        }
+      }
     }
+
     renderVerificationModal(){
       return(
         <Modal show={this.state.showVerificationModal}
@@ -413,9 +419,9 @@ class Login extends React.Component{
     }
 
     handleLoginClickByEnter(event){
-      if(event.key === 'Enter'){
-        this.handleLoginClick();
-      }
+        if(event.key === 'Enter'){
+          this.handleLoginClick();
+        }
     }
 
     renderLoginPanel() {
@@ -440,8 +446,7 @@ class Login extends React.Component{
                     autoFocus={true}
                     type="password"
                     autoComplete="off"
-                    onKeyDown ={(event)=>{this.handleLoginClickByEnter(event)}}
-                    >
+                    onKeyDown ={(event)=>{this.handleLoginClickByEnter(event)}}>
                     </input>
                     <div className="divider-x"></div>
                     <br/>
