@@ -135,7 +135,7 @@ renderSuccessful(message){
     <input type="text" value={this.state.email} onChange={this.editEmail.bind(this)} />
     </label>
     <div>
-   <button className="save-edit" color="blue" onClick={this.changeInfOnServer.bind(this)}> ذخیره </button>
+   <button className="save-edit" color="blue" onClick={this.changeInfOnServer.bind(this)}>ارسال درخواست </button>
     </div>
 
       </div>
