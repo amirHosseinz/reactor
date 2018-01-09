@@ -268,7 +268,6 @@ class Header extends React.Component{
             {this.renderLoginButton()}
             {this.renderRequestButton()}
             {this.renderTripButton()}
-            {this.renderMessageButton()}
           </div>
           {this.renderLoginPanel()}
           <div className="logo col-md-2 col-sm-4">
@@ -285,7 +284,7 @@ class Header extends React.Component{
       </div>
       <div className='header hidden-xl visible-xs navbar-fixed-top'>
         <div className='headermobile'>
-             <a href="http://tripinn.ir"><img src={require('./Images/tripinn_logo.svg')}  className="LogoImage-mobile" alt="تریپین"></img></a>
+             <img  src={require('./Images/tripinn_logo.svg')}  className="LogoImage-mobile" alt="تریپین"></img>
         </div>
         <div className="burger-menu" >
            <Menu isOpen={this.state.showBurgerMenu} customBurgerIcon={<img onClick={this.toggleBurgerMenu.bind(this)} src={require('./Images/tripinn_burger.svg')}/>} className="burger" width={ '70%' }>
