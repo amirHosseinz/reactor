@@ -241,7 +241,7 @@ class Login extends React.Component{
      })
      .then((verificationResponse) => {
        if(verificationResponse.successful===true){
-         this.setState({showSignUpOrSetPasswordModal:true});
+         this.setState({showSignUpOrSetPasswordModal:true,showVerificationModal:false});
        }
        else{
          alert('کد تایید وارد شده نامعتبر است. لطفا دوباره تلاش کنید');
@@ -329,7 +329,7 @@ class Login extends React.Component{
                         <br/>
                          <p className="signup-form-lable">رمز عبور </p>
 
-                         <input id='password'
+                         <input id='password'  
                                 className="password  form-control"
                                 type="password"
                                 value={this.state.inputForSignUp.password}
@@ -373,10 +373,16 @@ class Login extends React.Component{
 
 
     handleVerificationClickByEnter(event){
-      if(event.key==='Enter'){
+      if(event.key === 'Enter'){
         this.handleVerificationClick();
       }
+      if (event.keyCode<48 ||event.keyCode>57){
+        if(event.key!=="Backspace"){
+          event.preventDefault();
+        }
+      }
     }
+
     renderVerificationModal(){
       return(
         <Modal show={this.state.showVerificationModal}
@@ -413,9 +419,9 @@ class Login extends React.Component{
     }
 
     handleLoginClickByEnter(event){
-      if(event.key === 'Enter'){
-        this.handleLoginClick();
-      }
+        if(event.key === 'Enter'){
+          this.handleLoginClick();
+        }
     }
 
     renderLoginPanel() {
@@ -425,6 +431,8 @@ class Login extends React.Component{
         }
         else{
           return (
+            <div>
+              <div className="enter-password-mobile-xs hidden-xl visible-xs container fluid">
               <div className="login1-modal">
                 <p className="login-title-in-modal"> ورود </p>
                 <Divider/>
@@ -435,6 +443,31 @@ class Login extends React.Component{
                     onChange={this.changePasswordForLogin.bind(this)}
                     value={this.state.inputForLogin.password}
                     id='password'
+                    autoFocus={true}
+                    type="password"
+                    autoComplete="off"
+                    onKeyDown ={(event)=>{this.handleLoginClickByEnter(event)}}>
+                    </input>
+                    <div className="divider-x"></div>
+                    <br/>
+                    <br/>
+                      <Button color="blue" onClick={this.handleLoginClick.bind(this)} className="login-modal-button">
+                        ورود
+                      </Button>
+                  </div>
+                </div>
+              </div>
+              <div className="login1-modal hidden-xs visible-xl">
+                <p className="login-title-in-modal"> ورود </p>
+                <Divider/>
+                <p className="enter-phone-number-inmodal">:رمز عبور خود را وارد کنید </p>
+                  <div dir="rtl" className="enter-number-main">
+                  <input
+                    className="login-input"
+                    onChange={this.changePasswordForLogin.bind(this)}
+                    value={this.state.inputForLogin.password}
+                    id='password'
+                    autoFocus={true}
                     type="password"
                     autoComplete="off"
                     onKeyDown ={(event)=>{this.handleLoginClickByEnter(event)}}
@@ -448,6 +481,7 @@ class Login extends React.Component{
                       </Button>
                   </div>
                 </div>
+            </div>
             );
         }
       }
