@@ -51,7 +51,7 @@ class Header extends React.Component{
     this.getRelevantToken();
   }
   setSearchParams(){
-    var spar = {phoneNumber : document.getElementById("tel-number").value};
+    var spar = {phoneNumber:document.getElementById("tel-number").value};
     this.setState({searchParams:spar},()=>{this.getDataFromServer()})
   }
     getDataFromServer(){
@@ -73,6 +73,7 @@ class Header extends React.Component{
        this.setState({hasAccount:loginStatus.has_account});
        this.setState({loginPanelVisible2 : true});
        this.setState({loginPanelVisible: false});
+       this.setState({showMobileLoginPanel:false});
 
      });
   }
@@ -88,7 +89,6 @@ class Header extends React.Component{
   }
   handleLoginButtonXs(){
     this.setState({showBurgerMenu:false, showMobileLoginPanel:true});
-
   }
 
   renderLoginButtonXs(){
@@ -122,9 +122,14 @@ class Header extends React.Component{
     this.setState({loginPanelVisible:true});
   }
   getUserHasPasswordByEnter(event){
-   if(event.key === 'Enter'){
-     this.getUserHasPassword();
-   }
+    if(event.key === 'Enter'){
+      this.getUserHasPassword();
+    }
+    if (event.keyCode<48 || event.keyCode>57){
+      if(event.key!=="Backspace"){
+        event.preventDefault();
+      }
+    }
  }
   renderLoginPanel(){
     return(
@@ -132,6 +137,7 @@ class Header extends React.Component{
         <Modal show={this.state.loginPanelVisible}
           style={loginPhoneNumberStyle}
           onHide={()=>{this.setState({loginPanelVisible:false})}}>
+          <Modal.Body>
           <div className="login1-modal">
             <p className="login-title-in-modal"> ورود/ عضویت </p>
             <Divider/>
@@ -149,11 +155,13 @@ class Header extends React.Component{
                   <div className="divider-x"></div>
                   <br/>
                   <br/>
-                  <Button color="blue" onClick = {this.getUserHasPassword.bind(this)} className="login-modal-button">
+                  <Button color="blue" onClick={this.getUserHasPassword.bind(this)} className="login-modal-button">
                   ورود / ثبت‌نام
                   </Button>
               </div>
             </div>
+          </Modal.Body>
+
         </Modal>
         <Modal show={this.state.loginPanelVisible2}
           style={loginPasswordStyle}
@@ -293,10 +301,10 @@ class Header extends React.Component{
               </div>
             </div>
            </Menu>
-           <Modal isOpen={this.state.showMobileLoginPanel}
+           <Modal show={this.state.showMobileLoginPanel}
            className="container fluid"
            style={loginPanelmobileStyle}
-           onRequestClose={()=>{this.setState({showMobileLoginPanel:false})}}>
+           onHide={()=>{this.setState({showMobileLoginPanel:false})}}>
             <div>
             <div className="login1-modal" dir="rtl">
               <p className="login-title-in-modal"> ورود/ عضویت </p>
