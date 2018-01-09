@@ -12,6 +12,7 @@ import {englishToPersianDigits} from './tools/EnglishToPersianDigits';
 import {normalReservePanelHouseDetails, fixedReservePanelHouseDetails,normalScrolllListHouseDetails , fixedScrollListHouseDetails} from './Styles.js';
 import AspectRatio from 'react-aspect-ratio';
 import GoogleApiWrapper from './HouseDetailParts/MapRenderer.js';
+import {Modal} from 'react-bootstrap';
 
 
 class HouseDetails extends React.Component {
@@ -25,6 +26,7 @@ class HouseDetails extends React.Component {
       reservePanelFixed : false,
       scrollListFixed:false,
       showReservePanel : true,
+      showReservePanelXs:false,
       token: null,
       searchParams : {
         id: null,
@@ -98,6 +100,14 @@ class HouseDetails extends React.Component {
        return <ReservePanel homeData = {this.state.homeData}/>
      }
    }
+   renderReservePanelXs(){
+     return(
+       <Modal show={this.state.showReservePanelXs}
+              onHide={()=>{this.setState({showReservePanelXs:false})}}>
+          <ReservePanel homeData = {this.state.homeData}/>
+       </Modal>
+     );
+     }
    renderHomeTitle()
    {
      return (
@@ -255,6 +265,7 @@ class HouseDetails extends React.Component {
                   <MainDiscription homeData={this.state.homeData} />
                   <section className='map-scroller' ref={(section) => { this.Map = section; }}></section>
                     {this.renderMap()}
+                    {this.renderReservePanelXs()}
                   <div className="padding100">
                   </div>
                 </div>
@@ -269,7 +280,8 @@ class HouseDetails extends React.Component {
                 <p className='text-018'> {englishToPersianDigits(this.state.homeData.price)} </p>
               </div>
             </div>
-          <Button color='blue' className='reserve-button-xs'>
+
+          <Button color='blue' onClick={()=>{this.setState({showReservePanelXs:true})}}className='reserve-button-xs'>
             !رزرو کنید
           </Button>
         </div>
