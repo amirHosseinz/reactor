@@ -125,6 +125,11 @@ class Header extends React.Component{
     if(event.key === 'Enter'){
       this.getUserHasPassword();
     }
+    if(document.getElementById('tel-number').value.length===11){
+      if(event.key!=="Backspace"){
+        event.preventDefault()
+      }
+    }
     if (event.keyCode<48 || event.keyCode>57){
       if(event.key!=="Backspace"){
         event.preventDefault();
@@ -142,16 +147,17 @@ class Header extends React.Component{
             <p className="login-title-in-modal"> ورود/ عضویت </p>
             <Divider/>
             <p className="enter-phone-number-inmodal"> :برای ورود یا ثبت‌نام شماره تلفن همراه خود را وارد کنید </p>
-              <div  dir="rtl" className="enter-number-main" >
+              <div dir="rtl" className="enter-number-main" >
                 <input
                   maxLength="11"
                   id="tel-number"
                   autoComplete="off"
                   autoFocus={true}
-                  className="login-input"
+                  className="login-input hidden-xs visible-xl"
                   placeholder="مثال: ۰۹۱۲۰۰۰۰۰۰۰"
-                  type="numeric"
-                  onKeyDown ={(event)=> {this.getUserHasPasswordByEnter(event)}}/>
+                  type="text"
+                  onKeyDown ={(event)=> {this.getUserHasPasswordByEnter(event)}}
+                  />
                   <div className="divider-x"></div>
                   <br/>
                   <br/>
@@ -260,10 +266,8 @@ class Header extends React.Component{
       );
     }
   }
-  render()
-  {
-    return (
-      <div>
+  renderHeaderXl(){
+    return(
       <div className='header container hidden-xs visible-xl'>
        <div className='hearder-child-margined'>
           <div className="header-menu-desktop col-md-10 col-sm-8">
@@ -285,6 +289,10 @@ class Header extends React.Component{
           </div>
         </div>
       </div>
+    );
+  }
+  renderHeaderXs(){
+    return(
       <div className='header hidden-xl visible-xs navbar-fixed-top'>
         <div className='headermobile'>
              <img  src={require('./Images/tripinn_logo.svg')}  className="LogoImage-mobile" alt="تریپین"></img>
@@ -306,19 +314,19 @@ class Header extends React.Component{
            style={loginPanelmobileStyle}
            onHide={()=>{this.setState({showMobileLoginPanel:false})}}>
             <div>
-            <div className="login1-modal" dir="rtl">
+            <div className="login1-modal">
               <p className="login-title-in-modal"> ورود/ عضویت </p>
               <p className="enter-phone-number-inmodal"> برای ورود یا ثبت‌نام شماره تلفن همراه خود را وارد کنید :</p>
-                <div  dir="rtl" className="enter-number-main" >
+                <div dir="rtl" className="enter-number-main" >
                   <input
-                    maxLength="11"
                     id="tel-number"
                     autoComplete="off"
+                    autoFocus={true}
                     className="login-input"
                     placeholder="مثال: ۰۹۱۲۰۰۰۰۰۰۰"
                     onKeyDown={(event)=>{this.getUserHasPasswordByEnter(event)}}
-                    type="numeric"/>
-
+                    type="number"
+                    />
                     <div className="divider-x"></div>
                     <br/>
                     <br/>
@@ -331,7 +339,15 @@ class Header extends React.Component{
            </Modal>
         </div>
       </div>
-    </div>
+    );
+  }
+  render()
+  {
+    return (
+      <div>
+      {this.renderHeaderXl()}
+      {this.renderHeaderXs()}
+      </div>
     );
   }
 }

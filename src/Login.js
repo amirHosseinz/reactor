@@ -329,7 +329,7 @@ class Login extends React.Component{
                         <br/>
                          <p className="signup-form-lable">رمز عبور </p>
 
-                         <input id='password'  
+                         <input id='password'
                                 className="password  form-control"
                                 type="password"
                                 value={this.state.inputForSignUp.password}
