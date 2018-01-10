@@ -297,7 +297,7 @@ class SearchBar extends React.Component {
     var request = new Request('https://www.trypinn.com/api/search/',{
       method: 'POST',
       body: JSON.stringify({
-        platoform:'web',
+        platform:'web',
         location: this.state.searchParams.location,
         start_date: this.state.searchParams.start_date,
         end_date: this.state.searchParams.end_date,
@@ -354,7 +354,7 @@ class SearchBar extends React.Component {
      var request = new Request('https://www.trypinn.com/api/homepage/',{
        method: 'POST',
        body: JSON.stringify({
-         platoform:'web',
+         platform:'web',
      }),
        headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
        'Authorization': 'Token '+this.state.token,})
