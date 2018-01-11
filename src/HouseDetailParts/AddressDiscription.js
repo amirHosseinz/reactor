@@ -29,11 +29,16 @@ class AddressDiscription extends React.Component{
   }
   render(){
     return(
-      <div className='row-reverse-house-adress-type'>
-        <p>{this.getRoomType()}</p>
-        <p>{this.getServiceType()}</p>
-        <p>/</p>
-        <p>{this.props.homeData.address}</p>
+      <div>
+        <div className='row-reverse-house-adress-type visible-xl hidden-xs'>
+          <p>{this.getRoomType()}</p>
+          <p>{this.getServiceType()}</p>
+          <p>/</p>
+          <p>{this.props.homeData.address}</p>
+        </div>
+        <div className='visible-xs hidden-xl'>
+          <p>{this.props.homeData.address}</p>
+        </div>
       </div>
     );
   }

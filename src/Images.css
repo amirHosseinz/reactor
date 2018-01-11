@@ -59,22 +59,19 @@ margin: 30px
 
 }
 
-
 .scroll-list-trips{
 
 }
+
 .scroll-list-requests{
 
 }
-
-
 
 .rules{
   margin:0 0 15px 0;
 }
 
 .main{
-
 }
 .housedetail-img{
   cursor: pointer;
@@ -204,13 +201,16 @@ margin: 30px
   }
 .header{
   width:100% !important;
-  box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
+  box-shadow:0 3px 3px rgba(0,0,0,0.15);
   background-color: white;
   }
   .hearder-child-margined{
     width:92%;
     margin: auto;
 
+  }
+  .profile-container{
+    background-color: #f6f6f6 !important  ;
   }
   .price{
     display: -webkit-flex; /* Safari */
@@ -637,6 +637,8 @@ border-radius: 40px;
   padding-right: 15px;
   padding-left: 15px;
 }
+
+
 .housedetail-main1{
   background-color: red;
 }
@@ -759,11 +761,38 @@ border-width: 2px;
   margin-top: 0;
   color: #737373;
   text-align: left;
+}
+.main-amanities-item-xs{
+  height: 30px;
+  font-family: IRANSans;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  color: #737373;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
+  display: flex;
+  margin: auto;
+  flex-direction: row-reverse;
+}
+.spaced-dises{
+  width: 100%;
+  margin: auto;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 
 }
 .main-amanities-icon{
   height: 30px;
   margin: 10px;
+}
+.main-amanities-icon-xs{
+  margin: auto;
+  height: 26px;
+  margin: 8px;
 }
 .col-details-house{
   margin-bottom: 180px;
@@ -780,13 +809,25 @@ border-width: 2px;
   text-align: right;
   font-family: IRANSans;
   padding: 18px;
-
+}
+.main-descriptions-xs{
+  text-align: right;
+  font-family: IRANSans;
 }
 .des-header{
   font-size: 1.4rem;
   font-style: normal;
   font-weight: 500;
-  color: #737373;
+  color: #454545;
+}
+.des-header-xs{
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  color: #454545;
+  font-family: IRANSans;
+  text-align: right;
+
 }
 .des-main{
   font-size: 1rem;
@@ -823,6 +864,11 @@ transform: scale(-1, 1);
   font-size: 18px;
   font-weight: 400;
   margin-left: 5px;
+}
+.aminities-text-xs{
+  font-size: 14px;
+  font-weight: 400;
+  padding-left: 3px;
 }
 .result-detail{
   font-family: IRANSans;
@@ -1385,7 +1431,6 @@ padding-bottom: 28px;
 
 }
 .profile-container{
-  background-color: rgba(255, 255, 255, 1)   ;
     padding:16px;
     border-width: 3px;
     padding-bottom: 60px;
@@ -1446,6 +1491,7 @@ margin-top: 20px;
   padding-bottom: 10px;
 }
 .profile_static_bar{
+  overflow-y: auto;
   box-shadow: 2px 2px 3px rgba(0, 0, 0, .1);
   border-radius: 0px 4px 4px 0px;
 
@@ -1733,6 +1779,9 @@ padding-top: 80px;
 }
 .kolsoom{
   height: 25% !important;
+}
+.map-xs{
+  height: 45% !important;
   margin-bottom: 400px !important;
 }
 .padding100{
@@ -1803,4 +1852,47 @@ padding-top: 80px;
 .request-detail-userpanel{
   width: 82%;
   margin: auto;
+}
+.house-detail-top-margined-xs{
+  width: 90%;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  margin: auto;
+}
+.housedetail-img-xs{
+  margin-top: 56px;
+}
+.house-detail-titles-xs{
+  font-family: IRANSans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  color: #454545;
+
+  margin-bottom: 0px !important;
+}
+.row-reverse-house-adress-type-xs{
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
+  display: flex;
+  margin: auto;
+  flex-direction: row-reverse;
+  font-family: IRANSans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  margin-top: 0;
+  color: #454545;
+  text-align: left;
+  margin-top: 8px;
+
+}
+.main-amanities-xs{
+  margin: auto;
+}
+.map-holder-xs{
+  margin-bottom: 400px !important;
+}
+.amanities-div-xs{
+    text-align: center;
 }
