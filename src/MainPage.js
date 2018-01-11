@@ -88,7 +88,7 @@ class MainPage extends React.Component{
   }
   renderUserProfile(){
     return(
-      <UserProfile />
+      <UserProfile/>
     );
   }
   render(){
