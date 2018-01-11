@@ -1540,7 +1540,8 @@ text-align:center;
 }
 .reserve-button-xs{
   width: 36%;
-    font-family: IRANSans !important;
+  background-color: #12b2ce !important;
+  font-family: IRANSans !important;
 }
 .text-017{
   font-family: IRANSans;

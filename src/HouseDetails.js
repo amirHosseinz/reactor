@@ -1,7 +1,8 @@
 import React from 'react';
 import Lightbox from 'react-image-lightbox';
 import scrollToComponent from 'react-scroll-to-component';
-import {Button,Sticky} from 'semantic-ui-react';
+import {Sticky} from 'semantic-ui-react';
+import {Button} from 'react-bootstrap';
 import ReservePanel from './HouseDetailParts/ReservePanel.js';
 import MainDiscription from './HouseDetailParts/MainDiscription';
 import AddressDiscription from './HouseDetailParts/AddressDiscription';
@@ -273,15 +274,14 @@ class HouseDetails extends React.Component {
           </div>
         </div>
         <div className="reserve-bottom-xs navbar-fixed-bottom">
-            <div className="price-div-xs">
+            <div className="price-div-xs hidden-xl visible-xs">
               <div className = "price-xs">
                 <p className="text-017">   هر شب / </p>
                 <p className='text-018'> تومان</p>
                 <p className='text-018'> {englishToPersianDigits(this.state.homeData.price)} </p>
               </div>
             </div>
-
-          <Button color='blue' onClick={()=>{this.setState({showReservePanelXs:true})}}className='reserve-button-xs'>
+          <Button onClick={()=>{this.setState({showReservePanelXs:true})}}className='reserve-button-xs hidden-xl visible-xs'>
             !رزرو کنید
           </Button>
         </div>
