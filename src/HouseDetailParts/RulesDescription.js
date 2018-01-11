@@ -56,7 +56,6 @@ renderSpecialRules (){
   render(){
     return(
         <div className="main-descriptions row">
-          <p className='des-header'>قوانین و مقررات</p>
           <div className="rules">
             {this.renderParty()}
             {this.renderPet()}

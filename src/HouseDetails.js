@@ -4,7 +4,6 @@ import scrollToComponent from 'react-scroll-to-component';
 import {Sticky,Divider} from 'semantic-ui-react';
 import {Button,Carousel} from 'react-bootstrap';
 import ReservePanel from './HouseDetailParts/ReservePanel.js';
-// import MainDiscription from './HouseDetailParts/MainDiscription';
 
 import AddressDiscription from './HouseDetailParts/AddressDiscription';
 import AmenitiesDiscription from './HouseDetailParts/AmenitiesDiscription';
@@ -22,6 +21,7 @@ import UtilitiesDescription from './HouseDetailParts/UtilitiesDescription.js';
 import CheckInCheckOutDescription from './HouseDetailParts/CheckInCheckOutDescription.js';
 import MaxCapacity from './HouseDetailParts/MaxCapacity.js';
 import RulesDescription from './HouseDetailParts/RulesDescription.js';
+
 
 class HouseDetails extends React.Component {
   constructor(props){
@@ -161,7 +161,7 @@ class HouseDetails extends React.Component {
   )
      return(<div className = "housedetail-img">
               <AspectRatio ratio="16/11" style={{maxWidth: '100%', }}>
-                <Carousel nextIcon='' prevIcon='' wrap={false} controls={false}>
+                <Carousel  wrap={true} controls={false}>
                   {carouselList}
                 </Carousel>
               </AspectRatio>
@@ -320,24 +320,40 @@ class HouseDetails extends React.Component {
               <RatingDiscription homeData={this.state.homeData}/>
             </div>
             <Divider/>
-
              <p className='des-header-xs'> درباره این خانه </p>
              <p className='des-main-xs'> {this.state.homeData.description} </p>
-
             <Divider/>
             <AmenitiesDiscription homeData={this.state.homeData} />
-
-
+            <Divider/>
+            <p className='des-header-xs'> سایر امکانات </p>
             <UtilitiesDescription homeData={this.state.homeData}/>
+              <Divider/>
+          </div>
+
+          <div className="map-holder-xs">
+            {this.renderMap()}
+          </div>
+
+          <div className="house-detail-top-margined-xs visible-xs hidden-xl">
+            <div className="paddingtopundermap"></div>
+            <Divider/>
+
             <CheckInCheckOutDescription homeData={this.state.homeData}/>
-            <MaxCapacity homeData={this.state.homeData}/>
-            <RulesDescription homeData= {this.state.homeData} />
+
             <Divider/>
 
 
+            <p className='des-header-xs'>: قوانین و مقررات </p>
+            <MaxCapacity homeData={this.state.homeData}/>
+
+            <RulesDescription homeData= {this.state.homeData} />
           </div>
-          <div className="map-holder-xs">
-            {this.renderMap()}
+
+
+          <div className="house-detail-top-margined-xs visible-xs hidden-xl">
+
+
+
           </div>
           <div className="reserve-bottom-xs navbar-fixed-bottom">
               <div className="price-div-xs hidden-xl visible-xs">

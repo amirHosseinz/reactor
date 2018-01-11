@@ -26,7 +26,6 @@ class CheckInCheckOutDescription extends React.Component{
 
       <div className="check-out">
        ساعت خروج: {englishToPersianDigits(checkout1[0]+":"+checkout1[1])}
-                   <div className="divider-card"></div>
       </div>
     );
   }

@@ -6,7 +6,7 @@ class MaxCapacity extends React.Component{
   render(){
     return(
       <div className="main-descriptions row">
-      <p> حداکثر ظرفیت: {englishToPersianDigits(this.props.homeData.max_capacity)}</p>
+      <p className="max-cap"> حداکثر ظرفیت: {englishToPersianDigits(this.props.homeData.max_capacity)}</p>
       </div>
     );
   }

@@ -64,9 +64,7 @@ class UtilitiesDescription extends React.Component{
     }
   render(){
     return(
-
       <div className="main-descriptions row">
-        <p className='des-header'>سایر امکانات</p>
         {this.renderUtilities()}
       </div>
     );
