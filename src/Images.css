@@ -1,11 +1,71 @@
-.scroll-list-trips {
+
+.hala{
+  margin:auto;
+}
+.inner-div{
+margin: 30px
+}
+
+
+.become-host-labels{
+
+  font-family: IRANSans;
+  margin: 20px;
+  text-align: right;
 
 }
+
+.about-header{
+  text-align: center;
+  font-size:30px;
+  padding-bottom: 30px;
+  font-family: IRANSans;
+
+}
+
+.h1{
+  text-align: center;
+  margin: auto;
+  padding-bottom: 30px;
+}
+.title2{
+
+  text-align: right;
+  margin: auto;
+  padding-bottom: 30px;
+  font-size: 20px;
+}
+
+.terms-div1{
+  margin: auto;
+  padding-bottom: 20px;
+}
+
+.about-container{
+  font-family: IRANSans;
+  width: 80%;
+  margin: auto;
+  padding-top: 30px;
+  text-align: right;
+
+}
+
+
+.terms-container{
+  font-family: IRANSans;
+  width: 80%;
+  margin: auto;
+  padding-top: 30px;
+
+}
+
+.scroll-list-trips{
+
+}
+
 .scroll-list-requests{
 
 }
-
-
 
 .rules{
   margin:0 0 15px 0;
@@ -766,13 +826,21 @@ border-width: 2px;
   color: #454545;
   font-family: IRANSans;
   text-align: right;
-
+  margin-bottom: 4px !important;
 }
 .des-main{
   font-size: 1rem;
   font-style: normal;
   font-weight: 300;
   color: #737373;
+}
+.des-main-xs{
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 300;
+  color: #737373;
+  font-family: IRANSans;
+  text-align: right;
 }
 .host-info{
   display: -webkit-flex; /* Safari */
