@@ -27,29 +27,29 @@ class Footer extends React.Component{
                       <a className='logolink' href="/terms&conditions" target="_blank">  <p className='logo-menu-font'>قوانین و شرایط استفاده</p></a>
                       <a className='logolink' href="/becomehost" target="_blank">  <p className='logo-menu-font'>!میزبان شوید</p></a>
                       <a className='logolink' href="/aboutus" target="_blank">  <p className='logo-menu-font'>درباره تریپین</p></a>
-                      <a className='logolink' href="mailto:support@tripinn.ir/contactus" target="_blank">  <p className='logo-menu-font' >تماس با ما</p></a>
+                      <a className='logolink' href="/contactus" target="_blank">  <p className='logo-menu-font' >تماس با ما</p></a>
                     </div>
                   </div>
             </div>
           </div>
           <div className='footer hidden-xl visible-xs'>
             <div className='footer-mobile-container'>
-              <a className='footer-menu-mobile-link' href="http://www.tryppin.com">
+              <a className='footer-menu-mobile-link' href="/terms&conditions">
                 <div className='footer-menu-mobile-item'>
                   <p className='logo-footer-menu-font-mobile' >قوانین و شرایط استفاده</p>
                 </div>
               </a>
-              <a className='footer-menu-mobile-link' href="http://www.tryppin.com">
+              <a className='footer-menu-mobile-link' href="becomehost">
                 <div className='footer-menu-mobile-item'>
                   <p className='logo-footer-menu-font-mobile' >میزبان شوید</p>
                 </div>
               </a>
-              <a className='footer-menu-mobile-link' href="http://www.tryppin.com">
+              <a className='footer-menu-mobile-link' href="/aboutus">
                 <div className='footer-menu-mobile-item'>
                   <p className='logo-footer-menu-font-mobile' >درباره تریپین</p>
                 </div>
               </a>
-              <a className='footer-menu-mobile-link' href="http://www.tryppin.com">
+              <a className='footer-menu-mobile-link' href="/contactus">
                 <div className='footer-menu-mobile-item'>
                   <p className='logo-footer-menu-font-mobile' >تماس با ما</p>
                 </div>

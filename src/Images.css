@@ -1,7 +1,67 @@
-.scroll-list-trips {
-  overflow-y: scroll;
-  /* -webkit-overflow-scrolling: touch; */
-  background-color:blue !important;
+
+.hala{
+  margin:auto;
+}
+.inner-div{
+margin: 30px
+}
+
+
+.become-host-labels{
+
+  font-family: IRANSans;
+  margin: 20px;
+  text-align: right;
+
+}
+
+.about-header{
+  text-align: center;
+  font-size:30px;
+  padding-bottom: 30px;
+  font-family: IRANSans;
+
+}
+
+.h1{
+  text-align: center;
+  margin: auto;
+  padding-bottom: 30px;
+}
+.title2{
+
+  text-align: right;
+  margin: auto;
+  padding-bottom: 30px;
+  font-size: 20px;
+}
+
+.terms-div1{
+  margin: auto;
+  padding-bottom: 20px;
+}
+
+.about-container{
+  font-family: IRANSans;
+  width: 80%;
+  margin: auto;
+  padding-top: 30px;
+  text-align: right;
+
+}
+
+
+.terms-container{
+  font-family: IRANSans;
+  width: 80%;
+  margin: auto;
+  padding-top: 30px;
+
+}
+
+
+.scroll-list-trips{
+
 }
 .scroll-list-requests{
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Divider,Button } from 'semantic-ui-react';
 
 class BecomeHost extends React.Component {
   constructor(props) {
@@ -38,7 +39,6 @@ class BecomeHost extends React.Component {
   }
 
   changeInfOnServer(){
-        console.log('injaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
         const csrftoken= this.getCookie('csrftoken');
         console.log(csrftoken);
          console.log(this.state);
@@ -74,19 +74,19 @@ class BecomeHost extends React.Component {
 
 renderAlreadyHost(message){
   if(message==="account exists."){
-    alert ("قبلا شماره دادی دگ!")
+    alert ('شماره شما قبلا به عنوان میزبان ثبت شده است.')
   }
 }
 
 renderError(message){
   if(message==="error"){
-    alert ('یه چی مشکل داره متاسفانه')
+    alert ('خطا! لطفا پس از اطمینان از صحت اطلاعات وارد شده دوباره تلاش کنید.')
   }
 }
 
 renderSuccessful(message){
   if(message===null){
-    alert ('اوکیه الحمدلله')
+    alert ('عملیات با موفقیت انجام شد. به جمع میزبانان تریپین خوش آمدید :)')
   }
 }
 
@@ -109,37 +109,60 @@ renderSuccessful(message){
   render() {
     return (
       <div>
-
       <div className="profile-container-margined">
-        <div className="profile_dynamic_edit col-md-9">
-          <div className="edit-profile-xl row">
-
-        <label>
-          نام:
-          <input type="text" id='your_name' value={this.state.firstName} onChange={this.editFirstName.bind(this)} />
-        </label>
-        <label>
-        نام خانوادگی:
+        <div className="col-md-3"></div>
+        <div className="profile_dynamic_edit col-md-6 col-xs-12">
+        <div className="col-md-3"></div>
+          <div className="edit-profile-xl" dir="rtl">
+            <div>
+            <span>
+            <label className='become-host-labels'>
+              <div>
+              نام:
+              </div>
+              <input type="text" id='your_name' value={this.state.firstName} onChange={this.editFirstName.bind(this)} />
+            </label>
+            </span>
+            <label className='become-host-labels'>
+          <div>
+          نام خانوادگی:
+          </div>
         <input type="text" value={this.state.lastName} onChange={this.editLastName.bind(this)} />
        </label>
-       <label>
+       </div>
+       <div>
+       <span>
+       <label className='become-host-labels'>
+       <div>
       شماره تلفن:
+      </div>
       <input type="text" value={this.state.cellphone} onChange={this.editCellPhone.bind(this)} />
      </label>
-     <label>
+     </span>
+     <span>
+     <label className='become-host-labels'>
+     <div>
      شهر:
+     </div>
      <input type="text" value={this.state.city} onChange={this.editCity.bind(this)} />
      </label>
-     <label>
+     </span>
+     </div>
+     <div className='hala'>
+     <label className='become-host-labels' >
+     <div>
     ( ایمیل (اختیاری
+      </div>
     <input type="text" value={this.state.email} onChange={this.editEmail.bind(this)} />
     </label>
-    <div>
-   <button className="save-edit" color="blue" onClick={this.changeInfOnServer.bind(this)}>ارسال درخواست </button>
-    </div>
 
+    <div className='become-host-labels'>
+   <Button className="save-edit" color="blue" onClick={this.changeInfOnServer.bind(this)}>ارسال درخواست </Button>
+   </div>
+    </div>
       </div>
       </div>
+
       </div>
       </div>
     );
