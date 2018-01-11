@@ -827,13 +827,21 @@ border-width: 2px;
   color: #454545;
   font-family: IRANSans;
   text-align: right;
-
+  margin-bottom: 4px !important;
 }
 .des-main{
   font-size: 1rem;
   font-style: normal;
   font-weight: 300;
   color: #737373;
+}
+.des-main-xs{
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 300;
+  color: #737373;
+  font-family: IRANSans;
+  text-align: right;
 }
 .host-info{
   display: -webkit-flex; /* Safari */

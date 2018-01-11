@@ -4,17 +4,24 @@ import scrollToComponent from 'react-scroll-to-component';
 import {Sticky,Divider} from 'semantic-ui-react';
 import {Button} from 'react-bootstrap';
 import ReservePanel from './HouseDetailParts/ReservePanel.js';
-import MainDiscription from './HouseDetailParts/MainDiscription';
+// import MainDiscription from './HouseDetailParts/MainDiscription';
+
 import AddressDiscription from './HouseDetailParts/AddressDiscription';
 import AmenitiesDiscription from './HouseDetailParts/AmenitiesDiscription';
 import RatingDiscription from './HouseDetailParts/RatingDiscription';
-import HostInfoDiscription from './HouseDetailParts/HostInfoDiscription';
-import {englishToPersianDigits} from './tools/EnglishToPersianDigits';
+import HostInfoDiscription from './HouseDetailParts/HostInfoDiscription.js';
+
+import {englishToPersianDigits} from './tools/EnglishToPersianDigits.js';
+
 import {normalReservePanelHouseDetails, fixedReservePanelHouseDetails,normalScrolllListHouseDetails , fixedScrollListHouseDetails} from './Styles.js';
 import AspectRatio from 'react-aspect-ratio';
 import GoogleApiWrapper from './HouseDetailParts/MapRenderer.js';
 import {Modal} from 'react-bootstrap';
 
+import UtilitiesDescription from './HouseDetailParts/UtilitiesDescription.js';
+import CheckInCheckOutDescription from './HouseDetailParts/CheckInCheckOutDescription.js';
+import MaxCapacity from './HouseDetailParts/MaxCapacity.js';
+import RulesDescription from './HouseDetailParts/RulesDescription.js';
 
 class HouseDetails extends React.Component {
   constructor(props){
@@ -264,7 +271,10 @@ class HouseDetails extends React.Component {
                   <HostInfoDiscription homeData={this.state.homeData}/>
                   <div className="divider"></div>
                   <section className='law-scroller' ref={(section) => { this.Laws = section; }}></section>
-                  <MainDiscription homeData={this.state.homeData} />
+                  <UtilitiesDescription homeData={this.state.homeData}/>
+                  <CheckInCheckOutDescription homeData={this.state.homeData}/>
+                  <MaxCapacity homeData={this.state.homeData}/>
+                  <RulesDescription homeData= {this.state.homeData} />
                   <section className='map-scroller' ref={(section) => { this.Map = section; }}></section>
                     {this.renderMap()}
                   <div className="padding100">
@@ -295,6 +305,12 @@ class HouseDetails extends React.Component {
 
             <Divider/>
             <AmenitiesDiscription homeData={this.state.homeData} />
+
+
+            <UtilitiesDescription homeData={this.state.homeData}/>
+            <CheckInCheckOutDescription homeData={this.state.homeData}/>
+            <MaxCapacity homeData={this.state.homeData}/>
+            <RulesDescription homeData= {this.state.homeData} />
             <Divider/>
 
 
