@@ -1,7 +1,8 @@
 import React from 'react';
 import Lightbox from 'react-image-lightbox';
 import scrollToComponent from 'react-scroll-to-component';
-import {Button,Sticky,Divider} from 'semantic-ui-react';
+import {Sticky,Divider} from 'semantic-ui-react';
+import {Button} from 'react-bootstrap';
 import ReservePanel from './HouseDetailParts/ReservePanel.js';
 import MainDiscription from './HouseDetailParts/MainDiscription';
 import AddressDiscription from './HouseDetailParts/AddressDiscription';
@@ -12,6 +13,7 @@ import {englishToPersianDigits} from './tools/EnglishToPersianDigits';
 import {normalReservePanelHouseDetails, fixedReservePanelHouseDetails,normalScrolllListHouseDetails , fixedScrollListHouseDetails} from './Styles.js';
 import AspectRatio from 'react-aspect-ratio';
 import GoogleApiWrapper from './HouseDetailParts/MapRenderer.js';
+import {Modal} from 'react-bootstrap';
 
 
 class HouseDetails extends React.Component {
@@ -25,6 +27,7 @@ class HouseDetails extends React.Component {
       reservePanelFixed : false,
       scrollListFixed:false,
       showReservePanel : true,
+      showReservePanelXs:false,
       token: null,
       searchParams : {
         id: null,
@@ -98,6 +101,14 @@ class HouseDetails extends React.Component {
        return <ReservePanel homeData = {this.state.homeData}/>
      }
    }
+   renderReservePanelXs(){
+     return(
+       <Modal show={this.state.showReservePanelXs}
+              onHide={()=>{this.setState({showReservePanelXs:false})}}>
+          <ReservePanel homeData = {this.state.homeData}/>
+       </Modal>
+     );
+     }
    renderHomeTitle()
    {
      return (
@@ -249,22 +260,14 @@ class HouseDetails extends React.Component {
                     {this.renderPreview()}
                     {this.renderHouseGallery()}
                   </div>
-                  <div className="col-details-house">
-                    <section className='about-scroller' ref={(section) => { this.Dis = section; }}></section>
-                    <AmenitiesDiscription homeData={this.state.homeData} />
-                    <div className="main-descriptions row">
-                     <p className='des-header'> درباره این خانه </p>
-                     <p className='des-main'> {this.state.homeData.description} </p>
-                    </div>
-                      <section className='violet' ref={(section) => { this.Violet = section; }}></section>
-                    <HostInfoDiscription homeData={this.state.homeData}/>
-                    <div className="divider"></div>
-                    <section className='law-scroller' ref={(section) => { this.Laws = section; }}></section>
-                    <MainDiscription homeData={this.state.homeData} />
-                    <section className='map-scroller' ref={(section) => { this.Map = section; }}></section>
-                      {this.renderMap()}
-                    <div className="padding100">
-                    </div>
+                    <section className='violet' ref={(section) => { this.Violet = section; }}></section>
+                  <HostInfoDiscription homeData={this.state.homeData}/>
+                  <div className="divider"></div>
+                  <section className='law-scroller' ref={(section) => { this.Laws = section; }}></section>
+                  <MainDiscription homeData={this.state.homeData} />
+                  <section className='map-scroller' ref={(section) => { this.Map = section; }}></section>
+                    {this.renderMap()}
+                  <div className="padding100">
                   </div>
                 </div>
             </div>
@@ -288,7 +291,7 @@ class HouseDetails extends React.Component {
             <Divider/>
 
              <p className='des-header-xs'> درباره این خانه </p>
-             <p className='des-main'> {this.state.homeData.description} </p>
+             <p className='des-main-xs'> {this.state.homeData.description} </p>
 
             <Divider/>
             <AmenitiesDiscription homeData={this.state.homeData} />
@@ -299,20 +302,22 @@ class HouseDetails extends React.Component {
           <div className="map-holder-xs">
             {this.renderMap()}
           </div>
-
-        </div>
-        <div className="reserve-bottom-xs navbar-fixed-bottom">
-            <div className="price-div-xs">
-              <div className = "price-xs">
-                <p className="text-017"> هر شب / </p>
-                <p className='text-018'> تومان</p>
-                <p className='text-018'> {englishToPersianDigits(this.state.homeData.price)} </p>
+          <div className="reserve-bottom-xs navbar-fixed-bottom">
+              <div className="price-div-xs hidden-xl visible-xs">
+                <div className = "price-xs">
+                  <p className="text-017"> هر شب / </p>
+                  <p className='text-018'> تومان</p>
+                  <p className='text-018'> {englishToPersianDigits(this.state.homeData.price)} </p>
+                </div>
               </div>
-            </div>
-          <Button color='blue' className='reserve-button-xs'>
-            !رزرو کنید
-          </Button>
+            <Button onClick={()=>{this.setState({showReservePanelXs:true})}}className='reserve-button-xs hidden-xl visible-xs'>
+              !رزرو کنید
+            </Button>
+            {this.renderReservePanelXs()}
+
+          </div>
         </div>
+
 
       </div>
     );

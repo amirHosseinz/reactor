@@ -45,7 +45,8 @@ class SearchBar extends React.Component {
     this.renderFromDatePicker();
     this.setState({
       token : this.getRelevantToken(),
-    }, () => {this.getCityListFromServer()});
+    }, );
+    // () => {this.getCityListFromServer()}
   }
   renderData(houseData) {
    this.setState({
@@ -64,6 +65,7 @@ class SearchBar extends React.Component {
                   <div className="multi-input-typeahead">
                     <Typeahead
                       className="typeahead-indetail-xl"
+                      onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
                       minLength={2}
                       align="right"
                       onInputChange={(input)=> {this.setState({city:input})}}
@@ -129,7 +131,11 @@ class SearchBar extends React.Component {
       </div>
     );
   }
-
+  handleSearchByEnter(event){
+    if(event.key==="Enter" && this.state.city!==null && this.state.city!==''){
+      this.handleClick();
+    }
+  }
   renderSearchBarOnlycity(){
     return(
       <div className='only-city-search-bar row'>
@@ -154,6 +160,7 @@ class SearchBar extends React.Component {
                 <Typeahead
                     id="searchbox"
                     bsSize="large"
+                    onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
                     onInputChange={(input)=> {this.setState({city:input})}}
                     autoFocus={true}
                     placeholder="!مقصد خود را وارد نمایید"
@@ -297,6 +304,7 @@ class SearchBar extends React.Component {
     var request = new Request('https://www.trypinn.com/api/search/',{
       method: 'POST',
       body: JSON.stringify({
+        platform:'web',
         location: this.state.searchParams.location,
         start_date: this.state.searchParams.start_date,
         end_date: this.state.searchParams.end_date,
@@ -352,6 +360,9 @@ class SearchBar extends React.Component {
    getCityListFromServer(){
      var request = new Request('https://www.trypinn.com/api/homepage/',{
        method: 'POST',
+       body: JSON.stringify({
+         platform:'web',
+     }),
        headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
        'Authorization': 'Token '+this.state.token,})
      });
@@ -400,10 +411,11 @@ class SearchBar extends React.Component {
                   minLength={2}
                   selectHintOnEnter={true}
                   submitFormOnEnter={true}
+                  onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
                   emptyLabel="نتیجه‌ای یافت نشد"
                   maxResults={5}
                   className="typeahead-onlycity-sm"
-                  onChange={(selected) => {this.setState({city:selected[0]} , ()=>this.handleClick())
+                  onChange={(selected) => {this.setState({city:selected[0]} ,()=>this.handleClick())
                   }}
                   options={listOfCity}
                   />
@@ -426,6 +438,7 @@ class SearchBar extends React.Component {
             align="right"
             emptyLabel="نتیجه‌ای یافت نشد"
             maxResults={5}
+            onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
             selectHintOnEnter={true}
             submitFormOnEnter={true}
             onInputChange={(input)=> {this.setState({city:input})}}

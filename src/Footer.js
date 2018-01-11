@@ -3,10 +3,13 @@ import React from 'react';
 
 
 class Footer extends React.Component{
+  constructor(props){
+    super(props);
+  }
 
-  render()
-  {
-    return (
+  renderFooter(){
+    if(window.location.href.indexOf('rooms')===-1){
+      return (
         <div>
           <div className='footer hidden-xs visible-xl navbar-fixed-bottom'>
             <div className='footerchild' >
@@ -59,6 +62,21 @@ class Footer extends React.Component{
             </div>
           </div>
         </div>
+      );
+    }
+    else{
+      return(
+        <div>
+        </div>
+      );
+    }
+  }
+  render()
+  {
+    return (
+      <div>
+        {this.renderFooter()}
+      </div>
     );
   }
 }

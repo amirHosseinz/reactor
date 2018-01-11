@@ -53,26 +53,23 @@ class Trips extends React.Component{
           <div key={item.id} onClick={() =>{
             this.showTripItemClick(item)
           }}>
-          <ListGroupItem className="scroll-list-trips">
+          <ListGroupItem>
             <div className="preview">
-            <img src={"https:/trypinn.com"+ item.room.preview}
-
-            alt=""/>
+              <img src={"https:/trypinn.com"+ item.room.preview}
+              height='10px'
+              width='10px'
+              alt=""/>
             </div>
-            <div className="title">
-              {item.room.title}
+              <div className="title">
+                {item.room.title}
               </div>
               <div className="location">
-              {item.room.address}
+                {item.room.address}
               </div>
             </ListGroupItem>
           </div>
         );
       });
-      console.log("reserve_list:::::::::::::::::::::")
-      console.log(reserve_list);
-      console.log("list:::::::::::::::::::::")
-      console.log(list);
       return(
         <ListGroup>{list}</ListGroup>
       );
