@@ -4,24 +4,23 @@ import scrollToComponent from 'react-scroll-to-component';
 import {Sticky,Divider} from 'semantic-ui-react';
 import {Button,Carousel} from 'react-bootstrap';
 import ReservePanel from './HouseDetailParts/ReservePanel.js';
-
 import AddressDiscription from './HouseDetailParts/AddressDiscription';
 import AmenitiesDiscription from './HouseDetailParts/AmenitiesDiscription';
 import RatingDiscription from './HouseDetailParts/RatingDiscription';
 import HostInfoDiscription from './HouseDetailParts/HostInfoDiscription.js';
-
 import {englishToPersianDigits} from './tools/EnglishToPersianDigits.js';
-
 import {normalReservePanelHouseDetails, fixedReservePanelHouseDetails,normalScrolllListHouseDetails , fixedScrollListHouseDetails} from './Styles.js';
 import AspectRatio from 'react-aspect-ratio';
 import GoogleApiWrapper from './HouseDetailParts/MapRenderer.js';
 import {Modal} from 'react-bootstrap';
-
 import UtilitiesDescription from './HouseDetailParts/UtilitiesDescription.js';
 import CheckInCheckOutDescription from './HouseDetailParts/CheckInCheckOutDescription.js';
 import MaxCapacity from './HouseDetailParts/MaxCapacity.js';
 import RulesDescription from './HouseDetailParts/RulesDescription.js';
 
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 class HouseDetails extends React.Component {
   constructor(props){
@@ -159,14 +158,25 @@ class HouseDetails extends React.Component {
       <img alt="" src={image}/>
     </Carousel.Item>
   )
-     return(<div className = "housedetail-img">
-              <AspectRatio ratio="16/11" style={{maxWidth: '100%', }}>
-                <Carousel  wrap={true} controls={false}>
-                  {carouselList}
-                </Carousel>
-              </AspectRatio>
-             </div>);
-   }
+  var sliderList= imagesList.map((image)=>
+    <img alt="" src={image}/>
+)
+
+  var settings = {
+    dots: true,
+    lazyLoad:true,
+    infinite: true,
+    dotsClass: 'slick-dots slick-thumb',
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  };
+    return(
+      <Slider {...settings}>
+      {sliderList}
+      </Slider>
+    );
+  }
  }
  renderHouseGallery(){
    if (this.state.homeData !==''){
