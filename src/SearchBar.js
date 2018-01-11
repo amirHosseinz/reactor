@@ -43,9 +43,10 @@ class SearchBar extends React.Component {
   componentWillMount(){
     this.renderToDatePicker();
     this.renderFromDatePicker();
-    // this.setState({
-    //   token : this.getRelevantToken(),
-    // }, () => {this.getCityListFromServer()});
+    this.setState({
+      token : this.getRelevantToken(),
+    }, );
+    // () => {this.getCityListFromServer()}
   }
   renderData(houseData) {
    this.setState({

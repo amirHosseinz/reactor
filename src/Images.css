@@ -1,5 +1,7 @@
-.scroll-list-trips{
-
+.scroll-list-trips {
+  overflow-y: scroll;
+  /* -webkit-overflow-scrolling: touch; */
+  background-color:blue !important;
 }
 .scroll-list-requests{
 
