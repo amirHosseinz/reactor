@@ -145,65 +145,106 @@ class UserProfile extends React.Component{
   }
   render(){
     return(
-      <div className="profile-container">
-          <div className="profile-container-margined">
-            <div className="profile_dynamic_edit col-md-9">
-              <div className="edit-profile-xl row">
-                  <p className="dashboard-header"> ویرایش حساب کاربری </p>
-              </div>
-              <div className="edit-profile-xl-inputs" dir="rtl">
-              <div className="edit-prof-row1 row">
+        <div>
+        <div className="profile-container hidden-xs visible-xl">
+            <div className="profile-container-margined">
+              <div className="profile_dynamic_edit col-md-9">
+                <div className="edit-profile-xl row">
+                    <p className="dashboard-header"> ویرایش حساب کاربری </p>
+                </div>
+                <div className="edit-profile-xl-inputs" dir="rtl">
+                <div className="edit-prof-row1 row">
+                    <div className="col-md-4">
+                      <p className="profile-labels">نام:</p>
+                      <input id='first-name' onChange={this.editFirstName.bind(this)} className="first-name  form-control"  value={this.state.firstName}/>
+                    </div>
                   <div className="col-md-4">
-                    <p className="profile-labels">نام:</p>
-                    <input id='first-name' onChange={this.editFirstName.bind(this)} className="first-name input-sm form-control"  value={this.state.firstName}/>
+                    <p className="profile-labels">نام خانوادگی:</p>
+                    <input id='last-name'onChange={this.editLastName.bind(this)} className="last-name form-control"  value={this.state.lastName}/>
                   </div>
-                <div className="col-md-4">
+                  <div className="col-md-4">
+                    <p className="profile-labels">کد ملی:</p>
+                    <input id='national-id' onChange={this.editNationalId.bind(this)} className="national-id form-control" value={this.state.nationalId}/>
+                  </div>
+                </div>
+                <div className="edit-prof-row1 row">
+
+                  <div className="col-md-4">
+                    <p className="profile-labels">شماره همراه: </p>
+                    <input id='cell-phone' onChange={this.editCellPhone.bind(this)} className="cell-phone  form-control" value={this.state.cellPhone}/>
+                  </div>
+                  <div className="col-md-4">
+                    <p className="profile-labels">ایمیل:</p>
+                    <input id='email' onChange={this.editEmail.bind(this)} className="email  form-control"  value={this.state.email}/>
+                  </div>
+                  <div className="col-md-4">
+                  </div>
+                </div>
+                <div className="edit-prof-row1 row">
+                  <div className="col-md-4">
+                    <p className="profile-labels">رمز عبور:</p>
+                    <input id='password'onChange={this.editPassword.bind(this)} className="password  form-control" type="password"/>
+                  </div>
+                  <div className="col-md-4">
+                    <p className="profile-labels">تکرار رمز عبور:</p>
+                    <input id='confirm-password' className="profile-labels  form-control" type="password" value={this.state.confirmPassword}/>
+                  </div>
+                  <div className="col-md-4">
+                  </div>
+                </div>
+
+                <div className="row">
+                  <div className="col-md-12">
+                    <Button className="save-edit" color="blue" onClick={this.handleSaveInfo.bind(this)}> ذخیره </Button>
+                  </div>
+                </div>
+                </div>
+              </div>
+              <div className="profile_static_bar col-md-3">
+                  {this.renderUserProfile()}
+              </div>
+            </div>
+        </div>
+        <div className="profile-container-xs visible-xs hidden-xl">
+          {this.renderUserProfile()}
+          <div className="edit-profile-xs" dir="rtl">
+            <div className="edit-profile-xs-margined" dir="rtl">
+                <div className="edit-prof-xs-item">
+                  <p className="profile-labels">نام:</p>
+                  <input id='first-name' onChange={this.editFirstName.bind(this)} className="first-name edit-profle-inp form-control"  value={this.state.firstName}/>
+                </div>
+                <div className="edit-prof-xs-item">
                   <p className="profile-labels">نام خانوادگی:</p>
-                  <input id='last-name'onChange={this.editLastName.bind(this)} className="last-name input-sm form-control"  value={this.state.lastName}/>
+                  <input id='last-name'onChange={this.editLastName.bind(this)} className="last-name edit-profle-inp form-control"  value={this.state.lastName}/>
                 </div>
-                <div className="col-md-4">
+                <div className="edit-prof-xs-item">
                   <p className="profile-labels">کد ملی:</p>
-                  <input id='national-id' onChange={this.editNationalId.bind(this)} className="national-id input-sm form-control" value={this.state.nationalId}/>
+                  <input id='national-id' onChange={this.editNationalId.bind(this)} className="national-id edit-profle-inp form-control" value={this.state.nationalId}/>
                 </div>
-              </div>
-              <div className="edit-prof-row1 row">
-
-                <div className="col-md-4">
+                <div className="edit-prof-xs-item">
                   <p className="profile-labels">شماره همراه: </p>
-                  <input id='cell-phone' onChange={this.editCellPhone.bind(this)} className="cell-phone input-sm form-control" value={this.state.cellPhone}/>
+                  <input id='cell-phone' onChange={this.editCellPhone.bind(this)} className="cell-phone edit-profle-inp form-control" value={this.state.cellPhone}/>
                 </div>
-                <div className="col-md-4">
+                <div className="edit-prof-xs-item">
                   <p className="profile-labels">ایمیل:</p>
-                  <input id='email' onChange={this.editEmail.bind(this)} className="email input-sm form-control"  value={this.state.email}/>
+                  <input id='email' onChange={this.editEmail.bind(this)} className="email edit-profle-inp form-control"  value={this.state.email}/>
                 </div>
-                <div className="col-md-4">
+                <div className="edit-prof-xs-item">
+                  <p className="profile-labels">رمز عبور:</p>
+                  <input id='password'onChange={this.editPassword.bind(this)} className="password edit-profle-inp form-control1" type="password"/>
                 </div>
-              </div>
-              <div className="edit-prof-row1 row">
-                <div className="col-md-4">
-                  <p className="profile-labels">رمز عبو:</p>
-                  <input id='password'onChange={this.editPassword.bind(this)} className="password input-sm form-control" type="password"/>
-                </div>
-                <div className="col-md-4">
+                <div className="edit-prof-xs-item">
                   <p className="profile-labels">تکرار رمز عبور:</p>
-                  <input id='confirm-password' className="profile-labels input-sm form-control" type="password" value={this.state.confirmPassword}/>
+                  <input id='confirm-password' className="profile-labels edit-profle-inp form-control" type="password" value={this.state.confirmPassword}/>
                 </div>
-                <div className="col-md-4">
-                </div>
-              </div>
-
-              <div className="row">
-                <div className="col-md-12">
+                <div className="save-edit-xs">
                   <Button className="save-edit" color="blue" onClick={this.handleSaveInfo.bind(this)}> ذخیره </Button>
                 </div>
-              </div>
-              </div>
-            </div>
-            <div className="profile_static_bar col-md-3">
-                {this.renderUserProfile()}
             </div>
           </div>
+        </div>
       </div>
+
     );
   }
 }

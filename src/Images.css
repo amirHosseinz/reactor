@@ -150,7 +150,6 @@
 
   }
   .profile-container{
-    background-color: #f6f6f6 !important  ;
   }
   .price{
     display: -webkit-flex; /* Safari */
@@ -1362,7 +1361,6 @@ padding-bottom: 28px;
   height: 30px;
 }
 .profile-container-margined{
-  height : 900px;
   width: 80%;
   margin:auto;
   margin-top: 30px;
@@ -1438,7 +1436,7 @@ margin-top: 20px;
 }
 .profile_dynamic_edit{
   box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
-  padding-bottom: 200px;
+  height:500px;
 }
 .host-photo{
 width: 100%;
@@ -1519,6 +1517,11 @@ text-align:center;
 }
 .save-edit{
     font-family: IRANSans !important;
+}
+.save-edit-xs{
+  font-family: IRANSans !important;
+  text-align:center;
+  margin: auto !important;
 }
 .ui.blue.button{
   background-color: #42b0c6 !important;
@@ -1687,6 +1690,10 @@ padding-top: 80px;
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+.edit-profle-inp{
+  font-family: IRANSans !important;
+
+}
 .guestnumber-option{
   font-family: IRANSans !important;
   font-size: 12px !important;
@@ -1835,4 +1842,19 @@ padding-top: 80px;
 }
 .amanities-div-xs{
     text-align: center;
+}
+.profile-container-xs{
+  margin-top:55px;
+}
+.edit-profile-xs{
+  margin-top: -180px;
+  margin-bottom: 30px;
+
+}
+.edit-profile-xs-margined{
+  width: 84%;
+  margin: auto;
+}
+.edit-prof-xs-item{
+  margin-bottom: 20px;
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import Lightbox from 'react-image-lightbox';
 import scrollToComponent from 'react-scroll-to-component';
 import {Sticky,Divider} from 'semantic-ui-react';
-import {Button} from 'react-bootstrap';
+import {Button,Carousel} from 'react-bootstrap';
 import ReservePanel from './HouseDetailParts/ReservePanel.js';
 import MainDiscription from './HouseDetailParts/MainDiscription';
 import AddressDiscription from './HouseDetailParts/AddressDiscription';
@@ -135,6 +135,28 @@ class HouseDetails extends React.Component {
                  src={"https://www.trypinn.com"+this.state.homeData.preview}  className="house-details-preview"
                  alt = ""/>
                  <Button onClick={this.showHouseGallery.bind(this)} className="show-gallery-button-house-details"> مشاهده تصاویر </Button>
+              </AspectRatio>
+             </div>);
+   }
+ }
+ renderPreviewXs(){
+   if(this.state.homeData!==''){
+       var imagesList = [];
+       for (var i = 0; i < this.state.homeData.images.length; i++) {
+        imagesList.push(
+          "https://www.trypinn.com"+ this.state.homeData.images[i].image
+        );
+       }
+    var carouselList= imagesList.map((image)=>
+    <Carousel.Item>
+      <img alt="" src={image}/>
+    </Carousel.Item>
+  )
+     return(<div className = "housedetail-img">
+              <AspectRatio ratio="16/11" style={{maxWidth: '100%', }}>
+                <Carousel nextIcon='' prevIcon='' wrap={false} controls={false}>
+                  {carouselList}
+                </Carousel>
               </AspectRatio>
              </div>);
    }
@@ -277,8 +299,7 @@ class HouseDetails extends React.Component {
 
         <div className="housedetail-xs visible-xs hidden-xl">
           <div className='housedetail-img-xs'>
-            {this.renderPreview()}
-            {this.renderHouseGallery()}
+            {this.renderPreviewXs()}
           </div>
           <div className="house-detail-top-margined-xs visible-xs hidden-xl">
             {this.renderHomeTitleXs()}
