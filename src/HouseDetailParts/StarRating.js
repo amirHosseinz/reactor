@@ -9,7 +9,7 @@ class MainStarRating extends React.Component{
       <div className="rating">
       <ReactStars
         count={5}
-        size={24}
+        size={18}
         value={this.props.value}
         edit={false}
         color2={'#ffd700'} />
