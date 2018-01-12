@@ -245,7 +245,7 @@ class SearchBar extends React.Component {
       counter++;
       if (counter===1) {
         listOfFive.push(
-          <div className="full-width col-md-1">
+          <div className="full-width col-md-1 right-align">
           </div>
         );
       }
@@ -301,6 +301,43 @@ class SearchBar extends React.Component {
       results.push(
         <div className="row">
         {listOfThree}
+        </div>
+      );
+    }
+    return results;
+  }
+
+  renderHousesCol1 () {
+    var results = [];
+    var initList = this.state.houseList.map((houseItem) => {
+      return(
+        <div className="pre-img-result full-width"
+         key = {houseItem.id}>
+         <SearchResult
+          room = {houseItem}
+          preview ={"https://www.trypinn.com" + houseItem.preview} />
+        </div>
+      );
+    });
+    var counter = 0;
+    var listOfOne = [];
+    initList.map((item) => {
+      counter++;
+      listOfOne.push(item);
+      if (counter===1) {
+        counter = 0;
+        results.push(
+          <div className="row">
+          {listOfOne}
+          </div>
+        );
+        listOfOne = [];
+      }
+    });
+    if (listOfOne.length > 0) {
+      results.push(
+        <div className="row">
+        {listOfOne}
         </div>
       );
     }
@@ -533,7 +570,7 @@ class SearchBar extends React.Component {
                   <div className="row">
                   </div>
             {this.renderRelevantSearchBarXs()}
-            {this.renderHousesCol3()}
+            {this.renderHousesCol1()}
 
             <div className='mobile-margined-search'>
               <div className="main-zone-xs col-md-12">

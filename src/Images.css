@@ -1265,6 +1265,7 @@ justify-content: center;
 .pre-img-result{
   padding-left: 7px !important;
   padding-right: 7px !important;
+  float: right !important;
 }
 .result-title{
   margin-top: 4px;
@@ -1988,14 +1989,6 @@ padding-top: 80px;
   margin-bottom: 20px;
 }
 
-.col-md-2 {
-    float: right !important;
-}
-
-.col-md-1 {
-    float: right !important;
-}
-
-.col-sm-4 {
-    float: right !important;
+.right-align{
+  float: right !important;
 }
