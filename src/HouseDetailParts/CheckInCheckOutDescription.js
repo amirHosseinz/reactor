@@ -11,9 +11,15 @@ class CheckInCheckOutDescription extends React.Component{
     const checkin1=checkin.split(":", 2);
     const checkintill1=checkintill.split(":", 2);
     return(
-      <div className="check-in">
+
+       <div className="public-rules-div">
+         <img src={require('./rules/checkin.png')}   className="other-rules-icon" alt = "" />
+         <p className="facility-text">
        ساعت ورود: {englishToPersianDigits(checkin1[0]+":"+checkin1[1]+" تا "+checkintill1[0]+":"+checkintill1[1])}
-       </div>
+         </p>
+         </div>
+
+
     );
   }
   return null;
@@ -24,8 +30,11 @@ class CheckInCheckOutDescription extends React.Component{
     const checkout1=checkout.split(":", 2);
     return(
 
-      <div className="check-out">
-       ساعت خروج: {englishToPersianDigits(checkout1[0]+":"+checkout1[1])}
+      <div className="public-rules-div">
+        <img src={require('./rules/checkout.png')}   className="other-rules-icon" alt = "" />
+        <p className="facility-text">
+         ساعت خروج: {englishToPersianDigits(checkout1[0]+":"+checkout1[1])}
+       </p>
       </div>
     );
   }
