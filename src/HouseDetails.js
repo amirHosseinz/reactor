@@ -2,7 +2,7 @@ import React from 'react';
 import Lightbox from 'react-image-lightbox';
 import scrollToComponent from 'react-scroll-to-component';
 import {Sticky,Divider} from 'semantic-ui-react';
-import {Button,Carousel} from 'react-bootstrap';
+import {Button,Carousel,Image} from 'react-bootstrap';
 import ReservePanel from './HouseDetailParts/ReservePanel.js';
 import AddressDiscription from './HouseDetailParts/AddressDiscription';
 import AmenitiesDiscription from './HouseDetailParts/AmenitiesDiscription';
@@ -153,18 +153,13 @@ class HouseDetails extends React.Component {
           "https://www.trypinn.com"+ this.state.homeData.images[i].image
         );
        }
-    var carouselList= imagesList.map((image)=>
-    <Carousel.Item>
-      <img alt="" src={image}/>
-    </Carousel.Item>
-  )
   var sliderList= imagesList.map((image)=>
-    <img alt="" src={image}/>
-)
+    <img alt="" src={image} />
+  );
 
   var settings = {
     customPaging: (i)=>{
-        return (<a><img height="20px" width="20px" src={imagesList[i]}/></a>);
+        return (<a><Image src={imagesList[i]} circle height="25px" width="25px"/></a>);
 },
     dots: true,
     lazyLoad:false,
