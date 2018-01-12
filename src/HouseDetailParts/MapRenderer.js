@@ -8,6 +8,7 @@ export class MapRenderer extends React.Component{
           <div className="hidden-xs visible-xl">
             <Map
               google={this.props.google}
+              onChange={(event)=>{console.log(event)}}
               zoom={this.props.zoom}
               className="kolsoom"
               initialCenter={this.props.position}
