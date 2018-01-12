@@ -186,6 +186,7 @@ class SearchBar extends React.Component {
             <div className="searchbar-zone">
                 <Typeahead
                     id="searchbox"
+                    autoFocus={true}
                     bsSize="large"
                     onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
                     onInputChange={(input)=> {this.setState({city:input})}}
