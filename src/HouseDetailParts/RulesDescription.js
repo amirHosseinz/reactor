@@ -10,7 +10,7 @@ class RulesDescription extends React.Component{
     if (smoking===false){
       return(
         <div className="public-rules-div">
-          <img src={require('./rules/cigarette.png')}   className="other-amanities-icon" alt = "" />
+          <img src={require('./rules/cigarette.png')}   className="other-rules-icon" alt = "" />
           <p className="facility-text">ممنوعیت استعمال دخانیات </p>
         </div>
       );
@@ -23,7 +23,7 @@ renderPet(){
   if(pet===false){
     return(
       <div className="public-rules-div">
-        <img src={require('./rules/dog.png')}   className="other-amanities-icon" alt = "" />
+        <img src={require('./rules/dog.png')}   className="other-rules-icon" alt = "" />
         <p className="facility-text">ممنوعیت ورود حیوان به خانه</p>
         </div>
     );
@@ -36,23 +36,14 @@ renderParty(){
   if(party===false){
     return(
       <div className="public-rules-div">
-      <img src={require('./rules/singles.png')}   className="other-amanities-icon" alt = "" />
+      <img src={require('./rules/singles.png')}   className="other-rules-icon" alt = "" />
         <p className="facility-text">ممنوعیت برگزاری جشن </p>
       </div>
     );
   }
 }
 
-renderSpecialRules (){
-  if(this.props.homeData.special_rules!==''){
-    return (
-      <div className='special-rules'>
-          <p> :قوانین خاص این خانه </p>
-          <p>{this.props.homeData.special_rules}</p>
-      </div>
-    );
-  }
-}
+
   render(){
     return(
         <div className="main-descriptions row">
@@ -61,9 +52,7 @@ renderSpecialRules (){
             {this.renderPet()}
             {this.renderSmoking()}
           </div>
-           <div>
-              {this.renderSpecialRules()}
-            </div>
+
         </div>
     );
   }
