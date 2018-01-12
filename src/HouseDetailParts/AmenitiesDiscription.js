@@ -28,6 +28,8 @@ class AmenitiesDiscription extends React.Component{
              <p className='aminities-text'> مهمان </p>
           </div>
         </div>
+
+
         <div className="hidden-xl visible-xs">
           <div className="main-amanities-xs">
             <div className='amanities-div-xs col-xs-3'>

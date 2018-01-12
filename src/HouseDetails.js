@@ -17,7 +17,7 @@ import UtilitiesDescription from './HouseDetailParts/UtilitiesDescription.js';
 import CheckInCheckOutDescription from './HouseDetailParts/CheckInCheckOutDescription.js';
 import MaxCapacity from './HouseDetailParts/MaxCapacity.js';
 import RulesDescription from './HouseDetailParts/RulesDescription.js';
-
+import SpecialRule from  './HouseDetailParts/SpecialRule.js';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -275,7 +275,7 @@ class HouseDetails extends React.Component {
           </div>
           <div className='house-detail-top'>
               <div className="house-detail-top-margined">
-                <div className="col-md-3 hidden-xs visible-xl">
+                <div className="col-md-3 hidden-xs hidden-sm visible-xl">
                   <Sticky context={this.state.contextRef}
                   onStick={this.handleStickReservePanel.bind(this)}
                   onUnstick={this.handleUnstickReservePanel.bind(this)}
@@ -302,15 +302,47 @@ class HouseDetails extends React.Component {
                     {this.renderPreview()}
                     {this.renderHouseGallery()}
                   </div>
-                    <section className='violet' ref={(section) => { this.Violet = section; }}></section>
-                  <HostInfoDiscription homeData={this.state.homeData}/>
-                  <div className="divider"></div>
+                  <section className='violet' ref={(section) => { this.Violet = section; }}></section>
+                  <AmenitiesDiscription homeData={this.state.homeData} />
+                  <br/>
+                  <Divider/>
+                  <div>
+                    <HostInfoDiscription homeData={this.state.homeData}/>
+                    <p className='des-main-xs'> {this.state.homeData.description} </p>
+
+                  </div>
+
+                  <Divider/>
+
                   <section className='law-scroller' ref={(section) => { this.Laws = section; }}></section>
+
+
+                  <p className='des-header-xl'> سایر امکانات </p>
                   <UtilitiesDescription homeData={this.state.homeData}/>
-                  <CheckInCheckOutDescription homeData={this.state.homeData}/>
-                  <MaxCapacity homeData={this.state.homeData}/>
-                  <RulesDescription homeData= {this.state.homeData} />
+
+                  <Divider/>
+                  <p className='des-header-xl'> قوانین و مقررات </p>
+
+                    <div>
+                      <div className="rules-half col-md-6">
+                      <RulesDescription homeData= {this.state.homeData} />
+
+                      </div>
+                      <div className="rules-half col-md-6">
+                      <CheckInCheckOutDescription homeData={this.state.homeData}/>
+                      <MaxCapacity homeData={this.state.homeData}/>
+                      </div>
+                    </div>
+                    <SpecialRule homeData={this.state.homeData}/>
+
+
+
+
+
                   <section className='map-scroller' ref={(section) => { this.Map = section; }}></section>
+
+                  <div className="padding10">
+                  </div>
                     {this.renderMap()}
                   <div className="padding100">
                   </div>
