@@ -1943,3 +1943,15 @@ padding-top: 80px;
 .edit-prof-xs-item{
   margin-bottom: 20px;
 }
+
+.col-md-2 {
+    float: right !important;
+}
+
+.col-md-1 {
+    float: right !important;
+}
+
+.col-sm-4 {
+    float: right !important;
+}
