@@ -1,22 +1,50 @@
 import React from 'react';
 import SearchResult from './SearchResult';
-import {Typeahead} from 'react-bootstrap-typeahead';
-import { Button} from 'semantic-ui-react';
-import {findDOMNode} from 'react-dom';
+import { Typeahead } from 'react-bootstrap-typeahead';
+import { Button } from 'semantic-ui-react';
+import { findDOMNode } from 'react-dom';
 import $ from 'jquery';
 import './tools/DatePicker/bootstrap-datepicker.fa.js';
 import './tools/DatePicker/bootstrap-datepicker.js';
 import './tools/DatePicker/bootstrap-datepicker.css';
 
-const listOfCity = ['اصفهان',
-'چابکسر',
-'نوشهر',
-'گیلان',
-'رامسر',
-'کیش',
-'مازندران',
-'بابلسر',
-'فریدون کنار'];
+const listOfCity = [
+  'اصفهان',
+  'نوشهر',
+  'گیلان',
+  'رامسر',
+  'کیش',
+  'مازندران',
+  'بابلسر',
+  'فریدون‌کنار',
+  'محمودآباد',
+  'عباس‌آباد',
+  'شاندیز',
+  'خراسان رضوی',
+  'بندر انزلی',
+  'کاشان',
+  'باغ‌بهادران',
+  'قلعه‌رودخان',
+  'مشهد',
+  'چمخاله',
+  'فومن',
+  'رضوان‌شهر',
+  'رودسر',
+  'آستارا',
+  'زیباکنار',
+  'سرخ‌رود',
+  'رویان',
+  'نور',
+  'چالوس',
+  'تنکابن',
+  'دریاکنار',
+  'ایزدشهر',
+  'کلاردشت',
+  'کلارآباد',
+  'سلمان‌شهر',
+  'نشتارود',
+];
+
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
