@@ -163,13 +163,16 @@ class HouseDetails extends React.Component {
 )
 
   var settings = {
+    customPaging: (i)=>{
+        return (<a><img height="20px" width="20px" src={imagesList[i]}/></a>);
+},
     dots: true,
-    lazyLoad:true,
+    lazyLoad:false,
     infinite: true,
     dotsClass: 'slick-dots slick-thumb',
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
   };
     return(
       <Slider {...settings}>

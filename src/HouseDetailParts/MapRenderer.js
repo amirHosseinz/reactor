@@ -11,8 +11,7 @@ export class MapRenderer extends React.Component{
               onChange={(event)=>{console.log(event)}}
               zoom={this.props.zoom}
               className="kolsoom"
-              initialCenter={this.props.position}
-              >
+              initialCenter={this.props.position}>
               <Marker
                 position={this.props.position}
                 icon={{url:require('./dayere.png'),
