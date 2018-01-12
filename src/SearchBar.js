@@ -55,7 +55,7 @@ class SearchBar extends React.Component {
       houseList:[],
       cityList:[],
       cityListFromServer:null,
-      city:null,
+      city:'',
       searchParams : {
         location: '',
         start_date: null,
@@ -99,14 +99,13 @@ class SearchBar extends React.Component {
                       onInputChange={(input)=> {this.setState({city:input})}}
                       emptyLabel="نتیجه‌ای یافت نشد"
                       maxResults={5}
-                      autoFocus={true}
+                      selected={[localStorage['selected-city-search']]}
                       selectHintOnEnter={true}
                       submitFormOnEnter={true}
-                      placeholder={this.state.city}
                       onChange={(selected)=>{
-                        this.setState({city:selected[0]}, () => {
-                          this.handleClick();
-                        });
+                        if(selected.length!==0){
+                          this.setState({city:selected[0]},()=>{this.handleClick()});
+                        }
                       }}
                     options={listOfCity}
                       />
@@ -190,10 +189,8 @@ class SearchBar extends React.Component {
                     bsSize="large"
                     onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
                     onInputChange={(input)=> {this.setState({city:input})}}
-                    autoFocus={true}
                     placeholder="!مقصد خود را وارد نمایید"
                     align="right"
-                    lableKey="name"
                     minLength={2}
                     selectHintOnEnter={true}
                     submitFormOnEnter={true}
@@ -204,11 +201,9 @@ class SearchBar extends React.Component {
                     selectHintOnEnter={true}
                     submitFormOnEnter={true}
                     onChange={(selected) => {
-                      this.setState({city:selected[0]}, () => {
-                        this.handleClick();
-                      });
+                      this.setState({city:selected[0]},()=>{ this.handleClick()});
                     }}
-                              options={listOfCity}
+                    options={listOfCity}
                   />
               <Button type='button' color='blue' className="search-btn btn"  onClick={this.handleClick.bind(this)} data-reactid="99">
                 <span className='searchicon'>
@@ -351,10 +346,16 @@ class SearchBar extends React.Component {
   }
 
    handleClick(){
+     if(this.state.showOnlyCitySearchBar===true){
+       localStorage['selected-city-search']=this.state.city;
+     }
      this.setState({showOnlyCitySearchBar:false},()=>{this.setSearchParams()});
    }
 
    handleClickXs(){
+      if(this.state.showOnlyCitySearchBarMobile===true){
+        localStorage['selected-city-search']=this.state.city;
+      }
       this.setState({showOnlyCitySearchBarMobile:false},()=>{this.setSearchParams()});
    }
 
@@ -434,8 +435,6 @@ class SearchBar extends React.Component {
                   placeholder="!مقصد خود را وارد نمایید"
                   align="right"
                   onInputChange={(input)=> {this.setState({city:input})}}
-                  autoFocus={true}
-                  lableKey="name"
                   minLength={2}
                   selectHintOnEnter={true}
                   submitFormOnEnter={true}
@@ -443,7 +442,7 @@ class SearchBar extends React.Component {
                   emptyLabel="نتیجه‌ای یافت نشد"
                   maxResults={5}
                   className="typeahead-onlycity-sm"
-                  onChange={(selected) => {this.setState({city:selected[0]} ,()=>this.handleClick())
+                  onChange={(selected) => {this.setState({city:selected[0]},()=>{this.handleClickXs()})
                   }}
                   options={listOfCity}
                   />
@@ -469,11 +468,13 @@ class SearchBar extends React.Component {
             onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
             selectHintOnEnter={true}
             submitFormOnEnter={true}
-            onInputChange={(input)=> {this.setState({city:input})}}
-            autoFocus={true}
-            placeholder={this.state.city}
-            onChange={(selected)=>{this.setState({city:selected[0]} , ()=>{this.handleClick()}
-            )}}
+            selected={[localStorage['selected-city-search']]}
+            onInputChange={(input)=> { this.setState({city:input})}}
+            onChange={(selected)=>{
+              if(selected.length!==0){
+                this.setState({city:selected[0]},()=>{this.handleClickXs()});
+              }
+            }}
             options={listOfCity}
             />
           <input className="date-picker-input form-control1" id='fromdatepicker' ref='fromdatepicker' placeholder='تاریخ ورود'style={{direction:'rtl',textAlign:'center'}}/>
