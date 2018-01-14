@@ -336,11 +336,30 @@ class HouseDetails extends React.Component {
 
                   <section className='map-scroller' ref={(section) => { this.Map = section; }}></section>
 
+
                   <div className="padding10">
                   </div>
                     {this.renderMap()}
                   <div className="padding100">
                   </div>
+
+                  <div className="reserve-bottom-xs navbar-fixed-bottom visible-sm hidden-xl hidden-md">
+                      <div className="price-div-sm visible-sm hidden-xl hidden-md">
+                        <div className = "price col-sm-8">
+                          <Button onClick={()=>{this.setState({showReservePanelXs:true})}}className='reserve-button-xs'>
+                            !رزرو کنید
+                          </Button>
+                        </div>
+                        <div className = "price-sm col-sm-4">
+                        <p className='text-018'> {englishToPersianDigits(this.state.homeData.price)} </p>
+                          <p className='text-018'> تومان</p>
+                          <p className="text-017"> هر شب / </p>
+                        </div>
+                      </div>
+                      {this.renderReservePanelXs()}
+                  </div>
+
+
                 </div>
             </div>
           </div>
