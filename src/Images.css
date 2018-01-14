@@ -679,7 +679,17 @@ border-radius: 40px;
 }
 .house-detail-top-margined{
   margin:auto;
-  width: 80%;
+  width: 1170px;
+  margin-top: 15px;
+}
+.house-detail-top-margined-md{
+  margin:auto;
+  width: 970px;
+  margin-top: 15px;
+}
+.house-detail-top-margined-sm{
+  margin:auto;
+  width: 780px;
   margin-top: 15px;
 }
 .main-details{
