@@ -43,6 +43,7 @@ const listOfCity = [
   'کلارآباد',
   'سلمان‌شهر',
   'نشتارود',
+  'البرز',
 ];
 
 class SearchBar extends React.Component {
