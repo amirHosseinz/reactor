@@ -226,6 +226,15 @@ margin: 30px
     flex-direction: row;
     padding-top: 8px;
   }
+  .price-sm {
+    display: -webkit-flex; /* Safari */
+    -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
+    display: flex;
+    margin: auto;
+    flex-direction: row-reverse;
+    padding-top: 8px;
+    width:100%;
+  }
 .headerchild{
   display: -webkit-flex; /* Safari */
   -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
@@ -670,7 +679,17 @@ border-radius: 40px;
 }
 .house-detail-top-margined{
   margin:auto;
-  width: 80%;
+  width: 1170px;
+  margin-top: 15px;
+}
+.house-detail-top-margined-md{
+  margin:auto;
+  width: 970px;
+  margin-top: 15px;
+}
+.house-detail-top-margined-sm{
+  margin:auto;
+  width: 780px;
   margin-top: 15px;
 }
 .main-details{
@@ -1721,6 +1740,11 @@ text-align:center;
   padding-left: 40px;
   padding-right: 40px;
 }
+.price-div-sm{
+  width: 90%;
+  margin: auto;
+}
+
 .menu-item{
   color:#5b5b5b;
   cursor:pointer;
