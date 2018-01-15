@@ -5,6 +5,7 @@ import 'react-virtualized/styles.css'
 import { Column, Table } from 'react-virtualized'
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer'
 import List from 'react-virtualized/dist/commonjs/List'
+import { Image } from 'semantic-ui-react';
 
 
 class Requests extends React.Component{
@@ -63,26 +64,55 @@ class Requests extends React.Component{
       if(this.state.requestList!==null){
         var request_list = this.state.requestList.request_list;
         var list = request_list.map((item)=>
+        <div>
+          <div
+             dir="rtl"
+            className="userpanel-item-list hidden-xs visible-xl"
+            key={item.id} onClick={() =>{
+            this.showRequestItemClick(item)
+            }}>
+              <ListGroupItem className="scroll-list-requests">
+                <div className="preview-x">
+                  <img
+                  src={"https://www.trypinn.com/"+item.room.preview}
+                  alt=""
+                  height="78px;" width="80px"/>
+                  <div>
+                    <div className="request-list-item-title">
+                      {item.room.title}
+                    </div>
+                  <p className="request-list-item-city">  {item.room.address} </p>
+                  </div>
+                </div>
+              </ListGroupItem>
+        </div>
         <div
            dir="rtl"
-          className="userpanel-item-list"
+          className="userpanel-item-list-xs hidden-xl visible-xs"
           key={item.id} onClick={() =>{
           this.showRequestItemClick(item)
           }}>
-            <ListGroupItem className="scroll-list-requests">
-              <div className="preview-x">
-                <img
-                src={"https://www.trypinn.com/"+item.room.preview}
-                alt=""
-                height="78px;" width="80px"/>
-                <div>
-                  <div className="request-list-item-title">
-                    {item.room.title}
+            <div className="scroll-list-requests-xs">
+              <div className="preview-x2">
+                <div className="row-reverse">
+                  <img
+                  src={"https://www.trypinn.com/"+item.room.preview}
+                  alt=""
+                  height="55px;" width="55px"/>
+                  <br/>
+                  <div>
+                    <div className="request-list-item-title">
+                      {item.room.title}
+                    </div>
+                    <p className="request-list-item-city">  {item.room.address} </p>
                   </div>
-                <p className="request-list-item-city">  {item.room.address} </p>
+                </div>
+                <div>
+                  <Image className='arrow-ico' src={require('./Images/arrow-down.svg')}/>
                 </div>
               </div>
-            </ListGroupItem>
+            </div>
+          </div>
       </div>
     );
       return(
@@ -92,8 +122,13 @@ class Requests extends React.Component{
   }
   render(){
     return(
-      <div className="list-of-request-div">
-          {this.renderRequests()}
+      <div>
+        <div className="list-of-request-div hidden-xs visible-xl">
+            {this.renderRequests()}
+        </div>
+        <div className="list-of-request-div-xs hidden-xl visible-xs">
+            {this.renderRequests()}
+        </div>
       </div>
     );
   }
