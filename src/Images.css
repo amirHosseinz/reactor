@@ -1993,8 +1993,14 @@ padding-top: 80px;
   margin-top: 20px;
 }
 .relevant-button{
-  text-align: center;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
+  display: flex;
+  margin: auto;
+  flex-direction: row-reverse;
+  text-align: center !important;
   margin-top: 50px;
+
 }
 .request-userpanel-button{
   font-family: IRANSans !important;

@@ -153,7 +153,6 @@ class ReservePanel extends React.Component{
      return response.json();
    })
    .then((bookData) => {
-     console.log(bookData);
      if(bookData.successful===true){
        localStorage['default-panel']='request';
        window.location.href = '/dashboard';
