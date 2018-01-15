@@ -366,10 +366,10 @@ class SearchBar extends React.Component {
     var request = new Request('https://www.trypinn.com/api/search/',{
       method: 'POST',
       body: JSON.stringify({
-        platform:'web',
+        platform: 'web',
         location: this.state.searchParams.location,
-        start_date: this.state.searchParams.start_date,
-        end_date: this.state.searchParams.end_date,
+        start_date: (this.state.searchParams.start_date == null) ? null : this.state.searchParams.start_date.toISOString(),
+        end_date: (this.state.searchParams.end_date == null) ? null : this.state.searchParams.end_date.toISOString(),
         capacity: this.state.searchParams.capacity,
     }),
       headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
