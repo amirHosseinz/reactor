@@ -1,5 +1,6 @@
 import React from 'react';
 import Facilities from './Facilities.js';
+import {Collapse} from 'react-bootstrap';
 
 
 class UtilitiesDescription extends React.Component{
@@ -9,9 +10,7 @@ class UtilitiesDescription extends React.Component{
   renderUtilities(){
     if (this.props.homeData.private_util_options!= null) {
       const util1=this.props.homeData.private_util_options;
-      // const util1list=util1.map((util1)=><div className={util1}><ul key={util1}>{util1}</ul></div>);
       const util2=this.props.homeData.general_util_options;
-      // const util2list=util2.map((util2)=><div className={util2}><ul key={util2}>{util2}</ul></div>);
       var utilities=util1.concat(util2);;
       var list1=[];
       var list2=[];
@@ -38,25 +37,25 @@ class UtilitiesDescription extends React.Component{
 
       if(index[0].length>index[1].length){
         return(
-          <div>
-          <div className='col-md-6'>
-            <Facilities utility={index[0]}/>
-            </div>
-          <div className='col-md-6'>
-            <Facilities utility={index[1]}/>
-            </div>
+            <div>
+              <div className='col-md-6 col-xs-6'>
+                <Facilities utility={index[0]}/>
+              </div>
+              <div className='col-md-6 col-xs-6'>
+                <Facilities utility={index[1]}/>
+              </div>
             </div>
           );
   }
      else {
        return(
          <div>
-         <div className='col-md-6'>
-           <Facilities utility={index[1]}/>
+           <div className='col-md-6 col-xs-6'>
+             <Facilities utility={index[1]}/>
+            </div>
+           <div className='col-md-6 col-xs-6'>
+             <Facilities utility={index[0]}/>
            </div>
-         <div className='col-md-6'>
-           <Facilities utility={index[0]}/>
-         </div>
          </div>
        );
      }

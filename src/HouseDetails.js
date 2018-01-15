@@ -145,6 +145,8 @@ class HouseDetails extends React.Component {
              </div>);
    }
  }
+
+ 
  renderPreviewXs(){
    if(this.state.homeData!==''){
        var imagesList = [];
