@@ -63,7 +63,6 @@ class RequestItem extends React.Component{
     this.setState({token:this.getRelevantToken()},()=>{this.sendPaymentRequestToServer()});
   }
   sendPaymentRequestToServer(){
-    console.log(this.state.token);
     var request = new Request('https://www.trypinn.com/api/payment/web_payment_request/',{
       method: 'POST',
       body: JSON.stringify({
@@ -81,6 +80,7 @@ class RequestItem extends React.Component{
    })
    .then((paymentResponse) => {
      if (paymentResponse.is_successful===true){
+       localStorage['default-panel']='trip';
        window.location.href = paymentResponse.payment_url;
      }
    });
