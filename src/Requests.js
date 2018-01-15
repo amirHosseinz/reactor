@@ -64,6 +64,7 @@ class Requests extends React.Component{
         var request_list = this.state.requestList.request_list;
         var list = request_list.map((item)=>
         <div
+           dir="rtl"
           className="userpanel-item-list"
           key={item.id} onClick={() =>{
           this.showRequestItemClick(item)
@@ -74,11 +75,13 @@ class Requests extends React.Component{
                 src={"https://www.trypinn.com/"+item.room.preview}
                 alt=""
                 height="78px;" width="80px"/>
-                <div className="request-list-item-title">
-                  {item.room.title}
+                <div>
+                  <div className="request-list-item-title">
+                    {item.room.title}
+                  </div>
+                <p className="request-list-item-city">  {item.room.address} </p>
                 </div>
               </div>
-
             </ListGroupItem>
       </div>
     );
@@ -89,7 +92,7 @@ class Requests extends React.Component{
   }
   render(){
     return(
-      <div dir="rtl">
+      <div className="list-of-request-div">
           {this.renderRequests()}
       </div>
     );
