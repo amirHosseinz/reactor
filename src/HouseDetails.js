@@ -250,7 +250,7 @@ class HouseDetails extends React.Component {
       <div>
         <div className='housedetail container-fluid visible-xl hidden-xs' ref={this.handleContextRef}>
           <div className="house-detail-top">
-            <div className="house-detail-top-margined visible-lg hidden-md hidden-sm hidden-xs">
+            <div className="house-detail-top-margined visible-xl hidden-md hidden-sm hidden-xs">
               <AddressDiscription homeData={this.state.homeData}/>
               <div>
                 {this.renderHomeTitle()}

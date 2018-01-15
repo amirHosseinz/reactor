@@ -69,19 +69,16 @@ class Requests extends React.Component{
           this.showRequestItemClick(item)
           }}>
             <ListGroupItem className="scroll-list-requests">
-              <div className="preview">
+              <div className="preview-x">
                 <img
                 src={"https://www.trypinn.com/"+item.room.preview}
                 alt=""
-                height="100%" width="80px"/>
+                height="78px;" width="80px"/>
+                <div className="request-list-item-title">
+                  {item.room.title}
+                </div>
               </div>
-              <div className="title">
-                {item.room.title}
-              </div>
-              <div className="host_name">
-                <p>{item.room.owner.first_name} {item.room.owner.last_name}</p>
-              </div>
-              <Divider/>
+
             </ListGroupItem>
       </div>
     );
@@ -92,7 +89,7 @@ class Requests extends React.Component{
   }
   render(){
     return(
-      <div dir="rtl" >
+      <div dir="rtl">
           {this.renderRequests()}
       </div>
     );
