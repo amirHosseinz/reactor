@@ -111,7 +111,7 @@ class Trips extends React.Component{
   render(){
     return(
       <div>
-        <div className="list-of-request-div-xs visible-xl hidden-xs">
+        <div className="list-of-request-div  visible-xl hidden-xs">
           {this.renderTrips()}
         </div>
         <div className="list-of-request-div-xs hidden-xl visible-xs">
