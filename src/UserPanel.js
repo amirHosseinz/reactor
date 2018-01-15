@@ -75,14 +75,16 @@ class UserPanel extends React.Component{
   }
   render() {
     return (
-      <div>
+      <div className="dashboard-backgroud">
           <div className="profile-container-margined">
-            <div className="profile_dynamic_edit col-md-9 col-xs-12 padding-top">
-              {this.showContent()}
-            </div>
-            <div className="profile_static_bar col-md-3">
-              {this.renderSelectedPanel()}
-            </div>
+              <div className="profile_dynamic_edit col-md-9  padding-top">
+                {this.showContent()}
+              </div>
+
+              <div className="profile_static_bar col-md-3">
+                {this.renderSelectedPanel()}
+              </div>
+
           </div>
       </div>
     );

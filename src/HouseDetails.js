@@ -145,6 +145,8 @@ class HouseDetails extends React.Component {
              </div>);
    }
  }
+
+ 
  renderPreviewXs(){
    if(this.state.homeData!==''){
        var imagesList = [];
@@ -162,11 +164,13 @@ class HouseDetails extends React.Component {
         return (<a><Image src={imagesList[i]} circle height="25px" width="25px"/></a>);
 },
     dots: true,
-    lazyLoad:false,
+    lazyLoad:true,
     infinite: true,
+    fade:true,
     dotsClass: 'slick-dots slick-thumb',
     speed: 500,
-    slidesToShow: 1,
+    centerMode:true,
+    slidesToShow:1,
     slidesToScroll: 1,
   };
     return(
@@ -246,7 +250,7 @@ class HouseDetails extends React.Component {
       <div>
         <div className='housedetail container-fluid visible-xl hidden-xs' ref={this.handleContextRef}>
           <div className="house-detail-top">
-            <div className="house-detail-top-margined visible-lg hidden-md hidden-sm hidden-xs">
+            <div className="house-detail-top-margined visible-xl hidden-md hidden-sm hidden-xs">
               <AddressDiscription homeData={this.state.homeData}/>
               <div>
                 {this.renderHomeTitle()}
@@ -371,9 +375,6 @@ class HouseDetails extends React.Component {
                       </div>
                     </div>
                     <SpecialRule homeData={this.state.homeData}/>
-
-
-
 
 
                   <section className='map-scroller' ref={(section) => { this.Map = section; }}></section>
