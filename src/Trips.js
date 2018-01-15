@@ -50,26 +50,31 @@ class Trips extends React.Component{
       var reserve_list = this.state.tripList.reserve_list;
       var list = reserve_list.map((item) => {
         return (
-          <div key={item.id} onClick={() =>{
+
+          <div
+             dir="rtl"
+            className="userpanel-item-list"
+            key={item.id} onClick={() =>{
             this.showTripItemClick(item)
-          }}>
-          <ListGroupItem>
-            <div className="preview">
-              <img src={"https:/trypinn.com"+ item.room.preview}
-              height='10px'
-              width='10px'
-              alt=""/>
-            </div>
-              <div className="title">
-                {item.room.title}
-              </div>
-              <div className="location">
-                {item.room.address}
-              </div>
-            </ListGroupItem>
-          </div>
+            }}>
+              <ListGroupItem className="scroll-list-requests">
+                <div className="preview-x">
+                  <img
+                  src={"https://www.trypinn.com/"+item.room.preview}
+                  alt=""
+                  height="78px;" width="80px"/>
+                  <div>
+                    <div className="request-list-item-title">
+                      {item.room.title}
+                    </div>
+                  <p className="request-list-item-city">  {item.room.address} </p>
+                  </div>
+                </div>
+              </ListGroupItem>
+        </div>
         );
       });
+
       return(
         <ListGroup>{list}</ListGroup>
       );
