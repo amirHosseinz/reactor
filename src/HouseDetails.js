@@ -162,11 +162,13 @@ class HouseDetails extends React.Component {
         return (<a><Image src={imagesList[i]} circle height="25px" width="25px"/></a>);
 },
     dots: true,
-    lazyLoad:false,
+    lazyLoad:true,
     infinite: true,
+    fade:true,
     dotsClass: 'slick-dots slick-thumb',
     speed: 500,
-    slidesToShow: 1,
+    centerMode:true,
+    slidesToShow:1,
     slidesToScroll: 1,
   };
     return(
@@ -371,9 +373,6 @@ class HouseDetails extends React.Component {
                       </div>
                     </div>
                     <SpecialRule homeData={this.state.homeData}/>
-
-
-
 
 
                   <section className='map-scroller' ref={(section) => { this.Map = section; }}></section>

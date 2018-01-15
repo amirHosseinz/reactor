@@ -1,13 +1,15 @@
 import React from 'react';
 import GuestNumber from './GuestNumber.js';
 import {Button} from 'semantic-ui-react';
-import Modal from 'react-modal';
 import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
 import {findDOMNode} from 'react-dom';
+import {Modal} from 'react-bootstrap';
 import $ from 'jquery';
 import '../tools/DatePicker/bootstrap-datepicker.fa.js';
 import '../tools/DatePicker/bootstrap-datepicker.js';
 import '../tools/DatePicker/bootstrap-datepicker.css';
+import {reserveModalStyle} from '../Styles.js';
+
 
 class ReservePanel extends React.Component{
   constructor(props){
@@ -152,11 +154,15 @@ class ReservePanel extends React.Component{
    })
    .then((bookData) => {
      console.log(bookData);
+     if(bookData.successful===true){
+       localStorage['default-panel']='request';
+       window.location.href = '/dashboard';
+     }
    });
   }
   showBookButton(){
     if(this.state.reserveData !=='' && this.state.reserveData.is_available){
-      return <button onClick={this.sendBookRequest.bind(this)}> رزرو کنید</button>
+      return <Button color="twitter" onClick={this.sendBookRequest.bind(this)}> بله </Button>
     }
   }
   renderFromDatePicker(){
@@ -240,7 +246,8 @@ class ReservePanel extends React.Component{
         <div className="guestnumber-div">
           <GuestNumber />
         </div>
-        <div className="divider-card"></div>
+        <div className="divider-card">
+        </div>
 
         <div>
           <input className="date-picker-input  form-control1"
@@ -258,14 +265,13 @@ class ReservePanel extends React.Component{
         </div>
           {this.renderPriceDetails()}
           {this.renderReserveButton()}
-          <Modal isOpen={this.state.isOpen}
-            onRequestClose={()=>{this.setState({isOpen:false})}}
-            style={{margin:'auto'}}>
-
+          <Modal show={this.state.isOpen}
+            onHide={()=>{this.setState({isOpen:false})}}>
             <div>
               <div>
                 آیا مایل به رزرو خانه هستید؟
               </div>
+            {this.showBookButton()}
             </div>
           </Modal>
       </div>
