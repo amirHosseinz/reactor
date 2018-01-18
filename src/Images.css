@@ -138,6 +138,8 @@ margin-left: 14px;
 .main{
 
 }
+.housedetail{
+}
 .housedetail-img{
   cursor: pointer;
 }
@@ -1556,6 +1558,7 @@ padding-bottom: 28px;
   border-radius: 4px;
     box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
 }
+
 .price-div-results{
   height: 30px;
 }
@@ -2110,6 +2113,8 @@ padding-top: 80px;
   padding-top: 14px;
   padding-bottom: 14px;
   margin: auto;
+}
+.house-detail-top{
 }
 .housedetail-img-xs{
   margin-top: 56px;

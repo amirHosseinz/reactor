@@ -564,7 +564,6 @@ class SearchBar extends React.Component {
           </div>
 
 
-
           <div className="container-fluid hidden-xl visible-xs">
               <div className='mobile-margined-search'>
                 <div className="main-zone-xs col-md-12">
