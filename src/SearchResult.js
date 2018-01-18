@@ -8,6 +8,7 @@ class SearchResult extends React.Component {
   constructor(props){
     super(props);
   }
+  
   id(){
     return this.props.room.id;
   }
@@ -60,10 +61,11 @@ class SearchResult extends React.Component {
    {
     return(
       <div>
+      <div>
         <a target="_blank" href={"/rooms/"+ this.props.room.id} className="card_anchor">
           <div  className="result-detail">
             <AspectRatio ratio="16/11" style={{maxWidth: '400px'}}>
-                  <img src= {this.props.preview} className="imgresult" alt="پیشنمایش خانه "/>
+                  <img src= {this.props.preview} id="hoy" alt="پیشنمایش خانه "/>
             </AspectRatio>
               <div className="result-without-price">
                 <div className = "result-room-type">
@@ -91,6 +93,7 @@ class SearchResult extends React.Component {
             </div>
           </div>
           </a>
+      </div>
       </div>
     );
   }
