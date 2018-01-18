@@ -18,10 +18,21 @@ margin: 30px
 .about-header{
   text-align: center;
   font-size:30px;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
   font-family: IRANSans;
 
 }
+
+
+.contactus-header{
+  text-align: right;
+  font-size:30px;
+  padding-bottom: 10px;
+  font-family: IRANSans;
+
+}
+
+
 
 .h1{
   text-align: center;
@@ -49,6 +60,17 @@ margin: 30px
   text-align: right;
 
 }
+
+.contactus-container{
+  font-family: IRANSans;
+  width: 80%;
+  margin: auto;
+  padding-top: 30px;
+  text-align: right;
+
+}
+
+
 .terms-container{
   font-family: IRANSans;
   width: 80%;
