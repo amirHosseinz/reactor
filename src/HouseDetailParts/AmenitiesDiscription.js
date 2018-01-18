@@ -66,11 +66,10 @@ class AmenitiesDiscription extends React.Component{
               <p className='aminities-text-xs'>  حمام </p>
             </div>
             <div className='main-amanities-item-xs  '>
-             <p className='aminities-text-xs'>{englishToPersianDigits(this.props.homeData.beds_number + 2 * this.props.homeData.double_beds_number)}</p>
+             {this.renderBeds()}
               <p className='aminities-text-xs'>تخت</p>
             </div>
-          );
-        }
+      
 
             <div className='main-amanities-item-xs '>
               <p className='aminities-text-xs'>  {englishToPersianDigits(this.props.homeData.rooms_number)}</p>
