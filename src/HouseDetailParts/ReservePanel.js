@@ -220,7 +220,7 @@ class ReservePanel extends React.Component{
     if(this.state.reserveData !==''){
       return(
         <div className='reserve-button-div'>
-          <Button color='blue' className='reserve-button active' onClick ={this.handleClick.bind(this)}>
+          <Button color='orange' className='reserve-button active' onClick ={this.handleClick.bind(this)}>
             رزرو کنید
           </Button>
         </div>
@@ -229,7 +229,7 @@ class ReservePanel extends React.Component{
       else{
         return(
           <div className='reserve-button-div'>
-            <Button color='blue' className='reserve-button disabled' onClick ={this.handleClick.bind(this)}>
+            <Button color='orange' className='reserve-button disabled' onClick ={this.handleClick.bind(this)}>
               رزرو کنید
             </Button>
           </div>

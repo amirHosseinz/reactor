@@ -114,13 +114,11 @@ export const normalReservePanelHouseDetails ={
 
 export const fixedScrollListHouseDetails={
   marginTop : '10px',
-  backgroundColor: '#fff',
   border: '1px solid #ddd',
   boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.2)',
 }
 
 export const normalScrolllListHouseDetails={
-  backgroundColor: '#fff',
 }
 
 export const reserveModalStyle={
@@ -132,5 +130,5 @@ export const reserveModalStyle={
     bottom            : 0,
     backgroundColor   : 'rgba(0, 0, 0, 0.7)'
   },
-  
+
   }
