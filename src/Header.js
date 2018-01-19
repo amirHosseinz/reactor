@@ -109,7 +109,6 @@ class Header extends React.Component{
     }
   }
   handleSignOutButton(){
-    // localStorage['token']='';
     localStorage['isLoggedIn']='false';
     localStorage['user-profile-picture']='';
     localStorage['user-first-name']='';
@@ -191,15 +190,29 @@ class Header extends React.Component{
          );
        }
     }
+    // {this.renderUserPhoto()}
+
+
   signOutAndProfile(){
     return (
         <div>
           <div>
-            {this.renderUserPhoto()}
-            <Dropdown className="header-drop-down-texts" icon='dropdown' dir="rtl" floating={true} text={localStorage['user-first-name'] +' '+ localStorage['user-last-name']  } >
+            <Dropdown className="header-drop-down-texts" icon='dropdown' dir="rtl" floating={true} text={ ' سلام ' + ' ' +  localStorage['user-first-name'] } >
              <Dropdown.Menu>
-             <p className="main-menu-user1" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
-             <p className="main-menu-user2" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
+                <div className="row-reverse">
+                  {this.renderUserPhoto()}
+                  <div>
+                  <p className="main-menu-user1" onClick={this.handleUserProfileClick.bind(this)}>{localStorage['user-first-name'] + localStorage['user-last-name']}</p>
+                  <p className="main-menu-user1" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
+                  </div>
+                </div>
+                <Dropdown.Divider/>
+                <div>
+                  {this.renderTripButton()}
+                  {this.renderRequestButton()}
+                </div>
+                <Dropdown.Divider/>
+                <p className="main-menu-user2" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
              </Dropdown.Menu>
             </Dropdown>
           </div>
@@ -266,6 +279,10 @@ class Header extends React.Component{
       );
     }
   }
+
+  // {this.renderRequestButton()}
+  // {this.renderTripButton()}
+
   renderHeaderXl(){
     return(
       <div className='header container hidden-xs visible-xl'>
@@ -273,8 +290,7 @@ class Header extends React.Component{
           <div className="header-menu-desktop col-md-10 col-sm-8">
             {this.renderMainMenu()}
             {this.renderLoginButton()}
-            {this.renderRequestButton()}
-            {this.renderTripButton()}
+
           </div>
           {this.renderLoginPanel()}
           <div className="logo col-md-2 col-sm-4">

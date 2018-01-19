@@ -82,7 +82,7 @@ class SearchBar extends React.Component {
      houseList: houseData.room,
    });
   }
-
+  
   renderSearchBarInDetails(){
     return(
       <div className="render-results row">
@@ -101,8 +101,9 @@ class SearchBar extends React.Component {
                       emptyLabel="نتیجه‌ای یافت نشد"
                       maxResults={5}
                       selected={[localStorage['selected-city-search']]}
+                      placeholder='هرجا'
                       selectHintOnEnter={true}
-                      submitFormOnEnter={true}
+                      // submitFormOnEnter={true}
                       onChange={(selected)=>{
                         if(selected.length!==0){
                           this.setState({city:selected[0]},()=>{this.handleClick()});
@@ -190,7 +191,7 @@ class SearchBar extends React.Component {
                     autoFocus={true}
                     bsSize="large"
                     onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
-                    onInputChange={(input)=> {this.setState({city:input})}}
+                    // onInputChange={(input)=> {this.setState({city:input})}}
                     placeholder="!مقصد خود را وارد نمایید"
                     align="right"
                     minLength={2}
@@ -200,8 +201,6 @@ class SearchBar extends React.Component {
                     maxResults={5}
                     emptyLabel="نتیجه‌ای یافت نشد"
                     className="typeahead-onlycity-xl"
-                    selectHintOnEnter={true}
-                    submitFormOnEnter={true}
                     onChange={(selected) => {
                       this.setState({city:selected[0]},()=>{ this.handleClick()});
                     }}
@@ -476,7 +475,7 @@ class SearchBar extends React.Component {
                   onInputChange={(input)=> {this.setState({city:input})}}
                   minLength={2}
                   selectHintOnEnter={true}
-                  submitFormOnEnter={true}
+                  // submitFormOnEnter={true}
                   onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
                   emptyLabel="نتیجه‌ای یافت نشد"
                   maxResults={5}
@@ -506,7 +505,7 @@ class SearchBar extends React.Component {
             maxResults={5}
             onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
             selectHintOnEnter={true}
-            submitFormOnEnter={true}
+            // submitFormOnEnter={true}
             selected={[localStorage['selected-city-search']]}
             onInputChange={(input)=> { this.setState({city:input})}}
             onChange={(selected)=>{
