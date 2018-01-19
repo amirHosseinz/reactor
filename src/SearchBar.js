@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchResult from './SearchResult';
+import SearchResultItem from './SearchResultItem';
 import { Typeahead } from 'react-bootstrap-typeahead';
 import { Button } from 'semantic-ui-react';
 import { findDOMNode } from 'react-dom';
@@ -82,7 +82,7 @@ class SearchBar extends React.Component {
      houseList: houseData.room,
    });
   }
-  
+
   renderSearchBarInDetails(){
     return(
       <div className="render-results row">
@@ -97,13 +97,12 @@ class SearchBar extends React.Component {
                       onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
                       minLength={2}
                       align="right"
-                      onInputChange={(input)=> {this.setState({city:input})}}
                       emptyLabel="نتیجه‌ای یافت نشد"
                       maxResults={5}
                       selected={[localStorage['selected-city-search']]}
                       placeholder='هرجا'
                       selectHintOnEnter={true}
-                      // submitFormOnEnter={true}
+                      submitFormOnEnter={false}
                       onChange={(selected)=>{
                         if(selected.length!==0){
                           this.setState({city:selected[0]},()=>{this.handleClick()});
@@ -196,7 +195,7 @@ class SearchBar extends React.Component {
                     align="right"
                     minLength={2}
                     selectHintOnEnter={true}
-                    submitFormOnEnter={true}
+                    submitFormOnEnter={false}
                     emptyLabel="نتیجه‌ای یافت نشد"
                     maxResults={5}
                     emptyLabel="نتیجه‌ای یافت نشد"
@@ -233,7 +232,7 @@ class SearchBar extends React.Component {
       return(
         <div className="pre-img-result col-md-2"
          key = {houseItem.id}>
-         <SearchResult
+         <SearchResultItem
           room = {houseItem}
           preview ={"https://www.trypinn.com" + houseItem.preview}/>
         </div>
@@ -276,7 +275,7 @@ class SearchBar extends React.Component {
       return(
         <div className="pre-img-result col-sm-4"
          key = {houseItem.id}>
-         <SearchResult
+         <SearchResultItem
           room = {houseItem}
           preview ={"https://www.trypinn.com" + houseItem.preview} />
         </div>
@@ -313,7 +312,7 @@ class SearchBar extends React.Component {
       return(
         <div className="pre-img-result full-width"
          key = {houseItem.id}>
-         <SearchResult
+         <SearchResultItem
           room = {houseItem}
           preview ={"https://www.trypinn.com" + houseItem.preview} />
         </div>
@@ -561,7 +560,6 @@ class SearchBar extends React.Component {
             <div className="col-lg col-sm-12 mb-10">
             </div>
           </div>
-
 
           <div className="container-fluid hidden-xl visible-xs">
               <div className='mobile-margined-search'>
