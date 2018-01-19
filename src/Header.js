@@ -310,14 +310,13 @@ class Header extends React.Component{
             </div>
            </Menu>
            <Modal show={this.state.showMobileLoginPanel}
-           className="container fluid"
-           style={loginPanelmobileStyle}
+           className='phone-number-modal-xs'
            onHide={()=>{this.setState({showMobileLoginPanel:false})}}>
             <div>
             <div className="login1-modal">
               <p className="login-title-in-modal"> ورود/ عضویت </p>
               <p className="enter-phone-number-inmodal"> برای ورود یا ثبت‌نام شماره تلفن همراه خود را وارد کنید :</p>
-                <div dir="rtl" className="enter-number-main" >
+                <div dir="rtl" className="enter-number-main">
                   <input
                     id="tel-number"
                     autoComplete="off"
