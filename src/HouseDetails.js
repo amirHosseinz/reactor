@@ -261,7 +261,7 @@ class HouseDetails extends React.Component {
               <div>
               <div>
                 <div className='navigation-menu-housedetails' style={this.state.scrollListFixed?fixedScrollListHouseDetails:normalScrolllListHouseDetails}>
-                  <p onClick={() => scrollToComponent(this.Dis, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items'>مشخصات</p>
+                  <p onClick={() => scrollToComponent(this.Dis,{offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items'>مشخصات</p>
                   <p onClick={() => scrollToComponent(this.Gallery, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items' >تصاویر</p>
                   <p onClick={() => scrollToComponent(this.Laws, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items'>امکانات و قوانین</p>
                   <p onClick={() => scrollToComponent(this.Map, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items'>موقعیت روی نقشه</p>
@@ -329,14 +329,9 @@ class HouseDetails extends React.Component {
                   <div>
                     <HostInfoDiscription homeData={this.state.homeData}/>
                     <p className='des-main-xs'> {this.state.homeData.description} </p>
-
                   </div>
-
                   <Divider/>
-
                   <section className='law-scroller' ref={(section) => { this.Laws = section; }}></section>
-
-
                   <p className='des-header-xl'> سایر امکانات </p>
                   <UtilitiesDescription homeData={this.state.homeData}/>
 
