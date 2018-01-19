@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button,Divider} from 'semantic-ui-react';
+import {Button,Divider,Checkbox} from 'semantic-ui-react';
 import {Modal} from 'react-bootstrap';
 import {loginVerifySmsXl , registerNewUser , setPasswordStyle} from './Styles.js';
 
@@ -11,6 +11,7 @@ class Login extends React.Component{
         showVerificationModal:true,
         hasPassword : null,
         hasAccount : null,
+        activeSignUpButton:false,
         inputForLogin:{
           password:'',
         },
@@ -305,6 +306,9 @@ class Login extends React.Component{
         this.handleSignupClick();
       }
     }
+    activateSignUpButton(event){
+      this.setState((prevState,props)=>({activeSignUpButton:!prevState.activeSignUpButton}));
+    }
     renderSignUpModal(){
       return(
         <Modal show={this.state.showSignUpOrSetPasswordModal}
@@ -342,8 +346,15 @@ class Login extends React.Component{
                             value={this.state.inputForSignUp.confirmPassword}
                             onChange={this.changeConfirmPasswordForSignUp.bind(this)}/>
                           <br/>
-
-                         <Button color="blue" onClick={this.handleSignupClick.bind(this)} className="login-modal-button-3">
+                          <div className="sign-up-modal-rule-aggreement">
+                            <Checkbox checked={this.state.activeSignUpButton}
+                                      onChange={(event)=>{this.activateSignUpButton(event)}}
+                                      />
+                            <div className='sign-up-modal-aggreement-sentence'>
+                              <span>.</span><span>با </span ><span onClick={()=>{window.open('/terms&conditions')}} className='sign-up-modal-link-to-rules'> قوانین و مقررات</span> <span> تریپین موافقم </span>
+                            </div>
+                          </div>
+                         <Button disabled={!this.state.activeSignUpButton} color="blue" onClick={this.handleSignupClick.bind(this)} className="login-modal-button-3">
                            ثبت‌نام و ورود
                          </Button>
 
