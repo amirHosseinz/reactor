@@ -12,6 +12,7 @@ class Requests extends React.Component{
     super(props);
     this.state={
       token:null,
+      selectedRequest:'',
       role:null,
       requestList:null,
     };
@@ -59,31 +60,42 @@ class Requests extends React.Component{
     this.props.changeRequestDetail(item);
   }
 
+  handleHighlight(event){
+    console.log(event.target.id);
+    this.setState({selectedRequest:event.target.id});
+  }
   renderRequests(){
       if(this.state.requestList!==null){
         var request_list = this.state.requestList.request_list;
-        var list = request_list.map((item)=>
-        <div
-           dir="rtl"
-          className="userpanel-item-list"
-          key={item.id} onClick={() =>{
-          this.showRequestItemClick(item)
-          }}>
-            <ListGroupItem className="scroll-list-requests">
-              <div className="preview-x">
-                <img
-                src={"https://www.trypinn.com/"+item.room.preview}
-                alt=""
-                height="78px;" width="80px"/>
-                <div>
-                  <div className="request-list-item-title">
-                    {item.room.title}
+        var list = request_list.map((item)=>{
+          return(
+            <div
+              dir="rtl"
+              className="userpanel-item-list"
+              key={item.id}
+              onClick={() =>{
+              this.showRequestItemClick(item);
+              }}>
+                <ListGroupItem id={item.id}
+                               onClick={(event)=>{this.handleHighlight(event)}}
+                               className="scroll-list-requests">
+
+                  <div className="preview-x">
+                    <img
+                    src={"https://www.trypinn.com/"+item.room.preview}
+                    alt=""
+                    height="78px;" width="80px"/>
+                    <div>
+                      <div className="request-list-item-title">
+                        {item.room.title}
+                      </div>
+                    <p className="request-list-item-city">  {item.room.address} </p>
+                    </div>
                   </div>
-                <p className="request-list-item-city">  {item.room.address} </p>
-                </div>
-              </div>
-            </ListGroupItem>
-      </div>
+                </ListGroupItem>
+          </div>
+          );
+        }
     );
       return(
        <ListGroup>{list}</ListGroup>

@@ -1,5 +1,5 @@
 .phone-number-modal-xs{
-  
+
 }
 
 .hala{
@@ -59,6 +59,7 @@ margin: 30px
   padding-top: 30px;
 }
 .scroll-list-trips{
+
 }
 .scroll-list-requests{
 width:100%;
@@ -75,6 +76,10 @@ border:0px !important;
 padding: 0px !important;
 border-radius: 0px !important;
 margin: 0px !important;
+}
+
+.scroll-list-requests-selected-item{
+  background-color: red;
 }
 
 .rules{
