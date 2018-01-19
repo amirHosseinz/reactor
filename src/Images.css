@@ -277,13 +277,14 @@ margin-left: 14px;
   padding-bottom: 8px;
 }
 .main-menu-header{
-  padding-top: 37px;
+  padding-top: 22px;
   font-family: IRANSans;
   font-size: 16px;
+  color: #454545;
 }
 .LogoImage{
-  height:60px;
-  margin-top: .7em;
+  height:44px;
+  margin-top: 8px;
   margin-left: 10px;
 }
 .LogoImage-mobile{
@@ -294,9 +295,11 @@ margin-left: 14px;
   }
 .header{
   width:100% !important;
-  box-shadow:0 2px 2px rgba(0,0,0,0.1);
   background-color: white;
-  height:75px;
+  border-bottom: solid;
+  border-color: #ebebeb;
+  border-width:2px;
+  height:60px;
   }
   .hearder-child-margined{
     width:92%;
@@ -371,10 +374,10 @@ margin-left: 14px;
 }
 .logofont{
   font-family: IRANSans;
-  font-size: 2.8em;
+  font-size: 28px;
   font-style: normal;
 	font-weight: 500;
-  padding-top: .25em;
+  padding-top: 9px;
   color: #12b2ce;
 }
 .logofont-mobile{
@@ -439,22 +442,33 @@ margin-left: 14px;
 
 .logo-menu-font{
   font-family: IRANSans;
-  font-size: 1em;
+  font-size: 16px;
   font-style: normal;
-	font-weight: 500;
-  margin-left: 1em;
-  padding-top: 7px;
-  color: #646464;
+	font-weight: 400;
+  margin-right: 1em;
+  padding-top: 22px;
+  color: #454545;
 }
-.logo-menu-font:hover{
+.logo-menu-dl{
   font-family: IRANSans;
-  font-size: 1em;
+  font-size: 16px;
   font-style: normal;
 	font-weight: 500;
-  margin-left: 1em;
+  margin-right: 1em;
   color: #f56c4e;
+  padding-top: 22px;
 
 }
+.logo-menu-hst{
+  font-family: IRANSans;
+  font-size: 16px;
+  font-style: normal;
+  padding-top: 22px;
+	font-weight: 500;
+  margin-right: 1em;
+  color: #17b3ce;
+}
+
 .logo-footer-menu-font-mobile{
   font-family: IRANSans;
   font-size: 1em;
@@ -713,6 +727,10 @@ justify-content: center;
 
 .dropdown-menu{
   text-align: right !important
+}
+.dropdown{
+padding-right: 12px;
+
 }
 .downloadbotton-bordered{
 width:34%;
@@ -1917,7 +1935,6 @@ text-align:center;
   object-fit: cover;
 }
 .header-drop-down-texts{
-  margin-top: 6px;
   margin-right: 5px;
 }
 .rules-half{

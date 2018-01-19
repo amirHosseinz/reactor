@@ -290,6 +290,11 @@ class Header extends React.Component{
           <div className="header-menu-desktop col-md-10 col-sm-8">
             {this.renderMainMenu()}
             {this.renderLoginButton()}
+            <a className='logolink' href="/contactus" target="_blank">  <p className='logo-menu-font' >تماس با ما</p></a>
+            <a className='logolink' href="/aboutus" target="_blank">  <p className='logo-menu-font'>درباره تریپین</p></a>
+            <a className='logolink' href="/terms&conditions" target="_blank">  <p className='logo-menu-font'>قوانین</p></a>
+            <a className='logolink' href="/becomehost" target="_blank">  <p className='logo-menu-hst'>میزبان شوید</p></a>
+            <a className='logolink' href='http://cafebazaar.ir/app/com.trypinn/' target="_blank">  <p className='logo-menu-dl'>دریافت اپلیکیشن</p></a>
 
           </div>
           {this.renderLoginPanel()}

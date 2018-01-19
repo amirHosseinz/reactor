@@ -20,14 +20,7 @@ class Footer extends React.Component{
                       <a href="https://www.twitter.com/"><img src={require('./Images/trypinn-twitter.png')} className='social-image-xl' alt=""></img></a>
                     </div>
                     <div className='footer-menu col-md-10'>
-                      <a className="download-app-footer-anchor" rel="noopener noreferrer" target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
-                        <button className="download-tripinn" >دانلود اپلیکیشن
-                        </button>
-                      </a>
-                      <a className='logolink' href="/terms&conditions" target="_blank">  <p className='logo-menu-font'>قوانین و شرایط استفاده</p></a>
-                      <a className='logolink' href="/becomehost" target="_blank">  <p className='logo-menu-font'>!میزبان شوید</p></a>
-                      <a className='logolink' href="/aboutus" target="_blank">  <p className='logo-menu-font'>درباره تریپین</p></a>
-                      <a className='logolink' href="/contactus" target="_blank">  <p className='logo-menu-font' >تماس با ما</p></a>
+
                     </div>
                   </div>
             </div>
