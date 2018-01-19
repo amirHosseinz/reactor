@@ -58,12 +58,10 @@ class BecomeHost extends React.Component {
    fetch(request)
    .then((response) => {
      console.log(response);
-     console.log('injaaaaa');
      return response.json();
      console.log(response);
    })
    .then((response) => {
-    console.log('hello from here! -_-');
     console.log(response);
     const message=response.error;
     this.renderAlreadyHost(message);
