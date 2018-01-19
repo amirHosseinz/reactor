@@ -1,10 +1,14 @@
-.phone-number-modal-xs{
-
+.hoy{
+  color:pink;
+}
+#hoy:hover{
+  color: blue;
 }
 
 .hala{
   margin:auto;
 }
+
 .inner-div{
 margin: 30px
 }
@@ -21,10 +25,21 @@ margin: 30px
 .about-header{
   text-align: center;
   font-size:30px;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
   font-family: IRANSans;
 
 }
+
+
+.contactus-header{
+  text-align: right;
+  font-size:30px;
+  padding-bottom: 10px;
+  font-family: IRANSans;
+
+}
+
+
 
 .h1{
   text-align: center;
@@ -52,6 +67,17 @@ margin: 30px
   text-align: right;
 
 }
+
+.contactus-container{
+  font-family: IRANSans;
+  width: 80%;
+  margin: auto;
+  padding-top: 30px;
+  text-align: right;
+
+}
+
+
 .terms-container{
   font-family: IRANSans;
   width: 80%;
@@ -77,15 +103,38 @@ padding: 0px !important;
 border-radius: 0px !important;
 margin: 0px !important;
 }
-
-.scroll-list-requests-selected-item{
-  background-color: red;
+.scroll-list-requests-xs{
+  background-color: white;
+  height: 55px;
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.07);
+  -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.07);
+  box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.07);
 }
+.arrow-ico{
+  height:10px;
 
+margin-top: 24px;
+margin-left: 14px;
+}
 .rules{
   margin:0 0 15px 0;
 }
 .preview-x{
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  float: right;
+}
+.preview-x2{
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.row-reverse{
   display: -webkit-flex; /* Safari */
   -webkit-flex-direction: row; /* Safari 6.1+ */
   display: flex;
@@ -225,8 +274,9 @@ margin: 0px !important;
   }
 .header{
   width:100% !important;
-  box-shadow:0 3px 3px rgba(0,0,0,0.15);
+  box-shadow:0 2px 2px rgba(0,0,0,0.1);
   background-color: white;
+  height:75px;
   }
   .hearder-child-margined{
     width:92%;
@@ -234,6 +284,14 @@ margin: 0px !important;
 
   }
   .profile-container{
+  }
+  .profile-container-sts{
+    background-color: white;
+    padding-bottom: 150px;
+    border-radius: 6px 6px 6px 6px;
+    border: solid;
+    border-width: 2px;
+    border-color: #ececec;
   }
   .list-group{
     margin:0 !important;
@@ -271,7 +329,6 @@ margin: 0px !important;
   flex-direction: row-reverse;
   height:80px;
   width:94%;
-  background-color: white;
   vertical-align:middle;
   }
   .logomobile{
@@ -954,7 +1011,6 @@ transform: scale(-1, 1);
 .result-detail{
   font-family: IRANSans;
   text-align: right;
-
 }
 
 /* Position and sizing of burger button */
@@ -1033,8 +1089,8 @@ color: #42b0c6;
 }
 .results-search{
   height: 60px;
-  box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
-
+  border-bottom: solid;
+  border-color: #ececec;
 }
 .typehead-results{
   font-family:IRANSans;
@@ -1061,7 +1117,6 @@ color: #42b0c6;
 .multi-input-1{
   height: 44px;
   width: 120px;
-  background-color: white;
   margin-top: 14px;
   margin-left: 6px;
  text-align: right !important;
@@ -1070,7 +1125,6 @@ color: #42b0c6;
 .multi-input-typeahead{
   height: 44px;
   width: 180px;
-  background-color: white;
   margin-top: 14px;
   margin-left: 6px;
  text-align: right !important;
@@ -1507,8 +1561,15 @@ padding-bottom: 28px;
 .result-detail{
   background-color: white;
   border-radius: 4px;
-    box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
 }
+
+.result-detail:hover{
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, .5);
+}
+
 .price-div-results{
   height: 30px;
 }
@@ -1595,12 +1656,38 @@ margin-top: 20px;
   height: 100%;
   max-height: 570px;
 }
+.list-of-request-div-xs{
+  width: 95%;
+  margin: auto;
+  padding-bottom: 20px;
+
+}
 .request-list-item-city{
   font-size: 11px;
   font-family: IRANSans;
   font-weight: 300;
   color: #454545;
   margin-right: 6px;
+}
+.request-list-xs{
+  width: 100%;
+  margin: auto;
+  background-color: #f0f4f5;
+  padding-top: 60px;
+}
+.request-xs-header-title-div{
+  height:52px;
+  background-color: white;
+  width: 100%;
+  margin-bottom: 8px;
+  font-size: 22px;
+  font-family: IRANSans;
+  text-align: center;
+  color:#484848;
+  font-weight: 300;
+}
+.requests-list-title{
+  padding-top: 14px;
 }
 .profile_dynamic_edit{
   border-radius: 6px 6px 6px 6px;
@@ -1941,7 +2028,22 @@ padding-top: 80px;
   display: flex;
   flex-direction: row;
   cursor: pointer;
+}
+.request-list-xs{
 
+}
+.userpanel-item-list-xs{
+  margin-bottom: 5px;
+  width: 100%;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+.list-group{
+  border-width: 0px !important;
+  border: hidden !important;
 }
 .reserve-status-h1{
   font-family: IRANSans;

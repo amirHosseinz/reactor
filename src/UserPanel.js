@@ -73,18 +73,43 @@ class UserPanel extends React.Component{
       return null;
     }
   }
+
+renderDashbordTitle(){
+  switch (localStorage['default-panel']){
+    case 'message':
+      return(
+        <div className="requests-list-title"> پیام‌ها </div>
+      );
+    case 'request':
+    return(
+      <div className="requests-list-title">درخواست‌ها </div>
+
+      );
+    case 'trip':
+    return(
+      <div className="requests-list-title">سفرها </div>
+    );
+  }
+}
+
   render() {
     return (
       <div className="dashboard-backgroud">
-          <div className="profile-container-margined">
+          <div className="profile-container-margined hidden-xs visible-xl">
               <div className="profile_dynamic_edit col-md-9  padding-top">
                 {this.showContent()}
               </div>
-
               <div className="profile_static_bar col-md-3">
                 {this.renderSelectedPanel()}
               </div>
-
+          </div>
+          <div className="request-list-xs hidden-xl visible-xs">
+              <div className="request-xs-header-title-div">
+                {this.renderDashbordTitle()}
+              </div>
+              <div className="request-list-xs-list">
+                {this.renderSelectedPanel()}
+              </div>
           </div>
       </div>
     );

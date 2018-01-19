@@ -80,7 +80,7 @@ class UserProfile extends React.Component{
     if (this.state.profileInfo!== null){
 
       return(
-        <div className='profile-container'>
+        <div className='profile-container-sts'>
 
               <div className="profile_photobox">
                 {this.renderProfilePhoto()}
