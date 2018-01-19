@@ -79,7 +79,6 @@ class Requests extends React.Component{
                 <ListGroupItem id={item.id}
                                onClick={(event)=>{this.handleHighlight(event)}}
                                className="scroll-list-requests">
-
                   <div className="preview-x">
                     <img
                     src={"https://www.trypinn.com/"+item.room.preview}
@@ -89,7 +88,7 @@ class Requests extends React.Component{
                       <div className="request-list-item-title">
                         {item.room.title}
                       </div>
-                    <p className="request-list-item-city">  {item.room.address} </p>
+                    <p className="request-list-item-city"> {item.room.address} </p>
                     </div>
                   </div>
                 </ListGroupItem>
