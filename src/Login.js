@@ -268,7 +268,8 @@ class Login extends React.Component{
       return(
         <Modal show={this.state.showSignUpOrSetPasswordModal}
                style={setPasswordStyle}
-               onHide={()=>{this.setState({showSignUpOrSetPasswordModal:false})}}>
+               onHide={()=>{this.props.closeLoginPanel();
+                 this.setState({showSignUpOrSetPasswordModal:false})}}>
          <div className="login1-modal">
             <p className="login-title-in-modal">تعیین رمز عبور</p>
             <Divider/>
@@ -313,7 +314,8 @@ class Login extends React.Component{
       return(
         <Modal show={this.state.showSignUpOrSetPasswordModal}
                style={registerNewUser}
-               onHide={()=>{this.setState({showSignUpOrSetPasswordModal:false})}}>
+               onHide={()=>{this.props.closeLoginPanel();
+                            this.setState({showSignUpOrSetPasswordModal:false})}}>
                <div className="login1-modal">
                    <p className="login-title-in-modal">ثبت‌نام کاربر جدید</p>
                    <Divider/>
@@ -398,7 +400,8 @@ class Login extends React.Component{
       return(
         <Modal show={this.state.showVerificationModal}
           style={loginVerifySmsXl}
-          onHide={()=>{this.setState({showVerificationModal:false})}}>
+          onHide={()=>{this.props.closeLoginPanel();
+                        this.setState({showVerificationModal:false})}}>
           <div className="login1-modal">
             <p className="login-title-in-modal">کد تایید</p>
             <Divider/>

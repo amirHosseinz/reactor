@@ -12,6 +12,7 @@ class Trips extends React.Component{
       tripList:null,
     };
   }
+  
   componentWillMount() {
       this.setState({token:this.getRelevantToken()},()=>{this.setSearchParams(this.getRole())});
   }

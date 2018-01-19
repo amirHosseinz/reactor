@@ -135,6 +135,10 @@ class Header extends React.Component{
       }
     }
  }
+ closeLoginPanel(){
+   this.setState({loginPanelVisible2:false});
+ }
+
   renderLoginPanel(){
     return(
       <div className="login-modal-main">
@@ -166,12 +170,11 @@ class Header extends React.Component{
               </div>
             </div>
           </Modal.Body>
-
         </Modal>
         <Modal show={this.state.loginPanelVisible2}
           style={loginPasswordStyle}
           onHide={()=>{this.setState({loginPanelVisible2:false})}}>
-          <Login hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
+          <Login closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
         </Modal>
       </div>
     );
