@@ -1,3 +1,9 @@
+.hoy{
+  color:pink;
+}
+#hoy:hover{
+  color: blue;
+}
 
 .hala{
   margin:auto;
@@ -1005,7 +1011,6 @@ transform: scale(-1, 1);
 .result-detail{
   font-family: IRANSans;
   text-align: right;
-
 }
 
 /* Position and sizing of burger button */
@@ -1556,7 +1561,13 @@ padding-bottom: 28px;
 .result-detail{
   background-color: white;
   border-radius: 4px;
-    box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
+}
+
+.result-detail:hover{
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, .5);
 }
 
 .price-div-results{

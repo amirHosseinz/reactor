@@ -3,6 +3,18 @@ import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
 
 
 class AmenitiesDiscription extends React.Component{
+
+
+  renderBeds(){
+    if(this.props.homeData.beds_number + 2 * this.props.homeData.double_beds_number){
+      return(
+        <p className='aminities-text'>
+        {englishToPersianDigits(this.props.homeData.beds_number + 2 * this.props.homeData.double_beds_number)}
+        </p>
+    );
+  }
+  }
+
   render(){
     return(
       <div>
@@ -14,7 +26,7 @@ class AmenitiesDiscription extends React.Component{
           </div>
           <div className='main-amanities-item col-md-3'>
               <img src={require('./facilities/beds.png')}  className="main-amanities-icon" alt = "" />
-              <p className='aminities-text'> {englishToPersianDigits(this.props.homeData.beds_number + 2 * this.props.homeData.double_beds_number)} </p>
+              {this.renderBeds()}
               <p className='aminities-text'>تخت</p>
           </div>
           <div className='main-amanities-item col-md-3'>
@@ -54,9 +66,12 @@ class AmenitiesDiscription extends React.Component{
               <p className='aminities-text-xs'>  حمام </p>
             </div>
             <div className='main-amanities-item-xs  '>
-              <p className='aminities-text-xs'>  {englishToPersianDigits(this.props.homeData.beds_number + 2 * this.props.homeData.double_beds_number)}</p>
+             <p className='aminities-text-xs'>{englishToPersianDigits(this.props.homeData.beds_number + 2 * this.props.homeData.double_beds_number)}</p>
               <p className='aminities-text-xs'>تخت</p>
             </div>
+          );
+        }
+
             <div className='main-amanities-item-xs '>
               <p className='aminities-text-xs'>  {englishToPersianDigits(this.props.homeData.rooms_number)}</p>
               <p className='aminities-text-xs'>اتاق</p>
@@ -70,6 +85,7 @@ class AmenitiesDiscription extends React.Component{
 
       </div>
     );
+
   }
 }
 export default AmenitiesDiscription;
