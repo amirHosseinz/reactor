@@ -13,6 +13,7 @@ class Requests extends React.Component{
     super(props);
     this.state={
       token:null,
+      selectedRequest:'',
       role:null,
       requestList:null,
     };
@@ -60,6 +61,10 @@ class Requests extends React.Component{
     this.props.changeRequestDetail(item);
   }
 
+  handleHighlight(event){
+    console.log(event.target.id);
+    this.setState({selectedRequest:event.target.id});
+  }
   renderRequests(){
       if(this.state.requestList!==null){
         var request_list = this.state.requestList.request_list;

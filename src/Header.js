@@ -77,7 +77,9 @@ class Header extends React.Component{
 
      });
   }
-
+  closeLoginPanel(){
+    this.setState({loginPanelVisible2:false});
+  }
   renderLoginButton(){
     if (this.state.isLoggedIn !== 'true'){
       return(
@@ -109,7 +111,6 @@ class Header extends React.Component{
     }
   }
   handleSignOutButton(){
-    // localStorage['token']='';
     localStorage['isLoggedIn']='false';
     localStorage['user-profile-picture']='';
     localStorage['user-first-name']='';
@@ -172,7 +173,7 @@ class Header extends React.Component{
         <Modal show={this.state.loginPanelVisible2}
           style={loginPasswordStyle}
           onHide={()=>{this.setState({loginPanelVisible2:false})}}>
-          <Login hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
+          <Login closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
         </Modal>
       </div>
     );
@@ -191,15 +192,29 @@ class Header extends React.Component{
          );
        }
     }
+    // {this.renderUserPhoto()}
+
+
   signOutAndProfile(){
     return (
         <div>
           <div>
-            {this.renderUserPhoto()}
-            <Dropdown className="header-drop-down-texts" icon='dropdown' dir="rtl" floating={true} text={localStorage['user-first-name'] +' '+ localStorage['user-last-name']  } >
+            <Dropdown className="header-drop-down-texts" icon='dropdown' dir="rtl" floating={true} text={ ' سلام ' + ' ' +  localStorage['user-first-name'] } >
              <Dropdown.Menu>
-             <p className="main-menu-user1" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
-             <p className="main-menu-user2" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
+                <div className="row-reverse">
+                  {this.renderUserPhoto()}
+                  <div>
+                  <p className="main-menu-user1" onClick={this.handleUserProfileClick.bind(this)}>{localStorage['user-first-name'] + localStorage['user-last-name']}</p>
+                  <p className="main-menu-user1" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
+                  </div>
+                </div>
+                <Dropdown.Divider/>
+                <div>
+                  {this.renderTripButton()}
+                  {this.renderRequestButton()}
+                </div>
+                <Dropdown.Divider/>
+                <p className="main-menu-user2" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
              </Dropdown.Menu>
             </Dropdown>
           </div>
@@ -266,6 +281,10 @@ class Header extends React.Component{
       );
     }
   }
+
+  // {this.renderRequestButton()}
+  // {this.renderTripButton()}
+
   renderHeaderXl(){
     return(
       <div className='header container hidden-xs visible-xl'>
@@ -273,8 +292,7 @@ class Header extends React.Component{
           <div className="header-menu-desktop col-md-10 col-sm-8">
             {this.renderMainMenu()}
             {this.renderLoginButton()}
-            {this.renderRequestButton()}
-            {this.renderTripButton()}
+
           </div>
           {this.renderLoginPanel()}
           <div className="logo col-md-2 col-sm-4">
@@ -310,14 +328,13 @@ class Header extends React.Component{
             </div>
            </Menu>
            <Modal show={this.state.showMobileLoginPanel}
-           className="container fluid"
-           style={loginPanelmobileStyle}
+           className='phone-number-modal-xs'
            onHide={()=>{this.setState({showMobileLoginPanel:false})}}>
             <div>
             <div className="login1-modal">
               <p className="login-title-in-modal"> ورود/ عضویت </p>
               <p className="enter-phone-number-inmodal"> برای ورود یا ثبت‌نام شماره تلفن همراه خود را وارد کنید :</p>
-                <div dir="rtl" className="enter-number-main" >
+                <div dir="rtl" className="enter-number-main">
                   <input
                     id="tel-number"
                     autoComplete="off"

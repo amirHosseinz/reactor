@@ -1,6 +1,6 @@
 import React from 'react';
-import SearchResult from './SearchResult';
-import { Typeahead } from 'react-bootstrap-typeahead';
+import SearchResultItem from './SearchResultItem';
+import { Typeahead ,MenuItem,Menu , menuItemContainer,Highlighter} from 'react-bootstrap-typeahead';
 import { Button } from 'semantic-ui-react';
 import { findDOMNode } from 'react-dom';
 import $ from 'jquery';
@@ -10,6 +10,8 @@ import './tools/DatePicker/bootstrap-datepicker.css';
 import {Dropdown} from 'semantic-ui-react';
 import GuestNumber from './GuestNumberSearchBar.js';
 
+
+const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
   'اصفهان',
   'نوشهر',
@@ -84,7 +86,14 @@ class SearchBar extends React.Component {
      houseList: houseData.room,
    });
   }
-
+  handleSelectedCity(){
+    if(localStorage['selected-city-search']===null ||localStorage['selected-city-search']===undefined || localStorage['selected-city-search']===''){
+      return null;
+    }
+    else {
+      return [localStorage['selected-city-search']];
+    }
+  }
   renderSearchBarInDetails(){
     return(
       <div className="render-results row">
@@ -96,15 +105,27 @@ class SearchBar extends React.Component {
                   <div className="multi-input-typeahead">
                     <Typeahead
                       className="typeahead-indetail-xl"
+                      renderMenu={(results, menuProps) => {
+                          return (
+                            <Menu {...menuProps}>
+                              {results.map((result, index) => (
+                                <TypeaheadMenuItem option={result} position={index}>
+                                  {result}
+                                </TypeaheadMenuItem>
+                              ))}
+                            </Menu>
+                          );
+                        }}
                       onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
                       minLength={2}
                       align="right"
-                      onInputChange={(input)=> {this.setState({city:input})}}
                       emptyLabel="نتیجه‌ای یافت نشد"
                       maxResults={5}
-                      selected={[localStorage['selected-city-search']]}
-                      selectHintOnEnter={true}
-                      submitFormOnEnter={true}
+                      selected={this.handleSelectedCity()}
+                      placeholder='هرجا'
+                      selectHintOnEnter={false}
+                      highlightOnlyResult={true}
+                      submitFormOnEnter={false}
                       onChange={(selected)=>{
                         if(selected.length!==0){
                           this.setState({city:selected[0]},()=>{this.handleClick()});
@@ -162,7 +183,8 @@ class SearchBar extends React.Component {
   renderSearchBarOnlycity(){
     return(
       <div className='only-city-search-bar row'>
-        <div className="free-zone col-md-3 col-sm-2"></div>
+        <div className="free-zone col-md-3 col-sm-2">
+        </div>
         <div className="main-zone col-md-6 col-sm-8">
           <div className="row">
           <div className="xxxz col-md-2 col-sm-1"></div>
@@ -184,19 +206,28 @@ class SearchBar extends React.Component {
                     id="searchbox"
                     autoFocus={true}
                     bsSize="large"
+
                     onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
-                    onInputChange={(input)=> {this.setState({city:input})}}
-                    placeholder="!مقصد خود را وارد نمایید"
-                    align="right"
+                    renderMenu={(results, menuProps) => {
+                        return (
+                          <Menu {...menuProps}>
+                            {results.map((result, index) => (
+                              <TypeaheadMenuItem option={result} position={index}>
+                                {result}
+                              </TypeaheadMenuItem>
+                            ))}
+                          </Menu>
+                        );
+                      }}
+                    placeholder="  !مقصد خود را وارد نمایید  "
                     minLength={2}
-                    selectHintOnEnter={true}
-                    submitFormOnEnter={true}
+                    align='right'
+                    selectHintOnEnter={false}
+                    highlightOnlyResult={true}
+                    submitFormOnEnter={false}
                     emptyLabel="نتیجه‌ای یافت نشد"
                     maxResults={5}
-                    emptyLabel="نتیجه‌ای یافت نشد"
                     className="typeahead-onlycity-xl"
-                    selectHintOnEnter={true}
-                    submitFormOnEnter={true}
                     onChange={(selected) => {
                       this.setState({city:selected[0]},()=>{ this.handleClick()});
                     }}
@@ -229,7 +260,7 @@ class SearchBar extends React.Component {
       return(
         <div className="pre-img-result col-md-2"
          key = {houseItem.id}>
-         <SearchResult
+         <SearchResultItem
           room = {houseItem}
           preview ={"https://www.trypinn.com" + houseItem.preview}/>
         </div>
@@ -272,7 +303,7 @@ class SearchBar extends React.Component {
       return(
         <div className="pre-img-result col-sm-4"
          key = {houseItem.id}>
-         <SearchResult
+         <SearchResultItem
           room = {houseItem}
           preview ={"https://www.trypinn.com" + houseItem.preview} />
         </div>
@@ -309,7 +340,7 @@ class SearchBar extends React.Component {
       return(
         <div className="pre-img-result full-width"
          key = {houseItem.id}>
-         <SearchResult
+         <SearchResultItem
           room = {houseItem}
           preview ={"https://www.trypinn.com" + houseItem.preview} />
         </div>
@@ -471,7 +502,7 @@ class SearchBar extends React.Component {
                   onInputChange={(input)=> {this.setState({city:input})}}
                   minLength={2}
                   selectHintOnEnter={true}
-                  submitFormOnEnter={true}
+                  // submitFormOnEnter={true}
                   onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
                   emptyLabel="نتیجه‌ای یافت نشد"
                   maxResults={5}
@@ -500,8 +531,9 @@ class SearchBar extends React.Component {
             emptyLabel="نتیجه‌ای یافت نشد"
             maxResults={5}
             onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
-            selectHintOnEnter={true}
-            submitFormOnEnter={true}
+            selectHintOnEnter={false}
+            highlightOnlyResult={true}
+            submitFormOnEnter={false}
             selected={[localStorage['selected-city-search']]}
             onInputChange={(input)=> { this.setState({city:input})}}
             onChange={(selected)=>{
@@ -557,8 +589,6 @@ class SearchBar extends React.Component {
             <div className="col-lg col-sm-12 mb-10">
             </div>
           </div>
-
-
 
           <div className="container-fluid hidden-xl visible-xs">
               <div className='mobile-margined-search'>
