@@ -7,6 +7,8 @@ import $ from 'jquery';
 import './tools/DatePicker/bootstrap-datepicker.fa.js';
 import './tools/DatePicker/bootstrap-datepicker.js';
 import './tools/DatePicker/bootstrap-datepicker.css';
+import {Dropdown} from 'semantic-ui-react';
+import GuestNumber from './GuestNumberSearchBar.js';
 
 const listOfCity = [
   'اصفهان',
@@ -119,18 +121,11 @@ class SearchBar extends React.Component {
                     <input className="date-picker-input  form-control1" id='todatepicker' ref='todatepicker' placeholder='تاریخ خروج'style={{direction:'rtl',textAlign:'center'}}/>
                   </div>
                   <div className="multi-input-1" dir="rtl" >
-                   <select className="form-control1" id="sel1">
-                     <option className="guestnumber-option">1 مهمان</option>
-                     <option className="guestnumber-option">2 مهمان</option>
-                     <option className="guestnumber-option">3 مهمان </option>
-                     <option className="guestnumber-option">4 مهمان</option>
-                     <option className="guestnumber-option">5 مهمان</option>
-                     <option className="guestnumber-option">6 مهمان</option>
-                     <option className="guestnumber-option">7 مهمان </option>
-                     <option className="guestnumber-option">8 مهمان</option>
-                     <option className="guestnumber-option">9 مهمان</option>
-                     <option className="guestnumber-option">10 مهمان و بیشتر</option>
-                   </select>
+                  <Dropdown className="header-drop-down-texts" icon='dropdown' dir="rtl"onClick={(event)=>{event.preventDefault()}}  text={'مهمان' } closeOnChange={true}>
+                   <Dropdown.Menu>
+                   <GuestNumber/>
+                   </Dropdown.Menu>
+                  </Dropdown>
                  </div>
                   <div className="multi-input-2">
                   <Button color='blue' type="button" className="search-btn-result"  onClick={this.handleClick.bind(this)} data-reactid="99">

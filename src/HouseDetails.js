@@ -21,6 +21,7 @@ import SpecialRule from  './HouseDetailParts/SpecialRule.js';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import GuestNumber from './HouseDetailParts/GuestNumber';
 
 class HouseDetails extends React.Component {
   constructor(props){
@@ -321,6 +322,7 @@ class HouseDetails extends React.Component {
                   <div className='housedetail-img'>
                     {this.renderPreview()}
                     {this.renderHouseGallery()}
+
                   </div>
                   <section className='violet' ref={(section) => { this.Violet = section; }}></section>
                   <AmenitiesDiscription homeData={this.state.homeData} />
@@ -509,6 +511,7 @@ class HouseDetails extends React.Component {
 
           </div>
         </div>
+
       </div>
     );
     }

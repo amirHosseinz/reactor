@@ -12,6 +12,7 @@ import ContactUs from './ContactUs.js';
 import AboutUs from './AboutUs.js';
 import Terms from './Terms.js';
 
+
 class MainPage extends React.Component{
   constructor(props){
     super(props);
