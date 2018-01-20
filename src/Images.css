@@ -1,3 +1,4 @@
+
 .sign-up-modal-link-to-rules{
   color : #12b2ce;
   cursor : pointer;
@@ -584,7 +585,8 @@ i.big.icons {
   margin-top: 3rem;
   height: 4rem;
   background-color: white;
-    box-shadow: 0 .2rem 1rem rgba(0,0,0,.15);
+  box-shadow: 0 .2rem 1rem rgba(0,0,0,.15);
+  font-feature-settings: inherit;
 
 }
 .search{
