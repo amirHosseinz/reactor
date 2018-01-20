@@ -380,8 +380,8 @@ class SearchBar extends React.Component {
   setSearchParams(){
     var spar = {
       location: this.state.city,
-      start_date: new Date(),
-      end_date: new Date(),
+      start_date: null,
+      end_date: null,
       capacity: 1,
     };
     this.setState({
@@ -405,9 +405,11 @@ class SearchBar extends React.Component {
     });
    fetch(request)
    .then((response) => {
+     console.log(response);
      return response.json();
    })
    .then((homeData) => {
+
      this.renderData(homeData);
    });
   }
