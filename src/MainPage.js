@@ -11,6 +11,7 @@ import BecomeHost from './BecomeHost.js';
 import ContactUs from './ContactUs.js';
 import AboutUs from './AboutUs.js';
 import Terms from './Terms.js';
+import SearchResult from './SearchResult.js';
 
 class MainPage extends React.Component{
   constructor(props){
@@ -91,6 +92,13 @@ class MainPage extends React.Component{
       <UserProfile/>
     );
   }
+
+  renderSearchResult(){
+    return (
+      <SearchResult />
+    );
+  }
+
   render(){
     this.getGuestTokenFromServer();
     document.title = "تریپین | سامانه رزرو ویلا";
@@ -107,6 +115,7 @@ class MainPage extends React.Component{
           <Route path={"/contactus"} render = {()=> {return(this.renderContactUs())}}/>
           <Route path={"/userprofile"} render={()=> {return(this.renderUserProfile())}}/>
           <Route path={"/"} render = {()=> {return(this.renderFooter())}}/>
+          <Route path={"/search"} render = {()=> {return(this.renderSearchResult())}}/>
         </div>
       </BrowserRouter>
     );
