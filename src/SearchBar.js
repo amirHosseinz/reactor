@@ -371,10 +371,6 @@ class SearchBar extends React.Component {
     return results;
   }
 
-  setToken() {
-    this.setState({
-      token: localStorage['token'],});
-  }
   setSearchParams(){
     var spar = {
       location: this.state.city,
@@ -413,6 +409,7 @@ class SearchBar extends React.Component {
    handleClick(){
      if(this.state.showOnlyCitySearchBar===true){
        localStorage['selected-city-search']=this.state.city;
+       window.location.href="/search/" + this.state.city;
      }
      this.setState({showOnlyCitySearchBar:false},()=>{this.setSearchParams()});
    }
@@ -619,7 +616,6 @@ class SearchBar extends React.Component {
       </div>
       </div>
       </div>
-
     );
   }
 }
