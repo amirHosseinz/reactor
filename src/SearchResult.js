@@ -55,7 +55,7 @@ class SearchResult extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      city:localStorage['selected-city-search'],
+      city: decodeURIComponent(window.location.href.split('/')).split(',')[4],
       houseList:[],
       token: null,
       searchParams : {
@@ -143,18 +143,8 @@ class SearchResult extends React.Component{
     });
   }
   readCityFromURL(){
-    var url = window.location.href.split('/');
-
-    var city = url[4].split('%');
-    city.shift();
-    var farsiChar;
-    for (var i=0 ; i<city.length/2;i++){
-      farsiChar= city[2*i] + city[2*i+1];
-      // var A = '\xDA\xA9';
-      // var B = utf8.decode(utf8.encode("\\x".concat(city[2*i])).concat(utf8.encode("\\x".concat(city[2*i+1]))));
-    }
-    // return [String.fromCharCode(url[4])];
-    return [localStorage['selected-city-search']];
+    var url = decodeURIComponent(window.location.href.split('/')).split(',');
+    return [url[4]];
   }
 
   handleClick(){
