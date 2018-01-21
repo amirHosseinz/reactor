@@ -9,8 +9,6 @@ import './tools/DatePicker/bootstrap-datepicker.js';
 import './tools/DatePicker/bootstrap-datepicker.css';
 import {Dropdown} from 'semantic-ui-react';
 import GuestNumber from './GuestNumberSearchBar.js';
-
-
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
   'اصفهان',
@@ -86,6 +84,7 @@ class SearchBar extends React.Component {
   }
 
     handleSearchByEnter(event){
+      console.log(event.locale);
       if(event.key==="Enter" && this.state.city!==null && this.state.city!==''){
         this.handleClick();
       }
@@ -116,7 +115,6 @@ class SearchBar extends React.Component {
                     id="searchbox"
                     autoFocus={true}
                     bsSize="large"
-
                     renderMenu={(results, menuProps) => {
                       return (
                         <Menu {...menuProps}>

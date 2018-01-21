@@ -208,24 +208,24 @@ class Header extends React.Component{
     return (
         <div>
           <div>
-            <Dropdown className="header-drop-down-texts" icon='dropdown' dir="rtl" floating={true} text={ ' سلام ' + ' ' +  localStorage['user-first-name'] } >
-             <Dropdown.Menu>
-                <div className="row-reverse">
-                  {this.renderUserPhoto()}
-                  <div>
-                  <p className="profile-card-user-name" onClick={this.handleUserProfileClick.bind(this)}>{localStorage['user-first-name'] + ' ' + localStorage['user-last-name']}</p>
-                  <p className="profile-card-user-profile" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
-                  </div>
-                </div>
-                <Dropdown.Divider/>
-                <div>
-                  {this.renderRequestButton()}
-                  {this.renderTripButton()}
-                </div>
-                <hr className="profile-card-divider" />
-                <p className="profile-card-exit-button" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
-                <p className="profile-card-exit-button-helper-empty-division"></p>
-             </Dropdown.Menu>
+            <Dropdown  className="header-drop-down-texts" icon='dropdown' dir="rtl" text={ ' سلام ' + ' ' +  localStorage['user-first-name'] } >
+              <Dropdown.Menu onClick={(data) =>{data.stopPropagation()}}>
+                   <div className="row-reverse">
+                     {this.renderUserPhoto()}
+                     <div>
+                     <p className="profile-card-user-name" onClick={this.handleUserProfileClick.bind(this)}>{localStorage['user-first-name'] + ' ' + localStorage['user-last-name']}</p>
+                     <p className="profile-card-user-profile" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
+                     </div>
+                   </div>
+                   <Dropdown.Divider/>
+                   <div>
+                     {this.renderRequestButton()}
+                     {this.renderTripButton()}
+                   </div>
+                   <hr className="profile-card-divider" />
+                   <p className="profile-card-exit-button" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
+                   <p className="profile-card-exit-button-helper-empty-division"></p>
+              </Dropdown.Menu>
             </Dropdown>
           </div>
 
