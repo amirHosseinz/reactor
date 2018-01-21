@@ -22,8 +22,8 @@ class MainPage extends React.Component{
       houseDetail: null,
     };
   }
-  renderSearchBar() {
-    return (<SearchBar />);
+  renderSearchBar(props) {
+    return (<SearchBar {...props}/>);
   }
   renderHeader(){
     return (
@@ -94,9 +94,9 @@ class MainPage extends React.Component{
     );
   }
 
-  renderSearchResult(){
+  renderSearchResult(props){
     return (
-      <SearchResult />
+      <SearchResult {...props}/>
     );
   }
 
@@ -106,8 +106,9 @@ class MainPage extends React.Component{
     return(
       <BrowserRouter>
         <div className="main">
+
           <Route path={"/"} render = {()=> {return (this.renderHeader())}}/>
-          <Route exact path={'/'} render={()=> {return (this.renderSearchBar())}}/>
+          <Route exact path={'/'} render={(props)=> {return (this.renderSearchBar(props))}}/>
           <Route exact path={'/dashboard'} render={()=>{return(this.renderUserPanel())}}/>
           <Route path={'/rooms/' + this.getHouseId()} render ={()=> {return (this.renderHouseDetails())}}/>
           <Route path={"/becomehost"} render = {()=> {return(this.renderBecomeHost())}}/>
@@ -116,7 +117,7 @@ class MainPage extends React.Component{
           <Route path={"/contactus"} render = {()=> {return(this.renderContactUs())}}/>
           <Route path={"/userprofile"} render={()=> {return(this.renderUserProfile())}}/>
           <Route path={"/"} render = {()=> {return(this.renderFooter())}}/>
-          <Route path={"/search"} render = {()=> {return(this.renderSearchResult())}}/>
+          <Route exact path={"/search/:city"} render = {(props)=> {return(this.renderSearchResult(props))}}/>
         </div>
       </BrowserRouter>
     );
