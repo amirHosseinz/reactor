@@ -84,6 +84,12 @@ class SearchBar extends React.Component {
      houseList: houseData.room,
    });
   }
+
+    handleSearchByEnter(event){
+      if(event.key==="Enter" && this.state.city!==null && this.state.city!==''){
+        this.handleClick();
+      }
+    }
   renderSearchBarOnlycity(){
     return(
       <div className='only-city-search-bar row'>

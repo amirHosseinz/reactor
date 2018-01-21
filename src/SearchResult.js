@@ -463,6 +463,7 @@ class SearchResult extends React.Component{
       </div>
       </div>
       </div>
+      </div>
     );
   }
 }

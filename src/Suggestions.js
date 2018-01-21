@@ -4,8 +4,7 @@ class Suggestions extends React.Component{
   render(){
     return(
       <div className="suggestions-comments-section">
-        <p className='suggestions-comments-header'>شکایات
-        </p>
+        <p className='suggestions-comments-header'>شکایات</p>
         <p className='suggestions-comments-paragraph'>
         تریپین همواره آماده است تا انتقادات، پیشنهادات و شکایات شما را از طریق ایمیل شرکت به نشانی
         support@tripinn.ir
