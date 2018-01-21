@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchResultItem from './SearchResultItem';
-import { Typeahead ,MenuItem,Menu , menuItemContainer,Highlighter} from 'react-bootstrap-typeahead';
+import { Typeahead,MenuItem,Menu,menuItemContainer} from 'react-bootstrap-typeahead';
 import { Button } from 'semantic-ui-react';
 import { findDOMNode } from 'react-dom';
 import $ from 'jquery';
@@ -84,19 +84,6 @@ class SearchBar extends React.Component {
      houseList: houseData.room,
    });
   }
-  handleSelectedCity(){
-    if(localStorage['selected-city-search']===null ||localStorage['selected-city-search']===undefined || localStorage['selected-city-search']===''){
-      return null;
-    }
-    else {
-      return [localStorage['selected-city-search']];
-    }
-  }
-  handleSearchByEnter(event){
-    if(event.key==="Enter" && this.state.city!==null && this.state.city!==''){
-      this.handleClick();
-    }
-  }
   renderSearchBarOnlycity(){
     return(
       <div className='only-city-search-bar row'>
@@ -124,6 +111,17 @@ class SearchBar extends React.Component {
                     autoFocus={true}
                     bsSize="large"
 
+                    renderMenu={(results, menuProps) => {
+                      return (
+                        <Menu {...menuProps}>
+                          {results.map((result, index) => (
+                            <TypeaheadMenuItem option={result} position={index}>
+                              {result}
+                            </TypeaheadMenuItem>
+                          ))}
+                        </Menu>
+                      );
+                  }}
                     onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
                     renderMenu={(results, menuProps) => {
                         return (
@@ -146,7 +144,7 @@ class SearchBar extends React.Component {
                     maxResults={5}
                     className="typeahead-onlycity-xl"
                     onChange={(selected) => {
-                      this.setState({city:selected[0]},()=>{ this.handleClick()});
+                      this.setState({city:selected[0]},()=>{this.handleClick()});
                     }}
                     options={listOfCity}
                   />
@@ -333,6 +331,17 @@ class SearchBar extends React.Component {
                   bsSize="sm"
                   placeholder="!مقصد خود را وارد نمایید"
                   align="right"
+                  renderMenu={(results, menuProps) => {
+                    return (
+                      <Menu {...menuProps}>
+                        {results.map((result, index) => (
+                          <TypeaheadMenuItem option={result} position={index}>
+                            {result}
+                          </TypeaheadMenuItem>
+                        ))}
+                      </Menu>
+                    );
+                }}
                   onInputChange={(input)=> {this.setState({city:input})}}
                   minLength={2}
                   selectHintOnEnter={true}
@@ -366,6 +375,7 @@ class SearchBar extends React.Component {
             <div className="col-lg col-sm-12 mb-10">
             </div>
           </div>
+
 
           <div className="container-fluid hidden-xl visible-xs">
               <div className='mobile-margined-search'>

@@ -7,10 +7,12 @@ class Trips extends React.Component{
     super(props);
     this.state={
       token:null,
+      selected:0,
       role:null,
       tripList:null,
     };
   }
+
   componentWillMount() {
       this.setState({token:this.getRelevantToken()},()=>{this.setSearchParams(this.getRole())});
   }
@@ -38,26 +40,28 @@ class Trips extends React.Component{
    })
    .then((trips) => {
      this.renderData(trips);
+     if(trips.reserve_list.length>0){
+       this.showTripItemClick(trips.reserve_list[0]);
+     }
    });
   }
   renderData(trips){
     this.setState({tripList:trips});
   }
   showTripItemClick(item){
-    this.props.changeTripDetail(item);
+    this.setState({selected:item.id},()=>{this.props.changeTripDetail(item)});
   }
   renderTrips(){
     if (this.state.tripList!== null){
       var reserve_list = this.state.tripList.reserve_list;
       var list = reserve_list.map((item) => {
         return (
-          <div>
-            <div
-               dir="rtl"
-              className="userpanel-item-list hidden-xs visible-xl"
-              key={item.id} onClick={() =>{
-              this.showTripItemClick(item)
-              }}>
+          <div  dir="rtl"
+                className={(this.state.selected===item.id)?"userpanel-item-list-selected":"userpanel-item-list-not-selected"}
+                key={item.id} onClick={() =>{
+                this.showTripItemClick(item)
+          }}>
+            <div>
                 <ListGroupItem className="scroll-list-requests">
                   <div className="preview-x">
                     <img
@@ -68,7 +72,7 @@ class Trips extends React.Component{
                       <div className="request-list-item-title">
                         {item.room.title}
                       </div>
-                    <p className="request-list-item-city">  {item.room.address} </p>
+                    <p className="request-list-item-city"> {item.room.address} </p>
                     </div>
                   </div>
                 </ListGroupItem>
@@ -77,7 +81,7 @@ class Trips extends React.Component{
                dir="rtl"
               className="userpanel-item-list-xs hidden-xl visible-xs"
               key={item.id} onClick={() =>{
-              this.showRequestItemClick(item)
+              this.showTripItemClick(item)
               }}>
                 <div className="scroll-list-requests-xs">
                   <div className="preview-x2">

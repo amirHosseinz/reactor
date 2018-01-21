@@ -424,6 +424,7 @@ class SearchResult extends React.Component{
     this.renderToDatePicker();
     this.renderFromDatePicker();
     return(
+      <div>
       <div className="searchbarmain">
           <div className="container-fluid hidden-xs visible-xl">
             {this.renderSearchBarInDetails()}

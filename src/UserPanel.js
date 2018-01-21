@@ -22,7 +22,7 @@ class UserPanel extends React.Component{
     this.setState({Name: event.target.value});
   }
 
-  changeRequestDetail (request_detail) {
+  changeRequestDetail (request_detail){
     this.setState({requestDetail:request_detail});
   }
 

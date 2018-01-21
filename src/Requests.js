@@ -11,11 +11,14 @@ import { Image } from 'semantic-ui-react';
 class Requests extends React.Component{
   constructor(props){
     super(props);
+    this.list=[];
     this.state={
+      selected:0,
       token:null,
       selectedRequest:'',
       role:null,
       requestList:null,
+      firstItem:null,
     };
   }
   componentWillMount() {
@@ -55,73 +58,51 @@ class Requests extends React.Component{
   }
   renderData(request_list){
     this.setState({requestList:request_list});
+    if(request_list.request_list.length>0){
+      this.showRequestItemClick(request_list.request_list[0]);
+    }
   }
 
   showRequestItemClick(item){
-    this.props.changeRequestDetail(item);
+    this.setState({selected:item.id} ,()=>{this.props.changeRequestDetail(item)});
   }
 
   handleHighlight(event){
-    console.log(event.target.id);
     this.setState({selectedRequest:event.target.id});
   }
   renderRequests(){
       if(this.state.requestList!==null){
         var request_list = this.state.requestList.request_list;
-        var list = request_list.map((item)=>
-        <div>
-          <div
-             dir="rtl"
-            className="userpanel-item-list hidden-xs visible-xl"
-            key={item.id} onClick={() =>{
-            this.showRequestItemClick(item)
-            }}>
-              <ListGroupItem className="scroll-list-requests">
-                <div className="preview-x">
-                  <img
-                  src={"https://www.trypinn.com/"+item.room.preview}
-                  alt=""
-                  height="78px;" width="80px"/>
-                  <div>
-                    <div className="request-list-item-title">
-                      {item.room.title}
-                    </div>
-                  <p className="request-list-item-city">  {item.room.address} </p>
-                  </div>
-                </div>
-              </ListGroupItem>
-        </div>
-        <div
-           dir="rtl"
-          className="userpanel-item-list-xs hidden-xl visible-xs"
-          key={item.id} onClick={() =>{
-          this.showRequestItemClick(item)
-          }}>
-            <div className="scroll-list-requests-xs">
-              <div className="preview-x2">
-                <div className="row-reverse">
-                  <img
-                  src={"https://www.trypinn.com/"+item.room.preview}
-                  alt=""
-                  height="55px;" width="55px"/>
-                  <br/>
-                  <div>
-                    <div className="request-list-item-title">
-                      {item.room.title}
-                    </div>
-                    <p className="request-list-item-city">  {item.room.address} </p>
-                  </div>
-                </div>
+        this.list = request_list.map((item)=>  {
+          return(
+            <div
+              dir="rtl"
+              className={(this.state.selected===item.id)?"userpanel-item-list-selected":"userpanel-item-list-not-selected"}
+              key={item.id} onClick={() =>{
+              this.showRequestItemClick(item)
+              }}>
                 <div>
-                  <Image className='arrow-ico' src={require('./Images/arrow-down.svg')}/>
+                <ListGroupItem className="scroll-list-requests">
+                  <div className="preview-x">
+                    <img
+                    src={"https://www.trypinn.com/"+item.room.preview}
+                    alt=""
+                    height="78px;" width="80px"/>
+                    <div>
+                      <div className="request-list-item-title">
+                        {item.room.title}
+                      </div>
+                    <p className="request-list-item-city">{item.room.address} </p>
+                    </div>
+                  </div>
+                </ListGroupItem>
                 </div>
-              </div>
-            </div>
           </div>
-      </div>
+          );
+        }
     );
       return(
-       <ListGroup>{list}</ListGroup>
+       <ListGroup>{this.list}</ListGroup>
          );
       }
   }
