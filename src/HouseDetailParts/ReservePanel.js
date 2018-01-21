@@ -92,7 +92,7 @@ class ReservePanel extends React.Component{
     }
   }
   showTrypinnPrice(){
-    if (this.state.reserveData !=='' && this.state.reserveData.is_available){
+    if (this.state.reserveData !=='' && this.state.reserveData.is_available && this.state.reserveData.trypinn_service_price!==null){
       return(
         <p>
         هزینه تریپین:{englishToPersianDigits(this.state.reserveData.trypinn_service_price)}
@@ -108,7 +108,7 @@ class ReservePanel extends React.Component{
     }
   }
   showTrypinnDiscount(){
-    if (this.state.reserveData !==''&& this.state.reserveData.is_available){
+    if (this.state.reserveData !==''&& this.state.reserveData.is_available && this.state.reserveData.trypinn_service_discount!==null){
       return(
         <p>
          تخفیف تریپین:{englishToPersianDigits(this.state.reserveData.trypinn_service_discount)}
@@ -116,7 +116,7 @@ class ReservePanel extends React.Component{
     }
   }
   showTotalDiscount(){
-    if (this.state.reserveData !==''&& this.state.reserveData.is_available){
+    if (this.state.reserveData !==''&& this.state.reserveData.is_available && this.state.reserveData.total_discount!==null){
       return(
         <p>
         تخفیف کل : {englishToPersianDigits(this.state.reserveData.total_discount)}
