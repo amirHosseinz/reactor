@@ -268,6 +268,7 @@ class Login extends React.Component{
       return(
         <Modal show={this.state.showSignUpOrSetPasswordModal}
                style={setPasswordStyle}
+
                onHide={()=>{this.props.closeLoginPanel();
                  this.setState({showSignUpOrSetPasswordModal:false})}}>
          <div className="login1-modal">
@@ -395,7 +396,6 @@ class Login extends React.Component{
         }
       }
     }
-
     renderVerificationModal(){
       return(
         <Modal show={this.state.showVerificationModal}

@@ -2,13 +2,15 @@ import React from 'react';
 import Login from './Login.js';
 import { slide as Menu} from 'react-burger-menu';
 import customBurgerIcon  from 'react-burger-menu';
+import {Link} from 'react-router-dom';
 // import Modal from 'react-modal';
 import {Button,Divider} from 'semantic-ui-react';
 import {Dropdown} from 'semantic-ui-react';
-import { Image } from 'semantic-ui-react';
 import {loginPasswordStyle, loginPhoneNumberStyle, loginPanelmobileStyle} from './Styles.js';
 import {Modal} from 'react-bootstrap';
 
+import {Image} from 'react-bootstrap';
+// import {Image} from 'semantic-ui-react';
 
 class Header extends React.Component{
   constructor (props){
@@ -77,7 +79,9 @@ class Header extends React.Component{
 
      });
   }
-
+  closeLoginPanel(){
+    this.setState({loginPanelVisible2:false});
+  }
   renderLoginButton(){
     if (this.state.isLoggedIn !== 'true'){
       return(
@@ -180,15 +184,19 @@ class Header extends React.Component{
     );
   }
   renderUserPhoto(){
+    // console.log(localStorage['user-profile-picture']);
      if(localStorage['user-profile-picture']==='null'||localStorage['user-profile-picture']===undefined){
        return(
-         <Image className='avatar-header' src={require('./HouseDetailParts/facilities/prof_avatar_tripinn.svg')} avatar={true}/>
+         <div style={{float:'left'}}>
+          <Image className="profile-card-user-avatar" src={require('./HouseDetailParts/facilities/prof_avatar_tripinn.svg')} height={70} width={70} circle={true}/>
+         </div>
+
        );
      }
        else{
          return(
            <div style={{float:'left'}}>
-             <Image className="avatar-header" src={'https://www.trypinn.com/' + localStorage['user-profile-picture']} avatar={true} />
+             <img className="profile-card-user-avatar" src={'https://www.trypinn.com/' + localStorage['user-profile-picture']} height={70} width={70}/>
            </div>
          );
        }
@@ -205,17 +213,18 @@ class Header extends React.Component{
                 <div className="row-reverse">
                   {this.renderUserPhoto()}
                   <div>
-                  <p className="main-menu-user1" onClick={this.handleUserProfileClick.bind(this)}>{localStorage['user-first-name'] + localStorage['user-last-name']}</p>
-                  <p className="main-menu-user1" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
+                  <p className="profile-card-user-name" onClick={this.handleUserProfileClick.bind(this)}>{localStorage['user-first-name'] + ' ' + localStorage['user-last-name']}</p>
+                  <p className="profile-card-user-profile" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
                   </div>
                 </div>
                 <Dropdown.Divider/>
                 <div>
-                  {this.renderTripButton()}
                   {this.renderRequestButton()}
+                  {this.renderTripButton()}
                 </div>
-                <Dropdown.Divider/>
-                <p className="main-menu-user2" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
+                <hr className="profile-card-divider" />
+                <p className="profile-card-exit-button" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
+                <p className="profile-card-exit-button-helper-empty-division"></p>
              </Dropdown.Menu>
             </Dropdown>
           </div>
@@ -262,7 +271,7 @@ class Header extends React.Component{
   renderRequestButton(){
     if(localStorage['isLoggedIn']==='true'){
       return (
-        <p className="clickable-p xl-menu-item"  onClick={this.handleRequestClick.bind(this)}>درخواست‌‌ها</p>
+        <p className="profile-card-user-requests"  onClick={this.handleRequestClick.bind(this)}>درخواست های من</p>
       );
     }
   }
@@ -270,7 +279,7 @@ class Header extends React.Component{
   renderTripButton(){
     if(localStorage['isLoggedIn']==='true'){
       return(
-        <p className="clickable-p xl-menu-item"  onClick={this.handleTripClick.bind(this)}>سفرها</p>
+        <p className="profile-card-user-trips"  onClick={this.handleTripClick.bind(this)}>سفرهای من</p>
       );
     }
   }
@@ -278,7 +287,7 @@ class Header extends React.Component{
   renderMessageButton(){
     if(localStorage['isLoggedIn']==='true'){
       return(
-        <p className="clickable-p xl-menu-item"  onClick={this.handleMessageClick.bind(this)}>پیام‌ها</p>
+        <p className="profile-card-user-messages"  onClick={this.handleMessageClick.bind(this)}>پیام‌ها</p>
       );
     }
   }
@@ -299,10 +308,10 @@ class Header extends React.Component{
           <div className="logo col-md-2 col-sm-4">
               <div className='headerchild'>
                 <div className='logodiv'>
-                   <a href="/"><img src={require('./Images/tripinn_logo.svg')} className="LogoImage" alt = 'تریپین'></img></a>
+                   <Link to="/"><img src={require('./Images/tripinn_logo.svg')} className="LogoImage" alt = 'تریپین'></img></Link>
                 </div>
                 <div>
-                  <a className='logolink' href="/"><p className='logofont'>تریپین</p></a>
+                  <Link className='logolink' to="/"><p className='logofont'>تریپین</p></Link>
                 </div>
               </div>
           </div>

@@ -11,6 +11,9 @@ import BecomeHost from './BecomeHost.js';
 import ContactUs from './ContactUs.js';
 import AboutUs from './AboutUs.js';
 import Terms from './Terms.js';
+import SearchResult from './SearchResult.js';
+import Suggestions from './Suggestions.js';
+
 
 class MainPage extends React.Component{
   constructor(props){
@@ -20,8 +23,8 @@ class MainPage extends React.Component{
       houseDetail: null,
     };
   }
-  renderSearchBar() {
-    return (<SearchBar />);
+  renderSearchBar(props) {
+    return (<SearchBar {...props}/>);
   }
   renderHeader(){
     return (
@@ -91,22 +94,36 @@ class MainPage extends React.Component{
       <UserProfile/>
     );
   }
+
+  renderSearchResult(props){
+    return (
+      <SearchResult {...props}/>
+    );
+  }
+  renderSuggestions(){
+    return (
+      <Suggestions />
+    );
+  }
   render(){
     this.getGuestTokenFromServer();
     document.title = "تریپین | سامانه رزرو ویلا";
     return(
       <BrowserRouter>
         <div className="main">
+
           <Route path={"/"} render = {()=> {return (this.renderHeader())}}/>
-          <Route exact path={'/'} render={()=> {return (this.renderSearchBar())}}/>
+          <Route exact path={'/'} render={(props)=> {return (this.renderSearchBar(props))}}/>
           <Route exact path={'/dashboard'} render={()=>{return(this.renderUserPanel())}}/>
           <Route path={'/rooms/' + this.getHouseId()} render ={()=> {return (this.renderHouseDetails())}}/>
           <Route path={"/becomehost"} render = {()=> {return(this.renderBecomeHost())}}/>
           <Route path={"/aboutus"} render = {()=> {return(this.renderAboutUs())}}/>
+          <Route path={"/suggestions&comments"} render = {()=> {return(this.renderSuggestions())}}/>
           <Route path={"/terms&conditions"} render = {()=> {return(this.renderTerms())}}/>
           <Route path={"/contactus"} render = {()=> {return(this.renderContactUs())}}/>
           <Route path={"/userprofile"} render={()=> {return(this.renderUserProfile())}}/>
           <Route path={"/"} render = {()=> {return(this.renderFooter())}}/>
+          <Route exact path={"/search/:city"} render = {(props)=> {return(this.renderSearchResult(props))}}/>
         </div>
       </BrowserRouter>
     );
