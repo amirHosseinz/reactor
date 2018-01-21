@@ -7,7 +7,7 @@ import $ from 'jquery';
 import './tools/DatePicker/bootstrap-datepicker.fa.js';
 import './tools/DatePicker/bootstrap-datepicker.js';
 import './tools/DatePicker/bootstrap-datepicker.css';
-import utf8 from 'utf8';
+import { withRouter } from 'react-router-dom'
 
 
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
@@ -148,7 +148,6 @@ class SearchResult extends React.Component{
   }
 
   handleClick(){
-      localStorage['selected-city-search']=this.state.city;
       window.location.href="/search/" + this.state.city;
   }
 
@@ -164,6 +163,7 @@ class SearchResult extends React.Component{
       this.handleClick();
     }
   }
+
   renderSearchBarInDetails(){
     return(
       <div className="render-results row">
@@ -173,36 +173,36 @@ class SearchResult extends React.Component{
                 </div>
                 <div className="search-inputs col-md-9">
                   <div className="multi-input-typeahead">
-                    <Typeahead
-                      className="typeahead-indetail-xl"
-                      renderMenu={(results, menuProps) => {
-                          return (
-                            <Menu {...menuProps}>
-                              {results.map((result, index) => (
-                                <TypeaheadMenuItem option={result} position={index}>
-                                  {result}
-                                </TypeaheadMenuItem>
-                              ))}
-                            </Menu>
-                          );
-                        }}
-                      onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
-                      minLength={2}
-                      align="right"
-                      emptyLabel="نتیجه‌ای یافت نشد"
-                      maxResults={5}
-                      selected={this.readCityFromURL()}
-                      placeholder='هرجا'
-                      selectHintOnEnter={false}
-                      highlightOnlyResult={true}
-                      submitFormOnEnter={false}
-                      onChange={(selected)=>{
-                        if(selected.length!==0){
-                          this.setState({city:selected[0]},()=>{this.handleClick()});
-                        }
+                  <Typeahead
+                    className="typeahead-indetail-xl"
+                    renderMenu={(results, menuProps) => {
+                        return (
+                          <Menu {...menuProps}>
+                            {results.map((result, index) => (
+                              <TypeaheadMenuItem option={result} position={index}>
+                                {result}
+                              </TypeaheadMenuItem>
+                            ))}
+                          </Menu>
+                        );
                       }}
-                    options={listOfCity}
-                      />
+                    onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
+                    minLength={2}
+                    align="right"
+                    emptyLabel="نتیجه‌ای یافت نشد"
+                    maxResults={5}
+                    selected={this.readCityFromURL()}
+                    placeholder='هرجا'
+                    selectHintOnEnter={false}
+                    highlightOnlyResult={true}
+                    submitFormOnEnter={false}
+                    onChange={(selected)=>{
+                      if(selected.length!==0){
+                        this.setState({city:selected[0]},()=>{this.handleClick()});
+                      }
+                    }}
+                  options={listOfCity}
+                    />
                   </div>
 
                   <div className="multi-input-1">
