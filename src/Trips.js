@@ -12,7 +12,7 @@ class Trips extends React.Component{
       tripList:null,
     };
   }
-  
+
   componentWillMount() {
       this.setState({token:this.getRelevantToken()},()=>{this.setSearchParams(this.getRole())});
   }
@@ -40,6 +40,9 @@ class Trips extends React.Component{
    })
    .then((trips) => {
      this.renderData(trips);
+     if(trips.reserve_list.length>0){
+       this.showTripItemClick(trips.reserve_list[0]);
+     }
    });
   }
   renderData(trips){
@@ -78,7 +81,7 @@ class Trips extends React.Component{
                dir="rtl"
               className="userpanel-item-list-xs hidden-xl visible-xs"
               key={item.id} onClick={() =>{
-              this.showRequestItemClick(item)
+              this.showTripItemClick(item)
               }}>
                 <div className="scroll-list-requests-xs">
                   <div className="preview-x2">

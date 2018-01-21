@@ -18,6 +18,7 @@ class Requests extends React.Component{
       selectedRequest:'',
       role:null,
       requestList:null,
+      firstItem:null,
     };
   }
   componentWillMount() {
@@ -57,6 +58,9 @@ class Requests extends React.Component{
   }
   renderData(request_list){
     this.setState({requestList:request_list});
+    if(request_list.request_list.length>0){
+      this.showRequestItemClick(request_list.request_list[0]);
+    }
   }
 
   showRequestItemClick(item){
@@ -96,7 +100,6 @@ class Requests extends React.Component{
           </div>
           );
         }
-
     );
       return(
        <ListGroup>{this.list}</ListGroup>
