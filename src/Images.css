@@ -1,3 +1,10 @@
+.searchbar-typeahead-menu-item{
+  border:soid #f2f5f6 !important;
+}
+.searchbar-typeahead-menu-item:hover{
+  background-color:#f2f5f6 !important;
+}
+
 .sign-up-modal-link-to-rules{
   color : #12b2ce;
   cursor : pointer;
