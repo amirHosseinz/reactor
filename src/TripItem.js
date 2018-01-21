@@ -200,7 +200,7 @@ class TripItem extends React.Component{
           <div className="request-detail-userpanel">
             <Divider/>
             <div className='house-preview-linked-to-house-detail' dir="rtl">
-              <p> نام اقامتگاه : {this.state.trip.room.title} </p>
+              <p> نام اقامتگاه :<a style={{color:'#12b2ce'}} href={"/rooms/"+this.state.trip.room.id} target="_blank">{this.state.trip.room.title}</a>  </p>
               <p>شهر مقصد: {this.state.trip.room.city}  </p>
               <p> به میزبانی  {this.state.trip.room.owner.first_name} {this.state.trip.room.owner.last_name}</p>
               <p> رزرو کننده: {this.state.trip.guest_person.last_name} </p>
