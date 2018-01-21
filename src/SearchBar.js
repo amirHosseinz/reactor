@@ -281,7 +281,7 @@ class SearchBar extends React.Component {
   }
 
    handleClick(){
-       window.location.href="/search/" + this.state.city;
+       this.props.history.replace("/search/" + this.state.city);
      }
 
 
