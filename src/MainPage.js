@@ -94,9 +94,9 @@ class MainPage extends React.Component{
     );
   }
 
-  renderSearchResult(){
+  renderSearchResult(props){
     return (
-      <SearchResult />
+      <SearchResult {...props}/>
     );
   }
 
@@ -106,6 +106,7 @@ class MainPage extends React.Component{
     return(
       <BrowserRouter>
         <div className="main">
+
           <Route path={"/"} render = {()=> {return (this.renderHeader())}}/>
           <Route exact path={'/'} render={()=> {return (this.renderSearchBar())}}/>
           <Route exact path={'/dashboard'} render={()=>{return(this.renderUserPanel())}}/>
@@ -116,7 +117,7 @@ class MainPage extends React.Component{
           <Route path={"/contactus"} render = {()=> {return(this.renderContactUs())}}/>
           <Route path={"/userprofile"} render={()=> {return(this.renderUserProfile())}}/>
           <Route path={"/"} render = {()=> {return(this.renderFooter())}}/>
-          <Route path={"/search"} render = {()=> {return(this.renderSearchResult())}}/>
+          <Route path={"/search"} render = {(props)=> {return(this.renderSearchResult(props))}}/>
         </div>
       </BrowserRouter>
     );
