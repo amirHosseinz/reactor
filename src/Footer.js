@@ -21,6 +21,7 @@ class Footer extends React.Component{
                       <a href="https://www.twitter.com/"><img src={require('./Images/trypinn-twitter.png')} className='social-image-xl' alt=""></img></a>
                     </div>
                     <div className='footer-menu col-md-10'>
+
                       <a className="download-app-footer-anchor" rel="noopener noreferrer" target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
                         <button className="download-tripinn" >دانلود اپلیکیشن
                         </button>

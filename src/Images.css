@@ -261,14 +261,7 @@ margin-left: 14px;
     margin: auto;
   text-align: center;
 }
-.main-menu-user1{
-  cursor :pointer;
-  text-align : center;
-  font-size: 14px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 8px;
-}
+
 .main-menu-user2{
   cursor :pointer;
   text-align : center;
@@ -278,13 +271,14 @@ margin-left: 14px;
   padding-bottom: 8px;
 }
 .main-menu-header{
-  padding-top: 37px;
+  padding-top: 22px;
   font-family: IRANSans;
   font-size: 16px;
+  color: #454545;
 }
 .LogoImage{
-  height:60px;
-  margin-top: .7em;
+  height:44px;
+  margin-top: 8px;
   margin-left: 10px;
 }
 .LogoImage-mobile{
@@ -295,9 +289,11 @@ margin-left: 14px;
   }
 .header{
   width:100% !important;
-  box-shadow:0 2px 2px rgba(0,0,0,0.1);
   background-color: white;
-  height:75px;
+  border-bottom: solid;
+  border-color: #ebebeb;
+  border-width:2px;
+  height:60px;
   }
   .hearder-child-margined{
     width:92%;
@@ -372,10 +368,10 @@ margin-left: 14px;
 }
 .logofont{
   font-family: IRANSans;
-  font-size: 2.8em;
+  font-size: 28px;
   font-style: normal;
 	font-weight: 500;
-  padding-top: .25em;
+  padding-top: 9px;
   color: #12b2ce;
 }
 .logofont-mobile{
@@ -440,22 +436,33 @@ margin-left: 14px;
 
 .logo-menu-font{
   font-family: IRANSans;
-  font-size: 1em;
+  font-size: 16px;
   font-style: normal;
-	font-weight: 500;
-  margin-left: 1em;
-  padding-top: 7px;
-  color: #646464;
+	font-weight: 400;
+  margin-right: 1em;
+  padding-top: 22px;
+  color: #454545;
 }
-.logo-menu-font:hover{
+.logo-menu-dl{
   font-family: IRANSans;
-  font-size: 1em;
+  font-size: 16px;
   font-style: normal;
 	font-weight: 500;
-  margin-left: 1em;
+  margin-right: 1em;
   color: #f56c4e;
+  padding-top: 22px;
 
 }
+.logo-menu-hst{
+  font-family: IRANSans;
+  font-size: 16px;
+  font-style: normal;
+  padding-top: 22px;
+	font-weight: 500;
+  margin-right: 1em;
+  color: #17b3ce;
+}
+
 .logo-footer-menu-font-mobile{
   font-family: IRANSans;
   font-size: 1em;
@@ -713,6 +720,10 @@ justify-content: center;
 
 .dropdown-menu{
   text-align: right !important
+}
+.dropdown{
+padding-right: 12px;
+
 }
 .downloadbotton-bordered{
 width:34%;
@@ -1095,11 +1106,72 @@ transform: scale(2, 2);
   display: flex;
   flex-direction: row;
 }
+
+.profile-card-user-name{
+  cursor :pointer;
+  text-align : right;
+  font-size: 17px;
+  font-weight: 500;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 23px;
+  color : #12b2ce;
+}
+.profile-card-user-profile{
+  cursor :pointer;
+  text-align : right;
+  font-size: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top : -14px;
+  margin-left : 30px;
+}
+.profile-card-divider{
+  width : 80%;
+  border-color: #d2d2d2;
+
+}
+
+.profile-card-user-avatar{
+  border-radius: 50%;
+  object-fit: cover;
+  padding-right: 10px;
+  margin-top : 13px;
+}
+.profile-card-user-trips{
+  cursor:pointer;
+  text-align: right;
+  margin-right: 17px;
+  margin-top : -8px;
+}
+.profile-card-user-trips:hover{
+ color : #12b2ce;
+}
+
+
+.profile-card-user-requests{
+  text-align: right;
+  cursor:pointer;
+  margin-right: 17px;
+  margin-top : -8px;
+}
+.profile-card-user-requests:hover{
+  color : #12b2ce;
+}
+.profile-card-exit-button{
+  text-align: right;
+  margin-right: 17px;
+  padding-buttom: 1000px!important;
+  cursor:pointer;
+}
+.profile-card-exit-button:hover{
+  color : #12b2ce;
+}
+.profile-card-exit-button-helper-empty-division{
+  margin-top : 10px;
+}
 .xl-menu-item{
-  margin-right: 10px;
-  margin-left: 10px;
-  padding-top: 41px;
-  font-size: 16px;
+
 }
 .xl-menu-item:hover{
 color: #42b0c6;
@@ -1922,11 +1994,8 @@ text-align:center;
 
 }
 
-.avatar-header{
-  object-fit: cover;
-}
+
 .header-drop-down-texts{
-  margin-top: 6px;
   margin-right: 5px;
 }
 .rules-half{
