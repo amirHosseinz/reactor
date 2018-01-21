@@ -146,7 +146,7 @@ renderSuccessful(message){
      </label>
      </span>
      </div>
-     <div className='hala'>
+     <div className='host-container'>
      <label className='become-host-labels' >
      <div>
     ( ایمیل (اختیاری

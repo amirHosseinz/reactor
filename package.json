@@ -43,7 +43,8 @@
     "rtl-css-js": "^1.8.0",
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.77.1",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "utf8": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

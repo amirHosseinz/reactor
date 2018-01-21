@@ -2,7 +2,8 @@ import React from 'react';
 import Login from './Login.js';
 import { slide as Menu} from 'react-burger-menu';
 import customBurgerIcon  from 'react-burger-menu';
-
+import {Link} from 'react-router-dom';
+// import Modal from 'react-modal';
 import {Button,Divider} from 'semantic-ui-react';
 import {Dropdown} from 'semantic-ui-react';
 import {loginPasswordStyle, loginPhoneNumberStyle, loginPanelmobileStyle} from './Styles.js';
@@ -78,7 +79,9 @@ class Header extends React.Component{
 
      });
   }
-
+  closeLoginPanel(){
+    this.setState({loginPanelVisible2:false});
+  }
   renderLoginButton(){
     if (this.state.isLoggedIn !== 'true'){
       return(
@@ -305,10 +308,10 @@ class Header extends React.Component{
           <div className="logo col-md-2 col-sm-4">
               <div className='headerchild'>
                 <div className='logodiv'>
-                   <a href="/"><img src={require('./Images/tripinn_logo.svg')} className="LogoImage" alt = 'تریپین'></img></a>
+                   <Link to="/"><img src={require('./Images/tripinn_logo.svg')} className="LogoImage" alt = 'تریپین'></img></Link>
                 </div>
                 <div>
-                  <a className='logolink' href="/"><p className='logofont'>تریپین</p></a>
+                  <Link className='logolink' to="/"><p className='logofont'>تریپین</p></Link>
                 </div>
               </div>
           </div>

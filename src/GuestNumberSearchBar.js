@@ -1,8 +1,8 @@
 import React from 'react';
-import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
+import { englishToPersianDigits } from './tools/EnglishToPersianDigits';
 
 
-class GuestNumber extends React.Component{
+class GuestNumberSearchBar extends React.Component{
   constructor(props){
     super(props);
     this.state={
@@ -26,21 +26,21 @@ this.setState({number:1});
 }
 render(){
   return(
-    <div className="number-zone">
+    <div className="geust-number-searchbar-container">
 
-      <div className="reserve-number-box" >
-        <button className="btn-plus" onClick={this.renderAdd.bind(this)}>
-            <p className="number-inputer" >
+      <div className="reserve-number-box-searchbar" >
+        <button className="btn-plus-searchbar" onClick={this.renderAdd.bind(this)}>
+            <p className="number-inputer-searchbar" >
             +
             </p>
         </button>
-        <div className='guest-number'>
-        <p className="imput-number row-reverse">
+        <div className='guest-number-searchbar'>
+        <p className="input-number-searchbar row-reverse">
         <span>نفر </span><span>{englishToPersianDigits(this.state.number)}</span>
         </p>
         </div>
-        <button className="btn-sub" onClick={this.renderSub.bind(this)}>
-            <p className="number-inputer" >
+        <button className="btn-sub-searchbar" onClick={this.renderSub.bind(this)}>
+            <p className="number-inputer-searchbar" >
             -
             </p>
         </button>
@@ -50,4 +50,4 @@ render(){
   );
 }
 }
-export default GuestNumber;
+export default GuestNumberSearchBar;
