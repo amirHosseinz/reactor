@@ -5,6 +5,22 @@
   background-color:#f2f5f6 !important;
 }
 
+.footer-links{
+  margin-top: -13px;
+}
+.suggestions-comments-section{
+  font-family: IRANSans;
+  text-align: center;
+}
+.suggestions-comments-header{
+  font-size: 35px;
+  font-family: IRANSans;
+  font-weight: 500;
+}
+.suggestions-comments-paragraph{
+  direction:rtl;
+  margin-right: 20px;
+}
 .sign-up-modal-link-to-rules{
   color : #12b2ce;
   cursor : pointer;

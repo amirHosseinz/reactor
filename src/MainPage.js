@@ -12,6 +12,7 @@ import ContactUs from './ContactUs.js';
 import AboutUs from './AboutUs.js';
 import Terms from './Terms.js';
 import SearchResult from './SearchResult.js';
+import Suggestions from './Suggestions.js';
 
 
 class MainPage extends React.Component{
@@ -99,7 +100,11 @@ class MainPage extends React.Component{
       <SearchResult {...props}/>
     );
   }
-
+  renderSuggestions(){
+    return (
+      <Suggestions />
+    );
+  }
   render(){
     this.getGuestTokenFromServer();
     document.title = "تریپین | سامانه رزرو ویلا";
@@ -113,6 +118,7 @@ class MainPage extends React.Component{
           <Route path={'/rooms/' + this.getHouseId()} render ={()=> {return (this.renderHouseDetails())}}/>
           <Route path={"/becomehost"} render = {()=> {return(this.renderBecomeHost())}}/>
           <Route path={"/aboutus"} render = {()=> {return(this.renderAboutUs())}}/>
+          <Route path={"/suggestions&comments"} render = {()=> {return(this.renderSuggestions())}}/>
           <Route path={"/terms&conditions"} render = {()=> {return(this.renderTerms())}}/>
           <Route path={"/contactus"} render = {()=> {return(this.renderContactUs())}}/>
           <Route path={"/userprofile"} render={()=> {return(this.renderUserProfile())}}/>
