@@ -117,7 +117,7 @@ class MainPage extends React.Component{
           <Route path={"/contactus"} render = {()=> {return(this.renderContactUs())}}/>
           <Route path={"/userprofile"} render={()=> {return(this.renderUserProfile())}}/>
           <Route path={"/"} render = {()=> {return(this.renderFooter())}}/>
-          <Route path={"/search"} render = {(props)=> {return(this.renderSearchResult(props))}}/>
+          <Route exact path={"/search/:city"} render = {(props)=> {return(this.renderSearchResult(props))}}/>
         </div>
       </BrowserRouter>
     );

@@ -70,7 +70,9 @@ class SearchResult extends React.Component{
     this.renderToDatePicker();
     this.renderFromDatePicker();
     this.setState({token : this.getRelevantToken()},()=>{this.setSearchParams()});
-
+  }
+  componentWillReceiveProps(){
+    this.setState({token : this.getRelevantToken()},()=>{this.setSearchParams()});
   }
   setSearchParams(){
     var spar = {
@@ -148,7 +150,9 @@ class SearchResult extends React.Component{
   }
 
   handleClick(){
-    this.props.history.replace('/search/' + this.state.city);
+    console.log(this.props);
+    this.props.history.replace('/search/'+this.state.city);
+    // this.forceUpdate();
   }
 
   handleClickXs(){

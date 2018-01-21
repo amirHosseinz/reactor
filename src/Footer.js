@@ -25,10 +25,10 @@ class Footer extends React.Component{
                         <button className="download-tripinn" >دانلود اپلیکیشن
                         </button>
                       </a>
-                    <Link to="terms&conditions"><p className='logo-menu-font'> قوانین و شرایط استفاده </p></Link>
-                    <Link to="becomehost"><p className='logo-menu-font'>میزبان شوید </p></Link>
-                    <Link to="aboutus"><p className='logo-menu-font'>درباره تریپین </p></Link>
-                    <Link to="contactus"><p className='logo-menu-font'> تماس با ما </p></Link> 
+                    <Link to="/terms&conditions"><p className='logo-menu-font'> قوانین و شرایط استفاده </p></Link>
+                    <Link to="/becomehost"><p className='logo-menu-font'>میزبان شوید </p></Link>
+                    <Link to="/aboutus"><p className='logo-menu-font'>درباره تریپین </p></Link>
+                    <Link to="/contactus"><p className='logo-menu-font'> تماس با ما </p></Link> 
                     </div>
                   </div>
             </div>
