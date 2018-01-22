@@ -119,7 +119,9 @@ class SearchBar extends React.Component {
                         <Menu {...menuProps}>
                           {results.map((result, index) => (
                             <TypeaheadMenuItem option={result} position={index}>
-                              {result}
+                              <div  className="search-bar-only-city-item">
+                                {result}
+                              </div>
                             </TypeaheadMenuItem>
                           ))}
                         </Menu>
@@ -129,8 +131,8 @@ class SearchBar extends React.Component {
                     renderMenu={(results, menuProps) => {
                         return (
                           <Menu {...menuProps}>
-                            {results.map((result, index) => (
-                              <TypeaheadMenuItem  option={result} position={index}>
+                            {results.map((result,index) => (
+                              <TypeaheadMenuItem className="search-bar-only-city-menu-item" option={result} position={index}>
                                 {result}
                               </TypeaheadMenuItem>
                             ))}

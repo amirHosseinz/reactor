@@ -420,6 +420,9 @@ class SearchResult extends React.Component{
     }
     return results;
   }
+
+  // {this.renderSearchBarInDetailsXs()}
+  // {this.renderHousesCol1()}
   render(){
     this.renderToDatePicker();
     this.renderFromDatePicker();
@@ -439,8 +442,7 @@ class SearchResult extends React.Component{
                 <div className="main-zone-xs col-md-12">
                   <div className="row">
                   </div>
-            {this.renderSearchBarInDetailsXs()}
-            {this.renderHousesCol1()}
+
 
             <div className='mobile-margined-search'>
               <div className="main-zone-xs col-md-12">
