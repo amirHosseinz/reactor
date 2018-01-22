@@ -169,6 +169,8 @@ class SearchResult extends React.Component{
   }
 
   renderSearchBarInDetails(){
+    this.renderFromDatePicker();
+    this.renderToDatePicker();
     return(
       <div className="render-results row">
             <div className="results-search">
@@ -424,8 +426,6 @@ class SearchResult extends React.Component{
   // {this.renderSearchBarInDetailsXs()}
   // {this.renderHousesCol1()}
   render(){
-    this.renderToDatePicker();
-    this.renderFromDatePicker();
     return(
       <div>
       <div className="searchbarmain">
