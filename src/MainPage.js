@@ -5,7 +5,7 @@ import Header from './Header.js';
 import Footer from './Footer.js';
 import UserProfile from './UserProfile.js';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter,Route} from 'react-router-dom';
 import UserPanel from './UserPanel';
 import BecomeHost from './BecomeHost.js';
 import ContactUs from './ContactUs.js';

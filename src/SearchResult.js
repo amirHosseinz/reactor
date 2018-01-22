@@ -7,7 +7,7 @@ import $ from 'jquery';
 import './tools/DatePicker/bootstrap-datepicker.fa.js';
 import './tools/DatePicker/bootstrap-datepicker.js';
 import './tools/DatePicker/bootstrap-datepicker.css';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 
 
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
@@ -180,7 +180,7 @@ class SearchResult extends React.Component{
                   <Typeahead
                     className="typeahead-indetail-xl"
                     renderMenu={(results, menuProps) => {
-                        return (
+                        return(
                           <Menu {...menuProps}>
                             {results.map((result, index) => (
                               <TypeaheadMenuItem option={result} position={index}>

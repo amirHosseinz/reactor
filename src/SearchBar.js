@@ -84,7 +84,6 @@ class SearchBar extends React.Component {
   }
 
     handleSearchByEnter(event){
-      console.log(event.locale);
       if(event.key==="Enter" && this.state.city!==null && this.state.city!==''){
         this.handleClick();
       }
