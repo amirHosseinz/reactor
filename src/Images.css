@@ -2425,7 +2425,24 @@ padding-top: 80px;
   font-weight: 600;
   font-family: IRANSans;
 }
+.house-detail-image-loaded{
 
+}
+
+.test-loaded{
+  display:none;
+}
+
+.test-not-loaded{
+  padding: 100px;
+  margin:100px;
+  position: absolute;
+}
+
+
+.house-detail-image-not-loaded{
+  opacity: 0.2;
+}
 .guest-number-searchbar{
   text-align: center;
   padding:20px;
