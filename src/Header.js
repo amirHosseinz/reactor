@@ -250,20 +250,21 @@ class Header extends React.Component{
     }
   }
   handleTripClick(){
-    window.location.href = '/dashboard';
     if (localStorage['default-panel']!=='trip'){
       localStorage['default-panel']='trip';
-
     }
+    this.props.history.replace('/dashboard');
   }
   handleRequestClick(){
-    window.location.href = '/dashboard';
+
     if (localStorage['default-panel']!=='request'){
       localStorage['default-panel']='request';
     }
+    this.props.history.replace('/dashboard');
   }
+
   handleUserProfileClick(){
-      window.location.href = '/userprofile';
+    this.props.history.replace('/userprofile');
   }
 
   toggleBurgerMenu(){
@@ -272,8 +273,8 @@ class Header extends React.Component{
 
   renderRequestButton(){
     if(localStorage['isLoggedIn']==='true'){
-      return (
-        <p className="profile-card-user-requests"  onClick={this.handleRequestClick.bind(this)}>درخواست های من</p>
+      return(
+        <p className="profile-card-user-requests" onClick={this.handleRequestClick.bind(this)}>درخواست های من</p>
       );
     }
   }
@@ -307,9 +308,9 @@ class Header extends React.Component{
             <div className="row-reverse">
               <Link to="/suggestions&comments"><p className='logo-menu-font'>ثبت شکایات </p></Link>
               <Link to="/contactus"><p className='logo-menu-font'> تماس با ما </p></Link>
-              <Link to="/aboutus"><p className='logo-menu-font'>درباره تریپین </p></Link>
+              <Link to="/aboutus"><p className='logo-menu-font'>درباره ما </p></Link>
               <Link to="/becomehost"><p className='logo-menu-font'>میزبان شوید </p></Link>
-              <Link to="/terms&conditions"><p className='logo-menu-font'> قوانین و شرایط استفاده </p></Link>
+              <Link to="/terms&conditions"><p className='logo-menu-font'>قوانین </p></Link>
               <a className="logo-menu-font1" rel="noopener noreferrer" target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >دریافت اپلیکیشن</a>
             </div>
           </div>

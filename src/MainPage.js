@@ -26,9 +26,9 @@ class MainPage extends React.Component{
   renderSearchBar(props) {
     return (<SearchBar {...props}/>);
   }
-  renderHeader(){
+  renderHeader(props){
     return (
-      <Header/>
+      <Header {...props}/>
     );
   }
   renderFooter() {
@@ -111,8 +111,7 @@ class MainPage extends React.Component{
     return(
       <BrowserRouter>
         <div className="main">
-
-          <Route path={"/"} render = {()=> {return (this.renderHeader())}}/>
+          <Route path={"/"} render = {(props)=> {return (this.renderHeader(props))}}/>
           <Route exact path={'/'} render={(props)=> {return (this.renderSearchBar(props))}}/>
           <Route exact path={'/dashboard'} render={()=>{return(this.renderUserPanel())}}/>
           <Route path={'/rooms/' + this.getHouseId()} render ={()=> {return (this.renderHouseDetails())}}/>
