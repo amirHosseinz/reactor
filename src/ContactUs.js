@@ -1,15 +1,14 @@
 import React from 'react';
 import { withScriptjs ,withGoogleMap, GoogleMap,Marker } from "react-google-maps";
 import {Image} from 'semantic-ui-react';
+
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>{
-  // console.log(props);
   return(
     <GoogleMap
       defaultZoom={props.zoom}
       defaultCenter={{lat:props.lat,lng:props.lng}}>
       <Marker defaultPosition={{lat:props.lat,lng:props.lng}}
-      defaultIcon={require('./Images/pin.png')}
-      />
+      defaultIcon={require('./Images/pin.png')}/>
     </GoogleMap>
   );
 }));
