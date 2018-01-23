@@ -55,7 +55,7 @@ class SearchResult extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      city: decodeURIComponent(window.location.href.split('/')).split(',')[4],
+      city: null,
       houseList:[],
       token: null,
       searchParams : {
@@ -67,10 +67,19 @@ class SearchResult extends React.Component{
     };
   }
   componentWillMount(){
+    var city=this.readCityFromURL();
+    if(city!==null){
+          this.setState({city:city[0]});
+    }
+    else{
+        this.setState({city:city});
+    }
     this.renderToDatePicker();
     this.renderFromDatePicker();
     this.setState({token : this.getRelevantToken()},()=>{this.setSearchParams()});
   }
+
+
   componentWillReceiveProps(){
     this.setState({token : this.getRelevantToken()},()=>{this.setSearchParams()});
   }
@@ -146,11 +155,15 @@ class SearchResult extends React.Component{
   }
   readCityFromURL(){
     var url = decodeURIComponent(window.location.href.split('/')).split(',');
-    return [url[4]];
+    if(url[4]==='هر جا'){
+      return null;
+    }
+    else{
+      return [url[4]];
+    }
   }
 
   handleClick(){
-    console.log(this.props);
     this.props.history.replace('/search/'+this.state.city);
     // this.forceUpdate();
   }
@@ -181,7 +194,7 @@ class SearchResult extends React.Component{
                   <div className="multi-input-typeahead">
                   <Typeahead
                     className="typeahead-indetail-xl"
-                    renderMenu={(results, menuProps) => {
+                    renderMenu={(results,menuProps) => {
                         return(
                           <Menu {...menuProps}>
                             {results.map((result, index) => (
@@ -198,7 +211,7 @@ class SearchResult extends React.Component{
                     emptyLabel="نتیجه‌ای یافت نشد"
                     maxResults={5}
                     selected={this.readCityFromURL()}
-                    placeholder='هرجا'
+                    placeholder='هر جا'
                     selectHintOnEnter={false}
                     highlightOnlyResult={true}
                     submitFormOnEnter={false}

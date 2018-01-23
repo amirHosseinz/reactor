@@ -284,7 +284,12 @@ class SearchBar extends React.Component {
   }
 
    handleClick(){
-       this.props.history.replace("/search/" + this.state.city);
+       if(this.state.city===''){
+         this.props.history.replace("/search/هر جا");
+       }
+       else{
+          this.props.history.replace("/search/" + this.state.city);
+       }
      }
 
 
