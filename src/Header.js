@@ -210,21 +210,23 @@ class Header extends React.Component{
           <div>
             <Dropdown className="header-drop-down-texts" icon='dropdown' dir="rtl" floating={true} text={ ' سلام ' + ' ' +  localStorage['user-first-name'] } >
              <Dropdown.Menu>
-                <div className="row-reverse">
-                  {this.renderUserPhoto()}
-                  <div>
-                  <p className="profile-card-user-name" onClick={this.handleUserProfileClick.bind(this)}>{localStorage['user-first-name'] + ' ' + localStorage['user-last-name']}</p>
-                  <p className="profile-card-user-profile" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
+                <div className="drp-down-menu-cont">
+                  <div className="row-reverse">
+                    {this.renderUserPhoto()}
+                    <div>
+                    <p className="profile-card-user-name" onClick={this.handleUserProfileClick.bind(this)}>{localStorage['user-first-name'] + ' ' + localStorage['user-last-name']}</p>
+                    <p className="profile-card-user-profile" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
+                    </div>
                   </div>
+                  <Dropdown.Divider/>
+                  <div>
+                    {this.renderRequestButton()}
+                    {this.renderTripButton()}
+                  </div>
+                  <hr className="profile-card-divider" />
+                  <p className="profile-card-exit-button" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
+                  <p className="profile-card-exit-button-helper-empty-division"></p>
                 </div>
-                <Dropdown.Divider/>
-                <div>
-                  {this.renderRequestButton()}
-                  {this.renderTripButton()}
-                </div>
-                <hr className="profile-card-divider" />
-                <p className="profile-card-exit-button" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
-                <p className="profile-card-exit-button-helper-empty-division"></p>
              </Dropdown.Menu>
             </Dropdown>
           </div>
@@ -302,7 +304,14 @@ class Header extends React.Component{
           <div className="header-menu-desktop col-md-10 col-sm-8">
             {this.renderMainMenu()}
             {this.renderLoginButton()}
-
+            <div className="row-reverse">
+              <Link to="/suggestions&comments"><p className='logo-menu-font'>ثبت شکایات </p></Link>
+              <Link to="/contactus"><p className='logo-menu-font'> تماس با ما </p></Link>
+              <Link to="/aboutus"><p className='logo-menu-font'>درباره تریپین </p></Link>
+              <Link to="/becomehost"><p className='logo-menu-font'>میزبان شوید </p></Link>
+              <Link to="/terms&conditions"><p className='logo-menu-font'> قوانین و شرایط استفاده </p></Link>
+              <a className="logo-menu-font1" rel="noopener noreferrer" target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >دریافت اپلیکیشن</a>
+            </div>
           </div>
           {this.renderLoginPanel()}
           <div className="logo col-md-2 col-sm-4">
