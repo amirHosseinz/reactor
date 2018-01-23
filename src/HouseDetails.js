@@ -11,7 +11,8 @@ import HostInfoDiscription from './HouseDetailParts/HostInfoDiscription.js';
 import {englishToPersianDigits} from './tools/EnglishToPersianDigits.js';
 import {normalReservePanelHouseDetails, fixedReservePanelHouseDetails,normalScrolllListHouseDetails , fixedScrollListHouseDetails} from './Styles.js';
 import AspectRatio from 'react-aspect-ratio';
-import GoogleApiWrapper from './HouseDetailParts/MapRenderer.js';
+// import GoogleApiWrapper from './HouseDetailParts/MapRenderer.js';
+import MapDescription from './HouseDetailParts/MapRenderer.js';
 import {Modal} from 'react-bootstrap';
 import UtilitiesDescription from './HouseDetailParts/UtilitiesDescription.js';
 import CheckInCheckOutDescription from './HouseDetailParts/CheckInCheckOutDescription.js';
@@ -27,6 +28,8 @@ class HouseDetails extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      className:'loaded',
+      imageLoaded:false,
       photoIndex: 0,
       isOpen: false,
       homeData : '',
@@ -138,6 +141,7 @@ class HouseDetails extends React.Component {
      return(<div className = "housedetail-img">
               <AspectRatio ratio="16/10" style={{maxWidth: '100%'}}>
                  <img
+                 onLoad={this.handleImageLoaded.bind(this)}
                  onClick={this.showHouseGallery.bind(this)}
                  src={"https://www.trypinn.com"+this.state.homeData.preview}  className="house-details-preview"
                  alt = ""/>
@@ -145,6 +149,10 @@ class HouseDetails extends React.Component {
               </AspectRatio>
              </div>);
    }
+ }
+
+ handleImageLoaded(){
+   this.setState({ imageLoaded: true },()=>{console.log(this.state.imageLoaded)});
  }
 
 
@@ -235,67 +243,143 @@ class HouseDetails extends React.Component {
     if(this.state.homeData!==''){
       return (
           <div className='house-google-map'>
-            <GoogleApiWrapper
-              position={{lat: parseFloat(this.state.homeData.latitude).toFixed(4), lng: parseFloat(this.state.homeData.longitude).toFixed(4)}}
-              zoom={14}
+            <MapDescription
+              lat={this.state.homeData.latitude} lng={this.state.homeData.longitude} zoom={13}
             />
           </div>
       );
     }
   }
-  render(){
-    if (this.state.homeData !== ''){
-      document.title = "تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.city;
-    }
+
+  renderPreLoad(){
+    if(this.state.imageLoaded===false)
     return(
-      <div>
-        <div className='housedetail container-fluid visible-xl hidden-xs' ref={this.handleContextRef}>
-          <div className="house-detail-top">
-            <div className="house-detail-top-margined visible-xl hidden-md hidden-sm hidden-xs">
-              <AddressDiscription homeData={this.state.homeData}/>
-              <div>
-                {this.renderHomeTitle()}
-              </div>
-              <div className='row-reverse-house-adress-type'>
-                <RatingDiscription homeData={this.state.homeData}/>
-              </div>
-              <div>
-              <div>
-                <div className='navigation-menu-housedetails' style={this.state.scrollListFixed?fixedScrollListHouseDetails:normalScrolllListHouseDetails}>
-                  <p onClick={() => scrollToComponent(this.Dis,{offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items'>مشخصات</p>
-                  <p onClick={() => scrollToComponent(this.Gallery, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items' >تصاویر</p>
-                  <p onClick={() => scrollToComponent(this.Laws, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items'>امکانات و قوانین</p>
-                  <p onClick={() => scrollToComponent(this.Map, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items'>موقعیت روی نقشه</p>
+
+      <div>page is loading</div>
+    );
+  }
+
+
+  renderHouseDetails(){
+    // console.log(this.state.imageLoaded);
+    if(true){
+      return(
+        <div className={this.state.imageLoaded?"house-detail-image-loaded":"house-detail-image-not-loaded"}>
+          <div className='housedetail container-fluid visible-xl hidden-xs' ref={this.handleContextRef}>
+            <div className="house-detail-top">
+              <div className="house-detail-top-margined visible-xl hidden-md hidden-sm hidden-xs">
+                <AddressDiscription homeData={this.state.homeData}/>
+                <div>
+                  {this.renderHomeTitle()}
+                </div>
+                <div className='row-reverse-house-adress-type'>
+                  <RatingDiscription homeData={this.state.homeData}/>
+                </div>
+                <div>
+                <div>
+                  <div className='navigation-menu-housedetails' style={this.state.scrollListFixed?fixedScrollListHouseDetails:normalScrolllListHouseDetails}>
+                    <p onClick={() => scrollToComponent(this.Dis,{offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items'>مشخصات</p>
+                    <p onClick={() => scrollToComponent(this.Gallery, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items' >تصاویر</p>
+                    <p onClick={() => scrollToComponent(this.Laws, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items'>امکانات و قوانین</p>
+                    <p onClick={() => scrollToComponent(this.Map, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items'>موقعیت روی نقشه</p>
+                  </div>
+                </div>
+                <div style={{textAlign:'right'}}>
+                </div>
                 </div>
               </div>
-              <div style={{textAlign:'right'}}>
-              </div>
-              </div>
-            </div>
-            <div className="house-detail-top-margined-md hidden-xl hidden-sm hidden-xs visible-md">
-              <AddressDiscription homeData={this.state.homeData}/>
-              <div>
-                {this.renderHomeTitle()}
-              </div>
-              <div className='row-reverse-house-adress-type'>
-                <RatingDiscription homeData={this.state.homeData}/>
-              </div>
-              <div>
-              <div>
-                <div className='navigation-menu-housedetails' style={this.state.scrollListFixed?fixedScrollListHouseDetails:normalScrolllListHouseDetails}>
-                  <p onClick={() => scrollToComponent(this.Dis, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items'>مشخصات</p>
-                  <p onClick={() => scrollToComponent(this.Gallery, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items' >تصاویر</p>
-                  <p onClick={() => scrollToComponent(this.Laws, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items'>امکانات و قوانین</p>
-                  <p onClick={() => scrollToComponent(this.Map, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items'>موقعیت روی نقشه</p>
+              <div className="house-detail-top-margined-md hidden-xl hidden-sm hidden-xs visible-md">
+                <AddressDiscription homeData={this.state.homeData}/>
+                <div>
+                  {this.renderHomeTitle()}
+                </div>
+                <div className='row-reverse-house-adress-type'>
+                  <RatingDiscription homeData={this.state.homeData}/>
+                </div>
+                <div>
+                <div>
+                  <div className='navigation-menu-housedetails' style={this.state.scrollListFixed?fixedScrollListHouseDetails:normalScrolllListHouseDetails}>
+                    <p onClick={() => scrollToComponent(this.Dis, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items'>مشخصات</p>
+                    <p onClick={() => scrollToComponent(this.Gallery, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items' >تصاویر</p>
+                    <p onClick={() => scrollToComponent(this.Laws, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items'>امکانات و قوانین</p>
+                    <p onClick={() => scrollToComponent(this.Map, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items'>موقعیت روی نقشه</p>
+                  </div>
+                </div>
+                <div style={{textAlign:'right'}}>
+                </div>
                 </div>
               </div>
-              <div style={{textAlign:'right'}}>
-              </div>
-              </div>
             </div>
-          </div>
-          <div className='house-detail-top'>
-            <div className="house-detail-top-margined hidden-md hidden-sm hidden-xs">
+            <div className='house-detail-top'>
+              <div className="house-detail-top-margined hidden-md hidden-sm hidden-xs">
+                  <div className="col-md-3 hidden-xs hidden-sm visible-xl">
+                    <Sticky context={this.state.contextRef}
+                    onStick={this.handleStickReservePanel.bind(this)}
+                    onUnstick={this.handleUnstickReservePanel.bind(this)}
+                    style={this.state.reservePanelFixed ? fixedReservePanelHouseDetails:normalReservePanelHouseDetails}>
+                      <div className='reserve-card'>
+                        <div className="reserve-card-child">
+                          <p className="text-011">:هزینه هرشب اقامت</p>
+                          <div className = "price">
+                            <p className='text-012'> تومان</p>
+                            <p className='text-012'> {englishToPersianDigits(this.state.homeData.price)} </p>
+                          </div>
+                          <div className="divider-card"></div>
+                          <p className="text-011">:تعداد مهمان</p>
+                          <div>
+                            {this.renderReservePanel()}
+                          </div>
+                      </div>
+                      </div>
+                    </Sticky>
+                  </div>
+                  <div className='col-md-9'>
+                   <section className='gallery-scroller' ref={(section) => {this.Gallery = section;}}></section>
+                    <div className='housedetail-img'>
+                      {this.renderPreview()}
+                      {this.renderHouseGallery()}
+
+                    </div>
+                    <section className='violet' ref={(section) => { this.Violet = section; }}></section>
+                    <AmenitiesDiscription homeData={this.state.homeData} />
+                    <br/>
+                    <Divider/>
+                    <div>
+                      <HostInfoDiscription homeData={this.state.homeData}/>
+                      <p className='des-main-xs'> {this.state.homeData.description} </p>
+                    </div>
+                    <Divider/>
+                    <section className='law-scroller' ref={(section) => { this.Laws = section; }}></section>
+                    <p className='des-header-xl'> سایر امکانات </p>
+                    <UtilitiesDescription homeData={this.state.homeData}/>
+
+                    <Divider/>
+                    <p className='des-header-xl'> قوانین و مقررات </p>
+
+                      <div>
+                        <div className="rules-half col-md-6">
+                        <RulesDescription homeData= {this.state.homeData} />
+
+                        </div>
+                        <div className="rules-half col-md-6">
+                        <CheckInCheckOutDescription homeData={this.state.homeData}/>
+                        <MaxCapacity homeData={this.state.homeData}/>
+                        </div>
+                      </div>
+                      <SpecialRule homeData={this.state.homeData}/>
+
+
+                    <section className='map-scroller' ref={(section) => { this.Map = section; }}></section>
+
+
+                    <div className="padding10">
+                    </div>
+                      {this.renderMap()}
+                    <div className="padding100">
+                    </div>
+                  </div>
+              </div>
+              <div className="house-detail-top-margined-md hidden-xl hidden-sm hidden-xs visible-md">
                 <div className="col-md-3 hidden-xs hidden-sm visible-xl">
                   <Sticky context={this.state.contextRef}
                   onStick={this.handleStickReservePanel.bind(this)}
@@ -322,7 +406,6 @@ class HouseDetails extends React.Component {
                   <div className='housedetail-img'>
                     {this.renderPreview()}
                     {this.renderHouseGallery()}
-
                   </div>
                   <section className='violet' ref={(section) => { this.Violet = section; }}></section>
                   <AmenitiesDiscription homeData={this.state.homeData} />
@@ -331,9 +414,14 @@ class HouseDetails extends React.Component {
                   <div>
                     <HostInfoDiscription homeData={this.state.homeData}/>
                     <p className='des-main-xs'> {this.state.homeData.description} </p>
+
                   </div>
+
                   <Divider/>
+
                   <section className='law-scroller' ref={(section) => { this.Laws = section; }}></section>
+
+
                   <p className='des-header-xl'> سایر امکانات </p>
                   <UtilitiesDescription homeData={this.state.homeData}/>
 
@@ -355,160 +443,92 @@ class HouseDetails extends React.Component {
 
                   <section className='map-scroller' ref={(section) => { this.Map = section; }}></section>
 
-
                   <div className="padding10">
                   </div>
                     {this.renderMap()}
                   <div className="padding100">
                   </div>
+
                 </div>
-            </div>
-            <div className="house-detail-top-margined-md hidden-xl hidden-sm hidden-xs visible-md">
-              <div className="col-md-3 hidden-xs hidden-sm visible-xl">
-                <Sticky context={this.state.contextRef}
-                onStick={this.handleStickReservePanel.bind(this)}
-                onUnstick={this.handleUnstickReservePanel.bind(this)}
-                style={this.state.reservePanelFixed ? fixedReservePanelHouseDetails:normalReservePanelHouseDetails}>
-                  <div className='reserve-card'>
-                    <div className="reserve-card-child">
-                      <p className="text-011">:هزینه هرشب اقامت</p>
-                      <div className = "price">
-                        <p className='text-012'> تومان</p>
-                        <p className='text-012'> {englishToPersianDigits(this.state.homeData.price)} </p>
-                      </div>
-                      <div className="divider-card"></div>
-                      <p className="text-011">:تعداد مهمان</p>
-                      <div>
-                        {this.renderReservePanel()}
-                      </div>
-                  </div>
-                  </div>
-                </Sticky>
               </div>
-              <div className='col-md-9'>
-               <section className='gallery-scroller' ref={(section) => {this.Gallery = section;}}></section>
-                <div className='housedetail-img'>
-                  {this.renderPreview()}
-                  {this.renderHouseGallery()}
-                </div>
-                <section className='violet' ref={(section) => { this.Violet = section; }}></section>
-                <AmenitiesDiscription homeData={this.state.homeData} />
-                <br/>
-                <Divider/>
-                <div>
-                  <HostInfoDiscription homeData={this.state.homeData}/>
-                  <p className='des-main-xs'> {this.state.homeData.description} </p>
-
-                </div>
-
-                <Divider/>
-
-                <section className='law-scroller' ref={(section) => { this.Laws = section; }}></section>
-
-
-                <p className='des-header-xl'> سایر امکانات </p>
-                <UtilitiesDescription homeData={this.state.homeData}/>
-
-                <Divider/>
-                <p className='des-header-xl'> قوانین و مقررات </p>
-
-                  <div>
-                    <div className="rules-half col-md-6">
-                    <RulesDescription homeData= {this.state.homeData} />
-
-                    </div>
-                    <div className="rules-half col-md-6">
-                    <CheckInCheckOutDescription homeData={this.state.homeData}/>
-                    <MaxCapacity homeData={this.state.homeData}/>
-                    </div>
-                  </div>
-                  <SpecialRule homeData={this.state.homeData}/>
-
-
-
-
-
-                <section className='map-scroller' ref={(section) => { this.Map = section; }}></section>
-
-
-                <div className="padding10">
-                </div>
-                  {this.renderMap()}
-                <div className="padding100">
-                </div>
 
               </div>
             </div>
 
+          <div className="housedetail-xs visible-xs hidden-xl">
+            <div className='housedetail-img-xs'>
+              {this.renderPreviewXs()}
             </div>
-          </div>
-
-        <div className="housedetail-xs visible-xs hidden-xl">
-          <div className='housedetail-img-xs'>
-            {this.renderPreviewXs()}
-          </div>
-          <div className="house-detail-top-margined-xs visible-xs hidden-xl">
-            {this.renderHomeTitleXs()}
-            <div className='row-reverse-house-adress-type-xs'>
-              <AddressDiscription homeData={this.state.homeData}/>
-            </div>
-            <div className='row-reverse-house-adress-type-xs'>
-              <RatingDiscription homeData={this.state.homeData}/>
-            </div>
-            <Divider/>
-             <p className='des-header-xs'> درباره این خانه </p>
-             <p className='des-main-xs'> {this.state.homeData.description} </p>
-            <Divider/>
-            <AmenitiesDiscription homeData={this.state.homeData} />
-            <Divider/>
-            <p className='des-header-xs'> سایر امکانات </p>
-            <UtilitiesDescription homeData={this.state.homeData}/>
+            <div className="house-detail-top-margined-xs visible-xs hidden-xl">
+              {this.renderHomeTitleXs()}
+              <div className='row-reverse-house-adress-type-xs'>
+                <AddressDiscription homeData={this.state.homeData}/>
+              </div>
+              <div className='row-reverse-house-adress-type-xs'>
+                <RatingDiscription homeData={this.state.homeData}/>
+              </div>
               <Divider/>
-          </div>
+               <p className='des-header-xs'> درباره این خانه </p>
+               <p className='des-main-xs'> {this.state.homeData.description} </p>
+              <Divider/>
+              <AmenitiesDiscription homeData={this.state.homeData} />
+              <Divider/>
+              <p className='des-header-xs'> سایر امکانات </p>
+              <UtilitiesDescription homeData={this.state.homeData}/>
+                <Divider/>
+            </div>
 
-          <div className="map-holder-xs">
-            {this.renderMap()}
-          </div>
+            <div className="map-holder-xs">
+              {this.renderMap()}
+            </div>
 
-          <div className="house-detail-top-margined-xs visible-xs hidden-xl">
-            <div className="paddingtopundermap"></div>
-            <Divider/>
+            <div className="house-detail-top-margined-xs visible-xs hidden-xl">
+              <div className="paddingtopundermap"></div>
+              <Divider/>
 
-            <CheckInCheckOutDescription homeData={this.state.homeData}/>
+              <CheckInCheckOutDescription homeData={this.state.homeData}/>
 
-            <Divider/>
-
-
-            <p className='des-header-xs'>: قوانین و مقررات </p>
-            <MaxCapacity homeData={this.state.homeData}/>
-
-            <RulesDescription homeData= {this.state.homeData} />
-          </div>
-
-
-          <div className="house-detail-top-margined-xs visible-xs hidden-xl">
+              <Divider/>
 
 
+              <p className='des-header-xs'>: قوانین و مقررات </p>
+              <MaxCapacity homeData={this.state.homeData}/>
 
-          </div>
-          <div className="reserve-bottom-xs navbar-fixed-bottom">
-              <div className="price-div-xs hidden-xl visible-xs">
-                <div className = "price-xs">
-                  <p className="text-017"> هر شب / </p>
-                  <p className='text-018'> تومان</p>
-                  <p className='text-018'> {englishToPersianDigits(this.state.homeData.price)} </p>
+              <RulesDescription homeData= {this.state.homeData} />
+            </div>
+
+
+            <div className="house-detail-top-margined-xs visible-xs hidden-xl">
                 </div>
-              </div>
-            <Button onClick={()=>{this.setState({showReservePanelXs:true})}}className='reserve-button-xs hidden-xl visible-xs'>
-              !رزرو کنید
-            </Button>
-            {this.renderReservePanelXs()}
-
+                <div className="reserve-bottom-xs navbar-fixed-bottom">
+                  <div className="price-div-xs hidden-xl visible-xs">
+                    <div className = "price-xs">
+                    <p className="text-017"> هر شب / </p>
+                    <p className='text-018'> تومان</p>
+                    <p className='text-018'> {englishToPersianDigits(this.state.homeData.price)} </p>
+                  </div>
+                </div>
+              <Button onClick={()=>{this.setState({showReservePanelXs:true})}}className='reserve-button-xs hidden-xl visible-xs'>
+                !رزرو کنید
+              </Button>
+              {this.renderReservePanelXs()}
+            </div>
           </div>
         </div>
-
-      </div>
-    );
+      );
     }
   }
+
+  render(){
+    if (this.state.homeData !== ''){
+      document.title = "تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.city;
+    }
+    return(
+      <div>
+        {this.renderPreLoad()}
+        {this.renderHouseDetails()}
+      </div>
+    );
+}
+}
 export default HouseDetails;

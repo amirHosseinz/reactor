@@ -63,6 +63,7 @@ class ReservePanel extends React.Component{
       method: 'POST',
       body: JSON.stringify({
         room_id : this.props.homeData.id,
+        app_version: 15,
         start_date : this.state.requestParams.fromDate,
         end_date : this.state.requestParams.toDate,
         number_of_guests : this.state.requestParams.numberOfGuests,

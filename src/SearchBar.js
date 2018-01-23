@@ -9,8 +9,6 @@ import './tools/DatePicker/bootstrap-datepicker.js';
 import './tools/DatePicker/bootstrap-datepicker.css';
 import {Dropdown} from 'semantic-ui-react';
 import GuestNumber from './GuestNumberSearchBar.js';
-
-
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
   'اصفهان',
@@ -116,13 +114,14 @@ class SearchBar extends React.Component {
                     id="searchbox"
                     autoFocus={true}
                     bsSize="large"
-
                     renderMenu={(results, menuProps) => {
                       return (
                         <Menu {...menuProps}>
                           {results.map((result, index) => (
                             <TypeaheadMenuItem option={result} position={index}>
-                              {result}
+                              <div  className="search-bar-only-city-item">
+                                {result}
+                              </div>
                             </TypeaheadMenuItem>
                           ))}
                         </Menu>
@@ -132,8 +131,8 @@ class SearchBar extends React.Component {
                     renderMenu={(results, menuProps) => {
                         return (
                           <Menu {...menuProps}>
-                            {results.map((result, index) => (
-                              <TypeaheadMenuItem  option={result} position={index}>
+                            {results.map((result,index) => (
+                              <TypeaheadMenuItem className="search-bar-only-city-menu-item" option={result} position={index}>
                                 {result}
                               </TypeaheadMenuItem>
                             ))}
@@ -285,7 +284,12 @@ class SearchBar extends React.Component {
   }
 
    handleClick(){
-       this.props.history.replace("/search/" + this.state.city);
+       if(this.state.city===''){
+         this.props.history.replace("/search/هر جا");
+       }
+       else{
+          this.props.history.replace("/search/" + this.state.city);
+       }
      }
 
 
