@@ -8,7 +8,45 @@
 .footer-links{
   margin-top: -13px;
 }
+.contact-us-main-division{
+  font-family: IRANSans;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:50px;
+  width:84%;
+  border:solid;
+  border-width: 3px;
+  border-color: #f8f8f8;
+  border-radius : 1%;
+  background-color: white;
+}
+.contact-us-main-division-content{
+  margin:auto;
+  margin-top:50px;
+  width:84%;
+  text-align:right;
+}
+.contact-us-header-section{
+  font-size:38px;
+  margin-left : 100px;
+  font-weight: 500;
+}
+.contact-us-firm-name-section{
+  margin-top: 20px;
+}
+.contact-us-address-section{
+}
+.contact-us-social-link{
+  border-radius: 50%;
+}
+.contact-us-map-section{
+  margin-top:-200px;
+  padding-buttom: 40px;
+}
+.contact-us-social-media-section{
+  direction:rtl;
 
+}
 .suggestions-comments-section{
   font-family: IRANSans;
   text-align: center;
