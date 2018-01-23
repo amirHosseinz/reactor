@@ -18,6 +18,9 @@ class UserPanel extends React.Component{
     };
   }
 
+  componentWillMount(){
+    document.body.style.backgroundColor = "#f8f8f8";
+  }
   handleNameChange(event) {
     this.setState({Name: event.target.value});
   }
