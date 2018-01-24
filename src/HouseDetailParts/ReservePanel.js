@@ -18,7 +18,7 @@ class ReservePanel extends React.Component{
     this.state = {
       reserveData : '',
       token:null,
-      isOpen:false,
+      showPreBill:false,
       requestParams :{
         numberOfGuests : 1,
         fromDate:null,
@@ -63,7 +63,7 @@ class ReservePanel extends React.Component{
       method: 'POST',
       body: JSON.stringify({
         room_id : this.props.homeData.id,
-        app_version: 15,
+        platform:'web',
         start_date : this.state.requestParams.fromDate,
         end_date : this.state.requestParams.toDate,
         number_of_guests : this.state.requestParams.numberOfGuests,
@@ -77,6 +77,8 @@ class ReservePanel extends React.Component{
      return response.json();
    })
    .then((reserveData) => {
+     // clearInterval(this.interval);
+     // console.log(reserveData);
      this.renderData(reserveData);
    });
  }
@@ -134,7 +136,7 @@ class ReservePanel extends React.Component{
   }
 
   handleClick(){
-    this.setState({isOpen:true});
+    this.setState({showPreBill:true});
   }
   sendBookRequest(){
     var request = new Request('https://www.trypinn.com/api/room/request/book/', {
@@ -195,21 +197,7 @@ class ReservePanel extends React.Component{
   renderPriceDetails(){
         return(
           <div dir="rtl" className="reserve-modal">
-              <div>
-                {this.showHostPrice()}
-              </div>
-              <div>
-                {this.showTrypinnPrice()}
-              </div>
-              <div>
-                {this.showIsAvailable()}
-              </div>
-              <div>
-                {this.showTrypinnDiscount()}
-              </div>
-              <div>
-                {this.showTotalDiscount()}
-              </div>
+
               <div>
                 {this.showTotalPrice()}
               </div>
@@ -265,8 +253,8 @@ class ReservePanel extends React.Component{
         </div>
           {this.renderPriceDetails()}
           {this.renderReserveButton()}
-          <Modal show={this.state.isOpen}
-            onHide={()=>{this.setState({isOpen:false})}}>
+          <Modal show={this.state.showPreBill}
+            onHide={()=>{this.setState({showPreBill:false})}}>
             <div>
               <div>
                 آیا مایل به رزرو خانه هستید؟
