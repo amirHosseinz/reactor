@@ -36,7 +36,7 @@ render(){
         </button>
         <div className='guest-number'>
         <p className="imput-number row-reverse">
-        <span>نفر </span><span>{englishToPersianDigits(this.state.number)}</span>
+        <span>{'نفر'}</span><span style={{marginLeft:'5px'}}>{englishToPersianDigits(this.state.number)} </span>
         </p>
         </div>
         <button className="btn-sub" onClick={this.renderSub.bind(this)}>

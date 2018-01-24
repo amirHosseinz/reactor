@@ -70,6 +70,7 @@ class Requests extends React.Component{
   handleHighlight(event){
     this.setState({selectedRequest:event.target.id});
   }
+
   renderRequests(){
       if(this.state.requestList!==null){
         var request_list = this.state.requestList.request_list;

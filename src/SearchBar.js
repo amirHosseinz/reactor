@@ -72,6 +72,7 @@ class SearchBar extends React.Component {
     return localStorage['token'];
   }
   componentWillMount(){
+    document.body.style.backgroundColor = "#f8f8f8";
     this.setState({
       token : this.getRelevantToken(),
     }, );
@@ -84,7 +85,6 @@ class SearchBar extends React.Component {
   }
 
     handleSearchByEnter(event){
-      console.log(event.locale);
       if(event.key==="Enter" && this.state.city!==null && this.state.city!==''){
         this.handleClick();
       }
@@ -120,7 +120,9 @@ class SearchBar extends React.Component {
                         <Menu {...menuProps}>
                           {results.map((result, index) => (
                             <TypeaheadMenuItem option={result} position={index}>
-                              {result}
+                              <div  className="search-bar-only-city-item">
+                                {result}
+                              </div>
                             </TypeaheadMenuItem>
                           ))}
                         </Menu>
@@ -130,8 +132,8 @@ class SearchBar extends React.Component {
                     renderMenu={(results, menuProps) => {
                         return (
                           <Menu {...menuProps}>
-                            {results.map((result, index) => (
-                              <TypeaheadMenuItem  option={result} position={index}>
+                            {results.map((result,index) => (
+                              <TypeaheadMenuItem className="search-bar-only-city-menu-item" option={result} position={index}>
                                 {result}
                               </TypeaheadMenuItem>
                             ))}
@@ -283,7 +285,12 @@ class SearchBar extends React.Component {
   }
 
    handleClick(){
-       this.props.history.replace("/search/" + this.state.city);
+       if(this.state.city===''){
+         this.props.history.replace("/search/هر جا");
+       }
+       else{
+          this.props.history.replace("/search/" + this.state.city);
+       }
      }
 
 

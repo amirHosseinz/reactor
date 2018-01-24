@@ -1,43 +1,36 @@
 import React from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper, HeatMap} from 'google-maps-react';
+import { withScriptjs ,withGoogleMap, GoogleMap,Circle , Marker } from "react-google-maps"
 
-export class MapRenderer extends React.Component{
+
+const MyMapComponent = withScriptjs(withGoogleMap((props) =>{
+  // console.log(props);
+  return(
+    <GoogleMap
+      defaultZoom={props.zoom}
+      defaultCenter={{lat:props.lat,lng:props.lng}}>
+      <Circle options={{fillOpacity:0.5,fillColor:"#12b2ce",strokeColor:"#12b2ce"}} radius={1000} defaultCenter={{lat:props.lat,lng:props.lng}}/>
+    </GoogleMap>
+  );
+}))
+
+
+export class MapDescription extends React.Component{
+
     render(){
       return(
         <div>
-          <div className="hidden-xs visible-xl">
-            <Map
-              google={this.props.google}
-              onChange={(event)=>{console.log(event)}}
-              zoom={this.props.zoom}
-              className="kolsoom"
-              initialCenter={this.props.position}>
-              <Marker
-                position={this.props.position}
-                icon={{url:require('./dayere.png'),
-              }}
-              />
-            </Map>
-          </div>
-          <div className="hidden-xl visible-xs">
-            <Map
-              google={this.props.google}
-              zoom={this.props.zoom}
-              className="map-xs"
-              initialCenter={this.props.position}
-              >
-              <Marker
-                position={this.props.position}
-                icon={{url:require('./dayere.png'),
-              }}
-              />
-            </Map>
-          </div>
+        <MyMapComponent
+          lat={this.props.lat}
+          lng={this.props.lng}
+          zoom={this.props.zoom}
+          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYdvxvYa5_HuFrQMlTNWpbhan7nqIJuOE&v=3.exp&libraries=geometry,drawing,places"
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `400px` }} />}
+          mapElement={<div style={{ height: `100%` }} />}>
+          </MyMapComponent>
         </div>
       );
     }
 }
 
-export default GoogleApiWrapper({
-  apiKey: ('AIzaSyDYdvxvYa5_HuFrQMlTNWpbhan7nqIJuOE')
-})(MapRenderer)
+export default MapDescription;

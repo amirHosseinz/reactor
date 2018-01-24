@@ -7,7 +7,7 @@ import $ from 'jquery';
 import './tools/DatePicker/bootstrap-datepicker.fa.js';
 import './tools/DatePicker/bootstrap-datepicker.js';
 import './tools/DatePicker/bootstrap-datepicker.css';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 
 
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
@@ -55,7 +55,7 @@ class SearchResult extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      city: decodeURIComponent(window.location.href.split('/')).split(',')[4],
+      city: null,
       houseList:[],
       token: null,
       searchParams : {
@@ -67,10 +67,19 @@ class SearchResult extends React.Component{
     };
   }
   componentWillMount(){
+    var city=this.readCityFromURL();
+    if(city!==null){
+          this.setState({city:city[0]});
+    }
+    else{
+        this.setState({city:city});
+    }
     this.renderToDatePicker();
     this.renderFromDatePicker();
     this.setState({token : this.getRelevantToken()},()=>{this.setSearchParams()});
   }
+
+
   componentWillReceiveProps(){
     this.setState({token : this.getRelevantToken()},()=>{this.setSearchParams()});
   }
@@ -146,11 +155,15 @@ class SearchResult extends React.Component{
   }
   readCityFromURL(){
     var url = decodeURIComponent(window.location.href.split('/')).split(',');
-    return [url[4]];
+    if(url[4]==='هر جا'){
+      return null;
+    }
+    else{
+      return [url[4]];
+    }
   }
 
   handleClick(){
-    console.log(this.props);
     this.props.history.replace('/search/'+this.state.city);
     // this.forceUpdate();
   }
@@ -169,6 +182,8 @@ class SearchResult extends React.Component{
   }
 
   renderSearchBarInDetails(){
+    this.renderFromDatePicker();
+    this.renderToDatePicker();
     return(
       <div className="render-results row">
             <div className="results-search">
@@ -179,8 +194,8 @@ class SearchResult extends React.Component{
                   <div className="multi-input-typeahead">
                   <Typeahead
                     className="typeahead-indetail-xl"
-                    renderMenu={(results, menuProps) => {
-                        return (
+                    renderMenu={(results,menuProps) => {
+                        return(
                           <Menu {...menuProps}>
                             {results.map((result, index) => (
                               <TypeaheadMenuItem option={result} position={index}>
@@ -196,7 +211,7 @@ class SearchResult extends React.Component{
                     emptyLabel="نتیجه‌ای یافت نشد"
                     maxResults={5}
                     selected={this.readCityFromURL()}
-                    placeholder='هرجا'
+                    placeholder='هر جا'
                     selectHintOnEnter={false}
                     highlightOnlyResult={true}
                     submitFormOnEnter={false}
@@ -420,9 +435,10 @@ class SearchResult extends React.Component{
     }
     return results;
   }
+
+  // {this.renderSearchBarInDetailsXs()}
+  // {this.renderHousesCol1()}
   render(){
-    this.renderToDatePicker();
-    this.renderFromDatePicker();
     return(
       <div>
       <div className="searchbarmain">
@@ -439,8 +455,7 @@ class SearchResult extends React.Component{
                 <div className="main-zone-xs col-md-12">
                   <div className="row">
                   </div>
-            {this.renderSearchBarInDetailsXs()}
-            {this.renderHousesCol1()}
+
 
             <div className='mobile-margined-search'>
               <div className="main-zone-xs col-md-12">

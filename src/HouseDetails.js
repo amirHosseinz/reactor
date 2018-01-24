@@ -11,7 +11,8 @@ import HostInfoDiscription from './HouseDetailParts/HostInfoDiscription.js';
 import {englishToPersianDigits} from './tools/EnglishToPersianDigits.js';
 import {normalReservePanelHouseDetails, fixedReservePanelHouseDetails,normalScrolllListHouseDetails , fixedScrollListHouseDetails} from './Styles.js';
 import AspectRatio from 'react-aspect-ratio';
-import GoogleApiWrapper from './HouseDetailParts/MapRenderer.js';
+// import GoogleApiWrapper from './HouseDetailParts/MapRenderer.js';
+import MapDescription from './HouseDetailParts/MapRenderer.js';
 import {Modal} from 'react-bootstrap';
 import UtilitiesDescription from './HouseDetailParts/UtilitiesDescription.js';
 import CheckInCheckOutDescription from './HouseDetailParts/CheckInCheckOutDescription.js';
@@ -242,9 +243,8 @@ class HouseDetails extends React.Component {
     if(this.state.homeData!==''){
       return (
           <div className='house-google-map'>
-            <GoogleApiWrapper
-              position={{lat: parseFloat(this.state.homeData.latitude).toFixed(4), lng: parseFloat(this.state.homeData.longitude).toFixed(4)}}
-              zoom={14}
+            <MapDescription
+              lat={this.state.homeData.latitude} lng={this.state.homeData.longitude} zoom={13}
             />
           </div>
       );
