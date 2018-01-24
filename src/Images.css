@@ -13,39 +13,62 @@
   margin-left:auto;
   margin-right:auto;
   margin-top:50px;
-  width:84%;
+  height:550px;
+  width:76%;
   border:solid;
-  border-width: 3px;
-  border-color: #f8f8f8;
-  border-radius : 1%;
+  border-width: 2px;
+  border-color: #e4e4e4;
+  border-radius : 6px;
   background-color: white;
+  padding: 15px;
 }
 .contact-us-main-division-content{
   margin:auto;
-  margin-top:50px;
-  width:84%;
+  margin-top:30px;
+  width:94%;
   text-align:right;
 }
 .contact-us-header-section{
-  font-size:38px;
-  margin-left : 100px;
+  font-size:36px;
   font-weight: 500;
+  text-align: center;
+  margin-top: 20px;
+}
+.contact-texts{
+  margin-right: 30px;
+  margin-left: 70px;
+  margin-top: 50px;
 }
 .contact-us-firm-name-section{
   margin-top: 20px;
 }
+.contact-us-social-media-sentence{
+  direction: rtl;
+  text-align: center;
+}
 .contact-us-address-section{
 }
 .contact-us-social-link{
+  margin-top: 20px;
   border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  background-color:#f8f8f8;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.social-icon-contactus{
+  margin-top: 9px;
 }
 .contact-us-map-section{
-  margin-top:-200px;
-  padding-buttom: 40px;
+  margin-top: 15px;
 }
 .contact-us-social-media-section{
-  direction:rtl;
-
+margin: auto;
+}
+.contact-us-social-media-links{
+  
 }
 .suggestions-comments-section{
   font-family: IRANSans;

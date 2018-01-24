@@ -1,6 +1,7 @@
 import React from 'react';
 import { withScriptjs ,withGoogleMap, GoogleMap,Marker } from "react-google-maps";
-import {Image} from 'semantic-ui-react';
+import {Image,Divider} from 'semantic-ui-react';
+import {englishToPersianDigits} from './tools/EnglishToPersianDigits.js';
 
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>{
   return(
@@ -17,48 +18,57 @@ class ContactUs extends React.Component {
   render(){
     return(
       <div className="contact-us-main-division">
-        <div className="contact-us-main-division-content">
+        <div className="contact-us-map-section col-md-4">
+          <Map />
+        </div>
+        <div className="contact-us-main-division-content col-md-8">
           <div className="contact-us-main-division-content-text">
           <div className="contact-us-header-section">
             <span>تماس با</span><span style={{color:"#12b2ce"}}> تریپین </span>
           </div>
-          <p className="contact-us-firm-name-section">
-            دفتر مرکزی شرکت طراحی و راهبری فناوران دانش‌سامان آریا
-          </p>
-          <p className="contact-us-address-section">
-          آدرس: تهران، خیابان دادمان تقاطع درختی، روبروی سازمان امور مالیاتی، پلاک 97، واحد
-          </p>
-          <div className="contact-us-contact-info">
-            <div className="contact-us-postal-code">
-              کدپستی : 1468694134
-            </div>
-            <div className="contact-us-tel-number">
-              تلفن : 02188573037
-            </div>
+          <div className="contact-texts">
+            <p className="contact-us-firm-name-section">
+              دفتر مرکزی شرکت طراحی و راهبری فناوران دانش‌سامان آریا
+            </p>
+            <p className="contact-us-address-section">
+            آدرس:
+            تهران، خیابان دادمان تقاطع درختی، روبروی سازمان امور مالیاتی، پلاک 97، واحد 2
+            </p>
+            <div className="contact-us-contact-info">
+              <div className="contact-us-postal-code">
+              {englishToPersianDigits(1468694134)}  :کدپستی
+
+              </div>
+              <div className="contact-us-tel-number">
+                تلفن : 02188573037
+              </div>
             <div className="contact-us-email">
               ایمیل : support@tripinn.ir
             </div>
-          </div>
-          <div className="contact-us-social-media-section">
+            <Divider/>
             <div className="contact-us-social-media-sentence">
-                ما را در شبکه های اجتماعی دنبال کنید
+                ما را در شبکه های اجتماعی دنبال کنید:
             </div>
-            <div className="contact-us-social-media-links row-reverse">
-            <div className="contact-us-social-link">
-              <img height={20} width={20} src={require('./Images/trypinn-instagram.png')} alt=""/>
+            <div className="contact-us-social-media-section">
+
+              <div className="contact-us-social-media-links row-reverse">
+                <div className="contact-us-social-link">
+                  <img height={21} className="social-icon-contactus"  src={require('./Images/trypinn-instagram.png')} alt=""/>
+                </div>
+                <div className="contact-us-social-link">
+                  <img height={21} className="social-icon-contactus" src={require('./Images/trypinn-twitter.png')} alt=""/>
+                </div>
+                <div className="contact-us-social-link">
+                  <img height={21} className="social-icon-contactus" src={require('./Images/trypinn-telegram-channel.png')} alt=""/>
+                </div>
+              </div>
             </div>
-            <div className="contact-us-social-link">
-              <img height={20} width={20}src={require('./Images/trypinn-twitter.png')} alt=""/>
-            </div>
-            <div className="contact-us-social-link">
-              <img height={20} width={20} src={require('./Images/trypinn-telegram-channel.png')} alt=""/>
-            </div>
-            </div>
+
           </div>
           </div>
 
-          <div className="contact-us-map-section">
-            <Map />
+
+
           </div>
         </div>
       </div>
