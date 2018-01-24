@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
+  "dependencies":{
     "bootstrap": "^3.3.7",
     "bootstrap-jalali-datepicker": "^1.0.1",
     "datepicker": "0.0.0",
