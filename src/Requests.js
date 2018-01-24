@@ -43,6 +43,7 @@ class Requests extends React.Component{
     var request = new Request('https://www.trypinn.com/api/request/list/',{
       method: 'POST',
       body: JSON.stringify({
+        platform:'web',
         role:this.state.role,
     }),
       headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',

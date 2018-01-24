@@ -86,7 +86,7 @@ class Header extends React.Component{
     if (this.state.isLoggedIn !== 'true'){
       return(
         <div className="main-menu-header">
-          <p className="clickable-p"  onClick={this.handleLoginButton.bind(this)}>ورود / ثبت‌نام</p>
+          <p className="login-signup-button-header clickable-p"  onClick={this.handleLoginButton.bind(this)}>ورود / ثبت‌نام</p>
         </div>
       );
     }
@@ -188,7 +188,7 @@ class Header extends React.Component{
      if(localStorage['user-profile-picture']==='null'||localStorage['user-profile-picture']===undefined){
        return(
          <div style={{float:'left'}}>
-          <Image className="profile-card-user-avatar" src={require('./HouseDetailParts/facilities/prof_avatar_tripinn.svg')} height={70} width={70} circle={true}/>
+          <Image className="profile-card-user-avatar" src={require('./HouseDetailParts/facilities/prof_avatar_tripinn.svg')} height={70}  circle={true}/>
          </div>
 
        );

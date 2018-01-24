@@ -5,7 +5,7 @@ import moment from 'moment-jalaali';
 import {Modal} from 'react-bootstrap';
 
 
-moment.loadPersian({usePersianDigits:true , dialect:'persian-modern'});
+// moment.loadPersian({usePersianDigits:true , dialect:'persian-modern'});
 class RequestItem extends React.Component{
   constructor(props){
     super(props);
@@ -53,7 +53,7 @@ class RequestItem extends React.Component{
       case "WAIT_FOR_GUEST_PAY":
         return(
           <div>
-            <Button className="request-userpanel-button" onClick={()=>{console.log('open modal');this.setState({showPreBill:true})}}>پرداخت</Button>
+            <Button className="request-userpanel-button" onClick={()=>{this.setState({showPreBill:true})}}>پرداخت</Button>
           </div>
         );
       case "HOST_ACCEPTED_GUEST_PAYED":
@@ -81,8 +81,9 @@ class RequestItem extends React.Component{
     }
   }
   renderPreBill(){
-    console.log(this.state.request);
+
     if(this.state.request!==null){
+      console.log(moment(this.state.request.start_date,'jYYYY/jM/jD'));
       return(
         <Modal show={this.state.showPreBill}
           onHide={()=>{this.setState({showPreBill:false})}}>
@@ -119,8 +120,8 @@ class RequestItem extends React.Component{
                 <p>تاریخ ورود و خروج:</p>
               </div>
               <div className="pre-bill-dates-content">
-                <p>از{englishToPersianDigits(moment(this.state.request.start_date,'jYYYY/jM/jD').format('jYYYY/jM/jD'))}</p>
-                <p>تا{englishToPersianDigits(moment(this.state.request.end_date,'jYYYY/jM/jD').format('jYYYY/jM/jD'))}</p>
+                <p>از{englishToPersianDigits(moment(this.state.request.start_date, 'YYYY-M-DTHH:mm:ssZ').format('jYYYY/jM/jD'))}</p>
+                <p>تا{englishToPersianDigits(moment(this.state.request.end_date, 'YYYY-M-DTHH:mm:ssZ').format('jYYYY/jM/jD'))}</p>
                 <p> روز اقامت{this.state.request.duration}</p>
               </div>
             </div>
