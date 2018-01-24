@@ -94,12 +94,20 @@ margin: 30px
   padding-bottom: 20px;
 }
 
-.about-container{
+.about-us-container{
   font-family: IRANSans;
   width: 80%;
-  margin: auto;
+  margin-top:30px;
+  margin-bottom:30px;
+  margin-left:140px;
+  margin-right: 100px;
   padding-top: 30px;
+  padding-bottom: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
   text-align: right;
+  border: 2px solid #e4e4e4;
+  border-radius: 7px;
 
 }
 
@@ -2429,11 +2437,11 @@ padding-top: 80px;
 
 }
 
-.test-loaded{
+.loaded-message{
   display:none;
 }
 
-.test-not-loaded{
+.loading-message{
   padding: 100px;
   margin:100px;
   position: absolute;
@@ -2452,4 +2460,8 @@ padding-top: 80px;
   text-align: center;
   width: 100%;
   margin-left:20px;
+}
+
+.typeahead-searchbar{
+  color:pink;
 }
