@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "dependencies":{
+  "dependencies": {
     "bootstrap": "^3.3.7",
     "bootstrap-jalali-datepicker": "^1.0.1",
     "datepicker": "0.0.0",
@@ -11,6 +11,7 @@
     "http-server": "^0.10.0",
     "jquery": "^3.2.1",
     "moment": "^2.20.1",
+    "moment-jalaali": "^0.7.2",
     "react": "^16.2.0",
     "react-aspect-ratio": "^1.0.22",
     "react-bootstrap": "^0.31.5",
