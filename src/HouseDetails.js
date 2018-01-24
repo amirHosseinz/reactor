@@ -251,23 +251,16 @@ class HouseDetails extends React.Component {
     }
   }
 
-  renderPreLoad(){
-    if(this.state.imageLoaded===false)
-    return(
-
-      <div>page is loading</div>
-    );
-  }
-
-
   renderHouseDetails(){
-    // console.log(this.state.imageLoaded);
     if(true){
       return(
         <div className={this.state.imageLoaded?"house-detail-image-loaded":"house-detail-image-not-loaded"}>
           <div className='housedetail container-fluid visible-xl hidden-xs' ref={this.handleContextRef}>
             <div className="house-detail-top">
               <div className="house-detail-top-margined visible-xl hidden-md hidden-sm hidden-xs">
+               <div className={this.state.imageLoaded?"loaded-message":"loading-message"} >
+                loading message
+                </div>
                 <AddressDiscription homeData={this.state.homeData}/>
                 <div>
                   {this.renderHomeTitle()}
@@ -525,7 +518,7 @@ class HouseDetails extends React.Component {
     }
     return(
       <div>
-        {this.renderPreLoad()}
+        
         {this.renderHouseDetails()}
       </div>
     );

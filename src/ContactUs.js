@@ -31,19 +31,22 @@ class ContactUs extends React.Component {
               دفتر مرکزی شرکت طراحی و راهبری فناوران دانش‌سامان آریا
             </p>
             <p className="contact-us-address-section">
-            آدرس:
-            تهران، خیابان دادمان تقاطع درختی، روبروی سازمان امور مالیاتی، پلاک 97، واحد 2
+            <span>آدرس : </span>
+            <span> تهران،خیابان دادمان،تقاطع درختی، روبرووی سازمان امور مالیاتی، پلاک </span>
+            <span>{englishToPersianDigits("97")}،</span>
+            <span>واحد {englishToPersianDigits("2")}</span>
+
+
             </p>
             <div className="contact-us-contact-info">
               <div className="contact-us-postal-code">
-              {englishToPersianDigits(1468694134)}  :کدپستی
-
+              {englishToPersianDigits(1468694134)} : کدپستی
               </div>
               <div className="contact-us-tel-number">
-                تلفن : 02188573037
+                {englishToPersianDigits("02188573037")} : تلفن
               </div>
             <div className="contact-us-email">
-              ایمیل : support@tripinn.ir
+             support@tripinn.ir : ایمیل
             </div>
             <Divider/>
             <div className="contact-us-social-media-sentence">
