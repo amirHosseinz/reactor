@@ -211,8 +211,8 @@ class TripItem extends React.Component{
 
               <p> آدرس اقامت‌گاه: {this.state.trip.room.address} </p>
 
-              <p>تاریخ ورود: {englishToPersianDigits(moment(this.state.trip.start_date,'jYYYY/jM/jD').format('jYYYY/jM/jD'))}</p>
-              <p>تاریخ خروج:{englishToPersianDigits(moment(this.state.trip.end_date,'jYYYY/jM/jD').format('jYYYY/jM/jD'))} </p>
+              <p>تاریخ ورود: {moment(this.state.trip.start_date).format('jYYYY/jM/jD')}</p>
+              <p>تاریخ خروج:{moment(this.state.trip.end_date).format('jYYYY/jM/jD')} </p>
             </div>
             <div className='request-details'>
             </div>

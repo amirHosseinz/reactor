@@ -83,7 +83,6 @@ class RequestItem extends React.Component{
   renderPreBill(){
 
     if(this.state.request!==null){
-      console.log(moment(this.state.request.start_date,'jYYYY/jM/jD'));
       return(
         <Modal show={this.state.showPreBill}
           onHide={()=>{this.setState({showPreBill:false})}}>
@@ -120,8 +119,8 @@ class RequestItem extends React.Component{
                 <p>تاریخ ورود و خروج:</p>
               </div>
               <div className="pre-bill-dates-content">
-                <p>از{englishToPersianDigits(moment(this.state.request.start_date, 'YYYY-M-DTHH:mm:ssZ').format('jYYYY/jM/jD'))}</p>
-                <p>تا{englishToPersianDigits(moment(this.state.request.end_date, 'YYYY-M-DTHH:mm:ssZ').format('jYYYY/jM/jD'))}</p>
+                <p>از{moment(this.state.request.start_date).format('jYYYY/jM/jD')}</p>
+                <p>تا{moment(this.state.request.end_date).format('jYYYY/jM/jD')}</p>
                 <p> روز اقامت{this.state.request.duration}</p>
               </div>
             </div>
@@ -244,8 +243,8 @@ renderDeleteButton(){
             <p> به میزبانی  {this.state.request.room.owner.first_name} {this.state.request.room.owner.last_name}</p>
             <p> رزرو کننده: {this.state.request.guest_person.last_name} </p>
             <p>تعداد میهمان: {englishToPersianDigits(this.state.request.number_of_guests)} </p>
-            <p>تاریخ ورود: {englishToPersianDigits(moment(this.state.request.start_date,'jYYYY/jM/jD').format('jYYYY/jM/jD'))}</p>
-            <p>تاریخ خروج:{englishToPersianDigits(moment(this.state.request.end_date,'jYYYY/jM/jD').format('jYYYY/jM/jD'))} </p>
+            <p>تاریخ ورود: {englishToPersianDigits(moment(this.state.request.start_date).format('jYYYY/jM/jD'))}</p>
+            <p>تاریخ خروج:{englishToPersianDigits(moment(this.state.request.end_date).format('jYYYY/jM/jD'))} </p>
           </div>
           <div className='request-details'>
           </div>
