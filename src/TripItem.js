@@ -1,7 +1,9 @@
 import React from 'react';
 import { Divider,Button } from 'semantic-ui-react';
 import {englishToPersianDigits} from './tools/EnglishToPersianDigits';
+import moment from 'moment-jalaali';
 
+moment.loadPersian({usePersianDigits:true , dialect:'persian-modern'});
 class TripItem extends React.Component{
   constructor(props){
     super(props);
@@ -209,8 +211,8 @@ class TripItem extends React.Component{
 
               <p> آدرس اقامت‌گاه: {this.state.trip.room.address} </p>
 
-              <p>تاریخ ورود: {englishToPersianDigits(this.state.trip.start_date)}</p>
-              <p>تاریخ خروج:{englishToPersianDigits(this.state.trip.end_date)} </p>
+              <p>تاریخ ورود: {englishToPersianDigits(moment(this.state.trip.start_date,'jYYYY/jM/jD').format('jYYYY/jM/jD'))}</p>
+              <p>تاریخ خروج:{englishToPersianDigits(moment(this.state.trip.end_date,'jYYYY/jM/jD').format('jYYYY/jM/jD'))} </p>
             </div>
             <div className='request-details'>
             </div>

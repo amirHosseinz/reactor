@@ -1,12 +1,17 @@
 import React from 'react';
 import { Divider,Button } from 'semantic-ui-react';
 import {englishToPersianDigits} from './tools/EnglishToPersianDigits';
+import moment from 'moment-jalaali';
+import {Modal} from 'react-bootstrap';
 
+
+moment.loadPersian({usePersianDigits:true , dialect:'persian-modern'});
 class RequestItem extends React.Component{
   constructor(props){
     super(props);
     this.state= {
       request:null,
+      showPreBill:false,
       requestStatus:null,
       token:null
     };
@@ -48,7 +53,7 @@ class RequestItem extends React.Component{
       case "WAIT_FOR_GUEST_PAY":
         return(
           <div>
-            <Button className="request-userpanel-button" onClick={this.setTokenForPayment.bind(this)}>پرداخت</Button>
+            <Button className="request-userpanel-button" onClick={()=>{console.log('open modal');this.setState({showPreBill:true})}}>پرداخت</Button>
           </div>
         );
       case "HOST_ACCEPTED_GUEST_PAYED":
@@ -57,6 +62,89 @@ class RequestItem extends React.Component{
         return (<div></div>);
       default:
         return null;
+    }
+  }
+  renderDifferentTypesPrices(){
+    if(true){
+      return(
+        <div>
+          <p></p>
+          <p></p>
+          <p></p>
+        </div>
+      );
+    }
+    else{
+      <div>
+
+      </div>
+    }
+  }
+  renderPreBill(){
+    console.log(this.state.request);
+    if(this.state.request!==null){
+      return(
+        <Modal show={this.state.showPreBill}
+          onHide={()=>{this.setState({showPreBill:false})}}>
+          <div className="pre-bill-main-division">
+            <div className="pre-bill-header-section">
+              <p>
+                جزئیات رزرو اقامتگاه
+              </p>
+            </div>
+            <hr />
+            <div className="pre-bill-house-details">
+              <div className="pre-bill-house-title">
+                <p> {this.state.request.room.title}</p>
+              </div>
+              <div className="pre-bill-house-address">
+                <p>{this.state.request.room.city}/{this.state.request.room.district}</p>
+              </div>
+              <div className="pre-bill-house-picture">
+                  <img src={"https://www.trypinn.com"+this.state.request.room.preview} alt=""height="80px"/>
+              </div>
+            </div>
+            <hr/>
+            <div className="pre-bill-number-of-guests">
+              <div className="pre-bill-number-of-guests-sentence">
+              <p> تعداد مسافر:</p>
+              </div>
+              <div className="pre-bill-number-of-guests-content">
+                <p>{this.state.request.number_of_guests} نفر</p>
+              </div>
+            </div>
+            <hr/>
+            <div className="pre-bill-dates">
+              <div className="pre-bill-dates-sentence">
+                <p>تاریخ ورود و خروج:</p>
+              </div>
+              <div className="pre-bill-dates-content">
+                <p>از{englishToPersianDigits(moment(this.state.request.start_date,'jYYYY/jM/jD').format('jYYYY/jM/jD'))}</p>
+                <p>تا{englishToPersianDigits(moment(this.state.request.end_date,'jYYYY/jM/jD').format('jYYYY/jM/jD'))}</p>
+                <p> روز اقامت{this.state.request.duration}</p>
+              </div>
+            </div>
+            <hr/>
+            <div className="pre-bill-price-section">
+              {this.renderDifferentTypesPrices()}
+            </div>
+            <div className="pre-bill-discount-section">
+              <input />
+              <div className="pre-bill-discount-sentence">
+              </div>
+            </div>
+            <hr/>
+            <div className="pre-bill-adding-up">
+              <div className="pre-bill-price">
+
+              </div>
+              <div className="pre-bill-payment-button">
+                <Button onClick={this.setTokenForPayment.bind(this)}> پرداخت نهایی</Button>
+              </div>
+            </div>
+          </div>
+        </Modal>
+      );
     }
   }
   setTokenForPayment(){
@@ -155,8 +243,8 @@ renderDeleteButton(){
             <p> به میزبانی  {this.state.request.room.owner.first_name} {this.state.request.room.owner.last_name}</p>
             <p> رزرو کننده: {this.state.request.guest_person.last_name} </p>
             <p>تعداد میهمان: {englishToPersianDigits(this.state.request.number_of_guests)} </p>
-            <p>تاریخ ورود: {englishToPersianDigits(this.state.request.start_date)}</p>
-            <p>تاریخ خروج:{englishToPersianDigits(this.state.request.end_date)} </p>
+            <p>تاریخ ورود: {englishToPersianDigits(moment(this.state.request.start_date,'jYYYY/jM/jD').format('jYYYY/jM/jD'))}</p>
+            <p>تاریخ خروج:{englishToPersianDigits(moment(this.state.request.end_date,'jYYYY/jM/jD').format('jYYYY/jM/jD'))} </p>
           </div>
           <div className='request-details'>
           </div>
@@ -223,6 +311,7 @@ renderDeleteButton(){
   render(){
     return(
       <div>
+        {this.renderPreBill()}
         {this.renderRequestDetail()}
       </div>
     );
