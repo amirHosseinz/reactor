@@ -52,9 +52,9 @@ class Footer extends React.Component{
                 </div>
               </a>
                 <div className='footer-menu-mobile-social'>
-                  <a href="https://t.me/"><img src={require('./Images/trypinn-telegram-channel.png')} className='social-image' alt=""></img></a>
+                  <a href="https://t.me/tripinni"><img src={require('./Images/trypinn-telegram-channel.png')} className='social-image' alt=""></img></a>
                   <a href="https://instagram.com/tripinn.ir"><img src={require('./Images/trypinn-instagram.png')} className='social-image' alt=""></img></a>
-                  <a href="https://www.twitter.com/"><img src={require('./Images/trypinn-twitter.png')} className='social-image' alt=""></img></a>
+                  <a href="https://twitter.com/tripinni"><img src={require('./Images/trypinn-twitter.png')} className='social-image' alt=""></img></a>
                 </div>
             </div>
           </div>
