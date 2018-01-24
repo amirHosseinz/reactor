@@ -1,3 +1,14 @@
+.pre-bill-main-division{
+  font-family: IRANSans !important;
+}
+.pre-bill-header-section{
+  text-align: center;
+  font-size:26px;
+}
+.pre-bill-house-details{
+  direction:rtl;
+}
+
 .searchbar-typeahead-menu-item{
   border:soid #f2f5f6 !important;
 }
@@ -45,7 +56,6 @@
 }
 .contact-us-social-media-section{
   direction:rtl;
-
 }
 .suggestions-comments-section{
   font-family: IRANSans;
