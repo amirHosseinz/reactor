@@ -32,12 +32,12 @@ class AboutUs extends React.Component {
         . علاوه بر سایت، شما میتوانید با اپلیکیشن تریپین نیز به رزرو انواع اقامتگاه ها بپردازید. هم اکنون اپلیکیشن تریپین برای هر دو پلتفرم اندروید و آی او اس قابل دریافت است
          </div>
          <div className='about-us-app-paragraph-img '>
-          <img src={require('./Images/about-us-pic1.png')} width="200" height="250" />
+          <img src={require('./Images/about-us-pic1.png')} height="250" />
          </div>
        </div>
        <div className='about-us-tripinn-objective'>
        <div className='about-us-tripinn-objective-img'>
-       <img src={require('./Images/about-us-pic2.png')} width="350" height="350" />
+       <img src={require('./Images/about-us-pic2.png')} height="350" />
        </div>
        <div className='about-us-tripinn-objective-text'>
       .هدف تریپین ارائه تنوعی بالا از انواع ویلا، اقامتگاه بومگردی، سوییت و آپارتمان متناسب با نیاز شماست.
