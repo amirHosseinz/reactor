@@ -23,9 +23,11 @@ class RequestItem extends React.Component{
       totalPrice:nextProps.requestDetail.total_price,
     });
   }
+
   getRelevantToken(){
     return localStorage['token'];
   }
+
   getRequestStatus(){
         switch (this.state.requestStatus){
           case "WAIT_FOR_HOST":

@@ -97,7 +97,7 @@ getRelevantToken(){
                   <div className="suggestions-label-text-area">
                     نام:
                   </div>
-                <input type="text" className='suggestions form-control' value={this.state.name} onClick={(event)=>{this.Suggestionsname(event)}} />
+                <input type="text" className='suggestions form-control' value={this.state.name} onChange={(event)=>{this.Suggestionsname(event)}} />
                 </label>
               </span>
             </div>
@@ -107,7 +107,7 @@ getRelevantToken(){
                     <div className="suggestions-label-text-area">
                       ایمیل:
                     </div>
-                  <input type="text" className='suggestions form-control' value={this.state.email} onClick={(event)=>{this.SuggestionsEmail(event)}}/>
+                  <input type="text" className='suggestions form-control' value={this.state.email} onChange={(event)=>{this.SuggestionsEmail(event)}}/>
                   </label>
                 </span>
               </div>
@@ -117,13 +117,13 @@ getRelevantToken(){
                     <div className="suggestions-label-text-area">
                       موضوع:
                     </div>
-                  <input type="text" className='suggestions form-control' value={this.state.subject} onClick={(event)=>{this.SuggestionsSubject(event)}}/>
+                  <input type="text" className='suggestions form-control' value={this.state.subject} onChange={(event)=>{this.SuggestionsSubject(event)}}/>
                   </label>
                 </span>
               </div>
               <div class="form-group" className="suggestions-description-container">
                 <label className="suggstions-description-textarea" for="comment">توضیحات:</label>
-                  <textarea class="form-control" rows="5" id="comment" value={this.state.description} onClick={(event)=>{this.SuggestionsDescription(event)}} ></textarea>
+                  <textarea wrap="soft" class="suggestions form-control" rows="5"  value={this.state.description} onChange={(event)=>{this.SuggestionsDescription(event)}} />
               </div>
               <div className='suggestions-save-button-container'>
               <Button onClick={()=>{this.SetSuggestionParams()}} className="suggestions-save-button" color="orange" >ارسال درخواست </Button>
