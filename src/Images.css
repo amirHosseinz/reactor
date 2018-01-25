@@ -49,9 +49,6 @@
   margin-right: 30px;
   margin-left: 70px;
   margin-top: 50px;
-  font-size: 16px;
-  color:#454545;
-  font-weight: 300;
 }
 .contact-us-firm-name-section{
   margin-top: 20px;
@@ -62,9 +59,6 @@
 }
 .contact-us-address-section{
 }
-.contact-us-email{
-  padding-bottom: 30px;
-}
 .contact-us-social-link{
   margin-top: 20px;
   border-radius: 50%;
@@ -72,14 +66,6 @@
   width: 40px;
   text-align: center;
   background-color:#f8f8f8;
-  margin-left: 2px;
-  margin-right: 2px;
-}
-.contact-us-social-link:hover{
-
-  border: solid;
-  border-width: 2px;
-  border-color: #f8f8f8;
   margin-left: 2px;
   margin-right: 2px;
 }
@@ -183,26 +169,14 @@ margin: 30px
   margin: auto;
   padding-bottom: 20px;
 }
-.contact-us-contact-info{
-  line-height: 32px;
 
-}
-.orng-anchors{
-  color:#f56c4e;
-}
-.orng-anchors:hover{
-  color:#d4482a;
-}
-.orng-anchors:visited {
-  color:#d4482a;
-}
 .about-us-container{
   font-family: IRANSans;
-  font-size: 15px;
+  font-size: 16px;
   height: 1040px;
-  width: 70%;
+  width: 76%;
   margin: auto;
-  margin-top:50px;
+  margin-top: 30px;
   margin-bottom: 30px;
   background-color: white;
   padding-top: 30px;
@@ -214,12 +188,9 @@ margin: 30px
   border-radius: 7px;
 
 }
-.about-us-content{
-  padding-right:80px;
-  padding-left: 80px;
-}
+
 .about-us-tripinn{
-  color:#12b2ce;
+  color:#83daeb;
 }
 
 .about-us-logo{
@@ -230,11 +201,6 @@ margin: 30px
 
 .about-us-main-paragraph{
   margin-bottom:45px;
-  font-size: 16px;
-  font-weight: 300;
-  color:#454545;
-  margin-left: 50px;
-  margin-right: 50px;
 }
 
 .about-us-app-paragraph{
@@ -253,9 +219,7 @@ margin: 30px
     margin-right: 10px;
     margin-left: 50px;
     padding-top:80px;
-    font-size: 18px;
-    line-height: 30px;
-    color:#454545;
+
 }
 
 .about-us-tripinn-objective{
@@ -271,12 +235,10 @@ margin: 30px
 }
 
 .about-us-tripinn-objective-text{
-  margin-right: 10px;
+  margin-right: 50px;
   margin-left: 5px;
   padding-top:170px;
-  line-height: 30px;
-  font-size: 18px;
-  color:#454545;
+
 
 }
 
@@ -364,17 +326,12 @@ margin-left: 14px;
 .housedetail-img{
   cursor: pointer;
 }
-.login-signup-button-header{
-  margin-right: 10px;
-}
-
 .login-title-in-modal{
   font-family: IRANSans;
   font-size: 20px;
   font-weight: 500;
   text-align: center;
   color:#484848;
-
 }
 .show-gallery-button-house-details{
   position:absolute;
@@ -2676,8 +2633,9 @@ padding-top: 80px;
 
 .become-host-label-text-area{
 
-  padding-right:25px;
+  direction:rtl;
   margin-bottom: -10px;
+  margin-right: -18px;
 }
 
 .become-host-label-Wrapper-xl{
@@ -2687,5 +2645,93 @@ padding-top: 80px;
 }
 
 .become-host-input-item{
-  margin-bottom:-30px;
+  margin-bottom:-40px;
+  margin-left: -20px;
+}
+
+
+.become-host-cadre{
+  font-family: IRANSans;
+  font-size: 16px;
+  height: 700px;
+  width: 76%;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  background-color: white;
+  padding-top: 30px;
+  padding-bottom: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: right;
+  border: 2px solid #e4e4e4;
+  border-radius: 7px;
+  color:#484848;
+}
+
+.become-host-descriptions-main{
+  background-color: #f7fbfc;
+  border:solid;
+  border-color: #eaeaea;
+  border-width: 1px;
+  padding-top: 75px;
+  padding-right: 25px;
+  padding-left: 25px;
+  padding-bottom: 150px;
+}
+
+.become-host-descriptions-header{
+  text-align: center;
+  font-size:34px;
+  font-weight:500;
+  padding-top: 30px;
+  font-family: IRANSans;
+  margin-bottom:8px;
+}
+
+.mizban-color{
+  color: #f56c4e;
+}
+
+.become-host-descriptions-form{
+  color: #484848;
+  font-size:14px;
+  border:solid;
+  border-color:#eaeaea;
+  border-width: 1px;
+  padding-top: 40px;
+  padding-right: 25px;
+  padding-left: 0px;
+  padding-bottom: 100px;
+}
+
+.ui.orange.buttons .button, .ui.orange.button {
+    background-color:#f56c4e !important ;
+}
+.ui.orange.buttons:hover .button:hover, .ui.orange.button:hover {
+    background-color:#c23c1f !important;
+}
+.ui.orange.buttons:active  .button:active, .ui.orange.button:active {
+    background-color:#c23c1f !important;
+}
+.ui.orange.buttons:focus  .button:focus, .ui.orange.button:focus {
+    background-color:#f56c4e !important;
+}
+
+.become-host-save-button-container{
+  margin-top: -15px;
+  margin-right: -5px;
+}
+
+.become-host-save-button{
+    font-family: IRANSans !important;
+    width: 79% !important;
+}
+
+.become-host-descriptions-support{
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: 70px;
+  margin-right: 60px;
 }

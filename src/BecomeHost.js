@@ -1,6 +1,6 @@
 import React from 'react';
 import { Divider,Button } from 'semantic-ui-react';
-
+import {Link} from 'react-router-dom';
 class BecomeHost extends React.Component {
   constructor(props) {
     super(props);
@@ -107,6 +107,72 @@ renderSuccessful(message){
   render() {
     return (
       <div>
+        <div className='become-host-cadre'>
+          <div className='become-host-descriptions-form-section col-md-5'>
+            <div className='become-host-descriptions-form'>
+            <div className="become-host-input-item">
+            <span>
+            <label className='become-host-labels'>
+            <div className="become-host-label-text-area">
+            نام:
+            </div>
+            <input type="text" className='become-host-labels form-control' value={this.state.firstName} onChange={this.editFirstName.bind(this)} />
+            </label>
+            </span>
+            </div>
+            <div className="become-host-input-item">
+            <label className='become-host-labels'>
+            <div className="become-host-label-text-area">
+            نام خانوادگی:
+            </div>
+            <input type="text" className='become-host-labels form-control' value={this.state.lastName} onChange={this.editLastName.bind(this)} />
+            </label>
+            </div>
+            <div className="become-host-input-item">
+            <span>
+            <label className='become-host-labels'>
+            <div className="become-host-label-text-area">
+            شماره تلفن:
+            </div>
+            <input type="text" className='become-host-labels form-control' value={this.state.cellphone} onChange={this.editCellPhone.bind(this)} />
+            </label>
+            </span>
+            </div>
+            <div className="become-host-input-item">
+            <span>
+            <label className='become-host-labels'>
+            <div className="become-host-label-text-area">
+            شهر:
+            </div>
+            <input type="text" className='become-host-labels form-control' value={this.state.city} onChange={this.editCity.bind(this)} />
+            </label>
+            </span>
+            </div>
+            <div className="become-host-input-item">
+            <label className='become-host-labels' >
+            <div className="become-host-label-text-area">
+            ایمیل
+              </div>
+              <input type="text" className='become-host-labels form-control' value={this.state.email} onChange={this.editEmail.bind(this)} />
+              </label>
+              <div className='become-host-save-button-container'>
+              <Button className="become-host-save-button" color="orange" onClick={this.changeInfOnServer.bind(this)}>ارسال درخواست </Button>
+
+              </div>
+              </div>
+            </div>
+          </div>
+          <div className='become-host-descriptions-container col-md-7'>
+            <div className='become-host-descriptions-main'>
+              <p className='become-host-descriptions-header'><span className="mizban-color">میزبان </span><span>شوید</span></p>
+              <p className='become-host-descriptions-paragraph1'>در هر نقطه ای از ایران که هستید میتوانیید با اجاره روزانه ویلا و اقامتگاه خود به دیگران کسب درآمد کنید. تریپین به شما کمک میکند با صرف کمترین زمان و به آسانی از فرصت های اجاره اقامتگاه خود آگاه شوید<br/>کافی است فرم مقابل را کامل نمایید. کارشناسان ما به زودی با شما تماس خواهند گرفت و در تمامی مراحل شمارا همراهی خواهند کرد</p>
+            </div>
+            <div className='become-host-descriptions-support'>
+            <p className='become-host-descriptions-paragraph1'><span> در صورت هرگونه سوال درباره نحوه همکاری با تریپین میتوانید با </span><span><Link to="/contactus">پشتیانی </Link></span><span> تماس بگیرید </span></p>
+            </div>
+          </div>
+
+        </div>
 
       </div>
     );
