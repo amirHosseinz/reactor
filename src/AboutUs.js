@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom';
 class AboutUs extends React.Component {
   constructor(props){
     super(props);
@@ -22,7 +22,12 @@ class AboutUs extends React.Component {
       <br/>
 تریپین در طول سفر نیز همراه شما خواهد بود و با پشتیبانی 24 ساعته شما را همراهی خواهد کرد. در صورت بروز سوال و پیشنهاد از طریق صفحه تماس با ما، ما را در جریان بگذارید
       <br/>
-    . تریپین در حال حاضر در استان‌های مازندران، خراسان رضوی، اصفهان، گیلان و جزیره کیش فعال است
+      تریپین در حال حاضر در استان های
+      <Link to="/search/مازندران" > مازندران</Link> ,
+      <Link to="/search/خراسان رضوی">خراسان رضوی</Link> ,
+      <Link to="/search/اصفهان">اصفهان</Link> ,
+      <Link to="/search/گیلان">گیلان</Link> و
+      <Link to="/search/کیش"> جزیره کیش</Link> فعال است
        </p>
        </div>
        <div className='about-us-app-paragraph'>
