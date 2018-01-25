@@ -15,6 +15,9 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>{
 }));
 
 class ContactUs extends React.Component {
+  componentWillMount(){
+    document.body.backgroundColor="#f8f8f8";
+  }
   render(){
     return(
       <div className="contact-us-main-division">
@@ -46,7 +49,9 @@ class ContactUs extends React.Component {
                 {englishToPersianDigits("02188573037")} : تلفن
               </div>
             <div className="contact-us-email">
-             support@tripinn.ir : ایمیل
+              <span><a className="orng-anchors" href="mailto:support@tripinn.ir"> support@tripinn.ir </a></span>
+              <span>   : ایمیل </span>
+
             </div>
             <Divider/>
             <div className="contact-us-social-media-sentence">
@@ -56,13 +61,13 @@ class ContactUs extends React.Component {
 
               <div className="contact-us-social-media-links row-reverse">
                 <div className="contact-us-social-link">
-                  <img height={21} className="social-icon-contactus"  src={require('./Images/trypinn-instagram.png')} alt=""/>
+                  <a href="https://instagram.com/tripinn.ir"><img height={21} className="social-icon-contactus"  src={require('./Images/trypinn-instagram.png')} alt=""/></a>
                 </div>
                 <div className="contact-us-social-link">
-                  <img height={21} className="social-icon-contactus" src={require('./Images/trypinn-twitter.png')} alt=""/>
+                <a href="https://twitter.com/tripinni">  <img height={21} className="social-icon-contactus" src={require('./Images/trypinn-twitter.png')} alt=""/></a>
                 </div>
                 <div className="contact-us-social-link">
-                  <img height={21} className="social-icon-contactus" src={require('./Images/trypinn-telegram-channel.png')} alt=""/>
+                <a href="https://telegram.me/tripinni">  <img height={21} className="social-icon-contactus" src={require('./Images/trypinn-telegram-channel.png')} alt=""/></a>
                 </div>
               </div>
             </div>

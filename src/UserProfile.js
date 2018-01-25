@@ -66,7 +66,7 @@ class UserProfile extends React.Component{
         }
         else{
           return(
-            <div className="host-photo">
+            <div className="profilebox">
               <img className="profile-avatarimg" src={"https://www.trypinn.com/" +this.state.profileInfo.user.profile_picture} alt=""/>
             </div>
           );

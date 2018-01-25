@@ -9,7 +9,9 @@ import '../tools/DatePicker/bootstrap-datepicker.fa.js';
 import '../tools/DatePicker/bootstrap-datepicker.js';
 import '../tools/DatePicker/bootstrap-datepicker.css';
 import {reserveModalStyle} from '../Styles.js';
+import moment from 'moment-jalaali';
 
+moment.loadPersian({usePersianDigits:false , dialect:'persian-modern'});
 
 class ReservePanel extends React.Component{
   constructor(props){
@@ -39,7 +41,7 @@ class ReservePanel extends React.Component{
   }
   getDataFromUser(){
       return({fromDate :document.getElementById('fromdatepicker').value,
-              toDate :document.getElementById('todatepicker').value,
+              toDate: document.getElementById('todatepicker').value,
               numberOfGuests : 1,
               discountCode : ''});
   }
@@ -56,6 +58,8 @@ class ReservePanel extends React.Component{
       // alert('.لطفا تعداد مهمان‌های خود را وارد نمایید');
       return;
     }
+    reqpar.fromDate= moment(reqpar.fromDate, 'jYYYY/jM/jD').format('YYYY/M/D');
+    reqpar.toDate= moment(reqpar.toDate, 'jYYYY/jM/jD').format('YYYY/M/D');
     this.setState({requestParams:reqpar},() => {this.getDataFromServer()});
   }
   getDataFromServer(){
