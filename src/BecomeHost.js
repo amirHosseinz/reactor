@@ -107,61 +107,7 @@ renderSuccessful(message){
   render() {
     return (
       <div>
-      <div className="profile-container-margined">
-        <div className="col-md-3"></div>
-        <div className="profile_dynamic_edit col-md-6 col-xs-12">
-        <div className="col-md-3"></div>
-          <div className="edit-profile-xl" dir="rtl">
-            <div>
-            <span>
-            <label className='become-host-labels'>
-              <div>
-              نام:
-              </div>
-              <input type="text" id='your_name' value={this.state.firstName} onChange={this.editFirstName.bind(this)} />
-            </label>
-            </span>
-            <label className='become-host-labels'>
-          <div>
-          نام خانوادگی:
-          </div>
-        <input type="text" value={this.state.lastName} onChange={this.editLastName.bind(this)} />
-       </label>
-       </div>
-       <div>
-       <span>
-       <label className='become-host-labels'>
-       <div>
-      شماره تلفن:
-      </div>
-      <input type="text" value={this.state.cellphone} onChange={this.editCellPhone.bind(this)} />
-     </label>
-     </span>
-     <span>
-     <label className='become-host-labels'>
-     <div>
-     شهر:
-     </div>
-     <input type="text" value={this.state.city} onChange={this.editCity.bind(this)} />
-     </label>
-     </span>
-     </div>
-     <div className='host-container'>
-     <label className='become-host-labels' >
-     <div>
-    ( ایمیل (اختیاری
-      </div>
-    <input type="text" value={this.state.email} onChange={this.editEmail.bind(this)} />
-    </label>
 
-    <div className='become-host-labels'>
-   <Button className="save-edit" color="blue" onClick={this.changeInfOnServer.bind(this)}>ارسال درخواست </Button>
-   </div>
-    </div>
-      </div>
-      </div>
-
-      </div>
       </div>
     );
   }
