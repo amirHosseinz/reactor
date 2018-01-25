@@ -195,51 +195,62 @@ class RequestItem extends React.Component{
                 جزئیات رزرو اقامتگاه
               </p>
             </div>
-            <hr />
-            <div className="pre-bill-house-details">
-              <div className="pre-bill-house-title">
-                <p> {this.state.request.room.title}</p>
+            <div className="divider-modal"></div>
+              <div className="pre-bill-margin-content">
+                <div className="pre-bill-house-details">
+                  <div className="pre-bill-house-picture">
+                      <img src={"https://www.trypinn.com"+this.state.request.room.preview} alt=""height="90px"/>
+                  </div>
+                  <div>
+                    <div className="pre-bill-house-title">
+                      <p> {this.state.request.room.title}</p>
+                    </div>
+                    <div className="pre-bill-house-address">
+                      <p>{this.state.request.room.city}، {this.state.request.room.district}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="divider-modal-margined"></div>
+                <div className="pre-bill-number-of-guests">
+                  <div className="pre-bill-number-of-guests-sentence">
+                  <p>:تعداد مسافر</p>
+                  </div>
+                  <div className="pre-bill-number-of-guests-content" dir="rtl">
+                    <span> {englishToPersianDigits(this.state.request.number_of_guests)}  </span>
+                    <span> نفر </span>
+                  </div>
+                </div>
+                <hr/>
+                <div className="pre-bill-dates">
+                  <div className="pre-bill-dates-sentence">
+                    <p>:تاریخ ورود و خروج</p>
+                  </div>
+                  <div className="pre-bill-dates-content">
+                    <p className="pre-bill-date-item"> از {moment(this.state.request.start_date).format('jYYYY/jM/jD')}</p>
+                    <p className="pre-bill-date-item" >تا {moment(this.state.request.end_date).format('jYYYY/jM/jD')}</p>
+                    <div className="row-reverse">
+                      <span className="pre-bill-date-item">  روز اقامت </span>
+                      <span>  {englishToPersianDigits(this.state.request.duration)}  </span>
+                    </div>
+
+                  </div>
+                </div>
+                <hr/>
+                <div className="pre-bill-price-section">
+                  {this.renderDifferentTypesPrices()}
+                  {this.renderTotalPrice()}
+                </div>
+                <div className="pre-bill-discount-section">
+                  <input placeholder="ورود کد تخفیف"/>
+                  <div className="pre-bill-discount-sentence">
+                  <p>
+                    بررسی کد تخفیف
+                  </p>
+                  </div>
+                </div>
               </div>
-              <div className="pre-bill-house-address">
-                <p>{this.state.request.room.city}/{this.state.request.room.district}</p>
-              </div>
-              <div className="pre-bill-house-picture">
-                  <img src={"https://www.trypinn.com"+this.state.request.room.preview} alt=""height="80px"/>
-              </div>
-            </div>
-            <hr/>
-            <div className="pre-bill-number-of-guests">
-              <div className="pre-bill-number-of-guests-sentence">
-              <p> تعداد مسافر:</p>
-              </div>
-              <div className="pre-bill-number-of-guests-content">
-                <p>{this.state.request.number_of_guests} نفر</p>
-              </div>
-            </div>
-            <hr/>
-            <div className="pre-bill-dates">
-              <div className="pre-bill-dates-sentence">
-                <p>تاریخ ورود و خروج:</p>
-              </div>
-              <div className="pre-bill-dates-content">
-                <p>از{moment(this.state.request.start_date).format('jYYYY/jM/jD')}</p>
-                <p>تا{moment(this.state.request.end_date).format('jYYYY/jM/jD')}</p>
-                <p> روز اقامت{this.state.request.duration}</p>
-              </div>
-            </div>
-            <hr/>
-            <div className="pre-bill-price-section">
-              {this.renderDifferentTypesPrices()}
-              {this.renderTotalPrice()}
-            </div>
-            <div className="pre-bill-discount-section">
-              <input onChange={(event)=>{this.setState({discountCode:event.target.value})}} value={this.state.discountCode}placeholder="ورود کد تخفیف"/>
-              <div className="pre-bill-discount-sentence">
-              <p className="clickable-p" onClick={()=>{this.setTokenForDiscount()}}>
-                بررسی کد تخفیف
-              </p>
-              </div>
-            </div>
+
+
             <hr/>
             <div className="pre-bill-adding-up">
               <div className="pre-bill-price">
