@@ -64,25 +64,125 @@ class RequestItem extends React.Component{
         return null;
     }
   }
-  renderDifferentTypesPrices(){
-    if(true){
+  renderOrdinaryPriceForPerPerson(){
+    if(this.state.request.ordinary_price!==0){
       return(
         <div>
-          <p></p>
-          <p></p>
-          <p></p>
+          <p>هزینه شب های عادی
+            :( شب {englishToPersianDigits(this.state.request.ordinary_duration)}-نفر {englishToPersianDigits(this.state.request.number_of_guests)})
+          </p>
+          <p>
+            تومان {englishToPersianDigits(this.state.request.ordinary_price)}
+          </p>
+        </div>
+      );
+    }
+  }
+
+  renderWeekendPriceForPerPerson(){
+    if(this.state.request.weekend_price!==0){
+      return(
+        <div>
+          <p>هزینه شب های آخر هفته
+            :( شب {englishToPersianDigits(this.state.request.weekend_duration)}-نفر {englishToPersianDigits(this.state.request.number_of_guests)})
+          </p>
+          <p>
+            تومان {englishToPersianDigits(this.state.request.weekend_price)}
+          </p>
+        </div>
+      );
+    }
+  }
+  renderSpecialPriceForPerPerson(){
+    if(this.state.request.special_price!==0){
+      return(
+        <div>
+          <p>هزینه شب های خاص
+            :( شب {englishToPersianDigits(this.state.request.special_duration)}-نفر {englishToPersianDigits(this.state.request.number_of_guests)})
+          </p>
+          <p>
+            تومان {englishToPersianDigits(this.state.request.special_price)}
+          </p>
+        </div>
+      );
+    }
+  }
+  renderOrdinaryPriceForPerNight(){
+    if(this.state.request.ordinary_price!==0){
+      return(
+        <div>
+          <p>هزینه شب های عادی
+            :( شب {englishToPersianDigits(this.state.request.ordinary_duration)})
+          </p>
+          <p>
+            تومان {englishToPersianDigits(this.state.request.ordinary_price)}
+          </p>
+        </div>
+      );
+    }
+
+  }
+  renderWeekendPriceForPerNight(){
+    if(this.state.request.weekend_price!==0){
+      return(
+        <div>
+          <p>هزینه شب های آخر هفته
+            :( شب {englishToPersianDigits(this.state.request.weekend_duration)})
+          </p>
+          <p>
+            تومان {englishToPersianDigits(this.state.request.weekend_duration)}
+          </p>
+        </div>
+      );
+    }
+  }
+  renderSpecialPriceForPerNight(){
+    if(this.state.request.special_price!==0){
+      return(
+        <div>
+          <p>هزینه شب های خاص
+            :( شب {englishToPersianDigits(this.state.request.special_duration)})
+          </p>
+          <p>
+            تومان {englishToPersianDigits(this.state.request.special_price)}
+          </p>
+        </div>
+      );
+    }
+  }
+  renderDifferentTypesPrices(){
+    if(this.state.request.room.is_price_per_person===false){
+      return(
+        <div>
+          {this.renderOrdinaryPriceForPerNight()}
+          {this.renderWeekendPriceForPerNight()}
+          {this.renderSpecialPriceForPerNight()}
         </div>
       );
     }
     else{
-      <div>
-
-      </div>
+      return(
+        <div>
+          {this.renderOrdinaryPriceForPerPerson()}
+          {this.renderWeekendPriceForPerPerson()}
+          {this.renderSpecialPriceForPerPerson()}
+        </div>
+      );
     }
   }
+  renderTotalPrice(){
+    return(
+      <div>
+      <p> جمع هزینه ها :</p>
+      <p> {englishToPersianDigits(this.state.request.total_price)}
+      تومان
+      </p>
+      </div>
+    );
+  }
   renderPreBill(){
-
     if(this.state.request!==null){
+      console.log(this.state.request);
       return(
         <Modal show={this.state.showPreBill}
           onHide={()=>{this.setState({showPreBill:false})}}>
@@ -127,16 +227,24 @@ class RequestItem extends React.Component{
             <hr/>
             <div className="pre-bill-price-section">
               {this.renderDifferentTypesPrices()}
+              {this.renderTotalPrice()}
             </div>
             <div className="pre-bill-discount-section">
-              <input />
+              <input placeholder="ورود کد تخفیف"/>
               <div className="pre-bill-discount-sentence">
+              <p>
+                بررسی کد تخفیف
+              </p>
               </div>
             </div>
             <hr/>
             <div className="pre-bill-adding-up">
               <div className="pre-bill-price">
-
+                <p>
+                  مبلغ قابل پرداخت :
+                  {englishToPersianDigits(this.state.request.total_price)}
+                  تومان
+                </p>
               </div>
               <div className="pre-bill-payment-button">
                 <Button onClick={this.setTokenForPayment.bind(this)}> پرداخت نهایی</Button>
