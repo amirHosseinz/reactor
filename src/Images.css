@@ -3,12 +3,79 @@
 }
 .pre-bill-header-section{
   text-align: center;
-  font-size:26px;
+  font-size:22px;
+  color: #454545;
+  font-weight: 500;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 .pre-bill-house-details{
-  direction:rtl;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: right;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row-reverse;
 }
+.pre-bill-number-of-guests-content{
+  color:#04bfd0;
+  font-weight: 500;
+}
+.pre-bill-number-of-guests{
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 16px;
+}
+.pre-bill-house-title{
+  font-size: 18px;
+  font-weight: 400;
+  color:#484848;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+.pre-bill-number-of-guests-sentence{
+  color:#454545;
+}
+.pre-bill-dates-sentence{
+  text-align: right;
+  color: #454545;
+}
+.pre-bill-dates{
+  font-size: 16px;
 
+}
+.pre-bill-dates-content{
+  color:#04bfd0;
+  font-weight: 500;
+}
+.pre-bill-date-item{
+  margin-bottom: 4px;
+}
+.pre-bill-house-address{
+  font-size: 14px;
+  font-weight: 500;
+  color:#484848;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+.divider-modal{
+  height:1px;
+  background-color: #a1a1a1;
+}
+.divider-modal-margined{
+  height:1px;
+  background-color: #dddddd;
+  margin: auto;
+}
+.pre-bill-margin-content{
+  margin:auto;
+  width: 90%;
+}
 .searchbar-typeahead-menu-item{
   border:soid #f2f5f6 !important;
 }
