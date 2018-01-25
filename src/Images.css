@@ -49,6 +49,8 @@
   margin-right: 30px;
   margin-left: 70px;
   margin-top: 50px;
+  line-height: 30px;
+  font-size: 16px;
 }
 .contact-us-firm-name-section{
   margin-top: 20px;
@@ -69,6 +71,21 @@
   margin-left: 2px;
   margin-right: 2px;
 }
+.orng-anchors{
+  color:#f56c4e;
+}
+.orng-anchors:hover{
+  color:#f56c4e;
+}
+.orng-anchors:visited{
+  color:#f56c4e;
+}
+.orng-anchors:active{
+  color:#f56c4e;
+}
+.orng-anchors:focus{
+  color:#f56c4e;
+}
 .social-icon-contactus{
   margin-top: 9px;
 }
@@ -76,10 +93,16 @@
   margin-top: 15px;
 }
 .contact-us-social-media-section{
-margin: auto;
+  width: 100%;
+
+}
+.contact-us-email{
+  padding-bottom: 36px;
 }
 .contact-us-social-media-links{
-
+  text-align: center;
+  margin:auto;
+  width: 132px;
 }
 .suggestions-comments-section{
   font-family: IRANSans;
