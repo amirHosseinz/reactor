@@ -13,12 +13,14 @@ class RequestItem extends React.Component{
       request:null,
       showPreBill:false,
       requestStatus:null,
-      token:null
+      token:null,
+      totalPrice:null,
     };
   }
   componentWillReceiveProps(nextProps){
     this.setState({
       request:nextProps.requestDetail,requestStatus:nextProps.requestDetail.status,
+      totalPrice:nextProps.requestDetail.total_price,
     });
   }
   getRelevantToken(){
@@ -174,7 +176,7 @@ class RequestItem extends React.Component{
     return(
       <div>
       <p> جمع هزینه ها :</p>
-      <p> {englishToPersianDigits(this.state.request.total_price)}
+      <p> {englishToPersianDigits(this.state.totalPrice)}
       تومان
       </p>
       </div>
@@ -182,7 +184,6 @@ class RequestItem extends React.Component{
   }
   renderPreBill(){
     if(this.state.request!==null){
-      console.log(this.state.request);
       return(
         <Modal show={this.state.showPreBill}
           onHide={()=>{this.setState({showPreBill:false})}}>
@@ -230,9 +231,9 @@ class RequestItem extends React.Component{
               {this.renderTotalPrice()}
             </div>
             <div className="pre-bill-discount-section">
-              <input placeholder="ورود کد تخفیف"/>
+              <input onChange={(event)=>{this.setState({discountCode:event.target.value})}} value={this.state.discountCode}placeholder="ورود کد تخفیف"/>
               <div className="pre-bill-discount-sentence">
-              <p>
+              <p className="clickable-p" onClick={()=>{this.setTokenForDiscount()}}>
                 بررسی کد تخفیف
               </p>
               </div>
@@ -242,7 +243,7 @@ class RequestItem extends React.Component{
               <div className="pre-bill-price">
                 <p>
                   مبلغ قابل پرداخت :
-                  {englishToPersianDigits(this.state.request.total_price)}
+                  {englishToPersianDigits(this.state.totalPrice)}
                   تومان
                 </p>
               </div>
@@ -255,8 +256,42 @@ class RequestItem extends React.Component{
       );
     }
   }
+  UpdatePrice(){
+
+    var request = new Request('https://www.trypinn.com/api/room/get_price/',{
+      method: 'POST',
+      body: JSON.stringify({
+        room_id:this.state.request.room.id,
+        start_date:this.state.request.start_date,
+        end_date:this.state.request.end_date,
+        number_of_guests:this.state.request.number_of_guests,
+        discount_code:this.state.discountCode,
+        platform:'web',
+    }),
+      headers: new Headers({'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Token '+this.state.token,})
+    });
+   fetch(request)
+   .then((response) => {
+     return response.json();
+   })
+   .then((discountResponse) => {
+     if(discountResponse.discount_code_error===false){
+       this.setState({totalPrice:discountResponse.total_price});
+     }
+     else{
+      alert("کد تخفیف وارد شده اشتباه است")
+     }
+   });
+  }
+
   setTokenForPayment(){
     this.setState({token:this.getRelevantToken()},()=>{this.sendPaymentRequestToServer()});
+  }
+
+  setTokenForDiscount(){
+    this.setState({token:this.getRelevantToken()},()=>{this.UpdatePrice()});
   }
   sendPaymentRequestToServer(){
     var request = new Request('https://www.trypinn.com/api/payment/web_payment_request/',{

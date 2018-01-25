@@ -87,8 +87,6 @@ class ReservePanel extends React.Component{
      return response.json();
    })
    .then((reserveData) => {
-     // clearInterval(this.interval);
-     // console.log(reserveData);
      this.renderData(reserveData);
    });
  }
