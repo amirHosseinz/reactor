@@ -29,6 +29,12 @@ class ReservePanel extends React.Component{
       },
     };
   }
+
+  componentWillMount () {
+    this.renderFromDatePicker();
+    this.renderToDatePicker();
+  }
+
   componentDidMount(){
     this.interval = setInterval(() => this.setToken(), 1000);
   }
