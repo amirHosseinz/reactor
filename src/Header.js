@@ -19,6 +19,7 @@ class Header extends React.Component{
       token: null,
       cellPhone:'',
       reloadPage: false,
+      showDownloadAppModal:false,
       showBurgerMenu:false,
       isLoggedIn : localStorage['isLoggedIn'],
       loginPanelVisible:false,
@@ -300,7 +301,16 @@ class Header extends React.Component{
 
   // {this.renderRequestButton()}
   // {this.renderTripButton()}
-
+  renderDownloadAppModal(){
+    return(
+      <Modal show={this.state.showDownloadAppModal}
+            onHide={()=>{this.setState({showDownloadAppModal:false})}}>
+              <a className="logo-menu-font1"rel="noopener noreferrer"target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
+                <p>دریافت اپلیکیشن از کافه بازار</p>
+              </a>
+            </Modal>
+    );
+  }
   renderHeaderXl(){
     return(
       <div className='header container hidden-xs visible-xl'>
@@ -314,7 +324,8 @@ class Header extends React.Component{
               <Link to="/aboutus"><p className='logo-menu-font'>درباره ما </p></Link>
               <Link to="/becomehost"><p className='logo-menu-font'>میزبان شوید </p></Link>
               <Link to="/terms&conditions"><p className='logo-menu-font'>قوانین </p></Link>
-              <a className="logo-menu-font1" rel="noopener noreferrer" target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >دریافت اپلیکیشن</a>
+              <p className="clickable-p logo-menu-font" onClick={()=>{this.setState({showDownloadAppModal:true})}}> دریافت اپلیکیشن</p>
+
             </div>
           </div>
           {this.renderLoginPanel()}
@@ -386,6 +397,7 @@ class Header extends React.Component{
     return (
       <div>
       {this.renderHeaderXl()}
+      {this.renderDownloadAppModal()}
       {this.renderHeaderXs()}
       </div>
     );

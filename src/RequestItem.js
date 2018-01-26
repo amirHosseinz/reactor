@@ -71,11 +71,11 @@ class RequestItem extends React.Component{
   renderOrdinaryPriceForPerPerson(){
     if(this.state.request.ordinary_price!==0){
       return(
-        <div>
-          <p>هزینه شب های عادی
-            :( شب {englishToPersianDigits(this.state.request.ordinary_duration)}-نفر {englishToPersianDigits(this.state.request.number_of_guests)})
+        <div className="pre-bill-price-night-content row-reverse" dir="rtl">
+          <p className="pre-bill-price-night-sentence">هزینه شب های عادی
+            ({englishToPersianDigits(this.state.request.ordinary_duration)} شب - {englishToPersianDigits(this.state.request.number_of_guests)} نفر ) :
           </p>
-          <p>
+          <p className="pre-bill-price-night-value">
             تومان {englishToPersianDigits(this.state.request.ordinary_price)}
           </p>
         </div>
@@ -86,11 +86,11 @@ class RequestItem extends React.Component{
   renderWeekendPriceForPerPerson(){
     if(this.state.request.weekend_price!==0){
       return(
-        <div>
-          <p>هزینه شب های آخر هفته
-            :( شب {englishToPersianDigits(this.state.request.weekend_duration)}-نفر {englishToPersianDigits(this.state.request.number_of_guests)})
+        <div className="pre-bill-price-night-content row-reverse" dir="rtl">
+          <p className="pre-bill-price-night-sentence">هزینه شب های آخر هفته
+            ({englishToPersianDigits(this.state.request.weekend_duration)} شب - {englishToPersianDigits(this.state.request.number_of_guests)} نفر ) :
           </p>
-          <p>
+          <p className="pre-bill-price-night-value">
             تومان {englishToPersianDigits(this.state.request.weekend_price)}
           </p>
         </div>
@@ -100,25 +100,26 @@ class RequestItem extends React.Component{
   renderSpecialPriceForPerPerson(){
     if(this.state.request.special_price!==0){
       return(
-        <div>
-          <p>هزینه شب های خاص
-            :( شب {englishToPersianDigits(this.state.request.special_duration)}-نفر {englishToPersianDigits(this.state.request.number_of_guests)})
+        <div className="pre-bill-price-night-content row-reverse" dir="rtl">
+          <p className="pre-bill-price-night-sentence">هزینه شب های خاص
+            ({englishToPersianDigits(this.state.request.special_duration)}شب - {englishToPersianDigits(this.state.request.number_of_guests)} نفر) :
           </p>
-          <p>
+          <p className="pre-bill-price-night-value">
             تومان {englishToPersianDigits(this.state.request.special_price)}
           </p>
         </div>
       );
     }
   }
+
   renderOrdinaryPriceForPerNight(){
     if(this.state.request.ordinary_price!==0){
       return(
-        <div className="row-reverse">
-          <p>هزینه شب های عادی
-            :( شب {englishToPersianDigits(this.state.request.ordinary_duration)})
+        <div className="pre-bill-price-night-content row-reverse" dir="rtl">
+          <p className="pre-bill-price-night-sentence">هزینه شب های عادی
+             ( {englishToPersianDigits(this.state.request.ordinary_duration)} شب ) :
           </p>
-          <p>
+          <p className="pre-bill-price-night-value">
             تومان {englishToPersianDigits(this.state.request.ordinary_price)}
           </p>
         </div>
@@ -129,11 +130,11 @@ class RequestItem extends React.Component{
   renderWeekendPriceForPerNight(){
     if(this.state.request.weekend_price!==0){
       return(
-        <div>
-          <p>هزینه شب های آخر هفته
-            :( شب {englishToPersianDigits(this.state.request.weekend_duration)})
+        <div className="pre-bill-price-night-content row-reverse" dir="rtl">
+          <p className="pre-bill-price-night-sentence">هزینه شب های آخر هفته
+            (  {englishToPersianDigits(this.state.request.weekend_duration)} شب ) :
           </p>
-          <p>
+          <p className="pre-bill-price-night-value">
             تومان {englishToPersianDigits(this.state.request.weekend_duration)}
           </p>
         </div>
@@ -143,11 +144,11 @@ class RequestItem extends React.Component{
   renderSpecialPriceForPerNight(){
     if(this.state.request.special_price!==0){
       return(
-        <div>
-          <p>هزینه شب های خاص
-            :( شب {englishToPersianDigits(this.state.request.special_duration)})
+        <div className="pre-bill-price-night-content row-reverse" dir="rtl">
+          <p className="pre-bill-price-night-sentence">هزینه شب های خاص
+          (  {englishToPersianDigits(this.state.request.special_duration)} شب ) :
           </p>
-          <p>
+          <p className="pre-bill-price-night-value">
             تومان {englishToPersianDigits(this.state.request.special_price)}
           </p>
         </div>
@@ -176,9 +177,10 @@ class RequestItem extends React.Component{
   }
   renderTotalPrice(){
     return(
-      <div>
-      <p> جمع هزینه ها :</p>
-      <p> {englishToPersianDigits(this.state.totalPrice)}
+      <div className="pre-bill-price-night-content row-reverse" dir="rtl">
+      <p className="pre-bill-price-night-sentence"> جمع هزینه ها :
+      </p>
+      <p className="pre-bill-price-night-value"> {englishToPersianDigits(this.state.totalPrice)}
       تومان
       </p>
       </div>
