@@ -2,7 +2,7 @@ import React from 'react';
 import {Button,Divider,Checkbox} from 'semantic-ui-react';
 import {Modal} from 'react-bootstrap';
 import {loginVerifySmsXl , registerNewUser , setPasswordStyle} from './Styles.js';
-import {englishToPersianDigits} from './tools/EnglishToPersianDigits';
+import {englishToPersianDigits, persianArabicToEnglishDigits} from './tools/EnglishToPersianDigits';
 class Login extends React.Component{
     constructor(props){
       super(props);
@@ -85,7 +85,7 @@ class Login extends React.Component{
     }
 
     setReqParamsForVerification(){
-      var spar= {verificationCode : this.state.inputForVerification.verificationCode,
+      var spar={verificationCode:persianArabicToEnglishDigits(this.state.inputForVerification.verificationCode),
                  phoneNumber :localStorage['phone-number']};
       this.setState({reqParamsForVerification:spar} ,()=>{this.getResponseForVerification()});
     }
@@ -409,7 +409,7 @@ class Login extends React.Component{
             <div className='enter-number-main'>
               <input className='login-input'
               onKeyDown= {(event)=>{this.handleVerificationClickByEnter(event)}}
-              value={this.state.inputForVerification.verificatinCode}
+              value={this.state.inputForVerification.verificationCode}
               onChange={(event)=>{this.changeVerificationCode(event)}}
               className="login-input-code"
                id='verify-code'
@@ -552,7 +552,7 @@ class Login extends React.Component{
       var inputVerification={verificationCode : englishToPersianDigits(event.target.value)};
       this.setState({inputForVerification : inputVerification});
     }
-    
+
 render(){
     return(
       <div>
