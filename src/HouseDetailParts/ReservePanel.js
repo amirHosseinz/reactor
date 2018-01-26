@@ -1,7 +1,7 @@
 import React from 'react';
 import GuestNumber from './GuestNumber.js';
 import {Button} from 'semantic-ui-react';
-import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
+import { englishToPersianDigits} from '../tools/EnglishToPersianDigits';
 import {findDOMNode} from 'react-dom';
 import {Modal} from 'react-bootstrap';
 import $ from 'jquery';
@@ -19,15 +19,143 @@ class ReservePanel extends React.Component{
     this.token = '';
     this.state = {
       reserveData : '',
-      token:null,
       showPreBill:false,
+      token:null,
+      numberOfGuests: 1,
       requestParams :{
-        numberOfGuests : 1,
         fromDate:null,
         toDate:null,
-        discountCode : null,
       },
+      totalPrice :0,
+      discountCode : '',
     };
+  }
+  renderOrdinaryPriceForPerPerson(){
+    if(this.state.reserveData.ordinary_price!==0){
+      return(
+        <div className="pre-bill-price-night-content row-reverse" dir="rtl">
+          <p className="pre-bill-price-night-sentence">هزینه شب های عادی
+            ({englishToPersianDigits(this.state.reserveData.ordinary_duration)} شب - {englishToPersianDigits(this.state.reserveData.number_of_guests)} نفر ) :
+          </p>
+          <p className="pre-bill-price-night-value">
+           {englishToPersianDigits(this.state.reserveData.ordinary_price)}
+             تومان
+          </p>
+        </div>
+      );
+    }
+  }
+
+  renderWeekendPriceForPerPerson(){
+    if(this.state.reserveData.weekend_price!==0){
+      return(
+        <div className="pre-bill-price-night-content row-reverse" dir="rtl">
+          <p className="pre-bill-price-night-sentence">هزینه شب های آخر هفته
+            ({englishToPersianDigits(this.state.reserveData.weekend_duration)} شب - {englishToPersianDigits(this.state.reserveData.number_of_guests)} نفر ) :
+          </p>
+          <p className="pre-bill-price-night-value">
+             {englishToPersianDigits(this.state.reserveData.weekend_price)}
+               تومان
+          </p>
+        </div>
+      );
+    }
+  }
+  renderSpecialPriceForPerPerson(){
+    if(this.state.reserveData.special_price!==0){
+      return(
+        <div className="pre-bill-price-night-content row-reverse" dir="rtl">
+          <p className="pre-bill-price-night-sentence">هزینه شب های خاص
+            ({englishToPersianDigits(this.state.reserveData.special_duration)}شب - {englishToPersianDigits(this.state.reserveData.number_of_guests)} نفر) :
+          </p>
+          <p className="pre-bill-price-night-value">
+           {englishToPersianDigits(this.state.reserveData.special_price)}
+             تومان
+          </p>
+        </div>
+      );
+    }
+  }
+
+  renderOrdinaryPriceForPerNight(){
+    if(this.state.reserveData.ordinary_price!==0){
+      return(
+        <div className="pre-bill-price-night-content row-reverse" dir="rtl">
+          <p className="pre-bill-price-night-sentence">هزینه شب های عادی
+             ( {englishToPersianDigits(this.state.reserveData.ordinary_duration)} شب ) :
+          </p>
+          <p className="pre-bill-price-night-value">
+             {englishToPersianDigits(this.state.reserveData.ordinary_price)}
+               تومان
+          </p>
+        </div>
+      );
+    }
+
+  }
+  renderWeekendPriceForPerNight(){
+    if(this.state.reserveData.weekend_price!==0){
+      return(
+        <div className="pre-bill-price-night-content row-reverse" dir="rtl">
+          <p className="pre-bill-price-night-sentence">هزینه شب های آخر هفته
+            (  {englishToPersianDigits(this.state.reserveData.weekend_duration)} شب ) :
+          </p>
+          <p className="pre-bill-price-night-value">
+           {englishToPersianDigits(this.state.reserveData.weekend_duration)}
+             تومان
+          </p>
+        </div>
+      );
+    }
+  }
+  renderSpecialPriceForPerNight(){
+    if(this.state.reserveData.special_price!==0){
+      return(
+        <div className="pre-bill-price-night-content row-reverse" dir="rtl">
+          <p className="pre-bill-price-night-sentence">هزینه شب های خاص
+          (  {englishToPersianDigits(this.state.reserveData.special_duration)} شب ) :
+          </p>
+          <p className="pre-bill-price-night-value">
+           {englishToPersianDigits(this.state.reserveData.special_price)}
+             تومان
+          </p>
+        </div>
+      );
+    }
+  }
+  renderDifferentTypesPrices(){
+    if(this.props.homeData.is_price_per_person===false){
+      return(
+        <div>
+          {this.renderOrdinaryPriceForPerNight()}
+          {this.renderWeekendPriceForPerNight()}
+          {this.renderSpecialPriceForPerNight()}
+        </div>
+      );
+    }
+    else{
+      return(
+        <div>
+          {this.renderOrdinaryPriceForPerPerson()}
+          {this.renderWeekendPriceForPerPerson()}
+          {this.renderSpecialPriceForPerPerson()}
+        </div>
+      );
+    }
+  }
+  renderTotalPrice(){
+    return(
+      <div className="pre-bill-price-night-content row-reverse" dir="rtl">
+      <p className="pre-bill-price-night-sentence"> جمع هزینه ها :
+      </p>
+      <p className="pre-bill-price-night-value"> {englishToPersianDigits(this.state.reserveData.total_price)}
+      تومان
+      </p>
+      </div>
+    );
+  }
+  setTokenForDiscount(){
+    this.setState({token:localStorage['token']},()=>{this.UpdatePrice()});
   }
 
   componentWillMount () {
@@ -36,10 +164,11 @@ class ReservePanel extends React.Component{
   }
 
   componentDidMount(){
-    this.interval = setInterval(() => this.setToken(), 1000);
+    this.interval = setInterval(() => this.setToken(), 2000);
   }
 
   setToken() {
+    // console.log('ticking');
     this.setState({
       token : localStorage['token'],
     },
@@ -48,7 +177,7 @@ class ReservePanel extends React.Component{
   getDataFromUser(){
       return({fromDate :document.getElementById('fromdatepicker').value,
               toDate: document.getElementById('todatepicker').value,
-              numberOfGuests : 1,
+              numberOfGuests : this.state.numberOfGuests,
               discountCode : ''});
   }
   setSearchParams(reqpar){
@@ -68,6 +197,7 @@ class ReservePanel extends React.Component{
     reqpar.toDate= moment(reqpar.toDate, 'jYYYY/jM/jD').format('YYYY/M/D');
     this.setState({requestParams:reqpar},() => {this.getDataFromServer()});
   }
+
   getDataFromServer(){
     var request = new Request('https://www.trypinn.com/api/room/get_price/', {
       method: 'POST',
@@ -76,8 +206,8 @@ class ReservePanel extends React.Component{
         platform:'web',
         start_date : this.state.requestParams.fromDate,
         end_date : this.state.requestParams.toDate,
-        number_of_guests : this.state.requestParams.numberOfGuests,
-        discount_code: this.state.requestParams.discountCode,
+        number_of_guests : this.state.numberOfGuests,
+        discount_code: this.state.discountCode,
     }),
       headers: new Headers({'Accept': 'application/json','Content-Type':'application/json',
       'Authorization': 'Token '+this.state.token,})
@@ -86,13 +216,10 @@ class ReservePanel extends React.Component{
    .then((response) => {
      return response.json();
    })
-   .then((reserveData) => {
-     this.renderData(reserveData);
+   .then((reserve_data) => {
+     this.setState({totalPrice:reserve_data.total_price , reserveData:reserve_data});
    });
  }
-  renderData(reserve_data){
-    this.setState({reserveData : reserve_data});
-  }
   showTotalPrice() {
     if (this.state.reserveData !=='' && this.state.reserveData.is_available){
       return(
@@ -143,9 +270,6 @@ class ReservePanel extends React.Component{
     }
   }
 
-  handleClick(){
-    this.setState({showPreBill:true});
-  }
   sendBookRequest(){
     var request = new Request('https://www.trypinn.com/api/room/request/book/', {
       method: 'POST',
@@ -153,8 +277,8 @@ class ReservePanel extends React.Component{
         room_id : this.props.homeData.id,
         start_date : this.state.requestParams.fromDate,
         end_date : this.state.requestParams.toDate,
-        number_of_guests : this.state.requestParams.numberOfGuests,
-        discount_code: this.state.requestParams.discountCode,
+        number_of_guests : this.state.numberOfGuests,
+        discount_code: this.state.discountCode,
     }),
       headers: new Headers({'Accept': 'application/json','Content-Type':'application/json',
       'Authorization': 'Token '+this.state.token,})
@@ -169,11 +293,7 @@ class ReservePanel extends React.Component{
      }
    });
   }
-  showBookButton(){
-    if(this.state.reserveData !=='' && this.state.reserveData.is_available){
-      return <Button color="twitter" onClick={this.sendBookRequest.bind(this)}> بله </Button>
-    }
-  }
+
   renderFromDatePicker(){
     const fromDatePicker = findDOMNode(this.refs.fromdatepicker);
     $(document).ready(function(){
@@ -204,11 +324,9 @@ class ReservePanel extends React.Component{
   renderPriceDetails(){
         return(
           <div dir="rtl" className="reserve-modal">
-
               <div>
                 {this.showTotalPrice()}
               </div>
-
           </div>
         );
       }
@@ -216,7 +334,7 @@ class ReservePanel extends React.Component{
     if(this.state.reserveData !==''){
       return(
         <div className='reserve-button-div'>
-          <Button color='orange' className='reserve-button active' onClick ={this.handleClick.bind(this)}>
+          <Button color='orange' className='reserve-button active' onClick={()=>{clearInterval(this.interval); this.setState({showPreBill:true})}}>
             رزرو کنید
           </Button>
         </div>
@@ -225,7 +343,7 @@ class ReservePanel extends React.Component{
       else{
         return(
           <div className='reserve-button-div'>
-            <Button color='orange' className='reserve-button disabled' onClick ={this.handleClick.bind(this)}>
+            <Button color='orange' className='reserve-button disabled'>
               رزرو کنید
             </Button>
           </div>
@@ -233,13 +351,132 @@ class ReservePanel extends React.Component{
       }
 
   }
+  UpdatePrice(){
+    var request = new Request('https://www.trypinn.com/api/room/get_price/',{
+      method: 'POST',
+      body: JSON.stringify({
+        room_id:this.props.homeData.id,
+        start_date:this.state.requestParams.fromDate,
+        end_date:this.state.requestParams.toDate,
+        number_of_guests:this.state.numberOfGuests,
+        discount_code:this.state.discountCode,
+        platform:'web',
+    }),
+      headers: new Headers({'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Token '+this.state.token,})
+    });
+   fetch(request)
+   .then((response) => {
+     return response.json();
+   })
+   .then((discountResponse) => {
+     if(discountResponse.discount_code_error===false){
+       this.setState({totalPrice : discountResponse.total_price});
+     }
+     else{
+      alert("کد تخفیف وارد شده اشتباه است")
+     }
+   });
+  }
+
+  renderPreBill(){
+    if(this.state.reserveData!==''){
+      return(
+        <Modal show={this.state.showPreBill}
+          onHide={()=>{this.setState({showPreBill:false})}}>
+          <div className="pre-bill-main-division">
+            <div className="pre-bill-header-section">
+              <p>
+                جزئیات رزرو اقامتگاه
+              </p>
+            </div>
+            <div className="divider-modal"></div>
+              <div className="pre-bill-margin-content">
+                <div className="pre-bill-house-details">
+                  <div className="pre-bill-house-picture">
+                      <img src={"https://www.trypinn.com"+this.props.homeData.preview} alt=""height="90px"/>
+                  </div>
+                  <div>
+                    <div className="pre-bill-house-title">
+                      <p> {this.props.homeData.title}</p>
+                    </div>
+                    <div className="pre-bill-house-address">
+                      <p>{this.props.homeData.city}، {this.props.homeData.district}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="divider-modal-margined"></div>
+                <div className="pre-bill-number-of-guests">
+                  <div className="pre-bill-number-of-guests-sentence">
+                  <p>:تعداد مسافر</p>
+                  </div>
+                  <div className="pre-bill-number-of-guests-content" dir="rtl">
+                    <span> {englishToPersianDigits(this.state.numberOfGuests)}  </span>
+                    <span> نفر </span>
+                  </div>
+                </div>
+                <hr/>
+                <div className="pre-bill-dates">
+                  <div className="pre-bill-dates-sentence">
+                    <p>:تاریخ ورود و خروج</p>
+                  </div>
+                  <div className="pre-bill-dates-content">
+                    <p className="pre-bill-date-item"> از {moment(this.state.requestParams.fromDate).format('jYYYY/jM/jD')}</p>
+                    <p className="pre-bill-date-item" >تا {moment(this.state.requestParams.toDate).format('jYYYY/jM/jD')}</p>
+                    <p className="row-reverse">
+                      <span className="pre-bill-date-item">  روز اقامت</span>
+                      <span>
+                      {englishToPersianDigits(this.state.reserveData.ordinary_duration + this.state.reserveData.weekend_duration +this.state.reserveData.special_duration)}
+                       </span>
+                    </p>
+                  </div>
+                </div>
+                <hr/>
+                <div className="pre-bill-price-section">
+                  {this.renderDifferentTypesPrices()}
+                  {this.renderTotalPrice()}
+                </div>
+                  <div className="pre-bill-discount-section row-reverse" dir="rtl">
+                    <input className="pre-bill-discount-value suggestions form-control"
+                    value={this.state.discountCode}
+                          placeholder="ورود کد تخفیف"
+                          onChange={(event)=>{this.setState({discountCode:event.target.value})}}/>
+                      <p className= "clickable-p pre-bill-discount-sentence" onClick={()=>{this.setTokenForDiscount()}}>
+                        بررسی کد تخفیف
+                      </p>
+                  </div>
+            </div>
+            <hr/>
+            <div className="pre-bill-adding-up-section row-reverse" dir="rtl">
+                <p className="pre-bill-adding-up-sentence">
+                  مبلغ قابل پرداخت :
+                </p>
+                <p className="pre-bill-adding-up-value">
+                  {englishToPersianDigits(this.state.totalPrice)}
+                  تومان
+                </p>
+                <div className="pre-bill-margin-optimizer-for-button">
+                  <button type="button"className="btn pre-bill-payment-button" onClick={this.sendBookRequest.bind(this)}>ارسال درخواست
+                  </button>
+                </div>
+            </div>
+          </div>
+        </Modal>
+      );
+    }
+  }
+  changeNumberOfGuests(number){
+    this.setState({numberOfGuests:number});
+  }
   render(){
   {this.renderToDatePicker()}
   {this.renderFromDatePicker()}
     return(
       <div>
+        {this.renderPreBill()}
         <div className="guestnumber-div">
-          <GuestNumber />
+          <GuestNumber changeNumberOfGuests={this.changeNumberOfGuests.bind(this)}/>
         </div>
         <div className="divider-card">
         </div>
@@ -260,15 +497,7 @@ class ReservePanel extends React.Component{
         </div>
           {this.renderPriceDetails()}
           {this.renderReserveButton()}
-          <Modal show={this.state.showPreBill}
-            onHide={()=>{this.setState({showPreBill:false})}}>
-            <div>
-              <div>
-                آیا مایل به رزرو خانه هستید؟
-              </div>
-            {this.showBookButton()}
-            </div>
-          </Modal>
+
       </div>
     );
   }

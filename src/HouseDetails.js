@@ -108,7 +108,7 @@ class HouseDetails extends React.Component {
 
    renderReservePanel(){
      if (this.state.showReservePanel === true){
-       return <ReservePanel homeData = {this.state.homeData}/>
+       return <ReservePanel homeData={this.state.homeData}/>
      }
    }
    renderReservePanelXs(){
@@ -122,7 +122,7 @@ class HouseDetails extends React.Component {
    renderHomeTitle()
    {
      return (
-       <p className='house-detail-titles'align="right">{this.state.homeData.title}</p>
+       <p className='house-detail-titles' align="right">{this.state.homeData.title}</p>
      );
    }
    renderHomeTitleXs()
@@ -518,7 +518,7 @@ class HouseDetails extends React.Component {
     }
     return(
       <div>
-        
+
         {this.renderHouseDetails()}
       </div>
     );

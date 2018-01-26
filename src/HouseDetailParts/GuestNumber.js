@@ -12,13 +12,13 @@ class GuestNumber extends React.Component{
 renderAdd(){
 const Guest=this.state.number;
 const NewGuest= Guest + 1;
-this.setState({number:NewGuest});
+this.setState({number:NewGuest},()=>{this.props.changeNumberOfGuests(this.state.number)});
 }
 renderSub(){
   if(this.state.number > 1){
 const Guest=this.state.number;
 const NewGuest= Guest - 1;
-this.setState({number:NewGuest});
+this.setState({number:NewGuest},()=>{this.props.changeNumberOfGuests(this.state.number)});
 }
 else{
 this.setState({number:1});
