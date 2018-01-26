@@ -8,7 +8,7 @@ import {Button,Divider} from 'semantic-ui-react';
 import {Dropdown} from 'semantic-ui-react';
 import {loginPasswordStyle, loginPhoneNumberStyle, loginPanelmobileStyle} from './Styles.js';
 import {Modal} from 'react-bootstrap';
-
+import {englishToPersianDigits} from './tools/EnglishToPersianDigits';
 import {Image} from 'react-bootstrap';
 // import {Image} from 'semantic-ui-react';
 
@@ -17,6 +17,7 @@ class Header extends React.Component{
     super(props);
     this.state={
       token: null,
+      cellPhone:'',
       reloadPage: false,
       showBurgerMenu:false,
       isLoggedIn : localStorage['isLoggedIn'],
@@ -53,7 +54,7 @@ class Header extends React.Component{
     this.getRelevantToken();
   }
   setSearchParams(){
-    var spar = {phoneNumber:document.getElementById("tel-number").value};
+    var spar = {phoneNumber:this.state.cellPhone};
     this.setState({searchParams:spar},()=>{this.getDataFromServer()})
   }
     getDataFromServer(){
@@ -86,7 +87,7 @@ class Header extends React.Component{
     if (this.state.isLoggedIn !== 'true'){
       return(
         <div className="main-menu-header">
-          <p className="login-signup-button-header clickable-p"  onClick={this.handleLoginButton.bind(this)}>ورود / ثبت‌نام</p>
+          <p className="login-signup-button-header clickable-p"  onClick={this.handleLoginButton.bind(this)}>ورود / ثبت نام </p>
         </div>
       );
     }
@@ -128,7 +129,7 @@ class Header extends React.Component{
     if(event.key === 'Enter'){
       this.getUserHasPassword();
     }
-    if(document.getElementById('tel-number').value.length===11){
+    if(this.state.cellPhone.length===11){
       if(event.key!=="Backspace"){
         event.preventDefault()
       }
@@ -158,6 +159,8 @@ class Header extends React.Component{
                 <input
                   maxLength="11"
                   id="tel-number"
+                  value={this.state.cellPhone}
+                  onChange={(event)=>{this.setState({cellPhone:englishToPersianDigits(event.target.value)})}}
                   autoComplete="off"
                   autoFocus={true}
                   className="login-input hidden-xs visible-xl"

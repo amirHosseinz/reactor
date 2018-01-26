@@ -2,7 +2,7 @@ import React from 'react';
 import {Button,Divider,Checkbox} from 'semantic-ui-react';
 import {Modal} from 'react-bootstrap';
 import {loginVerifySmsXl , registerNewUser , setPasswordStyle} from './Styles.js';
-
+import {englishToPersianDigits} from './tools/EnglishToPersianDigits';
 class Login extends React.Component{
     constructor(props){
       super(props);
@@ -410,7 +410,7 @@ class Login extends React.Component{
               <input className='login-input'
               onKeyDown= {(event)=>{this.handleVerificationClickByEnter(event)}}
               value={this.state.inputForVerification.verificatinCode}
-              onChange={this.changeVerificationCode.bind(this)}
+              onChange={(event)=>{this.changeVerificationCode(event)}}
               className="login-input-code"
                id='verify-code'
                maxLength="4"
@@ -549,10 +549,10 @@ class Login extends React.Component{
 
     }
     changeVerificationCode(event){
-      var inputVerification={verificationCode : event.target.value};
+      var inputVerification={verificationCode : englishToPersianDigits(event.target.value)};
       this.setState({inputForVerification : inputVerification});
     }
-    change
+    
 render(){
     return(
       <div>

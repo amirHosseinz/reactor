@@ -114,7 +114,7 @@ class RequestItem extends React.Component{
   renderOrdinaryPriceForPerNight(){
     if(this.state.request.ordinary_price!==0){
       return(
-        <div>
+        <div className="row-reverse">
           <p>هزینه شب های عادی
             :( شب {englishToPersianDigits(this.state.request.ordinary_duration)})
           </p>

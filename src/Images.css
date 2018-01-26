@@ -72,6 +72,9 @@
   background-color: #dddddd;
   margin: auto;
 }
+.login-signup-button-header{
+  margin-right:20px;
+}
 .pre-bill-margin-content{
   margin:auto;
   width: 90%;
