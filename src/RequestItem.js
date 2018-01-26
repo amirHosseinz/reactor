@@ -428,6 +428,65 @@ renderDeleteButton(){
         </div>
       );
     }
+
+    else{
+      return(
+      <div className='no-request-container'>
+        <p className="no-request-header">شما درخواست رزروی ندارید</p>
+        <p className="no-request-main-paragraph">شما تاکنون درخواست رزروی نداشته اید. میتوانید با جستجو میان شهرها و اقامتگاه های موجود، درخواست رزرو خود را ثبت نمایید. کافی است مراحل زیر را دنبال نمایید</p>
+        <div className='no-request-stage1-container'>
+          <div className='no-request-stage1-description col-md-6'>
+            <div className='no-request-stage1-description-image'>
+              <img src={require('./Images/no-req-pic1.png')} height="45" width="220"/>
+              </div>
+            <p className='no-request-stage1-description-text'>در صفحه جستجو شهر یا استان موردنظر خود را وارد کنید تا نتایج جستجو را مشاهده نمایید</p>
+            </div>
+          <div className='no-request-stage1-image col-md-5'>
+            <img src={require('./Images/no-req-pic2.png')} height="180" width="220"/>
+            </div>
+          <div className='no-request-stage1-number col-md-1'>
+            ۱
+            </div>
+          </div>
+          <div className='no-request-stage2-container'>
+            <div className='no-request-stage2-description col-md-10'>
+              <div className='no-request-stage2-description-image'>
+                <img src={require('./Images/no-req-pic3.png')} height="150" width="500"/>
+               </div>
+              <p className='no-request-stage2-description-text'>
+               با مقایسه نتایج و انتخاب هر نتیجه وارد صفحه جزئیات خانه خواهید شد و تمام امکانات و مشخصات آن را مشاهده خواهید کرد
+               </p>
+              </div>
+            <div className='no-request-stage2-number col-md-1'>
+            ۲
+             </div>
+            </div>
+        <div className='no-request-stage3-container'>
+          <div className='no-request-stage3-image col-md-3'>
+                <img src={require('./Images/no-req-pic4.png')} height="180" width="160"/>
+            </div>
+          <div className='no-request-stage3-text col-md-8'>
+           با انتخاب تعداد مهمان ها و تاریخ ورود و خروج هزینه نهایی رزرو خانه به شما نمایش داده خواهد شد. کافی است روی دکمه رزرو کلیک کنید تا درخواست شما ثبت شود
+           </div>
+          <div className='no-request-stage3-number col-md-1'>
+          ۳
+           </div>
+          </div>
+        <div className='no-request-stage4-container'>
+          <div className='no-request-stage4-text col-md-7'>
+           به محض ثبت درخواست، میزبان از درخواست شما مطلع خواهد شد. شما نیز بوسیله این صفحه از وضعیت درخواست خود مطلع خواهید شد
+           </div>
+           <div className='no-request-stage4-image col-md-4'>
+                 <img src={require('./Images/no-req-pic5.png')} height="180" width="200"/>
+             </div>
+             <div className='no-request-stage4-number col-md-1'>
+             ۴
+              </div>
+         </div>
+        </div>
+      );
+    }
+
   }
   setTokenForCancel(){
     this.setState({token:this.getRelevantToken()},()=>{this.handleCancelClick()});

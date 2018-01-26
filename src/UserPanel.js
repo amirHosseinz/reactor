@@ -96,7 +96,7 @@ renderDashbordTitle(){
 
   render() {
     return (
-      <div className="dashboard-backgroud">
+      <div requests-list-title>
           <div className="profile-container-margined hidden-xs visible-xl">
               <div className="profile_dynamic_edit col-md-9  padding-top">
                 {this.showContent()}
