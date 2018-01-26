@@ -164,8 +164,12 @@ class SearchResult extends React.Component{
   }
 
   handleClick(){
-    this.props.history.replace('/search/'+this.state.city);
-    // this.forceUpdate();
+    if(this.state.city===''){
+      this.props.history.replace("/search/هر جا");
+    }
+    else{
+       this.props.history.replace("/search/" + this.state.city);
+    }
   }
 
   handleClickXs(){
@@ -212,6 +216,7 @@ class SearchResult extends React.Component{
                     maxResults={5}
                     selected={this.readCityFromURL()}
                     placeholder='هر جا'
+                    onInputChange={(input)=> {this.setState({city:input})}}
                     selectHintOnEnter={false}
                     highlightOnlyResult={true}
                     submitFormOnEnter={false}
@@ -245,7 +250,7 @@ class SearchResult extends React.Component{
                    </select>
                  </div>
                   <div className="multi-input-2">
-                  <Button color='blue' type="button" className="search-btn-result"  onClick={this.handleClick.bind(this)} data-reactid="99">
+                  <Button color='blue' type="button" className="search-btn-result" onClick={()=>{this.handleClick()}} data-reactid="99">
                     <span className='searchicon'>
                       <img src={require('./Images/trpinn_search.png')} className='search-image-result' alt=""></img>
                     </span>

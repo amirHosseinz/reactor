@@ -88,6 +88,7 @@ class SearchBar extends React.Component {
       if(event.key==="Enter" && this.state.city!==null && this.state.city!==''){
         this.handleClick();
       }
+
     }
   renderSearchBarOnlycity(){
     return(
@@ -143,13 +144,14 @@ class SearchBar extends React.Component {
                     placeholder="  !مقصد خود را وارد نمایید  "
                     minLength={2}
                     align='right'
+                    onInputChange={(input)=>{this.setState({city:input})}}
                     selectHintOnEnter={false}
                     highlightOnlyResult={true}
                     submitFormOnEnter={false}
                     emptyLabel="نتیجه‌ای یافت نشد"
                     maxResults={5}
                     className="typeahead-onlycity-xl"
-                    onChange={(selected) => {
+                    onChange={(selected)=>{
                       this.setState({city:selected[0]},()=>{this.handleClick()});
                     }}
                     options={listOfCity}
@@ -292,8 +294,6 @@ class SearchBar extends React.Component {
           this.props.history.replace("/search/" + this.state.city);
        }
      }
-
-
    getCityListFromServer(){
      var request = new Request('https://www.trypinn.com/api/homepage/',{
        method: 'POST',
