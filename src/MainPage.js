@@ -105,6 +105,7 @@ class MainPage extends React.Component{
       <Suggestions />
     );
   }
+  // <Route path={"/becomehost"} render = {()=> {return(this.renderBecomeHost())}}/>
   render(){
     this.getGuestTokenFromServer();
     document.title = "تریپین | سامانه رزرو ویلا";
@@ -115,7 +116,7 @@ class MainPage extends React.Component{
           <Route exact path={'/'} render={(props)=> {return (this.renderSearchBar(props))}}/>
           <Route path={'/dashboard'} render={()=>{return(this.renderUserPanel())}}/>
           <Route path={'/rooms/' + this.getHouseId()} render ={()=> {return (this.renderHouseDetails())}}/>
-          <Route path={"/becomehost"} render = {()=> {return(this.renderBecomeHost())}}/>
+
           <Route path={"/aboutus"} render = {()=> {return(this.renderAboutUs())}}/>
           <Route path={"/suggestions&comments"} render = {()=> {return(this.renderSuggestions())}}/>
           <Route path={"/terms&conditions"} render = {()=> {return(this.renderTerms())}}/>

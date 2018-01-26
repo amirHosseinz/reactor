@@ -379,7 +379,18 @@ class ReservePanel extends React.Component{
      }
    });
   }
-
+  renderDiscountStatus(){
+    if(this.state.discountCode===''){
+      return (
+        <p className= "clickable-p pre-bill-discount-sentence" onClick={()=>{this.setTokenForDiscount()}}>
+          بررسی کد تخفیف
+        </p>
+      );
+    }
+    else{
+      
+    }
+  }
   renderPreBill(){
     if(this.state.reserveData!==''){
       return(
@@ -442,9 +453,7 @@ class ReservePanel extends React.Component{
                     value={this.state.discountCode}
                           placeholder="ورود کد تخفیف"
                           onChange={(event)=>{this.setState({discountCode:event.target.value})}}/>
-                      <p className= "clickable-p pre-bill-discount-sentence" onClick={()=>{this.setTokenForDiscount()}}>
-                        بررسی کد تخفیف
-                      </p>
+                        {this.renderDiscountStatus()}
                   </div>
             </div>
             <hr/>
