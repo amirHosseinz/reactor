@@ -763,10 +763,17 @@ margin-left: 14px;
   background-color: #f8f8f8;
 }
 .footerchild{
-  width:91%;
+  width:100%;
   margin: auto;
   padding-top: 6px;
   padding-bottom: 6px;
+  border-top: solid;
+  border-width: 1px;
+  border-color: lightgrey;
+}
+.footer-child-margined{
+  width: 88%;
+  margin: auto;
 }
 .footer-mobile-container{
   width:90%;
@@ -779,16 +786,17 @@ margin-left: 14px;
   border-bottom-style: solid;
   border-color: grey;
  border-width: 0.05em;
+
   }
 .footer-menu-mobile-link:hover {
   text-decoration:none;
 }
 .footer-menu{
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
-  display: flex;
-  margin: auto;
-  flex-direction: row-reverse;
+text-align: center;
+margin-top: 8px;
+font-size: 14px;
+color:grey;
+
 }
 .footer-menu-social{
   padding-top: 6px;
