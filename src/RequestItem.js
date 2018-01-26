@@ -13,17 +13,21 @@ class RequestItem extends React.Component{
       request:null,
       showPreBill:false,
       requestStatus:null,
-      token:null
+      token:null,
+      totalPrice:null,
     };
   }
   componentWillReceiveProps(nextProps){
     this.setState({
       request:nextProps.requestDetail,requestStatus:nextProps.requestDetail.status,
+      totalPrice:nextProps.requestDetail.total_price,
     });
   }
+
   getRelevantToken(){
     return localStorage['token'];
   }
+
   getRequestStatus(){
         switch (this.state.requestStatus){
           case "WAIT_FOR_HOST":
@@ -64,24 +68,123 @@ class RequestItem extends React.Component{
         return null;
     }
   }
-  renderDifferentTypesPrices(){
-    if(true){
+  renderOrdinaryPriceForPerPerson(){
+    if(this.state.request.ordinary_price!==0){
       return(
         <div>
-          <p></p>
-          <p></p>
-          <p></p>
+          <p>هزینه شب های عادی
+            :( شب {englishToPersianDigits(this.state.request.ordinary_duration)}-نفر {englishToPersianDigits(this.state.request.number_of_guests)})
+          </p>
+          <p>
+            تومان {englishToPersianDigits(this.state.request.ordinary_price)}
+          </p>
+        </div>
+      );
+    }
+  }
+
+  renderWeekendPriceForPerPerson(){
+    if(this.state.request.weekend_price!==0){
+      return(
+        <div>
+          <p>هزینه شب های آخر هفته
+            :( شب {englishToPersianDigits(this.state.request.weekend_duration)}-نفر {englishToPersianDigits(this.state.request.number_of_guests)})
+          </p>
+          <p>
+            تومان {englishToPersianDigits(this.state.request.weekend_price)}
+          </p>
+        </div>
+      );
+    }
+  }
+  renderSpecialPriceForPerPerson(){
+    if(this.state.request.special_price!==0){
+      return(
+        <div>
+          <p>هزینه شب های خاص
+            :( شب {englishToPersianDigits(this.state.request.special_duration)}-نفر {englishToPersianDigits(this.state.request.number_of_guests)})
+          </p>
+          <p>
+            تومان {englishToPersianDigits(this.state.request.special_price)}
+          </p>
+        </div>
+      );
+    }
+  }
+  renderOrdinaryPriceForPerNight(){
+    if(this.state.request.ordinary_price!==0){
+      return(
+        <div>
+          <p>هزینه شب های عادی
+            :( شب {englishToPersianDigits(this.state.request.ordinary_duration)})
+          </p>
+          <p>
+            تومان {englishToPersianDigits(this.state.request.ordinary_price)}
+          </p>
+        </div>
+      );
+    }
+
+  }
+  renderWeekendPriceForPerNight(){
+    if(this.state.request.weekend_price!==0){
+      return(
+        <div>
+          <p>هزینه شب های آخر هفته
+            :( شب {englishToPersianDigits(this.state.request.weekend_duration)})
+          </p>
+          <p>
+            تومان {englishToPersianDigits(this.state.request.weekend_duration)}
+          </p>
+        </div>
+      );
+    }
+  }
+  renderSpecialPriceForPerNight(){
+    if(this.state.request.special_price!==0){
+      return(
+        <div>
+          <p>هزینه شب های خاص
+            :( شب {englishToPersianDigits(this.state.request.special_duration)})
+          </p>
+          <p>
+            تومان {englishToPersianDigits(this.state.request.special_price)}
+          </p>
+        </div>
+      );
+    }
+  }
+  renderDifferentTypesPrices(){
+    if(this.state.request.room.is_price_per_person===false){
+      return(
+        <div>
+          {this.renderOrdinaryPriceForPerNight()}
+          {this.renderWeekendPriceForPerNight()}
+          {this.renderSpecialPriceForPerNight()}
         </div>
       );
     }
     else{
-      <div>
-
-      </div>
+      return(
+        <div>
+          {this.renderOrdinaryPriceForPerPerson()}
+          {this.renderWeekendPriceForPerPerson()}
+          {this.renderSpecialPriceForPerPerson()}
+        </div>
+      );
     }
   }
+  renderTotalPrice(){
+    return(
+      <div>
+      <p> جمع هزینه ها :</p>
+      <p> {englishToPersianDigits(this.state.totalPrice)}
+      تومان
+      </p>
+      </div>
+    );
+  }
   renderPreBill(){
-
     if(this.state.request!==null){
       return(
         <Modal show={this.state.showPreBill}
@@ -92,51 +195,70 @@ class RequestItem extends React.Component{
                 جزئیات رزرو اقامتگاه
               </p>
             </div>
-            <hr />
-            <div className="pre-bill-house-details">
-              <div className="pre-bill-house-title">
-                <p> {this.state.request.room.title}</p>
+            <div className="divider-modal"></div>
+              <div className="pre-bill-margin-content">
+                <div className="pre-bill-house-details">
+                  <div className="pre-bill-house-picture">
+                      <img src={"https://www.trypinn.com"+this.state.request.room.preview} alt=""height="90px"/>
+                  </div>
+                  <div>
+                    <div className="pre-bill-house-title">
+                      <p> {this.state.request.room.title}</p>
+                    </div>
+                    <div className="pre-bill-house-address">
+                      <p>{this.state.request.room.city}، {this.state.request.room.district}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="divider-modal-margined"></div>
+                <div className="pre-bill-number-of-guests">
+                  <div className="pre-bill-number-of-guests-sentence">
+                  <p>:تعداد مسافر</p>
+                  </div>
+                  <div className="pre-bill-number-of-guests-content" dir="rtl">
+                    <span> {englishToPersianDigits(this.state.request.number_of_guests)}  </span>
+                    <span> نفر </span>
+                  </div>
+                </div>
+                <hr/>
+                <div className="pre-bill-dates">
+                  <div className="pre-bill-dates-sentence">
+                    <p>:تاریخ ورود و خروج</p>
+                  </div>
+                  <div className="pre-bill-dates-content">
+                    <p className="pre-bill-date-item"> از {moment(this.state.request.start_date).format('jYYYY/jM/jD')}</p>
+                    <p className="pre-bill-date-item" >تا {moment(this.state.request.end_date).format('jYYYY/jM/jD')}</p>
+                    <div className="row-reverse">
+                      <span className="pre-bill-date-item">  روز اقامت </span>
+                      <span>  {englishToPersianDigits(this.state.request.duration)}  </span>
+                    </div>
+
+                  </div>
+                </div>
+                <hr/>
+                <div className="pre-bill-price-section">
+                  {this.renderDifferentTypesPrices()}
+                  {this.renderTotalPrice()}
+                </div>
+                <div className="pre-bill-discount-section">
+                  <input placeholder="ورود کد تخفیف"/>
+                  <div className="pre-bill-discount-sentence">
+                  <p>
+                    بررسی کد تخفیف
+                  </p>
+                  </div>
+                </div>
               </div>
-              <div className="pre-bill-house-address">
-                <p>{this.state.request.room.city}/{this.state.request.room.district}</p>
-              </div>
-              <div className="pre-bill-house-picture">
-                  <img src={"https://www.trypinn.com"+this.state.request.room.preview} alt=""height="80px"/>
-              </div>
-            </div>
-            <hr/>
-            <div className="pre-bill-number-of-guests">
-              <div className="pre-bill-number-of-guests-sentence">
-              <p> تعداد مسافر:</p>
-              </div>
-              <div className="pre-bill-number-of-guests-content">
-                <p>{this.state.request.number_of_guests} نفر</p>
-              </div>
-            </div>
-            <hr/>
-            <div className="pre-bill-dates">
-              <div className="pre-bill-dates-sentence">
-                <p>تاریخ ورود و خروج:</p>
-              </div>
-              <div className="pre-bill-dates-content">
-                <p>از{moment(this.state.request.start_date).format('jYYYY/jM/jD')}</p>
-                <p>تا{moment(this.state.request.end_date).format('jYYYY/jM/jD')}</p>
-                <p> روز اقامت{this.state.request.duration}</p>
-              </div>
-            </div>
-            <hr/>
-            <div className="pre-bill-price-section">
-              {this.renderDifferentTypesPrices()}
-            </div>
-            <div className="pre-bill-discount-section">
-              <input />
-              <div className="pre-bill-discount-sentence">
-              </div>
-            </div>
+
+
             <hr/>
             <div className="pre-bill-adding-up">
               <div className="pre-bill-price">
-
+                <p>
+                  مبلغ قابل پرداخت :
+                  {englishToPersianDigits(this.state.totalPrice)}
+                  تومان
+                </p>
               </div>
               <div className="pre-bill-payment-button">
                 <Button onClick={this.setTokenForPayment.bind(this)}> پرداخت نهایی</Button>
@@ -147,8 +269,42 @@ class RequestItem extends React.Component{
       );
     }
   }
+  UpdatePrice(){
+
+    var request = new Request('https://www.trypinn.com/api/room/get_price/',{
+      method: 'POST',
+      body: JSON.stringify({
+        room_id:this.state.request.room.id,
+        start_date:this.state.request.start_date,
+        end_date:this.state.request.end_date,
+        number_of_guests:this.state.request.number_of_guests,
+        discount_code:this.state.discountCode,
+        platform:'web',
+    }),
+      headers: new Headers({'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Token '+this.state.token,})
+    });
+   fetch(request)
+   .then((response) => {
+     return response.json();
+   })
+   .then((discountResponse) => {
+     if(discountResponse.discount_code_error===false){
+       this.setState({totalPrice:discountResponse.total_price});
+     }
+     else{
+      alert("کد تخفیف وارد شده اشتباه است")
+     }
+   });
+  }
+
   setTokenForPayment(){
     this.setState({token:this.getRelevantToken()},()=>{this.sendPaymentRequestToServer()});
+  }
+
+  setTokenForDiscount(){
+    this.setState({token:this.getRelevantToken()},()=>{this.UpdatePrice()});
   }
   sendPaymentRequestToServer(){
     var request = new Request('https://www.trypinn.com/api/payment/web_payment_request/',{

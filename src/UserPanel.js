@@ -14,7 +14,6 @@ class UserPanel extends React.Component{
       ProfileDetail:'',
       requestDetail:'',
       tripDetail:'',
-      defaultSelection:'userprofile',
     };
   }
 
@@ -37,7 +36,7 @@ class UserPanel extends React.Component{
   }
 
   showContent(){
-    switch (localStorage['default-panel']){
+    switch (window.location.pathname.split('/')[window.location.pathname.split('/').length-1]){
       case 'request':
       return(
         <RequestItem requestDetail={this.state.requestDetail}/>
@@ -55,7 +54,7 @@ class UserPanel extends React.Component{
     }
   }
   renderSelectedPanel(){
-    switch (localStorage['default-panel']){
+    switch (window.location.pathname.split('/')[window.location.pathname.split('/').length-1]){
       case 'message':
         return(
           <Messages />
@@ -78,7 +77,7 @@ class UserPanel extends React.Component{
   }
 
 renderDashbordTitle(){
-  switch (localStorage['default-panel']){
+  switch (window.location.pathname.split('/')[window.location.pathname.split('/').length-1]){
     case 'message':
       return(
         <div className="requests-list-title"> پیام‌ها </div>

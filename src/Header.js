@@ -253,14 +253,14 @@ class Header extends React.Component{
     if (localStorage['default-panel']!=='trip'){
       localStorage['default-panel']='trip';
     }
-    this.props.history.replace('/dashboard');
+    this.props.history.replace('/dashboard/trip');
   }
   handleRequestClick(){
 
     if (localStorage['default-panel']!=='request'){
       localStorage['default-panel']='request';
     }
-    this.props.history.replace('/dashboard');
+    this.props.history.replace('/dashboard/request');
   }
 
   handleUserProfileClick(){
