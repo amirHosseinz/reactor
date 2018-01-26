@@ -56,6 +56,22 @@
 .pre-bill-date-item{
   margin-bottom: 4px;
 }
+.pre-bill-discount-section{
+  width: 100%;
+  justify-content: space-between !important;
+  text-align: right;
+}
+.pre-bill-discount-value{
+  width:180px !important;
+  text-align: right;
+  background-color: #ebebeb !important;
+}
+
+.pre-bill-discount-sentence{
+  margin-top: 6px;
+  margin-right : 10px;
+  width : 90%;
+}
 .download_icon_app{
   width: 180px;
 }
@@ -144,6 +160,7 @@ transform: rotate(-5deg);
 }
 .pre-bill-price-night-content{
   justify-content: space-between;
+  margin-top : -2px;
 }
 
 .pre-bill-adding-up-section{
@@ -153,8 +170,8 @@ transform: rotate(-5deg);
   display: flex;
   flex-direction: row-reverse;
   text-align: right;
-  font-weight: 500;
-  font-size: 18px ;
+  font-weight: 600;
+  font-size: 16px ;
   margin-right: 30px;
   margin-buttom: !important 20px;
 }
@@ -746,10 +763,17 @@ margin-left: 14px;
   background-color: #f8f8f8;
 }
 .footerchild{
-  width:91%;
+  width:100%;
   margin: auto;
   padding-top: 6px;
   padding-bottom: 6px;
+  border-top: solid;
+  border-width: 1px;
+  border-color: lightgrey;
+}
+.footer-child-margined{
+  width: 88%;
+  margin: auto;
 }
 .footer-mobile-container{
   width:90%;
@@ -762,16 +786,17 @@ margin-left: 14px;
   border-bottom-style: solid;
   border-color: grey;
  border-width: 0.05em;
+
   }
 .footer-menu-mobile-link:hover {
   text-decoration:none;
 }
 .footer-menu{
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
-  display: flex;
-  margin: auto;
-  flex-direction: row-reverse;
+text-align: center;
+margin-top: 8px;
+font-size: 14px;
+color:grey;
+
 }
 .footer-menu-social{
   padding-top: 6px;
@@ -798,6 +823,10 @@ margin-left: 14px;
   padding-top: 22px;
   color: #f56c4e;
 }
+.logo-menu-font:visited {
+  text-decoration :none !important;
+}
+
 .logo-menu-font1{
   font-family: IRANSans;
   font-size: 16px;

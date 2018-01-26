@@ -35,7 +35,7 @@ class ContactUs extends React.Component {
             </p>
             <p className="contact-us-address-section">
             <span>آدرس : </span>
-            <span> تهران،خیابان دادمان،تقاطع درختی، روبرووی سازمان امور مالیاتی، پلاک </span>
+            <span> تهران،خیابان دادمان،تقاطع درختی، روبروی سازمان امور مالیاتی، پلاک </span>
             <span>{englishToPersianDigits("97")}،</span>
             <span>واحد {englishToPersianDigits("2")}</span>
 

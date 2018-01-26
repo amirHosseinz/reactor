@@ -88,6 +88,7 @@ class SearchBar extends React.Component {
       if(event.key==="Enter" && this.state.city!==null && this.state.city!==''){
         this.handleClick();
       }
+
     }
   renderSearchBarOnlycity(){
     return(
@@ -102,8 +103,8 @@ class SearchBar extends React.Component {
               <div className="seach-top-slogan-container">
                 <img src={require('./Images/tripinn_suitcase.png')} className='suitcase-image' alt="Trippin-Suitcase"></img>
                 <div className="slogan-container">
-                  <p className='slogan-1' >!سفرت رو شیرین‌تر کن</p>
-                  <p className='slogan-2' >!اجاره اقامتگاه و ویلا از همیشه آسون‌تر شده</p>
+                  <p className='slogan-1' >سفرت رو شیرین‌تر کن</p>
+                  <p className='slogan-2' >اجاره اقامتگاه و ویلا از همیشه آسون‌تر شده</p>
                 </div>
               </div>
             </div>
@@ -128,7 +129,7 @@ class SearchBar extends React.Component {
                         </Menu>
                       );
                   }}
-                    onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
+
                     renderMenu={(results, menuProps) => {
                         return (
                           <Menu {...menuProps}>
@@ -143,13 +144,14 @@ class SearchBar extends React.Component {
                     placeholder="  !مقصد خود را وارد نمایید  "
                     minLength={2}
                     align='right'
+                    onInputChange={(input)=>{this.setState({city:input})}}
                     selectHintOnEnter={false}
                     highlightOnlyResult={true}
                     submitFormOnEnter={false}
                     emptyLabel="نتیجه‌ای یافت نشد"
                     maxResults={5}
                     className="typeahead-onlycity-xl"
-                    onChange={(selected) => {
+                    onChange={(selected)=>{
                       this.setState({city:selected[0]},()=>{this.handleClick()});
                     }}
                     options={listOfCity}
@@ -292,8 +294,6 @@ class SearchBar extends React.Component {
           this.props.history.replace("/search/" + this.state.city);
        }
      }
-
-
    getCityListFromServer(){
      var request = new Request('https://www.trypinn.com/api/homepage/',{
        method: 'POST',
@@ -356,7 +356,7 @@ class SearchBar extends React.Component {
                   onInputChange={(input)=> {this.setState({city:input})}}
                   minLength={2}
                   selectHintOnEnter={true}
-                  // submitFormOnEnter={true}
+                  submitFormOnEnter={false}
                   onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
                   emptyLabel="نتیجه‌ای یافت نشد"
                   maxResults={5}

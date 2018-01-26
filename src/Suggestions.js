@@ -1,7 +1,7 @@
 import React from 'react';
 import { Divider,Button } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
-
+import {englishToPersianDigits} from './tools/EnglishToPersianDigits.js';
 
 class Suggestions extends React.Component{
   constructor(props) {
@@ -86,7 +86,8 @@ getRelevantToken(){
           <div className='suggestions-text-area'>
            <p className='suggestions-header'><span>ثبت </span><span  className="shekayat-color">شکایات</span></p>
            <p className='suggestions-paragraphs'>ما همواره آماده ایم تا انتقادات، پیشنهادات و شکایات شما را دریافت نماییم و در کمترین زمان آن را پیگیری کنیم<br/>شما میتوانید از راه های ارتباطی زیر با ما در ارتباط باشید یا به صورت مستقیم شکایت ، پیشنهادات و انتقاد های خود را در همین صفحه ثبت کنید</p>
-           <p className='suggestions-paragraphs'>روابط عمومی تریپین: 02188573037</p>
+           <p className='suggestions-paragraphs'>روابط عمومی تریپین :
+            <span>{englishToPersianDigits('02188573037')} </span></p>
            <p className='suggestions-paragraphs'><span> support@tripinn.ir </span><span>:ایمیل </span></p>
            <p className='suggestions-paragraphs'>ما در تریپین تمام تلاش خود را بکار خواهیم بست تا به بهترین شکل پیگیر درخواست های شما کاربران گرامی باشیم </p>
           </div>
@@ -123,7 +124,7 @@ getRelevantToken(){
               </div>
               <div class="form-group" className="suggestions-description-container">
                 <label className="suggstions-description-textarea" for="comment">توضیحات:</label>
-                  <textarea wrap="soft" class="suggestions form-control" rows="5"  value={this.state.description} onChange={(event)=>{this.SuggestionsDescription(event)}} />
+                  <textarea style={{height:"150px", minHeight:"150px",minWidth:"80%" ,maxHeight:"150px" ,maxWidth:"80%",width:"80%"}} wrap="hard" className="suggestions form-control" rows="5"  value={this.state.description} onChange={(event)=>{this.SuggestionsDescription(event)}} />
               </div>
               <div className='suggestions-save-button-container'>
               <Button onClick={()=>{this.SetSuggestionParams()}} className="suggestions-save-button" color="orange" >ارسال درخواست </Button>
