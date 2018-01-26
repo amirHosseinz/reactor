@@ -101,7 +101,7 @@ class ReservePanel extends React.Component{
             (  {englishToPersianDigits(this.state.reserveData.weekend_duration)} شب ) :
           </p>
           <p className="pre-bill-price-night-value">
-           {englishToPersianDigits(this.state.reserveData.weekend_duration)}
+           {englishToPersianDigits(this.state.reserveData.weekend_price)}
              تومان
           </p>
         </div>
