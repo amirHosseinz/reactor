@@ -8,7 +8,7 @@ import {Button,Divider} from 'semantic-ui-react';
 import {Dropdown} from 'semantic-ui-react';
 import {loginPasswordStyle, loginPhoneNumberStyle, loginPanelmobileStyle} from './Styles.js';
 import {Modal} from 'react-bootstrap';
-import {englishToPersianDigits} from './tools/EnglishToPersianDigits';
+import {englishToPersianDigits,persianArabicToEnglishDigits} from './tools/EnglishToPersianDigits';
 import {Image} from 'react-bootstrap';
 // import {Image} from 'semantic-ui-react';
 
@@ -54,7 +54,7 @@ class Header extends React.Component{
     this.getRelevantToken();
   }
   setSearchParams(){
-    var spar = {phoneNumber:this.state.cellPhone};
+    var spar = {phoneNumber:persianArabicToEnglishDigits(this.state.cellPhone)};
     this.setState({searchParams:spar},()=>{this.getDataFromServer()})
   }
     getDataFromServer(){
