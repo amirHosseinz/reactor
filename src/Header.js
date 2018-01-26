@@ -305,9 +305,22 @@ class Header extends React.Component{
     return(
       <Modal show={this.state.showDownloadAppModal}
             onHide={()=>{this.setState({showDownloadAppModal:false})}}>
-              <a className="logo-menu-font1"rel="noopener noreferrer"target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
-                <p>دریافت اپلیکیشن از کافه بازار</p>
-              </a>
+              <div className="download-app-modal-container">
+                <div className="mob">
+                  <img src={require('./Images/phone-app.png')} className="download-modal-pc-preview" alt = 'تریپین'/>
+                </div>
+                <div className="download-app-modal-icons-container">
+                  <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://new.sibapp.com/applications/tripinn' >
+                    <img src={require('./Images/sibapp.svg')} className="download_icon_app" alt = 'دانلود از سیب‌اپ'/>
+                  </a>
+                  <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='https://play.google.com/store/apps/details?id=com.trypinn&hl=en' >
+                    <img src={require('./Images/gplay.svg')} className="download_icon_app" alt = 'دانلود از گوگل پلی'/>
+                  </a>
+                  <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
+                    <img src={require('./Images/bazaar.svg')} className="download_icon_app" alt = 'دانلود از کافه بازار'/>
+                  </a>
+                </div>
+              </div>
             </Modal>
     );
   }

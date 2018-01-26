@@ -56,6 +56,29 @@
 .pre-bill-date-item{
   margin-bottom: 4px;
 }
+.download_icon_app{
+  width: 180px;
+}
+.download-modal-pc-preview{
+  height: 400px;
+  -webkit-transform: rotate(-5deg);
+-ms-transform: rotate(-5deg);
+transform: rotate(-5deg);
+}
+.download-app-modal-icons-container{
+  width: 180px;
+  margin: auto;
+  line-height: 70px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.download-app-modal-container{
+  padding: 70px;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row;
+}
 .pre-bill-house-address{
   font-size: 14px;
   font-weight: 500;
