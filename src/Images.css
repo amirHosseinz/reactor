@@ -65,6 +65,31 @@
 -ms-transform: rotate(-5deg);
 transform: rotate(-5deg);
 }
+.downlaod-app-button-header{
+}
+.download-item-menu{
+  margin-top: 19px !important;
+  border: solid;
+  border-color: #f56c4e;
+  border-radius: 5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color:#f56c4e;
+}
+.download-item-menu:hover{
+  margin-top: 19px !important;
+  border: solid;
+  border-color: #ff785a;
+  color: #fff;
+  background-color: #ff785a;
+  border-radius: 5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
 .download-app-modal-icons-container{
   width: 180px;
   margin: auto;
