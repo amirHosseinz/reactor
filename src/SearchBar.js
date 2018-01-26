@@ -129,7 +129,7 @@ class SearchBar extends React.Component {
                         </Menu>
                       );
                   }}
-                    onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
+                    
                     renderMenu={(results, menuProps) => {
                         return (
                           <Menu {...menuProps}>
@@ -356,7 +356,7 @@ class SearchBar extends React.Component {
                   onInputChange={(input)=> {this.setState({city:input})}}
                   minLength={2}
                   selectHintOnEnter={true}
-                  // submitFormOnEnter={true}
+                  submitFormOnEnter={false}
                   onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
                   emptyLabel="نتیجه‌ای یافت نشد"
                   maxResults={5}

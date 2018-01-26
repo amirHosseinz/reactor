@@ -332,11 +332,11 @@ class Header extends React.Component{
             {this.renderMainMenu()}
             {this.renderLoginButton()}
             <div className="row-reverse">
-              <Link to="/suggestions&comments"><p className='logo-menu-font'>ثبت شکایات </p></Link>
-              <Link to="/contactus"><p className='logo-menu-font'> تماس با ما </p></Link>
-              <Link to="/aboutus"><p className='logo-menu-font'>درباره ما </p></Link>
-              <Link to="/becomehost"><p className='logo-menu-font'>میزبان شوید </p></Link>
-              <Link to="/terms&conditions"><p className='logo-menu-font'>قوانین </p></Link>
+              <Link className="header-link" to="/suggestions&comments"><p className='logo-menu-font'>ثبت شکایات </p></Link>
+              <Link className="header-link" to="/contactus"><p className='logo-menu-font'> تماس با ما </p></Link>
+              <Link className="header-link" to="/aboutus"><p className='logo-menu-font'>درباره ما </p></Link>
+              <Link className="header-link" to="/becomehost"><p className='logo-menu-font'>میزبان شوید </p></Link>
+              <Link className="header-link" to="/terms&conditions"><p className='logo-menu-font'>قوانین </p></Link>
               <div className="downlaod-app-button-header" >
                 <p className="clickable-p download-item-menu" onClick={()=>{this.setState({showDownloadAppModal:true})}}> دریافت اپلیکیشن</p>
               </div>

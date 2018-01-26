@@ -815,6 +815,10 @@ margin-left: 14px;
   padding-top: 22px;
   color: #f56c4e;
 }
+.logo-menu-font:visited {
+  text-decoration :none !important;
+}
+
 .logo-menu-font1{
   font-family: IRANSans;
   font-size: 16px;

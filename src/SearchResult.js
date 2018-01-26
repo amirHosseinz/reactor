@@ -179,11 +179,11 @@ class SearchResult extends React.Component{
      this.setState({showOnlyCitySearchBarMobile:false},()=>{this.setSearchParams()});
   }
 
-  handleSearchByEnter(event){
-    if(event.key==="Enter" && this.state.city!==null && this.state.city!==''){
-      this.handleClick();
-    }
-  }
+  // handleSearchByEnter(event){
+  //   if(event.key==="Enter" && this.state.city!==null && this.state.city!==''){
+  //     this.handleClick();
+  //   }
+  // }
 
   renderSearchBarInDetails(){
     this.renderFromDatePicker();
@@ -209,7 +209,6 @@ class SearchResult extends React.Component{
                           </Menu>
                         );
                       }}
-                    onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
                     minLength={2}
                     align="right"
                     emptyLabel="نتیجه‌ای یافت نشد"
@@ -219,7 +218,7 @@ class SearchResult extends React.Component{
                     onInputChange={(input)=> {this.setState({city:input})}}
                     selectHintOnEnter={false}
                     highlightOnlyResult={true}
-                    submitFormOnEnter={false}
+                    submitFormOnEnter={true}
                     onChange={(selected)=>{
                       if(selected.length!==0){
                         this.setState({city:selected[0]},()=>{this.handleClick()});
@@ -369,7 +368,7 @@ class SearchResult extends React.Component{
            onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
            selectHintOnEnter={false}
            highlightOnlyResult={true}
-           submitFormOnEnter={false}
+           submitFormOnEnter={true}
            selected={[localStorage['selected-city-search']]}
            onInputChange={(input)=> { this.setState({city:input})}}
            onChange={(selected)=>{

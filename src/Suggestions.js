@@ -1,7 +1,7 @@
 import React from 'react';
 import { Divider,Button } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
-
+import {englishToPersianDigits} from './tools/EnglishToPersianDigits.js';
 
 class Suggestions extends React.Component{
   constructor(props) {
@@ -86,7 +86,8 @@ getRelevantToken(){
           <div className='suggestions-text-area'>
            <p className='suggestions-header'><span>ثبت </span><span  className="shekayat-color">شکایات</span></p>
            <p className='suggestions-paragraphs'>ما همواره آماده ایم تا انتقادات، پیشنهادات و شکایات شما را دریافت نماییم و در کمترین زمان آن را پیگیری کنیم<br/>شما میتوانید از راه های ارتباطی زیر با ما در ارتباط باشید یا به صورت مستقیم شکایت ، پیشنهادات و انتقاد های خود را در همین صفحه ثبت کنید</p>
-           <p className='suggestions-paragraphs'>روابط عمومی تریپین: 02188573037</p>
+           <p className='suggestions-paragraphs'>روابط عمومی تریپین :
+            <span>{englishToPersianDigits('02188573037')} </span></p>
            <p className='suggestions-paragraphs'><span> support@tripinn.ir </span><span>:ایمیل </span></p>
            <p className='suggestions-paragraphs'>ما در تریپین تمام تلاش خود را بکار خواهیم بست تا به بهترین شکل پیگیر درخواست های شما کاربران گرامی باشیم </p>
           </div>
