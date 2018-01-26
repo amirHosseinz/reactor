@@ -259,7 +259,7 @@ class RequestItem extends React.Component{
                   تومان
                 </p>
                 <div className="pre-bill-margin-optimizer-for-button">
-                  <button type="button" color="#12b2ce"className="btn pre-bill-payment-button" onClick={this.setTokenForPayment.bind(this)}> پرداخت نهایی
+                  <button type="button"className="btn pre-bill-payment-button" onClick={this.setTokenForPayment.bind(this)}> پرداخت نهایی
                   </button>
                 </div>
 
