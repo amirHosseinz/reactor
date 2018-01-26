@@ -124,7 +124,7 @@ getRelevantToken(){
               </div>
               <div class="form-group" className="suggestions-description-container">
                 <label className="suggstions-description-textarea" for="comment">توضیحات:</label>
-                  <textarea wrap="soft" class="suggestions form-control" rows="5"  value={this.state.description} onChange={(event)=>{this.SuggestionsDescription(event)}} />
+                  <textarea style={{height:"150px", minHeight:"150px",minWidth:"80%" ,maxHeight:"150px" ,maxWidth:"80%",width:"80%"}} wrap="hard" className="suggestions form-control" rows="5"  value={this.state.description} onChange={(event)=>{this.SuggestionsDescription(event)}} />
               </div>
               <div className='suggestions-save-button-container'>
               <Button onClick={()=>{this.SetSuggestionParams()}} className="suggestions-save-button" color="orange" >ارسال درخواست </Button>
