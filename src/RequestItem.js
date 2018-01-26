@@ -387,7 +387,6 @@ renderDeleteButton(){
         </div>
       );
     }
-
     else{
       return(
       <div className='no-request-container'>
