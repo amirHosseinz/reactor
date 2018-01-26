@@ -76,7 +76,8 @@ class RequestItem extends React.Component{
             ({englishToPersianDigits(this.state.request.ordinary_duration)} شب - {englishToPersianDigits(this.state.request.number_of_guests)} نفر ) :
           </p>
           <p className="pre-bill-price-night-value">
-            تومان {englishToPersianDigits(this.state.request.ordinary_price)}
+           {englishToPersianDigits(this.state.request.ordinary_price)}
+             تومان
           </p>
         </div>
       );
@@ -91,7 +92,8 @@ class RequestItem extends React.Component{
             ({englishToPersianDigits(this.state.request.weekend_duration)} شب - {englishToPersianDigits(this.state.request.number_of_guests)} نفر ) :
           </p>
           <p className="pre-bill-price-night-value">
-            تومان {englishToPersianDigits(this.state.request.weekend_price)}
+             {englishToPersianDigits(this.state.request.weekend_price)}
+               تومان
           </p>
         </div>
       );
@@ -105,7 +107,8 @@ class RequestItem extends React.Component{
             ({englishToPersianDigits(this.state.request.special_duration)}شب - {englishToPersianDigits(this.state.request.number_of_guests)} نفر) :
           </p>
           <p className="pre-bill-price-night-value">
-            تومان {englishToPersianDigits(this.state.request.special_price)}
+           {englishToPersianDigits(this.state.request.special_price)}
+             تومان
           </p>
         </div>
       );
@@ -120,7 +123,8 @@ class RequestItem extends React.Component{
              ( {englishToPersianDigits(this.state.request.ordinary_duration)} شب ) :
           </p>
           <p className="pre-bill-price-night-value">
-            تومان {englishToPersianDigits(this.state.request.ordinary_price)}
+             {englishToPersianDigits(this.state.request.ordinary_price)}
+               تومان
           </p>
         </div>
       );
@@ -135,7 +139,8 @@ class RequestItem extends React.Component{
             (  {englishToPersianDigits(this.state.request.weekend_duration)} شب ) :
           </p>
           <p className="pre-bill-price-night-value">
-            تومان {englishToPersianDigits(this.state.request.weekend_duration)}
+           {englishToPersianDigits(this.state.request.weekend_duration)}
+             تومان
           </p>
         </div>
       );
@@ -149,7 +154,8 @@ class RequestItem extends React.Component{
           (  {englishToPersianDigits(this.state.request.special_duration)} شب ) :
           </p>
           <p className="pre-bill-price-night-value">
-            تومان {englishToPersianDigits(this.state.request.special_price)}
+           {englishToPersianDigits(this.state.request.special_price)}
+             تومان
           </p>
         </div>
       );
@@ -242,35 +248,37 @@ class RequestItem extends React.Component{
                   {this.renderDifferentTypesPrices()}
                   {this.renderTotalPrice()}
                 </div>
-                <div className="pre-bill-discount-section">
-                  <input placeholder="ورود کد تخفیف"/>
-                  <div className="pre-bill-discount-sentence">
-                  <p>
-                    بررسی کد تخفیف
-                  </p>
-                  </div>
-                </div>
-              </div>
-
-
+            </div>
             <hr/>
-            <div className="pre-bill-adding-up">
-              <div className="pre-bill-price">
-                <p>
+            <div className="pre-bill-adding-up-section row-reverse" dir="rtl">
+                <p className="pre-bill-adding-up-sentence">
                   مبلغ قابل پرداخت :
+                </p>
+                <p className="pre-bill-adding-up-value">
                   {englishToPersianDigits(this.state.totalPrice)}
                   تومان
                 </p>
-              </div>
-              <div className="pre-bill-payment-button">
-                <Button onClick={this.setTokenForPayment.bind(this)}> پرداخت نهایی</Button>
-              </div>
+                <div className="pre-bill-margin-optimizer-for-button">
+                  <button type="button" color="#12b2ce"className="btn pre-bill-payment-button" onClick={this.setTokenForPayment.bind(this)}> پرداخت نهایی
+                  </button>
+                </div>
+
             </div>
           </div>
         </Modal>
       );
     }
   }
+  //todo
+
+//   <div className="pre-bill-discount-section">
+//     <input placeholder="ورود کد تخفیف"/>
+//     <div className="pre-bill-discount-sentence">
+//       <p>
+//         بررسی کد تخفیف
+//       </p>
+//     </div>
+// </div>
   UpdatePrice(){
 
     var request = new Request('https://www.trypinn.com/api/room/get_price/',{
