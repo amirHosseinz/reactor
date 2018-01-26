@@ -17,9 +17,9 @@ class Footer extends React.Component{
               <div className="footer-child-margined">
                   <div className="footer-menu-and-dl hidden-xs">
                     <div className='footer-menu-social col-md-2'>
-                      <a href="https://t.me/"><img src={require('./Images/trypinn-telegram-channel.png')} className='social-image-xl' alt=""></img></a>
+                      <a href="https://t.me/tripinni"><img src={require('./Images/trypinn-telegram-channel.png')} className='social-image-xl' alt=""></img></a>
                       <a href="https://instagram.com/tripinn.ir"><img src={require('./Images/trypinn-instagram.png')} className='social-image-xl' alt=""></img></a>
-                      <a href="https://www.twitter.com/"><img src={require('./Images/trypinn-twitter.png')} className='social-image-xl' alt=""></img></a>
+                      <a href="https://twitter.com/tripinni"><img src={require('./Images/trypinn-twitter.png')} className='social-image-xl' alt=""></img></a>
                     </div>
                     <div className='footer-menu col-md-8'>
                       TripInn 2018

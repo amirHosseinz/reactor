@@ -103,8 +103,8 @@ class SearchBar extends React.Component {
               <div className="seach-top-slogan-container">
                 <img src={require('./Images/tripinn_suitcase.png')} className='suitcase-image' alt="Trippin-Suitcase"></img>
                 <div className="slogan-container">
-                  <p className='slogan-1' >!سفرت رو شیرین‌تر کن</p>
-                  <p className='slogan-2' >!اجاره اقامتگاه و ویلا از همیشه آسون‌تر شده</p>
+                  <p className='slogan-1' >سفرت رو شیرین‌تر کن</p>
+                  <p className='slogan-2' >اجاره اقامتگاه و ویلا از همیشه آسون‌تر شده</p>
                 </div>
               </div>
             </div>
@@ -129,7 +129,7 @@ class SearchBar extends React.Component {
                         </Menu>
                       );
                   }}
-                    
+
                     renderMenu={(results, menuProps) => {
                         return (
                           <Menu {...menuProps}>

@@ -186,8 +186,7 @@ class RequestItem extends React.Component{
       <div className="pre-bill-price-night-content row-reverse" dir="rtl">
       <p className="pre-bill-price-night-sentence"> جمع هزینه ها :
       </p>
-      <p className="pre-bill-price-night-value"> {englishToPersianDigits(this.state.totalPrice)}
-      تومان
+      <p className="pre-bill-price-night-value"> {englishToPersianDigits(this.state.totalPrice)}  تومان
       </p>
       </div>
     );
@@ -269,7 +268,7 @@ class RequestItem extends React.Component{
       );
     }
   }
-  
+
 
   setTokenForPayment(){
     this.setState({token:this.getRelevantToken()},()=>{this.sendPaymentRequestToServer()});
