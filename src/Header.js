@@ -337,8 +337,9 @@ class Header extends React.Component{
               <Link to="/aboutus"><p className='logo-menu-font'>درباره ما </p></Link>
               <Link to="/becomehost"><p className='logo-menu-font'>میزبان شوید </p></Link>
               <Link to="/terms&conditions"><p className='logo-menu-font'>قوانین </p></Link>
-              <p className="clickable-p logo-menu-font" onClick={()=>{this.setState({showDownloadAppModal:true})}}> دریافت اپلیکیشن</p>
-
+              <div className="downlaod-app-button-header" >
+                <p className="clickable-p download-item-menu" onClick={()=>{this.setState({showDownloadAppModal:true})}}> دریافت اپلیکیشن</p>
+              </div>
             </div>
           </div>
           {this.renderLoginPanel()}
