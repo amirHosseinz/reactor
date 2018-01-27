@@ -22,7 +22,7 @@ class Footer extends React.Component{
                       <a href="https://twitter.com/tripinni"><img src={require('./Images/trypinn-twitter.png')} className='social-image-xl' alt=""></img></a>
                     </div>
                     <div className='footer-menu col-md-8'>
-                      <a target="_blank" href="https://new.sibapp.com/applications/tripinn">TripInn 2018 </a>
+                      TripInn 2018
                     </div>
                     <div className='footer-menu col-md-2'>
 

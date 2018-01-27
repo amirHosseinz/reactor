@@ -3,7 +3,6 @@ import Login from './Login.js';
 import { slide as Menu} from 'react-burger-menu';
 import customBurgerIcon  from 'react-burger-menu';
 import {Link} from 'react-router-dom';
-// import Modal from 'react-modal';
 import {Button,Divider} from 'semantic-ui-react';
 import {Dropdown} from 'semantic-ui-react';
 import {loginPasswordStyle, loginPhoneNumberStyle, loginPanelmobileStyle} from './Styles.js';
