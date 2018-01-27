@@ -377,6 +377,7 @@ class SearchBar extends React.Component {
    }
 
   render(){
+    document.title = "تریپین | سامانه رزرو ویلا";
     return (
       <div className="searchbarmain">
           <div className="container-fluid hidden-xs visible-xl">
