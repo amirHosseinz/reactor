@@ -9,6 +9,7 @@ import './tools/DatePicker/bootstrap-datepicker.js';
 import './tools/DatePicker/bootstrap-datepicker.css';
 import {Dropdown} from 'semantic-ui-react';
 import GuestNumber from './GuestNumberSearchBar.js';
+import scrollToComponent from 'react-scroll-to-component';
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
   'اصفهان',
@@ -420,8 +421,29 @@ class SearchBar extends React.Component {
   }
   renderLandingXS(){
     return(
-      <div className="landing-page-mobile container visible-xs hidden-xl">
-        ERFANKORKI
+      <div>
+        <div className="landing-page-mobile visible-xs hidden-xl">
+          <img src={require('./Images/trpinn-logo-white.svg')} className='landing-logo' alt=""></img>
+          <p className='logotype-landing'>تریپین</p>
+          <p className='description-landing'>سامانه رزرو ویلا و اقامت‌گاه بوم‌گردی</p>
+          <button className="landing-btn" onClick={() => scrollToComponent(this.Dis, { offset: 0, align: 'top', duration: 1500})}> دریافت اپلیکیشن </button>
+        </div>
+        <div className="landing-download-area">
+
+          <div className="download-app-modal-icons-container">
+            <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://new.sibapp.com/applications/tripinn' >
+              <img src={require('./Images/sibapp.svg')} className="download_icon_app" alt = 'دانلود از سیب‌اپ'/>
+            </a>
+            <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='https://play.google.com/store/apps/details?id=com.trypinn&hl=en' >
+              <img src={require('./Images/gplay.svg')} className="download_icon_app" alt = 'دانلود از گوگل پلی'/>
+            </a>
+            <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
+              <img src={require('./Images/bazaar.svg')} className="download_icon_app" alt = 'دانلود از کافه بازار'/>
+            </a>
+            <section className='gallery-scroller' ref={(section) => {this.Dis = section;}}></section>
+
+          </div>
+        </div>
       </div>
     );
   }
