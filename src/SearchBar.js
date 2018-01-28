@@ -428,7 +428,7 @@ class SearchBar extends React.Component {
           <p className='description-landing'>سامانه رزرو ویلا و اقامت‌گاه بوم‌گردی</p>
           <button className="landing-btn" onClick={() => scrollToComponent(this.Dis, { offset: 0, align: 'top', duration: 1500})}> دریافت اپلیکیشن </button>
         </div>
-        <div className="landing-download-area">
+        <div className="landing-download-area visible-xs hidden-xl">
 
           <div className="download-app-modal-icons-container">
             <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://new.sibapp.com/applications/tripinn' >
@@ -441,7 +441,6 @@ class SearchBar extends React.Component {
               <img src={require('./Images/bazaar.svg')} className="download_icon_app" alt = 'دانلود از کافه بازار'/>
             </a>
             <section className='gallery-scroller' ref={(section) => {this.Dis = section;}}></section>
-
           </div>
         </div>
       </div>
