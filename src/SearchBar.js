@@ -375,48 +375,63 @@ class SearchBar extends React.Component {
         </div>
       );
    }
+  renderSearchBarXS(){
+    return(
+      <div className="container-fluid hidden-xl visible-xs">
+          <div className='mobile-margined-search'>
+            <div className="main-zone-xs col-md-12">
+              <div className="row">
+              </div>
+        {this.renderSearchBarOnlycityXs()}
+        {this.renderHousesCol1()}
 
+        <div className='mobile-margined-search'>
+          <div className="main-zone-xs col-md-12">
+          </div>
+        </div>
+      </div>
+  </div>
+  <div className="downlaod-app-mobile">
+    <div className='mobile-margined-search'>
+      <div className="img-iphone col-xs-5">
+        <img src={require('./Images/phone-app.png')} className='iphone' alt="اپلیکیشن تریپین"></img>
+      </div>
+      <div className="img-download col-xs-6">
+        <a href="https://cafebazaar.ir/app/com.trypinn/">
+          <img src={require('./Images/bazaar.svg')} className='bazar-ico' alt="دانلود از بازار"></img>
+        </a>
+        <img src={require('./Images/button-app-store.svg')} className='bazar-ico' alt=" دانلود از سیب‌اپ"></img>
+      </div>
+    </div>
+  </div>
+  </div>
+    );
+  }
+  renderSearchbarXl(){
+    return(
+      <div className="container-fluid hidden-xs visible-xl">
+        {this.renderSearchBarOnlycity()}
+        <div className="col-lg col-sm-12 mb-10">
+        </div>
+        <div className="col-lg col-sm-12 mb-10">
+        </div>
+      </div>
+    );
+  }
+  renderLandingXS(){
+    return(
+      <div className="landing-page-mobile container visible-xs hidden-xl">
+        ERFANKORKI
+      </div>
+    );
+  }
+            // {this.renderSearchBarXS()}
   render(){
     document.title = "تریپین | سامانه رزرو ویلا";
     return (
       <div className="searchbarmain">
-          <div className="container-fluid hidden-xs visible-xl">
-            {this.renderSearchBarOnlycity()}
-            <div className="col-lg col-sm-12 mb-10">
-            </div>
-            <div className="col-lg col-sm-12 mb-10">
-            </div>
-          </div>
-
-
-          <div className="container-fluid hidden-xl visible-xs">
-              <div className='mobile-margined-search'>
-                <div className="main-zone-xs col-md-12">
-                  <div className="row">
-                  </div>
-            {this.renderSearchBarOnlycityXs()}
-            {this.renderHousesCol1()}
-
-            <div className='mobile-margined-search'>
-              <div className="main-zone-xs col-md-12">
-              </div>
-            </div>
-          </div>
-      </div>
-      <div className="downlaod-app-mobile">
-        <div className='mobile-margined-search'>
-          <div className="img-iphone col-xs-5">
-            <img src={require('./Images/phone-app.png')} className='iphone' alt="اپلیکیشن تریپین"></img>
-          </div>
-          <div className="img-download col-xs-6">
-            <a href="https://cafebazaar.ir/app/com.trypinn/">
-              <img src={require('./Images/bazaar.svg')} className='bazar-ico' alt="دانلود از بازار"></img>
-            </a>
-            <img src={require('./Images/button-app-store.svg')} className='bazar-ico' alt=" دانلود از سیب‌اپ"></img>
-          </div>
-        </div>
-      </div>
-      </div>
+          {this.renderSearchbarXl()}
+          {this.renderLandingXS()}
       </div>
     );
   }

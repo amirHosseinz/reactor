@@ -406,13 +406,14 @@ class Header extends React.Component{
       </div>
     );
   }
+  // {this.renderHeaderXs()}
   render()
   {
     return (
       <div>
       {this.renderHeaderXl()}
       {this.renderDownloadAppModal()}
-      {this.renderHeaderXs()}
+
       </div>
     );
   }
