@@ -193,79 +193,81 @@ class RequestItem extends React.Component{
   }
   renderPreBill(){
     if(this.state.request!==null){
-      return(
-        <Modal show={this.state.showPreBill}
-          onHide={()=>{this.setState({showPreBill:false})}}>
-          <div className="pre-bill-main-division">
-            <div className="pre-bill-header-section">
-              <p>
-                جزئیات رزرو اقامتگاه
-              </p>
-            </div>
-            <div className="divider-modal"></div>
-              <div className="pre-bill-margin-content">
-                <div className="pre-bill-house-details">
-                  <div className="pre-bill-house-picture">
-                      <img src={"https://www.trypinn.com"+this.state.request.room.preview} alt=""height="90px"/>
-                  </div>
-                  <div>
-                    <div className="pre-bill-house-title">
-                      <p> {this.state.request.room.title}</p>
-                    </div>
-                    <div className="pre-bill-house-address">
-                      <p>{this.state.request.room.city}، {this.state.request.room.district}</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="divider-modal-margined"></div>
-                <div className="pre-bill-number-of-guests">
-                  <div className="pre-bill-number-of-guests-sentence">
-                  <p>:تعداد مسافر</p>
-                  </div>
-                  <div className="pre-bill-number-of-guests-content" dir="rtl">
-                    <span> {englishToPersianDigits(this.state.request.number_of_guests)}  </span>
-                    <span> نفر </span>
-                  </div>
-                </div>
-                <hr/>
-                <div className="pre-bill-dates">
-                  <div className="pre-bill-dates-sentence">
-                    <p>:تاریخ ورود و خروج</p>
-                  </div>
-                  <div className="pre-bill-dates-content">
-                    <p className="pre-bill-date-item"> از {moment(this.state.request.start_date).format('jYYYY/jM/jD')}</p>
-                    <p className="pre-bill-date-item" >تا {moment(this.state.request.end_date).format('jYYYY/jM/jD')}</p>
-                    <div className="row-reverse">
-                      <span className="pre-bill-date-item">  روز اقامت </span>
-                      <span>  {englishToPersianDigits(this.state.request.duration)}  </span>
-                    </div>
-
-                  </div>
-                </div>
-                <hr/>
-                <div className="pre-bill-price-section">
-                  {this.renderDifferentTypesPrices()}
-                  {this.renderTotalPrice()}
-                </div>
-            </div>
-            <hr/>
-            <div className="pre-bill-adding-up-section row-reverse" dir="rtl">
-                <p className="pre-bill-adding-up-sentence">
-                  مبلغ قابل پرداخت :
+      if(this.state.requestStatus!=='no-house'){
+        return(
+          <Modal show={this.state.showPreBill}
+            onHide={()=>{this.setState({showPreBill:false})}}>
+            <div className="pre-bill-main-division">
+              <div className="pre-bill-header-section">
+                <p>
+                  جزئیات رزرو اقامتگاه
                 </p>
-                <p className="pre-bill-adding-up-value">
-                  {englishToPersianDigits(this.state.totalPrice)}
-                  تومان
-                </p>
-                <div className="pre-bill-margin-optimizer-for-button">
-                  <button type="button"className="btn pre-bill-payment-button" onClick={this.setTokenForPayment.bind(this)}> پرداخت نهایی
-                  </button>
-                </div>
+              </div>
+              <div className="divider-modal"></div>
+                <div className="pre-bill-margin-content">
+                  <div className="pre-bill-house-details">
+                    <div className="pre-bill-house-picture">
+                        <img src={"https://www.trypinn.com"+this.state.request.room.preview} alt=""height="90px"/>
+                    </div>
+                    <div>
+                      <div className="pre-bill-house-title">
+                        <p> {this.state.request.room.title}</p>
+                      </div>
+                      <div className="pre-bill-house-address">
+                        <p>{this.state.request.room.city}، {this.state.request.room.district}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="divider-modal-margined"></div>
+                  <div className="pre-bill-number-of-guests">
+                    <div className="pre-bill-number-of-guests-sentence">
+                    <p>:تعداد مسافر</p>
+                    </div>
+                    <div className="pre-bill-number-of-guests-content" dir="rtl">
+                      <span> {englishToPersianDigits(this.state.request.number_of_guests)}  </span>
+                      <span> نفر </span>
+                    </div>
+                  </div>
+                  <hr/>
+                  <div className="pre-bill-dates">
+                    <div className="pre-bill-dates-sentence">
+                      <p>:تاریخ ورود و خروج</p>
+                    </div>
+                    <div className="pre-bill-dates-content">
+                      <p className="pre-bill-date-item"> از {moment(this.state.request.start_date).format('jYYYY/jM/jD')}</p>
+                      <p className="pre-bill-date-item" >تا {moment(this.state.request.end_date).format('jYYYY/jM/jD')}</p>
+                      <div className="row-reverse">
+                        <span className="pre-bill-date-item">  روز اقامت </span>
+                        <span>  {englishToPersianDigits(this.state.request.duration)}  </span>
+                      </div>
 
+                    </div>
+                  </div>
+                  <hr/>
+                  <div className="pre-bill-price-section">
+                    {this.renderDifferentTypesPrices()}
+                    {this.renderTotalPrice()}
+                  </div>
+              </div>
+              <hr/>
+              <div className="pre-bill-adding-up-section row-reverse" dir="rtl">
+                  <p className="pre-bill-adding-up-sentence">
+                    مبلغ قابل پرداخت :
+                  </p>
+                  <p className="pre-bill-adding-up-value">
+                    {englishToPersianDigits(this.state.totalPrice)}
+                    تومان
+                  </p>
+                  <div className="pre-bill-margin-optimizer-for-button">
+                    <button type="button"className="btn pre-bill-payment-button" onClick={this.setTokenForPayment.bind(this)}> پرداخت نهایی
+                    </button>
+                  </div>
+
+              </div>
             </div>
-          </div>
-        </Modal>
-      );
+          </Modal>
+        );
+      }
     }
   }
 
@@ -352,8 +354,43 @@ renderDeleteButton(){
   }
 }
   renderRequestDetail(){
-    if (this.state.request!=null && this.state.requestStatus!=null){
-      if(this.state.request.length===0){
+    if (this.state.request!==null){
+      if(this.state.requestStatus!=='no-house'){
+        return (
+          <div className="request-header">
+          <div className='request-status'>
+            <p className="reserve-status-h1"> :وضعیت درخواست رزرو </p>
+            <p className="reserve-status-h2"> {this.getRequestStatus()} </p>
+            <p className="reserve-status-descriptions">{this.getRequestStatusDiscription()} </p>
+          </div>
+          <div className="request-detail-userpanel">
+            <Divider/>
+            <div className='house-preview-linked-to-house-detail' dir="rtl">
+              <p> نام اقامتگاه : <a style={{color:'#12b2ce'}} href={"/rooms/"+ this.state.request.room.id} target="_blank">{this.state.request.room.title}</a> </p>
+              <p>شهر مقصد: {this.state.request.room.city}  </p>
+              <p> به میزبانی  {this.state.request.room.owner.first_name} {this.state.request.room.owner.last_name}</p>
+              <p> رزرو کننده: {this.state.request.guest_person.last_name} </p>
+              <p>تعداد میهمان: {englishToPersianDigits(this.state.request.number_of_guests)} </p>
+              <p>تاریخ ورود: {englishToPersianDigits(moment(this.state.request.start_date).format('jYYYY/jM/jD'))}</p>
+              <p>تاریخ خروج:{englishToPersianDigits(moment(this.state.request.end_date).format('jYYYY/jM/jD'))} </p>
+            </div>
+            <div className='request-details'>
+            </div>
+            <Divider/>
+            <div className='final-details'>
+              <p>جمع هزینه ها: {englishToPersianDigits(this.state.request.total_price)} </p>
+            </div>
+          </div>
+
+          <div className='relevant-button'>
+            {this.renderCancelButton()}
+            {this.renderDeleteButton()}
+            {this.getRelevantButton()}
+          </div>
+          </div>
+        );
+      }
+      else{
         return(
         <div className='no-request-container'>
           <p className="no-request-header">شما درخواست رزروی ندارید</p>
@@ -410,42 +447,7 @@ renderDeleteButton(){
           </div>
         );
       }
-      return (
-        <div className="request-header">
-        <div className='request-status'>
-          <p className="reserve-status-h1"> :وضعیت درخواست رزرو </p>
-          <p className="reserve-status-h2"> {this.getRequestStatus()} </p>
-          <p className="reserve-status-descriptions">{this.getRequestStatusDiscription()} </p>
-        </div>
-        <div className="request-detail-userpanel">
-          <Divider/>
-          <div className='house-preview-linked-to-house-detail' dir="rtl">
-            <p> نام اقامتگاه : <a style={{color:'#12b2ce'}} href={"/rooms/"+ this.state.request.room.id} target="_blank">{this.state.request.room.title}</a> </p>
-            <p>شهر مقصد: {this.state.request.room.city}  </p>
-            <p> به میزبانی  {this.state.request.room.owner.first_name} {this.state.request.room.owner.last_name}</p>
-            <p> رزرو کننده: {this.state.request.guest_person.last_name} </p>
-            <p>تعداد میهمان: {englishToPersianDigits(this.state.request.number_of_guests)} </p>
-            <p>تاریخ ورود: {englishToPersianDigits(moment(this.state.request.start_date).format('jYYYY/jM/jD'))}</p>
-            <p>تاریخ خروج:{englishToPersianDigits(moment(this.state.request.end_date).format('jYYYY/jM/jD'))} </p>
-          </div>
-          <div className='request-details'>
-          </div>
-          <Divider/>
-          <div className='final-details'>
-            <p>جمع هزینه ها: {englishToPersianDigits(this.state.request.total_price)} </p>
-          </div>
-        </div>
-
-        <div className='relevant-button'>
-          {this.renderCancelButton()}
-          {this.renderDeleteButton()}
-          {this.getRelevantButton()}
-        </div>
-        </div>
-      );
-
-  }
-
+    }
   }
   setTokenForCancel(){
     this.setState({token:this.getRelevantToken()},()=>{this.handleCancelClick()});

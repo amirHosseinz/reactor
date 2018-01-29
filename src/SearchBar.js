@@ -9,6 +9,7 @@ import './tools/DatePicker/bootstrap-datepicker.js';
 import './tools/DatePicker/bootstrap-datepicker.css';
 import {Dropdown} from 'semantic-ui-react';
 import GuestNumber from './GuestNumberSearchBar.js';
+import scrollToComponent from 'react-scroll-to-component';
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
   'اصفهان',
@@ -375,47 +376,91 @@ class SearchBar extends React.Component {
         </div>
       );
    }
-
-  render(){
-    return (
-      <div className="searchbarmain">
-          <div className="container-fluid hidden-xs visible-xl">
-            {this.renderSearchBarOnlycity()}
-            <div className="col-lg col-sm-12 mb-10">
-            </div>
-            <div className="col-lg col-sm-12 mb-10">
-            </div>
-          </div>
-
-
-          <div className="container-fluid hidden-xl visible-xs">
-              <div className='mobile-margined-search'>
-                <div className="main-zone-xs col-md-12">
-                  <div className="row">
-                  </div>
-            {this.renderSearchBarOnlycityXs()}
-            {this.renderHousesCol1()}
-
-            <div className='mobile-margined-search'>
-              <div className="main-zone-xs col-md-12">
+  renderSearchBarXS(){
+    return(
+      <div className="container-fluid hidden-xl visible-xs">
+          <div className='mobile-margined-search'>
+            <div className="main-zone-xs col-md-12">
+              <div className="row">
               </div>
-            </div>
-          </div>
-      </div>
-      <div className="downlaod-app-mobile">
+        {this.renderSearchBarOnlycityXs()}
+        {this.renderHousesCol1()}
+
         <div className='mobile-margined-search'>
-          <div className="img-iphone col-xs-5">
-            <img src={require('./Images/phone-app.png')} className='iphone' alt="اپلیکیشن تریپین"></img>
-          </div>
-          <div className="img-download col-xs-6">
-            <a href="https://cafebazaar.ir/app/com.trypinn/">
-              <img src={require('./Images/bazaar.svg')} className='bazar-ico' alt="دانلود از بازار"></img>
-            </a>
-            <img src={require('./Images/button-app-store.svg')} className='bazar-ico' alt=" دانلود از سیب‌اپ"></img>
+          <div className="main-zone-xs col-md-12">
           </div>
         </div>
       </div>
+  </div>
+  <div className="downlaod-app-mobile">
+    <div className='mobile-margined-search'>
+      <div className="img-iphone col-xs-5">
+        <img src={require('./Images/phone-app.png')} className='iphone' alt="اپلیکیشن تریپین"></img>
       </div>
+      <div className="img-download col-xs-6">
+        <a href="https://cafebazaar.ir/app/com.trypinn/">
+          <img src={require('./Images/bazaar.svg')} className='bazar-ico' alt="دانلود از بازار"></img>
+        </a>
+        <img src={require('./Images/button-app-store.svg')} className='bazar-ico' alt=" دانلود از سیب‌اپ"></img>
+      </div>
+    </div>
+  </div>
+  </div>
+    );
+  }
+  renderSearchbarXl(){
+    return(
+      <div className="container-fluid hidden-xs visible-xl">
+        {this.renderSearchBarOnlycity()}
+        <div className="dl-app-main">
+          <div className="main-page-download-app-section row-reverse">
+              <a className="download-app-anchor"target="_blank" href='http://new.sibapp.com/applications/tripinn' >
+                <img src={require('./Images/2.svg')} className="download_icon_app" alt = 'دانلود از سیب‌اپ'/>
+              </a>
+              <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='https://play.google.com/store/apps/details?id=com.trypinn&hl=en' >
+                <img src={require('./Images/3.png')} className="download_icon_app2" alt = 'دانلود از گوگل پلی'/>
+              </a>
+              <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
+                <img src={require('./Images/1.svg')} className="download_icon_app" alt = 'دانلود از کافه بازار'/>
+              </a>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  renderLandingXS(){
+    return(
+      <div>
+        <div className="landing-page-mobile visible-xs hidden-xl">
+          <img src={require('./Images/trpinn-logo-white.svg')} className='landing-logo' alt=""></img>
+          <p className='logotype-landing'>تریپین</p>
+          <p className='description-landing'>سامانه رزرو ویلا و اقامت‌گاه بوم‌گردی</p>
+          <button className="landing-btn" onClick={() => scrollToComponent(this.Dis, { offset: 0, align: 'top', duration: 1500})}> دریافت اپلیکیشن </button>
+        </div>
+        <div className="landing-download-area visible-xs hidden-xl">
+          <div className="download-app-modal-icons-container">
+            <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://new.sibapp.com/applications/tripinn' >
+              <img src={require('./Images/sibapp.svg')} className="download_icon_app" alt = 'دانلود از سیب‌اپ'/>
+            </a>
+            <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='https://play.google.com/store/apps/details?id=com.trypinn&hl=en' >
+              <img src={require('./Images/gplay.svg')} className="download_icon_app" alt = 'دانلود از گوگل پلی'/>
+            </a>
+            <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
+              <img src={require('./Images/bazaar.svg')} className="download_icon_app" alt = 'دانلود از کافه بازار'/>
+            </a>
+            <section className='gallery-scroller' ref={(section) => {this.Dis = section;}}></section>
+          </div>
+        </div>
+      </div>
+    );
+  }
+            // {this.renderSearchBarXS()}
+  render(){
+    document.title = "تریپین | سامانه رزرو ویلا";
+    return (
+      <div className="searchbarmain">
+          {this.renderSearchbarXl()}
+          {this.renderLandingXS()}
       </div>
     );
   }

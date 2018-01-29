@@ -20,6 +20,7 @@
     "react-collapse": "^4.0.3",
     "react-collapsible": "^2.0.4",
     "react-datepicker": "^0.61.0",
+    "react-dates": "https://github.com/erfankorki/react-dates/tarball/master",
     "react-dom": "^16.2.0",
     "react-google-maps": "^9.4.5",
     "react-hamburger-button": "0.0.1",

@@ -1,3 +1,72 @@
+.dl-app-main{
+  margin: auto;
+  width: 100%;
+}
+.main-page-download-app-section{
+  padding-top : 100px;
+  width: 560px;
+  margin: auto;
+}
+.download-app-anchor{
+  margin-right:10px;
+}
+.landing-page-mobile{
+  background-color: #12b2ce;
+  width: 100%;
+  height: 700px;
+  text-align: center;
+  padding-top: 90px;
+}
+.landing-logo{
+  height: 110px;
+}
+.logotype-landing{
+  color: white;
+  font-size: 28px;
+  font-weight: 500;
+    font-family: IRANSans;
+    padding-top: 2px;
+}
+
+.description-landing{
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+    font-family: IRANSans;
+    padding-top: 2px;
+    padding-bottom: 110px;
+}
+.description-landing2{
+  color: #13b2ce;
+  font-size: 16px;
+  font-weight: 500;
+    font-family: IRANSans;
+    padding-top: 2px;
+}
+.landing-download-area{
+  height: 700px;
+  width: 100%;
+  text-align: center;
+  padding-top: 120px;
+}
+.landing-btn {
+  -webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: IRANSans;
+  background: #25d1ef;
+  padding: 7px 20px 7px 20px;
+  border: solid #ffffff 2px;
+  text-decoration: none;
+}
+
+.landing-btn:hover {
+  background: #13b2ce;
+  text-decoration: none;
+}
 .pre-bill-main-division{
   font-family: IRANSans !important;
 }
@@ -74,6 +143,11 @@
 }
 .download_icon_app{
   width: 180px;
+}
+.download_icon_app2{
+  width: 180px;
+  height:96%;
+  margin-top:1px;
 }
 .download-modal-pc-preview{
   height: 400px;
