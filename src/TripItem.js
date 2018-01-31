@@ -229,6 +229,45 @@ class TripItem extends React.Component{
         </div>
       );
   }
+  return(
+    <div className='no-trip-container'>
+    <p className="no-request-header">شما سفر تایید شده ای ندارید</p>
+    <p className="no-trip-main-paragraph">تاکنون سفری برای شما به ثبت نرسیده است. شما میتوانید با ارسال درخواست رزرو به هریک از خانه های موجود ، مقدمات سفر خود را فراهم نمایید</p>
+      <div className='no-trip-stages-container'>
+        <div className='no-trip-stage1-text col-md-7'>
+         <p>پس از تایید درخواست سفر شما در بخش <a className='tripinn-blue' href="/dashboard/request">درخواست ها </a>توسط میزبان و پرداخت هزینه سفر توسط شما، سفر شما در این بخش ایجاد میشود </p>
+          </div>
+       <div  className='no-trip-stage1-img col-md-5'>
+
+          <img src={require('./Images/no-trip-pic1.png')} height="200" width="220"/>
+         </div>
+
+        </div>
+
+      <div className='no-trip-stages-container'>
+        <div  className='no-trip-stage2-img col-md-5'>
+          <img src={require('./Images/no-trip-pic2.png')} height="150" width="180"/>
+          </div>
+          <div  className='no-trip-stage2-text col-md-7'>
+          <p>شما میتوانید در بخش <a className='tripinn-blue' href="/dashboard/trip"> سفرها</a> آدرس دقیق مقصد خود وشماره تماس میزبان خودرا مشاهده نمایید</p>
+            </div>
+          </div>
+          <div className='no-trip-stages-container'>
+            <div  className='no-trip-stage3-text col-md-7'>
+            <p>همچنین هنوز هم میتوانید سفر خودرا لغو نمایید. به خاطر داشته باشید با لغو سفر خود، <span className="mizban-color"> هزینه یک شب از اقامت شما کم خواهد شد </span> و مابقی مبلغ به شما عودت خواهد شد</p>
+              </div>
+              <div  className='no-trip-stage3-img col-md-5'>
+                <img src={require('./Images/no-trip-pic3.png')} height="190" width="160"/>
+                </div>
+              </div>
+    </div>
+
+
+  );
+
+
+
+
 }
   render(){
     return(

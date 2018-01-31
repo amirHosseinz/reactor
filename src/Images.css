@@ -3146,7 +3146,7 @@ padding-top: 80px;
 .no-request-container{
   font-family: IRANSans;
   font-size: 16px;
-  text-align: center;;
+  text-align: center;
 }
 
 .no-request-stage1-container{
@@ -3596,4 +3596,68 @@ margin-bottom: 70px;
   margin-left: 567px;
   margin-right: 20px;
 
+}
+
+.no-trip-container{
+  font-family: IRANSans;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.no-trip-main-paragraph{
+  text-align: right;
+  line-height: 1.7;
+  margin-left: 70px;
+  margin-right: 90px;
+  font-weight: 500;
+}
+
+.tripinn-blue{
+  color: #83daeb;
+}
+
+.no-trip-stage1-text{
+margin-top: -50px;
+margin-right: -10px;
+text-align: center;
+}
+
+.no-trip-stages-container{
+  background-color: #f7fbfc;
+  padding-top: 100px;
+  padding-right: 0px;
+  padding-left: 25px;
+  padding-bottom: 25px;
+  margin-right: 70px;
+  margin-left: 70px;
+  margin-top: 50px;
+  height:200px;
+}
+
+.no-trip-stage1-img{
+  margin-top: -100px;
+}
+
+.no-trip-stage2-img{
+  margin-top: -80px;
+  margin-left: 25px;
+}
+
+.no-trip-stage2-text{
+margin-top: -100px;
+margin-right: -30px;
+margin-left: 230px;
+text-align: center;
+}
+
+.no-trip-stage3-text{
+margin-top: -50px;
+margin-right: -36px;
+text-align: center;
+}
+
+.no-trip-stage3-img{
+  margin-top: -95px;
+  margin-left: 65px;
+  margin-right: -30px;
 }
