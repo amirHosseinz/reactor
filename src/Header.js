@@ -119,7 +119,8 @@ class Header extends React.Component{
     localStorage['user-first-name']='';
     localStorage['user-last-name']='';
     localStorage['default-panel']='';
-    window.location.href = '/';
+    // window.location.href = '/';
+    window.location.reload();
   }
 
   handleLoginButton(){
