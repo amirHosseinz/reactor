@@ -3380,6 +3380,7 @@ margin-bottom: 70px;
   border-color: #e5e5e5;
   border-width: 1px;
   margin-bottom:12px;
+  cursor : pointer;
 }
 
 .terms-open-panel-img{
