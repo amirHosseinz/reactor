@@ -3,6 +3,7 @@ import { Divider,Button } from 'semantic-ui-react';
 import {englishToPersianDigits} from './tools/EnglishToPersianDigits';
 import moment from 'moment-jalaali';
 import {Modal} from 'react-bootstrap';
+import {parsePrice3digits} from './tools/ParsePrice3digits.js'
 
 
 // moment.loadPersian({usePersianDigits:true , dialect:'persian-modern'});
@@ -76,7 +77,7 @@ class RequestItem extends React.Component{
             ({englishToPersianDigits(this.state.request.ordinary_duration)} شب - {englishToPersianDigits(this.state.request.number_of_guests)} نفر ) :
           </p>
           <p className="pre-bill-price-night-value">
-           {englishToPersianDigits(this.state.request.ordinary_price)}
+           {englishToPersianDigits(parsePrice3digits(this.state.request.ordinary_price))}
              تومان
           </p>
         </div>
@@ -92,7 +93,7 @@ class RequestItem extends React.Component{
             ({englishToPersianDigits(this.state.request.weekend_duration)} شب - {englishToPersianDigits(this.state.request.number_of_guests)} نفر ) :
           </p>
           <p className="pre-bill-price-night-value">
-             {englishToPersianDigits(this.state.request.weekend_price)}
+             {englishToPersianDigits(parsePrice3digits(this.state.request.weekend_price))}
                تومان
           </p>
         </div>
@@ -107,7 +108,7 @@ class RequestItem extends React.Component{
             ({englishToPersianDigits(this.state.request.special_duration)}شب - {englishToPersianDigits(this.state.request.number_of_guests)} نفر) :
           </p>
           <p className="pre-bill-price-night-value">
-           {englishToPersianDigits(this.state.request.special_price)}
+           {englishToPersianDigits(parsePrice3digits(this.state.request.special_price))}
              تومان
           </p>
         </div>
@@ -139,7 +140,7 @@ class RequestItem extends React.Component{
             (  {englishToPersianDigits(this.state.request.weekend_duration)} شب ) :
           </p>
           <p className="pre-bill-price-night-value">
-           {englishToPersianDigits(this.state.request.weekend_duration)}
+           {englishToPersianDigits(parsePrice3digits(this.state.request.weekend_price))}
              تومان
           </p>
         </div>
@@ -154,7 +155,7 @@ class RequestItem extends React.Component{
           (  {englishToPersianDigits(this.state.request.special_duration)} شب ) :
           </p>
           <p className="pre-bill-price-night-value">
-           {englishToPersianDigits(this.state.request.special_price)}
+           {englishToPersianDigits(parsePrice3digits(this.state.request.special_price))}
              تومان
           </p>
         </div>
@@ -186,7 +187,7 @@ class RequestItem extends React.Component{
       <div className="pre-bill-price-night-content row-reverse" dir="rtl">
       <p className="pre-bill-price-night-sentence"> جمع هزینه ها :
       </p>
-      <p className="pre-bill-price-night-value"> {englishToPersianDigits(this.state.totalPrice)}  تومان
+      <p className="pre-bill-price-night-value"> {englishToPersianDigits(parsePrice3digits(this.state.totalPrice))}  تومان
       </p>
       </div>
     );
@@ -255,8 +256,7 @@ class RequestItem extends React.Component{
                     مبلغ قابل پرداخت :
                   </p>
                   <p className="pre-bill-adding-up-value">
-                    {englishToPersianDigits(this.state.totalPrice)}
-                    تومان
+                    {(englishToPersianDigits(parsePrice3digits(this.state.totalPrice)))} تومان
                   </p>
                   <div className="pre-bill-margin-optimizer-for-button">
                     <button type="button"className="btn pre-bill-payment-button" onClick={this.setTokenForPayment.bind(this)}> پرداخت نهایی
