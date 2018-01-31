@@ -122,7 +122,6 @@ class Header extends React.Component{
     // window.location.href = '/';
     window.location.reload();
   }
-
   handleLoginButton(){
     this.setState({loginPanelVisible:true});
   }
