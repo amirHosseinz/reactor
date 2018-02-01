@@ -1,0 +1,162 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "react-bootstrap-typeahead@^2.0.2",
+        "scope": null,
+        "escapedName": "react-bootstrap-typeahead",
+        "name": "react-bootstrap-typeahead",
+        "rawSpec": "^2.0.2",
+        "spec": ">=2.0.2 <3.0.0",
+        "type": "range"
+      },
+      "D:\\Trypinn\\ReactJS\\reactor"
+    ]
+  ],
+  "_from": "react-bootstrap-typeahead@>=2.0.2 <3.0.0",
+  "_id": "react-bootstrap-typeahead@2.0.2",
+  "_inCache": true,
+  "_location": "/react-bootstrap-typeahead",
+  "_nodeVersion": "6.11.4",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/react-bootstrap-typeahead-2.0.2.tgz_1511982778615_0.026759781409054995"
+  },
+  "_npmUser": {
+    "name": "ericgio",
+    "email": "ericgio@gmail.com"
+  },
+  "_npmVersion": "4.6.1",
+  "_phantomChildren": {
+    "classnames": "2.2.5",
+    "dom-helpers": "3.2.1",
+    "prop-types": "15.6.0",
+    "prop-types-extra": "1.0.1",
+    "react-transition-group": "2.2.1",
+    "warning": "3.0.0"
+  },
+  "_requested": {
+    "raw": "react-bootstrap-typeahead@^2.0.2",
+    "scope": null,
+    "escapedName": "react-bootstrap-typeahead",
+    "name": "react-bootstrap-typeahead",
+    "rawSpec": "^2.0.2",
+    "spec": ">=2.0.2 <3.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-bootstrap-typeahead/-/react-bootstrap-typeahead-2.0.2.tgz",
+  "_shasum": "074f10a7b1c3197da9b123114cdf7d5253dfb7ad",
+  "_shrinkwrap": null,
+  "_spec": "react-bootstrap-typeahead@^2.0.2",
+  "_where": "D:\\Trypinn\\ReactJS\\reactor",
+  "author": {
+    "name": "ericgio"
+  },
+  "bugs": {
+    "url": "https://github.com/ericgio/react-bootstrap-typeahead/issues"
+  },
+  "dependencies": {
+    "classnames": "^2.2.0",
+    "escape-string-regexp": "^1.0.5",
+    "invariant": "^2.2.1",
+    "lodash": "^4.17.2",
+    "prop-types": "^15.5.8",
+    "prop-types-extra": "^1.0.1",
+    "react-input-autosize": "^2.0.1",
+    "react-onclickoutside": "^6.1.1",
+    "react-overlays": "^0.8.1",
+    "warning": "^3.0.0"
+  },
+  "description": "React-based typeahead using the Bootstrap theme",
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-core": "^6.11.4",
+    "babel-eslint": "^8.0.1",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-dev-expression": "^0.2.1",
+    "babel-plugin-transform-imports": "^1.4.1",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.6",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-1": "^6.16.0",
+    "chai": "^4.0.2",
+    "css-loader": "^0.28.4",
+    "es6-promise": "^4.0.5",
+    "eslint": "^4.1.1",
+    "eslint-config-ericgio": "^2.0.0",
+    "eslint-plugin-react": "^7.1.0",
+    "highlight.js": "^9.9.0",
+    "isomorphic-fetch": "^2.2.1",
+    "json-loader": "^0.5.4",
+    "karma": "^1.1.2",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-mocha": "^1.1.1",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^2.0.2",
+    "marked": "^0.3.6",
+    "mocha": "^4.0.0",
+    "node-sass": "^4.5.3",
+    "raw-loader": "^0.5.1",
+    "react": "^16.0.0",
+    "react-bootstrap": "^0.31.0",
+    "react-dom": "^16.0.0",
+    "react-test-renderer": "^16.0.0",
+    "react-waypoint": "^7.0.4",
+    "style-loader": "^0.19.0",
+    "webpack": "^3.0.0"
+  },
+  "directories": {
+    "example": "example"
+  },
+  "dist": {
+    "shasum": "074f10a7b1c3197da9b123114cdf7d5253dfb7ad",
+    "tarball": "https://registry.npmjs.org/react-bootstrap-typeahead/-/react-bootstrap-typeahead-2.0.2.tgz"
+  },
+  "gitHead": "c081e896b2306485cbbc5bbb8dfb43f771814493",
+  "homepage": "https://github.com/ericgio/react-bootstrap-typeahead#readme",
+  "keywords": [
+    "bootstrap",
+    "bootstrap-tokenizer",
+    "bootstrap-typeahead",
+    "react",
+    "react-bootstrap",
+    "react-bootstrap-tokenizer",
+    "react-bootstrap-typeahead",
+    "tokenizer",
+    "typeahead"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "maintainers": [
+    {
+      "name": "ericgio",
+      "email": "ericgio@gmail.com"
+    }
+  ],
+  "name": "react-bootstrap-typeahead",
+  "optionalDependencies": {},
+  "peerDependencies": {
+    "react": "^0.14.0 || ^15.2.0 || ^16.0.0",
+    "react-dom": "^0.14.0 || ^15.2.0 || ^16.0.0"
+  },
+  "readme": "# React Bootstrap Typeahead\nReact-based typeahead component that uses Bootstrap as a base for styles and behaviors and supports both single- and multi-selection. The UI and behaviors are inspired by Twitter's [typeahead.js](https://github.com/twitter/typeahead.js). Try the [live examples](http://ericgio.github.io/react-bootstrap-typeahead/).\n\n[![npm version](https://img.shields.io/npm/v/react-bootstrap-typeahead.svg?style=flat-square)](https://www.npmjs.com/package/react-bootstrap-typeahead)\n[![npm downloads](https://img.shields.io/npm/dm/react-bootstrap-typeahead.svg?style=flat-square)](https://www.npmjs.com/package/react-bootstrap-typeahead)\n[![build status](https://img.shields.io/travis/ericgio/react-bootstrap-typeahead/master.svg?style=flat-square)](https://travis-ci.org/ericgio/react-bootstrap-typeahead)\n[![cdnjs](https://img.shields.io/cdnjs/v/react-bootstrap-typeahead.svg?style=flat-square)](https://cdnjs.com/libraries/react-bootstrap-typeahead)\n\nPlease note that documentation and examples apply to the most recent release and may no longer be applicable if you're using an outdated version.\n\n## Installation\nWith NPM:\n```\nnpm install --save react-bootstrap-typeahead\n```\nWith Yarn:\n```\nyarn add react-bootstrap-typeahead\n```\n\nInclude the module in your project:\n```jsx\nimport {Typeahead} from 'react-bootstrap-typeahead'; // ES2015\nvar Typeahead = require('react-bootstrap-typeahead').Typeahead; // CommonJS\n```\n\nMinified and unminified UMD modules are also included in the NPM package, or you can [get them from CDNJS](https://cdnjs.com/libraries/react-bootstrap-typeahead).\n\n## Documentation\n- [Basic Usage](docs/Usage.md)\n- [Data](docs/Data.md)\n- [Filtering](docs/Filtering.md)\n- [Rendering](docs/Rendering.md)\n- [Public Methods](docs/Methods.md)\n- [Props](docs/Props.md)\n- [API](docs/API.md)\n- [Upgrade Guide](docs/Upgrading.md)\n\n## CSS\nThe component tries to use as little CSS as possible, relying primarily on Bootstrap or any Bootstrap themes for styling. Some minimal CSS comes with the module and should be included wherever you're using the component.\n\n## Examples\nTry the [live examples](http://ericgio.github.io/react-bootstrap-typeahead/), which also include code samples. If you'd like to modify the examples, clone the repository, `npm install` and `npm run example` to build the example file. You can then open the HTML file locally in your browser.\n\n## Browser Support\nRecent versions of the following browsers are supported:\n- Chrome\n- Firefox\n- IE (10/11)\n- Safari\n\nSpecial thanks to [BrowserStack](https://www.browserstack.com) for providing cross-browser testing support.\n\n[![http://i.imgur.com/9aLP6Fx.png?1](http://i.imgur.com/9aLP6Fx.png?1)](https://www.browserstack.com)\n\n## License\n[MIT](https://github.com/ericgio/react-bootstrap-typeahead/blob/master/LICENSE.md)\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericgio/react-bootstrap-typeahead.git"
+  },
+  "scripts": {
+    "build": "./scripts/build.sh",
+    "cleanup": "./scripts/cleanup.sh",
+    "example": "./scripts/buildExample.sh",
+    "lint": "eslint .",
+    "prepublishOnly": "npm run lint && npm test && npm run build",
+    "styles": "./scripts/buildStyles.sh",
+    "test": "karma start karma.conf.js"
+  },
+  "version": "2.0.2"
+}

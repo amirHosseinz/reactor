@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchResultItem from './SearchResultItem';
-import { Typeahead,MenuItem,Menu,menuItemContainer} from 'react-bootstrap-typeahead';
+import { Typeahead,MenuItem,Menu,menuItemContainer} from './tools/react-bootstrap-typeahead';
 import { Button } from 'semantic-ui-react';
 import { findDOMNode } from 'react-dom';
 import $ from 'jquery';

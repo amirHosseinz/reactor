@@ -1613,7 +1613,7 @@ transform: scale(2, 2);
 .profile-card-user-avatar{
   border-radius: 50%;
   object-fit: cover;
-  padding-right: 10px;
+  margin-right: 10px;
   margin-top : 13px;
 }
 .profile-card-user-trips{
@@ -2504,7 +2504,9 @@ text-align:center;
     width:100%;
   margin-top:55px;
   margin-bottom:50px;
-
+}
+.search-bar-menu-item{
+  color: #12b2ce;
 }
 .search-btn-result-xs{
   width: 100%;

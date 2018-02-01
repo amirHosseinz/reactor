@@ -1,7 +1,7 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
 import { Button } from 'semantic-ui-react';
-import { Typeahead ,MenuItem,Menu , menuItemContainer,Highlighter} from 'react-bootstrap-typeahead';
+import { Typeahead ,MenuItem,Menu , menuItemContainer,Highlighter} from './tools/react-bootstrap-typeahead';
 import SearchResultItem from './SearchResultItem';
 import $ from 'jquery';
 import './tools/DatePicker/bootstrap-datepicker.fa.js';
