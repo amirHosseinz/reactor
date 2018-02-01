@@ -1,3 +1,8 @@
+.header-search-bar{
+  font-family: IRANSans;
+  width: 20%;
+  text-align: right !important;
+}
 .dl-app-main{
   margin: auto;
   width: 100%;

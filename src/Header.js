@@ -10,7 +10,46 @@ import {Modal} from 'react-bootstrap';
 import {englishToPersianDigits,persianArabicToEnglishDigits} from './tools/EnglishToPersianDigits';
 import {Image} from 'react-bootstrap';
 // import {Image} from 'semantic-ui-react';
+import { Typeahead ,menuItemContainer,MenuItem,Menu as TypeaheadMenu} from './tools/react-bootstrap-typeahead';
 
+const TypeaheadMenuItem = menuItemContainer(MenuItem);
+const listOfCity = [
+  'اصفهان',
+  'نوشهر',
+  'گیلان',
+  'رامسر',
+  'کیش',
+  'مازندران',
+  'بابلسر',
+  'فریدون‌کنار',
+  'محمودآباد',
+  'عباس‌آباد',
+  'شاندیز',
+  'خراسان رضوی',
+  'بندر انزلی',
+  'کاشان',
+  'باغ‌بهادران',
+  'قلعه‌رودخان',
+  'مشهد',
+  'چمخاله',
+  'فومن',
+  'رضوان‌شهر',
+  'رودسر',
+  'آستارا',
+  'زیباکنار',
+  'سرخ‌رود',
+  'رویان',
+  'نور',
+  'چالوس',
+  'تنکابن',
+  'دریاکنار',
+  'ایزدشهر',
+  'کلاردشت',
+  'کلارآباد',
+  'سلمان‌شهر',
+  'نشتارود',
+  'البرز',
+];
 class Header extends React.Component{
   constructor (props){
     super(props);
@@ -187,7 +226,6 @@ class Header extends React.Component{
     );
   }
   renderUserPhoto(){
-    // console.log(localStorage['user-profile-picture']);
      if(localStorage['user-profile-picture']==='null'||localStorage['user-profile-picture']===undefined){
        return(
          <div style={{float:'left'}}>
@@ -324,7 +362,6 @@ class Header extends React.Component{
     );
   }
   renderGetApplicationButton(){
-    console.log(window.location.pathname);
     if(window.location.pathname!=='/'){
       return (
         <div className="downlaod-app-button-header" >
@@ -341,6 +378,7 @@ class Header extends React.Component{
           <div className="header-menu-desktop col-md-10 col-sm-8">
             {this.renderMainMenu()}
             {this.renderLoginButton()}
+
             <div className="row-reverse">
               <Link className="header-link" to="/suggestions&comments"><p className='logo-menu-font'>ثبت شکایات </p></Link>
               <Link className="header-link" to="/contactus"><p className='logo-menu-font'> تماس با ما </p></Link>
@@ -348,6 +386,7 @@ class Header extends React.Component{
               <Link className="header-link" to="/terms&conditions"><p className='logo-menu-font'>قوانین </p></Link>
               {this.renderGetApplicationButton()}
             </div>
+            {this.renderSearchBarXL()}
           </div>
           {this.renderLoginPanel()}
           <div className="logo col-md-2 col-sm-4">
@@ -412,6 +451,34 @@ class Header extends React.Component{
         </div>
       </div>
     );
+  }
+  renderSearchBarXL(){
+    console.log(window.location.pathname);
+    if(window.location.href.indexOf('search')===-1 && window.location.pathname!=='/'){
+      return(
+        <div className='header-search-bar'>
+          <Typeahead options={listOfCity}
+          minLength={2}
+          align="right"
+          emptyLabel="نتیجه‌ای یافت نشد"
+          maxResults={5}
+          placeholder='هر جا'
+          renderMenu={(results,menuProps) => {
+              return(
+                <TypeaheadMenu {...menuProps}>
+                  {results.map((result, index) => (
+                    <TypeaheadMenuItem option={result} position={index}>
+                      {result}
+                    </TypeaheadMenuItem>
+                  ))}
+                </TypeaheadMenu>
+              );
+            }}
+          />
+        </div>
+      );
+
+    }
   }
   // {this.renderHeaderXs()}
   render()
