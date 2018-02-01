@@ -16,7 +16,7 @@ class TripItem extends React.Component{
   }
   componentWillReceiveProps(nextProps){
     this.setState({
-      trip:nextProps.reserveDetail,tripStatus:nextProps.reserveDetail.status
+      trip:nextProps.reserveDetail,tripStatus:nextProps.reserveDetail.status,
     });
   }
   getTripStatus(){
@@ -190,84 +190,81 @@ class TripItem extends React.Component{
   }
   renderTripDetail(){
     if (this.state.trip!=null && this.state.tripStatus!=null){
-      return (
-        <div>
-          <div className="request-header">
-          <div className='request-status'>
-            <p className="reserve-status-h1"> وضعیت سفر   </p>
-            <p className="reserve-status-h2"> {this.getTripStatus()} </p>
-            <p className="reserve-status-descriptions">{this.getTripStatusDescription()}</p>
+      if(this.state.tripStatus!=='no-house')
+      {
+        return (
+          <div>
+            <div className="request-header">
+            <div className='request-status'>
+              <p className="reserve-status-h1"> وضعیت سفر   </p>
+              <p className="reserve-status-h2"> {this.getTripStatus()} </p>
+              <p className="reserve-status-descriptions">{this.getTripStatusDescription()}</p>
 
-          </div>
-          <div className="request-detail-userpanel">
-            <Divider/>
-            <div className='house-preview-linked-to-house-detail' dir="rtl">
-              <p> نام اقامتگاه :<a style={{color:'#12b2ce'}} href={"/rooms/"+this.state.trip.room.id} target="_blank">{this.state.trip.room.title}</a>  </p>
-              <p>شهر مقصد: {this.state.trip.room.city}  </p>
-              <p> به میزبانی  {this.state.trip.room.owner.first_name} {this.state.trip.room.owner.last_name}</p>
-              <p> رزرو کننده: {this.state.trip.guest_person.last_name} </p>
-              <p>تعداد میهمان: {englishToPersianDigits(this.state.trip.number_of_guests)} </p>
-
-
-              <p> آدرس اقامت‌گاه: {this.state.trip.room.address} </p>
-
-              <p>تاریخ ورود: {moment(this.state.trip.start_date).format('jYYYY/jM/jD')}</p>
-              <p>تاریخ خروج:{moment(this.state.trip.end_date).format('jYYYY/jM/jD')} </p>
             </div>
-            <div className='request-details'>
-            </div>
-            <Divider/>
-            <div className='final-details'>
-              <p> هزینه پرداخت شده: {englishToPersianDigits(this.state.trip.total_price)} </p>
-            </div>
-          </div>
+            <div className="request-detail-userpanel">
+              <Divider/>
+              <div className='house-preview-linked-to-house-detail' dir="rtl">
+                <p> نام اقامتگاه :<a style={{color:'#12b2ce'}} href={"/rooms/"+this.state.trip.room.id} target="_blank">{this.state.trip.room.title}</a>  </p>
+                <p>شهر مقصد: {this.state.trip.room.city}  </p>
+                <p> به میزبانی  {this.state.trip.room.owner.first_name} {this.state.trip.room.owner.last_name}</p>
+                <p> رزرو کننده: {this.state.trip.guest_person.last_name} </p>
+                <p>تعداد میهمان: {englishToPersianDigits(this.state.trip.number_of_guests)} </p>
 
-          <div className='relevant-button'>
-            {this.getRelevantButton()}
-          </div>
-          </div>
-        </div>
-      );
-  }
-  return(
-    <div className='no-trip-container'>
-    <p className="no-request-header">شما سفر تایید شده ای ندارید</p>
-    <p className="no-trip-main-paragraph">تاکنون سفری برای شما به ثبت نرسیده است. شما میتوانید با ارسال درخواست رزرو به هریک از خانه های موجود ، مقدمات سفر خود را فراهم نمایید</p>
-      <div className='no-trip-stages-container'>
-        <div className='no-trip-stage1-text col-md-7'>
-         <p>پس از تایید درخواست سفر شما در بخش <a className='tripinn-blue' href="/dashboard/request">درخواست ها </a>توسط میزبان و پرداخت هزینه سفر توسط شما، سفر شما در این بخش ایجاد میشود </p>
-          </div>
-       <div  className='no-trip-stage1-img col-md-5'>
 
-          <img src={require('./Images/no-trip-pic1.png')} height="200" width="220"/>
-         </div>
+                <p> آدرس اقامت‌گاه: {this.state.trip.room.address} </p>
 
-        </div>
-
-      <div className='no-trip-stages-container'>
-        <div  className='no-trip-stage2-img col-md-5'>
-          <img src={require('./Images/no-trip-pic2.png')} height="150" width="180"/>
-          </div>
-          <div  className='no-trip-stage2-text col-md-7'>
-          <p>شما میتوانید در بخش <a className='tripinn-blue' href="/dashboard/trip"> سفرها</a> آدرس دقیق مقصد خود وشماره تماس میزبان خودرا مشاهده نمایید</p>
-            </div>
-          </div>
-          <div className='no-trip-stages-container'>
-            <div  className='no-trip-stage3-text col-md-7'>
-            <p>همچنین هنوز هم میتوانید سفر خودرا لغو نمایید. به خاطر داشته باشید با لغو سفر خود، <span className="mizban-color"> هزینه یک شب از اقامت شما کم خواهد شد </span> و مابقی مبلغ به شما عودت خواهد شد</p>
+                <p>تاریخ ورود: {moment(this.state.trip.start_date).format('jYYYY/jM/jD')}</p>
+                <p>تاریخ خروج:{moment(this.state.trip.end_date).format('jYYYY/jM/jD')} </p>
               </div>
-              <div  className='no-trip-stage3-img col-md-5'>
-                <img src={require('./Images/no-trip-pic3.png')} height="190" width="160"/>
+              <div className='request-details'>
+              </div>
+              <Divider/>
+              <div className='final-details'>
+                <p> هزینه پرداخت شده: {englishToPersianDigits(this.state.trip.total_price)} </p>
+              </div>
+            </div>
+
+            <div className='relevant-button'>
+              {this.getRelevantButton()}
+            </div>
+            </div>
+          </div>
+        );
+      }
+      else{
+        return(
+          <div className='no-trip-container'>
+          <p className="no-request-header">شما سفر تایید شده ای ندارید</p>
+          <p className="no-trip-main-paragraph">تاکنون سفری برای شما به ثبت نرسیده است. شما میتوانید با ارسال درخواست رزرو به هریک از خانه های موجود ، مقدمات سفر خود را فراهم نمایید</p>
+            <div className='no-trip-stages-container'>
+              <div className='no-trip-stage1-text col-md-7'>
+               <p>پس از تایید درخواست سفر شما در بخش <a className='tripinn-blue' href="/dashboard/request">درخواست ها </a>توسط میزبان و پرداخت هزینه سفر توسط شما، سفر شما در این بخش ایجاد میشود </p>
                 </div>
+             <div  className='no-trip-stage1-img col-md-5'>
+
+                <img src={require('./Images/no-trip-pic1.png')} height="200" width="220"/>
+               </div>
               </div>
-    </div>
-
-
-  );
-
-
-
-
+            <div className='no-trip-stages-container'>
+              <div  className='no-trip-stage2-img col-md-5'>
+                <img src={require('./Images/no-trip-pic2.png')} height="150" width="180"/>
+                </div>
+                <div  className='no-trip-stage2-text col-md-7'>
+                <p>شما میتوانید در بخش <a className='tripinn-blue' href="/dashboard/trip"> سفرها</a> آدرس دقیق مقصد خود وشماره تماس میزبان خودرا مشاهده نمایید</p>
+                  </div>
+                </div>
+                <div className='no-trip-stages-container'>
+                  <div  className='no-trip-stage3-text col-md-7'>
+                  <p>همچنین هنوز هم میتوانید سفر خودرا لغو نمایید. به خاطر داشته باشید با لغو سفر خود، <span className="mizban-color"> هزینه یک شب از اقامت شما کم خواهد شد </span> و مابقی مبلغ به شما عودت خواهد شد</p>
+                    </div>
+            <div  className='no-trip-stage3-img col-md-5'>
+              <img src={require('./Images/no-trip-pic3.png')} height="190" width="160"/>
+              </div>
+            </div>
+          </div>
+        );
+      }
+  }
 }
   render(){
     return(

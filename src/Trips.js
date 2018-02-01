@@ -43,6 +43,9 @@ class Trips extends React.Component{
      if(trips.reserve_list.length>0){
        this.showTripItemClick(trips.reserve_list[0]);
      }
+     else{
+       this.showTripItemClick({status:'no-house'});
+     }
    });
   }
   renderData(trips){
