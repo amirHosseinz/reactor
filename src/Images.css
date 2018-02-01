@@ -454,11 +454,11 @@ margin: 30px
 .about-us-container{
   font-family: IRANSans;
   font-size: 16px;
-  height: 1040px;
+  height: 1200px;
   width: 76%;
   margin: auto;
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 90px;
   background-color: white;
   padding-top: 30px;
   padding-bottom: 100px;
@@ -469,21 +469,30 @@ margin: 30px
   border-radius: 7px;
 
 }
-
 .about-us-tripinn{
-  color:#83daeb;
+  color:#12b2ce;
 }
-
 .about-us-logo{
   text-align: center;
   margin-bottom:-20px;
   margin-top: 40px;
 }
-
+.anchor-about-us{
+  color:#12b2ce;
+  font-weight: 500;
+}
+.anchor-about-us:hover{
+  color:#0b92aa;
+  font-weight: 500;
+}
 .about-us-main-paragraph{
   margin-bottom:45px;
 }
-
+.dabout-us-descriptions{
+  line-height: 35px;
+  text-align: right;
+  direction: rtl;
+}
 .about-us-app-paragraph{
   display: -webkit-flex; /* Safari */
   -webkit-flex-direction: row; /* Safari 6.1+ */
@@ -500,7 +509,8 @@ margin: 30px
     margin-right: 10px;
     margin-left: 50px;
     padding-top:80px;
-
+    line-height: 32px;
+    direction: rtl;
 }
 
 .about-us-tripinn-objective{
@@ -518,9 +528,9 @@ margin: 30px
 .about-us-tripinn-objective-text{
   margin-right: 50px;
   margin-left: 5px;
-  padding-top:170px;
-
-
+  padding-top:190px;
+  direction: rtl;
+  line-height: 32px;
 }
 
 .contactus-container{
