@@ -412,22 +412,22 @@ class SearchBar extends React.Component {
     return(
       <div className="container-fluid hidden-xs visible-xl">
         {this.renderSearchBarOnlycity()}
-        <div className="dl-app-main">
-          <div className="main-page-download-app-section row-reverse">
-              <a className="download-app-anchor"target="_blank" href='http://new.sibapp.com/applications/tripinn' >
-                <img src={require('./Images/2.svg')} className="download_icon_app" alt = 'دانلود از سیب‌اپ'/>
-              </a>
-              <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='https://play.google.com/store/apps/details?id=com.trypinn&hl=en' >
-                <img src={require('./Images/3.png')} className="download_icon_app2" alt = 'دانلود از گوگل پلی'/>
-              </a>
-              <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
-                <img src={require('./Images/1.svg')} className="download_icon_app" alt = 'دانلود از کافه بازار'/>
-              </a>
-          </div>
-        </div>
       </div>
     );
   }
+  // <div className="dl-app-main">
+  //   <div className="main-page-download-app-section row-reverse">
+  //       <a className="download-app-anchor"target="_blank" href='http://new.sibapp.com/applications/tripinn' >
+  //         <img src={require('./Images/2.svg')} className="download_icon_app" alt = 'دانلود از سیب‌اپ'/>
+  //       </a>
+  //       <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='https://play.google.com/store/apps/details?id=com.trypinn&hl=en' >
+  //         <img src={require('./Images/3.png')} className="download_icon_app2" alt = 'دانلود از گوگل پلی'/>
+  //       </a>
+  //       <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
+  //         <img src={require('./Images/1.svg')} className="download_icon_app" alt = 'دانلود از کافه بازار'/>
+  //       </a>
+  //   </div>
+  // </div>
   renderLandingXS(){
     return(
       <div>
