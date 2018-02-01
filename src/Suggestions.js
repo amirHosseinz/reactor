@@ -98,7 +98,7 @@ getRelevantToken(){
                   <div className="suggestions-label-text-area">
                     نام:
                   </div>
-                <input type="text" className='suggestions form-control' value={this.state.name} onChange={(event)=>{this.Suggestionsname(event)}} />
+                <input type="text" className='suggestions input-tripinn1' value={this.state.name} onChange={(event)=>{this.Suggestionsname(event)}} />
                 </label>
               </span>
             </div>
@@ -108,7 +108,7 @@ getRelevantToken(){
                     <div className="suggestions-label-text-area">
                       ایمیل:
                     </div>
-                  <input type="text" className='suggestions form-control' value={this.state.email} onChange={(event)=>{this.SuggestionsEmail(event)}}/>
+                  <input type="text" className='suggestions input-tripinn1' value={this.state.email} onChange={(event)=>{this.SuggestionsEmail(event)}}/>
                   </label>
                 </span>
               </div>
@@ -118,16 +118,16 @@ getRelevantToken(){
                     <div className="suggestions-label-text-area">
                       موضوع:
                     </div>
-                  <input type="text" className='suggestions form-control' value={this.state.subject} onChange={(event)=>{this.SuggestionsSubject(event)}}/>
+                  <input type="text" className='suggestions input-tripinn1' value={this.state.subject} onChange={(event)=>{this.SuggestionsSubject(event)}}/>
                   </label>
                 </span>
               </div>
-              <div class="form-group" className="suggestions-description-container">
+              <div className="suggestions-description-container">
                 <label className="suggstions-description-textarea" for="comment">توضیحات:</label>
-                  <textarea style={{minHeight:"150px",minWidth:"80%" ,maxHeight:"150px" ,maxWidth:"80%"}} wrap="hard" className="suggestions form-control" rows="5"  value={this.state.description} onChange={(event)=>{this.SuggestionsDescription(event)}} />
+                  <textarea style={{minHeight:"150px",minWidth:"80%" ,maxHeight:"150px" ,maxWidth:"80%"}} wrap="hard" className="suggestions formctrl" rows="5"  value={this.state.description} onChange={(event)=>{this.SuggestionsDescription(event)}} />
               </div>
               <div className='suggestions-save-button-container'>
-              <Button onClick={()=>{this.SetSuggestionParams()}} className="suggestions-save-button" color="orange" >ارسال درخواست </Button>
+              <Button onClick={()=>{this.SetSuggestionParams()}} className="suggestions-save-button" color="orange" > ارسال پیام  </Button>
               </div>
           </div>
         </div>
