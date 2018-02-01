@@ -119,9 +119,9 @@ class Header extends React.Component{
     localStorage['user-first-name']='';
     localStorage['user-last-name']='';
     localStorage['default-panel']='';
-    window.location.href = '/';
+    // window.location.href = '/';
+    window.location.reload();
   }
-
   handleLoginButton(){
     this.setState({loginPanelVisible:true});
   }
@@ -323,6 +323,16 @@ class Header extends React.Component{
             </Modal>
     );
   }
+  renderGetApplicationButton(){
+    console.log(window.location.pathname);
+    if(window.location.pathname!=='/'){
+      return (
+        <div className="downlaod-app-button-header" >
+          <p className="clickable-p download-item-menu" onClick={()=>{this.setState({showDownloadAppModal:true})}}> دریافت اپلیکیشن</p>
+        </div>
+      );
+    }
+  }
   // <Link className="header-link" to="/becomehost"><p className='logo-menu-font'>میزبان شوید </p></Link>
   renderHeaderXl(){
     return(
@@ -335,11 +345,8 @@ class Header extends React.Component{
               <Link className="header-link" to="/suggestions&comments"><p className='logo-menu-font'>ثبت شکایات </p></Link>
               <Link className="header-link" to="/contactus"><p className='logo-menu-font'> تماس با ما </p></Link>
               <Link className="header-link" to="/aboutus"><p className='logo-menu-font'>درباره ما </p></Link>
-
               <Link className="header-link" to="/terms&conditions"><p className='logo-menu-font'>قوانین </p></Link>
-              <div className="downlaod-app-button-header" >
-                <p className="clickable-p download-item-menu" onClick={()=>{this.setState({showDownloadAppModal:true})}}> دریافت اپلیکیشن</p>
-              </div>
+              {this.renderGetApplicationButton()}
             </div>
           </div>
           {this.renderLoginPanel()}

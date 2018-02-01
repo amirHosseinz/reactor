@@ -414,7 +414,7 @@ class SearchBar extends React.Component {
         {this.renderSearchBarOnlycity()}
         <div className="dl-app-main">
           <div className="main-page-download-app-section row-reverse">
-              <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://new.sibapp.com/applications/tripinn' >
+              <a className="download-app-anchor"target="_blank" href='http://new.sibapp.com/applications/tripinn' >
                 <img src={require('./Images/2.svg')} className="download_icon_app" alt = 'دانلود از سیب‌اپ'/>
               </a>
               <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='https://play.google.com/store/apps/details?id=com.trypinn&hl=en' >
