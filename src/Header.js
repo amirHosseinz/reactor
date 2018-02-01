@@ -252,21 +252,22 @@ class Header extends React.Component{
             <Dropdown className="header-drop-down-texts" icon='dropdown' dir="rtl" floating={true} text={ ' سلام ' + ' ' +  localStorage['user-first-name'] } >
              <Dropdown.Menu>
                 <div className="drp-down-menu-cont">
-                  <div className="row-reverse">
+                  <div className="profile-card-up row-reverse">
                     {this.renderUserPhoto()}
                     <div>
                     <p className="profile-card-user-name" onClick={this.handleUserProfileClick.bind(this)}>{localStorage['user-first-name'] + ' ' + localStorage['user-last-name']}</p>
                     <p className="profile-card-user-profile" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
                     </div>
                   </div>
-                  <Dropdown.Divider/>
+                  <div className="profile-card-divider"></div>
                   <div>
-                    {this.renderRequestButton()}
-                    {this.renderTripButton()}
+                    <div>
+                      {this.renderRequestButton()}
+                      {this.renderTripButton()}
+                    </div>
+
+                    <p className="profile-card-exit-button" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
                   </div>
-                  <hr className="profile-card-divider" />
-                  <p className="profile-card-exit-button" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
-                  <p className="profile-card-exit-button-helper-empty-division"></p>
                 </div>
              </Dropdown.Menu>
             </Dropdown>
@@ -375,7 +376,7 @@ class Header extends React.Component{
     return(
       <div className='header container hidden-xs visible-xl'>
        <div className='hearder-child-margined'>
-          <div className="header-menu-desktop col-md-10 col-sm-8">
+          <div className="header-menu-desktop col-md-6 col-sm-6">
             {this.renderMainMenu()}
             {this.renderLoginButton()}
 
@@ -386,16 +387,18 @@ class Header extends React.Component{
               <Link className="header-link" to="/terms&conditions"><p className='logo-menu-font'>قوانین </p></Link>
               {this.renderGetApplicationButton()}
             </div>
-            {this.renderSearchBarXL()}
           </div>
           {this.renderLoginPanel()}
-          <div className="logo col-md-2 col-sm-4">
+          <div className="logo col-md-6 col-sm-6">
               <div className='headerchild'>
                 <div className='logodiv'>
                    <Link to="/"><img src={require('./Images/tripinn_logo.svg')} className="LogoImage" alt = 'تریپین'></img></Link>
                 </div>
                 <div>
                   <Link className='logolink' to="/"><p className='logofont'>تریپین</p></Link>
+                </div>
+                <div className="header-searchbar">
+                  {this.renderSearchBarXL()}
                 </div>
               </div>
           </div>

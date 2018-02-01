@@ -158,39 +158,39 @@ class UserProfile extends React.Component{
                 <div className="edit-profile-xl-inputs" dir="rtl">
                 <div className="edit-prof-row1 row">
                     <div className="col-md-4">
-                      <p className="profile-labels">نام:</p>
-                      <input id='first-name' onChange={this.editFirstName.bind(this)} className="first-name edit-profle-inp form-control"  value={this.state.firstName}/>
+                      <label className="profile-description-textarea" for="comment"> نام:</label>
+                      <input id='first-name' onChange={this.editFirstName.bind(this)} className="first-name edit-profle-inp form-control-tripinn"  value={this.state.firstName}/>
                     </div>
                   <div className="col-md-4">
-                    <p className="profile-labels">نام خانوادگی:</p>
-                    <input id='last-name'onChange={this.editLastName.bind(this)} className="last-name edit-profle-inp form-control"  value={this.state.lastName}/>
+                    <label className="profile-description-textarea" for="comment">  نام خانوادگی:</label>
+                    <input id='last-name'onChange={this.editLastName.bind(this)} className="last-name edit-profle-inp form-control-tripinn"  value={this.state.lastName}/>
                   </div>
                   <div className="col-md-4">
-                    <p className="profile-labels">کد ملی:</p>
-                    <input id='national-id' onChange={this.editNationalId.bind(this)} className="national-id edit-profle-inp form-control" value={this.state.nationalId}/>
+                    <label className="profile-description-textarea" for="comment"> کد ملی:</label>
+                    <input id='national-id' onChange={this.editNationalId.bind(this)} className="national-id edit-profle-inp form-control-tripinn" value={this.state.nationalId}/>
                   </div>
                 </div>
                 <div className="edit-prof-row1 row">
 
                   <div className="col-md-4">
-                    <p className="profile-labels">شماره همراه: </p>
-                    <input id='cell-phone' onChange={this.editCellPhone.bind(this)} className="cell-phone edit-profle-inp form-control" value={this.state.cellPhone}/>
+                    <label className="profile-description-textarea" for="comment">  شماره همراه:</label>
+                    <input id='cell-phone' onChange={this.editCellPhone.bind(this)} className="cell-phone edit-profle-inp form-control-tripinn" value={this.state.cellPhone}/>
                   </div>
                   <div className="col-md-4">
-                    <p className="profile-labels">ایمیل:</p>
-                    <input id='email' onChange={this.editEmail.bind(this)} className="email edit-profle-inp form-control"  value={this.state.email}/>
+                    <label className="profile-description-textarea" for="comment">ایمیل:</label>
+                    <input id='email' onChange={this.editEmail.bind(this)} className="email edit-profle-inp form-control-tripinn"  value={this.state.email}/>
                   </div>
                   <div className="col-md-4">
                   </div>
                 </div>
                 <div className="edit-prof-row1 row">
                   <div className="col-md-4">
-                    <p className="profile-labels">رمز عبور:</p>
-                    <input id='password'onChange={this.editPassword.bind(this)} className="password edit-profle-inp form-control" type="password"/>
+                    <label className="profile-description-textarea" for="comment">رمز عبور:</label>
+                    <input id='password'onChange={this.editPassword.bind(this)} className="password edit-profle-inp form-control-tripinn" type="password"/>
                   </div>
                   <div className="col-md-4">
-                    <p className="profile-labels">تکرار رمز عبور:</p>
-                    <input id='confirm-password' onChange={this.editConfirmPassword.bind(this)} className="profile-labels edit-profle-inp form-control" type="password" value={this.state.confirmPassword}/>
+                    <label className="profile-description-textarea" for="comment">تکرار رمز عبور:</label>
+                    <input id='confirm-password' onChange={this.editConfirmPassword.bind(this)} className=" edit-profle-inp form-control-tripinn" type="password" value={this.state.confirmPassword}/>
                   </div>
                   <div className="col-md-4">
                   </div>

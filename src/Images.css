@@ -1,7 +1,9 @@
 .header-search-bar{
   font-family: IRANSans;
-  width: 20%;
   text-align: right !important;
+  width: 240px;
+  margin-top: 15px;
+  margin-right: 20px;
 }
 .dl-app-main{
   margin: auto;
@@ -817,6 +819,12 @@ margin-left: 14px;
   padding-top: 9px;
   color: #12b2ce;
 }
+.logo{
+}
+.header-searchbar{
+  width:100%;
+  direction: rtl;
+}
 .logofont-mobile{
   font-family: IRANSans;
   font-size: 1.6em;
@@ -1598,8 +1606,9 @@ transform: scale(2, 2);
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 23px;
-  color : #12b2ce;
+  color : #358d9e;
 }
+
 .profile-card-user-profile{
   cursor :pointer;
   text-align : right;
@@ -1620,39 +1629,46 @@ transform: scale(2, 2);
   object-fit: cover;
   margin-right: 10px;
   margin-top : 13px;
+  border: solid;
+  border-color: #aaaaaa;
+  border-width: 2px;
 }
 .profile-card-user-trips{
+  font-size: 14px;
   cursor:pointer;
   text-align: right;
   margin-right: 17px;
-  margin-top : -8px;
+  margin-top : -10px;
 }
 .profile-card-user-trips:hover{
- color : #12b2ce;
+ color : #3d90a1;
 }
 
 
 .profile-card-user-requests{
+  font-size: 14px;
   text-align: right;
   cursor:pointer;
   margin-right: 17px;
-  margin-top : -8px;
+  padding-top: 10px;
 }
 .profile-card-user-requests:hover{
-  color : #12b2ce;
+  color : #3d90a1;
 }
 .profile-card-exit-button{
   text-align: right;
+  font-size: 14px;
+  padding-top: 6px;
+
   margin-right: 17px;
   padding-buttom: 1000px!important;
   cursor:pointer;
+  padding-bottom: 14px;
 }
 .profile-card-exit-button:hover{
-  color : #12b2ce;
+  color : #3d90a1;
 }
-.profile-card-exit-button-helper-empty-division{
-  margin-top : 10px;
-}
+
 .xl-menu-item{
 
 }
@@ -2380,7 +2396,7 @@ text-align:center;
 
 }
 .profile-labels{
-  font-size: 10px;
+  font-size: 12px;
   font-family: IRANSans;
   margin-top:-5px;
   color:#4e4e4e;
@@ -2472,14 +2488,21 @@ text-align:center;
   color:#5b5b5b;
   cursor:pointer;
 }
+.profile-card-up{
+  background-color: white;
+  padding-bottom: 12px;
+}
 .input-number-results{
   width: 100%;
   height: 100%;
   background-color: #f5f5f5;
   font-family: IRANSans !important;
-
 }
-
+.profile-card-divider{
+  height: 2px;
+  background-color: #d8d8d8;
+  width: 100%;
+}
 
 .header-drop-down-texts{
   margin-right: 5px;
@@ -2489,12 +2512,14 @@ text-align:center;
 
 }
 .drp-down-menu-cont{
-  width: 220px;
+  background-color: #fcfcfc;
+  border-radius: 10px 10px 10px 10px !important;
 }
 .rules-half{
   padding: 4px !important;
 
 }
+
 .public-rules-div{
   padding: 0 10px 10px 0;
   display: -webkit-flex; /* Safari */
@@ -2561,6 +2586,14 @@ padding-top: 80px;
 .edit-profle-inp{
   font-family: IRANSans !important;
 
+}
+.terms-descriptions{
+  line-height: 30px;
+}
+.profile-description-textarea{
+  font-family: IRANSans;
+  color:#454545;
+  font-size: 12px;
 }
 .guestnumber-option{
   font-family: IRANSans !important;
@@ -3358,13 +3391,13 @@ padding-top: 80px;
 
 .terms-services-main1{
 margin-top: 20px;
-line-height: 1.7;
+line-height: 32px;;
 
 }
 
 .terms-services-main2{
 margin-top: 20px;
-line-height: 1.7;
+line-height: 32px;;
 margin-bottom: 70px;
 }
 
@@ -3391,7 +3424,6 @@ margin-bottom: 70px;
   font-family: IRANSans;
   margin-left: 500px;
   margin-right: 20px;
-
 }
 
 .terms-panel-box{
@@ -3399,12 +3431,14 @@ margin-bottom: 70px;
   border: solid;
   border-color: #e5e5e5;
   border-width: 1px;
-  margin-bottom:12px;
+  margin-bottom:6px;
   cursor : pointer;
+  padding: 5px 0px 5px 0px;
 }
 
 .terms-open-panel-img{
   transform: rotate(180deg);
+  float: left;
 }
 
 .terms-panel1-container{
@@ -3421,6 +3455,7 @@ margin-bottom: 70px;
 .terms-open-panel2-text{
   color:#2ec6cc;
   text-align: right;
+
   font-size:16px;
   font-weight:500;
   font-family: IRANSans;
@@ -3557,7 +3592,9 @@ margin-bottom: 70px;
   margin-right: 20px;
 
 }
-
+.terms-close-panel-img{
+  float: left;
+}
 .terms-open-panel9-text{
   color:#2ec6cc;
   text-align: right;
@@ -3584,7 +3621,6 @@ margin-bottom: 70px;
   font-size:16px;
   font-weight:500;
   font-family: IRANSans;
-  margin-left: 563px;
   margin-right: 20px;
 }
 
@@ -3733,5 +3769,4 @@ text-align: center;
     border-color: #7ad6e8;
     background-color: #f2f7f9;
     padding: 8px 10px;
-
 }
