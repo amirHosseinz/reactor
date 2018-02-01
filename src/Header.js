@@ -456,7 +456,6 @@ class Header extends React.Component{
     );
   }
   renderSearchBarXL(){
-    console.log(window.location.pathname);
     if(window.location.href.indexOf('search')===-1 && window.location.pathname!=='/'){
       return(
         <div className='header-search-bar'>
