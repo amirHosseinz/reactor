@@ -8,8 +8,6 @@ import FooterSm from './Footer/FooterSm.js';
 
 class Footer extends React.Component{
 
-
-
   renderFooterXl(){
     return(
       <div className="hidden-xs hidden-md hidden-sm visible-xl">
