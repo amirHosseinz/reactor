@@ -1,136 +1,48 @@
 import React from 'react';
-import { Divider,Button } from 'semantic-ui-react';
-import {Link} from 'react-router-dom';
-import {englishToPersianDigits} from './tools/EnglishToPersianDigits.js';
+import SuggestionsXl from './Suggestions/SuggestionsXl';
+import SuggestionsXs from './Suggestions/SuggestionsXs';
+import SuggestionsMd from './Suggestions/SuggestionsMd';
+import SuggestionsSm from './Suggestions/SuggestionsSm';
 
 class Suggestions extends React.Component{
-  constructor(props) {
-  super(props);
-  this.state = {
-        sugguestionParams:{
-          name:'',
-          subject:'',
-          email:'',
-          description:'',
-        },
-        token:null,
-        name:'',
-        subject:'',
-        email:'',
-        description:'',
-      };
-}
-
-componentWillMount() {
-    this.setState({token:this.getRelevantToken()});
-}
-
-getRelevantToken(){
-  return localStorage['token'];
-}
-
-  sendSuggestion(){
-    var request = new Request('https://www.trypinn.com/api/suggestion-submit/',{ //
-      method: 'POST',
-      body: JSON.stringify(
-        {
-          name:this.state.sugguestionParams.name,
-          email:this.state.sugguestionParams.email,
-          description:this.state.sugguestionParams.description,
-          subject:this.state.sugguestionParams.subject,
-        }
-      ),
-      headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',})
-    });
-   fetch(request)
-   .then((response) => {
-     return response.json();
-   })
-   .then((response) => {
-    console.log(response);
-   });
+  renderSuggestionsXs(){
+    return(
+      <div className="hidden-xl hidden-md hidden-sm visible-xs">
+        <SuggestionsXs />
+      </div>
+    );
   }
 
-  SetSuggestionParams(){
-    var suggParams={
-      name: this.state.name,
-      email: this.state.email,
-      subject : this.state.subject,
-      description:this.state.description,
-    }
-    this.setState({sugguestionParams:suggParams},()=>{this.sendSuggestion();});
+  renderSuggestionsSm(){
+    return(
+      <div className="hidden-xs hidden-md hidden-xl visible-sm">
+        <SuggestionsSm />
+      </div>
+    );
   }
 
-  SuggestionsDescription(event){
-    this.setState({description:event.target.value});
+  renderSuggestionsMd(){
+      return(
+        <div className="hidden-xs hidden-xl hidden-sm visible-md">
+          <SuggestionsMd />
+        </div>
+      );
   }
 
-  SuggestionsSubject(event){
-    this.setState({subject:event.target.value});
+  renderSuggestionsXl(){
+    return(
+      <div className="hidden-xs hidden-md hidden-sm visible-xl">
+        <SuggestionsXl />
+      </div>
+    );
   }
-
-  SuggestionsEmail(event){
-    this.setState({email:event.target.value});
-  }
-
-  Suggestionsname(event){
-    this.setState({name:event.target.value});
-  }
-
-
-
   render(){
     return(
       <div>
-        <div className='suggestions-cadre'>
-          <div className='suggestions-text-area'>
-           <p className='suggestions-header'><span>ثبت </span><span  className="shekayat-color">شکایات</span></p>
-           <p className='suggestions-paragraphs'>ما همواره آماده ایم تا انتقادات، پیشنهادات و شکایات شما را دریافت نماییم و در کمترین زمان آن را پیگیری کنیم<br/>شما میتوانید از راه های ارتباطی زیر با ما در ارتباط باشید یا به صورت مستقیم شکایت ، پیشنهادات و انتقاد های خود را در همین صفحه ثبت کنید</p>
-           <p className='suggestions-paragraphs'>روابط عمومی تریپین :
-            <span>{englishToPersianDigits('02188573037')} </span></p>
-           <p className='suggestions-paragraphs'><span> support@tripinn.ir </span><span>:ایمیل </span></p>
-           <p className='suggestions-paragraphs'>ما در تریپین تمام تلاش خود را بکار خواهیم بست تا به بهترین شکل پیگیر درخواست های شما کاربران گرامی باشیم </p>
-          </div>
-          <div className='suggestions-form'>
-            <div className="suggstions-input-item">
-              <span>
-                <label className='suggestions-labels'>
-                  <div className="suggestions-label-text-area">
-                    نام:
-                  </div>
-                <input type="text" className='suggestions input-tripinn1' value={this.state.name} onChange={(event)=>{this.Suggestionsname(event)}} />
-                </label>
-              </span>
-            </div>
-              <div className="suggstions-input-item">
-                <span>
-                  <label className='suggestions-labels'>
-                    <div className="suggestions-label-text-area">
-                      ایمیل:
-                    </div>
-                  <input type="text" className='suggestions input-tripinn1' value={this.state.email} onChange={(event)=>{this.SuggestionsEmail(event)}}/>
-                  </label>
-                </span>
-              </div>
-              <div className="suggstions-input-item">
-                <span>
-                  <label className='suggestions-labels'>
-                    <div className="suggestions-label-text-area">
-                      موضوع:
-                    </div>
-                  <input type="text" className='suggestions input-tripinn1' value={this.state.subject} onChange={(event)=>{this.SuggestionsSubject(event)}}/>
-                  </label>
-                </span>
-              </div>
-              <div className="suggestions-description-container">
-                <label className="suggstions-description-textarea" for="comment">توضیحات:</label>
-                  <textarea style={{minHeight:"150px",minWidth:"80%" ,maxHeight:"150px" ,maxWidth:"80%"}} wrap="hard" className="suggestions form-control-tripinn" rows="5"  value={this.state.description} onChange={(event)=>{this.SuggestionsDescription(event)}} />
-              </div>
-              <div className='suggestions-save-button-container'>
-              <Button onClick={()=>{this.SetSuggestionParams()}} className="suggestions-save-button" color="orange" > ارسال پیام  </Button>
-              </div>
-          </div>
-        </div>
+        {this.renderSuggestionsXs()}
+        {this.renderSuggestionsXl()}
+        {this.renderSuggestionsSm()}
+        {this.renderSuggestionsMd()}
       </div>
     );
   }

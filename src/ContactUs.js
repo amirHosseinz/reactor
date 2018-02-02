@@ -12,7 +12,6 @@ class ContactUs extends React.Component {
         <ContactUsMd />
       </div>
     );
-
   }
 
   renderContactUsSm(){
@@ -39,7 +38,6 @@ class ContactUs extends React.Component {
     );
   }
   render(){
-
     return(
       <div>
         {this.renderContactUsXl()}
