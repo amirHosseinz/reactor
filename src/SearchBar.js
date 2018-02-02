@@ -89,7 +89,6 @@ class SearchBar extends React.Component {
       if(event.key==="Enter" && this.state.city!==null && this.state.city!==''){
         this.handleClick();
       }
-
     }
   renderSearchBarOnlycity(){
     return(
@@ -130,18 +129,6 @@ class SearchBar extends React.Component {
                         </Menu>
                       );
                   }}
-
-                    renderMenu={(results, menuProps) => {
-                        return (
-                          <Menu {...menuProps}>
-                            {results.map((result,index) => (
-                              <TypeaheadMenuItem className="search-bar-only-city-menu-item" option={result} position={index}>
-                                {result}
-                              </TypeaheadMenuItem>
-                            ))}
-                          </Menu>
-                        );
-                      }}
                     placeholder="  !مقصد خود را وارد نمایید  "
                     minLength={2}
                     align='right'

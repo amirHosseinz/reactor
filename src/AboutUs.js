@@ -35,7 +35,6 @@ class AboutUs extends React.Component {
         <AboutUsSm />
       </div>
     );
-
   }
 
   renderAboutUsXs(){
