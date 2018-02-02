@@ -5,6 +5,7 @@ import AboutUsXl from './AboutUs/AboutUsXl.js';
 import AboutUsMd from './AboutUs/AboutUsMd.js';
 import AboutUsXs from './AboutUs/AboutUsXs.js';
 import AboutUsSm from './AboutUs/AboutUsSm.js';
+
 class AboutUs extends React.Component {
   constructor(props){
     super(props);
@@ -20,21 +21,30 @@ class AboutUs extends React.Component {
   }
 
   renderAboutUsMd(){
-    <div className="hidden-xs hidden-xl hidden-sm visible-md">
-      <AboutUsMd />
-    </div>
+    return(
+      <div className="hidden-xs hidden-xl hidden-sm visible-md">
+        <AboutUsMd />
+      </div>
+    );
+
   }
 
   renderAboutUsSm(){
-    <div className="hidden-xs hidden-md hidden-xl visible-sm">
-      <AboutUsSm />
-    </div>
+    return(
+      <div className="hidden-xs hidden-md hidden-xl visible-sm">
+        <AboutUsSm />
+      </div>
+    );
+
   }
 
   renderAboutUsXs(){
-    <div className="hidden-xl hidden-md hidden-sm visible-xs">
-      <AboutUsXs />
-    </div>
+    return(
+      <div className="hidden-xl hidden-md hidden-sm visible-xs">
+        <AboutUsXs />
+      </div>
+    );
+
   }
   render(){
     return(
