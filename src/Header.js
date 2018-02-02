@@ -56,6 +56,7 @@ class Header extends React.Component{
     this.state={
       token: null,
       cellPhone:'',
+      city : '',
       reloadPage: false,
       showDownloadAppModal:false,
       showBurgerMenu:false,
@@ -455,6 +456,14 @@ class Header extends React.Component{
       </div>
     );
   }
+  handleClick(){
+    if(this.state.city===''){
+      this.props.history.push("/search/هر جا");
+    }
+    else{
+       this.props.history.push("/search/" + this.state.city);
+    }
+  }
   renderSearchBarXL(){
     if(window.location.href.indexOf('search')===-1 && window.location.pathname!=='/'){
       return(
@@ -464,7 +473,15 @@ class Header extends React.Component{
           align="right"
           emptyLabel="نتیجه‌ای یافت نشد"
           maxResults={5}
-          placeholder='هر جا'
+          placeholder='جست و جوی مقصد'
+          selectHintOnEnter={false}
+          highlightOnlyResult={true}
+          submitFormOnEnter={true}
+          onChange={(selected)=>{
+            if(selected.length!==0){
+              this.setState({city:selected[0]},()=>{this.handleClick()});
+            }
+          }}
           renderMenu={(results,menuProps) => {
               return(
                 <TypeaheadMenu {...menuProps}>
