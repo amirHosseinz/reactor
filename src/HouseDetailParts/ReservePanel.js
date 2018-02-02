@@ -388,13 +388,14 @@ class ReservePanel extends React.Component{
       );
     }
     else{
-      
+
     }
   }
   renderPreBill(){
     if(this.state.reserveData!==''){
       return(
         <Modal show={this.state.showPreBill}
+          className="reserve-modal"
           onHide={()=>{this.setState({showPreBill:false})}}>
           <div className="pre-bill-main-division">
             <div className="pre-bill-header-section">
@@ -403,6 +404,7 @@ class ReservePanel extends React.Component{
               </p>
             </div>
             <div className="divider-modal"></div>
+            <div className="pre-bill-backgroud">
               <div className="pre-bill-margin-content">
                 <div className="pre-bill-house-details">
                   <div className="pre-bill-house-picture">
@@ -455,6 +457,7 @@ class ReservePanel extends React.Component{
                           onChange={(event)=>{this.setState({discountCode:event.target.value})}}/>
                         {this.renderDiscountStatus()}
                   </div>
+              </div>
             </div>
             <hr/>
             <div className="pre-bill-adding-up-section row-reverse" dir="rtl">

@@ -79,7 +79,7 @@
 }
 .pre-bill-header-section{
   text-align: center;
-  font-size:22px;
+  font-size:19px;
   color: #454545;
   font-weight: 500;
   margin-top: 15px;
@@ -224,6 +224,7 @@ transform: rotate(-5deg);
   margin:auto;
   width: 90%;
 }
+
 .pre-bill-price-section{
   font-weight:500;
   font-size:16px;
@@ -3769,4 +3770,8 @@ text-align: center;
     border-color: #7ad6e8;
     background-color: #f2f7f9;
     padding: 8px 10px;
+}
+
+.pre-bill-backgroud{
+  background-position: red;
 }
