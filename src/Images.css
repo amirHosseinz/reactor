@@ -2425,6 +2425,8 @@ text-align:center;
   font-family : IRANSans;
   border-radius: 4px;
   padding: 14px;
+  width: 400px !important;
+  margin:auto;
 }
 .rbt-highlight-text{
   background-color: #3fd4ee !important;
@@ -3773,5 +3775,4 @@ text-align: center;
 }
 
 .pre-bill-backgroud{
-  background-position: red;
 }

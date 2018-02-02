@@ -399,6 +399,9 @@ class ReservePanel extends React.Component{
           onHide={()=>{this.setState({showPreBill:false})}}>
           <div className="pre-bill-main-division">
             <div className="pre-bill-header-section">
+              <button type="button" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
               <p>
                 جزئیات رزرو اقامتگاه
               </p>
