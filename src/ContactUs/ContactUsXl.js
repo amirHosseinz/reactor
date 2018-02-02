@@ -15,6 +15,10 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>{
   );
 }));
 class ContactUsXl extends React.Component{
+  componentWillMount(){
+    document.body.backgroundColor="#f8f8f8";
+  }
+  
   render(){
     return (
       <div className="contact-us-main-division">

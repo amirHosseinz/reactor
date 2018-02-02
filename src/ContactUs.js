@@ -6,9 +6,6 @@ import ContactUsSm from './ContactUs/ContactUsSm.js';
 
 
 class ContactUs extends React.Component {
-  componentWillMount(){
-    document.body.backgroundColor="#f8f8f8";
-  }
   renderContactUsMd(){
     return(
       <div className="hidden-xs hidden-xl hidden-sm visible-md">
