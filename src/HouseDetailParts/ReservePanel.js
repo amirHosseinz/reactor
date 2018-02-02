@@ -451,7 +451,7 @@ class ReservePanel extends React.Component{
                   {this.renderTotalPrice()}
                 </div>
                   <div className="pre-bill-discount-section row-reverse" dir="rtl">
-                    <input className="pre-bill-discount-value suggestions form-control"
+                    <input className="pre-bill-discount-value suggestions form-control-tripinn"
                     value={this.state.discountCode}
                           placeholder="ورود کد تخفیف"
                           onChange={(event)=>{this.setState({discountCode:event.target.value})}}/>
