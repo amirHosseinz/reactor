@@ -2207,6 +2207,7 @@ padding-bottom: 28px;
   margin: auto;
 }
 .profile-avatarimg{
+  margin-top : 25px !important;
   width: 160px;
   height: 160px;
   border-radius: 50%;
