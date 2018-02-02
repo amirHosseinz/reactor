@@ -364,7 +364,7 @@ class Header extends React.Component{
     );
   }
   renderGetApplicationButton(){
-    if(window.location.pathname!=='/'){
+    {
       return (
         <div className="downlaod-app-button-header" >
           <p className="clickable-p download-item-menu" onClick={()=>{this.setState({showDownloadAppModal:true})}}> دریافت اپلیکیشن</p>
@@ -469,11 +469,13 @@ class Header extends React.Component{
       return(
         <div className='header-search-bar'>
           <Typeahead options={listOfCity}
+          className="header-typeahead"
           minLength={2}
           align="right"
+          bsSize="sm"
           emptyLabel="نتیجه‌ای یافت نشد"
           maxResults={5}
-          placeholder='جست و جوی مقصد'
+          placeholder='جستجوی مقصد'
           selectHintOnEnter={false}
           highlightOnlyResult={true}
           submitFormOnEnter={true}
@@ -494,6 +496,7 @@ class Header extends React.Component{
               );
             }}
           />
+
         </div>
       );
 

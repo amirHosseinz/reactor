@@ -165,9 +165,9 @@ var TypeaheadInput = function (_React$Component) {
         'div',
         {
           className: (0, _classnames2.default)('rbt-input', 'form-control', {
-            'focus': isFocused,
+            'hello-focus': isFocused,
             'input-lg form-control-lg': bsSize === 'large' || bsSize === 'lg',
-            'input-sm form-control-sm': bsSize === 'small' || bsSize === 'sm',
+            'input-sm form-control-sm tripinn-typehead': bsSize === 'small' || bsSize === 'sm',
             'rbt-input-multi': multiple
           }),
           disabled: disabled,
