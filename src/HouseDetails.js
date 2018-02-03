@@ -4,8 +4,8 @@ import scrollToComponent from 'react-scroll-to-component';
 import {Sticky,Divider} from 'semantic-ui-react';
 import {Button,Carousel,Image} from 'react-bootstrap';
 import ReservePanel from './HouseDetailParts/ReservePanel.js';
-import AddressDiscription from './HouseDetailParts/AddressDiscription';
-import AmenitiesDiscription from './HouseDetailParts/AmenitiesDiscription';
+import AddressDescription from './HouseDetailParts/AddressDescription';
+import AmenitiesDescription from './HouseDetailParts/AmenitiesDescription';
 import RatingDiscription from './HouseDetailParts/RatingDiscription';
 import HostInfoDiscription from './HouseDetailParts/HostInfoDiscription.js';
 import {englishToPersianDigits} from './tools/EnglishToPersianDigits.js';
@@ -261,7 +261,7 @@ class HouseDetails extends React.Component {
                <div className={this.state.imageLoaded?"loaded-message":"loading-message"} >
                 loading message
                 </div>
-                <AddressDiscription homeData={this.state.homeData}/>
+                <AddressDescription homeData={this.state.homeData}/>
                 <div>
                   {this.renderHomeTitle()}
                 </div>
@@ -282,7 +282,7 @@ class HouseDetails extends React.Component {
                 </div>
               </div>
               <div className="house-detail-top-margined-md hidden-xl hidden-sm hidden-xs visible-md">
-                <AddressDiscription homeData={this.state.homeData}/>
+                <AddressDescription homeData={this.state.homeData}/>
                 <div>
                   {this.renderHomeTitle()}
                 </div>
@@ -334,7 +334,7 @@ class HouseDetails extends React.Component {
 
                     </div>
                     <section className='violet' ref={(section) => { this.Violet = section; }}></section>
-                    <AmenitiesDiscription homeData={this.state.homeData} />
+                    <AmenitiesDescription homeData={this.state.homeData} />
                     <br/>
                     <Divider/>
                     <div>
@@ -401,7 +401,7 @@ class HouseDetails extends React.Component {
                     {this.renderHouseGallery()}
                   </div>
                   <section className='violet' ref={(section) => { this.Violet = section; }}></section>
-                  <AmenitiesDiscription homeData={this.state.homeData} />
+                  <AmenitiesDescription homeData={this.state.homeData} />
                   <br/>
                   <Divider/>
                   <div>
@@ -455,7 +455,7 @@ class HouseDetails extends React.Component {
             <div className="house-detail-top-margined-xs visible-xs hidden-xl">
               {this.renderHomeTitleXs()}
               <div className='row-reverse-house-adress-type-xs'>
-                <AddressDiscription homeData={this.state.homeData}/>
+                <AddressDescription homeData={this.state.homeData}/>
               </div>
               <div className='row-reverse-house-adress-type-xs'>
                 <RatingDiscription homeData={this.state.homeData}/>
@@ -464,7 +464,7 @@ class HouseDetails extends React.Component {
                <p className='des-header-xs'> درباره این خانه </p>
                <p className='des-main-xs'> {this.state.homeData.description} </p>
               <Divider/>
-              <AmenitiesDiscription homeData={this.state.homeData} />
+              <AmenitiesDescription homeData={this.state.homeData} />
               <Divider/>
               <p className='des-header-xs'> سایر امکانات </p>
               <UtilitiesDescription homeData={this.state.homeData}/>

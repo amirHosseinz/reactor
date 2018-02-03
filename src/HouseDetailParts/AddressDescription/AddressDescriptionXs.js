@@ -1,6 +1,6 @@
 import React from 'react';
 
-class AddressDiscriptionSm extends React.Component{
+class AddressDescriptionXs extends React.Component{
   render(){
     return(
       <div>
@@ -9,4 +9,4 @@ class AddressDiscriptionSm extends React.Component{
   }
 }
 
-export default AddressDiscriptionSm;
+export default AddressDescriptionXs;

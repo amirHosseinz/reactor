@@ -1,6 +1,6 @@
 import React from 'react';
 
-class AddressDiscriptionXl extends React.Component{
+class AddressDescriptionXl extends React.Component{
   getRoomType(){
     switch(this.props.homeData.room_type){
       case "HOUSE":
@@ -43,4 +43,4 @@ class AddressDiscriptionXl extends React.Component{
     );
   }
 }
-export default AddressDiscriptionXl;
+export default AddressDescriptionXl;
