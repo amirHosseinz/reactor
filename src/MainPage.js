@@ -118,7 +118,7 @@ class MainPage extends React.Component{
           <Route path={'/rooms/' + this.getHouseId()} render ={()=> {return (this.renderHouseDetails())}}/>
           <Route path={"/aboutus"} render = {()=> {return(this.renderAboutUs())}}/>
           <Route path={"/suggestions&comments"} render = {()=> {return(this.renderSuggestions())}}/>
-          <Route path={"/terms&conditions"} render = {()=> {return(this.renderTerms())}}/>
+          <Route path={"/terms&conditions"} render={()=> {return(this.renderTerms())}}/>
           <Route path={"/contactus"} render = {()=> {return(this.renderContactUs())}}/>
           <Route path={"/userprofile"} render={()=> {return(this.renderUserProfile())}}/>
           <Route path={"/"} render = {()=> {return(this.renderFooter())}}/>
