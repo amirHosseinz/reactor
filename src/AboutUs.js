@@ -26,7 +26,6 @@ class AboutUs extends React.Component {
         <AboutUsMd />
       </div>
     );
-
   }
 
   renderAboutUsSm(){
