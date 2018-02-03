@@ -5,34 +5,34 @@ import HeaderMd from './Header/HeaderMd';
 import HeaderSm from './Header/HeaderSm';
 class Header extends React.Component{
 
-  renderHeaderXl(){
+  renderHeaderXl(props){
     return(
       <div className="hidden-xs hidden-md hidden-sm visible-xl">
-        <HeaderXl />
+        <HeaderXl {...props}/>
       </div>
     );
   }
 
-  renderHeaderMd(){
+  renderHeaderMd(props){
     return(
       <div className="hidden-xs hidden-xl hidden-sm visible-md">
-        <HeaderMd />
+        <HeaderMd {...props}/>
       </div>
     );
   }
 
-  renderHeaderSm(){
+  renderHeaderSm(props){
     return(
       <div className="hidden-xs hidden-md hidden-xl visible-sm">
-        <HeaderSm />
+        <HeaderSm {...props}/>
       </div>
     );
   }
 
-  renderHeaderXs(){
+  renderHeaderXs(props){
     return(
       <div className="hidden-xl hidden-md hidden-sm visible-xs">
-        <HeaderXs />
+        <HeaderXs {...props}/>
       </div>
     );
   }
@@ -41,10 +41,10 @@ class Header extends React.Component{
   {
     return (
       <div>
-        {this.renderHeaderXl()}
-        {this.renderHeaderXs()}
-        {this.renderHeaderMd()}
-        {this.renderHeaderSm()}
+        {this.renderHeaderXl(this.props)}
+        {this.renderHeaderXs(this.props)}
+        {this.renderHeaderMd(this.props)}
+        {this.renderHeaderSm(this.props)}
       </div>
 
     );
