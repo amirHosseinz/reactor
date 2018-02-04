@@ -10,6 +10,7 @@ import '../tools/DatePicker/bootstrap-datepicker.js';
 import '../tools/DatePicker/bootstrap-datepicker.css';
 import {reserveModalStyle} from '../Styles.js';
 import moment from 'moment-jalaali';
+import {parsePrice3digits} from '../tools/ParsePrice3digits.js'
 
 moment.loadPersian({usePersianDigits:false , dialect:'persian-modern'});
 
@@ -26,7 +27,7 @@ class ReservePanel extends React.Component{
         fromDate:null,
         toDate:null,
       },
-      totalPrice :0,
+      totalPrice:0,
       discountCode : '',
     };
   }
@@ -222,11 +223,12 @@ class ReservePanel extends React.Component{
  }
   showTotalPrice() {
     if (this.state.reserveData !=='' && this.state.reserveData.is_available){
-      return(
-        <p>
-        هزینه کل : {englishToPersianDigits(this.state.reserveData.total_price)}
-        </p>
-);
+        return(
+          <p>
+            هزینه کل : {englishToPersianDigits(parsePrice3digits(this.state.reserveData.total_price))}
+            تومان
+          </p>
+        );
     }
   }
   showTrypinnPrice(){
@@ -323,7 +325,7 @@ class ReservePanel extends React.Component{
   }
   renderPriceDetails(){
         return(
-          <div dir="rtl" className="reserve-modal">
+          <div dir="rtl" className="reserve-panel-total-price">
               <div>
                 {this.showTotalPrice()}
               </div>
@@ -334,7 +336,7 @@ class ReservePanel extends React.Component{
     if(this.state.reserveData !==''){
       return(
         <div className='reserve-button-div'>
-          <Button color='orange' className='reserve-button active' onClick={()=>{clearInterval(this.interval); this.setState({showPreBill:true})}}>
+          <Button color='orange' className='reserve-button active' onClick={()=>{this.setState({showPreBill:true})}}>
             رزرو کنید
           </Button>
         </div>

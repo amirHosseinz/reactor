@@ -5,7 +5,6 @@ import moment from 'moment-jalaali';
 import {Modal} from 'react-bootstrap';
 import {parsePrice3digits} from '../tools/ParsePrice3digits.js'
 
-
 class RequestItemXl extends React.Component{
   constructor(props){
     super(props);

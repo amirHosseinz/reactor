@@ -152,7 +152,7 @@ class HouseDetails extends React.Component {
  }
 
  handleImageLoaded(){
-   this.setState({ imageLoaded: true },()=>{console.log(this.state.imageLoaded)});
+   this.setState({ imageLoaded: true },()=>{});
  }
 
 
