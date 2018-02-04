@@ -103,6 +103,8 @@ getRelevantToken(){
     return(
       <Modal open={this.state.showResponseModal}
              little={true}
+             showCloseIcon={false}
+             animationDuration={2000}
              onClose={()=>{this.setState({showResponseModal:false})}}>
          {this.handleResponseModal()}
       </Modal>
