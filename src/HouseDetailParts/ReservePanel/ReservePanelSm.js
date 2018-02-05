@@ -1,8 +1,6 @@
 import React from 'react';
 
-
-
-class MaxCapacitySm extends React.Component{
+class ReservePanelSm extends React.Component{
   render(){
     return(
       <div>
@@ -11,4 +9,4 @@ class MaxCapacitySm extends React.Component{
   }
 }
 
-export default MaxCapacitySm;
+export default ReservePanelSm;

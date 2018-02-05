@@ -39,7 +39,6 @@ class UtilitiesDescription extends React.Component{
     );
   }
 
-
   render(){
     return(
       <div>
