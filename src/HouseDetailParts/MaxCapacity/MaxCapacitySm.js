@@ -6,8 +6,7 @@ class MaxCapacitySm extends React.Component{
   render(){
     return(
       <div>
-
-          </div>
+      </div>
     );
   }
 }

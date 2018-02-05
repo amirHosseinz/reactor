@@ -486,7 +486,6 @@ class HouseDetails extends React.Component {
 
               <p className='des-header-xs'>: قوانین و مقررات </p>
               <MaxCapacity homeData={this.state.homeData}/>
-
               <RulesDescription homeData= {this.state.homeData} />
             </div>
 
