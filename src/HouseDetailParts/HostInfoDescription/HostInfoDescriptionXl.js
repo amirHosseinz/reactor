@@ -1,7 +1,8 @@
 import React from 'react';
 
-class HostInfoDiscription extends React.Component{
-  renderHost () {
+class HostInfoDescriptionXl extends React.Component{
+
+  renderHost(){
     if (this.props.homeData.owner) {
       return(
         <div> <p className="text-013">{this.props.homeData.owner.first_name} {this.props.homeData.owner.last_name}</p></div>
@@ -12,7 +13,7 @@ class HostInfoDiscription extends React.Component{
       if (this.props.homeData !== ''){
         if (this.props.homeData.owner.profile_picture === null){
           return(
-            <img src={require('./facilities/prof_avatar_tripinn.svg')}  className="avatar-icon" alt = "" />
+            <img src={require('../facilities/prof_avatar_tripinn.svg')}  className="avatar-icon" alt = "" />
           );
         }
         else{
@@ -38,4 +39,5 @@ class HostInfoDiscription extends React.Component{
     );
   }
 }
-export default HostInfoDiscription;
+
+export default HostInfoDescriptionXl;

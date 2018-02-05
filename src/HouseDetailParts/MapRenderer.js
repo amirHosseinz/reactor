@@ -1,33 +1,49 @@
 import React from 'react';
-import { withScriptjs ,withGoogleMap, GoogleMap,Circle , Marker } from "react-google-maps"
-
-
-const MyMapComponent = withScriptjs(withGoogleMap((props) =>{
-  // console.log(props);
-  return(
-    <GoogleMap
-      defaultZoom={props.zoom}
-      defaultCenter={{lat:props.lat,lng:props.lng}}>
-      <Circle options={{fillOpacity:0.5,fillColor:"#12b2ce",strokeColor:"#12b2ce"}} radius={1000} defaultCenter={{lat:props.lat,lng:props.lng}}/>
-    </GoogleMap>
-  );
-}))
-
-
+import MapRendererXl from './MapRenderer/MapRendererXl.js';
+import MapRendererXs from './MapRenderer/MapRendererXs.js';
+import MapRendererMd from './MapRenderer/MapRendererMd.js';
+import MapRendererSm from './MapRenderer/MapRendererSm.js';
 export class MapDescription extends React.Component{
+  
+    renderMapRendererMd(props){
+      return(
+        <div className="hidden-xs hidden-xl hidden-sm visible-md">
+          <MapRendererMd {...props}/>
+        </div>
+      );
+    }
+
+    renderMapRendererSm(props){
+      return(
+        <div className="hidden-xs hidden-md hidden-xl visible-sm">
+          <MapRendererSm {...props}/>
+        </div>
+      );
+    }
+
+    renderMapRendererXl(props){
+      return(
+        <div className="hidden-xs hidden-md hidden-sm visible-xl">
+          <MapRendererXl {...props}/>
+        </div>
+      );
+    }
+
+    renderMapRendererXs(props){
+      return(
+        <div className="hidden-xl hidden-md hidden-sm visible-xs">
+          <MapRendererXs {...props}/>
+        </div>
+      );
+    }
 
     render(){
       return(
         <div>
-        <MyMapComponent
-          lat={this.props.lat}
-          lng={this.props.lng}
-          zoom={this.props.zoom}
-          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYdvxvYa5_HuFrQMlTNWpbhan7nqIJuOE&v=3.exp&libraries=geometry,drawing,places"
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `400px` }} />}
-          mapElement={<div style={{ height: `100%` }} />}>
-          </MyMapComponent>
+          {this.renderMapRendererXl(this.props)}
+          {this.renderMapRendererXs(this.props)}
+          {this.renderMapRendererMd(this.props)}
+          {this.renderMapRendererSm(this.props)}
         </div>
       );
     }
