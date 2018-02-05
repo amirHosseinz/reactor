@@ -146,34 +146,11 @@ class SearchResultXl extends React.Component{
   renderGuest(){
     return(
       <div   >
-        <GuestNumber changeNumberOfGuests={this.changeNumberOfGuests.bind(this)} onMouseMove={this.renderOnClick2.bind(this)}/>
+        <GuestNumber changeNumberOfGuests={this.changeNumberOfGuests.bind(this)} />
       </div>
     );
   }
 
-  renderOnClick2(){
-    this.setState({OpenDropDown:true
-                    });
-
-  }
-
-  renderOnClick3(){
-    this.setState({OpenDropDown:true
-                    });
-
-  }
-
-    renderOnClick(){
-    this.setState({Counter:true});
-    if(this.state.Counter===true){
-      this.setState({OpenDropDown:true,
-                      Counter:false });
-    }
-    else if (this.state.Counter===false) {
-      this.setState({OpenDropDown:false,
-                      Counter:true });
-    }
-  }
 
   changeNumberOfGuests(number){
     this.setState({numberOfGuests:number});
@@ -263,10 +240,10 @@ class SearchResultXl extends React.Component{
                     <input className="dropdown form-control1" placeholder={this.state.numberOfGuests + " نفر "} style={{direction:'rtl',textAlign:'center'}}/>
                   </div>
                   <div className="multi-input-1" dir="rtl"  >
-                  <Dropdown className="drop" icon='dropdown' dir="rtl"  text={''} >
-                  <Dropdown.Menu onClick={(event)=>{event.stopPropagation()}}>
-                  {this.renderGuest()}
-                  </Dropdown.Menu>
+                  <Dropdown className="drop" icon={""} dir="rtl"  text={''} >
+                    <Dropdown.Menu onClick={(event)=>{event.stopPropagation()}}>
+                    {this.renderGuest()}
+                    </Dropdown.Menu>
                  </Dropdown>
                  </div>
 
