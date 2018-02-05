@@ -12,7 +12,7 @@ class MainStarRating extends React.Component{
         size={18}
         value={this.props.value}
         edit={false}
-        color2={'#ffd700'} />
+        color2={'#ffd700'}/>
       </div>
     );
   }

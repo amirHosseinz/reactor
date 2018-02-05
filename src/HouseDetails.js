@@ -7,7 +7,7 @@ import ReservePanel from './HouseDetailParts/ReservePanel.js';
 import AddressDescription from './HouseDetailParts/AddressDescription';
 import AmenitiesDescription from './HouseDetailParts/AmenitiesDescription';
 import RatingDiscription from './HouseDetailParts/RatingDiscription';
-import HostInfoDiscription from './HouseDetailParts/HostInfoDiscription.js';
+import HostInfoDescription from './HouseDetailParts/HostInfoDescription.js';
 import {englishToPersianDigits} from './tools/EnglishToPersianDigits.js';
 import {normalReservePanelHouseDetails, fixedReservePanelHouseDetails,normalScrolllListHouseDetails , fixedScrollListHouseDetails} from './Styles.js';
 import AspectRatio from 'react-aspect-ratio';
@@ -338,7 +338,7 @@ class HouseDetails extends React.Component {
                     <br/>
                     <Divider/>
                     <div>
-                      <HostInfoDiscription homeData={this.state.homeData}/>
+                      <HostInfoDescription homeData={this.state.homeData}/>
                       <p className='des-main-xs'> {this.state.homeData.description} </p>
                     </div>
                     <Divider/>
@@ -405,7 +405,7 @@ class HouseDetails extends React.Component {
                   <br/>
                   <Divider/>
                   <div>
-                    <HostInfoDiscription homeData={this.state.homeData}/>
+                    <HostInfoDescription homeData={this.state.homeData}/>
                     <p className='des-main-xs'> {this.state.homeData.description} </p>
 
                   </div>
