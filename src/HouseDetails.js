@@ -9,9 +9,8 @@ import AmenitiesDescription from './HouseDetailParts/AmenitiesDescription';
 import RatingDescription from './HouseDetailParts/RatingDescription';
 import HostInfoDescription from './HouseDetailParts/HostInfoDescription.js';
 import {englishToPersianDigits} from './tools/EnglishToPersianDigits.js';
-import {normalReservePanelHouseDetails, fixedReservePanelHouseDetails,normalScrolllListHouseDetails , fixedScrollListHouseDetails} from './Styles.js';
+import {normalReservePanelHouseDetails,fixedReservePanelHouseDetails,normalScrolllListHouseDetails,fixedScrollListHouseDetails} from './Styles.js';
 import AspectRatio from 'react-aspect-ratio';
-// import GoogleApiWrapper from './HouseDetailParts/MapRenderer.js';
 import MapDescription from './HouseDetailParts/MapRenderer.js';
 import {Modal} from 'react-bootstrap';
 import UtilitiesDescription from './HouseDetailParts/UtilitiesDescription.js';
@@ -23,6 +22,7 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import GuestNumber from './HouseDetailParts/GuestNumber';
+
 
 class HouseDetails extends React.Component {
   constructor(props){
