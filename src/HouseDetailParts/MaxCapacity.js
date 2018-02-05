@@ -26,7 +26,7 @@ class MaxCapacity extends React.Component{
     renderMaxCapacityMd(props){
       return(
         <div className="hidden-xs hidden-xl hidden-sm visible-md">
-          <MaxCapacity {...props}/>
+          <MaxCapacityMd {...props}/>
         </div>
       );
     }
