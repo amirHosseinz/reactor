@@ -8,6 +8,8 @@ import '../tools/DatePicker/bootstrap-datepicker.fa.js';
 import '../tools/DatePicker/bootstrap-datepicker.js';
 import '../tools/DatePicker/bootstrap-datepicker.css';
 import { withRouter } from 'react-router-dom';
+import GuestNumber from '../HouseDetailParts/GuestNumber'
+import {Dropdown} from 'semantic-ui-react';
 
 
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
@@ -56,11 +58,14 @@ class SearchResultXl extends React.Component{
       city: null,
       houseList:[],
       token: null,
+      numberOfGuests: 1,
+      OpenDropDown:false,
+      Counter:false,
       searchParams : {
         location: '',
         start_date: new Date(),
         end_date: new Date(),
-        capacity: null,
+        capacity: null
       },
     };
   }
@@ -136,6 +141,42 @@ class SearchResultXl extends React.Component{
         dateFormat: "yy/m/d",
        });
     });
+  }
+
+  renderGuest(){
+    return(
+      <div   >
+        <GuestNumber changeNumberOfGuests={this.changeNumberOfGuests.bind(this)} onMouseMove={this.renderOnClick2.bind(this)}/>
+      </div>
+    );
+  }
+
+  renderOnClick2(){
+    this.setState({OpenDropDown:true
+                    });
+
+  }
+
+  renderOnClick3(){
+    this.setState({OpenDropDown:true
+                    });
+
+  }
+
+    renderOnClick(){
+    this.setState({Counter:true});
+    if(this.state.Counter===true){
+      this.setState({OpenDropDown:true,
+                      Counter:false });
+    }
+    else if (this.state.Counter===false) {
+      this.setState({OpenDropDown:false,
+                      Counter:true });
+    }
+  }
+
+  changeNumberOfGuests(number){
+    this.setState({numberOfGuests:number});
   }
 
   renderToDatePicker(){
@@ -218,20 +259,17 @@ class SearchResultXl extends React.Component{
                   <div className="multi-input-1">
                     <input className="date-picker-input  form-control1" id='todatepicker' ref='todatepicker' placeholder='تاریخ خروج'style={{direction:'rtl',textAlign:'center'}}/>
                   </div>
-                  <div className="multi-input-1" dir="rtl" >
-                   <select className="form-control1" id="sel1">
-                     <option className="guestnumber-option">1 مهمان</option>
-                     <option className="guestnumber-option">2 مهمان</option>
-                     <option className="guestnumber-option">3 مهمان </option>
-                     <option className="guestnumber-option">4 مهمان</option>
-                     <option className="guestnumber-option">5 مهمان</option>
-                     <option className="guestnumber-option">6 مهمان</option>
-                     <option className="guestnumber-option">7 مهمان </option>
-                     <option className="guestnumber-option">8 مهمان</option>
-                     <option className="guestnumber-option">9 مهمان</option>
-                     <option className="guestnumber-option">10 مهمان و بیشتر</option>
-                   </select>
+                  <div className="multi-input-1">
+                    <input className="dropdown form-control1" placeholder={this.state.numberOfGuests + " نفر "} style={{direction:'rtl',textAlign:'center'}}/>
+                  </div>
+                  <div className="multi-input-1" dir="rtl"  >
+                  <Dropdown className="drop" icon='dropdown' dir="rtl"  text={''} >
+                  <Dropdown.Menu onClick={(event)=>{event.stopPropagation()}}>
+                  {this.renderGuest()}
+                  </Dropdown.Menu>
+                 </Dropdown>
                  </div>
+
                   <div className="multi-input-2">
                   <Button color='blue' type="button" className="search-btn-result" onClick={()=>{this.handleClick()}} data-reactid="99">
                     <span className='searchicon'>
