@@ -6,7 +6,7 @@ import {Button,Carousel,Image} from 'react-bootstrap';
 import ReservePanel from './HouseDetailParts/ReservePanel.js';
 import AddressDescription from './HouseDetailParts/AddressDescription';
 import AmenitiesDescription from './HouseDetailParts/AmenitiesDescription';
-import RatingDiscription from './HouseDetailParts/RatingDiscription';
+import RatingDescription from './HouseDetailParts/RatingDescription';
 import HostInfoDiscription from './HouseDetailParts/HostInfoDiscription.js';
 import {englishToPersianDigits} from './tools/EnglishToPersianDigits.js';
 import {normalReservePanelHouseDetails, fixedReservePanelHouseDetails,normalScrolllListHouseDetails , fixedScrollListHouseDetails} from './Styles.js';
@@ -266,7 +266,7 @@ class HouseDetails extends React.Component {
                   {this.renderHomeTitle()}
                 </div>
                 <div className='row-reverse-house-adress-type'>
-                  <RatingDiscription homeData={this.state.homeData}/>
+                  <RatingDescription homeData={this.state.homeData}/>
                 </div>
                 <div>
                 <div>
@@ -287,7 +287,7 @@ class HouseDetails extends React.Component {
                   {this.renderHomeTitle()}
                 </div>
                 <div className='row-reverse-house-adress-type'>
-                  <RatingDiscription homeData={this.state.homeData}/>
+                  <RatingDescription homeData={this.state.homeData}/>
                 </div>
                 <div>
                 <div>
@@ -458,7 +458,7 @@ class HouseDetails extends React.Component {
                 <AddressDescription homeData={this.state.homeData}/>
               </div>
               <div className='row-reverse-house-adress-type-xs'>
-                <RatingDiscription homeData={this.state.homeData}/>
+                <RatingDescription homeData={this.state.homeData}/>
               </div>
               <Divider/>
                <p className='des-header-xs'> درباره این خانه </p>
