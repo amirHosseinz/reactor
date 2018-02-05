@@ -1,59 +1,54 @@
 import React from 'react';
-import Facilities from './Facilities.js';
-import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
+import RulesDescriptionXl from './RulesDescription/RulesDescriptionXl.js';
+import RulesDescriptionXs from './RulesDescription/RulesDescriptionXs.js';
+import RulesDescriptionSm from './RulesDescription/RulesDescriptionSm.js';
+import RulesDescriptionMd from './RulesDescription/RulesDescriptionMd.js';
+
 
 class RulesDescription extends React.Component{
 
-
-  renderSmoking(){
-    const smoking=this.props.homeData.smoking_allowed;
-    if (smoking===false){
-      return(
-        <div className="public-rules-div">
-          <img src={require('./rules/cigarette.png')}   className="other-rules-icon" alt = "" />
-          <p className="facility-text">ممنوعیت استعمال دخانیات </p>
-        </div>
-      );
-    }
-  }
-
-
-renderPet(){
-  const pet=this.props.homeData.pet_allowed;
-  if(pet===false){
+  renderRulesDescriptionMd(props){
     return(
-      <div className="public-rules-div">
-        <img src={require('./rules/dog.png')}   className="other-rules-icon" alt = "" />
-        <p className="facility-text">ممنوعیت ورود حیوان به خانه</p>
-        </div>
-    );
-  }
-}
-
-
-renderParty(){
-  const party=this.props.homeData.party_allowed;
-  if(party===false){
-    return(
-      <div className="public-rules-div">
-      <img src={require('./rules/singles.png')}   className="other-rules-icon" alt = "" />
-        <p className="facility-text">ممنوعیت برگزاری جشن </p>
+      <div className="hidden-xs hidden-xl hidden-sm visible-md">
+        <RulesDescriptionMd {...props}/>
       </div>
     );
   }
-}
+
+  renderRulesDescriptionSm(props){
+    return(
+      <div className="hidden-xs hidden-md hidden-xl visible-sm">
+        <RulesDescriptionSm {...props}/>
+      </div>
+    );
+  }
+
+  renderRulesDescriptionXl(props){
+    return(
+      <div className="hidden-xs hidden-md hidden-sm visible-xl">
+        <RulesDescriptionXl {...props}/>
+      </div>
+    );
+  }
+
+  renderRulesDescriptionXs(props){
+    return(
+      <div className="hidden-xl hidden-md hidden-sm visible-xs">
+        <RulesDescriptionXs {...props}/>
+      </div>
+    );
+  }
 
 
   render(){
     return(
-        <div className="main-descriptions row">
-          <div className="rules">
-            {this.renderParty()}
-            {this.renderPet()}
-            {this.renderSmoking()}
-          </div>
+      <div>
+        {this.renderRulesDescriptionXl(this.props)}
+        {this.renderRulesDescriptionXs(this.props)}
+        {this.renderRulesDescriptionMd(this.props)}
+        {this.renderRulesDescriptionSm(this.props)}
+      </div>
 
-        </div>
     );
   }
 }
