@@ -2,7 +2,7 @@ import React from 'react';
 import { Divider,Button } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import {englishToPersianDigits} from '../tools/EnglishToPersianDigits.js';
-// import 'react-responsive-modal/lib/react-responsive-modal.css';
+import 'react-responsive-modal/lib/react-responsive-modal.css';
 import Modal from '../tools/react-responsive-modal';
 
 
@@ -59,9 +59,9 @@ getRelevantToken(){
 
   SetSuggestionParams(){
     var suggParams={
-      name: this.state.name,
-      email: this.state.email,
-      subject : this.state.subject,
+      name:this.state.name,
+      email:this.state.email,
+      subject:this.state.subject,
       description:this.state.description,
     }
     this.setState({sugguestionParams:suggParams},()=>{this.sendSuggestion();});
@@ -104,7 +104,6 @@ getRelevantToken(){
       <Modal open={this.state.showResponseModal}
              little={true}
              showCloseIcon={false}
-             animationDuration={2000}
              onClose={()=>{this.setState({showResponseModal:false})}}>
          {this.handleResponseModal()}
       </Modal>
@@ -113,7 +112,6 @@ getRelevantToken(){
   render(){
     return(
       <div>
-        {this.renderResponseModal()}
         <div className='suggestions-cadre'>
           <div className='suggestions-text-area'>
            <p className='suggestions-header'><span>ثبت </span><span  className="shekayat-color">شکایات</span></p>
@@ -163,6 +161,9 @@ getRelevantToken(){
               </div>
           </div>
         </div>
+        <div>
+        </div>
+        {this.renderResponseModal()}
       </div>
     );
   }
