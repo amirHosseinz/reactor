@@ -1,19 +1,51 @@
 import React from 'react';
 import {englishToPersianDigits} from '../tools/EnglishToPersianDigits.js';
-
+import MaxCapacitySm from './MaxCapacity/MaxCapacitySm.js';
+import MaxCapacityMd  from './MaxCapacity/MaxCapacityMd.js';
+import MaxCapacityXl  from './MaxCapacity/MaxCapacityXl.js';
+import MaxCapacityXs  from './MaxCapacity/MaxCapacityXs.js';
 
 class MaxCapacity extends React.Component{
+
+    renderMaxCapacityXl(props){
+      return(
+        <div className="hidden-xs hidden-md hidden-sm visible-xl">
+          <MaxCapacityXl {...props}/>
+        </div>
+      );
+    }
+
+    renderMaxCapacityXs(props){
+      return(
+        <div className="hidden-xl hidden-md hidden-sm visible-xs">
+          <MaxCapacityXs {...props}/>
+        </div>
+      );
+    }
+
+    renderMaxCapacityMd(props){
+      return(
+        <div className="hidden-xs hidden-xl hidden-sm visible-md">
+          <MaxCapacity {...props}/>
+        </div>
+      );
+    }
+
+    renderMaxCapacitySm(props){
+      return(
+        <div className="hidden-xs hidden-md hidden-xl visible-sm">
+          <MaxCapacitySm {...props}/>
+        </div>
+      );
+    }
+
   render(){
     return(
-      <div className="main-descriptions-cap row">
-          <div>
-             <div className="public-rules-div">
-               <img src={require('./rules/max-cap.png')}  className="other-rules-icon" alt = "" />
-                <p className="facility-text" >
-                  حداکثر ظرفیت: {englishToPersianDigits(this.props.homeData.max_capacity)}
-                </p>
-              </div>
-            </div>
+      <div>
+      {this.renderMaxCapacityXl(this.props)}
+      {this.renderMaxCapacityXs(this.props)}
+      {this.renderMaxCapacityMd(this.props)}
+      {this.renderMaxCapacitySm(this.props)}
           </div>
     );
   }
