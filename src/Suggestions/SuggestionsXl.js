@@ -2,6 +2,9 @@ import React from 'react';
 import { Divider,Button } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import {englishToPersianDigits} from '../tools/EnglishToPersianDigits.js';
+import 'react-responsive-modal/lib/react-responsive-modal.css';
+import Modal from '../tools/react-responsive-modal';
+
 
 class SuggestionsXl extends React.Component{
   constructor(props){
@@ -13,6 +16,8 @@ class SuggestionsXl extends React.Component{
           email:'',
           description:'',
         },
+        showResponseModal:false,
+        responseIsSuccesful:false,
         token:null,
         name:'',
         subject:'',
@@ -47,15 +52,16 @@ getRelevantToken(){
      return response.json();
    })
    .then((response) => {
+     this.setState({responseIsSuccesful:response.is_successful,showResponseModal:true});
     console.log(response);
    });
   }
 
   SetSuggestionParams(){
     var suggParams={
-      name: this.state.name,
-      email: this.state.email,
-      subject : this.state.subject,
+      name:this.state.name,
+      email:this.state.email,
+      subject:this.state.subject,
       description:this.state.description,
     }
     this.setState({sugguestionParams:suggParams},()=>{this.sendSuggestion();});
@@ -77,6 +83,32 @@ getRelevantToken(){
     this.setState({name:event.target.value});
   }
 
+  handleResponseModal(){
+    if(this.state.responseIsSuccesful===true){
+      return(
+        <div>
+         پیشنهاد شما با موفقیت ثبت شد
+        </div>
+      );
+    }
+    else{
+      return(
+        <div>
+          پیشنهاد شما با موفقیت ثبت نشد
+        </div>
+      );
+    }
+  }
+  renderResponseModal(){
+    return(
+      <Modal open={this.state.showResponseModal}
+             little={true}
+             showCloseIcon={false}
+             onClose={()=>{this.setState({showResponseModal:false})}}>
+         {this.handleResponseModal()}
+      </Modal>
+    );
+  }
   render(){
     return(
       <div>
@@ -129,6 +161,9 @@ getRelevantToken(){
               </div>
           </div>
         </div>
+        <div>
+        </div>
+        {this.renderResponseModal()}
       </div>
     );
   }

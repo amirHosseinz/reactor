@@ -935,8 +935,8 @@ color:grey;
 }
 .header-link{
   text-decoration :none !important;
-
 }
+
 .logo-menu-font1:hover{
   font-family: IRANSans;
   font-size: 16px;
@@ -2438,7 +2438,12 @@ text-align:center;
   font-family : IRANSans;
   border-radius: 4px;
   padding: 14px;
-  width: 400px !important;
+  width: 600px !important;
+  margin:auto;
+}
+.reserve-panel-total-price{
+  font-family : IRANSans;
+  /* text-align: center; */
   margin:auto;
 }
 .rbt-highlight-text{
