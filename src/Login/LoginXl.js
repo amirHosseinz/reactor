@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button,Divider,Checkbox} from 'semantic-ui-react';
-import {Modal} from 'react-bootstrap';
+// import {Modal} from 'react-bootstrap';
+import Modal from 'react-modal';
 import {loginVerifySmsXl , registerNewUser , setPasswordStyle} from '../Styles.js';
 import {englishToPersianDigits, persianArabicToEnglishDigits} from '../tools/EnglishToPersianDigits';
 
@@ -41,7 +42,7 @@ class LoginXl extends React.Component{
         password:null,
         confirmPassword:null,
         verificationCode:null,
-        firstName : null,
+        firstName:null,
         lastName: null,
       },
       reqParamsForSetPassword:{
@@ -270,9 +271,9 @@ class LoginXl extends React.Component{
   }
   renderSetPasswordModal(){
     return(
-      <Modal show={this.state.showSignUpOrSetPasswordModal}
+      <Modal isOpen={this.state.showSignUpOrSetPasswordModal}
              style={setPasswordStyle}
-             onHide={()=>{this.props.closeLoginPanel();
+             onRequestClose={()=>{this.props.closeLoginPanel();
                this.setState({showSignUpOrSetPasswordModal:false})}}>
        <div className="login1-modal">
           <p className="login-title-in-modal">تعیین رمز عبور</p>
@@ -316,9 +317,9 @@ class LoginXl extends React.Component{
   }
   renderSignUpModal(){
     return(
-      <Modal show={this.state.showSignUpOrSetPasswordModal}
+      <Modal isOpen={this.state.showSignUpOrSetPasswordModal}
              style={registerNewUser}
-             onHide={()=>{this.props.closeLoginPanel();
+             onRequestClose={()=>{this.props.closeLoginPanel();
                           this.setState({showSignUpOrSetPasswordModal:false})}}>
              <div className="login1-modal">
                  <p className="login-title-in-modal">ثبت‌نام کاربر جدید</p>
@@ -400,11 +401,11 @@ class LoginXl extends React.Component{
     }
   }
   renderVerificationModal(){
+    // <Modal isOpen={this.state.showVerificationModal}
+    //   style={loginVerifySmsXl}
+    //   onRequestClose={()=>{this.props.closeLoginPanel();
+    //                 this.setState({showVerificationModal:false})}}>
     return(
-      <Modal show={this.state.showVerificationModal}
-        style={loginVerifySmsXl}
-        onHide={()=>{this.props.closeLoginPanel();
-                      this.setState({showVerificationModal:false})}}>
         <div className="login1-modal">
           <p className="login-title-in-modal">کد تایید</p>
           <Divider/>
@@ -429,8 +430,9 @@ class LoginXl extends React.Component{
             </Button>
           </div>
         </div>
-    </Modal>
+
   );
+    // </Modal>
   }
 
   handleLoginClickByEnter(event){
@@ -500,57 +502,57 @@ class LoginXl extends React.Component{
       }
       else{
         return (
-          <div>
-            <div className="enter-password-mobile-xs hidden-xl visible-xs container fluid">
-            <div className="login1-modal">
-              <p className="login-title-in-modal"> ورود </p>
-              <Divider/>
-              <p className="enter-phone-number-inmodal">:رمز عبور خود را وارد کنید </p>
-                <div dir="rtl" className="enter-number-main">
-                <input
-                  className="login-input"
-                  onChange={this.changePasswordForLogin.bind(this)}
-                  value={this.state.inputForLogin.password}
-                  id='password'
-                  autoFocus={true}
-                  type="password"
-                  autoComplete="off"
-                  onKeyDown ={(event)=>{this.handleLoginClickByEnter(event)}}>
-                  </input>
-                  <div className="divider-x"></div>
-                  <br/>
-                  <br/>
-                    <Button color="blue" onClick={this.handleLoginClick.bind(this)} className="login-modal-button">
-                      ورود
-                    </Button>
+            <div>
+              <div className="enter-password-mobile-xs hidden-xl visible-xs container fluid">
+              <div className="login1-modal">
+                <p className="login-title-in-modal"> ورود </p>
+                <Divider/>
+                <p className="enter-phone-number-inmodal">:رمز عبور خود را وارد کنید </p>
+                  <div dir="rtl" className="enter-number-main">
+                  <input
+                    className="login-input"
+                    onChange={()=>{this.changePasswordForLogin()}}
+                    value={this.state.inputForLogin.password}
+                    id='password'
+                    autoFocus={true}
+                    type="password"
+                    autoComplete="off"
+                    onKeyDown ={(event)=>{this.handleLoginClickByEnter(event)}}>
+                    </input>
+                    <div className="divider-x"></div>
+                    <br/>
+                    <br/>
+                      <Button color="blue" onClick={this.handleLoginClick.bind(this)} className="login-modal-button">
+                        ورود
+                      </Button>
+                  </div>
                 </div>
               </div>
+              <div className="login1-modal hidden-xs visible-xl">
+                <p className="login-title-in-modal"> ورود </p>
+                <Divider/>
+                <p className="enter-phone-number-inmodal">:رمز عبور خود را وارد کنید </p>
+                  <div dir="rtl" className="enter-number-main">
+                  <input
+                    className="login-input"
+                    onChange={this.changePasswordForLogin.bind(this)}
+                    value={this.state.inputForLogin.password}
+                    id='password'
+                    autoFocus={true}
+                    type="password"
+                    autoComplete="off"
+                    onKeyDown ={(event)=>{this.handleLoginClickByEnter(event)}}
+                    >
+                    </input>
+                    <div className="divider-x"></div>
+                    <br/>
+                    <br/>
+                      <Button color="blue" onClick={this.handleLoginClick.bind(this)} className="login-modal-button">
+                        ورود
+                      </Button>
+                  </div>
+                </div>
             </div>
-            <div className="login1-modal hidden-xs visible-xl">
-              <p className="login-title-in-modal"> ورود </p>
-              <Divider/>
-              <p className="enter-phone-number-inmodal">:رمز عبور خود را وارد کنید </p>
-                <div dir="rtl" className="enter-number-main">
-                <input
-                  className="login-input"
-                  onChange={this.changePasswordForLogin.bind(this)}
-                  value={this.state.inputForLogin.password}
-                  id='password'
-                  autoFocus={true}
-                  type="password"
-                  autoComplete="off"
-                  onKeyDown ={(event)=>{this.handleLoginClickByEnter(event)}}
-                  >
-                  </input>
-                  <div className="divider-x"></div>
-                  <br/>
-                  <br/>
-                    <Button color="blue" onClick={this.handleLoginClick.bind(this)} className="login-modal-button">
-                      ورود
-                    </Button>
-                </div>
-              </div>
-          </div>
           );
       }
     }

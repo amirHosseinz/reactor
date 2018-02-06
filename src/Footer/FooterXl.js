@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 class FooterXl extends React.Component{
   renderFooterXL(){
     return(
-      <div className='footer hidden-xs visible-xl navbar-fixed-bottom'>
+      <div className='footer navbar-fixed-bottom'>
         <div className='footerchild' >
           <div className="footer-child-margined">
               <div className="footer-menu-and-dl hidden-xs">

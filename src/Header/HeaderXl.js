@@ -6,10 +6,12 @@ import {Link} from 'react-router-dom';
 import {Button,Divider} from 'semantic-ui-react';
 import {Dropdown} from 'semantic-ui-react';
 import {loginPasswordStyle, loginPhoneNumberStyle, loginPanelmobileStyle} from '../Styles.js';
-import {Modal} from 'react-bootstrap';
+// import {Modal} from 'react-bootstrap';
 import {englishToPersianDigits,persianArabicToEnglishDigits} from '../tools/EnglishToPersianDigits';
 import {Image} from 'react-bootstrap';
 import { Typeahead ,menuItemContainer,MenuItem,Menu as TypeaheadMenu} from '../tools/react-bootstrap-typeahead';
+import Modal from 'react-modal';
+
 
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
@@ -162,19 +164,17 @@ class HeaderXl extends React.Component{
              );
            }}
          />
-
        </div>
      );
    }
  }
 
-  renderLoginPanel(){
+  renderLoginPanelFirstStep(){
     return(
       <div className="login-modal-main">
-        <Modal show={this.state.loginPanelVisible}
+        <Modal isOpen={this.state.loginPanelVisible}
           style={loginPhoneNumberStyle}
-          onHide={()=>{this.setState({loginPanelVisible:false})}}>
-          <Modal.Body>
+          onRequestClose={()=>{this.setState({loginPanelVisible:false})}}>
           <div className="login1-modal">
             <p className="login-title-in-modal"> ورود/ عضویت </p>
             <Divider/>
@@ -200,15 +200,20 @@ class HeaderXl extends React.Component{
                   </Button>
               </div>
             </div>
-          </Modal.Body>
         </Modal>
-        <Modal show={this.state.loginPanelVisible2}
-          style={loginPasswordStyle}
-          onHide={()=>{this.setState({loginPanelVisible2:false})}}>
-          <Login closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
-        </Modal>
+        {this.renderLoginPanelSecondStep()}
       </div>
     );
+  }
+
+  renderLoginPanelSecondStep(){
+      return(
+        <Modal isOpen={this.state.loginPanelVisible2}
+          style={loginPasswordStyle}
+          onRequestClose={()=>{this.setState({loginPanelVisible2:false})}}>
+          <Login closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
+        </Modal>
+      );
   }
   renderUserPhoto(){
      if(localStorage['user-profile-picture']==='null'||localStorage['user-profile-picture']===undefined){
@@ -265,12 +270,9 @@ class HeaderXl extends React.Component{
      })
      .then((loginStatus) => {
        localStorage['phone-number'] = this.state.searchParams.phoneNumber;
-       this.setState({hasPassword: loginStatus.has_pass});
-       this.setState({hasAccount:loginStatus.has_account});
+       this.setState({hasPassword: loginStatus.has_pass,hasAccount:loginStatus.has_account});
        this.setState({loginPanelVisible2 : true});
        this.setState({loginPanelVisible: false});
-       this.setState({showMobileLoginPanel:false});
-
      });
   }
   closeLoginPanel(){
@@ -368,7 +370,7 @@ class HeaderXl extends React.Component{
   renderMessageButton(){
     if(localStorage['isLoggedIn']==='true'){
       return(
-        <p className="profile-card-user-messages"  onClick={this.handleMessageClick.bind(this)}>پیام‌ها</p>
+        <p className="profile-card-user-messages" onClick={this.handleMessageClick.bind(this)}>پیام‌ها</p>
       );
     }
   }
@@ -383,8 +385,8 @@ class HeaderXl extends React.Component{
   }
   renderDownloadAppModal(){
     return(
-      <Modal show={this.state.showDownloadAppModal}
-            onHide={()=>{this.setState({showDownloadAppModal:false})}}>
+      <Modal isOpen={this.state.showDownloadAppModal}
+             onRequestClose={()=>{this.setState({showDownloadAppModal:false})}}>
               <div className="download-app-modal-container">
                 <div className="mob">
                   <img src={require('../Images/phone-app.png')} className="download-modal-pc-preview" alt = 'تریپین'/>
@@ -421,7 +423,7 @@ class HeaderXl extends React.Component{
               {this.renderGetApplicationButton()}
             </div>
           </div>
-          {this.renderLoginPanel()}
+          {this.renderLoginPanelFirstStep()}
           <div className="logo col-md-6 col-sm-6">
               <div className='headerchild'>
                 <div className='logodiv'>
