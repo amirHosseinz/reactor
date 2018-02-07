@@ -3,22 +3,9 @@ import { Divider,Button } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import {englishToPersianDigits} from '../tools/EnglishToPersianDigits.js';
 import 'react-responsive-modal/lib/react-responsive-modal.css';
-// import Modal from '../tools/react-responsive-modal';
 import Modal from 'react-modal';
+import {suggestionResponseModalStyle} from '../Styles.js';
 Modal.setAppElement('#root');
-
-
-const customStyles = {
-  content : {
-    fontFamily : 'IRANSans',
-    top:'50%',
-    left:'50%',
-    right:'auto',
-    bottom:'auto',
-    marginRight:'-50%',
-    transform:'translate(-50%, -50%)',
-  }
-};
 
 
 class SuggestionsXl extends React.Component{
@@ -118,7 +105,7 @@ getRelevantToken(){
     return(
       <Modal isOpen={this.state.showResponseModal}
       onRequestClose={()=>{this.setState({showResponseModal:false})}}
-      style={customStyles}>
+      style={suggestionResponseModalStyle}>
         {this.handleResponseModal()}
       </Modal>
       // <Modal open={this.state.showResponseModal}

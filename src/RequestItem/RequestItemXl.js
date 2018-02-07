@@ -2,7 +2,9 @@ import React from 'react';
 import { Divider,Button } from 'semantic-ui-react';
 import {englishToPersianDigits} from '../tools/EnglishToPersianDigits';
 import moment from 'moment-jalaali';
-import {Modal} from 'react-bootstrap';
+// import {Modal} from 'react-bootstrap';
+import Modal from 'react-modal';
+import {setPasswordStyle} from '../Styles.js';
 import {parsePrice3digits} from '../tools/ParsePrice3digits.js'
 
 class RequestItemXl extends React.Component{
@@ -194,8 +196,8 @@ class RequestItemXl extends React.Component{
     if(this.state.request!==null){
       if(this.state.requestStatus!=='no-house'){
         return(
-          <Modal show={this.state.showPreBill}
-            onHide={()=>{this.setState({showPreBill:false})}}>
+          <Modal isOpen={this.state.showPreBill}
+            onRequestClose={()=>{this.setState({showPreBill:false})}}>
             <div className="pre-bill-main-division">
               <div className="pre-bill-header-section">
                 <p>

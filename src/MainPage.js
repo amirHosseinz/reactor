@@ -13,7 +13,7 @@ import AboutUs from './AboutUs.js';
 import Terms from './Terms.js';
 import SearchResult from './SearchResult.js';
 import Suggestions from './Suggestions.js';
-
+import {StickyContainer} from 'react-sticky';
 
 class MainPage extends React.Component{
   constructor(props){

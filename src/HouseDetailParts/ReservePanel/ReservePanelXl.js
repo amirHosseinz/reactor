@@ -3,7 +3,8 @@ import GuestNumber from '../GuestNumber.js';
 import {Button} from 'semantic-ui-react';
 import { englishToPersianDigits} from '../../tools/EnglishToPersianDigits';
 import {findDOMNode} from 'react-dom';
-import {Modal} from 'react-bootstrap';
+// import {Modal} from 'react-bootstrap';
+import Modal from 'react-modal';
 import $ from 'jquery';
 import '../../tools/DatePicker/bootstrap-datepicker.fa.js';
 import '../../tools/DatePicker/bootstrap-datepicker.js';
@@ -390,9 +391,8 @@ class ReservePanelXl extends React.Component{
   renderPreBill(){
     if(this.state.reserveData!==''){
       return(
-        <Modal show={this.state.showPreBill}
-          className="reserve-modal"
-          onHide={()=>{this.setState({showPreBill:false})}}>
+        <Modal isOpen={this.state.showPreBill}
+          onRequestClose={()=>{this.setState({showPreBill:false})}}>
           <div className="pre-bill-main-division">
             <div className="pre-bill-header-section">
               <button type="button" class="close" aria-label="Close">

@@ -5,13 +5,14 @@ import customBurgerIcon  from 'react-burger-menu';
 import {Link} from 'react-router-dom';
 import {Button,Divider} from 'semantic-ui-react';
 import {Dropdown} from 'semantic-ui-react';
-import {loginPasswordStyle, loginPhoneNumberStyle, loginPanelmobileStyle} from '../Styles.js';
+import {downloadAppModalStyle,loginPasswordStyle, loginPhoneNumberStyle, loginPanelmobileStyle} from '../Styles.js';
 // import {Modal} from 'react-bootstrap';
 import {englishToPersianDigits,persianArabicToEnglishDigits} from '../tools/EnglishToPersianDigits';
 import {Image} from 'react-bootstrap';
 import { Typeahead ,menuItemContainer,MenuItem,Menu as TypeaheadMenu} from '../tools/react-bootstrap-typeahead';
 import Modal from 'react-modal';
 
+Modal.setAppElement('#root');
 
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
@@ -184,6 +185,7 @@ class HeaderXl extends React.Component{
                   maxLength="11"
                   id="tel-number"
                   value={this.state.cellPhone}
+                  onAfterOpen={()=>{document.body.style.overflow="hidden"}}
                   onChange={(event)=>{this.setState({cellPhone:englishToPersianDigits(event.target.value)})}}
                   autoComplete="off"
                   autoFocus={true}
@@ -386,6 +388,7 @@ class HeaderXl extends React.Component{
   renderDownloadAppModal(){
     return(
       <Modal isOpen={this.state.showDownloadAppModal}
+            style={downloadAppModalStyle}
              onRequestClose={()=>{this.setState({showDownloadAppModal:false})}}>
               <div className="download-app-modal-container">
                 <div className="mob">

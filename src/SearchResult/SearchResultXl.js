@@ -356,7 +356,6 @@ class SearchResultXl extends React.Component{
   }
   render(){
     return(
-      <div>
       <div className="searchbarmain">
           <div className="container-fluid hidden-xs visible-xl">
             {this.renderSearchBarInDetails()}
@@ -389,10 +388,9 @@ class SearchResultXl extends React.Component{
             <img src={require('../Images/button-app-store.svg')} className='bazar-ico' alt=" دانلود از سیب‌اپ"></img>
           </div>
         </div>
+       </div>
       </div>
-      </div>
-      </div>
-      </div>
+    </div>
     );
   }
 }

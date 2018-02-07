@@ -75,6 +75,34 @@ export const registerNewUser = {
   }
 };
 
+export const suggestionResponseModalStyle = {
+  overlay : {
+    backgroundColor: 'rgba(0,0,0,0.7)',
+  },
+  content : {
+    fontFamily : 'IRANSans',
+    top:'50%',
+    left:'50%',
+    right:'auto',
+    bottom:'auto',
+    marginRight:'-50%',
+    transform:'translate(-50%, -50%)',
+  }
+};
+export const downloadAppModalStyle={
+  overlay : {
+    backgroundColor: 'rgba(0,0,0,0.7)',
+  },
+  content : {
+    fontFamily : 'IRANSans',
+    top:'50%',
+    left:'50%',
+    right:'auto',
+    bottom:'auto',
+    marginRight:'-50%',
+    transform:'translate(-50%, -50%)',
+  }
+}
 export const loginPasswordStyle = {
   overlay : {
     position          : 'fixed',
@@ -84,7 +112,7 @@ export const loginPasswordStyle = {
     bottom            : 0,
     backgroundColor   : 'rgba(0, 0, 0, 0.7)'
   },
-  content : {
+  content :{
     top                        : '15%',
     left                       : '35%',
     right                      : '35%',
