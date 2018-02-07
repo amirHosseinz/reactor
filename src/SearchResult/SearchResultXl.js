@@ -7,7 +7,6 @@ import $ from 'jquery';
 import '../tools/DatePicker/bootstrap-datepicker.fa.js';
 import '../tools/DatePicker/bootstrap-datepicker.js';
 import '../tools/DatePicker/bootstrap-datepicker.css';
-import { withRouter } from 'react-router-dom';
 import GuestNumber from '../HouseDetailParts/GuestNumber'
 import {Dropdown} from 'semantic-ui-react';
 

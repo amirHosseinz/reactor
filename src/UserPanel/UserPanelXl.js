@@ -12,6 +12,7 @@ class UserPanelXl extends React.Component{
   constructor(props){
     super(props);
     this.state={
+      reRenderList : false,
       ProfileDetail:'',
       requestDetail:'',
       tripDetail:'',
@@ -35,12 +36,15 @@ class UserPanelXl extends React.Component{
   changeProfileDetail (Profile_Detail) {
     this.setState({ProfileDetail:Profile_Detail});
   }
-
+  changeReRenderList(){
+    this.setState((prevState,props)=>{return({reRenderList:!prevState.reRenderList})});
+  }
   showContent(){
     switch (window.location.pathname.split('/')[window.location.pathname.split('/').length-1]){
       case 'request':
       return(
-        <RequestItem requestDetail={this.state.requestDetail}/>
+        <RequestItem changeReRenderList={()=>{this.changeReRenderList()}}
+        requestDetail={this.state.requestDetail}/>
       );
       case 'message':
       return(
@@ -62,7 +66,7 @@ class UserPanelXl extends React.Component{
         );
       case 'request':
       return(
-        <Requests changeRequestDetail={this.changeRequestDetail.bind(this)} />
+        <Requests reRender={this.state.reRenderList} changeRequestDetail={this.changeRequestDetail.bind(this)} />
       );
       case 'trip':
       return(
@@ -97,7 +101,7 @@ renderDashbordTitle(){
 
   render(){
     return(
-      <div requests-list-title>
+      <div className="requests-list-title">
           <div className="profile-container-margined">
               <div className="profile_dynamic_edit col-md-9  padding-top">
                 {this.showContent()}

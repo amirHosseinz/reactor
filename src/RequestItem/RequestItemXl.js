@@ -345,7 +345,7 @@ class RequestItemXl extends React.Component{
 }
 renderCancelButton(){
   if(this.state.requestStatus!=="GUEST_CANCELED"){
-   return (<Button className="request-userpanel-button" onClick={this.setTokenForDelete.bind(this)}> لغو درخواست </Button>);
+   return (<Button className="request-userpanel-button" onClick={()=>{this.setTokenForDelete()}}> لغو درخواست </Button>);
   }
 }
 renderDeleteButton(){
@@ -491,6 +491,7 @@ renderDeleteButton(){
      return response.json();
    })
    .then((request_status) => {
+     this.props.changeReRenderList();
   });
   }
   render(){
