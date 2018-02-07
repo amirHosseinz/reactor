@@ -295,7 +295,7 @@ class HeaderXl extends React.Component{
     return (
         <div>
           <div>
-            <Dropdown className="header-drop-down-texts" icon='dropdown' dir="rtl" floating={true} text={ ' سلام ' + ' ' +  localStorage['user-first-name'] } >
+            <Dropdown className="header-drop-down-texts" icon='dropdown' dir="rtl" floating={false} text={ ' سلام ' + ' ' +  localStorage['user-first-name'] } >
              <Dropdown.Menu>
                 <div className="drp-down-menu-cont">
                   <div className="profile-card-up row-reverse">
@@ -445,7 +445,7 @@ class HeaderXl extends React.Component{
       </div>
     );
   }
-  renderRelevantHeader(){
+  renderRelevantHeaderBasedOnURL(){
     if(window.location.pathname.indexOf('rooms')===-1){
       return(
         <Sticky>
@@ -472,7 +472,7 @@ class HeaderXl extends React.Component{
   render(){
     return(
       <div>
-        {this.renderRelevantHeader()}
+        {this.renderRelevantHeaderBasedOnURL()}
       </div>
     );
   }

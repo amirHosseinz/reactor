@@ -902,7 +902,7 @@ color:grey;
 
 .logo-menu-font{
   font-family: IRANSans;
-  font-size: 16px;
+  font-size: 1.1rem;
   font-style: normal;
 	font-weight: 400;
   margin-right: 1em;
@@ -912,7 +912,7 @@ color:grey;
 }
 .logo-menu-font:hover{
   font-family: IRANSans;
-  font-size: 16px;
+  font-size: 1.1rem;
   font-style: normal;
 	font-weight: 400;
   margin-right: 1em;
@@ -940,6 +940,7 @@ color:grey;
   color: #f56c4e;
 }
 .header-link{
+
   text-decoration :none !important;
 }
 
@@ -2532,10 +2533,10 @@ text-align:center;
 }
 
 .header-drop-down-texts{
-  margin-right: 5px;
+  /* margin-right: 0.1em; */
 }
 .header-drop-down-texts:hover{
-  margin-right: 5px;
+  /* margin-right: 5px; */
 
 }
 .drp-down-menu-cont{

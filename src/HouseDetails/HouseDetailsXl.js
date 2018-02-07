@@ -1,7 +1,8 @@
 import React from 'react';
 import Lightbox from 'react-image-lightbox';
 import scrollToComponent from 'react-scroll-to-component';
-import {Sticky,Divider} from 'semantic-ui-react';
+import {Divider} from 'semantic-ui-react';
+import {Sticky} from 'react-sticky';
 import {Button,Carousel,Image} from 'react-bootstrap';
 import ReservePanel from '../HouseDetailParts/ReservePanel.js';
 import AddressDescription from '../HouseDetailParts/AddressDescription';
@@ -9,7 +10,6 @@ import AmenitiesDescription from '../HouseDetailParts/AmenitiesDescription';
 import RatingDescription from '../HouseDetailParts/RatingDescription';
 import HostInfoDescription from '../HouseDetailParts/HostInfoDescription.js';
 import {englishToPersianDigits} from '../tools/EnglishToPersianDigits.js';
-import {normalReservePanelHouseDetails,fixedReservePanelHouseDetails,normalScrolllListHouseDetails,fixedScrollListHouseDetails} from '../Styles.js';
 import AspectRatio from 'react-aspect-ratio';
 import MapDescription from '../HouseDetailParts/MapRenderer.js';
 import {Modal} from 'react-bootstrap';
@@ -33,7 +33,6 @@ class HouseDetailsXl extends React.Component{
       photoIndex: 0,
       isOpen: false,
       homeData : '',
-      contextRef: '',
       reservePanelFixed : false,
       scrollListFixed:false,
       showReservePanel : true,
@@ -175,22 +174,6 @@ class HouseDetailsXl extends React.Component{
    }
  }
 
-  handleContextRef = (contextReference) => {
-    this.setState({ contextRef : contextReference});
-  }
-
-  handleStickReservePanel(){
-    this.setState({reservePanelFixed:true});
-  }
-  handleUnstickReservePanel(){
-    this.setState({reservePanelFixed:false});
-  }
-  handleStickScrollList(){
-    this.setState({scrollListFixed:true});
-  }
-  handleUnstickScrollList(){
-    this.setState({scrollListFixed:false});
-  }
   renderMap(){
     if(this.state.homeData!==''){
       return (
@@ -206,7 +189,7 @@ class HouseDetailsXl extends React.Component{
   renderHouseDetails(){
       return(
         <div className={this.state.imageLoaded?"house-detail-image-loaded":"house-detail-image-not-loaded"}>
-          <div className='housedetail container-fluid' ref={this.handleContextRef}>
+          <div className='housedetail container-fluid'>
             <div className="house-detail-top">
               <div className="house-detail-top-margined">
                <div className={this.state.imageLoaded?"loaded-message":"loading-message"} >
@@ -221,12 +204,11 @@ class HouseDetailsXl extends React.Component{
                 </div>
                 <div>
                 <div>
-                  <div className='navigation-menu-housedetails' style={this.state.scrollListFixed?fixedScrollListHouseDetails:normalScrolllListHouseDetails}>
-
+                  <div className='navigation-menu-housedetails'>
                     <Link to="details" spy={true} smooth={true} offset={-200} duration={800}>
                       <p className='navigation-menu-items'>مشخصات</p>
                     </Link>
-                    <Link to="gallery" spy={true} smooth={true} offset={-100} duration={800}>
+                    <Link to="gallery" spy={true} smooth={true} offset={0} duration={800}>
                       <p className='navigation-menu-items' >تصاویر</p>
                     </Link>
                     <Link to="laws" spy={true} smooth={true} offset={-200} duration={800}>
@@ -245,24 +227,26 @@ class HouseDetailsXl extends React.Component{
             <div className='house-detail-top'>
               <div className="house-detail-top-margined">
                   <div className="col-md-3">
-                    <Sticky context={this.state.contextRef}
-                    onStick={this.handleStickReservePanel.bind(this)}
-                    onUnstick={this.handleUnstickReservePanel.bind(this)}
-                    style={this.state.reservePanelFixed ? fixedReservePanelHouseDetails:normalReservePanelHouseDetails}>
-                      <div className='reserve-card'>
-                        <div className="reserve-card-child">
-                          <p className="text-011">:هزینه هرشب اقامت</p>
-                          <div className = "price">
-                            <p className='text-012'> تومان</p>
-                            <p className='text-012'> {englishToPersianDigits(this.state.homeData.price)} </p>
-                          </div>
-                          <div className="divider-card"></div>
-                          <p className="text-011">:تعداد مهمان</p>
-                          <div>
-                            {this.renderReservePanel()}
-                          </div>
-                      </div>
-                      </div>
+                    <Sticky topOffset={260} >
+                    {({style})=>{
+                      return(
+                        <div style={style} className='reserve-card'>
+                          <div className="reserve-card-child">
+                            <p className="text-011">:هزینه هرشب اقامت</p>
+                            <div className = "price">
+                              <p className='text-012'> تومان</p>
+                              <p className='text-012'> {englishToPersianDigits(this.state.homeData.price)} </p>
+                            </div>
+                            <div className="divider-card"></div>
+                            <p className="text-011">:تعداد مهمان</p>
+                            <div>
+                              {this.renderReservePanel()}
+                            </div>
+                        </div>
+                        </div>
+                      );
+                    }
+                  }
                     </Sticky>
                   </div>
                   <div className='col-md-9'>
