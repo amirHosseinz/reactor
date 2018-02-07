@@ -1,15 +1,9 @@
-.Modal{
-  content:{
-    font-family:IRANSans;
-    top:50%;
-    left:50%;
-    right:auto;
-    bottom:auto;
-    margin-right:-50%;
-    transform:translate(-50%, -50%);
-  }
+.header-sticky{
+  z-index: 1000;
 }
+.header-not-sticky{
 
+}
 .header-search-bar{
   font-family: IRANSans;
   text-align: right !important;

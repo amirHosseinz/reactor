@@ -111,6 +111,7 @@ class MainPage extends React.Component{
     document.title = "تریپین | سامانه رزرو ویلا";
     return(
       <BrowserRouter>
+        <StickyContainer>
         <div className="main">
           <Route path={"/"} render = {(props)=> {return (this.renderHeader(props))}}/>
           <Route exact path={'/'} render={(props)=> {return (this.renderSearchBar(props))}}/>
@@ -124,6 +125,7 @@ class MainPage extends React.Component{
           <Route path={"/"} render = {()=> {return(this.renderFooter())}}/>
           <Route exact path={"/search/:city"} render = {(props)=> {return(this.renderSearchResult(props))}}/>
         </div>
+        </StickyContainer>
       </BrowserRouter>
     );
   }

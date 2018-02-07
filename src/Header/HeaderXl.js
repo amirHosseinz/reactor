@@ -11,6 +11,7 @@ import {englishToPersianDigits,persianArabicToEnglishDigits} from '../tools/Engl
 import {Image} from 'react-bootstrap';
 import { Typeahead ,menuItemContainer,MenuItem,Menu as TypeaheadMenu} from '../tools/react-bootstrap-typeahead';
 import Modal from 'react-modal';
+import {Sticky} from 'react-sticky';
 
 Modal.setAppElement('#root');
 
@@ -444,11 +445,34 @@ class HeaderXl extends React.Component{
       </div>
     );
   }
+  renderRelevantHeader(){
+    if(window.location.pathname.indexOf('rooms')===-1){
+      return(
+        <Sticky>
+          {({style,isSticky})=>{return(
+            <div className={isSticky?"header-sticky":"header-not-sticky"} style={style}>
+              {this.renderHeaderXl()}
+              {this.renderDownloadAppModal()}
+            </div>
+          );
+          }}
+        </Sticky>
+      );
+    }
+    else{
+      return(
+        <div>
+          {this.renderHeaderXl()}
+          {this.renderDownloadAppModal()}
+        </div>
+      );
+    }
+  }
+
   render(){
     return(
       <div>
-        {this.renderHeaderXl()}
-        {this.renderDownloadAppModal()}
+        {this.renderRelevantHeader()}
       </div>
     );
   }
