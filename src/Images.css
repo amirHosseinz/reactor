@@ -297,7 +297,8 @@ transform: rotate(-5deg);
   margin-right:auto;
   margin-top:50px;
   height:550px;
-  width:76%;
+  /* width:76%; */
+  width : 85rem;
   border:solid;
   border-width: 2px;
   border-color: #e4e4e4;
@@ -461,7 +462,8 @@ margin: 30px
   font-family: IRANSans;
   font-size: 16px;
   height: 1200px;
-  width: 76%;
+  /* width: 76%; */
+  width : 85rem;
   margin: auto;
   margin-top: 30px;
   margin-bottom: 90px;
@@ -902,20 +904,20 @@ color:grey;
 
 .logo-menu-font{
   font-family: IRANSans;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-style: normal;
 	font-weight: 400;
-  margin-right: 1em;
+  margin-right: 1rem;
   padding-top: 22px;
   color: #454545;
 
 }
 .logo-menu-font:hover{
   font-family: IRANSans;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-style: normal;
 	font-weight: 400;
-  margin-right: 1em;
+  margin-right: 1rem;
   padding-top: 22px;
   color: #f56c4e;
 
@@ -2318,7 +2320,8 @@ margin-top: 20px;
   border-width: 2px;
   border-color: #ececec;
   background-color: white;
-  height: 1170px;
+  /* height: 1170px; */
+  height:100%;
   margin-bottom:100px;
   padding-bottom: 50px;
 }
@@ -3104,7 +3107,8 @@ padding-top: 80px;
   font-family: IRANSans;
   font-size: 16px;
   height: 1000px;
-  width: 76%;
+  /* width: 76%; */
+  width : 85rem;
   margin: auto;
   margin-top: 30px;
   margin-bottom: 50px;
@@ -3393,7 +3397,9 @@ padding-top: 80px;
   font-family: IRANSans;
   font-size: 16px;
   height: 75%;
-  width: 76%;
+  /* width: 76%; */
+  width: 85rem;
+
   margin: auto;
   margin-top: 30px;
   margin-bottom: 100px;
