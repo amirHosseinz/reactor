@@ -6,34 +6,34 @@ import UserPanelSm from './UserPanel/UserPanelSm';
 
 class UserPanel extends React.Component{
 
-  renderUserPanelXl(){
+  renderUserPanelXl(props){
     return(
       <div className="hidden-xs hidden-md hidden-sm visible-xl">
-        <UserPanelXl />
+        <UserPanelXl {...props}/>
       </div>
     );
   }
 
-  renderUserPanelXs(){
+  renderUserPanelXs(props){
     return(
       <div className="hidden-xl hidden-md hidden-sm visible-xs">
-        <UserPanelXs />
+        <UserPanelXs {...props}/>
       </div>
     );
   }
 
-  renderUserPanelMd(){
+  renderUserPanelMd(props){
     return(
       <div className="hidden-xs hidden-xl hidden-sm visible-md">
-        <UserPanelMd />
+        <UserPanelMd {...props}/>
       </div>
     );
   }
 
-  renderUserPanelSm(){
+  renderUserPanelSm(props){
     return(
       <div className="hidden-xs hidden-md hidden-xl visible-sm">
-        <UserPanelSm />
+        <UserPanelSm {...props}/>
       </div>
     );
   }
@@ -41,10 +41,10 @@ class UserPanel extends React.Component{
   render() {
     return (
       <div>
-        {this.renderUserPanelMd()}
-        {this.renderUserPanelXs()}
-        {this.renderUserPanelXl()}
-        {this.renderUserPanelSm()}
+        {this.renderUserPanelMd(this.props)}
+        {this.renderUserPanelXs(this.props)}
+        {this.renderUserPanelXl(this.props)}
+        {this.renderUserPanelSm(this.props)}
       </div>
 
     );

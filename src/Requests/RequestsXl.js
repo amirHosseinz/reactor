@@ -25,9 +25,13 @@ class RequestsXl extends React.Component{
   componentWillMount() {
       this.setState({token:this.getRelevantToken()},()=>{this.setSearchParams(this.getRole())});
   }
+
   componentWillReceiveProps(nextProps){
-    this.setSearchParams(this.getRole());
+    if(this.props.reRender!==nextProps.reRender){
+        this.setSearchParams(this.getRole());
+    }
   }
+  
   getRelevantToken(){
     if(localStorage['isLoggedIn']==='true'){
       return localStorage['token'];
