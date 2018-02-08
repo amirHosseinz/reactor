@@ -528,7 +528,7 @@ class LoginXl extends React.Component{
                   </div>
                 </div>
               </div>
-              <div className="login1-modal hidden-xs visible-xl">
+              <div className="login1-modal visible-xl">
                 <p className="login-title-in-modal"> ورود </p>
                 <Divider/>
                 <p className="enter-phone-number-inmodal">:رمز عبور خود را وارد کنید </p>
