@@ -5,60 +5,89 @@ import customBurgerIcon  from 'react-burger-menu';
 import {Link} from 'react-router-dom';
 import {Button,Divider} from 'semantic-ui-react';
 import {Dropdown} from 'semantic-ui-react';
+
+import '../Styles/Header-SearchBar.css';
 import {downloadAppModalStyle,loginPasswordStyle, loginPhoneNumberStyle, loginPanelmobileStyle} from '../Styles.js';
 // import {Modal} from 'react-bootstrap';
 import {englishToPersianDigits,persianArabicToEnglishDigits} from '../tools/EnglishToPersianDigits';
 import {Image} from 'react-bootstrap';
-import { Typeahead ,menuItemContainer,MenuItem,Menu as TypeaheadMenu} from '../tools/react-bootstrap-typeahead';
+// import { Typeahead ,menuItemContainer,MenuItem,Menu as TypeaheadMenu} from '../tools/react-bootstrap-typeahead';
 import Modal from 'react-modal';
 import {Sticky} from 'react-sticky';
-
+import Autosuggest from 'react-autosuggest';
 Modal.setAppElement('#root');
 
-const TypeaheadMenuItem = menuItemContainer(MenuItem);
+// const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
-  'اصفهان',
-  'نوشهر',
-  'گیلان',
-  'رامسر',
-  'کیش',
-  'مازندران',
-  'بابلسر',
-  'فریدون‌کنار',
-  'محمودآباد',
-  'عباس‌آباد',
-  'شاندیز',
-  'خراسان رضوی',
-  'بندر انزلی',
-  'کاشان',
-  'باغ‌بهادران',
-  'قلعه‌رودخان',
-  'مشهد',
-  'چمخاله',
-  'فومن',
-  'رضوان‌شهر',
-  'رودسر',
-  'آستارا',
-  'زیباکنار',
-  'سرخ‌رود',
-  'رویان',
-  'نور',
-  'چالوس',
-  'تنکابن',
-  'دریاکنار',
-  'ایزدشهر',
-  'کلاردشت',
-  'کلارآباد',
-  'سلمان‌شهر',
-  'نشتارود',
-  'البرز',
+  {name:'اصفهان',},
+  {name:'نوشهر',},
+  {name: 'گیلان',},
 ];
+// 'اصفهان',
+// 'نوشهر',
+// 'گیلان',
+// 'رامسر',
+// 'کیش',
+// 'مازندران',
+// 'بابلسر',
+// 'فریدون‌کنار',
+// 'محمودآباد',
+// 'عباس‌آباد',
+// 'شاندیز',
+// 'خراسان رضوی',
+// 'بندر انزلی',
+// 'کاشان',
+// 'باغ‌بهادران',
+// 'قلعه‌رودخان',
+// 'مشهد',
+// 'چمخاله',
+// 'فومن',
+// 'رضوان‌شهر',
+// 'رودسر',
+// 'آستارا',
+// 'زیباکنار',
+// 'سرخ‌رود',
+// 'رویان',
+// 'نور',
+// 'چالوس',
+// 'تنکابن',
+// 'دریاکنار',
+// 'ایزدشهر',
+// 'کلاردشت',
+// 'کلارآباد',
+// 'سلمان‌شهر',
+// 'نشتارود',
+// 'البرز',
+function getSuggestions(value) {
+  const escapedValue = escapeRegexCharacters(value.trim());
+
+  if (escapedValue === '') {
+    return [];
+  }
+  const regex = new RegExp('^' + escapedValue, 'i');
+  return listOfCity.filter(city => regex.test(city.name));
+}
+
+function getSuggestionValue(suggestion) {
+  return suggestion.name;
+}
+
+function renderSuggestion(suggestion) {
+  return (
+    <span>{suggestion.name}</span>
+  );
+}
+
+function escapeRegexCharacters(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
 class HeaderXl extends React.Component{
   constructor (props){
     super(props);
     this.state={
       token: null,
       cellPhone:'',
+      suggestions: listOfCity,
       city : '',
       reloadPage: false,
       showDownloadAppModal:false,
@@ -126,6 +155,7 @@ class HeaderXl extends React.Component{
  closeLoginPanel(){
    this.setState({loginPanelVisible2:false});
  }
+
  handleClick(){
    if(this.state.city===''){
      this.props.history.push("/search/هر جا");
@@ -134,43 +164,87 @@ class HeaderXl extends React.Component{
       this.props.history.push("/search/" + this.state.city);
    }
  }
+
+
+ onChangeSearchBarValue = (event,{newValue, method}) => {
+   this.setState({
+     city: newValue
+   });
+ };
+ onSuggestionsFetchRequested=({value})=> {
+   this.setState({
+     suggestions: getSuggestions(value)
+   });
+ }
+
+ onSuggestionsClearRequested=() =>{
+   this.setState({
+     suggestions: []
+   });
+ }
+
+ renderSuggestion = (suggestion)=>{
+   return(
+     <span>
+       {suggestion.name}
+     </span>
+   );
+ }
+ getSuggestionValue(suggestion){
+   return suggestion.name;
+ }
  renderSearchBarXL(){
+   const value = this.state.city;
+   const suggestions = this.state.suggestions;
+   console.log(suggestions);
    if(window.location.href.indexOf('search')===-1 && window.location.pathname!=='/'){
+     const inputProps = {
+     placeholder: 'مقصد خود را وارد کنید',
+     value:this.state.city,
+     onChange:this.onChangeSearchBarValue
+  };
      return(
        <div className='header-search-bar'>
-         <Typeahead options={listOfCity}
-         className="header-typeahead"
-         minLength={2}
-         align="right"
-         bsSize="sm"
-         emptyLabel="نتیجه‌ای یافت نشد"
-         maxResults={5}
-         placeholder='جستجوی مقصد'
-         selectHintOnEnter={false}
-         highlightOnlyResult={true}
-         submitFormOnEnter={true}
-         onChange={(selected)=>{
-           if(selected.length!==0){
-             this.setState({city:selected[0]},()=>{this.handleClick()});
-           }
-         }}
-         renderMenu={(results,menuProps) => {
-             return(
-               <TypeaheadMenu {...menuProps}>
-                 {results.map((result, index) => (
-                   <TypeaheadMenuItem option={result} position={index}>
-                     {result}
-                   </TypeaheadMenuItem>
-                 ))}
-               </TypeaheadMenu>
-             );
-           }}
-         />
+       <Autosuggest
+         suggestions={suggestions}
+         onKeyDown={(event)=>{}}
+         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+         onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+         getSuggestionValue={getSuggestionValue}
+         renderSuggestion={renderSuggestion}
+         inputProps={inputProps} />
        </div>
      );
    }
  }
-
+ // <Typeahead options={listOfCity}
+ // className="header-typeahead"
+ // minLength={2}
+ // align="right"
+ // bsSize="sm"
+ // emptyLabel="نتیجه‌ای یافت نشد"
+ // maxResults={5}
+ // placeholder='جستجوی مقصد'
+ // selectHintOnEnter={false}
+ // highlightOnlyResult={true}
+ // submitFormOnEnter={true}
+ // onChange={(selected)=>{
+ //   if(selected.length!==0){
+ //     this.setState({city:selected[0]},()=>{this.handleClick()});
+ //   }
+ // }}
+ // renderMenu={(results,menuProps) => {
+ //     return(
+ //       <TypeaheadMenu {...menuProps}>
+ //         {results.map((result, index) => (
+ //           <TypeaheadMenuItem option={result} position={index}>
+ //             {result}
+ //           </TypeaheadMenuItem>
+ //         ))}
+ //       </TypeaheadMenu>
+ //     );
+ //   }}
+ // />
   renderLoginPanelFirstStep(){
     return(
       <div className="login-modal-main">
@@ -224,7 +298,6 @@ class HeaderXl extends React.Component{
          <div style={{float:'left'}}>
           <Image className="profile-card-user-avatar" src={require('../HouseDetailParts/facilities/prof_avatar_tripinn.svg')} height={70}  circle={true}/>
          </div>
-
        );
      }
        else{

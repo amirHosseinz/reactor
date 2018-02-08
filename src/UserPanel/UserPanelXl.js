@@ -8,7 +8,6 @@ import UserProfile from '../UserProfile.js';
 
 
 class UserPanelXl extends React.Component{
-
   constructor(props){
     super(props);
     this.state={
