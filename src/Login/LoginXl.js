@@ -511,7 +511,7 @@ class LoginXl extends React.Component{
                   <div dir="rtl" className="enter-number-main">
                   <input
                     className="login-input"
-                    onChange={()=>{this.changePasswordForLogin()}}
+                    onChange={(event)=>{this.changePasswordForLogin(event)}}
                     value={this.state.inputForLogin.password}
                     id='password'
                     autoFocus={true}
