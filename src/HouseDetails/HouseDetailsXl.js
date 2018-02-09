@@ -288,9 +288,11 @@ class HouseDetailsXl extends React.Component{
       return(
         <div className="house-details-main-division">
           <div className="house-details-top-division">
+            <Element name="gallery"></Element>
             <div className="house-details-gallery">
             </div>
             <div className="house-details-main-information">
+              <Element name="details"></Element>
               {this.renderHomeTitle()}
               <AddressDescription homeData={this.state.homeData}/>
               <AmenitiesDescription homeData={this.state.homeData} />
@@ -302,10 +304,10 @@ class HouseDetailsXl extends React.Component{
             <div className="house-details-contents">
               <div className="house-details-menu-link-scrolls housedetails-content-containers">
                 <div className='navigation-menu-housedetails'>
-                  <Link to="details" spy={true} smooth={true} offset={-200} duration={800}>
+                  <Link to="details" spy={true} smooth={true} offset={-100} duration={800}>
                     <p className='navigation-menu-items'>مشخصات</p>
                   </Link>
-                  <Link to="gallery" spy={true} smooth={true} offset={0} duration={800}>
+                  <Link to="gallery" spy={true} smooth={true} offset={-300} duration={800}>
                     <p className='navigation-menu-items' >تصاویر</p>
                   </Link>
                   <Link to="laws" spy={true} smooth={true} offset={-200} duration={800}>
@@ -318,6 +320,8 @@ class HouseDetailsXl extends React.Component{
               </div>
               <div className="house-details-amenities-description housedetails-content-containers">
                 <div className="house-details-host-info">
+                  <HostInfoDescription homeData={this.state.homeData}/>
+                  <p className='house-details-description-content house-description-top'> {this.state.homeData.description} </p>
                 </div >
                 <div className="house-details-amenities">
                 </div>
@@ -325,10 +329,18 @@ class HouseDetailsXl extends React.Component{
                 </div>
               </div>
               <div className= "house-details-rules housedetails-content-containers">
+                <Element name="laws" ></Element>
+                <p className="house-details-description-heading">
+                مقررات این اقامتگاه
+                </p>
+                <CheckInCheckOutDescription homeData={this.state.homeData}/>
+                <MaxCapacity homeData={this.state.homeData}/>
+                <RulesDescription homeData= {this.state.homeData} />
+                <SpecialRule homeData={this.state.homeData}/>
               </div>
               <div className="house-details-location housedetails-content-containers">
                 <div className="house-details-location-description">
-                <p className="house-deetails-description-heading">
+                <p className="house-details-description-heading">
                   موقعیت اقامتگاه
                 </p>
                 <p className="house-details-description-content">
@@ -340,6 +352,7 @@ class HouseDetailsXl extends React.Component{
                 </p>
                 </div>
                 <div className="house-details-map">
+                  <Element name="map"></Element>
                   <MapDescription
                     lat={this.state.homeData.latitude} lng={this.state.homeData.longitude} zoom={13}
                   />

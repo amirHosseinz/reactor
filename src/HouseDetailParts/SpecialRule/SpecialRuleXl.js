@@ -8,19 +8,17 @@ class SpecialRuleXl extends React.Component{
 renderSpecialRules (){
   if(this.props.homeData.special_rules!==''){
     return (
-      <div className='special-rules'>
-          <p className="des-main-xs">{this.props.homeData.special_rules}</p>
+      <div>
+          <p className="house-details-description-content">{this.props.homeData.special_rules}</p>
       </div>
     );
   }
 }
   render(){
     return(
-        <div className="main-descriptions row">
            <div>
               {this.renderSpecialRules()}
             </div>
-        </div>
     );
   }
 }

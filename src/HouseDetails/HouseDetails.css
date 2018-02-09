@@ -4,11 +4,11 @@
   background-color: #F5F5F5;
 }
 .house-details-top-division{
-  height : 740px;
+  height : 710px;
   background-color: white;
 }
 .house-details-gallery{
-  height: 520px;
+  height: 490px;
   background-color: grey;
 }
 .house-details-main-information{
@@ -31,12 +31,13 @@
   background-color: white;
   margin-top: 12px;
   border-radius: 5px;
-  padding : 35px 15px 15px 15px;
+  padding : 35px 18px 18px 18px;
   text-align: justify;
   direction : rtl;
 }
 .house-details-menu-link-scrolls{
   padding-top: 0px !important;
+  padding-right: 0px !important;
   direction : ltr !important;
   height: 48px;
 }
@@ -45,7 +46,7 @@
   margin-top: 5px !important;
 }
 .house-details-rules{
-  height: 400px;
+  padding-bottom: 30px;
 }
 .house-detail-titles{
   font-size: 2.2rem;
@@ -103,39 +104,108 @@
   text-align: left;
   padding-left: 15px;
 }
-
 .navigation-menu-items{
   margin-left: 18px;
   cursor : pointer;
   color : #767676;
   font-size: 14px;
   font-weight: 500;
-  margin-top: 14px !important;
+  margin-top: 16px !important;
 }
-
-
-
-
-
 .house-details-location{
   margin-bottom: 100px;
 }
 .house-details-location-description{
   margin-bottom: 10px;
 }
-
-.house-deetails-description-heading{
-  margin-bottom : 0px !important;
-  font-size : 16px;
+.house-details-description-heading{
+  margin-bottom : 5px !important;
+  font-size : 18px;
   font-weight : 500;
   line-height : 28px;
 }
 .house-details-description-content{
-  font-size : 16px;
+  font-size : 14px;
   font-weight: 300;
-  line-height: 28px;
+  line-height: 30px;
+  width: 95%;
 }
-
+.house-description-top{
+  margin-top: 20px;
+}
 .house-details-map{
-  margin-top : 30px !important;
+  margin-top : 40px !important;
+}
+.house-details-host-information{
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  margin: auto;
+  flex-direction: row;
+}
+.house-details-host-avatar-icon{
+  height: 66px;
+  border:solid;
+  border-color: #bdbdbd;
+  border-width: 2px;
+  border-radius: 50%;
+}
+.house-details-host-photo{
+width: 100%;
+margin: auto;
+text-align:center;
+}
+.house-details-host-textbox{
+  margin-top: 8px;
+  margin-right: 8px;
+}
+.house-details-host-img{
+height: 66px;
+border:solid;
+border-radius: 50%;
+border-color: #bdbdbd;
+border-width: 2px;
+}
+.host-name-house-details{
+  font-size: 14px;
+  margin-top: .5rem !important;
+  font-style: normal;
+  font-weight: 500;
+  color: #1FA0C1;
+  text-align: right;
+}
+.house-details-host-avatar{
+
+}
+.house-details-text-name-label{
+  font-family: IRANSans;
+  font-size: 14px;
+  font-weight: 300;
+  font-style: normal;
+  font-weight: 400;
+  color: #666666 !important;
+  text-align: right;
+  margin-bottom:4px;
+}
+.house-details-rules-container{
+  margin:0 0 20px 0;
+  direction: ltr;
+}
+.house-details-public-rules-div{
+  margin:16px 0 20px 0;
+  direction: ltr;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row-reverse;
+}
+.house-details-other-rules-icon{
+  width: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.house-details-rules-text-xl{
+  margin-right: 12px;
+  font-size: 14px;
+  font-weight: 400;
 }
