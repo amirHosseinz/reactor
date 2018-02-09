@@ -324,6 +324,10 @@ class HouseDetailsXl extends React.Component{
                   <p className='house-details-description-content house-description-top'> {this.state.homeData.description} </p>
                 </div >
                 <div className="house-details-amenities">
+                  <p className="house-details-description-heading">
+                    سایر امکانات
+                  </p>
+                  <UtilitiesDescription homeData={this.state.homeData} />
                 </div>
                 <div className="house-details-sleep-arrangements">
                 </div>
