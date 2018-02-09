@@ -204,10 +204,32 @@ class SearchBarXl extends React.Component{
       </div>
     );
   }
+
+  renderSearchBarVersion2(){
+    return(
+      <div className="search-bar-main-division">
+        <div className="search-bar-back-ground">
+          <div className="search-bar-contents">
+            <p className="search-bar-tripinn-heading">
+            </p>
+            <p className="search-bar-tripinn-heading-2">
+            </p>
+            <div className="search-bar-auto-suggest-container">
+              <div className="search-bar-auto-suggest">
+              </div>
+              <div className="search-bar-auto-suggest-button">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  // {this.renderSearchbarXl()}
   render(){
     return(
-      <div className="searchbarmain">
-          {this.renderSearchbarXl()}
+      <div>
+        {this.renderSearchBarVersion2()}
       </div>
     );
   }
