@@ -10,6 +10,7 @@ import '../tools/DatePicker/bootstrap-datepicker.css';
 import {Dropdown} from 'semantic-ui-react';
 import GuestNumber from '../GuestNumberSearchBar.js';
 import scrollToComponent from 'react-scroll-to-component';
+import "./SearchBar.css"
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
   'اصفهان',
@@ -208,11 +209,14 @@ class SearchBarXl extends React.Component{
   renderSearchBarVersion2(){
     return(
       <div className="search-bar-main-division">
-        <div className="search-bar-back-ground">
+        <div className="search-bar-background">
+        </div>
           <div className="search-bar-contents">
             <p className="search-bar-tripinn-heading">
+              تریپین
             </p>
             <p className="search-bar-tripinn-heading-2">
+              سامانه رزرو ویلا و اقامتگاه محلی
             </p>
             <div className="search-bar-auto-suggest-container">
               <div className="search-bar-auto-suggest">
@@ -221,7 +225,6 @@ class SearchBarXl extends React.Component{
               </div>
             </div>
           </div>
-        </div>
       </div>
     );
   }
