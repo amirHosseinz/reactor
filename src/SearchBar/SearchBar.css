@@ -1,3 +1,50 @@
 .search-bar-main-division{
-  font-family: IRANSans;
+  font-family: Shabnam;
+}
+.search-bar-background{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* margin-top: 17rem; */
+  height: 32rem;
+  width: 100%;
+  background-image: url(tripinn-background.png);
+  background-size: contain;
+  background-position: 0,100%;
+  background-repeat: no-repeat;
+  z-index: -1000 !important;
+
+}
+.search-bar-contents{
+  margin-top: 130px;
+  width: 1110px;
+  max-width: 1500px;
+  padding: 0 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  direction: rtl;
+}
+.search-bar-tripinn-heading{
+  margin-right: 44px;
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 0px !important;
+  color: #f54e4e;
+}
+.search-bar-tripinn-heading-2{
+  margin-right: 44px;
+  font-size: 34px;
+  margin-bottom: 18px !important;
+  color:#454545;
+
+}
+.search-bar-auto-suggest-container{
+  background-color: white;
+  height: 118px;
+  width: 800px;
+  max-width: 1200px;
+  border-radius: 16px;
+  -webkit-box-shadow: 1px 2px 28px 3px rgba(0,0,0,0.1);
+-moz-box-shadow: 1px 2px 28px 3px rgba(0,0,0,0.1);
+box-shadow: 1px 2px 28px 3px rgba(0,0,0,0.1);
 }
