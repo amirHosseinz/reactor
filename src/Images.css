@@ -857,7 +857,7 @@ margin-left: 14px;
 }
 .footer{
   width:100%;
-  background-color: rgba(255, 255 ,255 , 0.0);
+  background-color: none;
 }
 .footerchild{
   width:100%;

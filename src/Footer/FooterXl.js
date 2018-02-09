@@ -15,7 +15,7 @@ class FooterXl extends React.Component{
                   <a href="https://twitter.com/tripinni"><img src={require('../Images/trypinn-twitter.png')} className='social-image-xl' alt=""></img></a>
                 </div>
                 <div className='footer-menu col-md-8'>
-                  TripInn 2018
+© 2017, Tripinn, All Rights Reserved.
                 </div>
                 <div className='footer-menu col-md-2'>
 
