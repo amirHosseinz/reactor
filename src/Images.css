@@ -1247,33 +1247,8 @@ border-radius: 40px;
 .mamadnaboodi{
   margin-top: 1000px;
 }
-.row-reverse-house-adress-type{
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
-  display: flex;
-  margin: auto;
-  flex-direction: row-reverse;
-  font-family: IRANSans;
-  font-size: 1.2rem;
-  font-style: normal;
-  font-weight: 300;
-  margin-top: 0;
-  color: #454545;
-  text-align: left;
-  margin-top: 20px;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-.house-detail-titles{
-  font-family: IRANSans;
-  font-size: 2rem;
-  font-style: normal;
-  font-weight: 500;
-  margin-top: 0;
-  color: #454545;
-  padding-right: 15px;
-  padding-left: 15px;
-}
+
+
 
 
 .housedetail-main1{
@@ -1297,11 +1272,7 @@ border-radius: 40px;
   border-color: red;
   margin-right: 15px;
 }
-.navigation-menu-items{
-  margin-left: 15px;
-  cursor : pointer;
-  color : #0084b4;
-}
+
 .house-detail-top{
   box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
 
@@ -1392,31 +1363,7 @@ border-width: 2px;
   font-weight: 500;
   color: #ffffff;
 }
-.main-amanities{
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-direction: row; /* Safari 6.1+ */
-  display: flex;
-  margin: auto;
-  flex-direction: row;
-  padding-top: 30px;
-  padding-bottom: 10px;
 
-}
-.main-amanities-item{
-  height: 30px;
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
-  display: flex;
-  margin: auto;
-  flex-direction: row-reverse;
-  font-family: IRANSans;
-  font-size: 18rem;
-  font-style: normal;
-  font-weight: 500;
-  margin-top: 0;
-  color: #737373;
-  text-align: left;
-}
 .main-amanities-item-xs{
   height: 30px;
   font-family: IRANSans;
@@ -1438,12 +1385,8 @@ border-width: 2px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
 
-}
-.main-amanities-icon{
-  height: 30px;
-  margin: 10px;
-}
 .main-amanities-icon-xs{
   margin: auto;
   height: 26px;
@@ -1540,13 +1483,7 @@ border-radius: 50px;
 -ms-transform: scale(-1, 1);
 transform: scale(-1, 1);
 }
-.aminities-text{
-  margin-top: 14px;
-  font-size: 18px;
-  font-weight: 500;
-  margin-left: 5px;
-  color:#454545;
-}
+
 .aminities-text-xs{
   font-size: 14px;
   font-weight: 400;

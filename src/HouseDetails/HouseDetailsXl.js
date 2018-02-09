@@ -206,20 +206,7 @@ class HouseDetailsXl extends React.Component{
                 </div>
                 <div>
                 <div>
-                  <div className='navigation-menu-housedetails'>
-                    <Link to="details" spy={true} smooth={true} offset={-200} duration={800}>
-                      <p className='navigation-menu-items'>مشخصات</p>
-                    </Link>
-                    <Link to="gallery" spy={true} smooth={true} offset={0} duration={800}>
-                      <p className='navigation-menu-items' >تصاویر</p>
-                    </Link>
-                    <Link to="laws" spy={true} smooth={true} offset={-200} duration={800}>
-                      <p className='navigation-menu-items'>امکانات و قوانین</p>
-                    </Link>
-                    <Link to="map" spy={true} smooth={true} offset={-200} duration={800}>
-                      <p className='navigation-menu-items'>موقعیت روی نقشه</p>
-                    </Link>
-                  </div>
+
                 </div>
                 <div style={{textAlign:'right'}}>
                 </div>
@@ -303,13 +290,32 @@ class HouseDetailsXl extends React.Component{
           <div className="house-details-gallery">
           </div>
           <div className="house-details-main-information">
+            {this.renderHomeTitle()}
+            <AddressDescription homeData={this.state.homeData}/>
+            <AmenitiesDescription homeData={this.state.homeData} />
           </div>
         </div>
         <div className="house-details-bottom-division row-reverse">
+          <div className="house-details-reserve-panel">
+          </div>
           <div className="house-details-contents">
-            <div className="house-details-menu-link-scrolls">
+            <div className="house-details-menu-link-scrolls housedetails-content-containers">
+              <div className='navigation-menu-housedetails'>
+                <Link to="details" spy={true} smooth={true} offset={-200} duration={800}>
+                  <p className='navigation-menu-items'>مشخصات</p>
+                </Link>
+                <Link to="gallery" spy={true} smooth={true} offset={0} duration={800}>
+                  <p className='navigation-menu-items' >تصاویر</p>
+                </Link>
+                <Link to="laws" spy={true} smooth={true} offset={-200} duration={800}>
+                  <p className='navigation-menu-items'>امکانات و قوانین</p>
+                </Link>
+                <Link to="map" spy={true} smooth={true} offset={-200} duration={800}>
+                  <p className='navigation-menu-items'>موقعیت روی نقشه</p>
+                </Link>
+              </div>
             </div>
-            <div className="house-details-amenities-description">
+            <div className="house-details-amenities-description housedetails-content-containers">
               <div className="house-details-host-info">
               </div >
               <div className="house-details-amenities">
@@ -317,16 +323,14 @@ class HouseDetailsXl extends React.Component{
               <div className="house-details-sleep-arrangements">
               </div>
             </div>
-            <div className= "house-details-rules">
+            <div className= "house-details-rules housedetails-content-containers">
             </div>
-            <div className="house-details-location">
+            <div className="house-details-location  housedetails-content-container">
               <div className="house-details-location-description">
               </div>
               <div className="house-details-map">
               </div>
             </div>
-          </div>
-          <div className="house-details-reserve-panel">
           </div>
         </div>
       </div>
@@ -341,7 +345,7 @@ class HouseDetailsXl extends React.Component{
     }
     return(
       <div>
-        {this.renderHouseDetails()}
+        {this.renderHouseDetailsVersion2()}
       </div>
     );
   }

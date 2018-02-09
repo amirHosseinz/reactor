@@ -31,10 +31,10 @@ class AddressDescriptionXl extends React.Component{
     return(
       <div>
         <div className='row-reverse-house-adress-type visible-xl hidden-xs'>
-          <p>{this.getRoomType()}</p>
-          <p>{this.getServiceType()}</p>
-          <p>/</p>
-          <p>{this.props.homeData.address}</p>
+          <p className="paragraph-space">{this.getRoomType()}</p>
+          <p className="paragraph-space">{this.getServiceType()}</p>
+          <p className="paragraph-space">در</p>
+          <p className="paragraph-space">{this.props.homeData.address}</p>
         </div>
         <div className='visible-xs hidden-xl'>
           <p>{this.props.homeData.address}</p>
