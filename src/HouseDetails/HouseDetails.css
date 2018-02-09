@@ -4,11 +4,11 @@
   background-color: #F5F5F5;
 }
 .house-details-top-division{
-  height : 710px;
+  height : 700px;
   background-color: white;
 }
 .house-details-gallery{
-  height: 490px;
+  height: 480px;
   background-color: grey;
 }
 .house-details-main-information{
@@ -31,7 +31,7 @@
   background-color: white;
   margin-top: 12px;
   border-radius: 5px;
-  padding : 35px 18px 18px 18px;
+  padding : 35px 20px 20px 20px;
   text-align: justify;
   direction : rtl;
 }
@@ -42,14 +42,19 @@
   height: 48px;
 }
 .house-details-amenities-description{
-  height: 400px;
   margin-top: 5px !important;
+}
+.house-details-amenities{
+  margin-top: 40px;
 }
 .house-details-rules{
   padding-bottom: 30px;
 }
+.house-details-sleep-arrangements{
+  margin-top: 10px;
+}
 .house-detail-titles{
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 600;
   margin-top: 2.2rem !important ;
   margin-bottom: 0.4rem;
@@ -57,7 +62,7 @@
   padding-left: 15px;
 }
 .paragraph-space{
-  padding-left: 0.6rem;
+  padding-left: 0.5rem;
 }
 .main-amanities{
 }
@@ -142,6 +147,7 @@
   display: flex;
   margin: auto;
   flex-direction: row;
+
 }
 .house-details-host-avatar-icon{
   height: 66px;
@@ -208,4 +214,36 @@ border-width: 2px;
   margin-right: 12px;
   font-size: 14px;
   font-weight: 400;
+}
+.housedetails-utilities-container{
+  margin-top: 20px;
+}
+.house-details-utilities-see-more-items{
+  color : #12b2ce;
+  font-weight: 500;
+  cursor :pointer;
+  margin-top: 10px;
+}
+.house-details-facilities-other-amanities-icon{
+  height:20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.house-details-facilities-item{
+  margin-right: 0px;
+  margin-left : 10px;
+  /* margin-top : 20px; */
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  height: 35px;
+  width : 158px;
+}
+.house-details-facility-text{
+  margin-right: 8px;
+  margin-top: 1px;
+  font-size: 14px;
+  font-weight: 300;
 }

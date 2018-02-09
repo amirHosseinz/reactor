@@ -41,12 +41,11 @@ class UtilitiesDescriptionXl extends React.Component{
 
     return(
       <div>
-        <div className="">
+        <div className="housedetails-utilities-container">
           <Facilities utility={listOfUtilitiesStringFirstRow}/>
         </div>
-
         <Collapsible
-        trigger={<div className="utilities-see-more-items">نمایش تمام امکانات</div>}
+        trigger={<div className="house-details-utilities-see-more-items">نمایش تمام امکانات </div>}
         triggerWhenOpen=""
         easing='ease-in'>
           {listOfUtilitiesStringSecondRow.map(
