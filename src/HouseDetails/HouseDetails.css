@@ -209,3 +209,21 @@ border-width: 2px;
   font-size: 14px;
   font-weight: 400;
 }
+
+.house-details-reserve-panel-not-sticky{
+  width: 400px;
+  height : 400px;
+  margin-top :-55px;
+}
+.house-details-reserve-panel-sticky{
+  width: 400px;
+  height : 400px;
+  margin-top:65px;
+}
+
+.house-details-reserve-panel-price-description{
+  
+}
+.house-details-reserve-panel-form{
+  height : 300px;
+}

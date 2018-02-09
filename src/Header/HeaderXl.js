@@ -519,10 +519,10 @@ class HeaderXl extends React.Component{
     );
   }
   renderRelevantHeaderBasedOnURL(){
-    if(window.location.pathname.indexOf('rooms')===-1){
       return(
         <Sticky>
-          {({style,isSticky})=>{return(
+          {({style,isSticky})=>{
+            return(
             <div className={isSticky?"header-sticky":"header-not-sticky"} style={style}>
               {this.renderHeaderXl()}
               {this.renderDownloadAppModal()}
@@ -531,15 +531,14 @@ class HeaderXl extends React.Component{
           }}
         </Sticky>
       );
-    }
-    else{
-      return(
-        <div>
-          {this.renderHeaderXl()}
-          {this.renderDownloadAppModal()}
-        </div>
-      );
-    }
+    // else{
+    //   return(
+    //     <div>
+    //       {this.renderHeaderXl()}
+    //       {this.renderDownloadAppModal()}
+    //     </div>
+    //   );
+    // }
   }
 
   render(){

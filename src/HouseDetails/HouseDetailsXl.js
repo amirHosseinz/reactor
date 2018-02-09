@@ -299,8 +299,21 @@ class HouseDetailsXl extends React.Component{
             </div>
           </div>
           <div className="house-details-bottom-division row-reverse">
-            <div className="house-details-reserve-panel">
-            </div>
+            <Sticky topOffset={745} disableCompensation={false}>
+              {({style,isSticky})=>{
+                return(
+                  <div style={style}>
+                    <div className={isSticky?"house-details-reserve-panel-sticky housedetails-content-containers":"house-details-reserve-panel-not-sticky housedetails-content-containers"}>
+                      <div className="house-details-reserve-panel-price-description">
+                      </div>
+                      <hr />
+                      <div className="house-details-reserve-panel-form">
+                      </div>
+                    </div>
+                  </div>
+                )
+              }}
+            </Sticky>
             <div className="house-details-contents">
               <div className="house-details-menu-link-scrolls housedetails-content-containers">
                 <div className='navigation-menu-housedetails'>
