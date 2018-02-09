@@ -208,7 +208,7 @@ class SearchBarXl extends React.Component{
   renderSearchBarVersion2(){
     return(
       <div className="search-bar-main-division">
-        <div className="search-bar-back-ground">
+        <div className="search-bar-background">
           <div className="search-bar-contents">
             <p className="search-bar-tripinn-heading">
             </p>
