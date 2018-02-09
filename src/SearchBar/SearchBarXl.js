@@ -219,9 +219,13 @@ class SearchBarXl extends React.Component{
               سامانه رزرو ویلا و اقامتگاه محلی
             </p>
             <div className="search-bar-auto-suggest-container">
+              <p className="search-bar-inter-destenation-text"> مقصد را وارد کنید: </p>
               <div className="search-bar-auto-suggest">
-              </div>
-              <div className="search-bar-auto-suggest-button">
+                <div className="search-bar-auto-suggest-input">
+                </div>
+                <div className="search-bar-auto-suggest-button">
+
+                </div>
               </div>
             </div>
           </div>
