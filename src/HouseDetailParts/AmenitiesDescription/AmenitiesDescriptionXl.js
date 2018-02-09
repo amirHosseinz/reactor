@@ -17,18 +17,18 @@ class AmenitiesDescriptionXl extends React.Component{
       <div>
         <div className="main-amanities">
           <div className='main-amanities-item'>
-              <img src={require('../facilities/baths.png')}  className="main-amanities-icon" alt = "" />
-              <p className='aminities-text'> {englishToPersianDigits(this.props.homeData.bath_room_number)} </p>
-              <p className='aminities-text-static-xl'>حمام </p>
-              <img src={require('../facilities/beds.png')}  className="main-amanities-icon" alt = "" />
-              {this.renderBeds()}
-              <p className='aminities-text-static-xl'>تخت</p>
-              <img src={require('../facilities/rooms.png')}  className="main-amanities-icon" alt = "" />
-              <p className='aminities-text'>{englishToPersianDigits(this.props.homeData.rooms_number)} </p>
-              <p className='aminities-text-static-xl'> اتاق</p>
-              <img src={require('../facilities/persons.png')}  className="main-amanities-icon" alt = "" />
-              <p className='aminities-text'> {englishToPersianDigits(this.props.homeData.capacity)} </p>
-              <p className='aminities-text-static-xl'> مهمان </p>
+            <img src={require('../facilities/persons.png')}  className="main-amanities-icon" alt = "" />
+            <p className='aminities-text'> {englishToPersianDigits(this.props.homeData.capacity)} </p>
+            <p className='aminities-text-static-xl'> مهمان </p>
+            <img src={require('../facilities/rooms.png')}  className="main-amanities-icon" alt = "" />
+            <p className='aminities-text'>{englishToPersianDigits(this.props.homeData.rooms_number)} </p>
+            <p className='aminities-text-static-xl'> اتاق</p>
+            <img src={require('../facilities/beds.png')}  className="main-amanities-icon" alt = "" />
+            {this.renderBeds()}
+            <p className='aminities-text-static-xl'>تخت</p>
+            <img src={require('../facilities/baths.png')}  className="main-amanities-icon" alt = "" />
+            <p className='aminities-text'> {englishToPersianDigits(this.props.homeData.bath_room_number)} </p>
+            <p className='aminities-text-static-xl'>حمام </p>
           </div>
 
         </div>
