@@ -31,8 +31,13 @@
   background-color: white;
   margin-top: 12px;
   border-radius: 5px;
+  padding : 35px 15px 15px 15px;
+  text-align: justify;
+  direction : rtl;
 }
 .house-details-menu-link-scrolls{
+  padding-top: 0px !important;
+  direction : ltr !important;
   height: 48px;
 }
 .house-details-amenities-description{
@@ -106,4 +111,31 @@
   font-size: 14px;
   font-weight: 500;
   margin-top: 14px !important;
+}
+
+
+
+
+
+.house-details-location{
+  margin-bottom: 100px;
+}
+.house-details-location-description{
+  margin-bottom: 10px;
+}
+
+.house-deetails-description-heading{
+  margin-bottom : 0px !important;
+  font-size : 16px;
+  font-weight : 500;
+  line-height : 28px;
+}
+.house-details-description-content{
+  font-size : 16px;
+  font-weight: 300;
+  line-height: 28px;
+}
+
+.house-details-map{
+  margin-top : 30px !important;
 }
