@@ -3,8 +3,7 @@ import FacilitiesXl from './FacilitiesMain/FacilitiesXl.js';
 import FacilitiesXs from './FacilitiesMain/FacilitiesXs.js';
 import FacilitiesMd from './FacilitiesMain/FacilitiesMd.js';
 import FacilitiesSm from './FacilitiesMain/FacilitiesSm.js';
-
-
+import './FacilitiesMain/Facilities.css';
 class Facilities extends React.Component{
 
   renderFacilitiesMd(utility){
