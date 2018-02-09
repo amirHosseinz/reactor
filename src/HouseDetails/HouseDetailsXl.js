@@ -338,7 +338,7 @@ class HouseDetailsXl extends React.Component{
     }
     return(
       <div>
-        {this.renderHouseDetailsVersion2()}
+        {this.renderHouseDetails()}
       </div>
     );
   }

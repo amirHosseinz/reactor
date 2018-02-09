@@ -2,3 +2,15 @@
   font-family: IRANSans;
   color : #454545 ;
 }
+
+.house-details-top-division{
+  height : 750px;
+}
+.house-details-gallery{
+  height: 530px;
+  background-color: red;
+}
+.house-details-main-information{
+  height: px;
+  background-color: blue;
+}
