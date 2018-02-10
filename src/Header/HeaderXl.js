@@ -17,47 +17,64 @@ import {Sticky} from 'react-sticky';
 import Autosuggest from 'react-autosuggest';
 Modal.setAppElement('#root');
 
+const theme ={
+  container:                'container',
+  containerOpen:            'container--open',
+  input:                    'input',
+  inputOpen:                'input--open',
+  inputFocused:             'input--focused',
+  suggestionsContainer:     'suggestions-container',
+  suggestionsContainerOpen: 'suggestions-container--open',
+  suggestionsList:          'suggestions-list',
+  suggestion:               'suggestion',
+  suggestionFirst:          'suggestion--first',
+  suggestionHighlighted:    'suggestion--highlighted',
+  sectionContainer:         'section-container',
+  sectionContainerFirst:    'section-container--first',
+  sectionTitle:             'section-title'
+};
+
 // const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
   {name:'اصفهان',},
   {name:'نوشهر',},
   {name: 'گیلان',},
+  {name:'رامسر'},
+  {name:'کیش'},
+  {name:'مازندران'},
+  {name:'بابلسر'},
+  {name:'فریدون کنار'},
+  {name:'محمودآباد'},
+  {name:'عباس آباد'},
+  {name:'شاندیز'},
+  {name:'خراسان رضوی'},
+  {name:'بندر‌انزلی'},
+  {name:'کاشان'},
+  {name:'باغ بهادران'},
+  {name:'قلعه رودخان'},
+  {name:'مشهد'},
+  {name:'چمخاله'},
+  {name:'رودسر'},
+  {name:'فومن'},
+  {name:'رضوان‌شهر'},
+  {name:'زیباکنار'},
+  {name:'آستارا'},
+  {name:'چالوس'},
+  {name:'دریاکنار'},
+  {name:'نور'},
+  {name:'رویان'},
+  {name:'تنکابن'},
+  {name:'سرخ‌رود'},
+  {name:'دریاکنار'},
+  {name:'ایزدشهر'},
+  {name:'البرز'},
+  {name:'سلمان شهر'},
+  {name:'تنکابن'},
+  {name:'کلاردشت'},
+  {name:'نشتارود'},
+  {name:'کلارآباد'},
 ];
-// 'اصفهان',
-// 'نوشهر',
-// 'گیلان',
-// 'رامسر',
-// 'کیش',
-// 'مازندران',
-// 'بابلسر',
-// 'فریدون‌کنار',
-// 'محمودآباد',
-// 'عباس‌آباد',
-// 'شاندیز',
-// 'خراسان رضوی',
-// 'بندر انزلی',
-// 'کاشان',
-// 'باغ‌بهادران',
-// 'قلعه‌رودخان',
-// 'مشهد',
-// 'چمخاله',
-// 'فومن',
-// 'رضوان‌شهر',
-// 'رودسر',
-// 'آستارا',
-// 'زیباکنار',
-// 'سرخ‌رود',
-// 'رویان',
-// 'نور',
-// 'چالوس',
-// 'تنکابن',
-// 'دریاکنار',
-// 'ایزدشهر',
-// 'کلاردشت',
-// 'کلارآباد',
-// 'سلمان‌شهر',
-// 'نشتارود',
-// 'البرز',
+
 function getSuggestions(value) {
   const escapedValue = escapeRegexCharacters(value.trim());
 
@@ -206,6 +223,7 @@ class HeaderXl extends React.Component{
      return(
        <div className='header-search-bar'>
        <Autosuggest
+         theme={theme}
          suggestions={suggestions}
          onKeyDown={(event)=>{}}
          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}

@@ -47,7 +47,9 @@ class UtilitiesDescriptionXl extends React.Component{
         <Collapsible
         trigger={<div className="house-details-utilities-see-more-items">نمایش تمام امکانات </div>}
         triggerWhenOpen=""
-        easing='ease-in'>
+        // transitionTime={1000}
+        lazyRender={true}
+        easing='steps(1,end);'>
           {listOfUtilitiesStringSecondRow.map(
             (utility)=>{
               return(
