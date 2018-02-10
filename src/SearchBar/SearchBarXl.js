@@ -25,20 +25,20 @@ const listOfCity = [
 ];
 
 const theme={
-    container:                'react-autosuggest__container',
-    containerOpen:            'react-autosuggest__container--open',
-    input:                    'react-autosuggest__input',
-    inputOpen:                'react-autosuggest__input--open',
-    inputFocused:             'react-autosuggest__input--focused',
-    suggestionsContainer:     'react-autosuggest__suggestions-container',
-    suggestionsContainerOpen: 'react-autosuggest__suggestions-container--open',
-    suggestionsList:          'react-autosuggest__suggestions-list',
-    suggestion:               'react-autosuggest__suggestion',
-    suggestionFirst:          'react-autosuggest__suggestion--first',
-    suggestionHighlighted:    'react-autosuggest__suggestion--highlighted',
-    sectionContainer:         'react-autosuggest__section-container',
-    sectionContainerFirst:    'react-autosuggest__section-container--first',
-    sectionTitle:             'react-autosuggest__section-title'
+    container:                'main-page-searchbar-container',
+    containerOpen:            'main-page-searchbar-container--open',
+    input:                    'main-page-searchbar-input',
+    inputOpen:                'main-page-searchbar-input--open',
+    inputFocused:             'main-page-searchbar-input--focused',
+    suggestionsContainer:     'main-page-searchbar-suggestions-container',
+    suggestionsContainerOpen: 'main-page-searchbar-suggestions-container--open',
+    suggestionsList:          'main-page-searchbar-suggestions-list',
+    suggestion:               'main-page-searchbar-suggestion',
+    suggestionFirst:          'main-page-searchbar-suggestion--first',
+    suggestionHighlighted:    'main-page-searchbar-suggestion--highlighted',
+    sectionContainer:         'main-page-searchbar-section-container',
+    sectionContainerFirst:    'main-page-searchbar-section-container--first',
+    sectionTitle:             'main-page-searchbar-section-title'
   }
 class SearchBarXl extends React.Component{
   constructor(props) {
