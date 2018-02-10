@@ -42,7 +42,7 @@ class SearchBar extends React.Component {
     );
   }
   render(){
-    document.title = "تریپین | سامانه رزرو ویلا";
+    // document.title = "تریپین | سامانه رزرو ویلا";
     return (
       <div>
         {this.renderSearchBarXS(this.props)}
