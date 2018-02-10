@@ -17,6 +17,23 @@ import {Sticky} from 'react-sticky';
 import Autosuggest from 'react-autosuggest';
 Modal.setAppElement('#root');
 
+const theme ={
+  container:                'container',
+  containerOpen:            'container--open',
+  input:                    'input',
+  inputOpen:                'input--open',
+  inputFocused:             'input--focused',
+  suggestionsContainer:     'suggestions-container',
+  suggestionsContainerOpen: 'suggestions-container--open',
+  suggestionsList:          'suggestions-list',
+  suggestion:               'suggestion',
+  suggestionFirst:          'suggestion--first',
+  suggestionHighlighted:    'suggestion--highlighted',
+  sectionContainer:         'section-container',
+  sectionContainerFirst:    'section-container--first',
+  sectionTitle:             'section-title'
+};
+
 // const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
   {name:'اصفهان',},
@@ -206,6 +223,7 @@ class HeaderXl extends React.Component{
      return(
        <div className='header-search-bar'>
        <Autosuggest
+         theme={theme}
          suggestions={suggestions}
          onKeyDown={(event)=>{}}
          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
