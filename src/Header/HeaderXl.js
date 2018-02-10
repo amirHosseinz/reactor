@@ -18,20 +18,20 @@ import Autosuggest from 'react-autosuggest';
 Modal.setAppElement('#root');
 
 const theme ={
-  container:                'container',
-  containerOpen:            'container--open',
-  input:                    'input',
-  inputOpen:                'input--open',
-  inputFocused:             'input--focused',
-  suggestionsContainer:     'suggestions-container',
-  suggestionsContainerOpen: 'suggestions-container--open',
-  suggestionsList:          'suggestions-list',
-  suggestion:               'suggestion',
-  suggestionFirst:          'suggestion--first',
-  suggestionHighlighted:    'suggestion--highlighted',
-  sectionContainer:         'section-container',
-  sectionContainerFirst:    'section-container--first',
-  sectionTitle:             'section-title'
+  container:                'header-searchbar-container',
+  containerOpen:            'header-searchbar-container--open',
+  input:                    'header-searchbar-input',
+  inputOpen:                'header-searchbar-input--open',
+  inputFocused:             'header-searchbar-input--focused',
+  suggestionsContainer:     'header-searchbar-suggestions-container',
+  suggestionsContainerOpen: 'header-searchbar-suggestions-container--open',
+  suggestionsList:          'header-searchbar-suggestions-list',
+  suggestion:               'header-searchbar-suggestion',
+  suggestionFirst:          'header-searchbar-suggestion--first',
+  suggestionHighlighted:    'header-searchbar-suggestion--highlighted',
+  sectionContainer:         'header-searchbar-section-container',
+  sectionContainerFirst:    'header-searchbar-section-container--first',
+  sectionTitle:             'header-searchbar-section-title',
 };
 
 // const TypeaheadMenuItem = menuItemContainer(MenuItem);
@@ -216,22 +216,25 @@ class HeaderXl extends React.Component{
    console.log(suggestions);
    if(window.location.href.indexOf('search')===-1 && window.location.pathname!=='/'){
      const inputProps = {
-     placeholder: 'مقصد خود را وارد کنید',
+     placeholder: 'جستجوی مقصد...',
      value:this.state.city,
      onChange:this.onChangeSearchBarValue
   };
      return(
        <div className='header-search-bar'>
-       <Autosuggest
-         theme={theme}
-         suggestions={suggestions}
-         onKeyDown={(event)=>{}}
-         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-         onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-         getSuggestionValue={getSuggestionValue}
-         renderSuggestion={renderSuggestion}
-         inputProps={inputProps} />
-       </div>
+
+         <Autosuggest
+           theme={theme}
+           suggestions={suggestions}
+           onKeyDown={(event)=>{}}
+           onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+           onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+           getSuggestionValue={getSuggestionValue}
+           renderSuggestion={renderSuggestion}
+           inputProps={inputProps}>
+           </Autosuggest>
+          <img src={require('../Images/header-search-icon.svg')} className="header-search-icon" alt = 'تریپین'></img>
+         </div>
      );
    }
  }
