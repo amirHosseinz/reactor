@@ -96,6 +96,7 @@ class SearchBarXl extends React.Component{
       this.setState({cityListFromServer:response.location},()=>{this.fillSearchBarOptions()});
     });
    }
+
    fillSearchBarOptions(){
      var list = [];
      if(this.state.cityListFromServer!==null){
@@ -103,7 +104,6 @@ class SearchBarXl extends React.Component{
         list.push(this.state.cityListFromServer[i]);
        }
      }
-     // list = removeDuplicatesFromList(list);
      var list2 = [];
      for (var i=0 ; i<list.length ; i++) {
        list2.push(list[i].text);
@@ -116,6 +116,7 @@ class SearchBarXl extends React.Component{
        suggestions: this.getSuggestions(value)
      });
    }
+
    onChangeSearchBarValue = (event,{newValue, method}) => {
      this.setState({
        city: newValue
