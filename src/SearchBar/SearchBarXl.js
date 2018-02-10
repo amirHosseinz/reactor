@@ -224,7 +224,6 @@ class SearchBarXl extends React.Component{
                 <div className="search-bar-auto-suggest-input">
                 </div>
                 <div className="search-bar-auto-suggest-button">
-
                 </div>
               </div>
             </div>

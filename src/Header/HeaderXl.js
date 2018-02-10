@@ -22,65 +22,46 @@ const listOfCity = [
   {name:'اصفهان',},
   {name:'نوشهر',},
   {name: 'گیلان',},
+  {name:'رامسر'},
+  {name:'کیش'},
+  {name:'مازندران'},
+  {name:'بابلسر'},
+  {name:'فریدون کنار'},
+  {name:'محمودآباد'},
+  {name:'عباس آباد'},
+  {name:'شاندیز'},
+  {name:'خراسان رضوی'},
+  {name:'بندر‌انزلی'},
+  {name:'کاشان'},
+  {name:'باغ بهادران'},
+  {name:'قلعه رودخان'},
+  {name:'مشهد'},
+  {name:'چمخاله'},
+  {name:'رودسر'},
+  {name:'فومن'},
+  {name:'رضوان‌شهر'},
+  {name:'زیباکنار'},
+  {name:'آستارا'},
+  {name:'چالوس'},
+  {name:'دریاکنار'},
+  {name:'نور'},
+  {name:'رویان'},
+  {name:'تنکابن'},
+  {name:'سرخ‌رود'},
+  {name:'دریاکنار'},
+  {name:'ایزدشهر'},
+  {name:'البرز'},
+  {name:'سلمان شهر'},
+  {name:'تنکابن'},
+  {name:'کلاردشت'},
+  {name:'نشتارود'},
+  {name:'کلارآباد'},
 ];
-// 'اصفهان',
-// 'نوشهر',
-// 'گیلان',
-// 'رامسر',
-// 'کیش',
-// 'مازندران',
-// 'بابلسر',
-// 'فریدون‌کنار',
-// 'محمودآباد',
-// 'عباس‌آباد',
-// 'شاندیز',
-// 'خراسان رضوی',
-// 'بندر انزلی',
-// 'کاشان',
-// 'باغ‌بهادران',
-// 'قلعه‌رودخان',
-// 'مشهد',
-// 'چمخاله',
-// 'فومن',
-// 'رضوان‌شهر',
-// 'رودسر',
-// 'آستارا',
-// 'زیباکنار',
-// 'سرخ‌رود',
-// 'رویان',
-// 'نور',
-// 'چالوس',
-// 'تنکابن',
-// 'دریاکنار',
-// 'ایزدشهر',
-// 'کلاردشت',
-// 'کلارآباد',
-// 'سلمان‌شهر',
-// 'نشتارود',
-// 'البرز',
-function getSuggestions(value) {
-  const escapedValue = escapeRegexCharacters(value.trim());
-
-  if (escapedValue === '') {
-    return [];
-  }
-  const regex = new RegExp('^' + escapedValue, 'i');
-  return listOfCity.filter(city => regex.test(city.name));
-}
 
 function getSuggestionValue(suggestion) {
   return suggestion.name;
 }
 
-function renderSuggestion(suggestion) {
-  return (
-    <span>{suggestion.name}</span>
-  );
-}
-
-function escapeRegexCharacters(str) {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
 class HeaderXl extends React.Component{
   constructor (props){
     super(props);
@@ -157,6 +138,7 @@ class HeaderXl extends React.Component{
  }
 
  handleClick(){
+   console.log(this.state.city);
    if(this.state.city===''){
      this.props.history.push("/search/هر جا");
    }
@@ -165,7 +147,6 @@ class HeaderXl extends React.Component{
    }
  }
 
-
  onChangeSearchBarValue = (event,{newValue, method}) => {
    this.setState({
      city: newValue
@@ -173,8 +154,22 @@ class HeaderXl extends React.Component{
  };
  onSuggestionsFetchRequested=({value})=> {
    this.setState({
-     suggestions: getSuggestions(value)
+     suggestions: this.getSuggestions(value)
    });
+ }
+
+ getSuggestions(value) {
+   const escapedValue = this.escapeRegexCharacters(value.trim());
+
+   if (escapedValue === '') {
+     return [];
+   }
+   const regex = new RegExp('^' + escapedValue, 'i');
+   return listOfCity.filter(city => regex.test(city.name));
+ }
+
+ escapeRegexCharacters(str) {
+   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
  }
 
  onSuggestionsClearRequested=() =>{
@@ -190,13 +185,15 @@ class HeaderXl extends React.Component{
      </span>
    );
  }
+
  getSuggestionValue(suggestion){
    return suggestion.name;
  }
+
+
  renderSearchBarXL(){
    const value = this.state.city;
    const suggestions = this.state.suggestions;
-   console.log(suggestions);
    if(window.location.href.indexOf('search')===-1 && window.location.pathname!=='/'){
      const inputProps = {
      placeholder: 'مقصد خود را وارد کنید',
@@ -207,11 +204,11 @@ class HeaderXl extends React.Component{
        <div className='header-search-bar'>
        <Autosuggest
          suggestions={suggestions}
-         onKeyDown={(event)=>{}}
+         onSuggestionSelected={(selected)=>{this.setState({city:selected.target.innerText},()=>{this.handleClick()})}}
          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-         getSuggestionValue={getSuggestionValue}
-         renderSuggestion={renderSuggestion}
+         getSuggestionValue={this.getSuggestionValue}
+         renderSuggestion={this.renderSuggestion}
          inputProps={inputProps} />
        </div>
      );
