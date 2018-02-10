@@ -13,41 +13,13 @@ import scrollToComponent from 'react-scroll-to-component';
 import "./SearchBar.css"
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
-  'اصفهان',
-  'نوشهر',
-  'گیلان',
-  'رامسر',
-  'کیش',
-  'مازندران',
-  'بابلسر',
-  'فریدون‌کنار',
-  'محمودآباد',
-  'عباس‌آباد',
-  'شاندیز',
-  'خراسان رضوی',
-  'بندر انزلی',
-  'کاشان',
-  'باغ‌بهادران',
-  'قلعه‌رودخان',
-  'مشهد',
-  'چمخاله',
-  'فومن',
-  'رضوان‌شهر',
-  'رودسر',
-  'آستارا',
-  'زیباکنار',
-  'سرخ‌رود',
-  'رویان',
-  'نور',
-  'چالوس',
-  'تنکابن',
-  'دریاکنار',
-  'ایزدشهر',
-  'کلاردشت',
-  'کلارآباد',
-  'سلمان‌شهر',
-  'نشتارود',
-  'البرز',
+  {name:'اصفهان',},{name:'نوشهر',},{name: 'گیلان',},{name:'رامسر'},{name:'کیش'},{name:'مازندران'},
+  {name:'فریدون کنار'},{name:'محمودآباد'},{name:'عباس آباد'},{name:'شاندیز'},{name:'خراسان رضوی'},
+  {name:'بندر‌انزلی'},{name:'کاشان'},{name:'باغ بهادران'},{name:'قلعه رودخان'},{name:'مشهد'},
+  {name:'چمخاله'},{name:'رودسر'},{name:'فومن'},{name:'رضوان‌شهر'},{name:'زیباکنار'},
+  {name:'آستارا'},{name:'چالوس'},{name:'دریاکنار'},{name:'نور'},{name:'رویان'},{name:'بابلسر'},
+  {name:'تنکابن'},{name:'سرخ‌رود'},{name:'دریاکنار'},{name:'ایزدشهر'},{name:'البرز'},
+  {name:'سلمان شهر'},{name:'تنکابن'},{name:'کلاردشت'},{name:'نشتارود'},{name:'کلارآباد'},
 ];
 
 
@@ -79,19 +51,7 @@ class SearchBarXl extends React.Component{
     this.setState({
       token : this.getRelevantToken(),
     }, );
-    // () => {this.getCityListFromServer()}
   }
-  renderData(houseData) {
-   this.setState({
-     houseList: houseData.room,
-   });
-  }
-
-    handleSearchByEnter(event){
-      if(event.key==="Enter" && this.state.city!==null && this.state.city!==''){
-        this.handleClick();
-      }
-    }
 
    handleClick(){
        if(this.state.city===''){
@@ -132,79 +92,6 @@ class SearchBarXl extends React.Component{
      }
      this.setState({cityList : list2});
    }
-
-  renderSearchBarOnlycity(){
-    return(
-      <div className='only-city-search-bar row'>
-        <div className="free-zone col-md-3 col-sm-2">
-        </div>
-        <div className="main-zone col-md-6 col-sm-8">
-          <div className="row">
-          <div className="xxxz col-md-2 col-sm-1"></div>
-          <div className="xxx col-md-8 col-sm-10">
-            <div className="slogenholder">
-              <div className="seach-top-slogan-container">
-                <img src={require('../Images/tripinn_suitcase.png')} className='suitcase-image' alt="Trippin-Suitcase"></img>
-                <div className="slogan-container">
-                  <p className='slogan-1' >سفرت رو شیرین‌تر کن</p>
-                  <p className='slogan-2' >اجاره اقامتگاه و ویلا از همیشه آسون‌تر شده</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="xxxz col-md-2 col-sm-1"></div>
-          </div>
-            <div className="searchbar-zone">
-                <Typeahead
-                    id="searchbox"
-                    autoFocus={true}
-                    bsSize="large"
-                    renderMenu={(results, menuProps) => {
-                      return (
-                        <Menu {...menuProps}>
-                          {results.map((result, index) => (
-                            <TypeaheadMenuItem option={result} position={index}>
-                              <div  className="search-bar-only-city-item">
-                                {result}
-                              </div>
-                            </TypeaheadMenuItem>
-                          ))}
-                        </Menu>
-                      );
-                  }}
-                    placeholder="  !مقصد خود را وارد نمایید  "
-                    minLength={2}
-                    align='right'
-                    onInputChange={(input)=>{this.setState({city:input})}}
-                    selectHintOnEnter={false}
-                    highlightOnlyResult={true}
-                    submitFormOnEnter={false}
-                    emptyLabel="نتیجه‌ای یافت نشد"
-                    maxResults={5}
-                    className="typeahead-onlycity-xl"
-                    onChange={(selected)=>{
-                      this.setState({city:selected[0]},()=>{this.handleClick()});
-                    }}
-                    options={listOfCity}
-                  />
-              <Button type='button' color='blue' className="search-btn btn"  onClick={this.handleClick.bind(this)} data-reactid="99">
-                <span className='searchicon'>
-                  <img src={require('../Images/trpinn_search.png')} className='search-image' alt=""></img>
-                </span>
-                </Button>
-            </div>
-        </div>
-        <div className="free-zone col-md-3"></div>
-      </div>
-    );
-  }
-  renderSearchbarXl(){
-    return(
-      <div className="container-fluid hidden-xs visible-xl">
-        {this.renderSearchBarOnlycity()}
-      </div>
-    );
-  }
 
   renderSearchBarVersion2(){
     return(
