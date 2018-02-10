@@ -213,7 +213,6 @@ class HeaderXl extends React.Component{
  renderSearchBarXL(){
    const value = this.state.city;
    const suggestions = this.state.suggestions;
-   console.log(suggestions);
    if(window.location.href.indexOf('search')===-1 && window.location.pathname!=='/'){
      const inputProps = {
      placeholder: 'مقصد خود را وارد کنید',
