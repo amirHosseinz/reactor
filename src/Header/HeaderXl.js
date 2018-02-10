@@ -11,7 +11,6 @@ import {downloadAppModalStyle,loginPasswordStyle, loginPhoneNumberStyle, loginPa
 // import {Modal} from 'react-bootstrap';
 import {englishToPersianDigits,persianArabicToEnglishDigits} from '../tools/EnglishToPersianDigits';
 import {Image} from 'react-bootstrap';
-// import { Typeahead ,menuItemContainer,MenuItem,Menu as TypeaheadMenu} from '../tools/react-bootstrap-typeahead';
 import Modal from 'react-modal';
 import {Sticky} from 'react-sticky';
 import Autosuggest from 'react-autosuggest';
@@ -34,7 +33,6 @@ const theme ={
   sectionTitle:             'section-title'
 };
 
-// const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
   {name:'اصفهان',},
   {name:'نوشهر',},
@@ -234,34 +232,6 @@ class HeaderXl extends React.Component{
      );
    }
  }
- // <Typeahead options={listOfCity}
- // className="header-typeahead"
- // minLength={2}
- // align="right"
- // bsSize="sm"
- // emptyLabel="نتیجه‌ای یافت نشد"
- // maxResults={5}
- // placeholder='جستجوی مقصد'
- // selectHintOnEnter={false}
- // highlightOnlyResult={true}
- // submitFormOnEnter={true}
- // onChange={(selected)=>{
- //   if(selected.length!==0){
- //     this.setState({city:selected[0]},()=>{this.handleClick()});
- //   }
- // }}
- // renderMenu={(results,menuProps) => {
- //     return(
- //       <TypeaheadMenu {...menuProps}>
- //         {results.map((result, index) => (
- //           <TypeaheadMenuItem option={result} position={index}>
- //             {result}
- //           </TypeaheadMenuItem>
- //         ))}
- //       </TypeaheadMenu>
- //     );
- //   }}
- // />
   renderLoginPanelFirstStep(){
     return(
       <div className="login-modal-main">
