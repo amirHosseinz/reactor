@@ -34,6 +34,7 @@ class SearchBarXl extends React.Component{
       cityList:[],
       cityListFromServer:null,
       city:'',
+      suggestions:[],
       searchParams : {
         location: '',
         start_date: null,
@@ -93,7 +94,57 @@ class SearchBarXl extends React.Component{
      this.setState({cityList : list2});
    }
 
+   onSuggestionsFetchRequested=({value})=> {
+     this.setState({
+       suggestions: this.getSuggestions(value)
+     });
+   }
+   onChangeSearchBarValue = (event,{newValue, method}) => {
+     this.setState({
+       city: newValue
+     });
+   };
+
+   getSuggestions(value) {
+     const escapedValue = this.escapeRegexCharacters(value.trim());
+
+     if (escapedValue === '') {
+       return [];
+     }
+     const regex = new RegExp('^' + escapedValue, 'i');
+     return listOfCity.filter(city => regex.test(city.name));
+   }
+
+   escapeRegexCharacters(str) {
+     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+   }
+
+   onSuggestionsClearRequested=() =>{
+     this.setState({
+       suggestions: []
+     });
+   }
+
+   renderSuggestion = (suggestion)=>{
+     return(
+       <span>
+         {suggestion.name}
+       </span>
+     );
+   }
+
+   getSuggestionValue(suggestion){
+     return suggestion.name;
+   }
   renderSearchBarVersion2(){
+    const value = this.state.city;
+    const suggestions = this.state.suggestions;
+    if(window.location.href.indexOf('search')===-1 && window.location.pathname!=='/'){
+      const inputProps = {
+      placeholder: 'مثلا نوشهر',
+      value:this.state.city,
+      onChange:this.onChangeSearchBarValue
+   };
     return(
       <div className="search-bar-main-division">
         <div className="search-bar-background">
@@ -109,13 +160,22 @@ class SearchBarXl extends React.Component{
               <p className="search-bar-inter-destenation-text"> مقصد را وارد کنید: </p>
               <div className="search-bar-auto-suggest">
                 <div className="search-bar-auto-suggest-input">
+                  <Autosuggest
+                    suggestions={suggestions}
+                    onSuggestionSelected={(selected)=>{this.setState({city:selected.target.innerText},()=>{this.handleClick()})}}
+                    onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                    onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                    getSuggestionValue={this.getSuggestionValue}
+                    renderSuggestion={this.renderSuggestion}
+                    inputProps={inputProps}/>
                 </div>
                 <div className="search-bar-auto-suggest-button">
                 </div>
               </div>
             </div>
           </div>
-    </div>
+        </div>
+      </div>
     );
   }
   // {this.renderSearchbarXl()}

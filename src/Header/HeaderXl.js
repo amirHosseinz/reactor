@@ -214,34 +214,6 @@ class HeaderXl extends React.Component{
      );
    }
  }
- // <Typeahead options={listOfCity}
- // className="header-typeahead"
- // minLength={2}
- // align="right"
- // bsSize="sm"
- // emptyLabel="نتیجه‌ای یافت نشد"
- // maxResults={5}
- // placeholder='جستجوی مقصد'
- // selectHintOnEnter={false}
- // highlightOnlyResult={true}
- // submitFormOnEnter={true}
- // onChange={(selected)=>{
- //   if(selected.length!==0){
- //     this.setState({city:selected[0]},()=>{this.handleClick()});
- //   }
- // }}
- // renderMenu={(results,menuProps) => {
- //     return(
- //       <TypeaheadMenu {...menuProps}>
- //         {results.map((result, index) => (
- //           <TypeaheadMenuItem option={result} position={index}>
- //             {result}
- //           </TypeaheadMenuItem>
- //         ))}
- //       </TypeaheadMenu>
- //     );
- //   }}
- // />
   renderLoginPanelFirstStep(){
     return(
       <div className="login-modal-main">
