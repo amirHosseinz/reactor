@@ -176,6 +176,7 @@ class SearchBarXl extends React.Component{
               <p className="search-bar-inter-destenation-text"> مقصد را وارد کنید:
               </p>
               <div className="search-bar-auto-suggest">
+
                 <div className="search-bar-auto-suggest-input">
                   <Autosuggest
                     theme={theme}
@@ -188,6 +189,11 @@ class SearchBarXl extends React.Component{
                     inputProps={inputProps}/>
                 </div>
                 <div className="search-bar-auto-suggest-button">
+                  <button className="search-bar-search-button">
+                    <span>
+                      <img src={require('../Images/search-bar-search-icon.svg')}  className="search-bar-search-icon" alt="search"></img>
+                    </span>
+                  </button>
                 </div>
               </div>
             </div>
