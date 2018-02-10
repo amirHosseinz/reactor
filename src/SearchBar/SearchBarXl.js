@@ -10,7 +10,9 @@ import '../tools/DatePicker/bootstrap-datepicker.css';
 import {Dropdown} from 'semantic-ui-react';
 import GuestNumber from '../GuestNumberSearchBar.js';
 import scrollToComponent from 'react-scroll-to-component';
-import "./SearchBar.css"
+import "./SearchBar.css";
+import "../Styles/MainPage-SearchBar.css";
+import Autosuggest from 'react-autosuggest';
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
   {name:'اصفهان',},{name:'نوشهر',},{name: 'گیلان',},{name:'رامسر'},{name:'کیش'},{name:'مازندران'},
@@ -22,7 +24,22 @@ const listOfCity = [
   {name:'سلمان شهر'},{name:'تنکابن'},{name:'کلاردشت'},{name:'نشتارود'},{name:'کلارآباد'},
 ];
 
-
+const theme={
+    container:                'react-autosuggest__container',
+    containerOpen:            'react-autosuggest__container--open',
+    input:                    'react-autosuggest__input',
+    inputOpen:                'react-autosuggest__input--open',
+    inputFocused:             'react-autosuggest__input--focused',
+    suggestionsContainer:     'react-autosuggest__suggestions-container',
+    suggestionsContainerOpen: 'react-autosuggest__suggestions-container--open',
+    suggestionsList:          'react-autosuggest__suggestions-list',
+    suggestion:               'react-autosuggest__suggestion',
+    suggestionFirst:          'react-autosuggest__suggestion--first',
+    suggestionHighlighted:    'react-autosuggest__suggestion--highlighted',
+    sectionContainer:         'react-autosuggest__section-container',
+    sectionContainerFirst:    'react-autosuggest__section-container--first',
+    sectionTitle:             'react-autosuggest__section-title'
+  }
 class SearchBarXl extends React.Component{
   constructor(props) {
     super(props);
@@ -139,12 +156,11 @@ class SearchBarXl extends React.Component{
   renderSearchBarVersion2(){
     const value = this.state.city;
     const suggestions = this.state.suggestions;
-    if(window.location.href.indexOf('search')===-1 && window.location.pathname!=='/'){
-      const inputProps = {
-      placeholder: 'مثلا نوشهر',
-      value:this.state.city,
-      onChange:this.onChangeSearchBarValue
-   };
+    const inputProps = {
+    placeholder: 'مثلا نوشهر',
+    value:this.state.city,
+    onChange:this.onChangeSearchBarValue
+    }
     return(
       <div className="search-bar-main-division">
         <div className="search-bar-background">
@@ -157,10 +173,12 @@ class SearchBarXl extends React.Component{
               سامانه رزرو ویلا و اقامتگاه محلی
             </p>
             <div className="search-bar-auto-suggest-container">
-              <p className="search-bar-inter-destenation-text"> مقصد را وارد کنید: </p>
+              <p className="search-bar-inter-destenation-text"> مقصد را وارد کنید:
+              </p>
               <div className="search-bar-auto-suggest">
                 <div className="search-bar-auto-suggest-input">
                   <Autosuggest
+                    theme={theme}
                     suggestions={suggestions}
                     onSuggestionSelected={(selected)=>{this.setState({city:selected.target.innerText},()=>{this.handleClick()})}}
                     onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
@@ -175,7 +193,6 @@ class SearchBarXl extends React.Component{
             </div>
           </div>
         </div>
-      </div>
     );
   }
   // {this.renderSearchbarXl()}
