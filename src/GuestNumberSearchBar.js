@@ -12,13 +12,13 @@ class GuestNumberSearchBar extends React.Component{
 renderAdd(){
 const Guest=this.state.number;
 const NewGuest= Guest + 1;
-this.setState({number:NewGuest});
+this.setState({number:NewGuest},()=>{this.props.changeNumberOfGuests(this.state.number)});
 }
 renderSub(){
   if(this.state.number > 1){
 const Guest=this.state.number;
 const NewGuest= Guest - 1;
-this.setState({number:NewGuest});
+this.setState({number:NewGuest},()=>{this.props.changeNumberOfGuests(this.state.number)});
 }
 else{
 this.setState({number:1});
@@ -26,22 +26,22 @@ this.setState({number:1});
 }
 render(){
   return(
-    <div className="geust-number-searchbar-container">
+    <div className="number-zone-searchbar">
 
       <div className="reserve-number-box-searchbar" >
         <button className="btn-plus-searchbar" onClick={this.renderAdd.bind(this)}>
             <p className="number-inputer-searchbar" >
-            +
+            -
             </p>
         </button>
         <div className='guest-number-searchbar'>
         <p className="input-number-searchbar row-reverse">
-        <span>نفر </span><span>{englishToPersianDigits(this.state.number)}</span>
+        <span style={{marginLeft:'5px'}}>{englishToPersianDigits(this.state.number)} </span><span>{'نفر'}</span>
         </p>
         </div>
         <button className="btn-sub-searchbar" onClick={this.renderSub.bind(this)}>
             <p className="number-inputer-searchbar" >
-            -
+            +
             </p>
         </button>
       </div>
