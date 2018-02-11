@@ -208,10 +208,13 @@ class HeaderXl extends React.Component{
  getSuggestionValue(suggestion){
    return suggestion.name;
  }
+ onSuggestionSelected =(event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method })=>{
+   this.setState({city:suggestionValue},()=>{this.setState({city:''});this.handleClick()})
+ }
  renderSearchBarXL(){
    const value = this.state.city;
    const suggestions = this.state.suggestions;
-   if(window.location.href.indexOf('search')===-1 && window.location.pathname!=='/'){
+   if(window.location.pathname!=='/'){
      const inputProps = {
      placeholder: 'جستجوی مقصد...',
      value:this.state.city,
@@ -222,7 +225,9 @@ class HeaderXl extends React.Component{
 
          <Autosuggest
            theme={theme}
+           highlightFirstSuggestion={true}
            suggestions={suggestions}
+           onSuggestionSelected = {this.onSuggestionSelected}
            onKeyDown={(event)=>{}}
            onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
            onSuggestionsClearRequested={this.onSuggestionsClearRequested}
@@ -230,7 +235,7 @@ class HeaderXl extends React.Component{
            renderSuggestion={renderSuggestion}
            inputProps={inputProps}>
            </Autosuggest>
-          <img src={require('../Images/header-search-icon.svg')} className="header-search-icon" alt = 'تریپین'></img>
+          <img src={require('../Images/header-search-icon.svg')} onClick={()=>{this.handleClick()}} className="header-search-icon" alt = 'تریپین'></img>
          </div>
      );
    }
