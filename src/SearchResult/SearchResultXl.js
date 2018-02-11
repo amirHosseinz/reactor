@@ -76,8 +76,6 @@ class SearchResultXl extends React.Component{
     else{
         this.setState({city:city});
     }
-    this.renderToDatePicker();
-    this.renderFromDatePicker();
     this.setState({token : this.getRelevantToken()},()=>{this.setSearchParams()});
   }
 
@@ -128,19 +126,7 @@ class SearchResultXl extends React.Component{
   getRelevantToken(){
     return localStorage['token'];
   }
-  renderFromDatePicker(){
-    const fromDatePicker = findDOMNode(this.refs.fromdatepicker);
-    $(document).ready(function(){
-      $(fromDatePicker).datepicker({
-        changeMonth: true,
-        changeYear: true,
-        isRTL: true,
-        numberOfMonths:1,
-        showButtonPanel:true,
-        dateFormat: "yy/m/d",
-       });
-    });
-  }
+
 
   renderGuest(){
     return(
@@ -155,19 +141,6 @@ class SearchResultXl extends React.Component{
     this.setState({numberOfGuests:number});
   }
 
-  renderToDatePicker(){
-    const toDatePicker = findDOMNode(this.refs.todatepicker);
-    $(document).ready(function(){
-      $(toDatePicker).datepicker({
-        changeMonth: true,
-        changeYear: true,
-        numberOfMonths:1,
-        showButtonPanel:true,
-        isRTL: true,
-        dateFormat: "yy/m/d",
-       });
-    });
-  }
   readCityFromURL(){
     var url = decodeURIComponent(window.location.href.split('/')).split(',');
     if(url[4]==='هر جا'){
@@ -187,8 +160,6 @@ class SearchResultXl extends React.Component{
     }
   }
   renderSearchBarInDetails(){
-    this.renderFromDatePicker();
-    this.renderToDatePicker();
     return(
       <div className="render-results row">
             <div className="results-search">
@@ -196,45 +167,6 @@ class SearchResultXl extends React.Component{
                 <div className="col-md-3">
                 </div>
                 <div className="search-inputs col-md-9">
-                  <div className="multi-input-typeahead">
-                  <Typeahead
-                    className="typeahead-indetail-xl"
-                    renderMenu={(results,menuProps) => {
-                        return(
-                          <Menu {...menuProps}>
-                            {results.map((result, index) => (
-                              <TypeaheadMenuItem option={result} position={index}>
-                                {result}
-                              </TypeaheadMenuItem>
-                            ))}
-                          </Menu>
-                        );
-                      }}
-                    minLength={2}
-                    align="right"
-                    emptyLabel="نتیجه‌ای یافت نشد"
-                    maxResults={5}
-                    selected={this.readCityFromURL()}
-                    placeholder='هر جا'
-                    onInputChange={(input)=> {this.setState({city:input})}}
-                    selectHintOnEnter={false}
-                    highlightOnlyResult={true}
-                    submitFormOnEnter={true}
-                    onChange={(selected)=>{
-                      if(selected.length!==0){
-                        this.setState({city:selected[0]},()=>{this.handleClick()});
-                      }
-                    }}
-                  options={listOfCity}
-                    />
-                  </div>
-
-                  <div className="multi-input-1">
-                    <input className="date-picker-input  form-control1" id='fromdatepicker' ref='fromdatepicker' placeholder='تاریخ ورود'style={{direction:'rtl',textAlign:'center'}}/>
-                  </div>
-                  <div className="multi-input-1">
-                    <input className="date-picker-input  form-control1" id='todatepicker' ref='todatepicker' placeholder='تاریخ خروج'style={{direction:'rtl',textAlign:'center'}}/>
-                  </div>
                   <div className="multi-input-1">
                     <input className="dropdown form-control1" placeholder={this.state.numberOfGuests + " نفر "} style={{direction:'rtl',textAlign:'center'}}/>
                   </div>

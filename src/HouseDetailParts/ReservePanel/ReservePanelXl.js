@@ -491,6 +491,7 @@ class ReservePanelXl extends React.Component{
           <DateRangePicker
             startDatePlaceholderText="تاریخ ورود"
             endDatePlaceholderText="تاریخ خروج"
+            customArrowIcon={<div></div>}
             startDate={this.state.startDate}
             hideKeyboardShortcutsPanel={true}
             numberOfMonths={2}
