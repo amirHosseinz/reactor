@@ -3,7 +3,6 @@ import GuestNumber from '../GuestNumber.js';
 import {Button} from 'semantic-ui-react';
 import {englishToPersianDigits} from '../../tools/EnglishToPersianDigits';
 import {findDOMNode} from 'react-dom';
-// import {Modal} from 'react-bootstrap';
 import Modal from 'react-modal';
 
 import '../../tools/calendar/initialize.js';
@@ -11,9 +10,6 @@ import '../../tools/calendar/lib/css/_datepicker.css';
 import {DateRangePicker} from '../../tools/calendar';
 
 import momentJalaali from 'moment-jalaali';
-import '../../tools/DatePicker/bootstrap-datepicker.fa.js';
-import '../../tools/DatePicker/bootstrap-datepicker.js';
-import '../../tools/DatePicker/bootstrap-datepicker.css';
 import {reserveModalStyle} from '../../Styles.js';
 import moment from 'moment-jalaali';
 import {parsePrice3digits} from '../../tools/ParsePrice3digits.js';
@@ -167,13 +163,8 @@ class ReservePanelXl extends React.Component{
   setTokenForDiscount(){
     this.setState({token:localStorage['token']},()=>{this.UpdatePrice()});
   }
-  //
-  // componentDidMount(){
-  //   this.interval = setInterval(() => this.setToken(), 2000);
-  // }
 
   setToken() {
-    // console.log('ticking');
     this.setState({
       token : localStorage['token'],
     },
@@ -225,58 +216,8 @@ class ReservePanelXl extends React.Component{
      this.setState({totalPrice:reserve_data.total_price , reserveData:reserve_data});
    });
  }
-  showTotalPrice() {
-    if (this.state.reserveData !=='' && this.state.reserveData.is_available){
-        return(
-          <p>
-            هزینه کل : {englishToPersianDigits(parsePrice3digits(this.state.reserveData.total_price))}
-            تومان
-          </p>
-        );
-    }
-  }
-  showTrypinnPrice(){
-    if (this.state.reserveData !=='' && this.state.reserveData.is_available && this.state.reserveData.trypinn_service_price!==null){
-      return(
-        <p>
-        هزینه تریپین:{englishToPersianDigits(this.state.reserveData.trypinn_service_price)}
-        </p>);
-    }
-  }
-  showHostPrice(){
-    if (this.state.reserveData !=='' && this.state.reserveData.is_available){
-      return(
-        <p>
-        هزینه میزبان : {englishToPersianDigits(this.state.reserveData.host_price)}
-        </p>);
-    }
-  }
-  showTrypinnDiscount(){
-    if (this.state.reserveData !==''&& this.state.reserveData.is_available && this.state.reserveData.trypinn_service_discount!==null){
-      return(
-        <p>
-         تخفیف تریپین:{englishToPersianDigits(this.state.reserveData.trypinn_service_discount)}
-        </p>);
-    }
-  }
-  showTotalDiscount(){
-    if (this.state.reserveData !==''&& this.state.reserveData.is_available && this.state.reserveData.total_discount!==null){
-      return(
-        <p>
-        تخفیف کل : {englishToPersianDigits(this.state.reserveData.total_discount)}
-        </p>);
-    }
-  }
-  showIsAvailable()
-  {
-    if (this.state.reserveData !==''){
-      if (this.state.reserveData.is_available === false){
-        return <div>خانه موجود نمی باشد!!!</div>
-      }
-    }
-  }
 
-  sendBookRequest(){
+ sendBookRequest(){
     var request = new Request('https://www.trypinn.com/api/room/request/book/', {
       method: 'POST',
       body: JSON.stringify({
@@ -300,15 +241,7 @@ class ReservePanelXl extends React.Component{
    });
   }
 
-  renderPriceDetails(){
-        return(
-          <div dir="rtl" className="reserve-panel-total-price">
-              <div>
-                {this.showTotalPrice()}
-              </div>
-          </div>
-        );
-      }
+
   renderReserveButton(){
     if(this.state.reserveData !==''){
       return(
