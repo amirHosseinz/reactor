@@ -9,6 +9,7 @@ import '../tools/DatePicker/bootstrap-datepicker.js';
 import '../tools/DatePicker/bootstrap-datepicker.css';
 import GuestNumber from '../HouseDetailParts/GuestNumber'
 import {Dropdown} from 'semantic-ui-react';
+import {Sticky} from 'react-sticky';
 
 
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
@@ -190,89 +191,92 @@ class SearchResultXl extends React.Component{
     this.renderFromDatePicker();
     this.renderToDatePicker();
     return(
-      <div className="render-results row">
-            <div className="results-search">
-              <div className="results-serach-child">
-                <div className="col-md-3">
+          <div className="render-results row">
+                <div className="results-search">
+                  <div className="results-serach-child">
+                    <div className="col-md-3">
+                    </div>
+                    <div className="search-inputs col-md-9">
+                      <div className="multi-input-typeahead">
+                      <Typeahead
+                        className="typeahead-indetail-xl"
+                        renderMenu={(results,menuProps) => {
+                            return(
+                              <Menu {...menuProps}>
+                                {results.map((result, index) => (
+                                  <TypeaheadMenuItem option={result} position={index}>
+                                    {result}
+                                  </TypeaheadMenuItem>
+                                ))}
+                              </Menu>
+                            );
+                          }}
+                        minLength={2}
+                        align="right"
+                        emptyLabel="نتیجه‌ای یافت نشد"
+                        maxResults={5}
+                        selected={this.readCityFromURL()}
+                        placeholder='هر جا'
+                        onInputChange={(input)=> {this.setState({city:input})}}
+                        selectHintOnEnter={false}
+                        highlightOnlyResult={true}
+                        submitFormOnEnter={true}
+                        onChange={(selected)=>{
+                          if(selected.length!==0){
+                            this.setState({city:selected[0]},()=>{this.handleClick()});
+                          }
+                        }}
+                      options={listOfCity}
+                        />
+                      </div>
+
+                      <div className="multi-input-1">
+                        <input className="date-picker-input  form-control1" id='fromdatepicker' ref='fromdatepicker' placeholder='تاریخ ورود'style={{direction:'rtl',textAlign:'center'}}/>
+                      </div>
+                      <div className="multi-input-1">
+                        <input className="date-picker-input  form-control1" id='todatepicker' ref='todatepicker' placeholder='تاریخ خروج'style={{direction:'rtl',textAlign:'center'}}/>
+                      </div>
+                      <div className="multi-input-1">
+                        <input className="dropdown form-control1" placeholder={this.state.numberOfGuests + " نفر "} style={{direction:'rtl',textAlign:'center'}}/>
+                      </div>
+
+
+
+                      <div className="multi-input-2">
+                      <Button color='blue' type="button" className="search-btn-result" onClick={()=>{this.handleClick()}} data-reactid="99">
+                        <span className='searchicon'>
+                          <img src={require('../Images/trpinn_search.png')} className='search-image-result' alt=""></img>
+                        </span>
+                      </Button>
+                      </div>
+                      <div className="col-md-6">
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="search-inputs col-md-9">
-                  <div className="multi-input-typeahead">
-                  <Typeahead
-                    className="typeahead-indetail-xl"
-                    renderMenu={(results,menuProps) => {
-                        return(
-                          <Menu {...menuProps}>
-                            {results.map((result, index) => (
-                              <TypeaheadMenuItem option={result} position={index}>
-                                {result}
-                              </TypeaheadMenuItem>
-                            ))}
-                          </Menu>
-                        );
-                      }}
-                    minLength={2}
-                    align="right"
-                    emptyLabel="نتیجه‌ای یافت نشد"
-                    maxResults={5}
-                    selected={this.readCityFromURL()}
-                    placeholder='هر جا'
-                    onInputChange={(input)=> {this.setState({city:input})}}
-                    selectHintOnEnter={false}
-                    highlightOnlyResult={true}
-                    submitFormOnEnter={true}
-                    onChange={(selected)=>{
-                      if(selected.length!==0){
-                        this.setState({city:selected[0]},()=>{this.handleClick()});
-                      }
-                    }}
-                  options={listOfCity}
-                    />
-                  </div>
-
-                  <div className="multi-input-1">
-                    <input className="date-picker-input  form-control1" id='fromdatepicker' ref='fromdatepicker' placeholder='تاریخ ورود'style={{direction:'rtl',textAlign:'center'}}/>
-                  </div>
-                  <div className="multi-input-1">
-                    <input className="date-picker-input  form-control1" id='todatepicker' ref='todatepicker' placeholder='تاریخ خروج'style={{direction:'rtl',textAlign:'center'}}/>
-                  </div>
-                  <div className="multi-input-1">
-                    <input className="dropdown form-control1" placeholder={this.state.numberOfGuests + " نفر "} style={{direction:'rtl',textAlign:'center'}}/>
-                  </div>
-                  <div className="multi-input-1" dir="rtl"  >
-                  <Dropdown className="drop" icon={""} dir="rtl"  text={''} >
-                    <Dropdown.Menu onClick={(event)=>{event.stopPropagation()}}>
-                    {this.renderGuest()}
-                    </Dropdown.Menu>
-                 </Dropdown>
-                 </div>
-
-                  <div className="multi-input-2">
-                  <Button color='blue' type="button" className="search-btn-result" onClick={()=>{this.handleClick()}} data-reactid="99">
-                    <span className='searchicon'>
-                      <img src={require('../Images/trpinn_search.png')} className='search-image-result' alt=""></img>
-                    </span>
-                  </Button>
-                  </div>
-                  <div className="col-md-6">
-                  </div>
+              <div className="render-houses-row">
+                <div className="padding-search-results-top">
+                </div>
+                <div className="renderresults-main hidden-sm">
+                  {this.renderHousesCol5()}
+                </div>
+                <div className="renderresults-main visible-sm">
+                  {this.renderHousesCol3()}
+                </div>
+                <div className="padding-search-results">
                 </div>
               </div>
-            </div>
-          <div className="render-houses-row">
-            <div className="padding-search-results-top">
-            </div>
-            <div className="renderresults-main hidden-sm">
-              {this.renderHousesCol5()}
-            </div>
-            <div className="renderresults-main visible-sm">
-              {this.renderHousesCol3()}
-            </div>
-            <div className="padding-search-results">
-            </div>
           </div>
-      </div>
     );
   }
+
+ //  <div className="multi-input-1" dir="rtl"  >
+ //  <Dropdown className="drop" icon={""} dir="rtl"  text={''} >
+ //    <Dropdown.Menu onClick={(event)=>{event.stopPropagation()}}>
+ //    {this.renderGuest()}
+ //    </Dropdown.Menu>
+ // </Dropdown>
+ // </div>
 
   renderHousesCol5 () {
     var results = [];

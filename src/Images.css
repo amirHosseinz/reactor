@@ -1698,8 +1698,9 @@ transform: scale(2, 2);
 color: #42b0c6;
 }
 .render-results{
-  margin-top: 0px;
+  margin-top: 20px;
 }
+
 .results-search{
   height: 60px;
   border-bottom: solid;
