@@ -239,7 +239,7 @@ class HouseDetailsXl extends React.Component{
             </div>
           </div>
           <div className="house-details-bottom-division row-reverse">
-            <Sticky topOffset={745} disableCompensation={false}>
+            <Sticky topOffset={700} disableCompensation={false}>
               {({style,isSticky})=>{
                 return(
                   <div style={style}>
