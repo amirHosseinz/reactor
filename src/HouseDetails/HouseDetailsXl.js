@@ -311,7 +311,7 @@ class HouseDetailsXl extends React.Component{
             </div>
             <div className="house-details-amenities-description">
               <div className="house-details-host-info">
-              </div >
+              </div>
               <div className="house-details-amenities">
               </div>
               <div className="house-details-sleep-arrangements">

@@ -192,7 +192,7 @@ class SearchBarXl extends React.Component{
                 <div className="search-bar-auto-suggest-button">
                   <button className="search-bar-search-button">
                     <span>
-                      <img src={require('../Images/search-bar-search-icon.svg')}  className="search-bar-search-icon" alt="search"></img>
+                      <img src={require('../Images/search-bar-search-icon.svg')}  className="search-bar-search-icon" alt="search"/>
                     </span>
                   </button>
                 </div>
