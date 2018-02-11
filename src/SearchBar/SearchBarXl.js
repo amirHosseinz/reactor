@@ -24,7 +24,7 @@ const listOfCity = [
   {name:'سلمان شهر'},{name:'تنکابن'},{name:'کلاردشت'},{name:'نشتارود'},{name:'کلارآباد'},
 ];
 
-const theme={
+const theme= {
     container:                'main-page-searchbar-container',
     containerOpen:            'main-page-searchbar-container--open',
     input:                    'main-page-searchbar-input',
@@ -40,13 +40,12 @@ const theme={
     sectionContainerFirst:    'main-page-searchbar-section-container--first',
     sectionTitle:             'main-page-searchbar-section-title'
   }
+
 class SearchBarXl extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
       token: null,
-      showOnlyCitySearchBar:true,
-      showOnlyCitySearchBarMobile:true,
       houseList:[],
       cityList:[],
       cityListFromServer:null,
@@ -154,6 +153,12 @@ class SearchBarXl extends React.Component{
    getSuggestionValue(suggestion){
      return suggestion.name;
    }
+
+  onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method })=>{
+    // console.log(method);
+    this.setState({city:suggestionValue},()=>{this.handleClick()});
+    // console.log(suggestionValue);
+   }
   renderSearchBarVersion2(){
     const value = this.state.city;
     const suggestions = this.state.suggestions;
@@ -181,8 +186,9 @@ class SearchBarXl extends React.Component{
                 <div className="search-bar-auto-suggest-input">
                   <Autosuggest
                     theme={theme}
-                    suggestions={suggestions}
-                    onSuggestionSelected={(selected)=>{this.setState({city:selected.target.innerText},()=>{this.handleClick()})}}
+                    highlightFirstSuggestion={true}
+                    suggestions={this.state.suggestions}
+                    onSuggestionSelected={this.onSuggestionSelected}
                     onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
                     onSuggestionsClearRequested={this.onSuggestionsClearRequested}
                     getSuggestionValue={this.getSuggestionValue}
@@ -190,9 +196,9 @@ class SearchBarXl extends React.Component{
                     inputProps={inputProps}/>
                 </div>
                 <div className="search-bar-auto-suggest-button">
-                  <button className="search-bar-search-button">
+                  <button className="search-bar-search-button" onClick={()=>{this.handleClick()}}>
                     <span>
-                      <img src={require('../Images/search-bar-search-icon.svg')}  className="search-bar-search-icon" alt="search"/>
+                      <img src={require('../Images/search-bar-search-icon.svg')} className="search-bar-search-icon" alt="search"/>
                     </span>
                   </button>
                 </div>
