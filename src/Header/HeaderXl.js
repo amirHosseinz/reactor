@@ -478,17 +478,18 @@ class HeaderXl extends React.Component{
                 <div>
                   <Link className='logolink' to="/"><p className='logofont'>تریپین</p></Link>
                 </div>
-                <div className="header-searchbar">
-                  {this.renderSearchBarXL()}
-                </div>
               </div>
           </div>
         </div>
       </div>
     );
   }
+  // <div className="header-searchbar">
+  //   {this.renderSearchBarXL()}
+  // </div>
+
   renderRelevantHeaderBasedOnURL(){
-    if(window.location.pathname.indexOf('rooms')===-1){
+    if(window.location.pathname.indexOf('rooms') === -1){
       return(
         <Sticky>
           {({style,isSticky})=>{return(

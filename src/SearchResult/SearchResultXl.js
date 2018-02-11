@@ -56,7 +56,7 @@ class SearchResultXl extends React.Component{
     super(props);
     this.state={
       city: null,
-      houseList:[],
+      houseList: [],
       token: null,
       numberOfGuests: 1,
       OpenDropDown:false,
@@ -72,7 +72,7 @@ class SearchResultXl extends React.Component{
   componentWillMount(){
     var city=this.readCityFromURL();
     if(city!==null){
-          this.setState({city:city[0]});
+        this.setState({city:city[0]});
     }
     else{
         this.setState({city:city});
@@ -180,7 +180,7 @@ class SearchResultXl extends React.Component{
   }
 
   handleClick(){
-    if(this.state.city===''){
+    if(this.state.city==='' || this.state.city === null){
       this.props.history.replace("/search/هر جا");
     }
     else{
