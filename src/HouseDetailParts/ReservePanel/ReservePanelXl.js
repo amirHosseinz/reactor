@@ -17,6 +17,7 @@ import '../../tools/DatePicker/bootstrap-datepicker.css';
 import {reserveModalStyle} from '../../Styles.js';
 import moment from 'moment-jalaali';
 import {parsePrice3digits} from '../../tools/ParsePrice3digits.js';
+import './ReservePanel.css';
 
 moment.loadPersian({usePersianDigits:false , dialect:'persian-modern'});
 class ReservePanelXl extends React.Component{
@@ -25,7 +26,7 @@ class ReservePanelXl extends React.Component{
     this.token = '';
     this.state = {
       reserveData : '',
-      showguestNumberPickerDropdown:true,
+      showguestNumberPickerDropdown:false,
       showPreBill:false,
       token:null,
       numberOfGuests: 1,
@@ -457,12 +458,14 @@ class ReservePanelXl extends React.Component{
   changeNumberOfGuests(number){
     this.setState({numberOfGuests:number});
   }
-
+  closeNumberOfGuestsDropdown(){
+    this.setState({showguestNumberPickerDropdown:false});
+  }
   renderGuestNumberPickerDropdown(){
     if(this.state.showguestNumberPickerDropdown===true){
       return(
         <div className="reserve-panel-number-of-guests-dropdown">
-          <GuestNumber changeNumberOfGuests={this.changeNumberOfGuests.bind(this)}/>
+          <GuestNumber closeNumberOfGuestsDropdown={this.closeNumberOfGuestsDropdown.bind(this)} changeNumberOfGuests={this.changeNumberOfGuests.bind(this)}/>
         </div>
       );
     }
@@ -476,7 +479,7 @@ class ReservePanelXl extends React.Component{
             تعداد مهمان
           </p>
           <div className="reserve-panel-number-of-guests-input">
-            <button> {this.state.numberOfGuests} نفر </button>
+            <button onClick={()=>{this.setState({showguestNumberPickerDropdown:true})}}> {this.state.numberOfGuests} نفر </button>
               {this.renderGuestNumberPickerDropdown()}
           </div>
         </div>

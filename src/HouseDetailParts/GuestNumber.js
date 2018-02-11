@@ -8,42 +8,44 @@ class GuestNumber extends React.Component{
     this.state={
       number:1,
     };
-}
+  }
+
 renderAdd(){
-const Guest=this.state.number;
-const NewGuest= Guest + 1;
-this.setState({number:NewGuest},()=>{this.props.changeNumberOfGuests(this.state.number)});
-}
+  const Guest=this.state.number;
+  const NewGuest= Guest + 1;
+  this.setState({number:NewGuest},()=>{this.props.changeNumberOfGuests(this.state.number)});
+ }
+
 renderSub(){
   if(this.state.number > 1){
-const Guest=this.state.number;
-const NewGuest= Guest - 1;
-this.setState({number:NewGuest},()=>{this.props.changeNumberOfGuests(this.state.number)});
-}
-else{
-this.setState({number:1});
-}
+    const Guest=this.state.number;
+    const NewGuest= Guest - 1;
+    this.setState({number:NewGuest},()=>{this.props.changeNumberOfGuests(this.state.number)});
+    }
+    else{
+    this.setState({number:1});
+  }
 }
 render(){
   return(
     <div className="number-zone">
-
       <div className="reserve-number-box" >
-        <button className="btn-plus" onClick={this.renderAdd.bind(this)}>
-            <p className="number-inputer" >
-            +
-            </p>
-        </button>
-        <div className='guest-number'>
-        <p className="imput-number row-reverse">
-        <span>{'نفر'}</span><span style={{marginLeft:'5px'}}>{englishToPersianDigits(this.state.number)} </span>
-        </p>
-        </div>
-        <button className="btn-sub" onClick={this.renderSub.bind(this)}>
+        <p className="clickable-p" onClick={()=>{this.props.closeNumberOfGuestsDropdown()}}> بستن </p>
+        <button className="btn-plus" onClick={this.renderSub.bind(this)}>
             <p className="number-inputer" >
             -
             </p>
         </button>
+        <div className='guest-number'>
+          <p className="imput-number row-reverse">
+          <span>{englishToPersianDigits(this.state.number)} </span><span style={{marginLeft:'10px'}}>{'نفر'}</span>
+          </p>
+          </div>
+          <button className="btn-sub" onClick={this.renderAdd.bind(this)}>
+              <p className="number-inputer">
+              +
+              </p>
+          </button>
       </div>
 
     </div>
