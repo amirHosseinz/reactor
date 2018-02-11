@@ -180,7 +180,6 @@ class HeaderXl extends React.Component{
    }
  }
 
-
  onChangeSearchBarValue = (event,{newValue, method}) => {
    this.setState({
      city: newValue
@@ -205,12 +204,15 @@ class HeaderXl extends React.Component{
      </span>
    );
  }
+
  getSuggestionValue(suggestion){
    return suggestion.name;
  }
+
  onSuggestionSelected =(event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method })=>{
    this.setState({city:suggestionValue},()=>{this.setState({city:''});this.handleClick()})
  }
+
  renderSearchBarXL(){
    const value = this.state.city;
    const suggestions = this.state.suggestions;
