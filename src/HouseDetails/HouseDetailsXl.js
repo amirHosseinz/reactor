@@ -297,38 +297,41 @@ class HouseDetailsXl extends React.Component{
   }
 
   renderHouseDetailsVersion2(){
-    <div className="house-details-main-division">
-      <div className="house-details-top-division">
-        <div className="house-details-gallery">
+    return(
+      <div className="house-details-main-division">
+        <div className="house-details-top-division">
+          <div className="house-details-gallery">
+          </div>
+          <div className="house-details-main-information">
+          </div>
         </div>
-        <div className="house-details-main-information">
+        <div className="house-details-bottom-division row-reverse">
+          <div className="house-details-contents">
+            <div className="house-details-menu-link-scrolls">
+            </div>
+            <div className="house-details-amenities-description">
+              <div className="house-details-host-info">
+              </div>
+              <div className="house-details-amenities">
+              </div>
+              <div className="house-details-sleep-arrangements">
+              </div>
+            </div>
+            <div className= "house-details-rules">
+            </div>
+            <div className="house-details-location">
+              <div className="house-details-location-description">
+              </div>
+              <div className="house-details-map">
+              </div>
+            </div>
+          </div>
+          <div className="house-details-reserve-panel">
+          </div>
         </div>
       </div>
-      <div className="house-details-bottom-division row-reverse">
-        <div className="house-details-contents">
-          <div className="house-details-menu-link-scrolls">
-          </div>
-          <div className="house-details-amenities-description">
-            <div className="house-details-host-info">
-            </div >
-            <div className="house-details-amenities">
-            </div>
-            <div className="house-details-sleep-arrangements">
-            </div>
-          </div>
-          <div className= "house-details-rules">
-          </div>
-          <div className="house-details-location">
-            <div className="house-details-location-description">
-            </div>
-            <div className="house-details-map">
-            </div>
-          </div>
-        </div>
-        <div className="house-details-reserve-panel">
-        </div>
-      </div>
-    </div>
+    );
+
   }
 
   // {this.renderHouseDetails()}

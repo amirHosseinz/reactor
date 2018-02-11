@@ -857,7 +857,7 @@ margin-left: 14px;
 }
 .footer{
   width:100%;
-  background-color: #f8f8f8;
+  background-color: none;
 }
 .footerchild{
   width:100%;
@@ -865,15 +865,16 @@ margin-left: 14px;
   padding-top: 6px;
   padding-bottom: 6px;
   border-top: solid;
-  border-width: 1px;
+  border-width: 0px;
   border-color: lightgrey;
 }
 .footer-child-margined{
   width: 88%;
+  height: 36px;
   margin: auto;
 }
 .footer-mobile-container{
-  width:90%;
+  width:88%;
   margin: auto;
   padding-top: 10px;
   background-color: #f2f2f2;
@@ -888,12 +889,11 @@ margin-left: 14px;
 .footer-menu-mobile-link:hover {
   text-decoration:none;
 }
-.footer-menu{
+.footer-copy-right{
 text-align: center;
-margin-top: 8px;
 font-size: 14px;
+margin-top: 4px;
 color:grey;
-
 }
 .footer-menu-social{
   padding-top: 6px;
@@ -1698,8 +1698,9 @@ transform: scale(2, 2);
 color: #42b0c6;
 }
 .render-results{
-  margin-top: 0px;
+  margin-top: 20px;
 }
+
 .results-search{
   height: 60px;
   border-bottom: solid;
@@ -1850,6 +1851,34 @@ color: #42b0c6;
 		 url('./fonts/woff/IRANSansWeb.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
 		 url('./fonts/ttf/IRANSansWeb.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: Shabnam;
+  src: url('./fonts/shabnam/Shabnam.eot');
+  src: url('./fonts/shabnam/Shabnam.eot?#iefix') format('embedded-opentype'),
+       url('./fonts/shabnam/Shabnam.woff') format('woff'),
+       url('./fonts/shabnam/Shabnam.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Shabnam;
+  src: url('./fonts/shabnam/Shabnam-Bold.eot');
+  src: url('./fonts/shabnam/Shabnam-Bold.eot?#iefix') format('embedded-opentype'),
+       url('./fonts/shabnam/Shabnam-Bold.woff') format('woff'),
+       url('./fonts/shabnam/Shabnam-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Shabnam;
+  src: url('./fonts/shabnam/Shabnam-Light.eot');
+  src: url('./fonts/shabnam/Shabnam-Light.eot?#iefix') format('embedded-opentype'),
+       url('./fonts/shabnam/Shabnam-Light.woff') format('woff'),
+       url('./fonts/shabnam/Shabnam-Light.ttf') format('truetype');
+  font-weight: 300;
+}
+
 .divider-card{
   height: 1px;
   margin-top: 10px;
@@ -2107,10 +2136,6 @@ padding-bottom: 28px;
   margin-top: 30px;
   align-self: right;
 }
-.searchbarmain{
-
-}
-
 
 .download-tripinn {
 	background-color:#f56c4e;

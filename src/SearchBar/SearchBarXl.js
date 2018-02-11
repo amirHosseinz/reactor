@@ -10,57 +10,47 @@ import '../tools/DatePicker/bootstrap-datepicker.css';
 import {Dropdown} from 'semantic-ui-react';
 import GuestNumber from '../GuestNumberSearchBar.js';
 import scrollToComponent from 'react-scroll-to-component';
+import "./SearchBar.css";
+import "../Styles/MainPage-SearchBar.css";
+import Autosuggest from 'react-autosuggest';
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
-  'اصفهان',
-  'نوشهر',
-  'گیلان',
-  'رامسر',
-  'کیش',
-  'مازندران',
-  'بابلسر',
-  'فریدون‌کنار',
-  'محمودآباد',
-  'عباس‌آباد',
-  'شاندیز',
-  'خراسان رضوی',
-  'بندر انزلی',
-  'کاشان',
-  'باغ‌بهادران',
-  'قلعه‌رودخان',
-  'مشهد',
-  'چمخاله',
-  'فومن',
-  'رضوان‌شهر',
-  'رودسر',
-  'آستارا',
-  'زیباکنار',
-  'سرخ‌رود',
-  'رویان',
-  'نور',
-  'چالوس',
-  'تنکابن',
-  'دریاکنار',
-  'ایزدشهر',
-  'کلاردشت',
-  'کلارآباد',
-  'سلمان‌شهر',
-  'نشتارود',
-  'البرز',
+  {name:'اصفهان',},{name:'نوشهر',},{name: 'گیلان',},{name:'رامسر'},{name:'کیش'},{name:'مازندران'},
+  {name:'فریدون کنار'},{name:'محمودآباد'},{name:'عباس آباد'},{name:'شاندیز'},{name:'خراسان رضوی'},
+  {name:'بندر‌انزلی'},{name:'کاشان'},{name:'باغ بهادران'},{name:'قلعه رودخان'},{name:'مشهد'},
+  {name:'چمخاله'},{name:'رودسر'},{name:'فومن'},{name:'رضوان‌شهر'},{name:'زیباکنار'},
+  {name:'آستارا'},{name:'چالوس'},{name:'دریاکنار'},{name:'نور'},{name:'رویان'},{name:'بابلسر'},
+  {name:'تنکابن'},{name:'سرخ‌رود'},{name:'دریاکنار'},{name:'ایزدشهر'},{name:'البرز'},
+  {name:'سلمان شهر'},{name:'تنکابن'},{name:'کلاردشت'},{name:'نشتارود'},{name:'کلارآباد'},
 ];
 
+const theme= {
+    container:                'main-page-searchbar-container',
+    containerOpen:            'main-page-searchbar-container--open',
+    input:                    'main-page-searchbar-input',
+    inputOpen:                'main-page-searchbar-input--open',
+    inputFocused:             'main-page-searchbar-input--focused',
+    suggestionsContainer:     'main-page-searchbar-suggestions-container',
+    suggestionsContainerOpen: 'main-page-searchbar-suggestions-container--open',
+    suggestionsList:          'main-page-searchbar-suggestions-list',
+    suggestion:               'main-page-searchbar-suggestion',
+    suggestionFirst:          'main-page-searchbar-suggestion--first',
+    suggestionHighlighted:    'main-page-searchbar-suggestion--highlighted',
+    sectionContainer:         'main-page-searchbar-section-container',
+    sectionContainerFirst:    'main-page-searchbar-section-container--first',
+    sectionTitle:             'main-page-searchbar-section-title'
+  }
 
 class SearchBarXl extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
       token: null,
-      showOnlyCitySearchBar:true,
-      showOnlyCitySearchBarMobile:true,
       houseList:[],
       cityList:[],
       cityListFromServer:null,
       city:'',
+      suggestions:[],
       searchParams : {
         location: '',
         start_date: null,
@@ -78,19 +68,7 @@ class SearchBarXl extends React.Component{
     this.setState({
       token : this.getRelevantToken(),
     }, );
-    // () => {this.getCityListFromServer()}
   }
-  renderData(houseData) {
-   this.setState({
-     houseList: houseData.room,
-   });
-  }
-
-    handleSearchByEnter(event){
-      if(event.key==="Enter" && this.state.city!==null && this.state.city!==''){
-        this.handleClick();
-      }
-    }
 
    handleClick(){
        if(this.state.city===''){
@@ -117,6 +95,7 @@ class SearchBarXl extends React.Component{
       this.setState({cityListFromServer:response.location},()=>{this.fillSearchBarOptions()});
     });
    }
+
    fillSearchBarOptions(){
      var list = [];
      if(this.state.cityListFromServer!==null){
@@ -124,7 +103,6 @@ class SearchBarXl extends React.Component{
         list.push(this.state.cityListFromServer[i]);
        }
      }
-     // list = removeDuplicatesFromList(list);
      var list2 = [];
      for (var i=0 ; i<list.length ; i++) {
        list2.push(list[i].text);
@@ -132,82 +110,109 @@ class SearchBarXl extends React.Component{
      this.setState({cityList : list2});
    }
 
-  renderSearchBarOnlycity(){
+   onSuggestionsFetchRequested=({value})=> {
+     this.setState({
+       suggestions: this.getSuggestions(value)
+     });
+   }
+
+   onChangeSearchBarValue = (event,{newValue, method}) => {
+     this.setState({
+       city: newValue
+     });
+   };
+
+   getSuggestions(value) {
+     const escapedValue = this.escapeRegexCharacters(value.trim());
+
+     if (escapedValue === '') {
+       return [];
+     }
+     const regex = new RegExp('^' + escapedValue, 'i');
+     return listOfCity.filter(city => regex.test(city.name));
+   }
+
+   escapeRegexCharacters(str) {
+     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+   }
+
+   onSuggestionsClearRequested=() =>{
+     this.setState({
+       suggestions: []
+     });
+   }
+
+   renderSuggestion = (suggestion)=>{
+     return(
+       <span>
+         {suggestion.name}
+       </span>
+     );
+   }
+
+   getSuggestionValue(suggestion){
+     return suggestion.name;
+   }
+
+  onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method })=>{
+    // console.log(method);
+    this.setState({city:suggestionValue},()=>{this.handleClick()});
+    // console.log(suggestionValue);
+   }
+  renderSearchBarVersion2(){
+    const value = this.state.city;
+    const suggestions = this.state.suggestions;
+    const inputProps = {
+    placeholder: 'مثلا نوشهر',
+    value:this.state.city,
+    onChange:this.onChangeSearchBarValue
+    }
     return(
-      <div className='only-city-search-bar row'>
-        <div className="free-zone col-md-3 col-sm-2">
+      <div className="search-bar-main-division">
+        <div className="search-bar-background">
         </div>
-        <div className="main-zone col-md-6 col-sm-8">
-          <div className="row">
-          <div className="xxxz col-md-2 col-sm-1"></div>
-          <div className="xxx col-md-8 col-sm-10">
-            <div className="slogenholder">
-              <div className="seach-top-slogan-container">
-                <img src={require('../Images/tripinn_suitcase.png')} className='suitcase-image' alt="Trippin-Suitcase"></img>
-                <div className="slogan-container">
-                  <p className='slogan-1' >سفرت رو شیرین‌تر کن</p>
-                  <p className='slogan-2' >اجاره اقامتگاه و ویلا از همیشه آسون‌تر شده</p>
+          <div className="search-bar-contents">
+            <p className="search-bar-tripinn-heading">
+              تریپین
+            </p>
+            <p className="search-bar-tripinn-heading-2">
+              سامانه رزرو ویلا و اقامتگاه محلی
+            </p>
+            <div className="search-bar-auto-suggest-container">
+              <p className="search-bar-inter-destenation-text"> مقصد را وارد کنید:
+              </p>
+              <div className="search-bar-auto-suggest">
+
+                <div className="search-bar-auto-suggest-input">
+                  <Autosuggest
+                    theme={theme}
+                    highlightFirstSuggestion={true}
+                    suggestions={this.state.suggestions}
+                    onSuggestionSelected={this.onSuggestionSelected}
+                    onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                    onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                    getSuggestionValue={this.getSuggestionValue}
+                    renderSuggestion={this.renderSuggestion}
+                    inputProps={inputProps}/>
+                </div>
+                <div className="search-bar-auto-suggest-button">
+                  <button className="search-bar-search-button" onClick={()=>{this.handleClick()}}>
+                    <span>
+                      <img src={require('../Images/search-bar-search-icon.svg')} className="search-bar-search-icon" alt="search"/>
+                    </span>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-          <div className="xxxz col-md-2 col-sm-1"></div>
-          </div>
-            <div className="searchbar-zone">
-                <Typeahead
-                    id="searchbox"
-                    autoFocus={true}
-                    bsSize="large"
-                    renderMenu={(results, menuProps) => {
-                      return (
-                        <Menu {...menuProps}>
-                          {results.map((result, index) => (
-                            <TypeaheadMenuItem option={result} position={index}>
-                              <div  className="search-bar-only-city-item">
-                                {result}
-                              </div>
-                            </TypeaheadMenuItem>
-                          ))}
-                        </Menu>
-                      );
-                  }}
-                    placeholder="  !مقصد خود را وارد نمایید  "
-                    minLength={2}
-                    align='right'
-                    onInputChange={(input)=>{this.setState({city:input})}}
-                    selectHintOnEnter={false}
-                    highlightOnlyResult={true}
-                    submitFormOnEnter={false}
-                    emptyLabel="نتیجه‌ای یافت نشد"
-                    maxResults={5}
-                    className="typeahead-onlycity-xl"
-                    onChange={(selected)=>{
-                      this.setState({city:selected[0]},()=>{this.handleClick()});
-                    }}
-                    options={listOfCity}
-                  />
-              <Button type='button' color='blue' className="search-btn btn"  onClick={this.handleClick.bind(this)} data-reactid="99">
-                <span className='searchicon'>
-                  <img src={require('../Images/trpinn_search.png')} className='search-image' alt=""></img>
-                </span>
-                </Button>
-            </div>
         </div>
-        <div className="free-zone col-md-3"></div>
-      </div>
     );
   }
-  renderSearchbarXl(){
-    return(
-      <div className="container-fluid hidden-xs visible-xl">
-        {this.renderSearchBarOnlycity()}
-      </div>
-    );
-  }
+  // {this.renderSearchbarXl()}
   render(){
     return(
-      <div className="searchbarmain">
-          {this.renderSearchbarXl()}
+      <div>
+        {this.renderSearchBarVersion2()}
       </div>
     );
   }
