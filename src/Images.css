@@ -870,10 +870,11 @@ margin-left: 14px;
 }
 .footer-child-margined{
   width: 88%;
+  height: 36px;
   margin: auto;
 }
 .footer-mobile-container{
-  width:90%;
+  width:88%;
   margin: auto;
   padding-top: 10px;
   background-color: #f2f2f2;
@@ -888,12 +889,11 @@ margin-left: 14px;
 .footer-menu-mobile-link:hover {
   text-decoration:none;
 }
-.footer-menu{
+.footer-copy-right{
 text-align: center;
-margin-top: 8px;
 font-size: 14px;
+margin-top: 4px;
 color:grey;
-
 }
 .footer-menu-social{
   padding-top: 6px;
