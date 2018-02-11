@@ -1,11 +1,16 @@
 import React from 'react';
 import GuestNumber from '../GuestNumber.js';
 import {Button} from 'semantic-ui-react';
-import { englishToPersianDigits} from '../../tools/EnglishToPersianDigits';
+import {englishToPersianDigits} from '../../tools/EnglishToPersianDigits';
 import {findDOMNode} from 'react-dom';
 // import {Modal} from 'react-bootstrap';
 import Modal from 'react-modal';
-import $ from 'jquery';
+
+import '../../tools/calendar/initialize.js';
+import '../../tools/calendar/lib/css/_datepicker.css';
+import {DateRangePicker} from '../../tools/calendar';
+
+import momentJalaali from 'moment-jalaali';
 import '../../tools/DatePicker/bootstrap-datepicker.fa.js';
 import '../../tools/DatePicker/bootstrap-datepicker.js';
 import '../../tools/DatePicker/bootstrap-datepicker.css';
@@ -20,6 +25,7 @@ class ReservePanelXl extends React.Component{
     this.token = '';
     this.state = {
       reserveData : '',
+      showguestNumberPickerDropdown:true,
       showPreBill:false,
       token:null,
       numberOfGuests: 1,
@@ -29,6 +35,8 @@ class ReservePanelXl extends React.Component{
       },
       totalPrice:0,
       discountCode : '',
+      startDate:null,
+      endDate:null,
     };
   }
   renderOrdinaryPriceForPerPerson(){
@@ -158,7 +166,7 @@ class ReservePanelXl extends React.Component{
   setTokenForDiscount(){
     this.setState({token:localStorage['token']},()=>{this.UpdatePrice()});
   }
-  // 
+  //
   // componentDidMount(){
   //   this.interval = setInterval(() => this.setToken(), 2000);
   // }
@@ -445,8 +453,19 @@ class ReservePanelXl extends React.Component{
       );
     }
   }
+
   changeNumberOfGuests(number){
     this.setState({numberOfGuests:number});
+  }
+
+  renderGuestNumberPickerDropdown(){
+    if(this.state.showguestNumberPickerDropdown===true){
+      return(
+        <div className="reserve-panel-number-of-guests-dropdown">
+          <GuestNumber changeNumberOfGuests={this.changeNumberOfGuests.bind(this)}/>
+        </div>
+      );
+    }
   }
 
   renderReservePanelVersion2(){
@@ -457,6 +476,8 @@ class ReservePanelXl extends React.Component{
             تعداد مهمان
           </p>
           <div className="reserve-panel-number-of-guests-input">
+            <button> {this.state.numberOfGuests} نفر </button>
+              {this.renderGuestNumberPickerDropdown()}
           </div>
         </div>
         <div className="reserve-panel-date-picker-division">
@@ -464,6 +485,24 @@ class ReservePanelXl extends React.Component{
             تاریخ ورود و خروج
           </p>
           <div className="reserve-panel-date-picker-input">
+          <DateRangePicker
+            startDatePlaceholderText="تاریخ ورود"
+            endDatePlaceholderText="تاریخ خروج"
+            startDate={this.state.startDate}
+            hideKeyboardShortcutsPanel={true}
+            numberOfMonths={2}
+            isRTL={true}
+            startDateId="your_unique_start_date_id"
+            endDate={this.state.endDate}
+            endDateId="your_unique_end_date_id"
+            onDatesChange={({startDate,endDate})=>{this.setState({startDate:startDate,endDate:endDate})}}
+            focusedInput={this.state.focusedInput}
+            reopenPickerOnClearDates={true}
+            onFocusChange={focusedInput => this.setState({focusedInput})}
+            renderMonth={(month) => momentJalaali(month).format('jMMMM jYYYY')}
+            renderDayContents={(day) => momentJalaali(day).format('jD')}
+            keepOpenOnDateSelect={false}
+            />
           </div>
         </div>
         <div className="reserve-panel-reserve-button-division">
