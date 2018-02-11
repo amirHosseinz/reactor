@@ -158,15 +158,10 @@ class ReservePanelXl extends React.Component{
   setTokenForDiscount(){
     this.setState({token:localStorage['token']},()=>{this.UpdatePrice()});
   }
-
-  componentWillMount () {
-    this.renderFromDatePicker();
-    this.renderToDatePicker();
-  }
-
-  componentDidMount(){
-    this.interval = setInterval(() => this.setToken(), 2000);
-  }
+  // 
+  // componentDidMount(){
+  //   this.interval = setInterval(() => this.setToken(), 2000);
+  // }
 
   setToken() {
     // console.log('ticking');
@@ -296,33 +291,6 @@ class ReservePanelXl extends React.Component{
    });
   }
 
-  renderFromDatePicker(){
-    const fromDatePicker = findDOMNode(this.refs.fromdatepicker);
-    $(document).ready(function(){
-      $(fromDatePicker).datepicker({
-        changeMonth: true,
-        changeYear: true,
-        isRTL: true,
-        numberOfMonths:1,
-        showOtherMonths:false,
-        showButtonPanel:true,
-        dateFormat: "yy/m/d",
-       });
-    });
-  }
-  renderToDatePicker(){
-    const toDatePicker = findDOMNode(this.refs.todatepicker);
-    $(document).ready(function(){
-      $(toDatePicker).datepicker({
-        changeMonth: true,
-        changeYear: true,
-        isRTL: true,
-        numberOfMonths:1,
-        showButtonPanel:true,
-        dateFormat: "yy/m/d",
-       });
-    });
-  }
   renderPriceDetails(){
         return(
           <div dir="rtl" className="reserve-panel-total-price">
@@ -481,35 +449,59 @@ class ReservePanelXl extends React.Component{
     this.setState({numberOfGuests:number});
   }
 
+  renderReservePanelVersion2(){
+    return(
+      <div className="reserve-panel-contents">
+        <div className="reserve-panel-number-of-guests-division">
+          <p className="reserve-panel-number-of-guests-description">
+            تعداد مهمان
+          </p>
+          <div className="reserve-panel-number-of-guests-input">
+          </div>
+        </div>
+        <div className="reserve-panel-date-picker-division">
+          <p className="reserve-panel-date-picker-description">
+            تاریخ ورود و خروج
+          </p>
+          <div className="reserve-panel-date-picker-input">
+          </div>
+        </div>
+        <div className="reserve-panel-reserve-button-division">
+          <button className="reserve-panel-reserve-button"> ررزو کنید </button>
+        </div>
+        <p className="reserve-panel-how-to-reserve">
+          چگونه رزرو کنم؟
+        </p>
+      </div>
+    );
+
+  }
+
+  // {this.renderPreBill()}
+  // <div className="guestnumber-div">
+  //   <GuestNumber changeNumberOfGuests={this.changeNumberOfGuests.bind(this)}/>
+  // </div>
+  // <div className="divider-card">
+  // </div>
+  //
+  // <div>
+  //   <input className="date-picker-input  form-control1"
+  //         id='fromdatepicker'
+  //         ref='fromdatepicker'
+  //         placeholder='تاریخ ورود'
+  //         style={{direction:'rtl',textAlign:'center'}}/>
+  // </div>
+  // <div>
+  //   <input className="date-picker-input  form-control1"
+  //          id='todatepicker'
+    // {this.renderPriceDetails()}
+    // {this.renderReserveButton()}
+
 
   render(){
-    {this.renderToDatePicker()}
-    {this.renderFromDatePicker()}
     return(
       <div>
-        {this.renderPreBill()}
-        <div className="guestnumber-div">
-          <GuestNumber changeNumberOfGuests={this.changeNumberOfGuests.bind(this)}/>
-        </div>
-        <div className="divider-card">
-        </div>
-
-        <div>
-          <input className="date-picker-input  form-control1"
-                id='fromdatepicker'
-                ref='fromdatepicker'
-                placeholder='تاریخ ورود'
-                style={{direction:'rtl',textAlign:'center'}}/>
-        </div>
-        <div>
-          <input className="date-picker-input  form-control1"
-                 id='todatepicker'
-                 ref='todatepicker'
-                 placeholder='تاریخ خروج'
-                 style={{direction:'rtl',textAlign:'center'}}/>
-        </div>
-          {this.renderPriceDetails()}
-          {this.renderReserveButton()}
+        {this.renderReservePanelVersion2()}
       </div>
     );
   }
