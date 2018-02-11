@@ -7,9 +7,9 @@ import $ from 'jquery';
 import '../tools/DatePicker/bootstrap-datepicker.fa.js';
 import '../tools/DatePicker/bootstrap-datepicker.js';
 import '../tools/DatePicker/bootstrap-datepicker.css';
-import GuestNumber from '../HouseDetailParts/GuestNumber'
+import GuestNumberSearchBar from '../GuestNumberSearchBar.js'
 import {Dropdown} from 'semantic-ui-react';
-
+import "./SearchResult.css";
 
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
@@ -131,7 +131,7 @@ class SearchResultXl extends React.Component{
   renderGuest(){
     return(
       <div   >
-        <GuestNumber changeNumberOfGuests={this.changeNumberOfGuests.bind(this)} />
+        <GuestNumberSearchBar changeNumberOfGuests={this.changeNumberOfGuests.bind(this)} />
       </div>
     );
   }
@@ -164,28 +164,16 @@ class SearchResultXl extends React.Component{
       <div className="render-results row">
             <div className="results-search">
               <div className="results-serach-child">
-                <div className="col-md-3">
-                </div>
-                <div className="search-inputs col-md-9">
+
+                <div className="search-inputs">
                   <div className="multi-input-1">
-                    <input className="dropdown form-control1" placeholder={this.state.numberOfGuests + " نفر "} style={{direction:'rtl',textAlign:'center'}}/>
+                    <input className="form-control1" placeholder={this.state.numberOfGuests + " نفر "} style={{direction:'rtl',textAlign:'center'}}/>
+                    <div className="serach-result-number-of-guests-input"  >
+                      {this.renderGuest()}
+                    </div>
                   </div>
-                  <div className="multi-input-1" dir="rtl"  >
-                  <Dropdown className="drop" icon={""} dir="rtl"  text={''} >
-                    <Dropdown.Menu onClick={(event)=>{event.stopPropagation()}}>
-                    {this.renderGuest()}
-                    </Dropdown.Menu>
-                 </Dropdown>
-                 </div>
-                  <div className="multi-input-2">
-                  <Button color='blue' type="button" className="search-btn-result" onClick={()=>{this.handleClick()}} data-reactid="99">
-                    <span className='searchicon'>
-                      <img src={require('../Images/trpinn_search.png')} className='search-image-result' alt=""></img>
-                    </span>
-                  </Button>
-                  </div>
-                  <div className="col-md-6">
-                  </div>
+
+
                 </div>
               </div>
             </div>
