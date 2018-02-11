@@ -177,7 +177,6 @@ class SearchResultXl extends React.Component{
                     </Dropdown.Menu>
                  </Dropdown>
                  </div>
-
                   <div className="multi-input-2">
                   <Button color='blue' type="button" className="search-btn-result" onClick={()=>{this.handleClick()}} data-reactid="99">
                     <span className='searchicon'>

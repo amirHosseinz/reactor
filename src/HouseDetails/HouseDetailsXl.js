@@ -31,7 +31,6 @@ class HouseDetailsXl extends React.Component{
     super(props);
     this.state = {
       className:'loaded',
-      imageLoaded:false,
       photoIndex: 0,
       isOpen: false,
       activeLink:1,
@@ -93,6 +92,7 @@ class HouseDetailsXl extends React.Component{
      return response.json();
    })
    .then((homeData) => {
+     console.log(homeData);
      this.renderData(homeData);
    });
   }
@@ -120,59 +120,15 @@ class HouseDetailsXl extends React.Component{
      );
    }
 
-
- showHouseGallery(){
-   this.setState({isOpen: true});
- }
  renderPreview(){
    if(this.state.homeData!==''){
-     return(<div className = "housedetail-img">
-              <AspectRatio ratio="16/10" style={{maxWidth: '100%'}}>
+     return(
+       <div className = "housedetail-img">
                  <img
-                 onLoad={this.handleImageLoaded.bind(this)}
-                 onClick={this.showHouseGallery.bind(this)}
-                 src={"https://www.trypinn.com"+this.state.homeData.preview}  className="house-details-preview"
+                 src={"https://www.trypinn.com"+this.state.homeData.preview_high}  className="house-details-preview"
                  alt = ""/>
-                 <Button onClick={this.showHouseGallery.bind(this)} className="show-gallery-button-house-details"> مشاهده تصاویر </Button>
-              </AspectRatio>
-             </div>);
-   }
- }
-
- handleImageLoaded(){
-   this.setState({ imageLoaded: true },()=>{});
- }
-
- renderHouseGallery(){
-   if (this.state.homeData !==''){
-     var imageList = [];
-     for (var i = 0; i < this.state.homeData.images.length; i++) {
-      imageList.push(
-        "https://www.trypinn.com"+ this.state.homeData.images[i].image
-      );
-     }
-     const photoIndex= this.state.photoIndex;
-     return (
-       <div>
-       {this.state.isOpen && (
-         <Lightbox
-           mainSrc={imageList[photoIndex]}
-           nextSrc={imageList[(photoIndex + 1) % imageList.length]}
-           prevSrc={imageList[(photoIndex + imageList.length - 1) % imageList.length]}
-           onCloseRequest={() => this.setState({ isOpen: false })}
-           onMovePrevRequest={() =>
-             this.setState({
-               photoIndex: (photoIndex + imageList.length - 1) % imageList.length,
-             })
-           }
-           onMoveNextRequest={() =>
-             this.setState({
-               photoIndex: (photoIndex + 1) % imageList.length,
-             })
-           }
-         />
-       )}
-       </div>
+             </div>
+             
      );
    }
  }
@@ -292,6 +248,7 @@ class HouseDetailsXl extends React.Component{
           <div className="house-details-top-division">
             <Element name="gallery"></Element>
             <div className="house-details-gallery">
+              {this.renderPreview()}
             </div>
             <div className="house-details-main-information">
               <Element name="details"></Element>

@@ -294,3 +294,9 @@ border-width: 2px;
   font-size: 16px;
   font-weight: 400;
 }
+
+.house-details-preview{
+   height: 480px;
+   position:relative;
+   object-fit: cover;
+}
