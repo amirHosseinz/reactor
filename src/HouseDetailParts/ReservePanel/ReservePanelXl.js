@@ -3,12 +3,12 @@ import GuestNumber from '../GuestNumber.js';
 import {Button} from 'semantic-ui-react';
 import {englishToPersianDigits} from '../../tools/EnglishToPersianDigits';
 import {findDOMNode} from 'react-dom';
-// import {Modal} from 'react-bootstrap';
 import Modal from 'react-modal';
 
-// import '../../tools/calendar/initialize.js';
-// import '../../tools/calendar/lib/css/_datepicker.css';
-// import {DateRangePicker} from '../../tools/calendar';
+import '../../tools/calendar/initialize.js';
+import '../../tools/calendar/lib/css/_datepicker.css';
+import {DateRangePicker} from '../../tools/calendar';
+
 import momentJalaali from 'moment-jalaali';
 import {reserveModalStyle} from '../../Styles.js';
 import moment from 'moment-jalaali';
@@ -163,13 +163,8 @@ class ReservePanelXl extends React.Component{
   setTokenForDiscount(){
     this.setState({token:localStorage['token']},()=>{this.UpdatePrice()});
   }
-  //
-  // componentDidMount(){
-  //   this.interval = setInterval(() => this.setToken(), 2000);
-  // }
 
   setToken() {
-    // console.log('ticking');
     this.setState({
       token : localStorage['token'],
     },
@@ -221,58 +216,8 @@ class ReservePanelXl extends React.Component{
      this.setState({totalPrice:reserve_data.total_price , reserveData:reserve_data});
    });
  }
-  showTotalPrice() {
-    if (this.state.reserveData !=='' && this.state.reserveData.is_available){
-        return(
-          <p>
-            هزینه کل : {englishToPersianDigits(parsePrice3digits(this.state.reserveData.total_price))}
-            تومان
-          </p>
-        );
-    }
-  }
-  showTrypinnPrice(){
-    if (this.state.reserveData !=='' && this.state.reserveData.is_available && this.state.reserveData.trypinn_service_price!==null){
-      return(
-        <p>
-        هزینه تریپین:{englishToPersianDigits(this.state.reserveData.trypinn_service_price)}
-        </p>);
-    }
-  }
-  showHostPrice(){
-    if (this.state.reserveData !=='' && this.state.reserveData.is_available){
-      return(
-        <p>
-        هزینه میزبان : {englishToPersianDigits(this.state.reserveData.host_price)}
-        </p>);
-    }
-  }
-  showTrypinnDiscount(){
-    if (this.state.reserveData !==''&& this.state.reserveData.is_available && this.state.reserveData.trypinn_service_discount!==null){
-      return(
-        <p>
-         تخفیف تریپین:{englishToPersianDigits(this.state.reserveData.trypinn_service_discount)}
-        </p>);
-    }
-  }
-  showTotalDiscount(){
-    if (this.state.reserveData !==''&& this.state.reserveData.is_available && this.state.reserveData.total_discount!==null){
-      return(
-        <p>
-        تخفیف کل : {englishToPersianDigits(this.state.reserveData.total_discount)}
-        </p>);
-    }
-  }
-  showIsAvailable()
-  {
-    if (this.state.reserveData !==''){
-      if (this.state.reserveData.is_available === false){
-        return <div>خانه موجود نمی باشد!!!</div>
-      }
-    }
-  }
 
-  sendBookRequest(){
+ sendBookRequest(){
     var request = new Request('https://www.trypinn.com/api/room/request/book/', {
       method: 'POST',
       body: JSON.stringify({
@@ -296,15 +241,7 @@ class ReservePanelXl extends React.Component{
    });
   }
 
-  renderPriceDetails(){
-        return(
-          <div dir="rtl" className="reserve-panel-total-price">
-              <div>
-                {this.showTotalPrice()}
-              </div>
-          </div>
-        );
-      }
+
   renderReserveButton(){
     if(this.state.reserveData !==''){
       return(
@@ -483,8 +420,26 @@ class ReservePanelXl extends React.Component{
           <p className="reserve-panel-description">
             تاریخ ورود و خروج
           </p>
-          <div className="reserve-panel-number-of-guests-input">
-
+          <div className="reserve-panel-date-picker-input">
+          <DateRangePicker
+            startDatePlaceholderText="تاریخ ورود"
+            endDatePlaceholderText="تاریخ خروج"
+            customArrowIcon={<div></div>}
+            startDate={this.state.startDate}
+            hideKeyboardShortcutsPanel={true}
+            numberOfMonths={2}
+            isRTL={true}
+            startDateId="your_unique_start_date_id"
+            endDate={this.state.endDate}
+            endDateId="your_unique_end_date_id"
+            onDatesChange={({startDate,endDate})=>{this.setState({startDate:startDate,endDate:endDate})}}
+            focusedInput={this.state.focusedInput}
+            reopenPickerOnClearDates={true}
+            onFocusChange={focusedInput => this.setState({focusedInput})}
+            renderMonth={(month) => momentJalaali(month).format('jMMMM jYYYY')}
+            renderDayContents={(day) => momentJalaali(day).format('jD')}
+            keepOpenOnDateSelect={false}
+            />
           </div>
         </div>
         <div className="reserve-panel-reserve-button-division">

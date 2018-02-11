@@ -31,7 +31,7 @@ class RequestsXl extends React.Component{
         this.setSearchParams(this.getRole());
     }
   }
-  
+
   getRelevantToken(){
     if(localStorage['isLoggedIn']==='true'){
       return localStorage['token'];
@@ -88,7 +88,7 @@ class RequestsXl extends React.Component{
   renderRequests(){
       if(this.state.requestList!==null){
         var request_list = this.state.requestList.request_list;
-        this.list = request_list.map((item)=>  {
+        this.list = request_list.map((item)=>{
           return(
             <div
               dir="rtl"

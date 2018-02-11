@@ -115,6 +115,15 @@
   font-weight: 500;
   margin-top: 16px !important;
 }
+.navigation-menu-items-active{
+  margin-left: 18px;
+  cursor : pointer;
+  color : #12b2ce;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 16px !important;
+}
+
 .house-details-location{
   margin-bottom: 100px;
 }
