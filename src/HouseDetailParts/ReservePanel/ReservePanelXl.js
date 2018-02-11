@@ -6,14 +6,10 @@ import {findDOMNode} from 'react-dom';
 // import {Modal} from 'react-bootstrap';
 import Modal from 'react-modal';
 
-import '../../tools/calendar/initialize.js';
-import '../../tools/calendar/lib/css/_datepicker.css';
-import {DateRangePicker} from '../../tools/calendar';
-
+// import '../../tools/calendar/initialize.js';
+// import '../../tools/calendar/lib/css/_datepicker.css';
+// import {DateRangePicker} from '../../tools/calendar';
 import momentJalaali from 'moment-jalaali';
-import '../../tools/DatePicker/bootstrap-datepicker.fa.js';
-import '../../tools/DatePicker/bootstrap-datepicker.js';
-import '../../tools/DatePicker/bootstrap-datepicker.css';
 import {reserveModalStyle} from '../../Styles.js';
 import moment from 'moment-jalaali';
 import {parsePrice3digits} from '../../tools/ParsePrice3digits.js';
@@ -488,24 +484,7 @@ class ReservePanelXl extends React.Component{
             تاریخ ورود و خروج
           </p>
           <div className="reserve-panel-date-picker-input">
-          <DateRangePicker
-            startDatePlaceholderText="تاریخ ورود"
-            endDatePlaceholderText="تاریخ خروج"
-            startDate={this.state.startDate}
-            hideKeyboardShortcutsPanel={true}
-            numberOfMonths={2}
-            isRTL={true}
-            startDateId="your_unique_start_date_id"
-            endDate={this.state.endDate}
-            endDateId="your_unique_end_date_id"
-            onDatesChange={({startDate,endDate})=>{this.setState({startDate:startDate,endDate:endDate})}}
-            focusedInput={this.state.focusedInput}
-            reopenPickerOnClearDates={true}
-            onFocusChange={focusedInput => this.setState({focusedInput})}
-            renderMonth={(month) => momentJalaali(month).format('jMMMM jYYYY')}
-            renderDayContents={(day) => momentJalaali(day).format('jD')}
-            keepOpenOnDateSelect={false}
-            />
+
           </div>
         </div>
         <div className="reserve-panel-reserve-button-division">
@@ -518,6 +497,25 @@ class ReservePanelXl extends React.Component{
     );
 
   }
+
+  // <DateRangePicker
+  //   startDatePlaceholderText="تاریخ ورود"
+  //   endDatePlaceholderText="تاریخ خروج"
+  //   startDate={this.state.startDate}
+  //   hideKeyboardShortcutsPanel={true}
+  //   numberOfMonths={2}
+  //   isRTL={true}
+  //   startDateId="your_unique_start_date_id"
+  //   endDate={this.state.endDate}
+  //   endDateId="your_unique_end_date_id"
+  //   onDatesChange={({startDate,endDate})=>{this.setState({startDate:startDate,endDate:endDate})}}
+  //   focusedInput={this.state.focusedInput}
+  //   reopenPickerOnClearDates={true}
+  //   onFocusChange={focusedInput => this.setState({focusedInput})}
+  //   renderMonth={(month) => momentJalaali(month).format('jMMMM jYYYY')}
+  //   renderDayContents={(day) => momentJalaali(day).format('jD')}
+  //   keepOpenOnDateSelect={false}
+  //   />
 
   // {this.renderPreBill()}
   // <div className="guestnumber-div">
