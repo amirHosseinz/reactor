@@ -408,16 +408,16 @@ class ReservePanelXl extends React.Component{
     return(
       <div className="reserve-panel-contents">
         <div className="reserve-panel-number-of-guests-division">
-          <p className="reserve-panel-number-of-guests-description">
+          <p className="reserve-panel-description">
             تعداد مهمان
           </p>
           <div className="reserve-panel-number-of-guests-input">
-            <button onClick={()=>{this.setState({showguestNumberPickerDropdown:true})}}> {this.state.numberOfGuests} نفر </button>
+            <button className="reserve-panel-enter-number-of-guests-button" onClick={()=>{this.setState({showguestNumberPickerDropdown:true})}}> {englishToPersianDigits(this.state.numberOfGuests)} نفر </button>
               {this.renderGuestNumberPickerDropdown()}
           </div>
         </div>
         <div className="reserve-panel-date-picker-division">
-          <p className="reserve-panel-date-picker-description">
+          <p className="reserve-panel-description">
             تاریخ ورود و خروج
           </p>
           <div className="reserve-panel-date-picker-input">
@@ -443,15 +443,32 @@ class ReservePanelXl extends React.Component{
           </div>
         </div>
         <div className="reserve-panel-reserve-button-division">
-          <button className="reserve-panel-reserve-button"> ررزو کنید </button>
+          <button className="reserve-panel-reserve-button"> رزرو </button>
         </div>
-        <p className="reserve-panel-how-to-reserve">
-          چگونه رزرو کنم؟
-        </p>
+
       </div>
     );
 
   }
+
+  // <DateRangePicker
+  //   startDatePlaceholderText="تاریخ ورود"
+  //   endDatePlaceholderText="تاریخ خروج"
+  //   startDate={this.state.startDate}
+  //   hideKeyboardShortcutsPanel={true}
+  //   numberOfMonths={2}
+  //   isRTL={true}
+  //   startDateId="your_unique_start_date_id"
+  //   endDate={this.state.endDate}
+  //   endDateId="your_unique_end_date_id"
+  //   onDatesChange={({startDate,endDate})=>{this.setState({startDate:startDate,endDate:endDate})}}
+  //   focusedInput={this.state.focusedInput}
+  //   reopenPickerOnClearDates={true}
+  //   onFocusChange={focusedInput => this.setState({focusedInput})}
+  //   renderMonth={(month) => momentJalaali(month).format('jMMMM jYYYY')}
+  //   renderDayContents={(day) => momentJalaali(day).format('jD')}
+  //   keepOpenOnDateSelect={false}
+  //   />
 
   // {this.renderPreBill()}
   // <div className="guestnumber-div">
