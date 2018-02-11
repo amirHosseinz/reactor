@@ -108,7 +108,8 @@ class MainPage extends React.Component{
   // <Route path={"/becomehost"} render = {()=> {return(this.renderBecomeHost())}}/>
   render(){
     this.getGuestTokenFromServer();
-    document.title = "تریپین | سامانه رزرو ویلا";
+    // document.title = "تریپین | سامانه رزرو ویلا";
+    document.title = "XJFXWVV";
     return(
       <StickyContainer>
       <BrowserRouter>
