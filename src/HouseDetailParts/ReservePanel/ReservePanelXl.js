@@ -10,11 +10,10 @@ import '../../tools/calendar/lib/css/_datepicker.css';
 import {DateRangePicker} from '../../tools/calendar';
 
 import momentJalaali from 'moment-jalaali';
-import {reserveModalStyle} from '../../Styles.js';
 import moment from 'moment-jalaali';
 import {parsePrice3digits} from '../../tools/ParsePrice3digits.js';
 import './ReservePanel.css';
-
+import {reserveModalStyle} from '../../Styles.js';
 moment.loadPersian({usePersianDigits:false , dialect:'persian-modern'});
 class ReservePanelXl extends React.Component{
   constructor(props){
@@ -32,8 +31,8 @@ class ReservePanelXl extends React.Component{
       },
       totalPrice:0,
       discountCode : '',
-      startDate:null,
-      endDate:null,
+      startDate:'',
+      endDate:'',
     };
   }
   renderOrdinaryPriceForPerPerson(){
@@ -171,26 +170,12 @@ class ReservePanelXl extends React.Component{
       ()=>this.setSearchParams(this.getDataFromUser()));
   }
   getDataFromUser(){
-      return({fromDate :document.getElementById('fromdatepicker').value,
-              toDate: document.getElementById('todatepicker').value,
+      return({fromDate :this.state.startDate,
+              toDate: this.state.endDate,
               numberOfGuests : this.state.numberOfGuests,
               discountCode : ''});
   }
   setSearchParams(reqpar){
-    if(reqpar.fromDate=== null || reqpar.fromDate==='' ){
-      // alert('.لطفا تاریخ ورود و خروج خود را دقیق وارد نمایید');
-      return;
-    }
-    if(reqpar.toDate===null || reqpar.toDate===''){
-      // alert('.لطفا تاریخ ورود و خروج خود را دقیق وارد نمایید');
-      return ;
-    }
-    if (reqpar.numberOfGuests === ''){
-      // alert('.لطفا تعداد مهمان‌های خود را وارد نمایید');
-      return;
-    }
-    reqpar.fromDate= moment(reqpar.fromDate, 'jYYYY/jM/jD').format('YYYY/M/D');
-    reqpar.toDate= moment(reqpar.toDate, 'jYYYY/jM/jD').format('YYYY/M/D');
     this.setState({requestParams:reqpar},() => {this.getDataFromServer()});
   }
 
@@ -213,7 +198,7 @@ class ReservePanelXl extends React.Component{
      return response.json();
    })
    .then((reserve_data) => {
-     this.setState({totalPrice:reserve_data.total_price , reserveData:reserve_data});
+     this.setState({totalPrice:reserve_data.total_price ,reserveData:reserve_data,showPreBill:true});
    });
  }
 
@@ -243,26 +228,18 @@ class ReservePanelXl extends React.Component{
 
 
   renderReserveButton(){
-    if(this.state.reserveData !==''){
+    if(this.state.startDate==='' || this.state.endDate===''){
       return(
-        <div className='reserve-button-div'>
-          <Button color='orange' className='reserve-button active' onClick={()=>{this.setState({showPreBill:true})}}>
-            رزرو کنید
-          </Button>
-        </div>
+        <button disabled className="reserve-panel-reserve-button-disabled"> رزرو </button>
       );
     }
-      else{
-        return(
-          <div className='reserve-button-div'>
-            <Button color='orange' className='reserve-button disabled'>
-              رزرو کنید
-            </Button>
-          </div>
-        );
-      }
-
+    else{
+      return(
+        <button onClick={()=>{this.setToken()}}className="reserve-panel-reserve-button-active"> رزرو </button>
+      );
+    }
   }
+
   UpdatePrice(){
     var request = new Request('https://www.trypinn.com/api/room/get_price/',{
       method: 'POST',
@@ -302,6 +279,7 @@ class ReservePanelXl extends React.Component{
     if(this.state.reserveData!==''){
       return(
         <Modal isOpen={this.state.showPreBill}
+          style={reserveModalStyle}
           onRequestClose={()=>{this.setState({showPreBill:false})}}>
           <div className="pre-bill-main-division">
             <div className="pre-bill-header-section">
@@ -443,57 +421,17 @@ class ReservePanelXl extends React.Component{
           </div>
         </div>
         <div className="reserve-panel-reserve-button-division">
-          <button className="reserve-panel-reserve-button"> رزرو </button>
+          {this.renderReserveButton()}
         </div>
 
       </div>
     );
-
   }
-
-  // <DateRangePicker
-  //   startDatePlaceholderText="تاریخ ورود"
-  //   endDatePlaceholderText="تاریخ خروج"
-  //   startDate={this.state.startDate}
-  //   hideKeyboardShortcutsPanel={true}
-  //   numberOfMonths={2}
-  //   isRTL={true}
-  //   startDateId="your_unique_start_date_id"
-  //   endDate={this.state.endDate}
-  //   endDateId="your_unique_end_date_id"
-  //   onDatesChange={({startDate,endDate})=>{this.setState({startDate:startDate,endDate:endDate})}}
-  //   focusedInput={this.state.focusedInput}
-  //   reopenPickerOnClearDates={true}
-  //   onFocusChange={focusedInput => this.setState({focusedInput})}
-  //   renderMonth={(month) => momentJalaali(month).format('jMMMM jYYYY')}
-  //   renderDayContents={(day) => momentJalaali(day).format('jD')}
-  //   keepOpenOnDateSelect={false}
-  //   />
-
-  // {this.renderPreBill()}
-  // <div className="guestnumber-div">
-  //   <GuestNumber changeNumberOfGuests={this.changeNumberOfGuests.bind(this)}/>
-  // </div>
-  // <div className="divider-card">
-  // </div>
-  //
-  // <div>
-  //   <input className="date-picker-input  form-control1"
-  //         id='fromdatepicker'
-  //         ref='fromdatepicker'
-  //         placeholder='تاریخ ورود'
-  //         style={{direction:'rtl',textAlign:'center'}}/>
-  // </div>
-  // <div>
-  //   <input className="date-picker-input  form-control1"
-  //          id='todatepicker'
-    // {this.renderPriceDetails()}
-    // {this.renderReserveButton()}
-
 
   render(){
     return(
       <div>
+        {this.renderPreBill()}
         {this.renderReservePanelVersion2()}
       </div>
     );

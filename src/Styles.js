@@ -141,4 +141,15 @@ export const reserveModalStyle={
     bottom            : 0,
     backgroundColor   : 'rgba(0, 0, 0, 0.7)'
   },
+  content :{
+    height : '650px',
+    width  : '700px',
+    top                        : '15%',
+    left                       : '35%',
+    right                      : '35%',
+    bottom                     : '30%',
+    outline                    : '0',
+    padding                    : '5px',
+    transform                  : 'translate(0%, 0%)'
+  }
 }

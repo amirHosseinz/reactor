@@ -12,7 +12,6 @@ import HostInfoDescription from '../HouseDetailParts/HostInfoDescription.js';
 import {englishToPersianDigits} from '../tools/EnglishToPersianDigits.js';
 import AspectRatio from 'react-aspect-ratio';
 import MapDescription from '../HouseDetailParts/MapRenderer.js';
-import {Modal} from 'react-bootstrap';
 import UtilitiesDescription from '../HouseDetailParts/UtilitiesDescription.js';
 import CheckInCheckOutDescription from '../HouseDetailParts/CheckInCheckOutDescription.js';
 import MaxCapacity from '../HouseDetailParts/MaxCapacity.js';
@@ -107,11 +106,6 @@ class HouseDetailsXl extends React.Component{
   }
 
 
-   renderReservePanel(){
-     if (this.state.showReservePanel === true){
-       return <ReservePanel homeData={this.state.homeData}/>
-     }
-   }
 
    renderHomeTitle()
    {
@@ -128,22 +122,9 @@ class HouseDetailsXl extends React.Component{
                  src={"https://www.trypinn.com"+this.state.homeData.preview_high}  className="house-details-preview"
                  alt = ""/>
              </div>
-             
      );
    }
  }
-
-  // renderMap(){
-  //   if(this.state.homeData!==''){
-  //     return (
-  //         <div className='house-google-map'>
-  //           <MapDescription
-  //             lat={this.state.homeData.latitude} lng={this.state.homeData.longitude} zoom={13}
-  //           />
-  //         </div>
-  //     );
-  //   }
-  // }
 
 
   // renderHouseDetails(){
@@ -272,7 +253,7 @@ class HouseDetailsXl extends React.Component{
                       </div>
                       <hr />
                       <div className="house-details-reserve-panel-form">
-                        <ReservePanel />
+                        <ReservePanel homeData={this.state.homeData}/>
                       </div>
                     </div>
                   </div>
@@ -347,11 +328,10 @@ class HouseDetailsXl extends React.Component{
     }
   }
 
-  // {this.renderHouseDetails()}
   render(){
-    // if (this.state.homeData !== ''){
-    //   document.title = "تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.city;
-    // }
+    if (this.state.homeData !== ''){
+      document.title = "تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.city;
+    }
     return(
       <div>
         {this.renderHouseDetailsVersion2()}

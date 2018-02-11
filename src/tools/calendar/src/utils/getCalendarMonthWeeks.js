@@ -22,7 +22,6 @@ export default function getCalendarMonthWeeks(
   const firstOfMonth = momentJalaali(month).clone().startOf('jMonth').hour(12);
   const lastOfMonth = momentJalaali(month).clone().endOf('jMonth').hour(12);
 
-  console.log("#$%^@#$%^&*()*&^%$#W@SDFGHJK");
 
 
   // calculate the exact first and last days to fill the entire matrix
