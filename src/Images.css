@@ -1749,18 +1749,7 @@ color: #42b0c6;
   margin-bottom: 30px;
   background-color: #d2d2d2;
 }
-.reserve-number-box{
-  text-align:center;
-  margin: auto;
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 20px;
-  width:180px;
-}
+
 /* .add-circle{
 border-style: solid;
 border-radius: 20px;
@@ -1788,83 +1777,8 @@ justify-content: center;
 }
 
 
-.number-inputer{
-  /* text-align: center; */
-  font-size: 35px;
-  font-weight: 500;
-  margin-top:100px;
-  color: white;
-}
-
-.btn-plus{
-  background-color:#83daeb;
-  -moz-border-radius:5px;
-  -webkit-border-radius:5px;
-  display:inline-block;
-  cursor:pointer;
-  color:#83daeb;
-  border:none;
-  font-size:16px;
-  font-weight:bold;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  text-decoration:none;
 
 
-}
-.btn-plus:hover{
-  background-color:#00accb;
-  -moz-border-radius:5px;
-  -webkit-border-radius:5px;
-  display:inline-block;
-  cursor:pointer;
-  color:#00accb;
-  border:none;
-  font-size:16px;
-  font-weight:bold;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  text-decoration:none;
-
-}
-.btn-sub{
-  background-color:#83daeb;
-  -moz-border-radius:5px;
-  -webkit-border-radius:5px;
-  display:inline-block;
-  cursor:pointer;
-  color:#83daeb;
-  border:none;
-  font-size:16px;
-  font-weight:bold;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  text-decoration:none;
-  margin-right: 20px;
-}
-.btn-sub:hover{
-  background-color:#00accb;
-  -moz-border-radius:5px;
-  -webkit-border-radius:5px;
-  display:inline-block;
-  cursor:pointer;
-  color:#00accb;
-  border:none;
-  font-size:16px;
-  font-weight:bold;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  text-decoration:none;
-}
-.imput-number{
-  font-size: 20px;
-  font-weight: 600;
-  font-family: IRANSans;
-}
 .full-width{
   width: 100%;
 }

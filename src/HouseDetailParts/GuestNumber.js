@@ -29,22 +29,18 @@ renderSub(){
 render(){
   return(
     <div className="number-zone">
-      <div className="reserve-number-box" >
-        <p className="clickable-p" onClick={()=>{this.props.closeNumberOfGuestsDropdown()}}> بستن </p>
+      <p className="clickable-p guest-number-close-button" onClick={()=>{this.props.closeNumberOfGuestsDropdown()}}> بستن </p>
+      <div className="guest-number-reserve-number-box1" >
         <button className="btn-plus" onClick={this.renderSub.bind(this)}>
-            <p className="number-inputer" >
-            -
-            </p>
+            <img src={require('../Images/guest-number-sub.svg')} className='guest-number-sub' alt=""></img>
         </button>
-        <div className='guest-number'>
-          <p className="imput-number row-reverse">
-          <span>{englishToPersianDigits(this.state.number)} </span><span style={{marginLeft:'10px'}}>{'نفر'}</span>
-          </p>
+          <div>
+            <p className="guest-number-input-number row-reverse">
+            <span>{englishToPersianDigits(this.state.number)} </span> <span style={{marginRight:'6px'}}>{'نفر'}</span>
+            </p>
           </div>
-          <button className="btn-sub" onClick={this.renderAdd.bind(this)}>
-              <p className="number-inputer">
-              +
-              </p>
+          <button className="btn-plus" onClick={this.renderAdd.bind(this)}>
+            <img src={require('../Images/guest-number-plus.svg')} className='guest-number-plus' alt=""></img>
           </button>
       </div>
 
