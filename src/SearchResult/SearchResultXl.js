@@ -127,7 +127,6 @@ class SearchResultXl extends React.Component{
     return localStorage['token'];
   }
 
-
   renderGuest(){
     return(
       <div   >
