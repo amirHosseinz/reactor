@@ -2584,6 +2584,7 @@ text-align:center;
 
 .header-drop-down-texts{
   /* margin-right: 0.1em; */
+  font-size: 14px;
 }
 .header-drop-down-texts:hover{
   /* margin-right: 5px; */
