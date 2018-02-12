@@ -89,7 +89,7 @@ class MainPage extends React.Component{
      });
     }
     else{
-      if(localStorage['user-username']===null){
+      if(localStorage['user-username']===undefined){
         var request = new Request('https://www.trypinn.com/api/validate/user/',{
           method: 'POST',
           body: JSON.stringify({
@@ -104,6 +104,7 @@ class MainPage extends React.Component{
          return response.json();
        })
        .then((response) => {
+         console.log(response)
        });
       }
       var request = new Request('https://www.trypinn.com/api/validate/user/',{
