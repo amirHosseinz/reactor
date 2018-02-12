@@ -224,7 +224,9 @@ transform: rotate(-5deg);
   margin: auto;
 }
 .login-signup-button-header{
-  margin-right:20px;
+  margin-right:16px;
+  margin-top: -2px !important;
+  font-size: 14px;
 }
 .pre-bill-margin-content{
   margin:auto;

@@ -394,7 +394,7 @@ class LoginXl extends React.Component{
     if(event.key === 'Enter'){
       this.handleVerificationClick();
     }
-    if (event.keyCode<48 ||event.keyCode>57){
+    if (['0','1','2','3','4','5','6','7','8','9'].indexOf(event.key)===-1){
       if(event.key!=="Backspace"){
         event.preventDefault();
       }

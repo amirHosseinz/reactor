@@ -118,23 +118,15 @@ class HeaderXl extends React.Component{
     this.setState({loginPanelVisible:true});
   }
   getUserHasPasswordByEnter(event){
+    // console.log(event.key);
     if(event.key === 'Enter'){
       this.getUserHasPassword();
     }
-    if(this.state.cellPhone.length===11){
-      if(event.key!=="Backspace"){
-        event.preventDefault()
-      }
-    }
-    if (event.keyCode<48 || event.keyCode>57){
+    if (['0','1','2','3','4','5','6','7','8','9'].indexOf(event.key)===-1){
       if(event.key!=="Backspace"){
         event.preventDefault();
       }
     }
- }
-
- closeLoginPanel(){
-   this.setState({loginPanelVisible2:false});
  }
 
  handleClick(){
@@ -218,7 +210,7 @@ class HeaderXl extends React.Component{
       <div className="login-modal-main">
         <Modal isOpen={this.state.loginPanelVisible}
           style={loginPhoneNumberStyle}
-          onRequestClose={()=>{this.setState({loginPanelVisible:false})}}>
+          onRequestClose={()=>{this.setState({loginPanelVisible:false,cellPhone:''})}}>
           <div className="login1-modal">
             <p className="login-title-in-modal"> ورود/ عضویت </p>
             <Divider/>
@@ -255,7 +247,7 @@ class HeaderXl extends React.Component{
       return(
         <Modal isOpen={this.state.loginPanelVisible2}
           style={loginPasswordStyle}
-          onRequestClose={()=>{this.setState({loginPanelVisible2:false})}}>
+          onRequestClose={()=>{this.setState({loginPanelVisible2:false,cellPhone:''})}}>
           <Login closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
         </Modal>
       );
@@ -320,7 +312,7 @@ class HeaderXl extends React.Component{
      });
   }
   closeLoginPanel(){
-    this.setState({loginPanelVisible2:false});
+    this.setState({loginPanelVisible2:false,cellPhone:''});
   }
   renderLoginButton(){
     if (this.state.isLoggedIn !== 'true'){
