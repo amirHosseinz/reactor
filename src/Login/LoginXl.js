@@ -196,6 +196,7 @@ class LoginXl extends React.Component{
    .then((data) => {
      localStorage['user-first-name']=data.user.first_name;
      localStorage['user-last-name']=data.user.last_name;
+     localStorage['user-username']=data.user.username;
      localStorage['user-profile-picture']=data.user.profile_picture;
      window.location.reload();
      // localStorage['default-panel']='userprofile';

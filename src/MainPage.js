@@ -88,6 +88,40 @@ class MainPage extends React.Component{
        localStorage['token']= response.token;
      });
     }
+    else{
+      if(localStorage['user-username']===null){
+        var request = new Request('https://www.trypinn.com/api/validate/user/',{
+          method: 'POST',
+          body: JSON.stringify({
+            username : null,
+          }),
+          headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json','Authorization': 'Token '+ localStorage['token'],
+          })
+        });
+       fetch(request)
+       .then((response) => {
+         console.log(response);
+         return response.json();
+       })
+       .then((response) => {
+       });
+      }
+      var request = new Request('https://www.trypinn.com/api/validate/user/',{
+        method: 'POST',
+        body: JSON.stringify({
+          username : localStorage['user-username'],
+        }),
+        headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json','Authorization': 'Token '+ localStorage['token'],
+        })
+      });
+     fetch(request)
+     .then((response) => {
+       console.log(response);
+       return response.json();
+     })
+     .then((response) => {
+     });
+    }
   }
   renderUserProfile(){
     return(
