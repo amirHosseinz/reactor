@@ -100,9 +100,27 @@ class MainPage extends React.Component{
         });
        fetch(request)
        .then((response) => {
-         return response.json();
+         if(response.status===401 ||response.status===400){
+           localStorage['user-first-name']='';
+           localStorage['user-last-name']='';
+           localStorage['user-username']='';
+           localStorage['isLoggedIn']='false';
+           localStorage['token']='';
+           this.getGuestTokenFromServer();
+         }
+         if(response.status===200){
+           return response.json();
+         }
        })
        .then((response) => {
+         if(response.validated===false){
+           localStorage['user-first-name']='';
+           localStorage['user-last-name']='';
+           localStorage['user-username']='';
+           localStorage['isLoggedIn']='false';
+           localStorage['token']='';
+           this.getGuestTokenFromServer();
+         }
        });
       }
       else{
