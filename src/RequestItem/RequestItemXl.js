@@ -357,7 +357,7 @@ renderDeleteButton(){
     if (this.state.request!==null){
       if(this.state.requestStatus!=='no-house'){
         return (
-          <div className="request-header">
+          <div className="request-header profile_dynamic_edit">
           <div className='request-status'>
             <p className="reserve-status-h1"> :وضعیت درخواست رزرو </p>
             <p className="reserve-status-h2"> {this.getRequestStatus()} </p>
@@ -392,7 +392,7 @@ renderDeleteButton(){
       }
       else{
         return(
-        <div className='no-request-container'>
+        <div className='no-request-container profile_dynamic_edit'>
           <p className="no-request-header">شما درخواست رزروی ندارید</p>
           <p className="no-request-main-paragraph">شما تاکنون درخواست رزروی نداشته اید. میتوانید با جستجو میان شهرها و اقامتگاه های موجود، درخواست رزرو خود را ثبت نمایید. کافی است مراحل زیر را دنبال نمایید</p>
           <div className='no-request-stage1-container'>

@@ -2339,11 +2339,15 @@ margin-top: 20px;
 .requests-list-title{
   padding-top: 14px;
 }
+.request-trip-message-container-margined{
+  margin-top: 30px;
+}
 .profile_dynamic_edit{
   border-radius: 6px 6px 6px 6px;
   border: solid;
   border-width: 2px;
-  width : 1rem;
+  width : 1000px;
+  margin : auto;
   border-color: #ececec;
   background-color: white;
   /* height: 1170px; */
@@ -3255,6 +3259,7 @@ padding-top: 80px;
 }
 
 .no-request-container{
+  margin:auto !important;
   font-family: IRANSans;
   font-size: 16px;
   text-align: center;

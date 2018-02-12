@@ -101,19 +101,11 @@ renderDashbordTitle(){
   render(){
     return(
       <div className="requests-list-title">
-          <div className="profile-container-margined">
-              <div className="profile_dynamic_edit col-md-9  padding-top">
+          <div className="request-trip-message-container-margined">
+              <div>
                 {this.showContent()}
               </div>
-              <div className="profile_static_bar col-md-3">
-                {this.renderSelectedPanel()}
-              </div>
-          </div>
-          <div className="request-list-xs hidden-xl visible-xs">
-              <div className="request-xs-header-title-div">
-                {this.renderDashbordTitle()}
-              </div>
-              <div className="request-list-xs-list">
+              <div className="profile_static_bar">
                 {this.renderSelectedPanel()}
               </div>
           </div>
