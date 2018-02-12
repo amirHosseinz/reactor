@@ -138,7 +138,6 @@ class HeaderXl extends React.Component{
  }
 
  handleClick(){
-   console.log(this.state.city);
    if(this.state.city===''){
      this.props.history.push("/search/هر جا");
    }

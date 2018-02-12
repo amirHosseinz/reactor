@@ -102,7 +102,7 @@ class LoginXl extends React.Component{
     var spar = {phoneNumber:localStorage['phone-number'],
                 password:this.state.inputForSignUp.password,
                 confirmPassword:this.state.inputForSignUp.confirmPassword,
-                verificationCode:this.state.inputForVerification.verificationCode,
+                verificationCode:persianArabicToEnglishDigits(this.state.inputForVerification.verificationCode),
                 firstName : this.state.inputForSignUp.firstName,
                 lastName : this.state.inputForSignUp.lastName};
     this.setState({reqParamsForSignup:spar},()=>{this.getResponseForSignUp()});
@@ -111,7 +111,7 @@ class LoginXl extends React.Component{
     var spar = {phoneNumber:localStorage['phone-number'],
                 password:this.state.inputForSetPassword.password,
                 confirmPassword:this.state.inputForSetPassword.confirmPassword,
-                verificationCode:this.state.inputForVerification.verificationCode,};
+                verificationCode:persianArabicToEnglishDigits(this.state.inputForVerification.verificationCode)};
     this.setState({reqParamsForSetPassword:spar},()=>{this.getResponseForSetPassword()});
   }
   getResponseForSetPassword(){
@@ -163,6 +163,7 @@ class LoginXl extends React.Component{
     if(loginResponse.is_successful){
       localStorage['isLoggedIn']= 'true';
       localStorage['token'] = loginResponse.token;
+      // localStorage['token']='efjaglk;asdjf;lkdasjfsjdflk';
       this.setUserNameInHeader();
     }
     else{
@@ -199,8 +200,6 @@ class LoginXl extends React.Component{
      localStorage['user-username']=data.user.username;
      localStorage['user-profile-picture']=data.user.profile_picture;
      window.location.reload();
-     // localStorage['default-panel']='userprofile';
-     // window.location.href = '/';
    });
   }
   getResponseForSignUp(){
@@ -224,7 +223,7 @@ class LoginXl extends React.Component{
    .then((signUpresponse) => {
      this.handleSignUpResponse(signUpresponse);
    });
-  }
+ }
   handleSignUpResponse(signUpresponse){
     if(signUpresponse.successful===true){
       localStorage['isLoggedIn']= 'true';
@@ -490,7 +489,6 @@ class LoginXl extends React.Component{
                  lastName : event.target.value,
                }
     this.setState({inputForSignUp : inputSignUp});
-
   }
   changeVerificationCode(event){
     var inputVerification={verificationCode : englishToPersianDigits(event.target.value)};
