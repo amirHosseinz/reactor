@@ -47,7 +47,7 @@ class UserPanelXl extends React.Component{
       );
       case 'message':
       return(
-        <div> </div>
+        <div></div>
       );
       case 'trip':
       return(

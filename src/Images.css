@@ -2302,7 +2302,8 @@ margin-top: 20px;
   border-color: #ececec;
   margin: 0px !important;
   padding: 0px !important;
-  height: 100%;
+  /* height: 100%; */
+  min-height: 570px;
   max-height: 570px;
 }
 
@@ -2340,13 +2341,27 @@ margin-top: 20px;
   padding-top: 14px;
 }
 .request-trip-message-container-margined{
-  margin-top: 30px;
+  margin-top: 30px !important;
 }
 .profile_dynamic_edit{
   border-radius: 6px 6px 6px 6px;
   border: solid;
   border-width: 2px;
   width : 1000px;
+  margin : auto;
+  border-color: #ececec;
+  background-color: white;
+  /* height: 1170px; */
+  height:100%;
+  margin-bottom:100px;
+  padding-bottom: 50px;
+}
+
+.profile_dynamic_edit2{
+  border-radius: 6px 6px 6px 6px;
+  border: solid;
+  border-width: 2px;
+  width : 800px;
   margin : auto;
   border-color: #ececec;
   background-color: white;
@@ -3284,7 +3299,7 @@ padding-top: 80px;
  font-weight:500;
  font-family: IRANSans;
  color: #d6d6d6;
- margin-right: -60px;
+ margin-right: -50px;
  margin-top: -35px;
  margin-left: 80px;
 }
@@ -3292,6 +3307,7 @@ padding-top: 80px;
 .no-request-stage1-description-image{
   text-align: center;
   margin-top: -80px;
+
 }
 
 .no-request-stage1-description-text{
@@ -3304,8 +3320,8 @@ padding-top: 80px;
 .no-request-stage1-image{
   text-align: right;
   margin-top: -120px;
-  margin-left: -30px;
-  margin-right: -70px;
+  margin-left: -45px;
+  margin-right: -60px;
 }
 
 .no-request-stage2-description-image{
@@ -3341,7 +3357,7 @@ padding-top: 80px;
   color: #d6d6d6;
   margin-right: 0px;
   margin-top: -8px;
-  margin-left: 30px;
+  margin-left: 60px;
 
 }
 
@@ -3359,7 +3375,6 @@ padding-top: 80px;
 
 .no-request-stage3-image{
   margin-top: -108px;
-
 }
 
 .no-request-stage3-text{
@@ -3381,7 +3396,7 @@ padding-top: 80px;
   color: #d6d6d6;
   margin-right: 5px;
   margin-top: -22.5px;
-  margin-left:-20px;
+  margin-left:20px;
 }
 
 .no-request-stage4-container{
@@ -3397,7 +3412,7 @@ padding-top: 80px;
 }
 
 .no-request-stage4-text{
-  text-align: right;
+  text-align: justify;
   font-size: 14px;
   margin-top: -50px;
   margin-right:30px;
@@ -3408,13 +3423,13 @@ padding-top: 80px;
 
 .no-request-stage4-image{
     margin-top: -108px;
-    margin-left: -45px;
+    margin-left: 430px;
 }
 
 
 .no-request-stage4-number{
   padding-bottom: 50px;
-  text-align: right;
+  /* text-align: right; */
   font-size:80px;
   font-weight:500;
   font-family: IRANSans;
@@ -3757,6 +3772,7 @@ text-align: center;
 
 .no-trip-stage1-img{
   margin-top: -100px;
+  margin-left : 500px;
 }
 
 .no-trip-stage2-img{

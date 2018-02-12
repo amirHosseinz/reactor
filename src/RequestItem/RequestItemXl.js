@@ -357,7 +357,7 @@ renderDeleteButton(){
     if (this.state.request!==null){
       if(this.state.requestStatus!=='no-house'){
         return (
-          <div className="request-header profile_dynamic_edit">
+          <div className="request-header profile_dynamic_edit2">
           <div className='request-status'>
             <p className="reserve-status-h1"> :وضعیت درخواست رزرو </p>
             <p className="reserve-status-h2"> {this.getRequestStatus()} </p>

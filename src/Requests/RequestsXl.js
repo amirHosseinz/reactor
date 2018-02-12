@@ -118,7 +118,7 @@ class RequestsXl extends React.Component{
           }
       );
         return(
-          <div className="col-md-3">
+          <div>
             <ListGroup>{this.list}</ListGroup>
           </div>
            );
