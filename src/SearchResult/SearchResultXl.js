@@ -117,6 +117,7 @@ class SearchResultXl extends React.Component{
      return response.json();
    })
    .then((homeData) => {
+     console.log(homeData);
      this.renderData(homeData);
    });
   }
