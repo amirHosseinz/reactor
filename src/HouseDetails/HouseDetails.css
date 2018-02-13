@@ -254,6 +254,7 @@ border-width: 2px;
   font-size: 14px;
   font-weight: 300;
 }
+
 .house-details-reserve-panel-not-sticky{
   width: 385px;
   height : 400px;
@@ -264,6 +265,7 @@ border-width: 2px;
   border-width: 2px;
   background-color: #fcfcfc;
 }
+
 .house-details-reserve-panel-sticky{
   width: 385px;
   height : 400px;
