@@ -6,22 +6,22 @@ class GuestNumberSearchBar extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      number:1,
+      number:this.props.guestNumber,
     };
 }
 renderAdd(){
 const Guest=this.state.number;
 const NewGuest= Guest + 1;
-this.setState({number:NewGuest});
+this.setState({number:NewGuest},()=>{this.props.changeNumberOfGuests(this.state.number)});
 }
 renderSub(){
   if(this.state.number > 1){
 const Guest=this.state.number;
 const NewGuest= Guest - 1;
-this.setState({number:NewGuest});
+this.setState({number:NewGuest},()=>{this.props.changeNumberOfGuests(this.state.number)});
 }
 else{
-this.setState({number:1});
+this.setState({number:1},()=>{this.props.changeNumberOfGuests(this.state.number)});
 }
 }
 render(){

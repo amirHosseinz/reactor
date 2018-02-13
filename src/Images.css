@@ -800,7 +800,7 @@ margin-left: 14px;
   display: flex;
   margin: auto;
   flex-direction: row-reverse;
-  height:80px;
+  /* height:80px; */
   width:94%;
   vertical-align:middle;
   }

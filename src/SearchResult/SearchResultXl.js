@@ -58,6 +58,7 @@ class SearchResultXl extends React.Component{
       city: null,
       houseList:[],
       token: null,
+      showGuestNumberPicker:false,
       numberOfGuests: 1,
       OpenDropDown:false,
       Counter:false,
@@ -129,11 +130,13 @@ class SearchResultXl extends React.Component{
   }
 
   renderGuest(){
-    return(
-      <div   >
-        <GuestNumberSearchBar changeNumberOfGuests={this.changeNumberOfGuests.bind(this)} />
-      </div>
-    );
+    if(this.state.showGuestNumberPicker===true){
+      return(
+        <div ref={node=>{this.node=node}}>
+          <GuestNumberSearchBar guestNumber={this.state.numberOfGuests} changeNumberOfGuests={this.changeNumberOfGuests.bind(this)} />
+        </div>
+      );
+    }
   }
 
 
@@ -159,6 +162,22 @@ class SearchResultXl extends React.Component{
        this.props.history.replace("/search/" + this.state.city);
     }
   }
+  handleOutsideClick = (e)=>{
+    if (this.node.contains(e.target)) {
+      return;
+    }
+    this.openGuestNumberDropdown();
+  }
+
+  openGuestNumberDropdown(){
+    if (!this.state.showGuestNumberPicker) {
+      document.addEventListener('click', this.handleOutsideClick, false);
+    }
+    else {
+      document.removeEventListener('click', this.handleOutsideClick, false);
+    }
+    this.setState(prevState => ({showGuestNumberPicker: !prevState.showGuestNumberPicker}));
+  }
   renderSearchBarInDetails(){
     return(
       <div className="render-results row">
@@ -168,7 +187,7 @@ class SearchResultXl extends React.Component{
                 <div className="search-results-filters-container">
                   <p className="search-result-filter-label"> :فیلترها </p>
                   <div>
-                    <button className="search-result-filter-button"  style={{direction:'rtl',textAlign:'center'}}>
+                    <button onClick={()=>{this.openGuestNumberDropdown()}}className="search-result-filter-button"  style={{direction:'rtl',textAlign:'center'}}>
                       <span>
                         <img src={require('../Images/guest-number-icon.png')} className='guest-number-icon' alt=""></img>
                       </span>

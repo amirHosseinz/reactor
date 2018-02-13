@@ -475,15 +475,14 @@ class HeaderXl extends React.Component{
       </div>
     );
   }
-  // <div className="header-searchbar">
-  //   {this.renderSearchBarXL()}
-  // </div>
+
 
   renderRelevantHeaderBasedOnURL(){
     if(window.location.pathname.indexOf('rooms') === -1){
       return(
         <Sticky>
-          {({style,isSticky})=>{return(
+          {({style,isSticky})=>{
+            return(
             <div className={isSticky?"header-sticky":"header-not-sticky"} style={style}>
               {this.renderHeaderXl()}
               {this.renderDownloadAppModal()}
