@@ -1,0 +1,16 @@
+my-app@0.1.0 c:\react\reactor
++-- UNMET PEER DEPENDENCY @types/googlemaps@^3.0.0
++-- UNMET PEER DEPENDENCY @types/markerclustererplus@^2.1.29
++-- UNMET PEER DEPENDENCY @types/react@^15.0.0 || ^16.0.0
++-- moment@2.20.1 
++-- UNMET PEER DEPENDENCY react@16.2.0
++-- react-addons-shallow-compare@15.6.2 
++-- react-dates@16.2.1 
+| +-- consolidated-events@1.1.1 
+| +-- is-touch-device@1.0.1 
+| +-- react-moment-proptypes@1.5.0 
+| +-- react-portal@4.1.2 
+| `-- react-with-styles@2.2.0 
++-- UNMET PEER DEPENDENCY react-dom@16.2.0
+`-- UNMET PEER DEPENDENCY react-transition-group@^1.1.2
+
