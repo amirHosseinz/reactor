@@ -800,7 +800,7 @@ margin-left: 14px;
   display: flex;
   margin: auto;
   flex-direction: row-reverse;
-  height:80px;
+  height:60px;
   width:94%;
   vertical-align:middle;
   }
@@ -1705,11 +1705,11 @@ color: #42b0c6;
 }
 
 .results-search{
-  height: 50px;
+  height: 60px;
   border-bottom: solid;
   border-color: #ececec;
   border-width: 2px;
-
+  padding-top: 10px;
 }
 .typehead-results{
   font-family:IRANSans;
