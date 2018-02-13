@@ -10,6 +10,7 @@ import '../tools/DatePicker/bootstrap-datepicker.css';
 import GuestNumberSearchBar from '../GuestNumberSearchBar.js'
 import {Dropdown} from 'semantic-ui-react';
 import "./SearchResult.css";
+import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
 
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
@@ -164,16 +165,24 @@ class SearchResultXl extends React.Component{
             <div className="results-search">
               <div className="results-serach-child">
 
-                <div className="search-inputs">
-                  <div className="multi-input-1">
-                    <input className="form-control1" placeholder={this.state.numberOfGuests + " نفر "} style={{direction:'rtl',textAlign:'center'}}/>
-                    <div className="serach-result-number-of-guests-input"  >
+                <div className="search-results-filters-container">
+                  <p className="search-result-filter-label"> :فیلترها </p>
+                  <div>
+                    <button className="search-result-filter-button"  style={{direction:'rtl',textAlign:'center'}}>
+                      <span>
+                        <img src={require('../Images/guest-number-icon.png')} className='guest-number-icon' alt=""></img>
+                      </span>
+                       {englishToPersianDigits(this.state.numberOfGuests)}   نفر
+                    </button>
+                    <div className="serach-result-number-of-guests-input">
                       {this.renderGuest()}
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
+
           <div className="render-houses-row">
             <div className="padding-search-results-top">
             </div>
