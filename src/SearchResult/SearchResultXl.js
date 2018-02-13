@@ -129,7 +129,7 @@ class SearchResultXl extends React.Component{
 
   renderGuest(){
     return(
-      <div   >
+      <div>
         <GuestNumberSearchBar changeNumberOfGuests={this.changeNumberOfGuests.bind(this)} />
       </div>
     );

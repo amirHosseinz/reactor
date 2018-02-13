@@ -33,11 +33,19 @@
   text-align: justify;
   direction : rtl;
 }
-.house-details-menu-link-scrolls{
+.house-details-menu-link-scrolls-not-sticky{
   padding-top: 0px !important;
   padding-right: 0px !important;
   direction : ltr !important;
   height: 48px;
+}
+.house-details-menu-link-scrolls-sticky{
+  margin-top:60px;
+  width: 100%;
+  border : solid 1px #fff;
+  z-index: 1000;
+  background-color: #fff;
+  height: 50px;
 }
 .house-details-amenities-description{
   margin-top: 5px !important;
@@ -267,7 +275,7 @@ border-width: 2px;
 .house-details-reserve-panel-sticky{
   width: 385px;
   height : 400px;
-  margin-top:65px;
+  margin-top:110px;
   border: solid;
   border-color: #c7c7c7;
   border-width: 2px;

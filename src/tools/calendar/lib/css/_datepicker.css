@@ -158,14 +158,15 @@
   vertical-align: middle
 }
 .DateRangePicker {
-  position: relative;
+  position:relative;
+  z-index: 1000;
   display: inline-block
 }
 .DateRangePicker__block {
-  display: block
+  display: block;
 }
 .DateRangePicker_picker {
-  z-index: 1;
+  z-index: 1000;
   background-color: #fff;
   position: absolute
 }
@@ -215,6 +216,7 @@
 }
 .DayPicker {
   background: #fff;
+  z-index: 10000;
   position: relative;
   text-align: left
 }
@@ -585,7 +587,7 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   text-align: center
 }
 .CalendarDay:active {
@@ -685,11 +687,11 @@
 .DateRangePickerInput {
   width : 340px;
   height : 50px;
-  border : 2px solid #A5A5A5 !important;
+  border : 2px solid #D9D9D9 !important;
   border-radius: 8px;
-  background-color: #fff;
+  background-color: transparent;
   display: inline-block;
-  margin-bottom : 10px;
+  /* padding-top : -10px !important; */
 }
 .DateRangePickerInput__disabled {
   background: #f2f2f2;
@@ -757,66 +759,6 @@
 .DateRangePickerInput_clearDates_svg__small {
   height: 9px
 }
-@font-face {
-	font-family: IRANSans;
-	font-style: normal;
-	font-weight: 900;
-	src: url('./fonts/eot/IRANSansWeb_Black.eot');
-	src: url('./fonts/eot/IRANSansWeb_Black.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
-		 url('./fonts/woff2/IRANSansWeb_Black.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
-		 url('./fonts/woff/IRANSansWeb_Black.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-		 url('./fonts/ttf/IRANSansWeb_Black.ttf') format('truetype');
-}
-@font-face {
-	font-family: IRANSans;
-	font-style: normal;
-	font-weight: bold;
-	src: url('./fonts/eot/IRANSansWeb_Bold.eot');
-	src: url('./fonts/eot/IRANSansWeb_Bold.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
-		 url('./fonts/woff2/IRANSansWeb_Bold.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
-		 url('./fonts/woff/IRANSansWeb_Bold.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-		 url('./fonts/ttf/IRANSansWeb_Bold.ttf') format('truetype');
-}
-@font-face {
-	font-family: IRANSans;
-	font-style: normal;
-	font-weight: 500;
-	src: url('./fonts/eot/IRANSansWeb_Medium.eot');
-	src: url('./fonts/eot/IRANSansWeb_Medium.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
-		 url('./fonts/woff2/IRANSansWeb_Medium.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
-		 url('./fonts/woff/IRANSansWeb_Medium.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-		 url('./fonts/ttf/IRANSansWeb_Medium.ttf') format('truetype');
-}
-@font-face {
-	font-family: IRANSans;
-	font-style: normal;
-	font-weight: 300;
-	src: url('./fonts/eot/IRANSansWeb_Light.eot');
-	src: url('./fonts/eot/IRANSansWeb_Light.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
-		 url('./fonts/woff2/IRANSansWeb_Light.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
-		 url('./fonts/woff/IRANSansWeb_Light.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-		 url('./fonts/ttf/IRANSansWeb_Light.ttf') format('truetype');
-}
-@font-face {
-	font-family: IRANSans;
-	font-style: normal;
-	font-weight: 200;
-	src: url('./fonts/eot/IRANSansWeb_UltraLight.eot');
-	src: url('./fonts/eot/IRANSansWeb_UltraLight.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
-		 url('./fonts/woff2/IRANSansWeb_UltraLight.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
-		 url('./fonts/woff/IRANSansWeb_UltraLight.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-		 url('./fonts/ttf/IRANSansWeb_UltraLight.ttf') format('truetype');
-}
-@font-face {
-	font-family: IRANSans;
-	font-style: normal;
-	font-weight: normal;
-	src: url('./fonts/eot/IRANSansWeb.eot');
-	src: url('./fonts/eot/IRANSansWeb.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
-		 url('./fonts/woff2/IRANSansWeb.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
-		 url('./fonts/woff/IRANSansWeb.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-		 url('./fonts/ttf/IRANSansWeb.ttf') format('truetype');
-}
 
 .DateRangePickerInput_calendarIcon {
   background: 0 0;
@@ -839,17 +781,16 @@
 }
 .DateInput {
   margin: 0;
-  padding: 0;
-  background: #fff;
+  margin-top : -2px;
+  height: 18px;
+  background: transparent;
   position: relative;
   display: inline-block;
-  /* width: 130px; */
-
-  /* width: 100%; */
+  width: 130px;
   vertical-align: middle;
 }
 .DateInput__small {
-  width: 90px
+  width: 40px
 }
 .DateInput__disabled {
   background: #f2f2f2;
@@ -858,27 +799,29 @@
 .DateInput_input {
   font-weight: 500;
   font-family: IRANSans;
-  font-size: 12px;
-  line-height: 20px;
+  font-color : #A5A5A5;
+  font-size: 18px;
+  /* line-height: 20px; */
   color: #A5A5A5;
   background-color: transparent!important;
-  width: 100%;
-  height:40px;
-  /* padding: 13px 12px 11px; */
+  width: 160;
+  height:44px;
   border: 0;
   border-top: 0;
   border-right: 0;
   border-bottom: 2px solid transparent;
   border-left: 0;
+  /* padding-right:10px; */
+  margin-right : -54px;
   text-align: center;
 }
 .DateInput_input__small {
   font-size: 14px;
   line-height: 18px;
-  padding: 8px 8px 6px
+  /* padding: 8px 8px 6px */
 }
 .DateInput_input__regular {
-  font-weight: auto
+  font-weight: auto;
 }
 .DateInput_input__readOnly {
   -webkit-user-select: none;
