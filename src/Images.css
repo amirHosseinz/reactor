@@ -1705,11 +1705,11 @@ color: #42b0c6;
 }
 
 .results-search{
-  height: 50px;
+  height: 60px;
   border-bottom: solid;
   border-color: #ececec;
   border-width: 2px;
-
+  padding-top: 10px;
 }
 .typehead-results{
   font-family:IRANSans;
