@@ -132,7 +132,7 @@ class SearchResultXl extends React.Component{
   renderGuest(){
     if(this.state.showGuestNumberPicker===true){
       return(
-        <div ref={node=>{this.node=node}}>
+        <div className="searcu-result-guest-number-dropdown"ref={node=>{this.node=node}}>
           <GuestNumberSearchBar guestNumber={this.state.numberOfGuests} changeNumberOfGuests={this.changeNumberOfGuests.bind(this)} />
         </div>
       );

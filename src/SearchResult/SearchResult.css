@@ -1,6 +1,10 @@
 .serach-result-number-of-guests-input{
   direction: rtl;
- font-family: IRANSans !important;
+  margin-left : 0px;
+  font-family: IRANSans !important;
+}
+.searcu-result-guest-number-dropdown{
+  margin-left : 10px!important;
 }
 .search-reulsts-guest-number-zone{
   justify-content: space-between;
@@ -24,7 +28,7 @@
   flex-direction: row-reverse;
   align-items: center;
   justify-content: space-between;
-  margin: auto;
+  /* margin: auto; */
   margin: 10px 16px 10px 16px;
   color: #454545;
 }
