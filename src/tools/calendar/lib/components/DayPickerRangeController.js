@@ -1068,7 +1068,7 @@ var DayPickerRangeController = function (_React$Component) {
           //console.log(nextMonthIso);
           //var month = (updatedDays[monthIso] || visibleDays[monthIso] || updatedDays[nextMonthIso] || visibleDays[nextMonthIso]);
           var month = (updatedDays[monthIso] || visibleDays[monthIso] );
-          console.log(month);
+          // console.log(month);
           var modifiers = new Set(month[iso]);
           modifiers.add(modifier);
           updatedDaysAfterAddition = (0, _object2['default'])({}, updatedDaysAfterAddition, _defineProperty({}, monthIso, (0, _object2['default'])({}, month, _defineProperty({}, iso, modifiers))));

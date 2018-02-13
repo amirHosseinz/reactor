@@ -258,7 +258,7 @@ border-width: 2px;
 .house-details-reserve-panel-not-sticky{
   width: 385px;
   height : 400px;
-  margin-top :-150px;
+  margin-top :-85px;
   padding-top: 25px !important;
   border: solid;
   border-color: #c7c7c7;
@@ -297,6 +297,8 @@ border-width: 2px;
   font-weight: 400;
 }
 
-.house-details-top-division{
-  height : 750px;
+.house-details-preview{
+   height: 480px;
+   position:relative;
+   object-fit: cover;
 }

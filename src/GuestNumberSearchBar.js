@@ -26,24 +26,19 @@ this.setState({number:1});
 }
 render(){
   return(
-    <div className="geust-number-searchbar-container">
-
-      <div className="reserve-number-box-searchbar" >
-        <button className="btn-plus-searchbar" onClick={this.renderAdd.bind(this)}>
-            <p className="number-inputer-searchbar" >
-            +
-            </p>
+    <div className="search-reulsts-guest-number-zone">
+      <div className="search-result-guest-number-reserve-number-box" >
+        <button className="btn-plus" onClick={this.renderSub.bind(this)}>
+            <img src={require('./Images/guest-number-sub.svg')} className='guest-number-sub' alt=""></img>
         </button>
-        <div className='guest-number-searchbar'>
-        <p className="input-number-searchbar row-reverse">
-        <span>نفر </span><span>{englishToPersianDigits(this.state.number)}</span>
-        </p>
-        </div>
-        <button className="btn-sub-searchbar" onClick={this.renderSub.bind(this)}>
-            <p className="number-inputer-searchbar" >
-            -
+          <div>
+            <p className="guest-number-input-number row-reverse">
+            <span>{englishToPersianDigits(this.state.number)} </span> <span style={{marginRight:'6px'}}>{'نفر'}</span>
             </p>
-        </button>
+          </div>
+          <button className="btn-plus" onClick={this.renderAdd.bind(this)}>
+            <img src={require('./Images/guest-number-plus.svg')} className='guest-number-plus' alt=""></img>
+          </button>
       </div>
 
     </div>
