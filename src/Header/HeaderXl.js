@@ -7,7 +7,7 @@ import {Button,Divider} from 'semantic-ui-react';
 import {Dropdown} from 'semantic-ui-react';
 
 import '../Styles/Header-SearchBar.css';
-import {downloadAppModalStyle,loginPasswordStyle, loginPhoneNumberStyle, loginPanelmobileStyle} from '../Styles.js';
+import {downloadAppModalStyle,loginPasswordStyle, loginPhoneNumberStyle, loginPanelmobileStyle , loginVerifySmsXl} from '../Styles.js';
 // import {Modal} from 'react-bootstrap';
 import {englishToPersianDigits,persianArabicToEnglishDigits} from '../tools/EnglishToPersianDigits';
 import {Image} from 'react-bootstrap';
@@ -270,29 +270,32 @@ class HeaderXl extends React.Component{
           style={loginPhoneNumberStyle}
           onRequestClose={()=>{this.setState({loginPanelVisible:false})}}>
           <div className="login1-modal">
-            <p className="login-title-in-modal"> ورود/ عضویت </p>
-            <Divider/>
-            <p className="enter-phone-number-inmodal"> :برای ورود یا ثبت‌نام شماره تلفن همراه خود را وارد کنید </p>
-              <div dir="rtl" className="enter-number-main" >
-                <input
-                  maxLength="11"
-                  id="tel-number"
-                  value={this.state.cellPhone}
-                  onAfterOpen={()=>{document.body.style.overflow="hidden"}}
-                  onChange={(event)=>{this.setState({cellPhone:englishToPersianDigits(event.target.value)})}}
-                  autoComplete="off"
-                  autoFocus={true}
-                  className="login-input hidden-xs visible-xl"
-                  placeholder="مثال: ۰۹۱۲۰۰۰۰۰۰۰"
-                  type="text"
-                  onKeyDown ={(event)=> {this.getUserHasPasswordByEnter(event)}}
-                  />
-                  <div className="divider-x"></div>
-                  <br/>
-                  <br/>
-                  <Button color="blue" onClick={this.getUserHasPassword.bind(this)} className="login-modal-button">
-                  ورود / ثبت‌نام
-                  </Button>
+            <p className="login-title-in-modal"> ورود / ثبت‌نام  </p>
+            <div className="header-login-modal-divider">
+            </div>
+              <div className="header-login-modal-content-container">
+                <p className="enter-phone-number-inmodal"> :برای ورود یا ثبت‌نام شماره تلفن همراه خود را وارد کنید </p>
+                <div dir="rtl">
+                  <p className="header-login-modal-input-label"> شماره موبایل: </p>
+                  <input
+                      maxLength="11"
+                      id="tel-number"
+                      value={this.state.cellPhone}
+                      onAfterOpen={()=>{document.body.style.overflow="hidden"}}
+                      onChange={(event)=>{this.setState({cellPhone:englishToPersianDigits(event.target.value)})}}
+                      autoComplete="off"
+                      autoFocus={true}
+                      className="header-login-modal-input"
+                      placeholder="مثال: ۰۹۱۲۰۰۰۰۰۰۰"
+                      type="text"
+                      onKeyDown ={(event)=> {this.getUserHasPasswordByEnter(event)}}
+                      />
+                      <br/>
+                      <br/>
+                      <button className="header-login-modal-button" onClick={this.getUserHasPassword.bind(this)}>
+                        ادامه
+                      </button>
+                </div>
               </div>
             </div>
         </Modal>
@@ -304,7 +307,7 @@ class HeaderXl extends React.Component{
   renderLoginPanelSecondStep(){
       return(
         <Modal isOpen={this.state.loginPanelVisible2}
-          style={loginPasswordStyle}
+          style={loginVerifySmsXl}
           onRequestClose={()=>{this.setState({loginPanelVisible2:false})}}>
           <Login closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
         </Modal>

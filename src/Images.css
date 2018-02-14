@@ -622,13 +622,7 @@ margin-left: 14px;
 .housedetail-img{
   cursor: pointer;
 }
-.login-title-in-modal{
-  font-family: IRANSans;
-  font-size: 20px;
-  font-weight: 500;
-  text-align: center;
-  color:#484848;
-}
+
 .show-gallery-button-house-details{
   position:absolute;
   font-family:IRANSans !important;
@@ -637,33 +631,7 @@ margin-left: 14px;
   background-color:'twitter' !important;
 }
 .login1-modal{
-  padding: 18px;
-  padding-top: 25px !important;
-}
-.enter-phone-number-inmodal{
-  font-family: IRANSans;
-  font-size: 14x;
-  font-weight: 500;
-  text-align: center;
-  padding-top: 10px;
-  padding-bottom: 20px;
-}
-.enter-phone-number-inmodal2{
-  font-family: IRANSans;
-  font-size: 14x;
-  font-weight: 500;
-  text-align: center;
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
-.login-input{
-  text-align: center !important;
-  font-family: IRANSans !important;
-  width: 60%;
-  box-shadow: none;
-  font-size: 18px;
-  height: 48px;
-  border:0px;
+  padding-top: 18px !important;
 }
 .login-input-code{
   text-align: center !important;
@@ -2476,10 +2444,7 @@ margin-top: 20px;
 .burger-item{
   margin-bottom: 10px;
 }
-.login1-modal{
-padding-top: 80px;
 
-}
 .typeahead-indetail-xl{
   text-align: right;
 }
@@ -2545,6 +2510,7 @@ padding-top: 80px;
 .singup-fa-input{
   text-align: right !important;
   font-family: IRANSans !important;
+  width: 310px;
 }
 .kolsoom{
   height: 25% !important;
@@ -3672,6 +3638,37 @@ text-align: center;
   padding: 0px 8px 0px;
 }
 
+.input-tripinn2{
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  float: right;
+  height: 32px;
+  padding: 2px 10px 2px;
+  border: none;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  font-family: IRANSans;
+  font-weight: 400;
+  font-size: 14px;
+  color: #454545;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: #f2f2f2;
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+
+}
+.input-tripinn2:focus{
+  border:solid;
+  border-width: 2px;
+  border-color: #7ad6e8;
+  background-color: #f2f7f9;
+  padding: 0px 8px 0px;
+}
+
 .form-control-tripinn{
   font-family: IRANSans !important;
   font-size: 16px !important;
@@ -3735,4 +3732,131 @@ text-align: center;
   margin-top: -20px;
   margin-right: -90px;
   margin-left: -90px;
+}
+
+.header-login-modal-divider{
+  height: 1.5px;
+  background-color: #d7d7d7;
+}
+
+.header-login-modal-content-container{
+  padding: 15px 25px 25px 25px;
+  font-family: IRANSans;
+}
+
+.header-login-modal-input{
+  height: 48px;
+  width: 100%;
+  border: solid;
+  border-color: #b7b7b7;
+  border-width: 1px;
+  border-radius: 4px;
+  padding-right: 20px;
+  padding-right: 20px;
+  font-size: 18px;
+  font-family: IRANSans;
+  color: #454545 !important;
+}
+.header-login-modal-input-verify{
+  height: 48px;
+  width: 200px;
+  border: solid;
+  border-color: #b7b7b7;
+  border-width: 1px;
+  border-radius: 4px;
+  padding-right: 20px;
+  padding-left: 20px;
+  font-size: 20px;
+  font-family: IRANSans;
+  color: #454545 !important;
+  text-align: center;
+}
+
+.header-login-modal-input-label{
+  font-size: 12px;
+  color: #a1a1a1;
+  font-family: IRANSans;
+  margin-bottom: 8px !important;
+}
+.header-login-modal-button{
+  margin-top: 40px;
+  background-color: #0fb9dc;
+  border: none;
+  width: 100%;
+  height: 48px;
+  text-align: center;
+  border-radius: 25px;
+  color:white;
+  font-size: 18px;
+  font-family: IRANSans;
+  font-weight: 500;
+}
+
+.header-login-modal-button:hover{
+  background-color: #008ca5;
+}
+
+.header-login-modal-button-verify{
+  margin-top: 40px;
+  background-color: #0fb9dc;
+  border: none;
+  width: 110px;
+  height: 48px;
+  text-align: center;
+  border-radius: 25px;
+  color:white;
+  font-size: 18px;
+  font-family: IRANSans;
+  font-weight: 500;
+  margin-right: 20px;
+}
+
+.header-login-modal-button-verify:hover{
+  background-color: #008ca5;
+}
+
+.login-title-in-modal{
+  font-family: Shabnam;
+  font-size: 20px;
+  margin-bottom: 15px !important;
+  text-align: center;
+  color:#595959;
+}
+.enter-phone-number-inmodal{
+  font-family: IRANSans;
+  font-size: 14px;
+  font-weight: 500;فق1
+  text-align: right;
+  padding-top: 25px;
+  padding-bottom: 20px;
+  color: #595959;
+}
+.enter-verify-number-inmodal{
+  font-family: IRANSans;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: right;
+  padding-top: 25px;
+  color: #595959;
+}
+
+.enter-phone-number-inmodal2{
+  font-family: IRANSans;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.header-login-modal-verify-button-input-container{
+  justify-content: space-between;
+
+  height: 50px;
+}
+.login-password{
+  width: 310px;
+}
+.modal-signup-items{
+  margin-top: 25px !important;
 }

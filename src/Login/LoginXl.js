@@ -323,35 +323,43 @@ class LoginXl extends React.Component{
                           this.setState({showSignUpOrSetPasswordModal:false})}}>
              <div className="login1-modal">
                  <p className="login-title-in-modal">ثبت‌نام کاربر جدید</p>
-                 <Divider/>
-                    <div  className="signup-div" onKeyDown={(event)=>{this.handleSignupClickByEnter(event)}}>
-                      <p className="signup-form-lable">نام </p>
-                      <input value={this.state.inputForSignUp.firstName}
-                             onChange={this.changeFirstNameForSignUp.bind(this)}
-                             className="singup-fa-input form-control"
-                             autoFocus={true}
-                      />
-                      <br/>
-                      <p className="signup-form-lable"> نام خانوادگی</p>
-                      <input value={this.state.inputForSignUp.lastName}
-                              onChange={this.changeLastNameForSignUp.bind(this)}
-                              className="singup-fa-input form-control"
-                              />
-                      <br/>
+                 <div className="header-login-modal-divider">
+                 </div>
+                    <div className="header-login-modal-content-container" onKeyDown={(event)=>{this.handleSignupClickByEnter(event)}} >
+                      <div className="modal-signup-items" >
+                        <p className="signup-form-lable">نام </p>
+                        <input value={this.state.inputForSignUp.firstName}
+                          onChange={this.changeFirstNameForSignUp.bind(this)}
+                          className="singup-fa-input input-tripinn2"
+                          autoFox1cus={true}
+                        />
+                      </div>
+
+                      <div className="modal-signup-items">
+                        <p className="signup-form-lable"> نام خانوادگی</p>
+                        <input value={this.state.inputForSignUp.lastName}
+                        onChange={this.changeLastNameForSignUp.bind(this)}
+                        className="singup-fa-input input-tripinn2"
+                        />
+                      </div>
+
+
                        <p className="signup-form-lable">رمز عبور </p>
 
                        <input id='password'
-                              className="password  form-control"
+                              className="login-password  input-tripinn2"
                               type="password"
                               value={this.state.inputForSignUp.password}
                               onChange={this.changePasswordForSignUp.bind(this)}/>
                         <br/>
+                        <br/>
                        <p className="signup-form-lable"> تکرار رمز عبور </p>
                        <input id='confirm-password'
-                          className="password  form-control"
+                          className="login-password  input-tripinn2"
                           type="password"
                           value={this.state.inputForSignUp.confirmPassword}
                           onChange={this.changeConfirmPasswordForSignUp.bind(this)}/>
+                        <br/>
                         <br/>
                         <div className="sign-up-modal-rule-aggreement">
                           <Checkbox checked={this.state.activeSignUpButton}
@@ -361,9 +369,11 @@ class LoginXl extends React.Component{
                             <span>.</span><span>با </span ><span onClick={()=>{window.open('/terms&conditions')}} className='sign-up-modal-link-to-rules'> قوانین و مقررات</span> <span> تریپین موافقم </span>
                           </div>
                         </div>
-                       <Button disabled={!this.state.activeSignUpButton} color="blue" onClick={this.handleSignupClick.bind(this)} className="login-modal-button-3">
-                         ثبت‌نام و ورود
-                       </Button>
+
+                        <button className="header-login-modal-button"  disabled={!this.state.activeSignUpButton} onClick={this.handleSignupClick.bind(this)}>
+                             ثبت‌نام و ورود
+                        </button>
+
 
                  </div>
              </div>
@@ -406,31 +416,33 @@ class LoginXl extends React.Component{
     //   onRequestClose={()=>{this.props.closeLoginPanel();
     //                 this.setState({showVerificationModal:false})}}>
     return(
-        <div className="login1-modal">
-          <p className="login-title-in-modal">کد تایید</p>
-          <Divider/>
-          <p className="enter-phone-number-inmodal">:کد چهار رقمی تایید پیامک شده به تلفن خود را وارد نمایید
-          </p>
-          <div className='enter-number-main'>
-            <input className='login-input'
-            onKeyDown= {(event)=>{this.handleVerificationClickByEnter(event)}}
-            value={this.state.inputForVerification.verificationCode}
-            onChange={(event)=>{this.changeVerificationCode(event)}}
-            className="login-input-code"
-             id='verify-code'
-             maxLength="4"
-             autoFocus={true}
-             type="numeric"/>
-            <div className="divider-x2">
+      <div className="login1-modal">
+        <p className="login-title-in-modal"> ورود / ثبت‌نام  </p>
+        <div className="header-login-modal-divider">
+        </div>
+          <div className="header-login-modal-content-container">
+            <p className="enter-verify-number-inmodal">
+
+ کد چهار رقمی تایید پیامک شده به شماره وارد شده را وارد
+           نمایید
+           </p>
+            <div dir="rtl" className="header-login-modal-verify-button-input-container" >
+              <input
+              onKeyDown= {(event)=>{this.handleVerificationClickByEnter(event)}}
+                  value={this.state.inputForVerification.verificationCode}
+                  onChange={(event)=>{this.changeVerificationCode(event)}}
+                  className="header-login-modal-input-verify"
+                  id='verify-code'
+                  maxLength="4"
+                  autoFocus={true}
+                  type="numeric"
+                  />
+                  <button className="header-login-modal-button-verify" onClick={this.handleVerificationClick.bind(this)}>
+                    تایید کد
+                  </button>
             </div>
-            <br/>
-            <br/>
-            <Button color="blue" onClick={this.handleVerificationClick.bind(this)} className="login-modal-button">
-            ادامه
-            </Button>
           </div>
         </div>
-
   );
     // </Modal>
   }

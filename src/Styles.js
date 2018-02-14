@@ -8,15 +8,17 @@ export const loginPhoneNumberStyle = {
     backgroundColor   : 'rgba(0, 0, 0, 0.7)'
   },
   content : {
-    top                        : '15%',
-    left                       : '35%',
-    right                      : '35%',
-    bottom                     : '35%',
+    top                        : '17%',
+    left                       : '37%',
+    right                      : '37%',
+    bottom                     : '33%',
     outline                    : '0',
-    padding                    : '5px',
-    transform                  : 'translate(0%, 0%)'
+    padding                    : '0px',
+    transform                  : 'translate(0%, 0%)',
+    borderRadius              : '15px',
   }
 };
+
 export const loginVerifySmsXl = {
   overlay : {
     position          : 'fixed',
@@ -27,13 +29,14 @@ export const loginVerifySmsXl = {
     backgroundColor   : 'rgba(0, 0, 0, 0.7)'
   },
   content : {
-    top                        : '15%',
-    left                       : '35%',
-    right                      : '35%',
-    bottom                     : '35%',
+    top                        : '17%',
+    left                       : '37%',
+    right                      : '37%',
+    bottom                     : '45%',
     outline                    : '0',
-    padding                    : '5px',
-    transform                  : 'translate(0%, 0%)'
+    padding                    : '0px',
+    transform                  : 'translate(0%, 0%)',
+    borderRadius              : '15px',
   }
 };
 export const setPasswordStyle ={
@@ -65,13 +68,14 @@ export const registerNewUser = {
     backgroundColor   : 'rgba(0, 0, 0, 0.0)'
   },
   content : {
-    top                        : '10%',
-    left                       : '35%',
-    right                      : '35%',
-    bottom                     : '20%',
+    top                        : '17%',
+    left                       : '37%',
+    right                      : '37%',
+    bottom                     : '10%',
     outline                    : '0',
-    padding                    : '5px',
-    transform                  : 'translate(0%, 0%)'
+    padding                    : '0px',
+    transform                  : 'translate(0%, 0%)',
+    borderRadius               : '15px',
   }
 };
 
