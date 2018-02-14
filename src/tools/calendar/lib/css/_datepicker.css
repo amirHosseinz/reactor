@@ -494,7 +494,7 @@
   left: 22px
 }
 .DayPickerNavigation_rightButton__horizontal {
-  right: 22px
+  right: 22px;
 }
 .DayPickerNavigation_button__vertical {
   display: inline-block;

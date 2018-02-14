@@ -37,6 +37,29 @@ class HouseDetailsXl extends React.Component{
       }
     };
   }
+  componentDidMount=()=> {
+      window.addEventListener('scroll', this.handleScroll);
+    }
+
+  componentWillUnmount= ()=> {
+      window.removeEventListener('scroll', this.handleScroll);
+    }
+
+  handleScroll = (event)=>{
+    // console.log(event.pageY);
+    if(event.pageY<400){
+      this.setState({activeLink:2});
+    }
+    if(event.pageY>400 && event.pageY<1000){
+      this.setState({activeLink:1});
+    }
+    if(event.pageY>1000 && event.pageY<1300){
+      this.setState({activeLink:3});
+    }
+    if(event.pageY>1300){
+      this.setState({activeLink:4});
+    }
+  }
   getRelevantToken(){
     if (this.state.isLoggedIn ==='true'){
       this.setState({
@@ -141,7 +164,7 @@ class HouseDetailsXl extends React.Component{
           <div className="house-details-top-division">
             <Element name="gallery"></Element>
             <div className="house-details-gallery">
-
+              {this.renderPreview()}
             </div>
             <div className="house-details-main-information">
               <Element name="details"></Element>

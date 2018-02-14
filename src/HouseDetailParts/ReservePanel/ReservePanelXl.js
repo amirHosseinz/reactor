@@ -238,7 +238,7 @@ class ReservePanelXl extends React.Component{
     }
     else{
       return(
-        <button onClick={()=>{this.setToken()}}className="reserve-panel-reserve-button-active"> رزرو </button>
+        <button onClick={()=>{this.setToken()}} className="reserve-panel-reserve-button-active"> رزرو </button>
       );
     }
   }
