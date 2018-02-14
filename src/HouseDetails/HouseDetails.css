@@ -17,6 +17,11 @@
   margin: auto;
 }
 .house-details-bottom-division{
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row;
+
   width: 1080px;
   margin: auto;
   justify-content: space-between;
@@ -34,6 +39,7 @@
   direction : rtl;
 }
 .house-details-menu-link-scrolls-not-sticky{
+  width : 685px;
   padding-top: 0px !important;
   padding-right: 0px !important;
   direction : ltr !important;
@@ -41,9 +47,8 @@
 }
 .house-details-menu-link-scrolls-sticky{
   margin-top:60px;
-  width: 100%;
   border : solid 1px #fff;
-  z-index: 1000;
+  z-index: 1;
   background-color: #fff;
   height: 50px;
 }
@@ -223,6 +228,7 @@ border-width: 2px;
 }
 .house-details-other-rules-icon{
   width: 20px;
+  height:20px;
   align-items: center;
   justify-content: center;
 }

@@ -173,7 +173,7 @@ class HouseDetailsXl extends React.Component{
               <AmenitiesDescription homeData={this.state.homeData} />
             </div>
           </div>
-          <div className="house-details-bottom-division row-reverse">
+          <div className="house-details-bottom-division">
             <Sticky topOffset={636} disableCompensation={false}>
               {({style,isSticky})=>{
                 return(
@@ -195,69 +195,70 @@ class HouseDetailsXl extends React.Component{
                 )
               }}
             </Sticky>
-            <div className="house-details-contents">
-            <Sticky topOffset={750}>
-              {({style,isSticky})=>{return(
-                <div style={style} className={isSticky?"house-details-menu-link-scrolls-sticky":"house-details-menu-link-scrolls-not-sticky housedetails-content-containers"}>
-                  <div className='navigation-menu-housedetails'>
-                    <Link onClick={()=>{this.setState({activeLink:1})}} className={this.state.activeLink===1?'navigation-menu-items-active':'navigation-menu-items'} to="details" spy={true} smooth={true} offset={-100} duration={800}>
-                      <p >مشخصات</p>
-                    </Link>
-                    <Link onClick={()=>{this.setState({activeLink:2})}} className={this.state.activeLink===2?'navigation-menu-items-active':'navigation-menu-items'} to="gallery" spy={true} smooth={true} offset={-200} duration={800}>
-                      <p  >تصاویر</p>
-                    </Link>
-                    <Link onClick={()=>{this.setState({activeLink:3})}} className={this.state.activeLink===3?'navigation-menu-items-active':'navigation-menu-items'} to="laws" spy={true} smooth={true} offset={-200} duration={800}>
-                      <p>امکانات و قوانین</p>
-                    </Link>
-                    <Link onClick={()=>{this.setState({activeLink:4})}} className={this.state.activeLink===4?'navigation-menu-items-active':'navigation-menu-items'} to="map" spy={true} smooth={true} offset={-200} duration={800}>
-                      <p>موقعیت روی نقشه</p>
-                    </Link>
+            <div>
+              <Sticky topOffset={750}>
+                {({style,isSticky})=>{return(
+                  <div style={style} className={isSticky?"house-details-menu-link-scrolls-sticky":"house-details-menu-link-scrolls-not-sticky housedetails-content-containers"}>
+                    <div className='navigation-menu-housedetails'>
+                      <Link onClick={()=>{this.setState({activeLink:1})}} className={this.state.activeLink===1?'navigation-menu-items-active':'navigation-menu-items'} to="details" spy={true} smooth={true} offset={-100} duration={800}>
+                        <p >مشخصات</p>
+                      </Link>
+                      <Link onClick={()=>{this.setState({activeLink:2})}} className={this.state.activeLink===2?'navigation-menu-items-active':'navigation-menu-items'} to="gallery" spy={true} smooth={true} offset={-200} duration={800}>
+                        <p  >تصاویر</p>
+                      </Link>
+                      <Link onClick={()=>{this.setState({activeLink:3})}} className={this.state.activeLink===3?'navigation-menu-items-active':'navigation-menu-items'} to="laws" spy={true} smooth={true} offset={-200} duration={800}>
+                        <p>امکانات و قوانین</p>
+                      </Link>
+                      <Link onClick={()=>{this.setState({activeLink:4})}} className={this.state.activeLink===4?'navigation-menu-items-active':'navigation-menu-items'} to="map" spy={true} smooth={true} offset={-200} duration={800}>
+                        <p>موقعیت روی نقشه</p>
+                      </Link>
+                    </div>
+                  </div>
+                )}}
+              </Sticky>
+              <div className="house-details-contents">
+                <div className="house-details-amenities-description housedetails-content-containers">
+                  <div className="house-details-host-info">
+                    <HostInfoDescription homeData={this.state.homeData}/>
+                    <p className='house-details-description-content house-description-top'> {this.state.homeData.description} </p>
+                  </div >
+                  <div className="house-details-amenities">
+                    <p className="house-details-description-heading">
+                      سایر امکانات
+                    </p>
+                    <UtilitiesDescription homeData={this.state.homeData} />
+                  </div>
+                  <div className="house-details-sleep-arrangements">
                   </div>
                 </div>
-              )}}
-            </Sticky>
-              <div className="house-details-amenities-description housedetails-content-containers">
-                <div className="house-details-host-info">
-                  <HostInfoDescription homeData={this.state.homeData}/>
-                  <p className='house-details-description-content house-description-top'> {this.state.homeData.description} </p>
-                </div >
-                <div className="house-details-amenities">
+                <div className= "house-details-rules housedetails-content-containers">
+                  <Element name="laws" ></Element>
                   <p className="house-details-description-heading">
-                    سایر امکانات
+                  مقررات این اقامتگاه
                   </p>
-                  <UtilitiesDescription homeData={this.state.homeData} />
+                  <CheckInCheckOutDescription homeData={this.state.homeData}/>
+                  <MaxCapacity homeData={this.state.homeData}/>
+                  <RulesDescription homeData= {this.state.homeData} />
+                  <SpecialRule homeData={this.state.homeData}/>
                 </div>
-                <div className="house-details-sleep-arrangements">
-                </div>
-              </div>
-              <div className= "house-details-rules housedetails-content-containers">
-                <Element name="laws" ></Element>
-                <p className="house-details-description-heading">
-                مقررات این اقامتگاه
-                </p>
-                <CheckInCheckOutDescription homeData={this.state.homeData}/>
-                <MaxCapacity homeData={this.state.homeData}/>
-                <RulesDescription homeData= {this.state.homeData} />
-                <SpecialRule homeData={this.state.homeData}/>
-              </div>
-              <div className="house-details-location housedetails-content-containers">
-                <div className="house-details-location-description">
-                <p className="house-details-description-heading">
-                  موقعیت اقامتگاه
-                </p>
-                <p className="house-details-description-content">
-                  در نقشه زیر می توانید موقعیت حدودی اقامتگاه را مشاهده نمایید.
-                  پس از
-                  <span> رزرو اقامتگاه </span>
-                  موقعیت و آدرس دقیق اقامتگاه و شماره تلفن میزبان
-                  در اختیار شما قرار خواهد گرفت.
-                </p>
-                </div>
-                <div className="house-details-map">
-                  <Element name="map"></Element>
-                  <MapDescription
-                    lat={this.state.homeData.latitude} lng={this.state.homeData.longitude} zoom={13}
-                  />
+                <div className="house-details-location housedetails-content-containers">
+                  <div className="house-details-location-description">
+                  <p className="house-details-description-heading">
+                    موقعیت اقامتگاه
+                  </p>
+                  <p className="house-details-description-content">
+                    در نقشه زیر می توانید موقعیت حدودی اقامتگاه را مشاهده نمایید.
+                    پس از
+                    <span> رزرو اقامتگاه </span>
+                    موقعیت و آدرس دقیق اقامتگاه و شماره تلفن میزبان
+                    در اختیار شما قرار خواهد گرفت.
+                  </p>
+                  </div>
+                  <div className="house-details-map">
+                    <Element name="map"></Element>
+                    <MapDescription
+                      lat={this.state.homeData.latitude} lng={this.state.homeData.longitude} zoom={13}/>
+                  </div>
                 </div>
               </div>
             </div>
