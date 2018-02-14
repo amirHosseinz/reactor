@@ -3,15 +3,39 @@ import { findDOMNode } from 'react-dom';
 import { Button } from 'semantic-ui-react';
 import { Typeahead ,MenuItem,Menu , menuItemContainer} from '../tools/react-bootstrap-typeahead';
 import SearchResultItem from '../SearchResultItem';
-import $ from 'jquery';
-import '../tools/DatePicker/bootstrap-datepicker.fa.js';
-import '../tools/DatePicker/bootstrap-datepicker.js';
-import '../tools/DatePicker/bootstrap-datepicker.css';
+
 import GuestNumberSearchBar from '../GuestNumberSearchBar.js'
 import {Dropdown} from 'semantic-ui-react';
 import "./SearchResult.css";
 import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
 
+import '../tools/calendar/initialize';
+import '../tools/calendar/lib/css/_datepicker.css';
+import {DateRangePicker} from '../tools/calendar';
+
+import ThemedStyleSheet from 'react-with-styles/lib/ThemedStyleSheet';
+import aphroditeInterface from 'react-with-styles-interface-aphrodite';
+import DefaultTheme from '../tools/calendar/lib/theme/DefaultTheme';
+
+
+ThemedStyleSheet.registerInterface(aphroditeInterface);
+ThemedStyleSheet.registerTheme({
+  reactDates: {
+    zIndex : 1,
+    ...DefaultTheme.reactDates,
+    color: {
+      ...DefaultTheme.reactDates.color,
+      highlighted: {
+        backgroundColor: '#82E0AA',
+        backgroundColor_active: '#58D68D',
+        backgroundColor_hover: '#58D68D',
+        color: '#186A3B',
+        color_active: '#186A3B',
+        color_hover: '#186A3B',
+      },
+    },
+  },
+});
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
   'اصفهان',
@@ -62,6 +86,8 @@ class SearchResultXl extends React.Component{
       numberOfGuests: 1,
       OpenDropDown:false,
       Counter:false,
+      startDate:null,
+      endDate:null,
       searchParams : {
         location: '',
         start_date: new Date(),
@@ -191,16 +217,26 @@ class SearchResultXl extends React.Component{
                       <span>
                         <img src={require('../Images/guest-number-icon.png')} className='guest-number-icon' alt=""></img>
                       </span>
-                       {englishToPersianDigits(this.state.numberOfGuests)}   نفر
+                       {englishToPersianDigits(this.state.numberOfGuests)}   مهمان
                     </button>
                     <div className="serach-result-number-of-guests-input">
                       {this.renderGuest()}
                     </div>
                   </div>
+                  <div>
+                  <DateRangePicker
+                    startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+                    startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+                    endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+                    endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                    onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+                    focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                    onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+                  />
+                  </div>
                 </div>
               </div>
             </div>
-
 
           <div className="render-houses-row">
             <div className="padding-search-results-top">
