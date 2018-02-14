@@ -47,6 +47,7 @@
     "react-sticky-el": "^1.0.15",
     "react-virtualized": "^9.16.1",
     "react-with-styles": "^3.0.0",
+    "react-with-styles-interface-aphrodite": "^4.0.1",
     "react-with-styles-interface-css": "^3.0.0",
     "reactstrap": "^4.8.0",
     "redux": "^3.7.2",
