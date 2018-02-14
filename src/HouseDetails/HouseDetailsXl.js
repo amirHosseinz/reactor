@@ -18,9 +18,6 @@ import CheckInCheckOutDescription from '../HouseDetailParts/CheckInCheckOutDescr
 import MaxCapacity from '../HouseDetailParts/MaxCapacity.js';
 import RulesDescription from '../HouseDetailParts/RulesDescription.js';
 import SpecialRule from  '../HouseDetailParts/SpecialRule.js';
-import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import GuestNumber from '../HouseDetailParts/GuestNumber';
 import {Link,Element} from 'react-scroll';
 

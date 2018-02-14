@@ -9,33 +9,36 @@ import {Dropdown} from 'semantic-ui-react';
 import "./SearchResult.css";
 import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
 
-import '../tools/calendar/initialize';
-import '../tools/calendar/lib/css/_datepicker.css';
-import {DateRangePicker} from '../tools/calendar';
-
-import ThemedStyleSheet from 'react-with-styles/lib/ThemedStyleSheet';
-import aphroditeInterface from 'react-with-styles-interface-aphrodite';
-import DefaultTheme from '../tools/calendar/lib/theme/DefaultTheme';
+import momentJalaali from 'moment-jalaali';
+import '../tools/calendar2/initialize.js';
+import '../tools/calendar2/lib/css/_datepicker.css';
+import {DateRangePicker} from '../tools/calendar2';
 
 
-ThemedStyleSheet.registerInterface(aphroditeInterface);
-ThemedStyleSheet.registerTheme({
-  reactDates: {
-    zIndex : 1,
-    ...DefaultTheme.reactDates,
-    color: {
-      ...DefaultTheme.reactDates.color,
-      highlighted: {
-        backgroundColor: '#82E0AA',
-        backgroundColor_active: '#58D68D',
-        backgroundColor_hover: '#58D68D',
-        color: '#186A3B',
-        color_active: '#186A3B',
-        color_hover: '#186A3B',
-      },
-    },
-  },
-});
+// import ThemedStyleSheet from 'react-with-styles/lib/ThemedStyleSheet';
+// import aphroditeInterface from 'react-with-styles-interface-aphrodite';
+// import DefaultTheme from '../tools/calendar/lib/theme/DefaultTheme';
+//
+//
+// ThemedStyleSheet.registerInterface(aphroditeInterface);
+// ThemedStyleSheet.registerTheme({
+//   reactDates: {
+//     zIndex : 1,
+//     ...DefaultTheme.reactDates,
+//     color: {
+//       ...DefaultTheme.reactDates.color,
+//       highlighted: {
+//         backgroundColor: '#82E0AA',
+//         backgroundColor_active: '#58D68D',
+//         backgroundColor_hover: '#58D68D',
+//         color: '#186A3B',
+//         color_active: '#186A3B',
+//         color_hover: '#186A3B',
+//       },
+//     },
+//   },
+// });
+
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
   'اصفهان',
@@ -224,15 +227,25 @@ class SearchResultXl extends React.Component{
                     </div>
                   </div>
                   <div>
-                  <DateRangePicker
-                    startDate={this.state.startDate} // momentPropTypes.momentObj or null,
-                    startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                    endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-                    endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                    onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
-                    focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                    onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                  />
+                    <DateRangePicker
+                      startDatePlaceholderText="تاریخ ورود"
+                      endDatePlaceholderText="تاریخ خروج"
+                      startDate={this.state.startDate}
+                      customArrowIcon={<div></div>}
+                      hideKeyboardShortcutsPanel={true}
+                      numberOfMonths={2}
+                      isRTL={true}
+                      startDateId="your_unique_start_date_id"
+                      endDate={this.state.endDate}
+                      endDateId="your_unique_end_date_id"
+                      onDatesChange={({startDate,endDate})=>{this.setState({startDate:startDate,endDate:endDate})}}
+                      focusedInput={this.state.focusedInput}
+                      reopenPickerOnClearDates={true}
+                      onFocusChange={focusedInput => this.setState({focusedInput})}
+                      renderMonth={(month) => momentJalaali(month).format('jMMMM jYYYY')}
+                      renderDayContents={(day) => momentJalaali(day).format('jD')}
+                      keepOpenOnDateSelect={false}
+                     />
                   </div>
                 </div>
               </div>
