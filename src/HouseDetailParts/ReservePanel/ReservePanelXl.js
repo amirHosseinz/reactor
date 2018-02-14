@@ -25,7 +25,7 @@ class ReservePanelXl extends React.Component{
     this.token = '';
     this.state = {
       reserveData : '',
-      showguestNumberPickerDropdown:false,
+      showGuestNumberPickerDropdown:false,
       showPreBill:false,
       token:null,
       numberOfGuests: 1,
@@ -373,16 +373,36 @@ class ReservePanelXl extends React.Component{
     this.setState({numberOfGuests:number});
   }
   closeNumberOfGuestsDropdown(){
-    this.setState({showguestNumberPickerDropdown:false});
+    this.setState({showGuestNumberPickerDropdown:false});
   }
+
   renderGuestNumberPickerDropdown(){
-    if(this.state.showguestNumberPickerDropdown===true){
+    if(this.state.showGuestNumberPickerDropdown===true){
       return(
         <div className="reserve-panel-number-of-guests-dropdown">
-          <GuestNumber closeNumberOfGuestsDropdown={this.closeNumberOfGuestsDropdown.bind(this)} changeNumberOfGuests={this.changeNumberOfGuests.bind(this)}/>
+          <GuestNumber guestNumber={this.state.numberOfGuests} changeNumberOfGuests={this.changeNumberOfGuests.bind(this)}/>
         </div>
       );
     }
+  }
+
+  openGuestNumberDropdown(){
+    if (!this.state.showGuestNumberPickerDropdown) {
+  document.addEventListener('click', this.handleOutsideClick, false);
+    }
+    else {
+      document.removeEventListener('click', this.handleOutsideClick, false);
+    }
+    this.setState((prevState) => ({showGuestNumberPickerDropdown: !prevState.showGuestNumberPickerDropdown}));
+  }
+  handleOutsideClick = (e)=>{
+    if (this.node.contains(e.target)) {
+      if(e.target.textContent.trim()==='بستن'){
+        this.openGuestNumberDropdown();
+      }
+      return;
+    }
+    this.openGuestNumberDropdown();
   }
 
   renderReservePanelVersion2(){
@@ -392,9 +412,9 @@ class ReservePanelXl extends React.Component{
           <p className="reserve-panel-description">
             تعداد مهمان
           </p>
-          <div className="reserve-panel-number-of-guests-input">
-            <button className="reserve-panel-enter-number-of-guests-button" onClick={()=>{this.setState({showguestNumberPickerDropdown:true})}}> {englishToPersianDigits(this.state.numberOfGuests)} نفر </button>
-              {this.renderGuestNumberPickerDropdown()}
+          <div ref={(node)=>{this.node = node}} className="reserve-panel-number-of-guests-input">
+            <button className="reserve-panel-enter-number-of-guests-button" onClick={()=>{this.openGuestNumberDropdown()}}> {englishToPersianDigits(this.state.numberOfGuests)} نفر </button>
+            {this.renderGuestNumberPickerDropdown()}
           </div>
         </div>
         <div className="reserve-panel-date-picker-division">

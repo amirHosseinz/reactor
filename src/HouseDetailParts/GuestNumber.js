@@ -6,7 +6,7 @@ class GuestNumber extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      number:1,
+      number:this.props.guestNumber,
     };
   }
 
@@ -29,7 +29,7 @@ renderSub(){
 render(){
   return(
     <div className="number-zone">
-      <p className="clickable-p guest-number-close-button" onClick={()=>{this.props.closeNumberOfGuestsDropdown()}}> بستن </p>
+      <p className="clickable-p guest-number-close-button"> بستن </p>
       <div className="guest-number-reserve-number-box1" >
         <button className="btn-plus" onClick={this.renderSub.bind(this)}>
             <img src={require('../Images/guest-number-sub.svg')} className='guest-number-sub' alt=""></img>

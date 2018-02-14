@@ -159,7 +159,7 @@
 }
 .DateRangePicker {
   position:relative;
-  z-index: 1000;
+  /* z-index: 1000; */
   display: inline-block
 }
 .DateRangePicker__block {

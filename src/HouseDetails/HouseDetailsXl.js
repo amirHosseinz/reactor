@@ -145,7 +145,7 @@ class HouseDetailsXl extends React.Component{
       )}
     );
    if(this.state.homeData!==''){
-     console.log(this.state.homeData.images);
+     // console.log(this.state.homeData.images);
      return(
        <Slider autoFocus={true} {...settings}>
          <div className = "housedetail-img">
