@@ -422,25 +422,7 @@ class ReservePanelXl extends React.Component{
             تاریخ ورود و خروج
           </p>
           <div className="reserve-panel-date-picker-input">
-            <DateRangePicker
-              startDatePlaceholderText="تاریخ ورود"
-              endDatePlaceholderText="تاریخ خروج"
-              startDate={this.state.startDate}
-              customArrowIcon={<div></div>}
-              hideKeyboardShortcutsPanel={true}
-              numberOfMonths={2}
-              isRTL={true}
-              startDateId="your_unique_start_date_id"
-              endDate={this.state.endDate}
-              endDateId="your_unique_end_date_id"
-              onDatesChange={({startDate,endDate})=>{this.setState({startDate:startDate,endDate:endDate})}}
-              focusedInput={this.state.focusedInput}
-              reopenPickerOnClearDates={true}
-              onFocusChange={focusedInput => this.setState({focusedInput})}
-              renderMonth={(month) => momentJalaali(month).format('jMMMM jYYYY')}
-              renderDayContents={(day) => momentJalaali(day).format('jD')}
-              keepOpenOnDateSelect={false}
-              />
+
           </div>
         </div>
         <div className="reserve-panel-reserve-button-division">
@@ -450,6 +432,27 @@ class ReservePanelXl extends React.Component{
       </div>
     );
   }
+
+  //
+  // <DateRangePicker
+  //   startDatePlaceholderText="تاریخ ورود"
+  //   endDatePlaceholderText="تاریخ خروج"
+  //   startDate={this.state.startDate}
+  //   customArrowIcon={<div></div>}
+  //   hideKeyboardShortcutsPanel={true}
+  //   numberOfMonths={2}
+  //   isRTL={true}
+  //   startDateId="your_unique_start_date_id"
+  //   endDate={this.state.endDate}
+  //   endDateId="your_unique_end_date_id"
+  //   onDatesChange={({startDate,endDate})=>{this.setState({startDate:startDate,endDate:endDate})}}
+  //   focusedInput={this.state.focusedInput}
+  //   reopenPickerOnClearDates={true}
+  //   onFocusChange={focusedInput => this.setState({focusedInput})}
+  //   renderMonth={(month) => momentJalaali(month).format('jMMMM jYYYY')}
+  //   renderDayContents={(day) => momentJalaali(day).format('jD')}
+  //   keepOpenOnDateSelect={false}
+  //   />
 
   render(){
     return(

@@ -47,7 +47,7 @@
 }
 .house-details-menu-link-scrolls-sticky{
   margin-top:60px;
-  border : solid 1px #fff;
+  border-bottom : solid 2px #c7c7c7;
   z-index: 1;
   background-color: #fff;
   height: 50px;
@@ -128,6 +128,9 @@
   font-weight: 500;
   margin-top: 16px !important;
 }
+.navigation-menu-items:hover{
+  color : #12b2ce;
+}
 .navigation-menu-items-active{
   margin-left: 18px;
   cursor : pointer;
@@ -135,6 +138,9 @@
   font-size: 14px;
   font-weight: 500;
   margin-top: 16px !important;
+}
+.navigation-menu-items-active:hover{
+  color : #008ca4;
 }
 
 .house-details-location{
