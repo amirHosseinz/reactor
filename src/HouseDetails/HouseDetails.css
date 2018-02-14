@@ -5,11 +5,19 @@
 }
 .house-details-top-division{
   height : 700px;
+  width: 100%;
   background-color: white;
 }
 .house-details-gallery{
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row;
   height: 480px;
-  background-color: grey;
+  margin-left:auto;
+  margin-right:auto;
+  /* margin-right:50%; */
+  background-color: white;
 }
 .house-details-main-information{
   height: 220px;
@@ -273,8 +281,8 @@ border-width: 2px;
 .house-details-reserve-panel-not-sticky{
   width: 385px;
   height : 400px;
-  margin-top :-85px;
-  padding-top: 25px !important;
+  margin-top :-86px;
+  /* padding-top: 25px !important; */
   border: solid;
   border-color: #c7c7c7;
   border-width: 2px;
@@ -284,7 +292,7 @@ border-width: 2px;
 .house-details-reserve-panel-sticky{
   width: 385px;
   height : 400px;
-  margin-top:110px;
+  margin-top:66px;
   border: solid;
   border-color: #c7c7c7;
   border-width: 2px;
@@ -314,6 +322,8 @@ border-width: 2px;
 
 .house-details-preview{
    height: 480px;
-   position:relative;
-   object-fit: cover;
+   margin-right:2px;
+   margin-left:2px;
+   border: 1px ;
+   border-radius : 4px;
 }

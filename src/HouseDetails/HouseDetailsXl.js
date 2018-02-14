@@ -12,12 +12,15 @@ import CheckInCheckOutDescription from '../HouseDetailParts/CheckInCheckOutDescr
 import MaxCapacity from '../HouseDetailParts/MaxCapacity.js';
 import RulesDescription from '../HouseDetailParts/RulesDescription.js';
 import SpecialRule from  '../HouseDetailParts/SpecialRule.js';
-import Slider from 'react-slick';
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Slider from 'react-slick';
+
 import GuestNumber from '../HouseDetailParts/GuestNumber';
 import {Link,Element} from 'react-scroll';
 import './HouseDetails.css';
+import Carousel from 'nuka-carousel';
 
 class HouseDetailsXl extends React.Component{
   constructor(props){
@@ -50,13 +53,13 @@ class HouseDetailsXl extends React.Component{
     if(event.pageY<400){
       this.setState({activeLink:2});
     }
-    if(event.pageY>400 && event.pageY<1000){
+    if(event.pageY>600 && event.pageY<1000){
       this.setState({activeLink:1});
     }
-    if(event.pageY>1000 && event.pageY<1300){
+    if(event.pageY>1000 && event.pageY<1200){
       this.setState({activeLink:3});
     }
-    if(event.pageY>1300){
+    if(event.pageY>1200){
       this.setState({activeLink:4});
     }
   }
@@ -128,34 +131,23 @@ class HouseDetailsXl extends React.Component{
      );
    }
 
- renderPreview(){
-   var settings = {
-      dots: false,
-      infinite: true,
-      speed: 500,
-      touchMove:false,
-      slidesToShow: 3,
-      slidesToScroll: 1
-    };
+ renderGallery(){
     var imageList = this.state.homeData.images.map(
       image=>{return(
-        <div className = "housedetail-img">
-         <img src={"https://www.trypinn.com"+image.image} className="house-details-preview" height="480" width="600" alt = ""/>
-        </div>
+         <img src={"https://www.trypinn.com"+image.image} className="house-details-preview" width="540" height="480" alt = ""/>
       )}
     );
    if(this.state.homeData!==''){
-     // console.log(this.state.homeData.images);
      return(
-       <Slider autoFocus={true} {...settings}>
-         <div className = "housedetail-img">
-          <img src={"https://www.trypinn.com"+this.state.homeData.preview_high} height="480" width="600" className="house-details-preview" alt = ""/>
-         </div>
-         {imageList}
-       </Slider>
+       <div className="house-details-gallery">
+        {imageList}
+       </div>
      );
    }
  }
+ // <Carousel swiping={true} slidesToShow={3}>
+ //   {imageList}
+ // </Carousel>
 
   renderHouseDetailsVersion2(){
     if(this.state.homeData!==''){
@@ -164,7 +156,7 @@ class HouseDetailsXl extends React.Component{
           <div className="house-details-top-division">
             <Element name="gallery"></Element>
             <div className="house-details-gallery">
-              {this.renderPreview()}
+              {this.renderGallery()}
             </div>
             <div className="house-details-main-information">
               <Element name="details"></Element>
@@ -174,7 +166,7 @@ class HouseDetailsXl extends React.Component{
             </div>
           </div>
           <div className="house-details-bottom-division">
-            <Sticky topOffset={636} disableCompensation={false}>
+            <Sticky topOffset={630} bottomOffset={210} disableCompensation={false}>
               {({style,isSticky})=>{
                 return(
                   <div style={style}>
