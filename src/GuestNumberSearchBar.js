@@ -6,44 +6,39 @@ class GuestNumberSearchBar extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      number:1,
+      number:this.props.guestNumber,
     };
 }
 renderAdd(){
 const Guest=this.state.number;
 const NewGuest= Guest + 1;
-this.setState({number:NewGuest});
+this.setState({number:NewGuest},()=>{this.props.changeNumberOfGuests(this.state.number)});
 }
 renderSub(){
   if(this.state.number > 1){
 const Guest=this.state.number;
 const NewGuest= Guest - 1;
-this.setState({number:NewGuest});
+this.setState({number:NewGuest},()=>{this.props.changeNumberOfGuests(this.state.number)});
 }
 else{
-this.setState({number:1});
+this.setState({number:1},()=>{this.props.changeNumberOfGuests(this.state.number)});
 }
 }
 render(){
   return(
-    <div className="geust-number-searchbar-container">
-
-      <div className="reserve-number-box-searchbar" >
-        <button className="btn-plus-searchbar" onClick={this.renderAdd.bind(this)}>
-            <p className="number-inputer-searchbar" >
-            +
-            </p>
+    <div className="search-reulsts-guest-number-zone">
+      <div className="search-result-guest-number-reserve-number-box" >
+        <button className="search-result-guest-number-btn-plus" onClick={this.renderSub.bind(this)}>
+            <img src={require('./Images/guest-number-sub.svg')} height="14px" width="14px" className='guest-number-sub' alt=""></img>
         </button>
-        <div className='guest-number-searchbar'>
-        <p className="input-number-searchbar row-reverse">
-        <span>نفر </span><span>{englishToPersianDigits(this.state.number)}</span>
-        </p>
-        </div>
-        <button className="btn-sub-searchbar" onClick={this.renderSub.bind(this)}>
-            <p className="number-inputer-searchbar" >
-            -
+          <div>
+            <p className="guest-number-input-number row-reverse">
+            <span>{englishToPersianDigits(this.state.number)} </span> <span style={{marginRight:'6px'}}>{'نفر'}</span>
             </p>
-        </button>
+          </div>
+          <button className="search-result-guest-number-btn-plus" onClick={this.renderAdd.bind(this)}>
+            <img src={require('./Images/guest-number-plus.svg')} height="15px" width="15px" className='guest-number-plus' alt=""></img>
+          </button>
       </div>
 
     </div>

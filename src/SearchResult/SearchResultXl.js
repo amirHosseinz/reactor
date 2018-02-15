@@ -3,13 +3,41 @@ import { findDOMNode } from 'react-dom';
 import { Button } from 'semantic-ui-react';
 import { Typeahead ,MenuItem,Menu , menuItemContainer} from '../tools/react-bootstrap-typeahead';
 import SearchResultItem from '../SearchResultItem';
-import $ from 'jquery';
-import '../tools/DatePicker/bootstrap-datepicker.fa.js';
-import '../tools/DatePicker/bootstrap-datepicker.js';
-import '../tools/DatePicker/bootstrap-datepicker.css';
-import GuestNumber from '../HouseDetailParts/GuestNumber'
-import {Dropdown} from 'semantic-ui-react';
 
+import GuestNumberSearchBar from '../GuestNumberSearchBar.js'
+import {Dropdown} from 'semantic-ui-react';
+import "./SearchResult.css";
+import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
+
+import momentJalaali from 'moment-jalaali';
+import '../tools/calendar2/initialize.js';
+import '../tools/calendar2/lib/css/_datepicker.css';
+import {DateRangePicker} from '../tools/calendar2';
+
+
+// import ThemedStyleSheet from 'react-with-styles/lib/ThemedStyleSheet';
+// import aphroditeInterface from 'react-with-styles-interface-aphrodite';
+// import DefaultTheme from '../tools/calendar/lib/theme/DefaultTheme';
+//
+//
+// ThemedStyleSheet.registerInterface(aphroditeInterface);
+// ThemedStyleSheet.registerTheme({
+//   reactDates: {
+//     zIndex : 1,
+//     ...DefaultTheme.reactDates,
+//     color: {
+//       ...DefaultTheme.reactDates.color,
+//       highlighted: {
+//         backgroundColor: '#82E0AA',
+//         backgroundColor_active: '#58D68D',
+//         backgroundColor_hover: '#58D68D',
+//         color: '#186A3B',
+//         color_active: '#186A3B',
+//         color_hover: '#186A3B',
+//       },
+//     },
+//   },
+// });
 
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
@@ -57,9 +85,12 @@ class SearchResultXl extends React.Component{
       city: null,
       houseList:[],
       token: null,
+      showGuestNumberPicker:false,
       numberOfGuests: 1,
       OpenDropDown:false,
       Counter:false,
+      startDate:null,
+      endDate:null,
       searchParams : {
         location: '',
         start_date: new Date(),
@@ -76,8 +107,6 @@ class SearchResultXl extends React.Component{
     else{
         this.setState({city:city});
     }
-    this.renderToDatePicker();
-    this.renderFromDatePicker();
     this.setState({token : this.getRelevantToken()},()=>{this.setSearchParams()});
   }
 
@@ -128,26 +157,15 @@ class SearchResultXl extends React.Component{
   getRelevantToken(){
     return localStorage['token'];
   }
-  renderFromDatePicker(){
-    const fromDatePicker = findDOMNode(this.refs.fromdatepicker);
-    $(document).ready(function(){
-      $(fromDatePicker).datepicker({
-        changeMonth: true,
-        changeYear: true,
-        isRTL: true,
-        numberOfMonths:1,
-        showButtonPanel:true,
-        dateFormat: "yy/m/d",
-       });
-    });
-  }
 
   renderGuest(){
-    return(
-      <div   >
-        <GuestNumber changeNumberOfGuests={this.changeNumberOfGuests.bind(this)} />
-      </div>
-    );
+    if(this.state.showGuestNumberPicker===true){
+      return(
+        <div className="searcu-result-guest-number-dropdown"ref={node=>{this.node=node}}>
+          <GuestNumberSearchBar guestNumber={this.state.numberOfGuests} changeNumberOfGuests={this.changeNumberOfGuests.bind(this)} />
+        </div>
+      );
+    }
   }
 
 
@@ -155,19 +173,6 @@ class SearchResultXl extends React.Component{
     this.setState({numberOfGuests:number});
   }
 
-  renderToDatePicker(){
-    const toDatePicker = findDOMNode(this.refs.todatepicker);
-    $(document).ready(function(){
-      $(toDatePicker).datepicker({
-        changeMonth: true,
-        changeYear: true,
-        numberOfMonths:1,
-        showButtonPanel:true,
-        isRTL: true,
-        dateFormat: "yy/m/d",
-       });
-    });
-  }
   readCityFromURL(){
     var url = decodeURIComponent(window.location.href.split('/')).split(',');
     if(url[4]==='هر جا'){
@@ -186,78 +191,66 @@ class SearchResultXl extends React.Component{
        this.props.history.replace("/search/" + this.state.city);
     }
   }
+  handleOutsideClick = (e)=>{
+    if (this.node.contains(e.target)) {
+      return;
+    }
+    this.openGuestNumberDropdown();
+  }
+
+  openGuestNumberDropdown(){
+    if (!this.state.showGuestNumberPicker) {
+      document.addEventListener('click', this.handleOutsideClick, false);
+    }
+    else {
+      document.removeEventListener('click', this.handleOutsideClick, false);
+    }
+    this.setState(prevState => ({showGuestNumberPicker: !prevState.showGuestNumberPicker}));
+  }
   renderSearchBarInDetails(){
-    this.renderFromDatePicker();
-    this.renderToDatePicker();
     return(
       <div className="render-results row">
             <div className="results-search">
               <div className="results-serach-child">
-                <div className="col-md-3">
-                </div>
-                <div className="search-inputs col-md-9">
-                  <div className="multi-input-typeahead">
-                  <Typeahead
-                    className="typeahead-indetail-xl"
-                    renderMenu={(results,menuProps) => {
-                        return(
-                          <Menu {...menuProps}>
-                            {results.map((result, index) => (
-                              <TypeaheadMenuItem option={result} position={index}>
-                                {result}
-                              </TypeaheadMenuItem>
-                            ))}
-                          </Menu>
-                        );
-                      }}
-                    minLength={2}
-                    align="right"
-                    emptyLabel="نتیجه‌ای یافت نشد"
-                    maxResults={5}
-                    selected={this.readCityFromURL()}
-                    placeholder='هر جا'
-                    onInputChange={(input)=> {this.setState({city:input})}}
-                    selectHintOnEnter={false}
-                    highlightOnlyResult={true}
-                    submitFormOnEnter={true}
-                    onChange={(selected)=>{
-                      if(selected.length!==0){
-                        this.setState({city:selected[0]},()=>{this.handleClick()});
-                      }
-                    }}
-                  options={listOfCity}
-                    />
-                  </div>
 
-                  <div className="multi-input-1">
-                    <input className="date-picker-input  form-control1" id='fromdatepicker' ref='fromdatepicker' placeholder='تاریخ ورود'style={{direction:'rtl',textAlign:'center'}}/>
+                <div className="search-results-filters-container">
+                  <p className="search-result-filter-label"> :فیلترها </p>
+                  <div>
+                    <button onClick={()=>{this.openGuestNumberDropdown()}}className="search-result-filter-button"  style={{direction:'rtl',textAlign:'center'}}>
+                      <span>
+                        <img src={require('../Images/guest-number-icon.png')} className='guest-number-icon' alt=""></img>
+                      </span>
+                       {englishToPersianDigits(this.state.numberOfGuests)}   مهمان
+                    </button>
+                    <div className="serach-result-number-of-guests-input">
+                      {this.renderGuest()}
+                    </div>
                   </div>
-                  <div className="multi-input-1">
-                    <input className="date-picker-input  form-control1" id='todatepicker' ref='todatepicker' placeholder='تاریخ خروج'style={{direction:'rtl',textAlign:'center'}}/>
-                  </div>
-                  <div className="multi-input-1">
-                    <input className="dropdown form-control1" placeholder={this.state.numberOfGuests + " نفر "} style={{direction:'rtl',textAlign:'center'}}/>
-                  </div>
-                  <div className="multi-input-1" dir="rtl"  >
-                  <Dropdown className="drop" icon={""} dir="rtl"  text={''} >
-                    <Dropdown.Menu onClick={(event)=>{event.stopPropagation()}}>
-                    {this.renderGuest()}
-                    </Dropdown.Menu>
-                 </Dropdown>
-                 </div>
-
-                  <div className="multi-input-2">
-                  <Button color='blue' type="button" className="search-btn-result" onClick={()=>{this.handleClick()}} data-reactid="99">
-                    <span className='searchicon'>
-                      <img src={require('../Images/trpinn_search.png')} className='search-image-result' alt=""></img>
-                    </span>
-                  </Button>
-                  </div>
-                  <div className="col-md-6">
+                  <div>
+                    <DateRangePicker
+                      startDatePlaceholderText="تاریخ ورود"
+                      endDatePlaceholderText="تاریخ خروج"
+                      startDate={this.state.startDate}
+                      customArrowIcon={<div></div>}
+                      hideKeyboardShortcutsPanel={true}
+                      numberOfMonths={2}
+                      isRTL={true}
+                      startDateId="your_unique_start_date_id"
+                      endDate={this.state.endDate}
+                      endDateId="your_unique_end_date_id"
+                      onDatesChange={({startDate,endDate})=>{this.setState({startDate:startDate,endDate:endDate})}}
+                      focusedInput={this.state.focusedInput}
+                      reopenPickerOnClearDates={true}
+                      onFocusChange={focusedInput => this.setState({focusedInput})}
+                      renderMonth={(month) => momentJalaali(month).format('jMMMM jYYYY')}
+                      renderDayContents={(day) => momentJalaali(day).format('jD')}
+                      keepOpenOnDateSelect={false}
+                     />
                   </div>
                 </div>
               </div>
             </div>
+
           <div className="render-houses-row">
             <div className="padding-search-results-top">
             </div>

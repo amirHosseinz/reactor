@@ -75,29 +75,10 @@ const listOfCity = [
   {name:'کلارآباد'},
 ];
 
-function getSuggestions(value) {
-  const escapedValue = escapeRegexCharacters(value.trim());
-
-  if (escapedValue === '') {
-    return [];
-  }
-  const regex = new RegExp('^' + escapedValue, 'i');
-  return listOfCity.filter(city => regex.test(city.name));
-}
-
 function getSuggestionValue(suggestion) {
   return suggestion.name;
 }
 
-function renderSuggestion(suggestion) {
-  return (
-    <span>{suggestion.name}</span>
-  );
-}
-
-function escapeRegexCharacters(str) {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
 class HeaderXl extends React.Component{
   constructor (props){
     super(props);
@@ -154,23 +135,15 @@ class HeaderXl extends React.Component{
     this.setState({loginPanelVisible:true});
   }
   getUserHasPasswordByEnter(event){
+    // console.log(event.key);
     if(event.key === 'Enter'){
       this.getUserHasPassword();
     }
-    if(this.state.cellPhone.length===11){
-      if(event.key!=="Backspace"){
-        event.preventDefault()
-      }
-    }
-    if (event.keyCode<48 || event.keyCode>57){
+    if (['0','1','2','3','4','5','6','7','8','9'].indexOf(event.key)===-1){
       if(event.key!=="Backspace"){
         event.preventDefault();
       }
     }
- }
-
- closeLoginPanel(){
-   this.setState({loginPanelVisible2:false});
  }
 
  handleClick(){
@@ -182,7 +155,6 @@ class HeaderXl extends React.Component{
    }
  }
 
-
  onChangeSearchBarValue = (event,{newValue, method}) => {
    this.setState({
      city: newValue
@@ -190,8 +162,22 @@ class HeaderXl extends React.Component{
  };
  onSuggestionsFetchRequested=({value})=> {
    this.setState({
-     suggestions: getSuggestions(value)
+     suggestions: this.getSuggestions(value)
    });
+ }
+
+ getSuggestions(value) {
+   const escapedValue = this.escapeRegexCharacters(value.trim());
+
+   if (escapedValue === '') {
+     return [];
+   }
+   const regex = new RegExp('^' + escapedValue, 'i');
+   return listOfCity.filter(city => regex.test(city.name));
+ }
+
+ escapeRegexCharacters(str) {
+   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
  }
 
  onSuggestionsClearRequested=() =>{
@@ -207,9 +193,12 @@ class HeaderXl extends React.Component{
      </span>
    );
  }
+
  getSuggestionValue(suggestion){
    return suggestion.name;
  }
+
+
  renderSearchBarXL(){
    const value = this.state.city;
    const suggestions = this.state.suggestions;
@@ -225,50 +214,22 @@ class HeaderXl extends React.Component{
        <Autosuggest
          theme={theme}
          suggestions={suggestions}
-         onKeyDown={(event)=>{}}
+         onSuggestionSelected={(selected)=>{this.setState({city:selected.target.innerText},()=>{this.handleClick()})}}
          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-         getSuggestionValue={getSuggestionValue}
-         renderSuggestion={renderSuggestion}
+         getSuggestionValue={this.getSuggestionValue}
+         renderSuggestion={this.renderSuggestion}
          inputProps={inputProps} />
        </div>
      );
    }
  }
- // <Typeahead options={listOfCity}
- // className="header-typeahead"
- // minLength={2}
- // align="right"
- // bsSize="sm"
- // emptyLabel="نتیجه‌ای یافت نشد"
- // maxResults={5}
- // placeholder='جستجوی مقصد'
- // selectHintOnEnter={false}
- // highlightOnlyResult={true}
- // submitFormOnEnter={true}
- // onChange={(selected)=>{
- //   if(selected.length!==0){
- //     this.setState({city:selected[0]},()=>{this.handleClick()});
- //   }
- // }}
- // renderMenu={(results,menuProps) => {
- //     return(
- //       <TypeaheadMenu {...menuProps}>
- //         {results.map((result, index) => (
- //           <TypeaheadMenuItem option={result} position={index}>
- //             {result}
- //           </TypeaheadMenuItem>
- //         ))}
- //       </TypeaheadMenu>
- //     );
- //   }}
- // />
   renderLoginPanelFirstStep(){
     return(
       <div className="login-modal-main">
         <Modal isOpen={this.state.loginPanelVisible}
           style={loginPhoneNumberStyle}
-          onRequestClose={()=>{this.setState({loginPanelVisible:false})}}>
+          onRequestClose={()=>{this.setState({loginPanelVisible:false,cellPhone:''})}}>
           <div className="login1-modal">
             <p className="login-title-in-modal"> ورود / ثبت‌نام  </p>
             <div className="header-login-modal-divider">
@@ -373,7 +334,7 @@ class HeaderXl extends React.Component{
      });
   }
   closeLoginPanel(){
-    this.setState({loginPanelVisible2:false});
+    this.setState({loginPanelVisible2:false,cellPhone:''});
   }
   renderLoginButton(){
     if (this.state.isLoggedIn !== 'true'){
@@ -530,15 +491,14 @@ class HeaderXl extends React.Component{
                 <div>
                   <Link className='logolink' to="/"><p className='logofont'>تریپین</p></Link>
                 </div>
-                <div className="header-searchbar">
-                  {this.renderSearchBarXL()}
-                </div>
               </div>
           </div>
         </div>
       </div>
     );
   }
+
+
   renderRelevantHeaderBasedOnURL(){
       return(
         <Sticky>
@@ -552,14 +512,6 @@ class HeaderXl extends React.Component{
           }}
         </Sticky>
       );
-    // else{
-    //   return(
-    //     <div>
-    //       {this.renderHeaderXl()}
-    //       {this.renderDownloadAppModal()}
-    //     </div>
-    //   );
-    // }
   }
 
   render(){

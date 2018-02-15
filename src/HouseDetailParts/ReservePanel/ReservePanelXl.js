@@ -5,10 +5,6 @@ import { englishToPersianDigits} from '../../tools/EnglishToPersianDigits';
 import {findDOMNode} from 'react-dom';
 // import {Modal} from 'react-bootstrap';
 import Modal from 'react-modal';
-import $ from 'jquery';
-import '../../tools/DatePicker/bootstrap-datepicker.fa.js';
-import '../../tools/DatePicker/bootstrap-datepicker.js';
-import '../../tools/DatePicker/bootstrap-datepicker.css';
 import {reserveModalStyle} from '../../Styles.js';
 import moment from 'moment-jalaali';
 import {parsePrice3digits} from '../../tools/ParsePrice3digits.js';
@@ -159,10 +155,6 @@ class ReservePanelXl extends React.Component{
     this.setState({token:localStorage['token']},()=>{this.UpdatePrice()});
   }
 
-  componentWillMount () {
-    this.renderFromDatePicker();
-    this.renderToDatePicker();
-  }
 
   componentDidMount(){
     this.interval = setInterval(() => this.setToken(), 2000);
@@ -296,33 +288,6 @@ class ReservePanelXl extends React.Component{
    });
   }
 
-  renderFromDatePicker(){
-    const fromDatePicker = findDOMNode(this.refs.fromdatepicker);
-    $(document).ready(function(){
-      $(fromDatePicker).datepicker({
-        changeMonth: true,
-        changeYear: true,
-        isRTL: true,
-        numberOfMonths:1,
-        showOtherMonths:false,
-        showButtonPanel:true,
-        dateFormat: "yy/m/d",
-       });
-    });
-  }
-  renderToDatePicker(){
-    const toDatePicker = findDOMNode(this.refs.todatepicker);
-    $(document).ready(function(){
-      $(toDatePicker).datepicker({
-        changeMonth: true,
-        changeYear: true,
-        isRTL: true,
-        numberOfMonths:1,
-        showButtonPanel:true,
-        dateFormat: "yy/m/d",
-       });
-    });
-  }
   renderPriceDetails(){
         return(
           <div dir="rtl" className="reserve-panel-total-price">
@@ -483,8 +448,6 @@ class ReservePanelXl extends React.Component{
 
 
   render(){
-    {this.renderToDatePicker()}
-    {this.renderFromDatePicker()}
     return(
       <div>
         {this.renderPreBill()}
