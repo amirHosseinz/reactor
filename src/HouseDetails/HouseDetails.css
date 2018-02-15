@@ -5,11 +5,19 @@
 }
 .house-details-top-division{
   height : 700px;
+  width: 100%;
   background-color: white;
 }
 .house-details-gallery{
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row;
   height: 480px;
-  background-color: grey;
+  margin-left:auto;
+  margin-right:auto;
+  /* margin-right:50%; */
+  background-color: white;
 }
 .house-details-main-information{
   height: 220px;
@@ -17,6 +25,11 @@
   margin: auto;
 }
 .house-details-bottom-division{
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row;
+
   width: 1080px;
   margin: auto;
   justify-content: space-between;
@@ -33,11 +46,19 @@
   text-align: justify;
   direction : rtl;
 }
-.house-details-menu-link-scrolls{
+.house-details-menu-link-scrolls-not-sticky{
+  width : 685px;
   padding-top: 0px !important;
   padding-right: 0px !important;
   direction : ltr !important;
   height: 48px;
+}
+.house-details-menu-link-scrolls-sticky{
+  margin-top:60px;
+  border-bottom : solid 2px #c7c7c7;
+  z-index: 1;
+  background-color: #fff;
+  height: 50px;
 }
 .house-details-amenities-description{
   margin-top: 5px !important;
@@ -115,6 +136,21 @@
   font-weight: 500;
   margin-top: 16px !important;
 }
+.navigation-menu-items:hover{
+  color : #12b2ce;
+}
+.navigation-menu-items-active{
+  margin-left: 18px;
+  cursor : pointer;
+  color : #12b2ce;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 16px !important;
+}
+.navigation-menu-items-active:hover{
+  color : #008ca4;
+}
+
 .house-details-location{
   margin-bottom: 100px;
 }
@@ -138,6 +174,7 @@
 }
 .house-details-map{
   margin-top : 40px !important;
+  z-index: -1000;
 }
 .house-details-host-information{
   display: -webkit-flex; /* Safari */
@@ -205,6 +242,7 @@ border-width: 2px;
 }
 .house-details-other-rules-icon{
   width: 20px;
+  height:20px;
   align-items: center;
   justify-content: center;
 }
@@ -245,20 +283,53 @@ border-width: 2px;
   font-size: 14px;
   font-weight: 300;
 }
+
 .house-details-reserve-panel-not-sticky{
   width: 385px;
   height : 400px;
-  margin-top :-55px;
+  margin-top :-96px;
+  /* padding-top: 25px !important; */
+  border: solid;
+  border-color: #c7c7c7;
+  border-width: 2px;
+  background-color: #fcfcfc;
 }
+
 .house-details-reserve-panel-sticky{
   width: 385px;
   height : 400px;
-  margin-top:65px;
+  margin-top:66px;
+  border: solid;
+  border-color: #c7c7c7;
+  border-width: 2px;
+  background-color: #fcfcfc;
 }
 
 .house-details-reserve-panel-price-description{
-
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .house-details-reserve-panel-form{
   height : 300px;
+}
+.house-details-price{
+  font-size: 22px;
+  font-weight: 600;
+  color: #FF5A5A;
+}
+.house-details-price-pernight-label{
+  color: #737373;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.house-details-preview{
+   height: 480px;
+   margin-right:2px;
+   margin-left:2px;
+   border: 1px ;
+   border-radius : 4px;
 }

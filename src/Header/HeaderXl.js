@@ -11,30 +11,28 @@ import {downloadAppModalStyle,loginPasswordStyle, loginPhoneNumberStyle, loginPa
 // import {Modal} from 'react-bootstrap';
 import {englishToPersianDigits,persianArabicToEnglishDigits} from '../tools/EnglishToPersianDigits';
 import {Image} from 'react-bootstrap';
-// import { Typeahead ,menuItemContainer,MenuItem,Menu as TypeaheadMenu} from '../tools/react-bootstrap-typeahead';
 import Modal from 'react-modal';
 import {Sticky} from 'react-sticky';
 import Autosuggest from 'react-autosuggest';
 Modal.setAppElement('#root');
 
 const theme ={
-  container:                'container',
-  containerOpen:            'container--open',
-  input:                    'input',
-  inputOpen:                'input--open',
-  inputFocused:             'input--focused',
-  suggestionsContainer:     'suggestions-container',
-  suggestionsContainerOpen: 'suggestions-container--open',
-  suggestionsList:          'suggestions-list',
-  suggestion:               'suggestion',
-  suggestionFirst:          'suggestion--first',
-  suggestionHighlighted:    'suggestion--highlighted',
-  sectionContainer:         'section-container',
-  sectionContainerFirst:    'section-container--first',
-  sectionTitle:             'section-title'
+  container:                'header-searchbar-container',
+  containerOpen:            'header-searchbar-container--open',
+  input:                    'header-searchbar-input',
+  inputOpen:                'header-searchbar-input--open',
+  inputFocused:             'header-searchbar-input--focused',
+  suggestionsContainer:     'header-searchbar-suggestions-container',
+  suggestionsContainerOpen: 'header-searchbar-suggestions-container--open',
+  suggestionsList:          'header-searchbar-suggestions-list',
+  suggestion:               'header-searchbar-suggestion',
+  suggestionFirst:          'header-searchbar-suggestion--first',
+  suggestionHighlighted:    'header-searchbar-suggestion--highlighted',
+  sectionContainer:         'header-searchbar-section-container',
+  sectionContainerFirst:    'header-searchbar-section-container--first',
+  sectionTitle:             'header-searchbar-section-title',
 };
 
-// const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
   {name:'اصفهان',},
   {name:'نوشهر',},
@@ -74,10 +72,6 @@ const listOfCity = [
   {name:'نشتارود'},
   {name:'کلارآباد'},
 ];
-
-function getSuggestionValue(suggestion) {
-  return suggestion.name;
-}
 
 class HeaderXl extends React.Component{
   constructor (props){
@@ -198,29 +192,36 @@ class HeaderXl extends React.Component{
    return suggestion.name;
  }
 
+ onSuggestionSelected =(event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method })=>{
+   this.setState({city:suggestionValue},()=>{this.setState({city:''});this.handleClick()})
+ }
 
  renderSearchBarXL(){
    const value = this.state.city;
    const suggestions = this.state.suggestions;
-   if(window.location.href.indexOf('search')===-1 && window.location.pathname!=='/'){
+
+   if(window.location.pathname!=='/'){
      const inputProps = {
-     placeholder: 'مقصد خود را وارد کنید',
-     type: 'search',
+     placeholder: 'جستجوی مقصد...',
      value:this.state.city,
      onChange:this.onChangeSearchBarValue
   };
      return(
        <div className='header-search-bar'>
-       <Autosuggest
-         theme={theme}
-         suggestions={suggestions}
-         onSuggestionSelected={(selected)=>{this.setState({city:selected.target.innerText},()=>{this.handleClick()})}}
-         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-         onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-         getSuggestionValue={this.getSuggestionValue}
-         renderSuggestion={this.renderSuggestion}
-         inputProps={inputProps} />
-       </div>
+         <Autosuggest
+           theme={theme}
+           highlightFirstSuggestion={true}
+           suggestions={suggestions}
+           onSuggestionSelected = {this.onSuggestionSelected}
+           onKeyDown={(event)=>{}}
+           onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+           onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+           getSuggestionValue={getSuggestionValue}
+           renderSuggestion={renderSuggestion}
+           inputProps={inputProps}>
+           </Autosuggest>
+          <img src={require('../Images/header-search-icon.svg')} onClick={()=>{this.handleClick()}} className="header-search-icon" alt = 'تریپین'></img>
+        </div>
      );
    }
  }
@@ -509,7 +510,6 @@ class HeaderXl extends React.Component{
       </div>
     );
   }
-
 
   renderRelevantHeaderBasedOnURL(){
       return(

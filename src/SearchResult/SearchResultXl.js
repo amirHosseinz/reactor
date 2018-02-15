@@ -14,31 +14,6 @@ import '../tools/calendar2/initialize.js';
 import '../tools/calendar2/lib/css/_datepicker.css';
 import {DateRangePicker} from '../tools/calendar2';
 
-
-// import ThemedStyleSheet from 'react-with-styles/lib/ThemedStyleSheet';
-// import aphroditeInterface from 'react-with-styles-interface-aphrodite';
-// import DefaultTheme from '../tools/calendar/lib/theme/DefaultTheme';
-//
-//
-// ThemedStyleSheet.registerInterface(aphroditeInterface);
-// ThemedStyleSheet.registerTheme({
-//   reactDates: {
-//     zIndex : 1,
-//     ...DefaultTheme.reactDates,
-//     color: {
-//       ...DefaultTheme.reactDates.color,
-//       highlighted: {
-//         backgroundColor: '#82E0AA',
-//         backgroundColor_active: '#58D68D',
-//         backgroundColor_hover: '#58D68D',
-//         color: '#186A3B',
-//         color_active: '#186A3B',
-//         color_hover: '#186A3B',
-//       },
-//     },
-//   },
-// });
-
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
   'اصفهان',
@@ -255,7 +230,6 @@ class SearchResultXl extends React.Component{
                 </div>
               </div>
             </div>
-
           <div className="render-houses-row">
             <div className="padding-search-results-top">
             </div>
@@ -271,6 +245,31 @@ class SearchResultXl extends React.Component{
       </div>
     );
   }
+
+  // <img className="date-icon-start-date" src={require('../Images/date-icon.png')} alt="" width='20' height='20' />
+  // <img className="date-icon-end-date" src={require('../Images/date-icon.png')} alt="" width='20' height='20' />
+  // <DateRangePicker
+  //   startDatePlaceholderText="تاریخ ورود"
+  //   endDatePlaceholderText="تاریخ خروج"
+  //   startDate={this.state.startDate}
+  //   readOnly={true}
+  //   customArrowIcon={<div></div>}
+  //   anchorDirection="right"
+  //   hideKeyboardShortcutsPanel={true}
+  //   numberOfMonths={2}
+  //   isRTL={true}
+  //   startDateId="your_unique_start_date_id"
+  //   endDate={this.state.endDate}
+  //   endDateId="your_unique_end_date_id"
+  //   onClose={()=>{this.setSearchParams()}}
+  //   onDatesChange={({startDate,endDate})=>{this.setState({startDate:startDate,endDate:endDate})}}
+  //   focusedInput={this.state.focusedInput}
+  //   reopenPickerOnClearDates={true}
+  //   withClearDatesButton={true}
+  //   onFocusChange={focusedInput => this.setState({focusedInput})}
+  //   renderMonth={(month) => momentJalaali(month).format('jMMMM jYYYY')}
+  //   renderDayContents={(day) => momentJalaali(day).format('jD')}
+  //   keepOpenOnDateSelect={false}/>
 
   renderHousesCol5 () {
     var results = [];

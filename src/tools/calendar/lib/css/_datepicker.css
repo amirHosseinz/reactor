@@ -168,7 +168,7 @@
 .DateRangePicker_picker {
   z-index: 1000;
   background-color: #fff;
-  position: absolute;
+  position: absolute
 }
 .DateRangePicker_picker__rtl {
   direction: rtl

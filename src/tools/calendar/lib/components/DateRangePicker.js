@@ -677,34 +677,36 @@ exports['default'] = (0, _reactWithStyles.withStyles)(function (_ref) {
       color = _ref$reactDates.color,
       zIndex = _ref$reactDates.zIndex;
   return {
-    DateRangePicker2: {
+    DateRangePicker: {
       position: 'relative',
       display: 'inline-block'
     },
 
-    DateRangePicker2__block: {
+
+    DateRangePicker__block: {
       display: 'block'
     },
 
-    DateRangePicker2_picker: {
+    DateRangePicker_picker: {
       zIndex: zIndex + 1,
       backgroundColor: color.background,
       position: 'absolute'
     },
 
-    DateRangePicker2_picker__rtl: {
+    DateRangePicker_picker__rtl: {
       direction: 'rtl'
     },
 
-    DateRangePicker2_picker__directionLeft: {
+    DateRangePicker_picker__directionLeft: {
       left: 0
     },
 
-    DateRangePicker2_picker__directionRight: {
+    DateRangePicker_picker__directionRight: {
       right: 0
     },
 
-    DateRangePicker2_picker__portal: {
+    DateRangePicker_picker__portal: {
+
       backgroundColor: 'rgba(0, 0, 0, 0.3)',
       position: 'fixed',
       top: 0,
@@ -713,11 +715,12 @@ exports['default'] = (0, _reactWithStyles.withStyles)(function (_ref) {
       width: '100%'
     },
 
-    DateRangePicker2_picker__fullScreenPortal: {
+
+    DateRangePicker_picker__fullScreenPortal: {
       backgroundColor: color.background
     },
 
-    DateRangePicker2_closeButton: {
+    DateRangePicker_closeButton: {
       background: 'none',
       border: 0,
       color: 'inherit',
@@ -743,10 +746,12 @@ exports['default'] = (0, _reactWithStyles.withStyles)(function (_ref) {
       }
     },
 
-    DateRangePicker2_closeButton_svg: {
+
+    DateRangePicker_closeButton_svg: {
       height: 15,
       width: 15,
       fill: color.core.grayLighter
     }
   };
-})(DateRangePicker2);
+})(DateRangePicker);
+
