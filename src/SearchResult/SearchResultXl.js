@@ -3,13 +3,41 @@ import { findDOMNode } from 'react-dom';
 import { Button } from 'semantic-ui-react';
 import { Typeahead ,MenuItem,Menu , menuItemContainer} from '../tools/react-bootstrap-typeahead';
 import SearchResultItem from '../SearchResultItem';
-import $ from 'jquery';
-import '../tools/DatePicker/bootstrap-datepicker.fa.js';
-import '../tools/DatePicker/bootstrap-datepicker.js';
-import '../tools/DatePicker/bootstrap-datepicker.css';
+
 import GuestNumberSearchBar from '../GuestNumberSearchBar.js'
 import {Dropdown} from 'semantic-ui-react';
 import "./SearchResult.css";
+import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
+
+// import momentJalaali from 'moment-jalaali';
+// import '../tools/calendar2/initialize.js';
+// import '../tools/calendar2/lib/css/_datepicker.css';
+// import {DateRangePicker} from '../tools/calendar2';
+
+
+// import ThemedStyleSheet from 'react-with-styles/lib/ThemedStyleSheet';
+// import aphroditeInterface from 'react-with-styles-interface-aphrodite';
+// import DefaultTheme from '../tools/calendar/lib/theme/DefaultTheme';
+//
+//
+// ThemedStyleSheet.registerInterface(aphroditeInterface);
+// ThemedStyleSheet.registerTheme({
+//   reactDates: {
+//     zIndex : 1,
+//     ...DefaultTheme.reactDates,
+//     color: {
+//       ...DefaultTheme.reactDates.color,
+//       highlighted: {
+//         backgroundColor: '#82E0AA',
+//         backgroundColor_active: '#58D68D',
+//         backgroundColor_hover: '#58D68D',
+//         color: '#186A3B',
+//         color_active: '#186A3B',
+//         color_hover: '#186A3B',
+//       },
+//     },
+//   },
+// });
 
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
@@ -57,9 +85,12 @@ class SearchResultXl extends React.Component{
       city: null,
       houseList:[],
       token: null,
+      showGuestNumberPicker:false,
       numberOfGuests: 1,
       OpenDropDown:false,
       Counter:false,
+      startDate:null,
+      endDate:null,
       searchParams : {
         location: '',
         start_date: new Date(),
@@ -79,16 +110,16 @@ class SearchResultXl extends React.Component{
     this.setState({token : this.getRelevantToken()},()=>{this.setSearchParams()});
   }
 
+  // componentWillReceiveProps(){
+  //   this.setState({token : this.getRelevantToken()},()=>{this.setSearchParams()});
+  // }
 
-  componentWillReceiveProps(){
-    this.setState({token : this.getRelevantToken()},()=>{this.setSearchParams()});
-  }
   setSearchParams(){
     var spar = {
       location: this.state.city,
-      start_date: this.state.searchParams.start_date,
-      end_date: this.state.searchParams.end_date,
-      capacity: 1,
+      start_date: this.state.startDate,
+      end_date: this.state.endDate,
+      capacity: this.state.numberOfGuests,
     };
     this.setState({
       searchParams: spar
@@ -128,11 +159,13 @@ class SearchResultXl extends React.Component{
   }
 
   renderGuest(){
-    return(
-      <div>
-        <GuestNumberSearchBar changeNumberOfGuests={this.changeNumberOfGuests.bind(this)} />
-      </div>
-    );
+    if(this.state.showGuestNumberPicker===true){
+      return(
+        <div className="searcu-result-guest-number-dropdown"ref={node=>{this.node=node}}>
+          <GuestNumberSearchBar guestNumber={this.state.numberOfGuests} changeNumberOfGuests={this.changeNumberOfGuests.bind(this)} />
+        </div>
+      );
+    }
   }
 
 
@@ -158,23 +191,28 @@ class SearchResultXl extends React.Component{
        this.props.history.replace("/search/" + this.state.city);
     }
   }
+  handleOutsideClick = (e)=>{
+    if (this.node.contains(e.target)) {
+      return;
+    }
+    this.openGuestNumberDropdown();
+  }
+
+  openGuestNumberDropdown(){
+    if (!this.state.showGuestNumberPicker) {
+      document.addEventListener('click', this.handleOutsideClick, false);
+    }
+    else {
+      document.removeEventListener('click', this.handleOutsideClick, false);
+      this.setSearchParams();
+    }
+    this.setState(prevState => ({showGuestNumberPicker: !prevState.showGuestNumberPicker}));
+  }
   renderSearchBarInDetails(){
     return(
       <div className="render-results row">
             <div className="results-search">
-              <div className="results-serach-child">
 
-                <div className="search-inputs">
-                  <div className="multi-input-1">
-                    <input className="form-control1" placeholder={this.state.numberOfGuests + " نفر "} style={{direction:'rtl',textAlign:'center'}}/>
-                    <div className="serach-result-number-of-guests-input"  >
-                      {this.renderGuest()}
-                    </div>
-                  </div>
-
-
-                </div>
-              </div>
             </div>
           <div className="render-houses-row">
             <div className="padding-search-results-top">
@@ -191,6 +229,31 @@ class SearchResultXl extends React.Component{
       </div>
     );
   }
+
+  // <img className="date-icon-start-date" src={require('../Images/date-icon.png')} alt="" width='20' height='20' />
+  // <img className="date-icon-end-date" src={require('../Images/date-icon.png')} alt="" width='20' height='20' />
+  // <DateRangePicker
+  //   startDatePlaceholderText="تاریخ ورود"
+  //   endDatePlaceholderText="تاریخ خروج"
+  //   startDate={this.state.startDate}
+  //   readOnly={true}
+  //   customArrowIcon={<div></div>}
+  //   anchorDirection="right"
+  //   hideKeyboardShortcutsPanel={true}
+  //   numberOfMonths={2}
+  //   isRTL={true}
+  //   startDateId="your_unique_start_date_id"
+  //   endDate={this.state.endDate}
+  //   endDateId="your_unique_end_date_id"
+  //   onClose={()=>{this.setSearchParams()}}
+  //   onDatesChange={({startDate,endDate})=>{this.setState({startDate:startDate,endDate:endDate})}}
+  //   focusedInput={this.state.focusedInput}
+  //   reopenPickerOnClearDates={true}
+  //   withClearDatesButton={true}
+  //   onFocusChange={focusedInput => this.setState({focusedInput})}
+  //   renderMonth={(month) => momentJalaali(month).format('jMMMM jYYYY')}
+  //   renderDayContents={(day) => momentJalaali(day).format('jD')}
+  //   keepOpenOnDateSelect={false}/>
 
   renderHousesCol5 () {
     var results = [];
