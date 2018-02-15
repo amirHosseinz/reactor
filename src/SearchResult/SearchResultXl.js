@@ -9,35 +9,10 @@ import {Dropdown} from 'semantic-ui-react';
 import "./SearchResult.css";
 import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
 
-// import momentJalaali from 'moment-jalaali';
-// import '../tools/calendar2/initialize.js';
-// import '../tools/calendar2/lib/css/_datepicker.css';
-// import {DateRangePicker} from '../tools/calendar2';
-
-
-// import ThemedStyleSheet from 'react-with-styles/lib/ThemedStyleSheet';
-// import aphroditeInterface from 'react-with-styles-interface-aphrodite';
-// import DefaultTheme from '../tools/calendar/lib/theme/DefaultTheme';
-//
-//
-// ThemedStyleSheet.registerInterface(aphroditeInterface);
-// ThemedStyleSheet.registerTheme({
-//   reactDates: {
-//     zIndex : 1,
-//     ...DefaultTheme.reactDates,
-//     color: {
-//       ...DefaultTheme.reactDates.color,
-//       highlighted: {
-//         backgroundColor: '#82E0AA',
-//         backgroundColor_active: '#58D68D',
-//         backgroundColor_hover: '#58D68D',
-//         color: '#186A3B',
-//         color_active: '#186A3B',
-//         color_hover: '#186A3B',
-//       },
-//     },
-//   },
-// });
+import momentJalaali from 'moment-jalaali';
+import '../tools/calendar2/initialize.js';
+import '../tools/calendar2/lib/css/_datepicker.css';
+import {DateRangePicker} from '../tools/calendar2';
 
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
@@ -212,7 +187,48 @@ class SearchResultXl extends React.Component{
     return(
       <div className="render-results row">
             <div className="results-search">
-
+              <div className="results-serach-child">
+                <div className="search-results-filters-container">
+                  <p className="search-result-filter-label"> :فیلترها </p>
+                  <div>
+                    <button onClick={()=>{this.openGuestNumberDropdown()}}className="search-result-filter-button"  style={{direction:'rtl',textAlign:'center'}}>
+                      <span>
+                        <img src={require('../Images/guest-number-icon.png')} className='guest-number-icon' alt=""/>
+                      </span>
+                       {englishToPersianDigits(this.state.numberOfGuests)} مهمان
+                    </button>
+                    <div className="serach-result-number-of-guests-input">
+                      {this.renderGuest()}
+                    </div>
+                  </div>
+                  <div>
+                    <img className="date-icon-start-date" src={require('../Images/date-icon.png')} alt="" width='20' height='20' />
+                    <img className="date-icon-end-date" src={require('../Images/date-icon.png')} alt="" width='20' height='20' />
+                    <DateRangePicker
+                      startDatePlaceholderText="تاریخ ورود"
+                      endDatePlaceholderText="تاریخ خروج"
+                      startDate={this.state.startDate}
+                      readOnly={true}
+                      customArrowIcon={<div></div>}
+                      anchorDirection="right"
+                      hideKeyboardShortcutsPanel={true}
+                      numberOfMonths={2}
+                      isRTL={true}
+                      startDateId="your_unique_start_date_id"
+                      endDate={this.state.endDate}
+                      endDateId="your_unique_end_date_id"
+                      onClose={()=>{this.setSearchParams()}}
+                      onDatesChange={({startDate,endDate})=>{this.setState({startDate:startDate,endDate:endDate})}}
+                      focusedInput={this.state.focusedInput}
+                      reopenPickerOnClearDates={true}
+                      withClearDatesButton={true}
+                      onFocusChange={focusedInput => this.setState({focusedInput})}
+                      renderMonth={(month) => momentJalaali(month).format('jMMMM jYYYY')}
+                      renderDayContents={(day) => momentJalaali(day).format('jD')}
+                      keepOpenOnDateSelect={false}/>
+                  </div>
+                </div>
+              </div>
             </div>
           <div className="render-houses-row">
             <div className="padding-search-results-top">

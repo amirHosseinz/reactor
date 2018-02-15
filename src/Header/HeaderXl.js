@@ -7,7 +7,7 @@ import {Button,Divider} from 'semantic-ui-react';
 import {Dropdown} from 'semantic-ui-react';
 
 import '../Styles/Header-SearchBar.css';
-import {downloadAppModalStyle,loginPasswordStyle, loginPhoneNumberStyle, loginPanelmobileStyle} from '../Styles.js';
+import {downloadAppModalStyle,loginPasswordStyle, loginPhoneNumberStyle, loginPanelmobileStyle , loginVerifySmsXl} from '../Styles.js';
 // import {Modal} from 'react-bootstrap';
 import {englishToPersianDigits,persianArabicToEnglishDigits} from '../tools/EnglishToPersianDigits';
 import {Image} from 'react-bootstrap';
@@ -73,29 +73,6 @@ const listOfCity = [
   {name:'کلارآباد'},
 ];
 
-function getSuggestions(value) {
-  const escapedValue = escapeRegexCharacters(value.trim());
-
-  if (escapedValue === '') {
-    return [];
-  }
-  const regex = new RegExp('^' + escapedValue, 'i');
-  return listOfCity.filter(city => regex.test(city.name));
-}
-
-function getSuggestionValue(suggestion) {
-  return suggestion.name;
-}
-
-function renderSuggestion(suggestion) {
-  return (
-    <span>{suggestion.name}</span>
-  );
-}
-
-function escapeRegexCharacters(str) {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
 class HeaderXl extends React.Component{
   constructor (props){
     super(props);
@@ -152,23 +129,15 @@ class HeaderXl extends React.Component{
     this.setState({loginPanelVisible:true});
   }
   getUserHasPasswordByEnter(event){
+    // console.log(event.key);
     if(event.key === 'Enter'){
       this.getUserHasPassword();
     }
-    if(this.state.cellPhone.length===11){
-      if(event.key!=="Backspace"){
-        event.preventDefault()
-      }
-    }
-    if (event.keyCode<48 || event.keyCode>57){
+    if (['0','1','2','3','4','5','6','7','8','9'].indexOf(event.key)===-1){
       if(event.key!=="Backspace"){
         event.preventDefault();
       }
     }
- }
-
- closeLoginPanel(){
-   this.setState({loginPanelVisible2:false});
  }
 
  handleClick(){
@@ -187,8 +156,22 @@ class HeaderXl extends React.Component{
  };
  onSuggestionsFetchRequested=({value})=> {
    this.setState({
-     suggestions: getSuggestions(value)
+     suggestions: this.getSuggestions(value)
    });
+ }
+
+ getSuggestions(value) {
+   const escapedValue = this.escapeRegexCharacters(value.trim());
+
+   if (escapedValue === '') {
+     return [];
+   }
+   const regex = new RegExp('^' + escapedValue, 'i');
+   return listOfCity.filter(city => regex.test(city.name));
+ }
+
+ escapeRegexCharacters(str) {
+   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
  }
 
  onSuggestionsClearRequested=() =>{
@@ -216,6 +199,7 @@ class HeaderXl extends React.Component{
  renderSearchBarXL(){
    const value = this.state.city;
    const suggestions = this.state.suggestions;
+
    if(window.location.pathname!=='/'){
      const inputProps = {
      placeholder: 'جستجوی مقصد...',
@@ -224,7 +208,6 @@ class HeaderXl extends React.Component{
   };
      return(
        <div className='header-search-bar'>
-
          <Autosuggest
            theme={theme}
            highlightFirstSuggestion={true}
@@ -238,7 +221,7 @@ class HeaderXl extends React.Component{
            inputProps={inputProps}>
            </Autosuggest>
           <img src={require('../Images/header-search-icon.svg')} onClick={()=>{this.handleClick()}} className="header-search-icon" alt = 'تریپین'></img>
-         </div>
+        </div>
      );
    }
  }
@@ -247,31 +230,34 @@ class HeaderXl extends React.Component{
       <div className="login-modal-main">
         <Modal isOpen={this.state.loginPanelVisible}
           style={loginPhoneNumberStyle}
-          onRequestClose={()=>{this.setState({loginPanelVisible:false})}}>
+          onRequestClose={()=>{this.setState({loginPanelVisible:false,cellPhone:''})}}>
           <div className="login1-modal">
-            <p className="login-title-in-modal"> ورود/ عضویت </p>
-            <Divider/>
-            <p className="enter-phone-number-inmodal"> :برای ورود یا ثبت‌نام شماره تلفن همراه خود را وارد کنید </p>
-              <div dir="rtl" className="enter-number-main" >
-                <input
-                  maxLength="11"
-                  id="tel-number"
-                  value={this.state.cellPhone}
-                  onAfterOpen={()=>{document.body.style.overflow="hidden"}}
-                  onChange={(event)=>{this.setState({cellPhone:englishToPersianDigits(event.target.value)})}}
-                  autoComplete="off"
-                  autoFocus={true}
-                  className="login-input hidden-xs visible-xl"
-                  placeholder="مثال: ۰۹۱۲۰۰۰۰۰۰۰"
-                  type="text"
-                  onKeyDown ={(event)=> {this.getUserHasPasswordByEnter(event)}}
-                  />
-                  <div className="divider-x"></div>
-                  <br/>
-                  <br/>
-                  <Button color="blue" onClick={this.getUserHasPassword.bind(this)} className="login-modal-button">
-                  ورود / ثبت‌نام
-                  </Button>
+            <p className="login-title-in-modal"> ورود / ثبت‌نام  </p>
+            <div className="header-login-modal-divider">
+            </div>
+              <div className="header-login-modal-content-container">
+                <p className="enter-phone-number-inmodal"> :برای ورود یا ثبت‌نام شماره تلفن همراه خود را وارد کنید </p>
+                <div dir="rtl">
+                  <p className="header-login-modal-input-label"> شماره موبایل: </p>
+                  <input
+                      maxLength="11"
+                      id="tel-number"
+                      value={this.state.cellPhone}
+                      onAfterOpen={()=>{document.body.style.overflow="hidden"}}
+                      onChange={(event)=>{this.setState({cellPhone:englishToPersianDigits(event.target.value)})}}
+                      autoComplete="off"
+                      autoFocus={true}
+                      className="header-login-modal-input"
+                      placeholder="مثال: ۰۹۱۲۰۰۰۰۰۰۰"
+                      type="text"
+                      onKeyDown ={(event)=> {this.getUserHasPasswordByEnter(event)}}
+                      />
+                      <br/>
+                      <br/>
+                      <button className="header-login-modal-button" onClick={this.getUserHasPassword.bind(this)}>
+                        ادامه
+                      </button>
+                </div>
               </div>
             </div>
         </Modal>
@@ -281,6 +267,7 @@ class HeaderXl extends React.Component{
   }
 
   renderLoginPanelSecondStep(){
+    if (this.state.hasPassword===true){
       return(
         <Modal isOpen={this.state.loginPanelVisible2}
           style={loginPasswordStyle}
@@ -288,6 +275,17 @@ class HeaderXl extends React.Component{
           <Login closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
         </Modal>
       );
+    }
+    else{
+      return(
+        <Modal isOpen={this.state.loginPanelVisible2}
+          style={loginVerifySmsXl}
+          onRequestClose={()=>{this.setState({loginPanelVisible2:false})}}>
+          <Login closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
+        </Modal>
+      );
+    }
+
   }
   renderUserPhoto(){
      if(localStorage['user-profile-picture']==='null'||localStorage['user-profile-picture']===undefined){
@@ -349,7 +347,7 @@ class HeaderXl extends React.Component{
      });
   }
   closeLoginPanel(){
-    this.setState({loginPanelVisible2:false});
+    this.setState({loginPanelVisible2:false,cellPhone:''});
   }
   renderLoginButton(){
     if (this.state.isLoggedIn !== 'true'){
@@ -506,15 +504,13 @@ class HeaderXl extends React.Component{
                 <div>
                   <Link className='logolink' to="/"><p className='logofont'>تریپین</p></Link>
                 </div>
-                <div className="header-searchbar">
-                  {this.renderSearchBarXL()}
-                </div>
               </div>
           </div>
         </div>
       </div>
     );
   }
+
   renderRelevantHeaderBasedOnURL(){
       return(
         <Sticky>
@@ -528,14 +524,6 @@ class HeaderXl extends React.Component{
           }}
         </Sticky>
       );
-    // else{
-    //   return(
-    //     <div>
-    //       {this.renderHeaderXl()}
-    //       {this.renderDownloadAppModal()}
-    //     </div>
-    //   );
-    // }
   }
 
   render(){

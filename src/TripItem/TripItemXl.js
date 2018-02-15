@@ -193,8 +193,7 @@ class TripItemXl extends React.Component{
       if(this.state.tripStatus!=='no-house')
       {
         return (
-          <div>
-            <div className="request-header">
+            <div className="request-header profile_dynamic_edit">
             <div className='request-status'>
               <p className="reserve-status-h1"> وضعیت سفر   </p>
               <p className="reserve-status-h2"> {this.getTripStatus()} </p>
@@ -227,13 +226,12 @@ class TripItemXl extends React.Component{
             <div className='relevant-button'>
               {this.getRelevantButton()}
             </div>
-            </div>
           </div>
         );
       }
       else{
         return(
-          <div className='no-trip-container'>
+          <div className='no-trip-container profile_dynamic_edit'>
           <p className="no-request-header">شما سفر تایید شده ای ندارید</p>
           <p className="no-trip-main-paragraph">تاکنون سفری برای شما به ثبت نرسیده است. شما میتوانید با ارسال درخواست رزرو به هریک از خانه های موجود ، مقدمات سفر خود را فراهم نمایید</p>
             <div className='no-trip-stages-container'>

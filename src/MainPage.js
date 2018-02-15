@@ -88,6 +88,76 @@ class MainPage extends React.Component{
        localStorage['token']= response.token;
      });
     }
+    else{
+      if(localStorage['user-username']===undefined){
+        var request = new Request('https://www.trypinn.com/api/validate/user/',{
+          method: 'POST',
+          body: JSON.stringify({
+            username : null,
+          }),
+          headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json','Authorization': 'Token '+ localStorage['token'],
+          })
+        });
+       fetch(request)
+       .then((response) => {
+         if(response.status===401 ||response.status===400){
+           localStorage['user-first-name']='';
+           localStorage['user-last-name']='';
+           localStorage['user-username']='';
+           localStorage['isLoggedIn']='false';
+           localStorage['token']='';
+           this.getGuestTokenFromServer();
+         }
+         if(response.status===200){
+           return response.json();
+         }
+       })
+       .then((response) => {
+         if(response.validated===false){
+           localStorage['user-first-name']='';
+           localStorage['user-last-name']='';
+           localStorage['user-username']='';
+           localStorage['isLoggedIn']='false';
+           localStorage['token']='';
+           this.getGuestTokenFromServer();
+         }
+       });
+      }
+      else{
+        var request = new Request('https://www.trypinn.com/api/validate/user/',{
+          method: 'POST',
+          body: JSON.stringify({
+            username : localStorage['user-username'],
+          }),
+          headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json','Authorization': 'Token '+ localStorage['token'],
+          })
+        });
+       fetch(request)
+       .then((response) => {
+         if(response.status===401 ||response.status===400){
+           localStorage['user-first-name']='';
+           localStorage['user-last-name']='';
+           localStorage['user-username']='';
+           localStorage['isLoggedIn']='false';
+           localStorage['token']='';
+           this.getGuestTokenFromServer();
+         }
+         if(response.status===200){
+           return response.json();
+         }
+       })
+       .then((response) => {
+         if(response.validated===false){
+           localStorage['user-first-name']='';
+           localStorage['user-last-name']='';
+           localStorage['user-username']='';
+           localStorage['isLoggedIn']='false';
+           localStorage['token']='';
+           this.getGuestTokenFromServer();
+         }
+       });
+      }
+    }
   }
   renderUserProfile(){
     return(

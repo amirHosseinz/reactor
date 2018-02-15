@@ -682,6 +682,7 @@ exports['default'] = (0, _reactWithStyles.withStyles)(function (_ref) {
       display: 'inline-block'
     },
 
+
     DateRangePicker__block: {
       display: 'block'
     },
@@ -705,6 +706,7 @@ exports['default'] = (0, _reactWithStyles.withStyles)(function (_ref) {
     },
 
     DateRangePicker_picker__portal: {
+
       backgroundColor: 'rgba(0, 0, 0, 0.3)',
       position: 'fixed',
       top: 0,
@@ -712,6 +714,7 @@ exports['default'] = (0, _reactWithStyles.withStyles)(function (_ref) {
       height: '100%',
       width: '100%'
     },
+
 
     DateRangePicker_picker__fullScreenPortal: {
       backgroundColor: color.background
@@ -743,6 +746,7 @@ exports['default'] = (0, _reactWithStyles.withStyles)(function (_ref) {
       }
     },
 
+
     DateRangePicker_closeButton_svg: {
       height: 15,
       width: 15,
@@ -750,3 +754,4 @@ exports['default'] = (0, _reactWithStyles.withStyles)(function (_ref) {
     }
   };
 })(DateRangePicker);
+
