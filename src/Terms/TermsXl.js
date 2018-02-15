@@ -25,7 +25,6 @@ class TermsXl extends React.Component{
   renderOpenPanel1(){
     this.setState({OpenPanel1:true});
   }
-
   renderClosePanel1(){
     this.setState({OpenPanel1:false});
   }
