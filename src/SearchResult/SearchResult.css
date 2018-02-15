@@ -63,13 +63,13 @@
   color:#454545;
 }
 
-.search-result-filter-button:hover{
+/* .search-result-filter-button:hover{
   background-color: #e3e3e3;
 }
 
 .search-result-filter-button:active{
   background-color: #e3e3e3;
-}
+} */
 
 .search-results-filters-container{
   margin: auto;
@@ -91,4 +91,17 @@
 .guest-number-icon{
   height: 16px;
   margin-left: 12px;
+}
+.date-icon-start-date{
+  z-index: 1;
+  margin-left : 266px;
+  position:absolute;
+  margin-top : 10px;
+}
+
+.date-icon-end-date{
+  z-index: 1;
+  margin-left : 120px;
+  position:absolute;
+  margin-top : 10px;
 }
