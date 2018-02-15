@@ -4,18 +4,19 @@ import {Button} from 'semantic-ui-react';
 import {englishToPersianDigits} from '../../tools/EnglishToPersianDigits';
 import {findDOMNode} from 'react-dom';
 import Modal from 'react-modal';
+
 import '../../tools/calendar/initialize.js';
 import '../../tools/calendar/lib/css/_datepicker.css';
 import {DateRangePicker} from '../../tools/calendar';
+
 import {reserveModalStyle} from '../../Styles.js';
+import momentJalaali from 'moment-jalaali';
 import moment from 'moment-jalaali';
 import {parsePrice3digits} from '../../tools/ParsePrice3digits.js';
 import './ReservePanel.css';
-import {reserveModalStyle} from '../../Styles.js';
 
 
 moment.loadPersian({usePersianDigits:false , dialect:'persian-modern'});
-
 class ReservePanelXl extends React.Component{
   constructor(props){
     super(props);
@@ -429,6 +430,7 @@ class ReservePanelXl extends React.Component{
               hideKeyboardShortcutsPanel={true}
               numberOfMonths={2}
               isRTL={true}
+              anchorDirection="right"
               startDateId="your_unique_start_date_id"
               endDate={this.state.endDate}
               endDateId="your_unique_end_date_id"

@@ -10,7 +10,7 @@ import "./SearchResult.css";
 import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
 
 import momentJalaali from 'moment-jalaali';
-import '../tools/calendar2/initialize.js';
+import '../tools/calendar/initialize.js';
 import '../tools/calendar2/lib/css/_datepicker.css';
 import {DateRangePicker} from '../tools/calendar2';
 

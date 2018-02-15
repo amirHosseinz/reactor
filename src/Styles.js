@@ -8,14 +8,13 @@ export const loginPhoneNumberStyle = {
     backgroundColor   : 'rgba(0, 0, 0, 0.7)'
   },
   content : {
-    top                        : '17%',
-    left                       : '37%',
-    right                      : '37%',
-    bottom                     : '33%',
-    outline                    : '0',
+
     padding                    : '0px',
+    margin:'auto',
     transform                  : 'translate(0%, 0%)',
     borderRadius              : '15px',
+    height: '400px',
+    width : '400px',
   }
 };
 
@@ -29,10 +28,9 @@ export const loginVerifySmsXl = {
     backgroundColor   : 'rgba(0, 0, 0, 0.7)'
   },
   content : {
-    top                        : '17%',
-    left                       : '37%',
-    right                      : '37%',
-    bottom                     : '50%',
+    height : '300px',
+    width  : '400px',
+    margin: 'auto',
     outline                    : '0',
     padding                    : '0px',
     transform                  : 'translate(0%, 0%)',
@@ -100,12 +98,10 @@ export const downloadAppModalStyle={
   },
   content : {
     fontFamily : 'IRANSans',
-    top:'50%',
-    left:'50%',
-    right:'auto',
-    bottom:'auto',
-    marginRight:'-50%',
-    transform:'translate(-50%, -50%)',
+    height : '600px',
+    width  :'610px',
+    margin : 'auto',
+    transform:'translate(0%, 0%)',
   }
 }
 export const loginPasswordStyle = {

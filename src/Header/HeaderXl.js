@@ -199,7 +199,6 @@ class HeaderXl extends React.Component{
  renderSearchBarXL(){
    const value = this.state.city;
    const suggestions = this.state.suggestions;
-
    if(window.location.pathname!=='/'){
      const inputProps = {
      placeholder: 'جستجوی مقصد...',
@@ -216,8 +215,8 @@ class HeaderXl extends React.Component{
            onKeyDown={(event)=>{}}
            onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
            onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-           getSuggestionValue={getSuggestionValue}
-           renderSuggestion={renderSuggestion}
+           getSuggestionValue={this.getSuggestionValue}
+           renderSuggestion={this.renderSuggestion}
            inputProps={inputProps}>
            </Autosuggest>
           <img src={require('../Images/header-search-icon.svg')} onClick={()=>{this.handleClick()}} className="header-search-icon" alt = 'تریپین'></img>

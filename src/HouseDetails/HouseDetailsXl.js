@@ -167,7 +167,7 @@ class HouseDetailsXl extends React.Component{
             <Element name="gallery"></Element>
             <div className="house-details-gallery">
             <Swipeable
-                trackMouse={true} 
+                trackMouse={true}
                onSwiping={this.swiping}
                onSwiped={this.swiped}
                onSwipingLeft={this.swipingLeft}
@@ -184,7 +184,7 @@ class HouseDetailsXl extends React.Component{
             </div>
           </div>
           <div className="house-details-bottom-division">
-            <Sticky topOffset={620} bottomOffset={210}>
+            <Sticky topOffset={604} bottomOffset={210}>
               {({style,isSticky})=>{
                 return(
                   <div style={style}>
