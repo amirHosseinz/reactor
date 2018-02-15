@@ -110,16 +110,16 @@ class SearchResultXl extends React.Component{
     this.setState({token : this.getRelevantToken()},()=>{this.setSearchParams()});
   }
 
+  // componentWillReceiveProps(){
+  //   this.setState({token : this.getRelevantToken()},()=>{this.setSearchParams()});
+  // }
 
-  componentWillReceiveProps(){
-    this.setState({token : this.getRelevantToken()},()=>{this.setSearchParams()});
-  }
   setSearchParams(){
     var spar = {
       location: this.state.city,
-      start_date: this.state.searchParams.start_date,
-      end_date: this.state.searchParams.end_date,
-      capacity: 1,
+      start_date: this.state.startDate,
+      end_date: this.state.endDate,
+      capacity: this.state.numberOfGuests,
     };
     this.setState({
       searchParams: spar
@@ -204,6 +204,7 @@ class SearchResultXl extends React.Component{
     }
     else {
       document.removeEventListener('click', this.handleOutsideClick, false);
+      this.setSearchParams();
     }
     this.setState(prevState => ({showGuestNumberPicker: !prevState.showGuestNumberPicker}));
   }
@@ -212,40 +213,44 @@ class SearchResultXl extends React.Component{
       <div className="render-results row">
             <div className="results-search">
               <div className="results-serach-child">
-
                 <div className="search-results-filters-container">
                   <p className="search-result-filter-label"> :فیلترها </p>
                   <div>
                     <button onClick={()=>{this.openGuestNumberDropdown()}}className="search-result-filter-button"  style={{direction:'rtl',textAlign:'center'}}>
                       <span>
-                        <img src={require('../Images/guest-number-icon.png')} className='guest-number-icon' alt=""></img>
+                        <img src={require('../Images/guest-number-icon.png')} className='guest-number-icon' alt=""/>
                       </span>
-                       {englishToPersianDigits(this.state.numberOfGuests)}   مهمان
+                       {englishToPersianDigits(this.state.numberOfGuests)} مهمان
                     </button>
                     <div className="serach-result-number-of-guests-input">
                       {this.renderGuest()}
                     </div>
                   </div>
                   <div>
+                    <img className="date-icon-start-date" src={require('../Images/date-icon.png')} alt="" width='20' height='20' />
+                    <img className="date-icon-end-date" src={require('../Images/date-icon.png')} alt="" width='20' height='20' />
                     <DateRangePicker
                       startDatePlaceholderText="تاریخ ورود"
                       endDatePlaceholderText="تاریخ خروج"
                       startDate={this.state.startDate}
+                      readOnly={true}
                       customArrowIcon={<div></div>}
+                      anchorDirection="right"
                       hideKeyboardShortcutsPanel={true}
                       numberOfMonths={2}
                       isRTL={true}
                       startDateId="your_unique_start_date_id"
                       endDate={this.state.endDate}
                       endDateId="your_unique_end_date_id"
+                      onClose={()=>{this.setSearchParams()}}
                       onDatesChange={({startDate,endDate})=>{this.setState({startDate:startDate,endDate:endDate})}}
                       focusedInput={this.state.focusedInput}
                       reopenPickerOnClearDates={true}
+                      withClearDatesButton={true}
                       onFocusChange={focusedInput => this.setState({focusedInput})}
                       renderMonth={(month) => momentJalaali(month).format('jMMMM jYYYY')}
                       renderDayContents={(day) => momentJalaali(day).format('jD')}
-                      keepOpenOnDateSelect={false}
-                     />
+                      keepOpenOnDateSelect={false}/>
                   </div>
                 </div>
               </div>
