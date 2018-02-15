@@ -266,6 +266,16 @@ class HeaderXl extends React.Component{
   }
 
   renderLoginPanelSecondStep(){
+    if (this.state.hasPassword===true){
+      return(
+        <Modal isOpen={this.state.loginPanelVisible2}
+          style={loginPasswordStyle}
+          onRequestClose={()=>{this.setState({loginPanelVisible2:false})}}>
+          <Login closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
+        </Modal>
+      );
+    }
+    else{
       return(
         <Modal isOpen={this.state.loginPanelVisible2}
           style={loginVerifySmsXl}
@@ -273,6 +283,8 @@ class HeaderXl extends React.Component{
           <Login closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
         </Modal>
       );
+    }
+
   }
   renderUserPhoto(){
      if(localStorage['user-profile-picture']==='null'||localStorage['user-profile-picture']===undefined){

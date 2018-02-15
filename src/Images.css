@@ -2551,7 +2551,8 @@ margin-top: 20px;
 .singup-fa-input{
   text-align: right !important;
   font-family: IRANSans !important;
-  width: 310px;
+  width: 325px;
+
 }
 .kolsoom{
   height: 25% !important;
@@ -3814,12 +3815,18 @@ text-align: center;
   color: #454545 !important;
   text-align: center;
 }
-
 .header-login-modal-input-label{
   font-size: 12px;
   color: #a1a1a1;
   font-family: IRANSans;
   margin-bottom: 8px !important;
+}
+.header-login-modal-input-label-right-align{
+  font-size: 12px;
+  color: #a1a1a1;
+  font-family: IRANSans;
+  margin-bottom: 5px !important;
+  text-align: right;
 }
 .header-login-modal-button{
   margin-top: 40px;
@@ -3839,8 +3846,26 @@ text-align: center;
   background-color: #008ca5;
 }
 
+.header-login-modal-button-new-user{
+  margin-top: 15px;
+  background-color: #0fb9dc;
+  border: none;
+  width: 100%;
+  height: 48px;
+  text-align: center;
+  border-radius: 25px;
+  color:white;
+  font-size: 18px;
+  font-family: IRANSans;
+  font-weight: 500;
+}
+.header-login-modal-button-new-user:hover{
+  background-color: #008ca5;
+}
+
+
 .header-login-modal-button-verify{
-  margin-top: 40px;
+  margin-top: 20px;
   background-color: #0fb9dc;
   border: none;
   width: 110px;
@@ -3868,7 +3893,7 @@ text-align: center;
 .enter-phone-number-inmodal{
   font-family: IRANSans;
   font-size: 14px;
-  font-weight: 500;فق1
+  font-weight: 500;
   text-align: right;
   padding-top: 25px;
   padding-bottom: 20px;
@@ -3898,8 +3923,12 @@ text-align: center;
   height: 50px;
 }
 .login-password{
-  width: 310px;
+  width: 325px;
+}
+.setpass-password{
+  width: 320px;
 }
 .modal-signup-items{
-  margin-top: 25px !important;
+
+  height: 80px;
 }
