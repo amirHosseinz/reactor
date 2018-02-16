@@ -1,9 +1,5 @@
 import React from 'react';
-import { findDOMNode } from 'react-dom';
-import { Button } from 'semantic-ui-react';
-import { Typeahead ,MenuItem,Menu , menuItemContainer} from '../tools/react-bootstrap-typeahead';
 import SearchResultItem from '../SearchResultItem';
-
 import GuestNumberSearchBar from '../GuestNumberSearchBar.js'
 import {Dropdown} from 'semantic-ui-react';
 import "./SearchResult.css";
@@ -15,8 +11,6 @@ import '../tools/calendar2/lib/css/_datepicker.css';
 import {DateRangePicker} from '../tools/calendar2';
 import Sticky from 'react-sticky';
 
-
-const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
   'اصفهان',
   'نوشهر',
