@@ -1,3 +1,4 @@
+/* general styles here */
 .footer-sticky{
   width:100%;
   background-color: none;
@@ -10,6 +11,7 @@
   width:100%;
   background-color: none;
 }
+
 .footerchild{
   width:100%;
   margin: auto;
@@ -82,3 +84,29 @@ color:grey;
   margin: auto;
   flex-direction: row-reverse;
 }
+
+/* general styles finished */
+
+
+/* XL styles here */
+
+
+/* XL styles Finished */
+
+
+/* MD styles here */
+
+
+/* MD styles Finished */
+
+
+/* SM styles here */
+
+
+/* SM styles Finished */
+
+
+/* XS styles here */
+
+
+/* XS styles Finished */

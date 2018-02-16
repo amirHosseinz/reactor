@@ -26,7 +26,7 @@ class Footer extends React.Component{
 
   renderFooterMd(){
     return(
-      <div className="hidden-xs hidden-xl hidden-sm visible-md">
+      <div className=" visible-md hidden-xs hidden-xl hidden-sm ">
         <FooterMd />
       </div>
     );
@@ -44,6 +44,9 @@ class Footer extends React.Component{
     return (
       <div>
         {this.renderFooterXl()}
+        {this.renderFooterMd()}
+        {this.renderFooterSm()}
+        {this.renderFooterXs()}
       </div>
 
     );
