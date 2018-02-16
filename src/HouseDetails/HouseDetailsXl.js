@@ -15,6 +15,7 @@ import SpecialRule from  '../HouseDetailParts/SpecialRule.js';
 import GuestNumber from '../HouseDetailParts/GuestNumber';
 import {Link,Element} from 'react-scroll';
 import './HouseDetails.css';
+import Lightbox from 'react-images';
 
 class HouseDetailsXl extends React.Component{
   constructor(props){
@@ -29,6 +30,8 @@ class HouseDetailsXl extends React.Component{
       scrollListFixed:false,
       showReservePanel : true,
       token: null,
+      lightboxIsOpen:false,
+      lightboxCurrentImage:0,
       searchParams : {
         id: null,
       }
@@ -126,7 +129,6 @@ class HouseDetailsXl extends React.Component{
 
 
  renderGallery(){
-   console.log(this.state.homeData);
    var imageList = this.state.homeData.images.map(
      image=>{return(
         <img src={"https://www.trypinn.com"+image.image} className="house-details-preview" width="540" height="480" alt = ""/>
@@ -142,14 +144,34 @@ class HouseDetailsXl extends React.Component{
             <div className="row-reverse">
               {imageList}
             </div>
-
+            <div onClick={()=>{this.setState({lightboxIsOpen:true})}}className="house-details-gallery-show-more">
+            مشاهده تصاویر
+            </div>
           </div>
      );
    }
  }
- // <Carousel swiping={true} slidesToShow={3}>
- //   {imageList}
- // </Carousel>
+
+
+ renderGalleryLightBox(){
+   var images = [];
+   for (var imageIndex=this.state.homeData.images.length-1;imageIndex>=0;imageIndex--){
+     images.push({src: "https://www.trypinn.com"+ this.state.homeData.images[imageIndex].image});
+   }
+   var imagesLength = images.length;
+   return(
+     <Lightbox
+    images={images}
+    currentImage={this.state.lightboxCurrentImage}
+    isOpen={this.state.lightboxIsOpen}
+    onClickPrev={()=>{this.setState((prevState)=>{return({lightboxCurrentImage:(prevState.lightboxCurrentImage-1)%imagesLength})})}}
+    showImageCount={false}
+    showThumbnails={true}
+    onClickNext={()=>{this.setState((prevState)=>{return({lightboxCurrentImage:(prevState.lightboxCurrentImage+1)%imagesLength})})}}
+    onClose={()=>{this.setState({lightboxIsOpen:false})}}
+/>
+   );
+ }
 
   renderHouseDetailsVersion2(){
     if(this.state.homeData!==''){
@@ -159,6 +181,7 @@ class HouseDetailsXl extends React.Component{
             <Element name="gallery"></Element>
             <div className="house-details-gallery">
               {this.renderGallery()}
+              {this.renderGalleryLightBox()}
             </div>
             <div className="house-details-main-information">
               <Element name="details"></Element>

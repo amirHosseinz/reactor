@@ -235,6 +235,22 @@ transform: rotate(-5deg);
   background-color:#f2f5f6 !important;
 }
 
+.contact-us-main-division{
+  font-family: IRANSans;
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom : 260px;
+  margin-top:50px;
+  height:550px;
+  /* width:76%; */
+  width : 85rem;
+  border:solid;
+  border-width: 2px;
+  border-color: #e4e4e4;
+  border-radius : 6px;
+  background-color: white;
+  padding: 15px;
+}
 .contact-us-main-division-content{
   margin:auto;
   margin-top:30px;
@@ -1291,15 +1307,7 @@ color: #42b0c6;
   min-height: 630px;
 }
 
-.results-search{
-  height: 60px;
-  background-color: white;
 
-  border-bottom: solid;
-  border-color: #ececec;
-  border-width: 2px;
-  padding-top: 10px;
-}
 .typehead-results{
   font-family:IRANSans;
   font-style: normal;
@@ -1307,11 +1315,6 @@ color: #42b0c6;
   font-weight: 400;
   color: #454545;
   text-align: right;
-}
-.results-serach-child{
-  width: 88% !important;
-  font-family: IRANSans;
-  margin: auto;
 }
 
 .multi-input-1{
@@ -1520,7 +1523,7 @@ justify-content: center;
   color:#656565;
 }
 .result-card-margins{
-  margin-bottom: 25px;
+  /* margin-bottom: 25px; */
 }
 .more-photo{
   margin-top: -100px;
@@ -1684,7 +1687,6 @@ padding-bottom: 28px;
   border: solid;
   border-width: 1px;
   border-color: #d4d4d4;
-  height: 295px;
   background-color: white;
   border-radius: 4px;
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
@@ -1823,6 +1825,10 @@ margin-top: 20px;
 }
 .requests-list-title{
   padding-top: 14px;
+  /* display: -webkit-flex; */
+  /* -webkit-flex-direction: row;
+  flex-direction: row; */
+  /* display: flex; */
 }
 .request-trip-message-container-margined{
   margin-top: 30px !important;
