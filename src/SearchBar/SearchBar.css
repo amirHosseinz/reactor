@@ -1,3 +1,4 @@
+/* general styles here */
 .search-bar-main-division{
   font-family: Shabnam;
 }
@@ -161,8 +162,27 @@
   background-color: #1ba7be;
   outline: none;
 }
-
 .search-bar-search-icon{
   height: 40px;
   margin-top: 4px;
 }
+
+
+/* general styles finished */
+
+
+/* XL styles here */
+/* XL styles Finished */
+
+
+/* MD styles here */
+/* MD styles Finished */
+
+
+/* SM styles here */
+/* SM styles Finished */
+
+
+
+/* XS styles here */
+/* XS styles Finished */
