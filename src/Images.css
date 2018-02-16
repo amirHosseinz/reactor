@@ -1,6 +1,4 @@
-.header-sticky{
-  z-index: 1000;
-}
+
 .header-not-sticky{
 
 }
@@ -643,30 +641,14 @@ margin-left: 14px;
   font-size: 16px;
   color: #454545;
 }
-.LogoImage{
-  height:44px;
-  margin-top: 8px;
-  margin-left: 10px;
-}
+
 .LogoImage-mobile{
   height:40px;
   display: block;
     margin-left: auto;
     margin-right: auto
   }
-.header{
-  width:100% !important;
-  background-color: white;
-  border-bottom: solid;
-  border-color: #ebebeb;
-  border-width:2px;
-  height:60px;
-  }
-  .hearder-child-margined{
-    width:92%;
-    margin: auto;
 
-  }
   .profile-container{
   }
   .profile-container-sts{
@@ -705,16 +687,7 @@ margin-left: 14px;
     padding-top: 8px;
     width:100%;
   }
-.headerchild{
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
-  display: flex;
-  margin: auto;
-  flex-direction: row-reverse;
-  /* height:80px; */
-  width:94%;
-  vertical-align:middle;
-  }
+
   .logomobile{
     margin: auto;
   }
@@ -727,22 +700,12 @@ margin-left: 14px;
 .logoname-mobile{
     margin: auto;
   }
-.logodiv{
-  vertical-align: middle;
-}
+
 .logodiv-mobile{
   margin-top: .4em;
 }
-.logofont{
-  font-family: IRANSans;
-  font-size: 28px;
-  font-style: normal;
-	font-weight: 500;
-  padding-top: 9px;
-  color: #12b2ce;
-}
-.logo{
-}
+
+
 .header-searchbar{
   width:100%;
   direction: rtl;
@@ -757,28 +720,22 @@ margin-left: 14px;
   color: #12b2ce;
   margin-right: .3em;
 }
-.logodiv0{
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
-  display: flex;
-  margin: auto;
-  flex-direction: row-reverse;
-}
+
 
 
 .logolink:visited {
-   text-decoration:none;
+    text-decoration: none !important;
 }
 .logolink:link {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .logolink:hover {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .logolink:active {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .logo-menu-font{
@@ -803,13 +760,13 @@ margin-left: 14px;
 
 }
 .logo-menu-font:visited {
-
+    text-decoration: none !important;
 }
 .logo-menu-font:link {
-
+    text-decoration: none !important;
 }
 .logo-menu-font:active {
-
+    text-decoration: none !important;
 }
 .logo-menu-font1{
   font-family: IRANSans;
@@ -820,11 +777,6 @@ margin-left: 14px;
   padding-top: 24px;
   color: #f56c4e;
 }
-.header-link{
-
-  text-decoration :none !important;
-}
-
 .logo-menu-font1:hover{
   font-family: IRANSans;
   font-size: 16px;
@@ -1385,15 +1337,6 @@ transform: scale(2, 2);
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(255, 255, 255, 0.2);
-}
-.header-menu-desktop{
-  font-family: IRANSans;
-  width:100%;
-  margin: auto;
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-direction: row; /* Safari 6.1+ */
-  display: flex;
-  flex-direction: row;
 }
 
 .profile-card-user-name{

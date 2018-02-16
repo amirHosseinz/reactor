@@ -1,0 +1,95 @@
+
+/* general styles here */
+
+.header-sticky{
+  z-index: 1000;
+}
+
+.header{
+  width:100% !important;
+  background-color: white;
+  border-bottom: solid;
+  border-color: #ebebeb;
+  border-width:2px;
+  height:60px;
+  }
+
+.hearder-child-margined{
+    width:100%;
+    margin: auto;
+  }
+
+.header-logo-and-search{
+    display: -webkit-flex; /* Safari */
+    -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
+    display: flex;
+    margin: auto;
+    flex-direction: row-reverse;
+    /* height:80px; */
+    width:100%;
+    vertical-align:middle;
+    }
+
+.header-logo-side{
+}
+.header-link{
+  text-decoration :none !important;
+}
+.header-link:hover{
+  text-decoration :none !important;
+}
+.header-link:visited{
+  text-decoration :none !important;
+}
+.header-link:link{
+  text-decoration :none !important;
+}
+
+.header-menu{
+  font-family: IRANSans;
+  width:100%;
+  margin: auto;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row;
+}
+
+.header-logo-container{
+  vertical-align: middle;
+}
+
+.header-logo-image{
+  height:44px;
+  margin-top: 8px;
+  margin-left: 10px;
+}
+
+.header-logo-type{
+  font-family: IRANSans;
+  font-size: 28px;
+  font-style: normal;
+	font-weight: 500;
+  padding-top: 9px;
+  color: #12b2ce;
+}
+
+
+/* general styles finished */
+
+
+/* XL styles here */
+/* XL styles Finished */
+
+
+/* MD styles here */
+/* MD styles Finished */
+
+
+/* SM styles here */
+/* SM styles Finished */
+
+
+
+/* XS styles here */
+/* XS styles Finished */

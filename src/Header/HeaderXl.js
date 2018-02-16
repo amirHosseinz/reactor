@@ -5,7 +5,7 @@ import customBurgerIcon  from 'react-burger-menu';
 import {Link} from 'react-router-dom';
 import {Button,Divider} from 'semantic-ui-react';
 import {Dropdown} from 'semantic-ui-react';
-
+import './Header.css';
 import '../Styles/Header-SearchBar.css';
 import {downloadAppModalStyle,loginPasswordStyle, loginPhoneNumberStyle, loginPanelmobileStyle , loginVerifySmsXl} from '../Styles.js';
 // import {Modal} from 'react-bootstrap';
@@ -489,9 +489,9 @@ class HeaderXl extends React.Component{
   // <Link className="header-link" to="/becomehost"><p className='logo-menu-font'>میزبان شوید </p></Link>
   renderHeaderXl(){
     return(
-      <div className='header container hidden-xs visible-xl'>
+      <div className='header'>
        <div className='hearder-child-margined'>
-          <div className="header-menu-desktop col-md-6">
+          <div className="header-menu col-md-6">
             {this.renderMainMenu()}
             {this.renderLoginButton()}
             <div className="row-reverse">
@@ -503,13 +503,13 @@ class HeaderXl extends React.Component{
             </div>
           </div>
           {this.renderLoginPanelFirstStep()}
-          <div className="logo col-md-6">
-              <div className='headerchild'>
-                <div className='logodiv'>
-                   <Link to="/"><img src={require('../Images/tripinn_logo.svg')} className="LogoImage" alt = 'تریپین'></img></Link>
+          <div className="header-logo-side col-md-6">
+              <div className='header-logo-and-search'>
+                <div className='header-logo-container'>
+                   <Link to="/"><img src={require('../Images/tripinn_logo.svg')} className="header-logo-image" alt = 'تریپین'></img></Link>
                 </div>
                 <div>
-                  <Link className='logolink' to="/"><p className='logofont'>تریپین</p></Link>
+                  <Link className='logolink' to="/"><p className='header-logo-type'>تریپین</p></Link>
                 </div>
                 {this.renderSearchBarXL()}
               </div>
