@@ -137,6 +137,9 @@ class HouseDetailsXl extends React.Component{
    if(this.state.homeData!==''){
      return(
           <div className="house-details-gallery">
+          <div className="house-details-gallery-show-more">
+          مشاهده تصاویر
+          </div>
             <img src={"https://www.trypinn.com"+ this.state.homeData.preview_high} className="house-details-preview" width="540" height="480" alt = ""/>
             <div className="row-reverse">
               {imageList}
