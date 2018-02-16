@@ -231,9 +231,6 @@ transform: rotate(-5deg);
   background-color:#f2f5f6 !important;
 }
 
-.footer-links{
-  margin-top: -13px;
-}
 .contact-us-main-division{
   font-family: IRANSans;
   margin-left:auto;
@@ -764,52 +761,6 @@ margin-left: 14px;
 .logolink:hover {
    text-decoration:none;
 }
-.footer{
-  width:100%;
-  background-color: none;
-}
-.footerchild{
-  width:100%;
-  margin: auto;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  border-top: solid;
-  border-width: 0px;
-  border-color: lightgrey;
-}
-.footer-child-margined{
-  width: 88%;
-  height: 36px;
-  margin: auto;
-}
-.footer-mobile-container{
-  width:88%;
-  margin: auto;
-  padding-top: 10px;
-  background-color: #f2f2f2;
-}
-.footer-menu-mobile-item{
-  height:2.6rem;
-  border-bottom-style: solid;
-  border-color: grey;
- border-width: 0.05em;
-
-  }
-.footer-menu-mobile-link:hover {
-  text-decoration:none;
-}
-.footer-copy-right{
-text-align: center;
-font-size: 14px;
-margin-top: 4px;
-color:grey;
-}
-.footer-menu-social{
-  padding-top: 6px;
-}
-.download-app-footer-anchor{
-  margin-left: 10px;
-}
 
 .logo-menu-font{
   font-family: IRANSans;
@@ -884,15 +835,6 @@ color:grey;
   color: #17b3ce;
 }
 
-.logo-footer-menu-font-mobile{
-  font-family: IRANSans;
-  font-size: 1em;
-  font-style: normal;
-  font-weight: 300;
-  padding-top:8px;
-  color: #646464;
-  text-align: right;
-}
 
 .social-image-xl{
   height:1.6em;
@@ -925,12 +867,6 @@ color:grey;
 .main{
   height:100%;
 }
-.footer-menu-and-dl{
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-direction: row; /* Safari 6.1+ */
-  display: flex;
-  flex-direction: row;
-}
 .download-app-text{
   font-family: IRANSans;
   font-size: 1em;
@@ -944,13 +880,7 @@ color:grey;
 }
 .social-image{
 }
-.footer-menu-mobile-social{
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
-  display: flex;
-  margin: auto;
-  flex-direction: row-reverse;
-}
+
 .free-zone{
   height:10em;
 }
@@ -2101,9 +2031,7 @@ margin-top: 20px;
 }
 .profile_photobox{
 }
-.footer-menu-and-dl{
-  font-family: IRANSans;
-}
+
 .clickable-p{
   cursor : pointer;
 }

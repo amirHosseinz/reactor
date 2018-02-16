@@ -192,8 +192,8 @@ class MainPage extends React.Component{
           <Route path={"/terms&conditions"} render={()=> {return(this.renderTerms())}}/>
           <Route path={"/contactus"} render = {()=> {return(this.renderContactUs())}}/>
           <Route path={"/userprofile"} render={()=> {return(this.renderUserProfile())}}/>
-          <Route path={"/"} render = {()=> {return(this.renderFooter())}}/>
           <Route exact path={"/search/:city"} render = {(props)=> {return(this.renderSearchResult(props))}}/>
+          <Route path={"/"} render = {()=> {return(this.renderFooter())}}/>
         </div>
       </BrowserRouter>
       </StickyContainer>
