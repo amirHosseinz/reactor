@@ -765,8 +765,20 @@ margin-left: 14px;
   flex-direction: row-reverse;
 }
 
-.logolink:hover {
+
+.logolink:visited {
    text-decoration:none;
+}
+.logolink:link {
+    text-decoration: none;
+}
+
+.logolink:hover {
+    text-decoration: none;
+}
+
+.logolink:active {
+    text-decoration: none;
 }
 
 .logo-menu-font{
@@ -1462,12 +1474,14 @@ transform: scale(2, 2);
 color: #42b0c6;
 }
 .render-results{
-  background-color: white;
   margin: auto;
+  min-height: 630px;
 }
 
 .results-search{
   height: 60px;
+  background-color: white;
+
   border-bottom: solid;
   border-color: #ececec;
   border-width: 2px;
