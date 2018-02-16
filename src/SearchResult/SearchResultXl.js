@@ -248,7 +248,7 @@ class SearchResultXl extends React.Component{
           <div className="render-houses-row">
             <div className="padding-search-results-top">
             </div>
-            <div className="renderresults-main hidden-sm">
+            <div className="renderresults-main">
               {this.renderHousesCol5()}
             </div>
             <div className="padding-search-results">

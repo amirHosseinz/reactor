@@ -1627,7 +1627,7 @@ justify-content: center;
   color:#656565;
 }
 .result-card-margins{
-  margin-bottom: 25px;
+  /* margin-bottom: 25px; */
 }
 .more-photo{
   margin-top: -100px;
@@ -1791,7 +1791,6 @@ padding-bottom: 28px;
   border: solid;
   border-width: 1px;
   border-color: #d4d4d4;
-  height: 295px;
   background-color: white;
   border-radius: 4px;
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
