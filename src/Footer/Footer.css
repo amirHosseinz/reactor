@@ -6,7 +6,7 @@
 
 .footer-not-sticky{
   position:absolute;
-  bottom : -10;
+  bottom : -1;
   height: 50px;
   width:100%;
   background-color: none;
