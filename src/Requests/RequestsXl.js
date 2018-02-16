@@ -67,11 +67,16 @@ class RequestsXl extends React.Component{
   }
   renderData(request_list){
     this.setState({requestList:request_list},()=>{
+      console.log(this.state.requestList.request_list);
       if(request_list.request_list.length>0){
-        this.showRequestItemClick(request_list.request_list[0]);
+
+        this.showRequestItemClick(request_list.request_list[0],true);
+        // this.props.changeHasRequest(true);
       }
       else{
+
         this.showRequestItemClick({status:'no-house'});
+        // this.props.changeHasRequest(false);
       }
     });
 

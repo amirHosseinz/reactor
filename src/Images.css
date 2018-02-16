@@ -1979,6 +1979,10 @@ margin-top: 20px;
 }
 .requests-list-title{
   padding-top: 14px;
+  /* display: -webkit-flex; */
+  /* -webkit-flex-direction: row;
+  flex-direction: row; */
+  /* display: flex; */
 }
 .request-trip-message-container-margined{
   margin-top: 30px !important;

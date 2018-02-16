@@ -4,7 +4,7 @@ import {englishToPersianDigits} from '../tools/EnglishToPersianDigits';
 import moment from 'moment-jalaali';
 // import {Modal} from 'react-bootstrap';
 import Modal from 'react-modal';
-import {setPasswordStyle} from '../Styles.js';
+import {reserveModalStyleRequests} from '../Styles.js';
 import {parsePrice3digits} from '../tools/ParsePrice3digits.js'
 
 class RequestItemXl extends React.Component{
@@ -197,6 +197,7 @@ class RequestItemXl extends React.Component{
       if(this.state.requestStatus!=='no-house'){
         return(
           <Modal isOpen={this.state.showPreBill}
+            style={reserveModalStyleRequests}
             onRequestClose={()=>{this.setState({showPreBill:false})}}>
             <div className="pre-bill-main-division">
               <div className="pre-bill-header-section">
