@@ -2,6 +2,7 @@ import React from 'react';
 import { withScriptjs ,withGoogleMap, GoogleMap,Marker } from "react-google-maps";
 import {Image,Divider} from 'semantic-ui-react';
 import {englishToPersianDigits} from '../tools/EnglishToPersianDigits.js';
+import './ContactUs.css';
 
 
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>{
@@ -18,10 +19,10 @@ class ContactUsXl extends React.Component{
   componentWillMount(){
     document.body.backgroundColor="#f8f8f8";
   }
-  
+
   render(){
     return (
-      <div className="contact-us-main-division">
+      <div className="contact-us-main-division-xl">
         <div className="contact-us-map-section col-md-4">
           <Map />
         </div>
