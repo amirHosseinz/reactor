@@ -1,3 +1,4 @@
+/*  general styles here*/
 .serach-result-number-of-guests-input{
   direction: rtl;
   margin-left : 0px;
@@ -138,4 +139,24 @@
   height : 48px;
   width : 100%;
   color : #454545 !important;
+}
+
+/*  xl styles here */
+.render-houses-row{
+  margin-top: 70px;
+  width: 100%;
+  margin: auto;
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+
+/*  md styles here */
+.render-houses-row-md{
+  margin-top: 70px;
+  width: 76%;
+  margin: auto;
+  display: block;
+  justify-content: center;
+  align-items: center;
 }
