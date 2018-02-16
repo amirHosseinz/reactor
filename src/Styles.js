@@ -47,14 +47,13 @@ export const setPasswordStyle ={
     backgroundColor   : 'rgba(0, 0, 0, 0.0)'
   },
   content : {
-    top                        : '17%',
-    left                       : '37%',
-    right                      : '37%',
-    bottom                     : '20%',
+    height : '470px',
+    width  : '400px',
+    margin: 'auto',
     outline                    : '0',
-    padding                    : '5px',
+    padding                    : '0px',
     transform                  : 'translate(0%, 0%)',
-    borderRadius               : '15px',
+    borderRadius              : '15px',
   }
 };
 export const registerNewUser = {
@@ -67,14 +66,13 @@ export const registerNewUser = {
     backgroundColor   : 'rgba(0, 0, 0, 0.0)'
   },
   content : {
-    top                        : '17%',
-    left                       : '37%',
-    right                      : '37%',
-    bottom                     : '10%',
+    height : '560px',
+    width  : '400px',
+    margin: 'auto',
     outline                    : '0',
     padding                    : '0px',
     transform                  : 'translate(0%, 0%)',
-    borderRadius               : '15px',
+    borderRadius              : '15px',
   }
 };
 
@@ -97,11 +95,12 @@ export const downloadAppModalStyle={
     backgroundColor: 'rgba(0,0,0,0.7)',
   },
   content : {
-    fontFamily : 'IRANSans',
-    height : '600px',
-    width  :'610px',
+    height : '530px',
+    width  :'730px',
     margin : 'auto',
     transform:'translate(0%, 0%)',
+    borderRadius: '15px',
+
   }
 }
 export const loginPasswordStyle = {
@@ -114,14 +113,13 @@ export const loginPasswordStyle = {
     backgroundColor   : 'rgba(0, 0, 0, 0.7)'
   },
   content :{
-    top                        : '17%',
-    left                       : '37 %',
-    right                      : '37%',
-    bottom                     : '37%',
+    height : '360px',
+    width  : '400px',
+    margin: 'auto',
     outline                    : '0',
-    padding                    : '5px',
+    padding                    : '0px',
     transform                  : 'translate(0%, 0%)',
-    borderRadius               : '15px',
+    borderRadius              : '15px',
   }
 };
 export const loginPanelmobileStyle = {

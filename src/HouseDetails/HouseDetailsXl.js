@@ -12,12 +12,9 @@ import CheckInCheckOutDescription from '../HouseDetailParts/CheckInCheckOutDescr
 import MaxCapacity from '../HouseDetailParts/MaxCapacity.js';
 import RulesDescription from '../HouseDetailParts/RulesDescription.js';
 import SpecialRule from  '../HouseDetailParts/SpecialRule.js';
-import Swipeable from 'react-swipeable';
 import GuestNumber from '../HouseDetailParts/GuestNumber';
 import {Link,Element} from 'react-scroll';
 import './HouseDetails.css';
-import Carousel from 'nuka-carousel';
-
 
 class HouseDetailsXl extends React.Component{
   constructor(props){
@@ -127,21 +124,9 @@ class HouseDetailsXl extends React.Component{
      );
    }
 
-   swipingLeft(e, absX){
-     console.log("You're Swiping to the Left...", e, absX)
-   }
-
-   swipingRight(e, absX) {
-     console.log("You're Swiping to the Right...", e, absX)
-   }
-   swiping(e, deltaX, deltaY, absX, absY, velocity) {
-    console.log("You're Swiping...", e, deltaX, deltaY, absX, absY, velocity)
-  }
-  swiped(e, deltaX, deltaY, isFlick, velocity) {
-   console.log("You Swiped...", e, deltaX, deltaY, isFlick, velocity)
- }
 
  renderGallery(){
+   console.log(this.state.homeData);
    var imageList = this.state.homeData.images.map(
      image=>{return(
         <img src={"https://www.trypinn.com"+image.image} className="house-details-preview" width="540" height="480" alt = ""/>
@@ -150,7 +135,13 @@ class HouseDetailsXl extends React.Component{
    if(this.state.homeData!==''){
      return(
           <div className="house-details-gallery">
-            {imageList}
+            <img src={"https://www.trypinn.com"+ this.state.homeData.preview_high} className="house-details-preview" width="540" height="480" alt = ""/>
+            <div className="row-reverse">
+              {imageList}
+            </div>
+            <div className="house-details-gallery-show-more">
+            مشاهده تصاویر
+            </div>
           </div>
      );
    }
@@ -166,15 +157,7 @@ class HouseDetailsXl extends React.Component{
           <div className="house-details-top-division">
             <Element name="gallery"></Element>
             <div className="house-details-gallery">
-            <Swipeable
-                trackMouse={true}
-               onSwiping={this.swiping}
-               onSwiped={this.swiped}
-               onSwipingLeft={this.swipingLeft}
-               onSwipingRight={this.swipingRight}
-               >
               {this.renderGallery()}
-              </Swipeable>
             </div>
             <div className="house-details-main-information">
               <Element name="details"></Element>
