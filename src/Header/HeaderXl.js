@@ -482,10 +482,9 @@ class HeaderXl extends React.Component{
     return(
       <div className='header container hidden-xs visible-xl'>
        <div className='hearder-child-margined'>
-          <div className="header-menu-desktop col-md-6 col-sm-6">
+          <div className="header-menu-desktop col-md-6">
             {this.renderMainMenu()}
             {this.renderLoginButton()}
-
             <div className="row-reverse">
               <Link className="header-link" to="/suggestions&comments"><p className='logo-menu-font'>ثبت شکایات </p></Link>
               <Link className="header-link" to="/contactus"><p className='logo-menu-font'> تماس با ما </p></Link>
@@ -495,7 +494,7 @@ class HeaderXl extends React.Component{
             </div>
           </div>
           {this.renderLoginPanelFirstStep()}
-          <div className="logo col-md-6 col-sm-6">
+          <div className="logo col-md-6">
               <div className='headerchild'>
                 <div className='logodiv'>
                    <Link to="/"><img src={require('../Images/tripinn_logo.svg')} className="LogoImage" alt = 'تریپین'></img></Link>
@@ -503,6 +502,7 @@ class HeaderXl extends React.Component{
                 <div>
                   <Link className='logolink' to="/"><p className='logofont'>تریپین</p></Link>
                 </div>
+                {this.renderSearchBarXL()}
               </div>
           </div>
         </div>

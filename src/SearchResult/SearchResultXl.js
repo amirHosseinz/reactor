@@ -85,9 +85,16 @@ class SearchResultXl extends React.Component{
     this.setState({token : this.getRelevantToken()},()=>{this.setSearchParams()});
   }
 
-  // componentWillReceiveProps(){
-  //   this.setState({token : this.getRelevantToken()},()=>{this.setSearchParams()});
-  // }
+  componentWillReceiveProps(){
+    var city=this.readCityFromURL();
+    if(city!==null){
+          this.setState({city:city[0]});
+    }
+    else{
+        this.setState({city:city});
+    }
+    this.setState({token : this.getRelevantToken()},()=>{this.setSearchParams()});
+  }
 
   setSearchParams(){
     var spar = {
@@ -246,31 +253,6 @@ class SearchResultXl extends React.Component{
     );
   }
 
-  // <img className="date-icon-start-date" src={require('../Images/date-icon.png')} alt="" width='20' height='20' />
-  // <img className="date-icon-end-date" src={require('../Images/date-icon.png')} alt="" width='20' height='20' />
-  // <DateRangePicker
-  //   startDatePlaceholderText="تاریخ ورود"
-  //   endDatePlaceholderText="تاریخ خروج"
-  //   startDate={this.state.startDate}
-  //   readOnly={true}
-  //   customArrowIcon={<div></div>}
-  //   anchorDirection="right"
-  //   hideKeyboardShortcutsPanel={true}
-  //   numberOfMonths={2}
-  //   isRTL={true}
-  //   startDateId="your_unique_start_date_id"
-  //   endDate={this.state.endDate}
-  //   endDateId="your_unique_end_date_id"
-  //   onClose={()=>{this.setSearchParams()}}
-  //   onDatesChange={({startDate,endDate})=>{this.setState({startDate:startDate,endDate:endDate})}}
-  //   focusedInput={this.state.focusedInput}
-  //   reopenPickerOnClearDates={true}
-  //   withClearDatesButton={true}
-  //   onFocusChange={focusedInput => this.setState({focusedInput})}
-  //   renderMonth={(month) => momentJalaali(month).format('jMMMM jYYYY')}
-  //   renderDayContents={(day) => momentJalaali(day).format('jD')}
-  //   keepOpenOnDateSelect={false}/>
-
   renderHousesCol5 () {
     var results = [];
     var initList = this.state.houseList.map((houseItem) => {
@@ -353,7 +335,7 @@ class SearchResultXl extends React.Component{
   render(){
     return(
       <div className="searchbarmain">
-          <div className="container-fluid hidden-xs visible-xl">
+          <div className="container-fluid">
             {this.renderSearchBarInDetails()}
             <div className="col-lg col-sm-12 mb-10">
             </div>
