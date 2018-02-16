@@ -1,102 +1,298 @@
 import React from 'react';
+import {Sticky} from 'react-sticky';
+import ReservePanel from '../HouseDetailParts/ReservePanel.js';
+import AddressDescription from '../HouseDetailParts/AddressDescription';
+import AmenitiesDescription from '../HouseDetailParts/AmenitiesDescription';
+import RatingDescription from '../HouseDetailParts/RatingDescription';
+import HostInfoDescription from '../HouseDetailParts/HostInfoDescription.js';
+import {englishToPersianDigits} from '../tools/EnglishToPersianDigits.js';
+import MapDescription from '../HouseDetailParts/MapRenderer.js';
+import UtilitiesDescription from '../HouseDetailParts/UtilitiesDescription.js';
+import CheckInCheckOutDescription from '../HouseDetailParts/CheckInCheckOutDescription.js';
+import MaxCapacity from '../HouseDetailParts/MaxCapacity.js';
+import RulesDescription from '../HouseDetailParts/RulesDescription.js';
+import SpecialRule from  '../HouseDetailParts/SpecialRule.js';
+import GuestNumber from '../HouseDetailParts/GuestNumber';
+import {Link,Element} from 'react-scroll';
+import './HouseDetails.css';
+import Lightbox from 'react-images';
 
 class HouseDetailsMd extends React.Component{
-  // <div className="house-detail-top-margined-md hidden-xl hidden-sm hidden-xs visible-md">
-  //   <AddressDescription homeData={this.state.homeData}/>
-  //   <div>
-  //     {this.renderHomeTitle()}
-  //   </div>
-  //   <div className='row-reverse-house-adress-type'>
-  //     <RatingDescription homeData={this.state.homeData}/>
-  //   </div>
-  //   <div>
-  //   <div>
-  //     <div className='navigation-menu-housedetails' style={this.state.scrollListFixed?fixedScrollListHouseDetails:normalScrolllListHouseDetails}>
-  //       <p onClick={() => scrollToComponent(this.Dis, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items'>مشخصات</p>
-  //       <p onClick={() => scrollToComponent(this.Gallery, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items' >تصاویر</p>
-  //       <p onClick={() => scrollToComponent(this.Laws, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items'>امکانات و قوانین</p>
-  //       <p onClick={() => scrollToComponent(this.Map, { offset: 0, align: 'top', duration: 1500})} className='navigation-menu-items'>موقعیت روی نقشه</p>
-  //     </div>
-  //   </div>
-  //   <div style={{textAlign:'right'}}>
-  //   </div>
-  //   </div>
-  // </div>
+  constructor(props){
+    super(props);
+    this.state = {
+      className:'loaded',
+      photoIndex: 0,
+      isOpen: false,
+      activeLink:1,
+      homeData : '',
+      reservePanelFixed : false,
+      scrollListFixed:false,
+      showReservePanel : true,
+      token: null,
+      lightboxIsOpen:false,
+      lightboxCurrentImage:0,
+      searchParams : {
+        id: null,
+      }
+    };
+  }
+  componentDidMount=()=> {
+      document.addEventListener('scroll', this.handleScroll);
+    }
+
+  componentWillUnmount= ()=> {
+      document.removeEventListener('scroll', this.handleScroll);
+    }
+
+  handleScroll = (event)=>{
+    if(event.pageY<400){
+      this.setState({activeLink:2});
+    }
+    if(event.pageY>600 && event.pageY<1000){
+      this.setState({activeLink:1});
+    }
+    if(event.pageY>1000 && event.pageY<1200){
+      this.setState({activeLink:3});
+    }
+    if(event.pageY>1200){
+      this.setState({activeLink:4});
+    }
+  }
+  getRelevantToken(){
+    if (this.state.isLoggedIn ==='true'){
+      this.setState({
+        token: localStorage['token'],
+      }, () => {
+        this.setSearchParams(this.getHouseId());
+      });
+    }
+    else{
+      this.setState({
+        token: localStorage['token'],
+      }, () => {
+        this.setSearchParams(this.getHouseId());
+      });
+    }
+  }
+
+  componentWillMount() {
+    this.getRelevantToken();
+  }
+
+  setSearchParams(houseId){
+    var spar = {
+      id : houseId,
+    };
+    this.setState({
+      searchParams: spar
+    }, () => {
+    this.getDataFromServer();
+    });
+  }
+  getHouseId(){
+    return parseInt(window.location.href.split("/")[window.location.href.split("/").length-1] , 10);
+  }
+  getDataFromServer(){
+    var request = new Request('https://www.trypinn.com/api/get/room/', {
+      method: 'POST',
+      body: JSON.stringify({
+        room_id : this.state.searchParams.id,
+    }),
+      headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+      'Authorization': 'Token '+this.state.token,})
+    });
+   fetch(request)
+   .then((response) => {
+     return response.json();
+   })
+   .then((homeData) => {
+     this.renderData(homeData);
+   });
+  }
+
+  setToken() {
+    this.setState({
+      token: localStorage['token'],});
+  }
+
+  renderData(houseData) {
+    this.setState({homeData:houseData.room});
+  }
+
+   renderHomeTitle()
+   {
+     return (
+       <p className='house-detail-titles' align="right">{this.state.homeData.title}</p>
+     );
+   }
 
 
+ renderGallery(){
+   var imageList = this.state.homeData.images.map(
+     image=>{return(
+        <img src={"https://www.trypinn.com"+image.image} className="house-details-preview-md"  alt = ""/>
+     )}
+   );
+   if(this.state.homeData!==''){
+     return(
+          <div className="house-details-gallery-md">
+
+            <img src={"https://www.trypinn.com"+ this.state.homeData.preview_high} className="house-details-preview-md" alt = ""/>
+            <div className="row-reverse">
+              {imageList}
+            </div>
+            <div onClick={()=>{this.setState({lightboxIsOpen:true})}}className="house-details-gallery-show-more-md">
+            مشاهده تصاویر
+            </div>
+          </div>
+     );
+   }
+ }
 
 
+ renderGalleryLightBox(){
+   var images = [];
+   for (var imageIndex=this.state.homeData.images.length-1;imageIndex>=0;imageIndex--){
+     images.push({src: "https://www.trypinn.com"+ this.state.homeData.images[imageIndex].image});
+   }
+   var imagesLength = images.length;
+   return(
+     <Lightbox
+    images={images}
+    currentImage={this.state.lightboxCurrentImage}
+    isOpen={this.state.lightboxIsOpen}
+    onClickPrev={()=>{this.setState((prevState)=>{return({lightboxCurrentImage:(prevState.lightboxCurrentImage-1)%imagesLength})})}}
+    showImageCount={false}
+    showThumbnails={true}
+    onClickNext={()=>{this.setState((prevState)=>{return({lightboxCurrentImage:(prevState.lightboxCurrentImage+1)%imagesLength})})}}
+    onClose={()=>{this.setState({lightboxIsOpen:false})}}
+/>
+   );
+ }
 
+// {this.renderGalleryLightBox()}
+  renderHouseDetailsVersion2(){
+    if(this.state.homeData!==''){
+      return(
+        <div className="house-details-main-division">
+          <div className="house-details-top-division-md">
+            <Element name="gallery"></Element>
+            <div className="house-details-gallery-md">
+              {this.renderGallery()}
 
-  // <div className="house-detail-top-margined-md hidden-xl hidden-sm hidden-xs visible-md">
-  //   <div className="col-md-3 hidden-xs hidden-sm visible-xl">
-  //     <Sticky context={this.state.contextRef}
-  //     onStick={this.handleStickReservePanel.bind(this)}
-  //     onUnstick={this.handleUnstickReservePanel.bind(this)}
-  //     style={this.state.reservePanelFixed ? fixedReservePanelHouseDetails:normalReservePanelHouseDetails}>
-  //       <div className='reserve-card'>
-  //         <div className="reserve-card-child">
-  //           <p className="text-011">:هزینه هرشب اقامت</p>
-  //           <div className = "price">
-  //             <p className='text-012'> تومان</p>
-  //             <p className='text-012'> {englishToPersianDigits(this.state.homeData.price)} </p>
-  //           </div>
-  //           <div className="divider-card"></div>
-  //           <p className="text-011">:تعداد مهمان</p>
-  //           <div>
-  //             {this.renderReservePanel()}
-  //           </div>
-  //       </div>
-  //       </div>
-  //     </Sticky>
-  //   </div>
-  //   <div className='col-md-9'>
-  //    <section className='gallery-scroller' ref={(section) => {this.Gallery = section;}}></section>
-  //     <div className='housedetail-img'>
-  //       {this.renderPreview()}
-  //       {this.renderHouseGallery()}
-  //     </div>
-  //     <section className='violet' ref={(section) => { this.Violet = section; }}></section>
-  //     <AmenitiesDescription homeData={this.state.homeData} />
-  //     <br/>
-  //     <Divider/>
-  //     <div>
-  //       <HostInfoDescription homeData={this.state.homeData}/>
-  //       <p className='des-main-xs'> {this.state.homeData.description} </p>
-  //     </div>
-  //     <Divider/>
-  //     <section className='law-scroller' ref={(section) => { this.Laws = section; }}></section>
-  //     <p className='des-header-xl'> سایر امکانات </p>
-  //     <UtilitiesDescription homeData={this.state.homeData}/>
-  //     <Divider/>
-  //     <p className='des-header-xl'> قوانین و مقررات </p>
-  //       <div>
-  //         <div className="rules-half col-md-6">
-  //         <RulesDescription homeData= {this.state.homeData} />
-  //         </div>
-  //         <div className="rules-half col-md-6">
-  //         <CheckInCheckOutDescription homeData={this.state.homeData}/>
-  //         <MaxCapacity homeData={this.state.homeData}/>
-  //         </div>
-  //       </div>
-  //       <SpecialRule homeData={this.state.homeData}/>
-  //     <section className='map-scroller' ref={(section) => { this.Map = section; }}></section>
-  //     <div className="padding10">
-  //     </div>
-  //       {this.renderMap()}
-  //     <div className="padding100">
-  //     </div>
-  //   </div>
-  // </div>
+            </div>
+            <div className="house-details-main-information-md">
+              <Element name="details"></Element>
+              {this.renderHomeTitle()}
+              <AddressDescription homeData={this.state.homeData}/>
+              <AmenitiesDescription homeData={this.state.homeData} />
+            </div>
+          </div>
+          <div className="house-details-bottom-division-md">
+            <Sticky topOffset={550} bottomOffset={210}>
+              {({style,isSticky})=>{
+                return(
+                  <div style={style}>
+                    <div className={isSticky?"house-details-reserve-panel-sticky-md housedetails-content-containers-md":"house-details-reserve-panel-not-sticky-md housedetails-content-containers-md"}>
+                      <div className="house-details-reserve-panel-price-description">
+                          <p className="house-details-price-pernight-label">هزینه هرشب اقامت:</p>
+                          <div className = "house-details-price">
+                            <span> {englishToPersianDigits(this.state.homeData.price)} </span>
+                            <span> تومان</span>
+                          </div>
+                      </div>
+                      <hr />
+                      <div className="house-details-reserve-panel-form">
+                        <ReservePanel homeData={this.state.homeData}/>
+                      </div>
+                    </div>
+                  </div>
+                )
+              }}
+            </Sticky>
+            <div>
+              <Sticky topOffset={500}>
+                {({style,isSticky})=>{return(
+                  <div style={style} className={isSticky?"house-details-menu-link-scrolls-sticky-md":"house-details-menu-link-scrolls-not-sticky-md housedetails-content-containers-menu-md"}>
+                    <div className='navigation-menu-housedetails'>
+                      <Link onClick={()=>{this.setState({activeLink:1})}} className={this.state.activeLink===1?'navigation-menu-items-active':'navigation-menu-items'} to="details" spy={true} smooth={true} offset={-100} duration={800}>
+                        <p >مشخصات</p>
+                      </Link>
+                      <Link onClick={()=>{this.setState({activeLink:2})}} className={this.state.activeLink===2?'navigation-menu-items-active':'navigation-menu-items'} to="gallery" spy={true} smooth={true} offset={-200} duration={800}>
+                        <p  >تصاویر</p>
+                      </Link>
+                      <Link onClick={()=>{this.setState({activeLink:3})}} className={this.state.activeLink===3?'navigation-menu-items-active':'navigation-menu-items'} to="laws" spy={true} smooth={true} offset={-200} duration={800}>
+                        <p>امکانات و قوانین</p>
+                      </Link>
+                      <Link onClick={()=>{this.setState({activeLink:4})}} className={this.state.activeLink===4?'navigation-menu-items-active':'navigation-menu-items'} to="map" spy={true} smooth={true} offset={-200} duration={800}>
+                        <p>موقعیت روی نقشه</p>
+                      </Link>
+                    </div>
+                  </div>
+                )}}
+              </Sticky>
+              <div className="house-details-contents-md">
+                <div className="house-details-amenities-description housedetails-content-containers">
+                  <div className="house-details-host-info">
+                    <HostInfoDescription homeData={this.state.homeData}/>
+                    <p className='house-details-description-content house-description-top'> {this.state.homeData.description} </p>
+                  </div >
+                  <div className="house-details-amenities">
+                    <p className="house-details-description-heading">
+                      سایر امکانات
+                    </p>
+                    <UtilitiesDescription homeData={this.state.homeData} />
+                  </div>
+                  <div className="house-details-sleep-arrangements">
+                  </div>
+                </div>
+                <div className= "house-details-rules housedetails-content-containers">
+                  <Element name="laws" ></Element>
+                  <p className="house-details-description-heading">
+                  مقررات این اقامتگاه
+                  </p>
+                  <CheckInCheckOutDescription homeData={this.state.homeData}/>
+                  <MaxCapacity homeData={this.state.homeData}/>
+                  <RulesDescription homeData= {this.state.homeData} />
+                  <SpecialRule homeData={this.state.homeData}/>
+                </div>
+                <div className="house-details-location housedetails-content-containers">
+                  <div className="house-details-location-description">
+                  <p className="house-details-description-heading">
+                    موقعیت اقامتگاه
+                  </p>
+                  <p className="house-details-description-content">
+                    در نقشه زیر می توانید موقعیت حدودی اقامتگاه را مشاهده نمایید.
+                    پس از
+                    <span> رزرو اقامتگاه </span>
+                    موقعیت و آدرس دقیق اقامتگاه و شماره تلفن میزبان
+                    در اختیار شما قرار خواهد گرفت.
+                  </p>
+                  </div>
+                  <div className="house-details-map">
+                    <Element name="map"></Element>
+                    <MapDescription
+                      lat={this.state.homeData.latitude} lng={this.state.homeData.longitude} zoom={13}/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
   render(){
-    // if (this.state.homeData !== ''){
-    //   document.title = "تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.city;
-    // }
+    if (this.state.homeData !== ''){
+      document.title = "تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.city;
+    }
     return(
       <div>
+        {this.renderHouseDetailsVersion2()}
       </div>
     );
   }
 }
-
 export default HouseDetailsMd;
