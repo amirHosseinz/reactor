@@ -167,7 +167,7 @@ class SearchBarXl extends React.Component{
       <div className="search-bar-main-division">
         <div className="search-bar-background">
         </div>
-          <div className="search-bar-contents">
+          <div className="search-bar-contents-xl">
             <p className="search-bar-tripinn-heading">
               تریپین
             </p>
