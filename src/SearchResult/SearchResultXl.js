@@ -13,6 +13,8 @@ import momentJalaali from 'moment-jalaali';
 import '../tools/calendar/initialize.js';
 import '../tools/calendar2/lib/css/_datepicker.css';
 import {DateRangePicker} from '../tools/calendar2';
+import Sticky from 'react-sticky';
+
 
 const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
@@ -193,59 +195,61 @@ class SearchResultXl extends React.Component{
   renderSearchBarInDetails(){
     return(
       <div className="render-results row">
-            <div className="results-search">
-              <div className="results-serach-child">
-                <div className="search-results-filters-container">
-                  <p className="search-result-filter-label"> :فیلترها </p>
-                  <div>
-                    <button onClick={()=>{this.openGuestNumberDropdown()}}className="search-result-filter-button"  style={{direction:'rtl',textAlign:'center'}}>
-                      <span>
-                        <img src={require('../Images/guest-number-icon.png')} className='guest-number-icon' alt=""/>
-                      </span>
-                       {englishToPersianDigits(this.state.numberOfGuests)} مهمان
-                    </button>
-                    <div className="serach-result-number-of-guests-input">
-                      {this.renderGuest()}
+        <Sticky>
+          {({style,isSticky})=>{
+            return(
+              <div style={style} className={isSticky?"results-search-sticky":"results-search-not-sticky"}>
+                <div className="results-serach-child">
+                  <div className="search-results-filters-container">
+                    <p className="search-result-filter-label"> :فیلترها </p>
+                    <div>
+                      <button onClick={()=>{this.openGuestNumberDropdown()}}className="search-result-filter-button"  style={{direction:'rtl',textAlign:'center'}}>
+                        <span>
+                          <img src={require('../Images/guest-number-icon.png')} className='guest-number-icon' alt=""/>
+                        </span>
+                         {englishToPersianDigits(this.state.numberOfGuests)} مهمان
+                      </button>
+                      <div className="serach-result-number-of-guests-input">
+                        {this.renderGuest()}
+                      </div>
                     </div>
-                  </div>
-                  <div className="search-result-date-picker-input-zone">
-                    <img className="date-icon-start-date" src={require('../Images/date-icon.png')} alt="" width='20' height='20' />
-                    <img className="date-icon-end-date" src={require('../Images/date-icon.png')} alt="" width='20' height='20' />
-                    <div className="search-result-date-picker-input">
-                    <DateRangePicker
-                      startDatePlaceholderText="تاریخ ورود"
-                      endDatePlaceholderText="تاریخ خروج"
-                      startDate={this.state.startDate}
-                      customArrowIcon={<div></div>}
-                      hideKeyboardShortcutsPanel={true}
-                      numberOfMonths={2}
-                      isRTL={true}
-                      readOnly={true}
-                      anchorDirection='right'
-                      startDateId="your_unique_start_date_id"
-                      endDate={this.state.endDate}
-                      endDateId="your_unique_end_date_id"
-                      onDatesChange={({startDate,endDate})=>{this.setState({startDate:startDate,endDate:endDate})}}
-                      focusedInput={this.state.focusedInput}
-                      reopenPickerOnClearDates={true}
-                      onFocusChange={focusedInput => this.setState({focusedInput})}
-                      renderMonth={(month) => momentJalaali(month).format('jMMMM jYYYY')}
-                      renderDayContents={(day) => momentJalaali(day).format('jD')}
-                      keepOpenOnDateSelect={false}
-                      />
+                    <div className="search-result-date-picker-input-zone">
+                      <img className="date-icon-start-date" src={require('../Images/date-icon.png')} alt="" width='20' height='20' />
+                      <img className="date-icon-end-date" src={require('../Images/date-icon.png')} alt="" width='20' height='20' />
+                      <div className="search-result-date-picker-input">
+                      <DateRangePicker
+                        startDatePlaceholderText="تاریخ ورود"
+                        endDatePlaceholderText="تاریخ خروج"
+                        startDate={this.state.startDate}
+                        customArrowIcon={<div></div>}
+                        hideKeyboardShortcutsPanel={true}
+                        numberOfMonths={2}
+                        isRTL={true}
+                        readOnly={true}
+                        anchorDirection='right'
+                        startDateId="your_unique_start_date_id"
+                        endDate={this.state.endDate}
+                        endDateId="your_unique_end_date_id"
+                        onDatesChange={({startDate,endDate})=>{this.setState({startDate:startDate,endDate:endDate})}}
+                        focusedInput={this.state.focusedInput}
+                        reopenPickerOnClearDates={true}
+                        onFocusChange={focusedInput => this.setState({focusedInput})}
+                        renderMonth={(month) => momentJalaali(month).format('jMMMM jYYYY')}
+                        renderDayContents={(day) => momentJalaali(day).format('jD')}
+                        keepOpenOnDateSelect={false}/>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            );
+          }}
+        </Sticky>
           <div className="render-houses-row">
             <div className="padding-search-results-top">
             </div>
             <div className="renderresults-main hidden-sm">
               {this.renderHousesCol5()}
-            </div>
-            <div className="renderresults-main visible-sm">
-              {this.renderHousesCol3()}
             </div>
             <div className="padding-search-results">
             </div>
@@ -297,42 +301,7 @@ class SearchResultXl extends React.Component{
     return results;
   }
 
-  renderHousesCol3 () {
-    var results = [];
-    var initList = this.state.houseList.map((houseItem) => {
-      return(
-        <div className="pre-img-result col-sm-4"
-         key = {houseItem.id}>
-         <SearchResultItem
-          room = {houseItem}
-          preview ={"https://www.trypinn.com" + houseItem.preview} />
-        </div>
-      );
-    });
-    var counter = 0;
-    var listOfThree = [];
-    initList.map((item) => {
-      counter++;
-      listOfThree.push(item);
-      if (counter===3) {
-        counter = 0;
-        results.push(
-          <div className="row">
-          {listOfThree}
-          </div>
-        );
-        listOfThree = [];
-      }
-    });
-    if (listOfThree.length > 0) {
-      results.push(
-        <div className="row">
-        {listOfThree}
-        </div>
-      );
-    }
-    return results;
-  }
+
   render(){
     return(
       <div className="searchbarmain">

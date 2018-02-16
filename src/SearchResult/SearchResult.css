@@ -64,20 +64,33 @@
   color : grey;
 }
 
-.results-search{
+.results-search-sticky{
   height: 70px;
+  margin-top : 60px;
+  z-index: 1;
   background-color: white;
   border-bottom: solid;
   border-color: #ececec;
   border-width: 2px;
   padding-top: 10px;
 }
-/* .search-result-filter-button:hover{
-  background-color: #e3e3e3;
+.results-search-not-sticky{
+  height: 70px;
+  margin-top : 60px;
+  z-index: 0;
+  background-color: white;
+  border-bottom: solid;
+  border-color: #ececec;
+  border-width: 2px;
+  padding-top: 10px;
 }
-.search-result-filter-button:active{
-  background-color: #e3e3e3;
-} */
+
+.results-serach-child{
+  /* width: 94% !important; */
+  width : 94%;
+  font-family: IRANSans;
+  margin: auto;
+}
 
 .search-results-filters-container{
   margin: auto;
