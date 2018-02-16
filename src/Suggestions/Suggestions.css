@@ -1,0 +1,146 @@
+/* general styles here */
+
+.suggestions-header{
+  text-align: center;
+  font-size:34px;
+  font-weight:500;
+  padding-top: 20px;
+  font-family: IRANSans;
+  margin-bottom:30px;
+}
+
+.shekayat-color{
+    color: rgb(18, 178, 206);
+}
+
+.suggestions-paragraphs{
+  margin-left:40px;
+  margin-right: 40px;
+}
+.suggestions-form{
+  color: #484848;
+  font-size:14px;
+  border:solid;
+  border-color:#eaeaea;
+  border-width: 1px;
+  margin-top: 70px;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding-top: 5px;
+  padding-right: 25px;
+  padding-left: 0px;
+  padding-bottom: 50px;
+  height:600px;
+  border-radius: 6px;
+
+}
+
+.suggstions-input-item{
+  margin-bottom:-40px;
+  margin-left: -20px;
+}
+
+.suggestions-labels{
+  font-family: IRANSans;
+  margin: 20px;
+  margin-bottom: 40px !important;
+  text-align: right;
+  width: 30%;
+  height: 60px;
+
+}
+.suggestions-label-text-area{
+  direction:rtl;
+  margin-right: 5px;
+  margin-bottom: 5px;
+
+}
+
+.suggestions-description-container{
+  direction: rtl;
+  font-family: IRANSans;
+  margin-right:20px;
+  margin-top: 10px;
+  margin-left: 145px;
+  margin-bottom: 40px !important;
+  text-align: right;
+}
+
+.suggstions-description-textarea{
+  direction:rtl;
+  margin-top: 20px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.suggestions-save-button-container{
+  margin-top: -15px;
+  margin-right: 15px;
+}
+.suggestions{
+  font-family: IRANSans !important;
+  direction : rtl !important;
+}
+.suggestions-save-button{
+  font-family: IRANSans !important;
+  width: 2header% !important;
+}
+
+
+
+/* general styles finished here */
+
+
+
+/* XL styles here */
+.suggestions-cadre-xl{
+  font-family: IRANSans;
+  font-size: 16px;
+  height: 1000px;
+  width : 85rem;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  background-color: white;
+  padding-top: 30px;
+  padding-bottom: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: right;
+  border: 2px solid #e4e4e4;
+  border-radius: 7px;
+  color:#484848;
+}
+/* XL styles Finished here */
+
+
+/* MD styles here */
+.suggestions-cadre-md{
+  font-family: IRANSans;
+  font-size: 16px;
+  height: 1000px;
+  width : 68rem;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  background-color: white;
+  padding-top: 30px;
+  padding-bottom: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: right;
+  border: 2px solid #e4e4e4;
+  border-radius: 7px;
+  color:#484848;
+}
+/* MD styles Finished here*/
+
+
+
+
+/* SM styles here */
+/* SM styles Finished here*/
+
+
+/* XS styles here */
+/* XS styles Finished here */

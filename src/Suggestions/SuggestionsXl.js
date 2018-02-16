@@ -5,9 +5,9 @@ import {englishToPersianDigits} from '../tools/EnglishToPersianDigits.js';
 import 'react-responsive-modal/lib/react-responsive-modal.css';
 import Modal from 'react-modal';
 import {suggestionResponseModalStyle} from '../Styles.js';
+import './Suggestions.css';
+
 Modal.setAppElement('#root');
-
-
 class SuggestionsXl extends React.Component{
   constructor(props){
   super(props);
@@ -119,7 +119,7 @@ getRelevantToken(){
   render(){
     return(
       <div>
-        <div className='suggestions-cadre'>
+        <div className='suggestions-cadre-xl'>
           <div className='suggestions-text-area'>
            <p className='suggestions-header'><span>ثبت </span><span  className="shekayat-color">شکایات</span></p>
            <p className='suggestions-paragraphs'>ما همواره آماده ایم تا انتقادات، پیشنهادات و شکایات شما را دریافت نماییم و در کمترین زمان آن را پیگیری کنیم<br/>شما میتوانید از راه های ارتباطی زیر با ما در ارتباط باشید یا به صورت مستقیم شکایت ، پیشنهادات و انتقاد های خود را در همین صفحه ثبت کنید</p>

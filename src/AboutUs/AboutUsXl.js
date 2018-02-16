@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {englishToPersianDigits} from "../tools/EnglishToPersianDigits.js";
-
+import './AboutUs.css';
 class AboutUsXl extends React.Component{
   constructor(props){
     super(props);
@@ -11,7 +11,7 @@ class AboutUsXl extends React.Component{
 
   render(){
     return (
-      <div className='about-us-container'>
+      <div className='about-us-container-xl'>
         <div className='about-us-content'>
         <div className='about-us-logo'>
         <img src={require('../Images/tripinn_logo.svg')} width="80" height="80" />

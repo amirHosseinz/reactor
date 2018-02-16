@@ -1,0 +1,122 @@
+/* general styles here */
+
+.about-us-tripinn{
+  color:#12b2ce;
+}
+.about-us-logo{
+  text-align: center;
+  margin-bottom:-20px;
+  margin-top: 40px;
+}
+.anchor-about-us{
+  color:#12b2ce;
+  font-weight: 500;
+}
+.anchor-about-us:hover{
+  color:#0b92aa;
+  font-weight: 500;
+}
+.about-us-main-paragraph{
+  margin-bottom:45px;
+}
+.dabout-us-descriptions{
+  line-height: 35px;
+  text-align: right;
+  direction: rtl;
+}
+.about-us-app-paragraph{
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row;
+  margin-left:70px;
+  margin-right:70px;
+  margin-top:100px;
+  margin-bottom:0px;
+
+}
+
+.about-us-app-paragraph-text{
+    margin-right: 10px;
+    margin-left: 50px;
+    padding-top:80px;
+    line-height: 32px;
+    direction: rtl;
+}
+
+.about-us-tripinn-objective{
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row;
+  margin-left:70px;
+  margin-right:70px;
+  margin-top:-80px;
+  margin-bottom:70px;
+
+}
+
+.about-us-tripinn-objective-text{
+  margin-right: 50px;
+  margin-left: 5px;
+  padding-top:190px;
+  direction: rtl;
+  line-height: 32px;
+}
+
+/* general styles finished here */
+
+
+/* XL styles here */
+.about-us-container-xl{
+  font-family: IRANSans;
+  font-size: 16px;
+  height: 1200px;
+  width : 85rem;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 90px;
+  background-color: white;
+  padding-top: 30px;
+  padding-bottom: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: right;
+  border: 2px solid #e4e4e4;
+  border-radius: 7px;
+}
+/* XL styles Finished */
+
+
+
+/* MD styles here */
+.about-us-container-md{
+  font-family: IRANSans;
+  font-size: 16px;
+  height: 1200px;
+  width : 68rem;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 90px;
+  background-color: white;
+  padding-top: 30px;
+  padding-bottom: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: right;
+  border: 2px solid #e4e4e4;
+  border-radius: 7px;
+}
+/* MD styles Finished */
+
+
+/* SM styles here */
+
+
+/* SM styles Finished */
+
+
+/* XS styles here */
+
+
+/* XS styles Finished */
