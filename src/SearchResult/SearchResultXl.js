@@ -208,10 +208,32 @@ class SearchResultXl extends React.Component{
                       {this.renderGuest()}
                     </div>
                   </div>
-                  <div>
+                  <div className="search-result-date-picker-input-zone">
                     <img className="date-icon-start-date" src={require('../Images/date-icon.png')} alt="" width='20' height='20' />
                     <img className="date-icon-end-date" src={require('../Images/date-icon.png')} alt="" width='20' height='20' />
-
+                    <div className="search-result-date-picker-input">
+                    <DateRangePicker
+                      startDatePlaceholderText="تاریخ ورود"
+                      endDatePlaceholderText="تاریخ خروج"
+                      startDate={this.state.startDate}
+                      customArrowIcon={<div></div>}
+                      hideKeyboardShortcutsPanel={true}
+                      numberOfMonths={2}
+                      isRTL={true}
+                      readOnly={true}
+                      anchorDirection='right'
+                      startDateId="your_unique_start_date_id"
+                      endDate={this.state.endDate}
+                      endDateId="your_unique_end_date_id"
+                      onDatesChange={({startDate,endDate})=>{this.setState({startDate:startDate,endDate:endDate})}}
+                      focusedInput={this.state.focusedInput}
+                      reopenPickerOnClearDates={true}
+                      onFocusChange={focusedInput => this.setState({focusedInput})}
+                      renderMonth={(month) => momentJalaali(month).format('jMMMM jYYYY')}
+                      renderDayContents={(day) => momentJalaali(day).format('jD')}
+                      keepOpenOnDateSelect={false}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

@@ -1421,15 +1421,7 @@ color: #42b0c6;
   min-height: 630px;
 }
 
-.results-search{
-  height: 60px;
-  background-color: white;
 
-  border-bottom: solid;
-  border-color: #ececec;
-  border-width: 2px;
-  padding-top: 10px;
-}
 .typehead-results{
   font-family:IRANSans;
   font-style: normal;

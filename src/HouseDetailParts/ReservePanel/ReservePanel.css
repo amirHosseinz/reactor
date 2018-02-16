@@ -52,7 +52,7 @@
   width: 100%;
   border-radius: 8px;
   font-family: IRANSans;
-  font-size: 18px;
+  font-size: 16px;
   text-align: right;
   padding-right: 18px;
   font-weight: 500;
@@ -227,4 +227,11 @@
 }
 .pre-bill-margin-optimizer-for-button{
   margin-buttom : 20px !important;
+}
+
+.reserve-panel-date-picker-input{
+  border : 2px solid #e2e0e0 !important;
+  border-radius : 8px;
+  height : 48px;
+  width : 100%;
 }
