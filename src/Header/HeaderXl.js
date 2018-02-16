@@ -476,7 +476,7 @@ class HeaderXl extends React.Component{
                         <img src={require('../Images/3.png')} className="download_icon_app" alt = 'دانلود از گوگل پلی'/>
                       </a>
                     </div>
-                    <p className="header-downlaod-app-modal-download-label">نسخه iOS :</p>
+                    <p className="header-downlaod-app-modal-download-label">نسخه iOS </p>
                     <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://new.sibapp.com/applications/tripinn' >
                       <img src={require('../Images/sibapp-2.png')} className="download_icon_app" alt = 'دانلود از سیب‌اپ'/>
                     </a>

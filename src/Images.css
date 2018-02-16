@@ -3762,7 +3762,7 @@ text-align: center;
 }
 .header-downlaod-app-modal-brandname{
   font-size: 31px;
-  color: #00c1ea;
+  color: #f54e4e;
   font-weight: bold;
 }
 .header-downlaod-app-modal-slogen{
@@ -3775,6 +3775,7 @@ text-align: center;
   color: #454545;
   font-weight: normal;
   line-height: 34px;
+  margin-bottom: 35px;
 }
 
 .header-downlaod-app-modal-android{
@@ -3788,5 +3789,5 @@ text-align: center;
     color: #454545;
     margin-bottom: 10px;
     font-size: 13px;
-    margin-top:28px;
+    margin-top:16px;
 }
