@@ -116,14 +116,14 @@
 }
 .date-icon-start-date{
   z-index: 1;
-  margin-left : 268px;
+  margin-left : 272px;
   position:absolute;
   margin-top : 14px;
 }
 
 .date-icon-end-date{
   z-index: 1;
-  margin-left : 124px;
+  margin-left : 128px;
   position:absolute;
   margin-top : 14px;
 }

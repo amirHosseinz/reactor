@@ -171,7 +171,6 @@ class HouseDetailsMd extends React.Component{
    );
  }
 
-// {this.renderGalleryLightBox()}
   renderHouseDetailsVersion2(){
     if(this.state.homeData!==''){
       return(
@@ -180,7 +179,7 @@ class HouseDetailsMd extends React.Component{
             <Element name="gallery"></Element>
             <div className="house-details-gallery-md">
               {this.renderGallery()}
-
+              {this.renderGalleryLightBox()}
             </div>
             <div className="house-details-main-information-md">
               <Element name="details"></Element>
