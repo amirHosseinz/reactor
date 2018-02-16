@@ -393,14 +393,7 @@ margin: 30px
 
 
 
-.terms-header{
-  text-align: center;
-  font-size:34px;
-  font-weight:500;
-  padding-top: 20px;
-  font-family: IRANSans;
-  margin-bottom:50px;
-}
+
 
 
 .about-us-container{
@@ -496,11 +489,7 @@ margin: 30px
 }
 
 
-.terms-container{
-margin-left: 40px;
-margin-right: 40px;
-line-height: 2.0;
-}
+
 .scroll-list-trips{
 
 }
@@ -2263,9 +2252,7 @@ margin-top: 20px;
   font-family: IRANSans !important;
 
 }
-.terms-descriptions{
-  line-height: 30px;
-}
+
 .profile-description-textarea{
   font-family: IRANSans;
   color:#454545;
@@ -3041,47 +3028,10 @@ margin-top: 20px;
   margin-left:35px;
 }
 
-.terms-cadre{
-  font-family: IRANSans;
-  font-size: 16px;
-  height: 75%;
-  /* width: 76%; */
-  width: 85rem;
 
-  margin: auto;
-  margin-top: 30px;
-  margin-bottom: 100px;
-  background-color: white;
-  padding-top: 30px;
-  padding-bottom: 100px;
-  padding-left: 50px;
-  padding-right: 50px;
-  text-align: right;
-  border: 2px solid #e4e4e4;
-  border-radius: 7px;
-  color:#484848;
-}
 
-.terms-sub-title{
-  text-align: center;
-  font-size:28px;
-  font-weight:500;
-  font-family: IRANSans;
-  margin-top: 60px;
-  margin-bottom: -5px;
-}
 
-.terms-services-main1{
-margin-top: 20px;
-line-height: 32px;;
 
-}
-
-.terms-services-main2{
-margin-top: 20px;
-line-height: 32px;;
-margin-bottom: 70px;
-}
 
 
 .vaisa{
@@ -3099,40 +3049,15 @@ margin-bottom: 70px;
   margin-right: 20px;
 }
 
-.terms-close-panel1-text{
-  text-align: right;
-  font-size:16px;
-  font-weight:500;
-  font-family: IRANSans;
-  margin-left: 500px;
-  margin-right: 20px;
-}
 
-.terms-panel-box{
-  background: #f8f8f8;
-  border: solid;
-  border-color: #e5e5e5;
-  border-width: 1px;
-  margin-bottom:6px;
-  cursor : pointer;
-  padding: 5px 0px 5px 0px;
-}
+
 
 .terms-open-panel-img{
   transform: rotate(180deg);
   float: left;
 }
 
-.terms-panel1-container{
-  font-size: 14px;
-  background-color: #fdfdfd;
-  padding-top: 20px;
-  padding-bottom: 50px;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-bottom: 10px;
 
-}
 
 .terms-open-panel2-text{
   color:#2ec6cc;
@@ -3145,25 +3070,7 @@ margin-bottom: 70px;
   margin-right: 20px;
 }
 
-.terms-close-panel2-text{
-  text-align: right;
-  font-size:16px;
-  font-weight:500;
-  font-family: IRANSans;
-  margin-left: 608px;
-  margin-right: 20px;
 
-}
-
-.terms-open-panel3-text{
-  color:#2ec6cc;
-  text-align: right;
-  font-size:16px;
-  font-weight:500;
-  font-family: IRANSans;
-  margin-left: 663px;
-  margin-right: 20px;
-}
 
 .terms-close-panel3-text{
   text-align: right;

@@ -14,7 +14,6 @@ class FooterXl extends React.Component{
                   <a href="https://instagram.com/tripinn.ir"><img src={require('../Images/trypinn-instagram.png')} className='social-image-xl' alt=""></img></a>
                   <a href="https://twitter.com/tripinni"><img src={require('../Images/trypinn-twitter.png')} className='social-image-xl' alt=""></img></a>
             </div>
-
             <div className='footer-copy-right col-lg-8'>
               © 2018, Tripinn, All Rights Reserved.
             </div>

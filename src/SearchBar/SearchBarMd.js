@@ -26,7 +26,7 @@ const theme= {
     input:                    'main-page-searchbar-input',
     inputOpen:                'main-page-searchbar-input--open',
     inputFocused:             'main-page-searchbar-input--focused',
-    suggestionsContainer:     'main-page-searchbar-suggestions-container',
+    suggestionsContainer:     'main-page-searchbar-suggestions-container-md',
     suggestionsContainerOpen: 'main-page-searchbar-suggestions-container--open',
     suggestionsList:          'main-page-searchbar-suggestions-list',
     suggestion:               'main-page-searchbar-suggestion',
@@ -165,7 +165,7 @@ class SearchBarMD extends React.Component{
     }
     return(
       <div className="search-bar-main-division">
-        <div className="search-bar-background">
+        <div className="search-bar-background-md">
         </div>
           <div className="search-bar-contents-md">
             <p className="search-bar-tripinn-heading">
@@ -174,7 +174,7 @@ class SearchBarMD extends React.Component{
             <p className="search-bar-tripinn-heading-2">
               سامانه رزرو ویلا و اقامتگاه محلی
             </p>
-            <div className="search-bar-auto-suggest-container">
+            <div className="search-bar-auto-suggest-container-md">
               <p className="search-bar-inter-destenation-text"> مقصد را وارد کنید:
               </p>
               <div className="search-bar-auto-suggest">
