@@ -458,20 +458,29 @@ class HeaderXl extends React.Component{
       <Modal isOpen={this.state.showDownloadAppModal}
             style={downloadAppModalStyle}
              onRequestClose={()=>{this.setState({showDownloadAppModal:false})}}>
-              <div className="download-app-modal-container">
-                <div className="mob">
-                  <img src={require('../Images/phone-app.png')} className="download-modal-pc-preview" alt = 'تریپین'/>
-                </div>
-                <div className="download-app-modal-icons-container">
-                  <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://new.sibapp.com/applications/tripinn' >
-                    <img src={require('../Images/sibapp.svg')} className="download_icon_app" alt = 'دانلود از سیب‌اپ'/>
-                  </a>
-                  <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='https://play.google.com/store/apps/details?id=com.trypinn&hl=en' >
-                    <img src={require('../Images/gplay.svg')} className="download_icon_app" alt = 'دانلود از گوگل پلی'/>
-                  </a>
-                  <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
-                    <img src={require('../Images/bazaar.svg')} className="download_icon_app" alt = 'دانلود از کافه بازار'/>
-                  </a>
+              <div className="header-downlaod-app-modal-container">
+                <img  src={require('../Images/header-download-app-modal-phone.png')} className="header-download-app-modal-phone"/>
+                <div className="header-downlaod-app-modal-content-container">
+                  <div className="header-downlaod-app-modal-heading">
+                    <span className="header-downlaod-app-modal-brandname"> تریپین </span>
+                    <span className="header-downlaod-app-modal-slogen">  همیشه همراه شما </span>
+                  </div>
+                  <p className="header-downlaod-app-modal-download-description">اپلیکیشن تریپین بر روی دستگاه‌های اندروید و iOS قابل نصب است. </p>
+                  <div direction="rtl">
+                    <p className="header-downlaod-app-modal-download-label"> نسخه اندروید </p>
+                    <div className="header-downlaod-app-modal-android">
+                      <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
+                        <img src={require('../Images/1.svg')} className="download_icon_app" alt = 'دانلود از کافه بازار'/>
+                      </a>
+                      <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='https://play.google.com/store/apps/details?id=com.trypinn&hl=en' >
+                        <img src={require('../Images/3.png')} className="download_icon_app" alt = 'دانلود از گوگل پلی'/>
+                      </a>
+                    </div>
+                    <p className="header-downlaod-app-modal-download-label">نسخه iOS :</p>
+                    <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://new.sibapp.com/applications/tripinn' >
+                      <img src={require('../Images/sibapp-2.png')} className="download_icon_app" alt = 'دانلود از سیب‌اپ'/>
+                    </a>
+                  </div>
                 </div>
               </div>
             </Modal>
