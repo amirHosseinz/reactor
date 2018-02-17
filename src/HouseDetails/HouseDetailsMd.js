@@ -153,6 +153,7 @@ class HouseDetailsMd extends React.Component{
 
  renderGalleryLightBox(){
    var images = [];
+   images.push({src:"https://www.trypinn.com" + this.state.homeData.preview_high});
    for (var imageIndex=this.state.homeData.images.length-1;imageIndex>=0;imageIndex--){
      images.push({src: "https://www.trypinn.com"+ this.state.homeData.images[imageIndex].image});
    }

@@ -176,7 +176,7 @@
 }
 .house-details-map{
   margin-top : 40px !important;
-  z-index: -1000;
+  z-index: -1000 !important;
 }
 .house-details-host-information{
   display: -webkit-flex; /* Safari */

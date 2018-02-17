@@ -14,7 +14,7 @@ import {Image} from 'react-bootstrap';
 import Modal from 'react-modal';
 import {Sticky} from 'react-sticky';
 import Autosuggest from 'react-autosuggest';
-// Modal.setAppElement('#header');
+// Modal.setAppElement('../index.js');
 
 const theme ={
   container:                'header-searchbar-container',
