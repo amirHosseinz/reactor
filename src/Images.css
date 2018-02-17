@@ -167,6 +167,9 @@ transform: rotate(-5deg);
 }
 .downlaod-app-button-header{
 }
+
+
+
 .download-item-menu{
   margin-top: 19px !important;
   border: solid;
@@ -2303,14 +2306,15 @@ margin-top: 20px;
   display: -webkit-flex; /* Safari */
   -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
   display: flex;
-  margin: auto;
+  margin-right:auto;
   flex-direction: row-reverse;
   text-align: center !important;
   margin-top: 50px;
 
 }
 .request-userpanel-button{
-  font-family: IRANSans !important;
+
+
 }
 .request-detail-userpanel{
   width: 82%;
@@ -3212,4 +3216,78 @@ text-align: center;
     margin-bottom: 10px;
     font-size: 13px;
     margin-top:16px;
+}
+
+
+.request-item-cancel-button{
+  width:20%;
+  margin-top: 19px !important;
+
+  border: solid;
+  border-color: #f54e4e;
+  border-width: 2px;
+  border-radius: 500px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color:#f54e4e;
+}
+.request-item-cancel-button:hover{
+  width:20%;
+  margin-top: 19px !important;
+  border: solid;
+  border-color: #f54e4e;
+  color: #fff;
+  background-color: #f54e4e;
+  border-radius: 500px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.request-item-payment-button{
+  background-color: #83daeb;
+  width:20%;
+  margin-left: 40px;
+  margin-right:230px;
+  margin-top: 19px !important;
+  border: solid;
+  border-color:#83daeb;
+  border-width: 2px;
+  border-radius: 500px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color:#fff;
+}
+
+.request-item-payment-button:hover{
+  width:20%;
+  margin-top: 19px !important;
+  border: solid;
+  border-color: #83daeb;
+  color: #fff;
+  background-color: #83daeb;
+  border-radius: 500px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.request-item-payment-button-text{
+  font-weight: 600;
+  font-size: 18px;
+  font-family: IRANSans;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.request-item-cancel-button-text{
+  font-size: 16px;
+  font-family: IRANSans;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
