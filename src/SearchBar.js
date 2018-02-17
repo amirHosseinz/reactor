@@ -7,9 +7,6 @@ import SearchBarSm from './SearchBar/SearchBarSm.js';
 
 class SearchBar extends React.Component {
 
-
-
-
   renderSearchBarXl(props){
     return(
       <div className="hidden-xs hidden-md hidden-sm visible-xl">

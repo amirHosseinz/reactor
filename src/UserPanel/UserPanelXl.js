@@ -8,13 +8,15 @@ import UserProfile from '../UserProfile.js';
 
 
 class UserPanelXl extends React.Component{
-
   constructor(props){
     super(props);
     this.state={
+      reRenderList : false,
       ProfileDetail:'',
       requestDetail:'',
       tripDetail:'',
+      hasRequest : false,
+      hasTrip : false,
     };
   }
 
@@ -35,16 +37,19 @@ class UserPanelXl extends React.Component{
   changeProfileDetail (Profile_Detail) {
     this.setState({ProfileDetail:Profile_Detail});
   }
-
+  changeReRenderList(){
+    this.setState((prevState,props)=>{return({reRenderList:!prevState.reRenderList})});
+  }
   showContent(){
     switch (window.location.pathname.split('/')[window.location.pathname.split('/').length-1]){
       case 'request':
       return(
-        <RequestItem requestDetail={this.state.requestDetail}/>
+        <RequestItem changeReRenderList={()=>{this.changeReRenderList()}}
+        requestDetail={this.state.requestDetail}/>
       );
       case 'message':
       return(
-        <div> </div>
+        <div></div>
       );
       case 'trip':
       return(
@@ -62,7 +67,7 @@ class UserPanelXl extends React.Component{
         );
       case 'request':
       return(
-        <Requests changeRequestDetail={this.changeRequestDetail.bind(this)} />
+        <Requests changeHasRequest={this.changeHasRequest.bind(this)} reRender={this.state.reRenderList} changeRequestDetail={this.changeRequestDetail.bind(this)} />
       );
       case 'trip':
       return(
@@ -77,6 +82,12 @@ class UserPanelXl extends React.Component{
     }
   }
 
+changeHasTrip(hasTrip){
+  this.setState({hasTrip:hasTrip});
+}
+changeHasRequest(hasRequest){
+  this.setState({hasRequest:hasRequest});
+}
 renderDashbordTitle(){
   switch (window.location.pathname.split('/')[window.location.pathname.split('/').length-1]){
     case 'message':
@@ -96,23 +107,14 @@ renderDashbordTitle(){
 }
 
   render(){
+    var selectedPanel = window.location.pathname.split('/')[window.location.pathname.split('/').length-1];
     return(
-      <div requests-list-title>
-          <div className="profile-container-margined">
-              <div className="profile_dynamic_edit col-md-9  padding-top">
-                {this.showContent()}
-              </div>
-              <div className="profile_static_bar col-md-3">
-                {this.renderSelectedPanel()}
-              </div>
+      <div className={(selectedPanel==='request' && this.state.hasRequest===false)||(selectedPanel==='trip'&& this.state.hasTrip===false)?"requests-list-title" : "requests-list-title row-reverse"}>
+          <div className="request-trip-message-container-margined">
+            {this.showContent()}
           </div>
-          <div className="request-list-xs hidden-xl visible-xs">
-              <div className="request-xs-header-title-div">
-                {this.renderDashbordTitle()}
-              </div>
-              <div className="request-list-xs-list">
-                {this.renderSelectedPanel()}
-              </div>
+          <div className="profile_static_bar">
+            {this.renderSelectedPanel()}
           </div>
       </div>
     );

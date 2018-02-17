@@ -8,15 +8,16 @@ export const loginPhoneNumberStyle = {
     backgroundColor   : 'rgba(0, 0, 0, 0.7)'
   },
   content : {
-    top                        : '15%',
-    left                       : '35%',
-    right                      : '35%',
-    bottom                     : '35%',
-    outline                    : '0',
-    padding                    : '5px',
-    transform                  : 'translate(0%, 0%)'
+
+    padding                    : '0px',
+    margin:'auto',
+    transform                  : 'translate(0%, 0%)',
+    borderRadius              : '15px',
+    height: '400px',
+    width : '400px',
   }
 };
+
 export const loginVerifySmsXl = {
   overlay : {
     position          : 'fixed',
@@ -27,13 +28,13 @@ export const loginVerifySmsXl = {
     backgroundColor   : 'rgba(0, 0, 0, 0.7)'
   },
   content : {
-    top                        : '15%',
-    left                       : '35%',
-    right                      : '35%',
-    bottom                     : '35%',
+    height : '300px',
+    width  : '400px',
+    margin: 'auto',
     outline                    : '0',
-    padding                    : '5px',
-    transform                  : 'translate(0%, 0%)'
+    padding                    : '0px',
+    transform                  : 'translate(0%, 0%)',
+    borderRadius              : '15px',
   }
 };
 export const setPasswordStyle ={
@@ -43,16 +44,16 @@ export const setPasswordStyle ={
     left              : 0,
     right             : 0,
     bottom            : 0,
-    backgroundColor   : 'rgba(0, 0, 0, 0.7)'
+    backgroundColor   : 'rgba(0, 0, 0, 0.0)'
   },
   content : {
-    top                        : '10%',
-    left                       : '35%',
-    right                      : '35%',
-    bottom                     : '20%',
+    height : '470px',
+    width  : '400px',
+    margin: 'auto',
     outline                    : '0',
-    padding                    : '5px',
-    transform                  : 'translate(0%, 0%)'
+    padding                    : '0px',
+    transform                  : 'translate(0%, 0%)',
+    borderRadius              : '15px',
   }
 };
 export const registerNewUser = {
@@ -62,18 +63,46 @@ export const registerNewUser = {
     left              : 0,
     right             : 0,
     bottom            : 0,
-    backgroundColor   : 'rgba(0, 0, 0, 0.7)'
+    backgroundColor   : 'rgba(0, 0, 0, 0.0)'
   },
   content : {
-    top                        : '10%',
-    left                       : '35%',
-    right                      : '35%',
-    bottom                     : '20%',
+    height : '560px',
+    width  : '400px',
+    margin: 'auto',
     outline                    : '0',
-    padding                    : '5px',
-    transform                  : 'translate(0%, 0%)'
+    padding                    : '0px',
+    transform                  : 'translate(0%, 0%)',
+    borderRadius              : '15px',
   }
 };
+
+export const suggestionResponseModalStyle = {
+  overlay : {
+    backgroundColor: 'rgba(0,0,0,0.7)',
+  },
+  content : {
+    fontFamily : 'IRANSans',
+    top:'50%',
+    left:'50%',
+    right:'auto',
+    bottom:'auto',
+    marginRight:'-50%',
+    transform:'translate(-50%, -50%)',
+  }
+};
+export const downloadAppModalStyle={
+  overlay : {
+    backgroundColor: 'rgba(0,0,0,0.7)',
+  },
+  content : {
+    height : '530px',
+    width  :'730px',
+    margin : 'auto',
+    transform:'translate(0%, 0%)',
+    borderRadius: '15px',
+
+  }
+}
 export const loginPasswordStyle = {
   overlay : {
     position          : 'fixed',
@@ -83,14 +112,14 @@ export const loginPasswordStyle = {
     bottom            : 0,
     backgroundColor   : 'rgba(0, 0, 0, 0.7)'
   },
-  content : {
-    top                        : '15%',
-    left                       : '35%',
-    right                      : '35%',
-    bottom                     : '30%',
+  content :{
+    height : '360px',
+    width  : '400px',
+    margin: 'auto',
     outline                    : '0',
-    padding                    : '5px',
-    transform                  : 'translate(0%, 0%)'
+    padding                    : '0px',
+    transform                  : 'translate(0%, 0%)',
+    borderRadius              : '15px',
   }
 };
 export const loginPanelmobileStyle = {
@@ -102,25 +131,7 @@ export const loginPanelmobileStyle = {
     bottom            : 0,
     backgroundColor   : 'rgba(255, 255, 255, 1)'
   },
-
 }
-export const fixedReservePanelHouseDetails = {
-  backgroundColor: '#fff',
-}
-
-export const normalReservePanelHouseDetails ={
-  backgroundColor: '#fff',
-}
-
-export const fixedScrollListHouseDetails={
-  marginTop : '10px',
-  border: '1px solid #ddd',
-  boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.2)',
-}
-
-export const normalScrolllListHouseDetails={
-}
-
 export const reserveModalStyle={
   overlay : {
     position          : 'fixed',
@@ -130,5 +141,32 @@ export const reserveModalStyle={
     bottom            : 0,
     backgroundColor   : 'rgba(0, 0, 0, 0.7)'
   },
-
+  content :{
+    height : '650px',
+    width  : '620px',
+    margin : 'auto' ,
+    borderRadius:'15px',
+    outline : '0',
+    padding: '5px',
+    transform : 'translate(0%, 0%)'
   }
+}
+export const reserveModalStyleRequests={
+  overlay : {
+    position          : 'fixed',
+    top               : 0,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+    backgroundColor   : 'rgba(0, 0, 0, 0.7)'
+  },
+  content :{
+    height : '610px',
+    width  : '620px',
+    margin : 'auto' ,
+    borderRadius:'15px',
+    outline : '0',
+    padding: '5px',
+    transform : 'translate(0%, 0%)'
+  }
+}

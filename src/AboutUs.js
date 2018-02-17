@@ -35,7 +35,7 @@ class AboutUs extends React.Component {
       </div>
     );
   }
-
+  
   renderAboutUsXs(){
     return(
       <div className="hidden-xl hidden-md hidden-sm visible-xs">

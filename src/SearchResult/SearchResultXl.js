@@ -1,18 +1,16 @@
 import React from 'react';
-import { findDOMNode } from 'react-dom';
-import { Button } from 'semantic-ui-react';
-import { Typeahead ,MenuItem,Menu , menuItemContainer} from '../tools/react-bootstrap-typeahead';
 import SearchResultItem from '../SearchResultItem';
-import $ from 'jquery';
-import '../tools/DatePicker/bootstrap-datepicker.fa.js';
-import '../tools/DatePicker/bootstrap-datepicker.js';
-import '../tools/DatePicker/bootstrap-datepicker.css';
-import { withRouter } from 'react-router-dom';
-import GuestNumber from '../HouseDetailParts/GuestNumber'
+import GuestNumberSearchBar from '../GuestNumberSearchBar.js'
 import {Dropdown} from 'semantic-ui-react';
+import "./SearchResult.css";
+import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
 
+import momentJalaali from 'moment-jalaali';
+import '../tools/calendar/initialize.js';
+import '../tools/calendar2/lib/css/_datepicker.css';
+import {DateRangePicker} from '../tools/calendar2';
+import Sticky from 'react-sticky';
 
-const TypeaheadMenuItem = menuItemContainer(MenuItem);
 const listOfCity = [
   'اصفهان',
   'نوشهر',
@@ -58,9 +56,12 @@ class SearchResultXl extends React.Component{
       city: null,
       houseList:[],
       token: null,
+      showGuestNumberPicker:false,
       numberOfGuests: 1,
       OpenDropDown:false,
       Counter:false,
+      startDate:null,
+      endDate:null,
       searchParams : {
         location: '',
         start_date: new Date(),
@@ -77,21 +78,26 @@ class SearchResultXl extends React.Component{
     else{
         this.setState({city:city});
     }
-    this.renderToDatePicker();
-    this.renderFromDatePicker();
     this.setState({token : this.getRelevantToken()},()=>{this.setSearchParams()});
   }
-
 
   componentWillReceiveProps(){
+    var city=this.readCityFromURL();
+    if(city!==null){
+          this.setState({city:city[0]});
+    }
+    else{
+        this.setState({city:city});
+    }
     this.setState({token : this.getRelevantToken()},()=>{this.setSearchParams()});
   }
+
   setSearchParams(){
     var spar = {
       location: this.state.city,
-      start_date: this.state.searchParams.start_date,
-      end_date: this.state.searchParams.end_date,
-      capacity: 1,
+      start_date: this.state.startDate,
+      end_date: this.state.endDate,
+      capacity: this.state.numberOfGuests,
     };
     this.setState({
       searchParams: spar
@@ -129,49 +135,14 @@ class SearchResultXl extends React.Component{
   getRelevantToken(){
     return localStorage['token'];
   }
-  renderFromDatePicker(){
-    const fromDatePicker = findDOMNode(this.refs.fromdatepicker);
-    $(document).ready(function(){
-      $(fromDatePicker).datepicker({
-        changeMonth: true,
-        changeYear: true,
-        isRTL: true,
-        numberOfMonths:1,
-        showButtonPanel:true,
-        dateFormat: "yy/m/d",
-       });
-    });
-  }
 
   renderGuest(){
-    return(
-      <div   >
-        <GuestNumber changeNumberOfGuests={this.changeNumberOfGuests.bind(this)} onMouseMove={this.renderOnClick2.bind(this)}/>
-      </div>
-    );
-  }
-
-  renderOnClick2(){
-    this.setState({OpenDropDown:true
-                    });
-
-  }
-
-  renderOnClick3(){
-    this.setState({OpenDropDown:true
-                    });
-
-  }
-
-    renderOnClick(){
-    this.setState({Counter:true});
-    if(this.state.Counter===true){
-      this.setState({OpenDropDown:true,
-                      Counter:false });
-    }
-    else if (this.state.Counter===false) {
-      this.setState({OpenDropDown:false,
-                      Counter:true });
+    if(this.state.showGuestNumberPicker===true){
+      return(
+        <div className="searcu-result-guest-number-dropdown"ref={node=>{this.node=node}}>
+          <GuestNumberSearchBar guestNumber={this.state.numberOfGuests} changeNumberOfGuests={this.changeNumberOfGuests.bind(this)} />
+        </div>
+      );
     }
   }
 
@@ -179,19 +150,6 @@ class SearchResultXl extends React.Component{
     this.setState({numberOfGuests:number});
   }
 
-  renderToDatePicker(){
-    const toDatePicker = findDOMNode(this.refs.todatepicker);
-    $(document).ready(function(){
-      $(toDatePicker).datepicker({
-        changeMonth: true,
-        changeYear: true,
-        numberOfMonths:1,
-        showButtonPanel:true,
-        isRTL: true,
-        dateFormat: "yy/m/d",
-       });
-    });
-  }
   readCityFromURL(){
     var url = decodeURIComponent(window.location.href.split('/')).split(',');
     if(url[4]==='هر جا'){
@@ -210,86 +168,81 @@ class SearchResultXl extends React.Component{
        this.props.history.replace("/search/" + this.state.city);
     }
   }
+  handleOutsideClick = (e)=>{
+    if (this.node.contains(e.target)) {
+      return;
+    }
+    this.openGuestNumberDropdown();
+  }
+
+  openGuestNumberDropdown(){
+    if (!this.state.showGuestNumberPicker) {
+      document.addEventListener('click', this.handleOutsideClick, false);
+    }
+    else {
+      document.removeEventListener('click', this.handleOutsideClick, false);
+      this.setSearchParams();
+    }
+    this.setState(prevState => ({showGuestNumberPicker: !prevState.showGuestNumberPicker}));
+  }
   renderSearchBarInDetails(){
-    this.renderFromDatePicker();
-    this.renderToDatePicker();
     return(
       <div className="render-results row">
-            <div className="results-search">
-              <div className="results-serach-child">
-                <div className="col-md-3">
-                </div>
-                <div className="search-inputs col-md-9">
-                  <div className="multi-input-typeahead">
-                  <Typeahead
-                    className="typeahead-indetail-xl"
-                    renderMenu={(results,menuProps) => {
-                        return(
-                          <Menu {...menuProps}>
-                            {results.map((result, index) => (
-                              <TypeaheadMenuItem option={result} position={index}>
-                                {result}
-                              </TypeaheadMenuItem>
-                            ))}
-                          </Menu>
-                        );
-                      }}
-                    minLength={2}
-                    align="right"
-                    emptyLabel="نتیجه‌ای یافت نشد"
-                    maxResults={5}
-                    selected={this.readCityFromURL()}
-                    placeholder='هر جا'
-                    onInputChange={(input)=> {this.setState({city:input})}}
-                    selectHintOnEnter={false}
-                    highlightOnlyResult={true}
-                    submitFormOnEnter={true}
-                    onChange={(selected)=>{
-                      if(selected.length!==0){
-                        this.setState({city:selected[0]},()=>{this.handleClick()});
-                      }
-                    }}
-                  options={listOfCity}
-                    />
-                  </div>
-
-                  <div className="multi-input-1">
-                    <input className="date-picker-input  form-control1" id='fromdatepicker' ref='fromdatepicker' placeholder='تاریخ ورود'style={{direction:'rtl',textAlign:'center'}}/>
-                  </div>
-                  <div className="multi-input-1">
-                    <input className="date-picker-input  form-control1" id='todatepicker' ref='todatepicker' placeholder='تاریخ خروج'style={{direction:'rtl',textAlign:'center'}}/>
-                  </div>
-                  <div className="multi-input-1">
-                    <input className="dropdown form-control1" placeholder={this.state.numberOfGuests + " نفر "} style={{direction:'rtl',textAlign:'center'}}/>
-                  </div>
-                  <div className="multi-input-1" dir="rtl"  >
-                  <Dropdown className="drop" icon='dropdown' dir="rtl"  text={''} >
-                  <Dropdown.Menu onClick={(event)=>{event.stopPropagation()}}>
-                  {this.renderGuest()}
-                  </Dropdown.Menu>
-                 </Dropdown>
-                 </div>
-
-                  <div className="multi-input-2">
-                  <Button color='blue' type="button" className="search-btn-result" onClick={()=>{this.handleClick()}} data-reactid="99">
-                    <span className='searchicon'>
-                      <img src={require('../Images/trpinn_search.png')} className='search-image-result' alt=""></img>
-                    </span>
-                  </Button>
-                  </div>
-                  <div className="col-md-6">
+        <Sticky>
+          {({style,isSticky})=>{
+            return(
+              <div style={style} className={isSticky?"results-search-sticky":"results-search-not-sticky"}>
+                <div className="results-serach-child">
+                  <div className="search-results-filters-container">
+                    <p className="search-result-filter-label"> :فیلترها </p>
+                    <div>
+                      <button onClick={()=>{this.openGuestNumberDropdown()}}className="search-result-filter-button"  style={{direction:'rtl',textAlign:'center'}}>
+                        <span>
+                          <img src={require('../Images/guest-number-icon.png')} className='guest-number-icon' alt=""/>
+                        </span>
+                         {englishToPersianDigits(this.state.numberOfGuests)} مهمان
+                      </button>
+                      <div className="serach-result-number-of-guests-input">
+                        {this.renderGuest()}
+                      </div>
+                    </div>
+                    <div className="search-result-date-picker-input-zone">
+                      <img className="date-icon-start-date" src={require('../Images/date-icon.png')} alt="" width='20' height='20' />
+                      <img className="date-icon-end-date" src={require('../Images/date-icon.png')} alt="" width='20' height='20' />
+                      <div className="search-result-date-picker-input">
+                        <DateRangePicker
+                          startDatePlaceholderText="تاریخ ورود"
+                          endDatePlaceholderText="تاریخ خروج"
+                          startDate={this.state.startDate}
+                          customArrowIcon={<div></div>}
+                          hideKeyboardShortcutsPanel={true}
+                          numberOfMonths={2}
+                          isRTL={true}
+                          readOnly={true}
+                          anchorDirection='right'
+                          startDateId="your_unique_start_date_id"
+                          endDate={this.state.endDate}
+                          endDateId="your_unique_end_date_id"
+                          onDatesChange={({startDate,endDate})=>{this.setState({startDate:startDate,endDate:endDate})}}
+                          focusedInput={this.state.focusedInput}
+                          reopenPickerOnClearDates={true}
+                          onFocusChange={focusedInput => this.setState({focusedInput})}
+                          renderMonth={(month) => momentJalaali(month).format('jMMMM jYYYY')}
+                          renderDayContents={(day) => momentJalaali(day).format('jD')}
+                          keepOpenOnDateSelect={false}/>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            );
+          }}
+        </Sticky>
           <div className="render-houses-row">
             <div className="padding-search-results-top">
             </div>
-            <div className="renderresults-main hidden-sm">
+            <div className="renderresults-main">
               {this.renderHousesCol5()}
-            </div>
-            <div className="renderresults-main visible-sm">
-              {this.renderHousesCol3()}
             </div>
             <div className="padding-search-results">
             </div>
@@ -297,6 +250,7 @@ class SearchResultXl extends React.Component{
       </div>
     );
   }
+
 
   renderHousesCol5 () {
     var results = [];
@@ -341,47 +295,11 @@ class SearchResultXl extends React.Component{
     return results;
   }
 
-  renderHousesCol3 () {
-    var results = [];
-    var initList = this.state.houseList.map((houseItem) => {
-      return(
-        <div className="pre-img-result col-sm-4"
-         key = {houseItem.id}>
-         <SearchResultItem
-          room = {houseItem}
-          preview ={"https://www.trypinn.com" + houseItem.preview} />
-        </div>
-      );
-    });
-    var counter = 0;
-    var listOfThree = [];
-    initList.map((item) => {
-      counter++;
-      listOfThree.push(item);
-      if (counter===3) {
-        counter = 0;
-        results.push(
-          <div className="row">
-          {listOfThree}
-          </div>
-        );
-        listOfThree = [];
-      }
-    });
-    if (listOfThree.length > 0) {
-      results.push(
-        <div className="row">
-        {listOfThree}
-        </div>
-      );
-    }
-    return results;
-  }
+
   render(){
     return(
-      <div>
       <div className="searchbarmain">
-          <div className="container-fluid hidden-xs visible-xl">
+          <div className="container-fluid">
             {this.renderSearchBarInDetails()}
             <div className="col-lg col-sm-12 mb-10">
             </div>
@@ -412,10 +330,9 @@ class SearchResultXl extends React.Component{
             <img src={require('../Images/button-app-store.svg')} className='bazar-ico' alt=" دانلود از سیب‌اپ"></img>
           </div>
         </div>
+       </div>
       </div>
-      </div>
-      </div>
-      </div>
+    </div>
     );
   }
 }

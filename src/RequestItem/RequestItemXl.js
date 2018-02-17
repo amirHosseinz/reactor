@@ -2,7 +2,9 @@ import React from 'react';
 import { Divider,Button } from 'semantic-ui-react';
 import {englishToPersianDigits} from '../tools/EnglishToPersianDigits';
 import moment from 'moment-jalaali';
-import {Modal} from 'react-bootstrap';
+// import {Modal} from 'react-bootstrap';
+import Modal from 'react-modal';
+import {reserveModalStyleRequests} from '../Styles.js';
 import {parsePrice3digits} from '../tools/ParsePrice3digits.js'
 
 class RequestItemXl extends React.Component{
@@ -194,8 +196,9 @@ class RequestItemXl extends React.Component{
     if(this.state.request!==null){
       if(this.state.requestStatus!=='no-house'){
         return(
-          <Modal show={this.state.showPreBill}
-            onHide={()=>{this.setState({showPreBill:false})}}>
+          <Modal isOpen={this.state.showPreBill}
+            style={reserveModalStyleRequests}
+            onRequestClose={()=>{this.setState({showPreBill:false})}}>
             <div className="pre-bill-main-division">
               <div className="pre-bill-header-section">
                 <p>
@@ -343,7 +346,7 @@ class RequestItemXl extends React.Component{
 }
 renderCancelButton(){
   if(this.state.requestStatus!=="GUEST_CANCELED"){
-   return (<Button className="request-userpanel-button" onClick={this.setTokenForDelete.bind(this)}> لغو درخواست </Button>);
+   return (<Button className="request-userpanel-button" onClick={()=>{this.setTokenForDelete()}}> لغو درخواست </Button>);
   }
 }
 renderDeleteButton(){
@@ -355,7 +358,7 @@ renderDeleteButton(){
     if (this.state.request!==null){
       if(this.state.requestStatus!=='no-house'){
         return (
-          <div className="request-header">
+          <div className="request-header profile_dynamic_edit2">
           <div className='request-status'>
             <p className="reserve-status-h1"> :وضعیت درخواست رزرو </p>
             <p className="reserve-status-h2"> {this.getRequestStatus()} </p>
@@ -390,7 +393,7 @@ renderDeleteButton(){
       }
       else{
         return(
-        <div className='no-request-container'>
+        <div className='no-request-container profile_dynamic_edit'>
           <p className="no-request-header">شما درخواست رزروی ندارید</p>
           <p className="no-request-main-paragraph">شما تاکنون درخواست رزروی نداشته اید. میتوانید با جستجو میان شهرها و اقامتگاه های موجود، درخواست رزرو خود را ثبت نمایید. کافی است مراحل زیر را دنبال نمایید</p>
           <div className='no-request-stage1-container'>
@@ -489,6 +492,7 @@ renderDeleteButton(){
      return response.json();
    })
    .then((request_status) => {
+     this.props.changeReRenderList();
   });
   }
   render(){

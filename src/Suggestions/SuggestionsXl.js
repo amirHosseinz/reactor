@@ -3,9 +3,11 @@ import { Divider,Button } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import {englishToPersianDigits} from '../tools/EnglishToPersianDigits.js';
 import 'react-responsive-modal/lib/react-responsive-modal.css';
-import Modal from '../tools/react-responsive-modal';
+import Modal from 'react-modal';
+import {suggestionResponseModalStyle} from '../Styles.js';
+import './Suggestions.css';
 
-
+Modal.setAppElement('#root');
 class SuggestionsXl extends React.Component{
   constructor(props){
   super(props);
@@ -101,18 +103,23 @@ getRelevantToken(){
   }
   renderResponseModal(){
     return(
-      <Modal open={this.state.showResponseModal}
-             little={true}
-             showCloseIcon={false}
-             onClose={()=>{this.setState({showResponseModal:false})}}>
-         {this.handleResponseModal()}
+      <Modal isOpen={this.state.showResponseModal}
+      onRequestClose={()=>{this.setState({showResponseModal:false})}}
+      style={suggestionResponseModalStyle}>
+        {this.handleResponseModal()}
       </Modal>
+      // <Modal open={this.state.showResponseModal}
+      //        little={true}
+      //        showCloseIcon={false}
+      //        onClose={()=>{this.setState({showResponseModal:false})}}>
+      //    {this.handleResponseModal()}
+      // </Modal>
     );
   }
   render(){
     return(
       <div>
-        <div className='suggestions-cadre'>
+        <div className='suggestions-cadre-xl'>
           <div className='suggestions-text-area'>
            <p className='suggestions-header'><span>ثبت </span><span  className="shekayat-color">شکایات</span></p>
            <p className='suggestions-paragraphs'>ما همواره آماده ایم تا انتقادات، پیشنهادات و شکایات شما را دریافت نماییم و در کمترین زمان آن را پیگیری کنیم<br/>شما میتوانید از راه های ارتباطی زیر با ما در ارتباط باشید یا به صورت مستقیم شکایت ، پیشنهادات و انتقاد های خود را در همین صفحه ثبت کنید</p>
@@ -153,7 +160,7 @@ getRelevantToken(){
                 </span>
               </div>
               <div className="suggestions-description-container">
-                <label className="suggstions-description-textarea" for="comment">توضیحات:</label>
+                <label className="suggstions-description-textarea">توضیحات:</label>
                   <textarea style={{minHeight:"150px",minWidth:"80%" ,maxHeight:"150px" ,maxWidth:"80%"}} wrap="hard" className="suggestions form-control-tripinn" rows="5"  value={this.state.description} onChange={(event)=>{this.SuggestionsDescription(event)}} />
               </div>
               <div className='suggestions-save-button-container'>

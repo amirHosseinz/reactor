@@ -25,6 +25,13 @@ class RequestsXl extends React.Component{
   componentWillMount() {
       this.setState({token:this.getRelevantToken()},()=>{this.setSearchParams(this.getRole())});
   }
+
+  componentWillReceiveProps(nextProps){
+    if(this.props.reRender!==nextProps.reRender){
+        this.setSearchParams(this.getRole());
+    }
+  }
+
   getRelevantToken(){
     if(localStorage['isLoggedIn']==='true'){
       return localStorage['token'];
@@ -60,11 +67,16 @@ class RequestsXl extends React.Component{
   }
   renderData(request_list){
     this.setState({requestList:request_list},()=>{
+      console.log(this.state.requestList.request_list);
       if(request_list.request_list.length>0){
-        this.showRequestItemClick(request_list.request_list[0]);
+
+        this.showRequestItemClick(request_list.request_list[0],true);
+        // this.props.changeHasRequest(true);
       }
       else{
+
         this.showRequestItemClick({status:'no-house'});
+        // this.props.changeHasRequest(false);
       }
     });
 
@@ -81,43 +93,47 @@ class RequestsXl extends React.Component{
   renderRequests(){
       if(this.state.requestList!==null){
         var request_list = this.state.requestList.request_list;
-        this.list = request_list.map((item)=>  {
-          return(
-            <div
-              dir="rtl"
-              className={(this.state.selected===item.id)?"userpanel-item-list-selected":"userpanel-item-list-not-selected"}
-              key={item.id} onClick={() =>{
-              this.showRequestItemClick(item)
-              }}>
-                <div>
-                <ListGroupItem className="scroll-list-requests">
-                  <div className="preview-x">
-                    <img
-                    src={"https://www.trypinn.com/"+item.room.preview}
-                    alt=""
-                    height="78px;" width="80px"/>
-                    <div>
-                      <div className="request-list-item-title">
-                        {item.room.title}
+        if(request_list.length>0){
+          this.list = request_list.map((item)=>  {
+            return(
+              <div
+                dir="rtl"
+                className={(this.state.selected===item.id)?"userpanel-item-list-selected":"userpanel-item-list-not-selected"}
+                key={item.id} onClick={() =>{
+                this.showRequestItemClick(item)
+                }}>
+                  <div>
+                  <ListGroupItem className="scroll-list-requests">
+                    <div className="preview-x">
+                      <img
+                      src={"https://www.trypinn.com/"+item.room.preview}
+                      alt=""
+                      height="78px;" width="80px"/>
+                      <div>
+                        <div className="request-list-item-title">
+                          {item.room.title}
+                        </div>
+                      <p className="request-list-item-city">{item.room.address} </p>
                       </div>
-                    <p className="request-list-item-city">{item.room.address} </p>
                     </div>
+                  </ListGroupItem>
                   </div>
-                </ListGroupItem>
-                </div>
+            </div>
+            );
+          }
+      );
+        return(
+          <div>
+            <ListGroup>{this.list}</ListGroup>
           </div>
-          );
+           );
         }
-    );
-      return(
-       <ListGroup>{this.list}</ListGroup>
-         );
-      }
+    }
   }
   render(){
     return(
       <div>
-        <div className="list-of-request-div hidden-xs visible-xl">
+        <div className="list-of-request-div">
             {this.renderRequests()}
         </div>
       </div>

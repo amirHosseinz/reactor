@@ -1,0 +1,58 @@
+/* general styles here */
+
+
+
+/* general styles finished here */
+
+
+/* XL styles here */
+.contact-us-main-division-xl{
+  font-family: IRANSans;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:50px;
+  height:550px;
+  width : 85rem;
+  border:solid;
+  border-width: 2px;
+  border-color: #e4e4e4;
+  border-radius : 6px;
+  background-color: white;
+  padding: 15px;
+}
+/* XL styles Finished here */
+
+
+/* MD styles here */
+.contact-us-main-division-md{
+  font-family: IRANSans;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:50px;
+  height:550px;
+  width : 68rem;
+  border:solid;
+  border-width: 2px;
+  border-color: #e4e4e4;
+  border-radius : 6px;
+  background-color: white;
+  padding: 15px;
+}
+
+.contact-us-divider{
+  height: 1px;
+  width: 400px;
+  background-color: #c6c6c6;
+  margin: auto;
+  margin-bottom: 15px;
+}
+/* MD styles Finished here*/
+
+
+
+/* SM styles here */
+/* SM styles Finished here*/
+
+
+/* XS styles here */
+/* XS styles Finished here */

@@ -151,7 +151,7 @@ class UserProfileXl extends React.Component{
   render(){
     return(
       <div>
-      <div className="profile-container hidden-xs visible-xl">
+      <div className="profile-container">
           <div className="profile-container-margined">
             <div className="profile_dynamic_edit col-md-9">
               <div className="edit-profile-xl row">

@@ -1,0 +1,136 @@
+/* general styles here */
+.terms-container{
+margin-left: 40px;
+margin-right: 40px;
+line-height: 2.0;
+}
+
+.terms-header{
+  text-align: center;
+  font-size:34px;
+  font-weight:500;
+  padding-top: 20px;
+  font-family: IRANSans;
+  margin-bottom:50px;
+}
+
+.terms-descriptions{
+  line-height: 30px;
+}
+
+.terms-tripinn-brand-heading{
+  color:#12b2ce;
+}
+
+.terms-sub-title{
+  text-align: center;
+  font-size:28px;
+  font-weight:500;
+  font-family: IRANSans;
+  margin-top: 60px;
+  margin-bottom: -5px;
+}
+
+.terms-services-main1{
+margin-top: 20px;
+line-height: 32px;;
+
+}
+
+.terms-services-main2{
+margin-top: 20px;
+line-height: 32px;;
+margin-bottom: 70px;
+}
+
+.terms-panel1-container{
+  font-size: 14px;
+  background-color: #fdfdfd;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 10px;
+}
+
+.terms-panel-box{
+  background: #f8f8f8;
+  border: solid;
+  border-color: #e5e5e5;
+  border-width: 1px;
+  margin-bottom:6px;
+  cursor : pointer;
+  padding: 5px 0px 5px 0px;
+  justify-content: space-between;
+}
+
+.terms-close-panel1-text{
+  text-align: right;
+  font-size:16px;
+  font-weight:500;
+  font-family: IRANSans;
+  margin-right: 20px;
+}
+
+
+/* general styles finished */
+
+
+/* XL styles here */
+.terms-cadre-xl{
+  font-family: IRANSans;
+  font-size: 16px;
+  height: 75%;
+  width: 85rem;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 100px;
+  background-color: white;
+  padding-top: 30px;
+  padding-bottom: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: right;
+  border: 2px solid #e4e4e4;
+  border-radius: 7px;
+  color:#484848;
+}
+/* XL styles Finished */
+
+
+/* MD styles here */
+.terms-cadre-md{
+  font-family: IRANSans;
+  font-size: 16px;
+  height: 75%;
+  width: 68rem;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 100px;
+  background-color: white;
+  padding-top: 30px;
+  padding-bottom: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: right;
+  border: 2px solid #e4e4e4;
+  border-radius: 7px;
+  color:#484848;
+}
+
+
+/* MD styles Finished */
+
+
+
+
+/* SM styles here */
+
+
+/* SM styles Finished */
+
+
+/* XS styles here */
+
+
+/* XS styles Finished */

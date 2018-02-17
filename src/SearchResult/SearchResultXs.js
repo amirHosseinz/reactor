@@ -3,10 +3,6 @@ import { findDOMNode } from 'react-dom';
 import { Button } from 'semantic-ui-react';
 import { Typeahead ,MenuItem,Menu , menuItemContainer} from '../tools/react-bootstrap-typeahead';
 import SearchResultItem from '../SearchResultItem';
-import $ from 'jquery';
-import '../tools/DatePicker/bootstrap-datepicker.fa.js';
-import '../tools/DatePicker/bootstrap-datepicker.js';
-import '../tools/DatePicker/bootstrap-datepicker.css';
 import { withRouter } from 'react-router-dom';
 const listOfCity = [
   'اصفهان',

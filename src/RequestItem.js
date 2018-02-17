@@ -21,43 +21,43 @@ class RequestItem extends React.Component{
       totalPrice:nextProps.requestDetail.total_price,
     });
   }
-  renderRequestItemXl(){
+  renderRequestItemXl(props){
     return(
       <div className="hidden-xs hidden-md hidden-sm visible-xl">
-        <RequestItemXl requestDetail={this.state.request} requestStatus={this.state.requestStatus} totalPrice={this.state.totalPrice}/>
+        <RequestItemXl {...props} requestDetail={this.state.request} requestStatus={this.state.requestStatus} totalPrice={this.state.totalPrice}/>
       </div>
     );
   }
-  renderRequestItemXs(){
+  renderRequestItemXs(props){
     return(
       <div className="hidden-xl hidden-md hidden-sm visible-xs">
-        <RequestItemXs requestDetail={this.state.request} requestStatus={this.state.requestStatus} totalPrice={this.state.totalPrice}/>
+        <RequestItemXs {...props} requestDetail={this.state.request} requestStatus={this.state.requestStatus} totalPrice={this.state.totalPrice}/>
       </div>
     );
 
   }
-  renderRequestItemMd(){
+  renderRequestItemMd(props){
     return(
       <div className="hidden-xs hidden-xl hidden-sm visible-md">
-        <RequestItemMd requestDetail={this.state.request} requestStatus={this.state.requestStatus} totalPrice={this.state.totalPrice}/>
+        <RequestItemMd {...props} requestDetail={this.state.request} requestStatus={this.state.requestStatus} totalPrice={this.state.totalPrice}/>
       </div>
     );
   }
 
-  renderRequestItemSm(){
+  renderRequestItemSm(props){
     return(
       <div className="hidden-xs hidden-md hidden-xl visible-sm">
-        <RequestItemSm requestDetail={this.state.request} requestStatus={this.state.requestStatus} totalPrice={this.state.totalPrice}/>
+        <RequestItemSm {...props} requestDetail={this.state.request} requestStatus={this.state.requestStatus} totalPrice={this.state.totalPrice}/>
       </div>
     );
   }
   render(){
     return(
       <div>
-        {this.renderRequestItemMd()}
-        {this.renderRequestItemXs()}
-        {this.renderRequestItemXl()}
-        {this.renderRequestItemSm()}
+        {this.renderRequestItemMd(this.props)}
+        {this.renderRequestItemXs(this.props)}
+        {this.renderRequestItemXl(this.props)}
+        {this.renderRequestItemSm(this.props)}
       </div>
 
     );

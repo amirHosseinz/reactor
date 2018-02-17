@@ -5,56 +5,81 @@ import customBurgerIcon  from 'react-burger-menu';
 import {Link} from 'react-router-dom';
 import {Button,Divider} from 'semantic-ui-react';
 import {Dropdown} from 'semantic-ui-react';
-import {loginPasswordStyle, loginPhoneNumberStyle, loginPanelmobileStyle} from '../Styles.js';
-import {Modal} from 'react-bootstrap';
+import './Header.css';
+import '../Styles/Header-SearchBar.css';
+import {downloadAppModalStyle,loginPasswordStyle, loginPhoneNumberStyle, loginPanelmobileStyle , loginVerifySmsXl} from '../Styles.js';
+// import {Modal} from 'react-bootstrap';
 import {englishToPersianDigits,persianArabicToEnglishDigits} from '../tools/EnglishToPersianDigits';
 import {Image} from 'react-bootstrap';
-import { Typeahead ,menuItemContainer,MenuItem,Menu as TypeaheadMenu} from '../tools/react-bootstrap-typeahead';
+import Modal from 'react-modal';
+import {Sticky} from 'react-sticky';
+import Autosuggest from 'react-autosuggest';
+// Modal.setAppElement('#header');
 
-const TypeaheadMenuItem = menuItemContainer(MenuItem);
+const theme ={
+  container:                'header-searchbar-container',
+  containerOpen:            'header-searchbar-container--open',
+  input:                    'header-searchbar-input',
+  inputOpen:                'header-searchbar-input--open',
+  inputFocused:             'header-searchbar-input--focused',
+  suggestionsContainer:     'header-searchbar-suggestions-container',
+  suggestionsContainerOpen: 'header-searchbar-suggestions-container--open',
+  suggestionsList:          'header-searchbar-suggestions-list',
+  suggestion:               'header-searchbar-suggestion',
+  suggestionFirst:          'header-searchbar-suggestion--first',
+  suggestionHighlighted:    'header-searchbar-suggestion--highlighted',
+  sectionContainer:         'header-searchbar-section-container',
+  sectionContainerFirst:    'header-searchbar-section-container--first',
+  sectionTitle:             'header-searchbar-section-title',
+};
+
 const listOfCity = [
-  'اصفهان',
-  'نوشهر',
-  'گیلان',
-  'رامسر',
-  'کیش',
-  'مازندران',
-  'بابلسر',
-  'فریدون‌کنار',
-  'محمودآباد',
-  'عباس‌آباد',
-  'شاندیز',
-  'خراسان رضوی',
-  'بندر انزلی',
-  'کاشان',
-  'باغ‌بهادران',
-  'قلعه‌رودخان',
-  'مشهد',
-  'چمخاله',
-  'فومن',
-  'رضوان‌شهر',
-  'رودسر',
-  'آستارا',
-  'زیباکنار',
-  'سرخ‌رود',
-  'رویان',
-  'نور',
-  'چالوس',
-  'تنکابن',
-  'دریاکنار',
-  'ایزدشهر',
-  'کلاردشت',
-  'کلارآباد',
-  'سلمان‌شهر',
-  'نشتارود',
-  'البرز',
+  {name:'اصفهان',},
+  {name:'نوشهر',},
+  {name: 'گیلان',},
+  {name:'رامسر'},
+  {name:'کیش'},
+  {name:'مازندران'},
+  {name:'بابلسر'},
+  {name:'فریدون کنار'},
+  {name:'محمودآباد'},
+  {name:'عباس آباد'},
+  {name:'شاندیز'},
+  {name:'خراسان رضوی'},
+  {name:'بندر‌انزلی'},
+  {name:'کاشان'},
+  {name:'باغ بهادران'},
+  {name:'قلعه رودخان'},
+  {name:'مشهد'},
+  {name:'چمخاله'},
+  {name:'رودسر'},
+  {name:'فومن'},
+  {name:'رضوان‌شهر'},
+  {name:'زیباکنار'},
+  {name:'آستارا'},
+  {name:'چالوس'},
+  {name:'دریاکنار'},
+  {name:'نور'},
+  {name:'رویان'},
+  {name:'تنکابن'},
+  {name:'سرخ‌رود'},
+  {name:'دریاکنار'},
+  {name:'ایزدشهر'},
+  {name:'البرز'},
+  {name:'سلمان شهر'},
+  {name:'تنکابن'},
+  {name:'کلاردشت'},
+  {name:'نشتارود'},
+  {name:'کلارآباد'},
 ];
+
 class HeaderXl extends React.Component{
   constructor (props){
     super(props);
     this.state={
       token: null,
       cellPhone:'',
+      suggestions: listOfCity,
       city : '',
       reloadPage: false,
       showDownloadAppModal:false,
@@ -104,24 +129,17 @@ class HeaderXl extends React.Component{
     this.setState({loginPanelVisible:true});
   }
   getUserHasPasswordByEnter(event){
+    // console.log(event.key);
     if(event.key === 'Enter'){
       this.getUserHasPassword();
     }
-    if(this.state.cellPhone.length===11){
-      if(event.key!=="Backspace"){
-        event.preventDefault()
-      }
-    }
-    if (event.keyCode<48 || event.keyCode>57){
+    if (['0','1','2','3','4','5','6','7','8','9'].indexOf(event.key)===-1){
       if(event.key!=="Backspace"){
         event.preventDefault();
       }
     }
  }
 
- closeLoginPanel(){
-   this.setState({loginPanelVisible2:false});
- }
  handleClick(){
    if(this.state.city===''){
      this.props.history.push("/search/هر جا");
@@ -130,85 +148,143 @@ class HeaderXl extends React.Component{
       this.props.history.push("/search/" + this.state.city);
    }
  }
+
+ onChangeSearchBarValue = (event,{newValue, method}) => {
+   this.setState({
+     city: newValue
+   });
+ };
+ onSuggestionsFetchRequested=({value})=> {
+   this.setState({
+     suggestions: this.getSuggestions(value)
+   });
+ }
+
+ getSuggestions(value) {
+   const escapedValue = this.escapeRegexCharacters(value.trim());
+
+   if (escapedValue === '') {
+     return [];
+   }
+   const regex = new RegExp('^' + escapedValue, 'i');
+   return listOfCity.filter(city => regex.test(city.name));
+ }
+
+ escapeRegexCharacters(str) {
+   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+ }
+
+ onSuggestionsClearRequested=() =>{
+   this.setState({
+     suggestions: []
+   });
+ }
+
+ renderSuggestion = (suggestion)=>{
+   return(
+     <span>
+       {suggestion.name}
+     </span>
+   );
+ }
+
+ getSuggestionValue(suggestion){
+   return suggestion.name;
+ }
+
+ onSuggestionSelected =(event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method })=>{
+   this.setState({city:suggestionValue},()=>{this.setState({city:''});this.handleClick()})
+ }
+
  renderSearchBarXL(){
-   if(window.location.href.indexOf('search')===-1 && window.location.pathname!=='/'){
+   const value = this.state.city;
+   const suggestions = this.state.suggestions;
+   if(window.location.pathname!=='/'){
+     const inputProps = {
+     placeholder: 'جستجوی مقصد...',
+     value:this.state.city,
+     onChange:this.onChangeSearchBarValue
+  };
      return(
        <div className='header-search-bar'>
-         <Typeahead options={listOfCity}
-         className="header-typeahead"
-         minLength={2}
-         align="right"
-         bsSize="sm"
-         emptyLabel="نتیجه‌ای یافت نشد"
-         maxResults={5}
-         placeholder='جستجوی مقصد'
-         selectHintOnEnter={false}
-         highlightOnlyResult={true}
-         submitFormOnEnter={true}
-         onChange={(selected)=>{
-           if(selected.length!==0){
-             this.setState({city:selected[0]},()=>{this.handleClick()});
-           }
-         }}
-         renderMenu={(results,menuProps) => {
-             return(
-               <TypeaheadMenu {...menuProps}>
-                 {results.map((result, index) => (
-                   <TypeaheadMenuItem option={result} position={index}>
-                     {result}
-                   </TypeaheadMenuItem>
-                 ))}
-               </TypeaheadMenu>
-             );
-           }}
-         />
-
-       </div>
+         <Autosuggest
+           theme={theme}
+           highlightFirstSuggestion={true}
+           suggestions={suggestions}
+           onSuggestionSelected = {this.onSuggestionSelected}
+           onKeyDown={(event)=>{}}
+           onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+           onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+           getSuggestionValue={this.getSuggestionValue}
+           renderSuggestion={this.renderSuggestion}
+           inputProps={inputProps}>
+           </Autosuggest>
+          <img src={require('../Images/header-search-icon.svg')} onClick={()=>{this.handleClick()}} className="header-search-icon" alt = 'تریپین'></img>
+        </div>
      );
    }
  }
-
-  renderLoginPanel(){
+  renderLoginPanelFirstStep(){
     return(
       <div className="login-modal-main">
-        <Modal show={this.state.loginPanelVisible}
+        <Modal isOpen={this.state.loginPanelVisible}
           style={loginPhoneNumberStyle}
-          onHide={()=>{this.setState({loginPanelVisible:false})}}>
-          <Modal.Body>
+          onRequestClose={()=>{this.setState({loginPanelVisible:false,cellPhone:''})}}>
           <div className="login1-modal">
-            <p className="login-title-in-modal"> ورود/ عضویت </p>
-            <Divider/>
-            <p className="enter-phone-number-inmodal"> :برای ورود یا ثبت‌نام شماره تلفن همراه خود را وارد کنید </p>
-              <div dir="rtl" className="enter-number-main" >
-                <input
-                  maxLength="11"
-                  id="tel-number"
-                  value={this.state.cellPhone}
-                  onChange={(event)=>{this.setState({cellPhone:englishToPersianDigits(event.target.value)})}}
-                  autoComplete="off"
-                  autoFocus={true}
-                  className="login-input hidden-xs visible-xl"
-                  placeholder="مثال: ۰۹۱۲۰۰۰۰۰۰۰"
-                  type="text"
-                  onKeyDown ={(event)=> {this.getUserHasPasswordByEnter(event)}}
-                  />
-                  <div className="divider-x"></div>
-                  <br/>
-                  <br/>
-                  <Button color="blue" onClick={this.getUserHasPassword.bind(this)} className="login-modal-button">
-                  ورود / ثبت‌نام
-                  </Button>
+            <p className="login-title-in-modal"> ورود / ثبت‌نام  </p>
+            <div className="header-login-modal-divider">
+            </div>
+              <div className="header-login-modal-content-container">
+                <p className="enter-phone-number-inmodal"> :برای ورود یا ثبت‌نام شماره تلفن همراه خود را وارد کنید </p>
+                <div dir="rtl">
+                  <p className="header-login-modal-input-label"> شماره موبایل: </p>
+                  <input
+                      maxLength="11"
+                      id="tel-number"
+                      value={this.state.cellPhone}
+                      onAfterOpen={()=>{document.body.style.overflow="hidden"}}
+                      onChange={(event)=>{this.setState({cellPhone:englishToPersianDigits(event.target.value)})}}
+                      autoComplete="off"
+                      autoFocus={true}
+                      className="header-login-modal-input"
+                      placeholder="مثال: ۰۹۱۲۰۰۰۰۰۰۰"
+                      type="text"
+                      onKeyDown ={(event)=> {this.getUserHasPasswordByEnter(event)}}
+                      />
+                      <br/>
+                      <br/>
+                      <button className="header-login-modal-button" onClick={this.getUserHasPassword.bind(this)}>
+                        ادامه
+                      </button>
+                </div>
               </div>
             </div>
-          </Modal.Body>
         </Modal>
-        <Modal show={this.state.loginPanelVisible2}
-          style={loginPasswordStyle}
-          onHide={()=>{this.setState({loginPanelVisible2:false})}}>
-          <Login closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
-        </Modal>
+        {this.renderLoginPanelSecondStep()}
       </div>
     );
+  }
+
+  renderLoginPanelSecondStep(){
+    if (this.state.hasPassword===true){
+      return(
+        <Modal isOpen={this.state.loginPanelVisible2}
+          style={loginPasswordStyle}
+          onRequestClose={()=>{this.setState({loginPanelVisible2:false})}}>
+          <Login closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
+        </Modal>
+      );
+    }
+    else{
+      return(
+        <Modal isOpen={this.state.loginPanelVisible2}
+          style={loginVerifySmsXl}
+          onRequestClose={()=>{this.setState({loginPanelVisible2:false})}}>
+          <Login closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
+        </Modal>
+      );
+    }
+
   }
   renderUserPhoto(){
      if(localStorage['user-profile-picture']==='null'||localStorage['user-profile-picture']===undefined){
@@ -216,7 +292,6 @@ class HeaderXl extends React.Component{
          <div style={{float:'left'}}>
           <Image className="profile-card-user-avatar" src={require('../HouseDetailParts/facilities/prof_avatar_tripinn.svg')} height={70}  circle={true}/>
          </div>
-
        );
      }
        else{
@@ -265,16 +340,13 @@ class HeaderXl extends React.Component{
      })
      .then((loginStatus) => {
        localStorage['phone-number'] = this.state.searchParams.phoneNumber;
-       this.setState({hasPassword: loginStatus.has_pass});
-       this.setState({hasAccount:loginStatus.has_account});
+       this.setState({hasPassword: loginStatus.has_pass,hasAccount:loginStatus.has_account});
        this.setState({loginPanelVisible2 : true});
        this.setState({loginPanelVisible: false});
-       this.setState({showMobileLoginPanel:false});
-
      });
   }
   closeLoginPanel(){
-    this.setState({loginPanelVisible2:false});
+    this.setState({loginPanelVisible2:false,cellPhone:''});
   }
   renderLoginButton(){
     if (this.state.isLoggedIn !== 'true'){
@@ -290,7 +362,7 @@ class HeaderXl extends React.Component{
     return (
         <div>
           <div>
-            <Dropdown className="header-drop-down-texts" icon='dropdown' dir="rtl" floating={true} text={ ' سلام ' + ' ' +  localStorage['user-first-name'] } >
+            <Dropdown className="header-drop-down-texts" icon='dropdown' dir="rtl" floating={false} text={ ' سلام ' + ' ' +  localStorage['user-first-name'] } >
              <Dropdown.Menu>
                 <div className="drp-down-menu-cont">
                   <div className="profile-card-up row-reverse">
@@ -368,7 +440,7 @@ class HeaderXl extends React.Component{
   renderMessageButton(){
     if(localStorage['isLoggedIn']==='true'){
       return(
-        <p className="profile-card-user-messages"  onClick={this.handleMessageClick.bind(this)}>پیام‌ها</p>
+        <p className="profile-card-user-messages" onClick={this.handleMessageClick.bind(this)}>پیام‌ها</p>
       );
     }
   }
@@ -383,22 +455,32 @@ class HeaderXl extends React.Component{
   }
   renderDownloadAppModal(){
     return(
-      <Modal show={this.state.showDownloadAppModal}
-            onHide={()=>{this.setState({showDownloadAppModal:false})}}>
-              <div className="download-app-modal-container">
-                <div className="mob">
-                  <img src={require('../Images/phone-app.png')} className="download-modal-pc-preview" alt = 'تریپین'/>
-                </div>
-                <div className="download-app-modal-icons-container">
-                  <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://new.sibapp.com/applications/tripinn' >
-                    <img src={require('../Images/sibapp.svg')} className="download_icon_app" alt = 'دانلود از سیب‌اپ'/>
-                  </a>
-                  <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='https://play.google.com/store/apps/details?id=com.trypinn&hl=en' >
-                    <img src={require('../Images/gplay.svg')} className="download_icon_app" alt = 'دانلود از گوگل پلی'/>
-                  </a>
-                  <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
-                    <img src={require('../Images/bazaar.svg')} className="download_icon_app" alt = 'دانلود از کافه بازار'/>
-                  </a>
+      <Modal isOpen={this.state.showDownloadAppModal}
+            style={downloadAppModalStyle}
+             onRequestClose={()=>{this.setState({showDownloadAppModal:false})}}>
+              <div className="header-downlaod-app-modal-container">
+                <img  src={require('../Images/header-download-app-modal-phone.png')} className="header-download-app-modal-phone"/>
+                <div className="header-downlaod-app-modal-content-container">
+                  <div className="header-downlaod-app-modal-heading">
+                    <span className="header-downlaod-app-modal-brandname"> تریپین </span>
+                    <span className="header-downlaod-app-modal-slogen">  همیشه همراه شما </span>
+                  </div>
+                  <p className="header-downlaod-app-modal-download-description">اپلیکیشن تریپین بر روی دستگاه‌های اندروید و iOS قابل نصب است. </p>
+                  <div direction="rtl">
+                    <p className="header-downlaod-app-modal-download-label"> نسخه اندروید </p>
+                    <div className="header-downlaod-app-modal-android">
+                      <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
+                        <img src={require('../Images/1.svg')} className="download_icon_app" alt = 'دانلود از کافه بازار'/>
+                      </a>
+                      <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='https://play.google.com/store/apps/details?id=com.trypinn&hl=en' >
+                        <img src={require('../Images/3.png')} className="download_icon_app" alt = 'دانلود از گوگل پلی'/>
+                      </a>
+                    </div>
+                    <p className="header-downlaod-app-modal-download-label">نسخه iOS </p>
+                    <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://new.sibapp.com/applications/tripinn' >
+                      <img src={require('../Images/sibapp-2.png')} className="download_icon_app" alt = 'دانلود از سیب‌اپ'/>
+                    </a>
+                  </div>
                 </div>
               </div>
             </Modal>
@@ -407,12 +489,11 @@ class HeaderXl extends React.Component{
   // <Link className="header-link" to="/becomehost"><p className='logo-menu-font'>میزبان شوید </p></Link>
   renderHeaderXl(){
     return(
-      <div className='header container hidden-xs visible-xl'>
+      <div className='header'>
        <div className='hearder-child-margined'>
-          <div className="header-menu-desktop col-md-6 col-sm-6">
+          <div className="header-menu col-md-6">
             {this.renderMainMenu()}
             {this.renderLoginButton()}
-
             <div className="row-reverse">
               <Link className="header-link" to="/suggestions&comments"><p className='logo-menu-font'>ثبت شکایات </p></Link>
               <Link className="header-link" to="/contactus"><p className='logo-menu-font'> تماس با ما </p></Link>
@@ -421,29 +502,42 @@ class HeaderXl extends React.Component{
               {this.renderGetApplicationButton()}
             </div>
           </div>
-          {this.renderLoginPanel()}
-          <div className="logo col-md-6 col-sm-6">
-              <div className='headerchild'>
-                <div className='logodiv'>
-                   <Link to="/"><img src={require('../Images/tripinn_logo.svg')} className="LogoImage" alt = 'تریپین'></img></Link>
+          {this.renderLoginPanelFirstStep()}
+          <div className="header-logo-side col-md-6">
+              <div className='header-logo-and-search'>
+                <div className='header-logo-container'>
+                   <Link to="/"><img src={require('../Images/tripinn_logo.svg')} className="header-logo-image" alt = 'تریپین'></img></Link>
                 </div>
                 <div>
-                  <Link className='logolink' to="/"><p className='logofont'>تریپین</p></Link>
+                  <Link className='logolink' to="/"><p className='header-logo-type'>تریپین</p></Link>
                 </div>
-                <div className="header-searchbar">
-                  {this.renderSearchBarXL()}
-                </div>
+                {this.renderSearchBarXL()}
               </div>
           </div>
         </div>
       </div>
     );
   }
+
+  renderRelevantHeaderBasedOnURL(){
+      return(
+        <Sticky>
+          {({style,isSticky})=>{
+            return(
+            <div className={isSticky?"header-sticky":"header-not-sticky"} style={style}>
+              {this.renderHeaderXl()}
+              {this.renderDownloadAppModal()}
+            </div>
+          );
+          }}
+        </Sticky>
+      );
+  }
+
   render(){
     return(
       <div>
-        {this.renderHeaderXl()}
-        {this.renderDownloadAppModal()}
+        {this.renderRelevantHeaderBasedOnURL()}
       </div>
     );
   }

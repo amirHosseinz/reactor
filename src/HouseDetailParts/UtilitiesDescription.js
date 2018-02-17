@@ -3,7 +3,7 @@ import UtilitiesDescriptionXl from './UtilitiesDescription/UtilitiesDescriptionX
 import UtilitiesDescriptionXs from './UtilitiesDescription/UtilitiesDescriptionXs.js';
 import UtilitiesDescriptionMd from './UtilitiesDescription/UtilitiesDescriptionMd.js';
 import UtilitiesDescriptionSm from './UtilitiesDescription/UtilitiesDescriptionSm.js';
-
+import './UtilitiesDescription/UtilitiesDescription.css';
 
 class UtilitiesDescription extends React.Component{
 

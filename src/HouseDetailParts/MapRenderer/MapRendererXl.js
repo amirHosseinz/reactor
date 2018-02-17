@@ -22,8 +22,8 @@ class MapRendererXl extends React.Component{
           zoom={this.props.zoom}
           googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYdvxvYa5_HuFrQMlTNWpbhan7nqIJuOE&v=3.exp&libraries=geometry,drawing,places"
           loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `400px` }} />}
-          mapElement={<div style={{ height: `100%` }} />}>
+          containerElement={<div style={{ height: `400px`}} />}
+          mapElement={<div style={{ height: `100%`}} />}>
           </MyMapComponent>
       </div>
     );

@@ -5,34 +5,34 @@ import RequestsMd from './Requests/RequestsMd.js';
 import RequestsSm from './Requests/RequestsSm.js';
 class Requests extends React.Component{
 
-  renderRequestsXl(){
+  renderRequestsXl(props){
     return(
       <div className="hidden-xs hidden-md hidden-sm visible-xl">
-        <RequestsXl changeRequestDetail={this.props.changeRequestDetail.bind(this)}/>
+        <RequestsXl {...props} changeRequestDetail={this.props.changeRequestDetail.bind(this)}/>
       </div>
     );
   }
 
-  renderRequestsXs(){
+  renderRequestsXs(props){
     return(
       <div className="hidden-xl hidden-md hidden-sm visible-xs">
-        <RequestsXs changeRequestDetail={this.props.changeRequestDetail.bind(this)}/>
+        <RequestsXs {...props} changeRequestDetail={this.props.changeRequestDetail.bind(this)}/>
       </div>
     );
   }
 
-  renderRequestsMd(){
+  renderRequestsMd(props){
     return(
       <div className="hidden-xs hidden-xl hidden-sm visible-md">
-        <RequestsMd changeRequestDetail={this.props.changeRequestDetail.bind(this)}/>
+        <RequestsMd {...props} changeRequestDetail={this.props.changeRequestDetail.bind(this)}/>
       </div>
     );
   }
 
-  renderRequestsSm(){
+  renderRequestsSm(props){
     return(
       <div className="hidden-xs hidden-md hidden-xl visible-sm">
-        <RequestsSm changeRequestDetail={this.props.changeRequestDetail.bind(this)}/>
+        <RequestsSm {...props} changeRequestDetail={this.props.changeRequestDetail.bind(this)}/>
       </div>
     );
   }
@@ -40,10 +40,10 @@ class Requests extends React.Component{
   render(){
     return(
       <div>
-        {this.renderRequestsXl()}
-        {this.renderRequestsXs()}
-        {this.renderRequestsMd()}
-        {this.renderRequestsSm()}
+        {this.renderRequestsXl(this.props)}
+        {this.renderRequestsXs(this.props)}
+        {this.renderRequestsMd(this.props)}
+        {this.renderRequestsSm(this.props)}
       </div>
 
     );

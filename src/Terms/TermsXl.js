@@ -2,6 +2,7 @@ import React from 'react';
 import { Divider } from 'semantic-ui-react';
 import Collapsible from 'react-collapsible';
 import {englishToPersianDigits} from '../tools/EnglishToPersianDigits.js';
+import './Terms.css';
 
 
 class TermsXl extends React.Component{
@@ -22,10 +23,10 @@ class TermsXl extends React.Component{
         };
   }
 
+
   renderOpenPanel1(){
     this.setState({OpenPanel1:true});
   }
-
   renderClosePanel1(){
     this.setState({OpenPanel1:false});
   }
@@ -105,9 +106,9 @@ class TermsXl extends React.Component{
   }
   render(){
     return(
-      <div className='terms-cadre'>
+      <div className='terms-cadre-xl'>
         <div className="terms-container" dir="rtl">
-          <h1 className='terms-header'>قوانین و مقررات  <span className='about-us-tripinn'>تریپین</span></h1>
+          <h1 className='terms-header'>قوانین و مقررات  <span className='terms-tripinn-brand-heading'>تریپین</span></h1>
           <div>
             <p  className="terms-descriptions">نرم افزار تریپین که توسط شرکت طراحی و راهبری فناوران دانش‌سامان آریا برای تسهیل اقامت مسافران طراحی گردیده ، تحت شرایط زیر خدمات مربوطه را ارائه می‌نماید؛ لذا این شرایط به عنوان یک قرارداد الزام‌آور بر روابط بین کاربران و شرکت حاکم خواهد بود.
             </p>
@@ -131,7 +132,7 @@ class TermsXl extends React.Component{
           قوانین استفاده از خدمات تریپین به شرح زیر میباشد. استفاده از تریپین به منزله قبول این قوانین خواهد بود
           </p>
 
-          <Collapsible onClose={this.renderClosePanel1.bind(this)} onOpen={this.renderOpenPanel1.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel1?"terms-open-panel1-text":"terms-close-panel1-text"}><span>۲-۱-</span> <span> مقررات ثبت نام و تأیید حساب کاربری</span></span> <img className={this.state.OpenPanel1?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
+          <Collapsible onClose={this.renderClosePanel1.bind(this)} onOpen={this.renderOpenPanel1.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel1?"terms-close-panel1-text":"terms-close-panel1-text"}><span>۲-۱-</span> <span> مقررات ثبت نام و تأیید حساب کاربری</span></span> <img className={this.state.OpenPanel1?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
           <div className='terms-panel1-container'>
 
                     <p className="terms-descriptions">
@@ -168,7 +169,7 @@ class TermsXl extends React.Component{
           </div>
           </Collapsible>
 
-          <Collapsible onClose={this.renderClosePanel2.bind(this)} onOpen={this.renderOpenPanel2.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel2?"terms-open-panel2-text":"terms-close-panel2-text"}><span> ۲-۲- </span> <span>   مقررات ثبت اقامتگاه</span></span> <img className={this.state.OpenPanel2?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
+          <Collapsible onClose={this.renderClosePanel2.bind(this)} onOpen={this.renderOpenPanel2.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel2?"terms-close-panel1-text":"terms-close-panel1-text"}><span> ۲-۲- </span> <span>   مقررات ثبت اقامتگاه</span></span> <img className={this.state.OpenPanel2?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
           <div className='terms-panel1-container'>
 
 
@@ -228,7 +229,7 @@ class TermsXl extends React.Component{
           </div>
           </Collapsible>
 
-          <Collapsible onClose={this.renderClosePanel3.bind(this)} onOpen={this.renderOpenPanel3.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel3?"terms-open-panel3-text":"terms-close-panel3-text"}><span>۲-۳-</span><span> مقررات رزرو </span></span> <img className={this.state.OpenPanel3?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
+          <Collapsible onClose={this.renderClosePanel3.bind(this)} onOpen={this.renderOpenPanel3.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel3?"terms-close-panel1-text":"terms-close-panel1-text"}><span>۲-۳-</span><span> مقررات رزرو </span></span> <img className={this.state.OpenPanel3?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
           <div className='terms-panel1-container'>
 
 
@@ -261,7 +262,7 @@ class TermsXl extends React.Component{
           </div>
           </Collapsible>
 
-          <Collapsible onClose={this.renderClosePanel4.bind(this)} onOpen={this.renderOpenPanel4.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel4?"terms-open-panel4-text":"terms-close-panel4-text"}><span>۲-۴-</span><span> مقررات تحویل خانه </span></span> <img className={this.state.OpenPanel4?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
+          <Collapsible onClose={this.renderClosePanel4.bind(this)} onOpen={this.renderOpenPanel4.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel4?"terms-close-panel1-text":"terms-close-panel1-text"}><span>۲-۴-</span><span> مقررات تحویل خانه </span></span> <img className={this.state.OpenPanel4?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
           <div className='terms-panel1-container'>
 
 
@@ -296,7 +297,7 @@ class TermsXl extends React.Component{
           </div>
           </Collapsible>
 
-          <Collapsible onClose={this.renderClosePanel5.bind(this)} onOpen={this.renderOpenPanel5.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel5?"terms-open-panel5-text":"terms-close-panel5-text"}><span>۲-۵-</span><span>مقررات نقد و امتیازدهی</span></span> <img className={this.state.OpenPanel5?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
+          <Collapsible onClose={this.renderClosePanel5.bind(this)} onOpen={this.renderOpenPanel5.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel5?"terms-close-panel1-text":"terms-close-panel1-text"}><span>۲-۵-</span><span>مقررات نقد و امتیازدهی</span></span> <img className={this.state.OpenPanel5?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
           <div className='terms-panel1-container'>
 
                     <p className="terms-descriptions">
@@ -312,7 +313,7 @@ class TermsXl extends React.Component{
           </div>
           </Collapsible>
 
-          <Collapsible onClose={this.renderClosePanel6.bind(this)} onOpen={this.renderOpenPanel6.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel6?"terms-open-panel6-text":"terms-close-panel6-text"}>  <span>۲-۶-</span><span> مقررات مالی مهمان </span></span> <img className={this.state.OpenPanel6?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
+          <Collapsible onClose={this.renderClosePanel6.bind(this)} onOpen={this.renderOpenPanel6.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel6?"terms-close-panel1-text":"terms-close-panel1-text"}>  <span>۲-۶-</span><span> مقررات مالی مهمان </span></span> <img className={this.state.OpenPanel6?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
           <div className='terms-panel1-container'>
 
 
@@ -326,7 +327,7 @@ class TermsXl extends React.Component{
           </div>
           </Collapsible>
 
-          <Collapsible onClose={this.renderClosePanel7.bind(this)} onOpen={this.renderOpenPanel7.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel7?"terms-open-panel7-text":"terms-close-panel7-text"}><span> ۲-۷- </span> <span>مقررات مالی میزبان  </span></span> <img className={this.state.OpenPanel7?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
+          <Collapsible onClose={this.renderClosePanel7.bind(this)} onOpen={this.renderOpenPanel7.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel7?"terms-close-panel1-text":"terms-close-panel1-text"}><span> ۲-۷- </span> <span>مقررات مالی میزبان  </span></span> <img className={this.state.OpenPanel7?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
           <div className='terms-panel1-container'>
 
                 <p className="terms-descriptions">
@@ -339,7 +340,7 @@ class TermsXl extends React.Component{
           </div>
           </Collapsible>
 
-          <Collapsible onClose={this.renderClosePanel8.bind(this)} onOpen={this.renderOpenPanel8.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel8?"terms-open-panel8-text":"terms-close-panel8-text"}><span>۲-۸-</span><span> مقررات کنسل کردن رزرو و بازپرداخت </span></span> <img className={this.state.OpenPanel8?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
+          <Collapsible onClose={this.renderClosePanel8.bind(this)} onOpen={this.renderOpenPanel8.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel8?"terms-close-panel1-text":"terms-close-panel1-text"}><span>۲-۸-</span><span> مقررات کنسل کردن رزرو و بازپرداخت </span></span> <img className={this.state.OpenPanel8?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
           <div className='terms-panel1-container'>
           <p className="terms-descriptions">
           الف)	در صورتی که مهمان در فاصله زمانی بیشتر از ۴۸ ساعت به زمان تحویل کلید رزرو را کنسل کند، تمامی مبلغ اجاره به مهمان بازگردانده می شود. در این صورت میزبان موظف است مبلغ دریافتی جهت اجاره شب اول را ظرف مدت ۲۴ ساعت برای شرکت واریز نماید.
@@ -359,7 +360,7 @@ class TermsXl extends React.Component{
           </div>
           </Collapsible>
 
-          <Collapsible onClose={this.renderClosePanel9.bind(this)} onOpen={this.renderOpenPanel9.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel9?"terms-open-panel9-text":"terms-close-panel9-text"}><span>۲-۹-</span><span> مقررات مربوط به اعمال غیرقانونی </span></span> <img className={this.state.OpenPanel9?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
+          <Collapsible onClose={this.renderClosePanel9.bind(this)} onOpen={this.renderOpenPanel9.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel9?"terms-close-panel1-text":"terms-close-panel1-text"}><span>۲-۹-</span><span> مقررات مربوط به اعمال غیرقانونی </span></span> <img className={this.state.OpenPanel9?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
           <div className='terms-panel1-container'>
           <p className="terms-descriptions">
           الف)	میزبانان و مهمانان به طور کامل مسئول تمامی اعمال خویش بر اساس قوانین جمهوری اسلامی ایران خواهند بود.
@@ -376,7 +377,7 @@ class TermsXl extends React.Component{
           </div>
           </Collapsible>
 
-          <Collapsible onClose={this.renderClosePanel10.bind(this)} onOpen={this.renderOpenPanel10.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel10?"terms-open-panel10-text":"terms-close-panel10-text"}><span>۲-۱۰-</span><span> لغو قرارداد و حساب کاربری </span></span> <img className={this.state.OpenPanel10?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
+          <Collapsible onClose={this.renderClosePanel10.bind(this)} onOpen={this.renderOpenPanel10.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel10?"terms-close-panel1-text":"terms-close-panel1-text"}><span>۲-۱۰-</span><span> لغو قرارداد و حساب کاربری </span></span> <img className={this.state.OpenPanel10?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
           <div className='terms-panel1-container'>
           <p className="terms-descriptions">
           الف)	این قرارداد با حذف حساب کاربری ملغی خواهد شد.
@@ -399,7 +400,7 @@ class TermsXl extends React.Component{
           </div>
           </Collapsible>
 
-          <Collapsible onClose={this.renderClosePanel11.bind(this)} onOpen={this.renderOpenPanel11.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel11?"terms-open-panel11-text":"terms-close-panel11-text"}>۲-۱۱- حریم خصوصی و محتویات</span> <img className={this.state.OpenPanel11?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
+          <Collapsible onClose={this.renderClosePanel11.bind(this)} onOpen={this.renderOpenPanel11.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel11?"terms-close-panel1-text":"terms-close-panel1-text"}>۲-۱۱- حریم خصوصی و محتویات</span> <img className={this.state.OpenPanel11?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
           <div className='terms-panel1-container'>
 
                     <p className="terms-descriptions">
