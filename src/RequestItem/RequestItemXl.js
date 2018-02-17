@@ -56,11 +56,7 @@ class RequestItemXl extends React.Component{
       case "HOST_REJECTED":
         return (<div></div>);
       case "WAIT_FOR_GUEST_PAY":
-        return(
-          <div>
-            <Button className="request-userpanel-button" onClick={()=>{this.setState({showPreBill:true})}}>پرداخت</Button>
-          </div>
-        );
+        return(<div className="clickable-p request-item-payment-button" onClick={()=>{this.setState({showPreBill:true})}}><p className='request-item-payment-button-text'>پرداخت</p></div>);
       case "HOST_ACCEPTED_GUEST_PAYED":
         return (<div></div>);
       case "HOST_ACCEPTED_HOST_CANCELED":
@@ -346,13 +342,15 @@ class RequestItemXl extends React.Component{
 }
 renderCancelButton(){
   if(this.state.requestStatus!=="GUEST_CANCELED"){
-   return (<Button className="request-userpanel-button" onClick={()=>{this.setTokenForDelete()}}> لغو درخواست </Button>);
+   return (
+     <div className="clickable-p request-item-cancel-button" onClick={()=>{this.setTokenForDelete()}}><p className='request-item-cancel-button-text'>لغو درخواست</p> </div>
+   );
   }
 }
 renderDeleteButton(){
   if(this.state.requestStatus!=="HOST_ACCEPTED_GUEST_CANCELED"){
    return (<div></div>);
-  }
+}
 }
   renderRequestDetail(){
     if (this.state.request!==null){
@@ -371,7 +369,7 @@ renderDeleteButton(){
               <p>شهر مقصد: {this.state.request.room.city}  </p>
               <p> به میزبانی  {this.state.request.room.owner.first_name} {this.state.request.room.owner.last_name}</p>
               <p> رزرو کننده: {this.state.request.guest_person.last_name} </p>
-              <p>تعداد میهمان: {englishToPersianDigits(this.state.request.number_of_guests)} </p>
+              <p>تعداد میهمان: {englishToPersianDigits(this.state.request.number_of_guests)} نفر</p>
               <p>تاریخ ورود: {englishToPersianDigits(moment(this.state.request.start_date).format('jYYYY/jM/jD'))}</p>
               <p>تاریخ خروج:{englishToPersianDigits(moment(this.state.request.end_date).format('jYYYY/jM/jD'))} </p>
             </div>
@@ -379,14 +377,15 @@ renderDeleteButton(){
             </div>
             <Divider/>
             <div className='final-details'>
-              <p>جمع هزینه ها: {englishToPersianDigits(this.state.request.total_price)} </p>
+              <p>جمع هزینه ها: {englishToPersianDigits(this.state.request.total_price)} تومان</p>
             </div>
           </div>
 
           <div className='relevant-button'>
+            {this.getRelevantButton()}
             {this.renderCancelButton()}
             {this.renderDeleteButton()}
-            {this.getRelevantButton()}
+
           </div>
           </div>
         );
