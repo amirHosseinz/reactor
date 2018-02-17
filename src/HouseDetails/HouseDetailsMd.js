@@ -47,10 +47,10 @@ class HouseDetailsMd extends React.Component{
 
   handleScroll = (event)=>{
     if(event.pageY<400){
-      this.setState({activeLink:2});
+      this.setState({activeLink:1});
     }
     if(event.pageY>600 && event.pageY<1000){
-      this.setState({activeLink:1});
+      this.setState({activeLink:2});
     }
     if(event.pageY>1000 && event.pageY<1200){
       this.setState({activeLink:3});
@@ -136,13 +136,13 @@ class HouseDetailsMd extends React.Component{
    );
    if(this.state.homeData!==''){
      return(
-          <div className="house-details-gallery-md">
+          <div onClick={()=>{this.setState({lightboxIsOpen:true})}} className="house-details-gallery-md">
 
             <img src={"https://www.trypinn.com"+ this.state.homeData.preview_high} className="house-details-preview-md" alt = ""/>
             <div className="row-reverse">
               {imageList}
             </div>
-            <div onClick={()=>{this.setState({lightboxIsOpen:true})}}className="house-details-gallery-show-more-md">
+            <div onClick={()=>{this.setState({lightboxIsOpen:true})}} className="house-details-gallery-show-more-md">
             مشاهده تصاویر
             </div>
           </div>
@@ -216,11 +216,11 @@ class HouseDetailsMd extends React.Component{
                 {({style,isSticky})=>{return(
                   <div style={style} className={isSticky?"house-details-menu-link-scrolls-sticky-md":"house-details-menu-link-scrolls-not-sticky-md housedetails-content-containers-menu-md"}>
                     <div className='navigation-menu-housedetails'>
-                      <Link onClick={()=>{this.setState({activeLink:1})}} className={this.state.activeLink===1?'navigation-menu-items-active':'navigation-menu-items'} to="details" spy={true} smooth={true} offset={-100} duration={800}>
+                    <Link onClick={()=>{this.setState({activeLink:1})}} className={this.state.activeLink===1?'navigation-menu-items-active':'navigation-menu-items'} to="gallery" spy={true} smooth={true} offset={-200} duration={800}>
+                      <p  >تصاویر</p>
+                    </Link>
+                      <Link onClick={()=>{this.setState({activeLink:2})}} className={this.state.activeLink===2?'navigation-menu-items-active':'navigation-menu-items'} to="details" spy={true} smooth={true} offset={-100} duration={800}>
                         <p >مشخصات</p>
-                      </Link>
-                      <Link onClick={()=>{this.setState({activeLink:2})}} className={this.state.activeLink===2?'navigation-menu-items-active':'navigation-menu-items'} to="gallery" spy={true} smooth={true} offset={-200} duration={800}>
-                        <p  >تصاویر</p>
                       </Link>
                       <Link onClick={()=>{this.setState({activeLink:3})}} className={this.state.activeLink===3?'navigation-menu-items-active':'navigation-menu-items'} to="laws" spy={true} smooth={true} offset={-200} duration={800}>
                         <p>امکانات و قوانین</p>
