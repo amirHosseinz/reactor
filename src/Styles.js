@@ -1,5 +1,6 @@
 export const loginPhoneNumberStyle = {
   overlay : {
+    zIndex : '10000',
     position          : 'fixed',
     top               : 0,
     left              : 0,
@@ -20,6 +21,7 @@ export const loginPhoneNumberStyle = {
 
 export const loginVerifySmsXl = {
   overlay : {
+    zIndex : '10000',
     position          : 'fixed',
     top               : 0,
     left              : 0,
@@ -39,6 +41,7 @@ export const loginVerifySmsXl = {
 };
 export const setPasswordStyle ={
   overlay : {
+    zIndex : '10000',
     position          : 'fixed',
     top               : 0,
     left              : 0,
@@ -58,6 +61,7 @@ export const setPasswordStyle ={
 };
 export const registerNewUser = {
   overlay : {
+    zIndex : '10000',
     position          : 'fixed',
     top               : 0,
     left              : 0,
@@ -78,6 +82,7 @@ export const registerNewUser = {
 
 export const suggestionResponseModalStyle = {
   overlay : {
+    zIndex : '10000',
     backgroundColor: 'rgba(0,0,0,0.7)',
   },
   content : {
@@ -92,6 +97,7 @@ export const suggestionResponseModalStyle = {
 };
 export const downloadAppModalStyle={
   overlay : {
+    zIndex : '10000',
     backgroundColor: 'rgba(0,0,0,0.7)',
   },
   content : {
@@ -105,6 +111,7 @@ export const downloadAppModalStyle={
 }
 export const loginPasswordStyle = {
   overlay : {
+    zIndex : '10000',
     position          : 'fixed',
     top               : 0,
     left              : 0,
@@ -124,6 +131,7 @@ export const loginPasswordStyle = {
 };
 export const loginPanelmobileStyle = {
   overlay : {
+    zIndex : '10000',
     position          : 'fixed',
     top               : 0,
     left              : 0,
@@ -134,6 +142,7 @@ export const loginPanelmobileStyle = {
 }
 export const reserveModalStyle={
   overlay : {
+    zIndex : '10000',
     position          : 'fixed',
     top               : 0,
     left              : 0,
@@ -153,6 +162,7 @@ export const reserveModalStyle={
 }
 export const reserveModalStyleRequests={
   overlay : {
+    zIndex : '10000',
     position          : 'fixed',
     top               : 0,
     left              : 0,
