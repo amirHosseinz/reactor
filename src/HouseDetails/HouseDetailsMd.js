@@ -166,6 +166,7 @@ class HouseDetailsMd extends React.Component{
     onClickPrev={()=>{this.setState((prevState)=>{return({lightboxCurrentImage:(prevState.lightboxCurrentImage-1)%imagesLength})})}}
     showImageCount={false}
     showThumbnails={true}
+    onClickThumbnail={(currentImageIndex)=>{this.setState({lightboxCurrentImage:currentImageIndex})}}
     onClickNext={()=>{this.setState((prevState)=>{return({lightboxCurrentImage:(prevState.lightboxCurrentImage+1)%imagesLength})})}}
     onClose={()=>{this.setState({lightboxIsOpen:false})}}
 />

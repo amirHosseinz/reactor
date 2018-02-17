@@ -165,6 +165,7 @@ class HouseDetailsXl extends React.Component{
     isOpen={this.state.lightboxIsOpen}
     onClickPrev={()=>{this.setState((prevState)=>{return({lightboxCurrentImage:(prevState.lightboxCurrentImage-1)%imagesLength})})}}
     showImageCount={false}
+    onClickThumbnail={(currentImageIndex)=>{this.setState({lightboxCurrentImage:currentImageIndex})}}
     showThumbnails={true}
     onClickNext={()=>{this.setState((prevState)=>{return({lightboxCurrentImage:(prevState.lightboxCurrentImage+1)%imagesLength})})}}
     onClose={()=>{this.setState({lightboxIsOpen:false})}}
