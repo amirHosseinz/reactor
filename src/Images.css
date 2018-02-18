@@ -3251,7 +3251,7 @@ text-align: center;
 }
 .request-item-cancel-button:hover{
   width:20%;
-  margin-top: 19px !important;
+  margin-top: 25px !important;
   border: solid;
   border-color: #f54e4e;
   color: #fff;
@@ -3281,17 +3281,20 @@ text-align: center;
 }
 
 .request-item-payment-button:hover{
+  background-color: #008fb3;
   width:20%;
-  margin-top: 19px !important;
+  margin: auto;
+  margin-left: -200px;
+  margin-top: 25px !important;
   border: solid;
-  border-color: #83daeb;
-  color: #fff;
-  background-color: #83daeb;
+  border-color:#008fb3;
+  border-width: 2px;
   border-radius: 500px;
   padding-left: 8px;
   padding-right: 8px;
   padding-top: 3px;
   padding-bottom: 3px;
+  color:#fff;
 }
 .request-item-payment-button-text{
   font-weight: 600;
