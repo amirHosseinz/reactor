@@ -285,7 +285,7 @@ class ReservePanelMd extends React.Component{
           onRequestClose={()=>{this.setState({showPreBill:false})}}>
           <div className="pre-bill-main-division">
             <div className="pre-bill-header-section">
-              <div className="close-modal-phone-number">
+              <div onClick= {()=>{this.setState({showPreBill:false})}} className="close-modal-phone-number">
               </div>
               <p>
                 جزئیات رزرو اقامتگاه

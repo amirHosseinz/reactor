@@ -276,7 +276,7 @@ class LoginMd extends React.Component{
              onRequestClose={()=>{this.props.closeLoginPanel();
                this.setState({showSignUpOrSetPasswordModal:false})}}>
                <div className="login1-modal">
-                  <div className="close-modal-set-password">
+                  <div onClick={()=>{this.props.closeLoginPanel()}} className="close-modal-set-password">
                   </div>
                   <p className="login-title-in-modal">تعیین رمز عبور</p>
                   <div className="header-login-modal-divider">
@@ -328,7 +328,8 @@ class LoginMd extends React.Component{
              onRequestClose={()=>{this.props.closeLoginPanel();
                           this.setState({showSignUpOrSetPasswordModal:false})}}>
              <div className="login1-modal">
-                 <div className="close-modal-sign-up">
+                 <div onClick={()=>{this.props.closeLoginPanel();
+                              this.setState({showSignUpOrSetPasswordModal:false})}} className="close-modal-sign-up">
                  </div>
                  <p className="login-title-in-modal">ثبت‌نام کاربر جدید</p>
                  <div className="header-login-modal-divider">
@@ -416,7 +417,7 @@ class LoginMd extends React.Component{
     // console.log(this.state.hasAccount);
     return(
       <div className="login1-modal">
-      <div className="close-modal-verification">
+      <div onClick={()=>{this.props.closeLoginPanel()}} className="close-modal-verification">
       </div>
         <p className="login-title-in-modal"> ورود / ثبت‌نام  </p>
         <div className="header-login-modal-divider">

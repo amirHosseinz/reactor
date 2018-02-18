@@ -273,7 +273,7 @@ class HeaderXl extends React.Component{
       return(
         <Modal isOpen={this.state.loginPanelVisible2}
           style={loginPasswordStyle}
-          onRequestClose={()=>{this.setState({loginPanelVisible2:false})}}>
+          onRequestClose={()=>{this.closeLoginPanel();this.setState({loginPanelVisible2:false})}}>
           <Login closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
         </Modal>
       );
@@ -282,7 +282,7 @@ class HeaderXl extends React.Component{
       return(
         <Modal isOpen={this.state.loginPanelVisible2}
           style={loginVerifySmsXl}
-          onRequestClose={()=>{this.setState({loginPanelVisible2:false})}}>
+          onRequestClose={()=>{this.closeLoginPanel();this.setState({loginPanelVisible2:false})}}>
           <Login closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
         </Modal>
       );
