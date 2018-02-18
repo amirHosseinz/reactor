@@ -2252,7 +2252,7 @@ margin-top: 20px;
   font-size: 20px;
   color: #454545;
   text-align: center;
-  margin-top: 40px;
+  padding-top: 30px;
   font-weight: 500;
 }
 .paddingtopundermap{
@@ -2279,7 +2279,8 @@ margin-top: 20px;
   font-size: 14px;
   color: #f56c4e;
   text-align: center;
-  margin-top: 10px;
+  padding-right: 60px;
+  padding-left: 60px;
   font-weight: 400;
 }
 .house-preview-linked-to-house-detail{
@@ -2308,7 +2309,7 @@ margin-top: 20px;
   display: -webkit-flex; /* Safari */
   -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
   display: flex;
-  margin-right:auto;
+  margin:auto !important;
   flex-direction: row-reverse;
   text-align: center !important;
   margin-top: 50px;
@@ -3236,8 +3237,8 @@ text-align: center;
 
 .request-item-cancel-button{
   width:20%;
-  margin-top: 19px !important;
-
+  margin-top: 25px !important;
+  margin: auto;
   border: solid;
   border-color: #f54e4e;
   border-width: 2px;
@@ -3265,9 +3266,9 @@ text-align: center;
 .request-item-payment-button{
   background-color: #83daeb;
   width:20%;
-  margin-left: 40px;
-  margin-right:230px;
-  margin-top: 19px !important;
+  margin: auto;
+  margin-left: -200px;
+  margin-top: 25px !important;
   border: solid;
   border-color:#83daeb;
   border-width: 2px;
@@ -3303,6 +3304,6 @@ text-align: center;
 .request-item-cancel-button-text{
   font-size: 16px;
   font-family: IRANSans;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
