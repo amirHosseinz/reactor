@@ -14,7 +14,7 @@ class Login extends React.Component{
     }
   }
   componentWillReceiveProps(nextProps){
-    this.setState({hasAccount : nextProps.hasAccount ,hasPassword:nextProps.hasPassword})
+    this.setState({hasAccount:nextProps.hasAccount,hasPassword:nextProps.hasPassword})
   }
 
 renderLoginXl(props){
