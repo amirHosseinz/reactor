@@ -14,6 +14,7 @@ import {Image} from 'react-bootstrap';
 import Modal from 'react-modal';
 import {Sticky} from 'react-sticky';
 import Autosuggest from 'react-autosuggest';
+import '../Styles/ModalCloseButton.css';
 Modal.setAppElement('#root');
 
 const theme ={
@@ -129,7 +130,6 @@ class HeaderMD extends React.Component{
     this.setState({loginPanelVisible:true});
   }
   getUserHasPasswordByEnter(event){
-    // console.log(event.key);
     if(event.key === 'Enter'){
       this.getUserHasPassword();
     }
@@ -231,6 +231,8 @@ class HeaderMD extends React.Component{
           style={loginPhoneNumberStyle}
           onRequestClose={()=>{this.setState({loginPanelVisible:false,cellPhone:''})}}>
           <div className="login1-modal">
+            <div onClick={()=>{this.setState({loginPanelVisible:false,cellPhone:''})}} className="close-modal-phone-number">
+            </div>
             <p className="login-title-in-modal"> ورود / ثبت‌نام  </p>
             <div className="header-login-modal-divider">
             </div>
@@ -266,6 +268,7 @@ class HeaderMD extends React.Component{
   }
 
   renderLoginPanelSecondStep(){
+    // console.log(this.state.hasPassword);
     if (this.state.hasPassword===true){
       return(
         <Modal isOpen={this.state.loginPanelVisible2}

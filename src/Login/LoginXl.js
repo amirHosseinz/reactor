@@ -276,6 +276,8 @@ class LoginXl extends React.Component{
              onRequestClose={()=>{this.props.closeLoginPanel();
                this.setState({showSignUpOrSetPasswordModal:false})}}>
                <div className="login1-modal">
+                 <div className="close-modal-set-password">
+                 </div>
                   <p className="login-title-in-modal">تعیین رمز عبور</p>
                   <div className="header-login-modal-divider">
                   </div>
@@ -326,6 +328,8 @@ class LoginXl extends React.Component{
              onRequestClose={()=>{this.props.closeLoginPanel();
                           this.setState({showSignUpOrSetPasswordModal:false})}}>
              <div className="login1-modal">
+                 <div className="close-modal-sign-up">
+                 </div>
                  <p className="login-title-in-modal">ثبت‌نام کاربر جدید</p>
                  <div className="header-login-modal-divider">
                  </div>
@@ -409,12 +413,12 @@ class LoginXl extends React.Component{
     }
   }
   renderVerificationModal(){
-    // <Modal isOpen={this.state.showVerificationModal}
-    //   style={loginVerifySmsXl}
-    //   onRequestClose={()=>{this.props.closeLoginPanel();
-    //                 this.setState({showVerificationModal:false})}}>
+    // console.log(this.state.hasPassword);
+    // console.log(this.state.hasAccount);
     return(
       <div className="login1-modal">
+        <div className="close-modal-verification">
+        </div>
         <p className="login-title-in-modal"> ورود / ثبت‌نام  </p>
         <div className="header-login-modal-divider">
         </div>
@@ -510,6 +514,8 @@ class LoginXl extends React.Component{
       else{
         return (
           <div className="login1-modal">
+            <div className="close-modal-phone-number">
+            </div>
             <p className="login-title-in-modal"> ورود </p>
             <div className="header-login-modal-divider">
             </div>
