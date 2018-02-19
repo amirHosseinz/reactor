@@ -3,6 +3,7 @@
 
 .header-sticky{
   z-index: 1000;
+  margin-bottom : 0 !important;
 }
 
 .header{
@@ -15,7 +16,7 @@
   }
 
 .hearder-child-margined{
-    width:100%;
+    width:98%;
     margin: auto;
   }
 

@@ -167,6 +167,9 @@ transform: rotate(-5deg);
 }
 .downlaod-app-button-header{
 }
+
+
+
 .download-item-menu{
   margin-top: 19px !important;
   border: solid;
@@ -1716,6 +1719,8 @@ box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.3);
 }
 .profile-avataricon{
   height: 200px;
+  margin-top:25px !important;
+  border-radius: 50%;
   margin: auto;
 }
 .profile-avatarimg{
@@ -2247,7 +2252,7 @@ margin-top: 20px;
   font-size: 20px;
   color: #454545;
   text-align: center;
-  margin-top: 40px;
+  padding-top: 30px;
   font-weight: 500;
 }
 .paddingtopundermap{
@@ -2274,7 +2279,8 @@ margin-top: 20px;
   font-size: 14px;
   color: #f56c4e;
   text-align: center;
-  margin-top: 10px;
+  padding-right: 60px;
+  padding-left: 60px;
   font-weight: 400;
 }
 .house-preview-linked-to-house-detail{
@@ -2303,14 +2309,15 @@ margin-top: 20px;
   display: -webkit-flex; /* Safari */
   -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
   display: flex;
-  margin: auto;
+  margin:auto !important;
   flex-direction: row-reverse;
   text-align: center !important;
   margin-top: 50px;
 
 }
 .request-userpanel-button{
-  font-family: IRANSans !important;
+
+
 }
 .request-detail-userpanel{
   width: 82%;
@@ -2866,6 +2873,7 @@ text-align: center;
   border: none;
   -webkit-border-radius: 5px;
   border-radius: 5px;
+  outline : none;
   font-family: IRANSans;
   font-weight: 400;
   font-size: 16px;
@@ -2880,6 +2888,7 @@ text-align: center;
 }
 .input-tripinn1:focus{
   border:solid;
+  outline:none;
   border-width: 2px;
   border-color: #7ad6e8;
   background-color: #f2f7f9;
@@ -2893,6 +2902,7 @@ text-align: center;
   box-sizing: content-box;
   float: right;
   height: 32px;
+  outline: none;
   padding: 2px 10px 2px;
   border: none;
   -webkit-border-radius: 5px;
@@ -2907,10 +2917,10 @@ text-align: center;
   -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-
 }
 .input-tripinn2:focus{
   border:solid;
+  outline: none;
   border-width: 2px;
   border-color: #7ad6e8;
   background-color: #f2f7f9;
@@ -2921,6 +2931,7 @@ text-align: center;
   font-family: IRANSans !important;
   font-size: 16px !important;
   display: block;
+  outline:none;
   width: 100%;
   padding: 10px 12px;
   line-height: 1.42857143;
@@ -2996,6 +3007,7 @@ text-align: center;
   height: 48px;
   width: 100%;
   border: solid;
+  outline : none;
   border-color: #b7b7b7;
   border-width: 1px;
   border-radius: 4px;
@@ -3012,6 +3024,7 @@ text-align: center;
   border-color: #b7b7b7;
   border-width: 1px;
   border-radius: 4px;
+  outline : none;
   padding-right: 20px;
   padding-left: 20px;
   font-size: 20px;
@@ -3022,6 +3035,7 @@ text-align: center;
 .header-login-modal-input-label{
   font-size: 12px;
   color: #a1a1a1;
+  outline : none;
   font-family: IRANSans;
   margin-bottom: 8px !important;
 }
@@ -3034,6 +3048,7 @@ text-align: center;
 }
 .header-login-modal-button{
   margin-top: 40px;
+  outline : none;
   background-color: #0fb9dc;
   border: none;
   width: 100%;
@@ -3048,6 +3063,7 @@ text-align: center;
 
 .header-login-modal-button:hover{
   background-color: #008ca5;
+  outline : none;
 }
 
 .header-login-modal-button-new-user{
@@ -3056,6 +3072,7 @@ text-align: center;
   border: none;
   width: 100%;
   height: 48px;
+  outline : none;
   text-align: center;
   border-radius: 25px;
   color:white;
@@ -3065,6 +3082,7 @@ text-align: center;
 }
 .header-login-modal-button-new-user:hover{
   background-color: #008ca5;
+  outline : none;
 }
 
 .header-login-modal-button-verify{
@@ -3075,6 +3093,7 @@ text-align: center;
   height: 48px;
   text-align: center;
   border-radius: 25px;
+  outline : none;
   color:white;
   font-size: 18px;
   font-family: IRANSans;
@@ -3185,4 +3204,81 @@ text-align: center;
     margin-bottom: 10px;
     font-size: 13px;
     margin-top:16px;
+}
+
+
+.request-item-cancel-button{
+  width:20%;
+  margin-top: 25px !important;
+  margin: auto;
+  border: solid;
+  border-color: #f54e4e;
+  border-width: 2px;
+  border-radius: 500px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color:#f54e4e;
+}
+.request-item-cancel-button:hover{
+  width:20%;
+  margin-top: 25px !important;
+  border: solid;
+  border-color: #f54e4e;
+  color: #fff;
+  background-color: #f54e4e;
+  border-radius: 500px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.request-item-payment-button{
+  background-color: #83daeb;
+  width:20%;
+  margin: auto;
+  margin-left: -200px;
+  margin-top: 25px !important;
+  border: solid;
+  border-color:#83daeb;
+  border-width: 2px;
+  border-radius: 500px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color:#fff;
+}
+
+.request-item-payment-button:hover{
+  background-color: #008fb3;
+  width:20%;
+  margin: auto;
+  margin-left: -200px;
+  margin-top: 25px !important;
+  border: solid;
+  border-color:#008fb3;
+  border-width: 2px;
+  border-radius: 500px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color:#fff;
+}
+.request-item-payment-button-text{
+  font-weight: 600;
+  font-size: 18px;
+  font-family: IRANSans;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.request-item-cancel-button-text{
+  font-size: 16px;
+  font-family: IRANSans;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }

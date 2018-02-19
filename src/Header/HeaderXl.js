@@ -14,6 +14,7 @@ import {Image} from 'react-bootstrap';
 import Modal from 'react-modal';
 import {Sticky} from 'react-sticky';
 import Autosuggest from 'react-autosuggest';
+import '../Styles/ModalCloseButton.css';
 // Modal.setAppElement('../index.js');
 
 const theme ={
@@ -231,6 +232,8 @@ class HeaderXl extends React.Component{
           style={loginPhoneNumberStyle}
           onRequestClose={()=>{this.setState({loginPanelVisible:false,cellPhone:''})}}>
           <div className="login1-modal">
+            <div onClick={()=>{this.setState({loginPanelVisible:false,cellPhone:''})}} className="close-modal-phone-number">
+            </div>
             <p className="login-title-in-modal"> ورود / ثبت‌نام  </p>
             <div className="header-login-modal-divider">
             </div>
@@ -270,7 +273,7 @@ class HeaderXl extends React.Component{
       return(
         <Modal isOpen={this.state.loginPanelVisible2}
           style={loginPasswordStyle}
-          onRequestClose={()=>{this.setState({loginPanelVisible2:false})}}>
+          onRequestClose={()=>{this.closeLoginPanel();this.setState({loginPanelVisible2:false})}}>
           <Login closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
         </Modal>
       );
@@ -279,7 +282,7 @@ class HeaderXl extends React.Component{
       return(
         <Modal isOpen={this.state.loginPanelVisible2}
           style={loginVerifySmsXl}
-          onRequestClose={()=>{this.setState({loginPanelVisible2:false})}}>
+          onRequestClose={()=>{this.closeLoginPanel();this.setState({loginPanelVisible2:false})}}>
           <Login closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
         </Modal>
       );

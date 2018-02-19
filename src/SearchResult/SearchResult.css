@@ -77,7 +77,6 @@
 }
 .results-search-not-sticky{
   height: 70px;
-  margin-top : 60px;
   z-index: 0;
   background-color: white;
   border-bottom: solid;
@@ -91,6 +90,7 @@
   width : 94%;
   font-family: IRANSans;
   margin: auto;
+
 }
 
 .search-results-filters-container{
