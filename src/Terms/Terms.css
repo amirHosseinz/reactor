@@ -71,6 +71,33 @@ margin-bottom: 70px;
   font-family: IRANSans;
   margin-right: 20px;
 }
+.terms-open-panel1-text{
+  color:#2ec6cc;
+  text-align: right;
+  font-size:16px;
+  font-weight:500;
+  font-family: IRANSans;
+  margin-left: 500px;
+  margin-right: 20px;
+}
+
+.terms-open-panel-img{
+  transform: rotate(180deg);
+  float: left;
+}
+
+.terms-close-panel-img{
+  float: left;
+}
+.terms-open-panel9-text{
+  color:#2ec6cc;
+  text-align: right;
+  font-size:16px;
+  font-weight:500;
+  font-family: IRANSans;
+  margin-left: 527px;
+  margin-right: 20px;
+}
 
 
 /* general styles finished */
@@ -131,6 +158,51 @@ margin-bottom: 70px;
 
 
 /* XS styles here */
+.terms-cadre-xs{
+  font-family: IRANSans;
+  font-size: 14px;
+  height: 75%;
+  width: 94%;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 100px;
+  background-color: white;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  padding-left: 15px;
+  padding-right: 15px;
+     text-align: justify;
+       border: 2px solid #e4e4e4;
+  border-radius: 7px;
+  color:#484848;
+}
+.terms-container-xs{
+margin-left: 10px;
+margin-right: 10px;
+line-height: 1.5;
+}
+.terms-header-xs{
+  text-align: center;
+  font-size:26px;
+  font-weight:500;
+  padding-top: 10px;
+  font-family: IRANSans;
+  margin-bottom:28px;
+}
+.terms-sub-title-xs{
+  text-align: center;
+  font-size:22px;
+  font-weight:500;
+  font-family: IRANSans;
+  margin-top: 40px;
+  margin-bottom: -5px;
+}
 
-
+.terms-close-panel1-text-xs{
+  text-align: right;
+  font-size:13px;
+  font-weight:600;
+  font-family: IRANSans;
+  margin-right: 16px;
+}
 /* XS styles Finished */
