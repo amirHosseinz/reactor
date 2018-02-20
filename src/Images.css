@@ -2084,10 +2084,6 @@ margin-top: 20px;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
-.edit-profle-inp{
-  font-family: IRANSans !important;
-
-}
 
 .profile-description-textarea{
   font-family: IRANSans;
