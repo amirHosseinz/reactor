@@ -114,7 +114,7 @@ class TripsXl extends React.Component{
         });
 
         return(
-          <div className="col-md-3">
+          <div className="list-of-requests-trips-div">
             <ListGroup>{list}</ListGroup>
           </div>
         );
@@ -123,9 +123,7 @@ class TripsXl extends React.Component{
   render(){
     return(
       <div>
-        <div className="list-of-request-div">
-          {this.renderTrips()}
-        </div>
+        {this.renderTrips()}
       </div>
     );
   }

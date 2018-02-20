@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider,Button } from 'semantic-ui-react';
+import { Divider } from 'semantic-ui-react';
 import {englishToPersianDigits} from '../tools/EnglishToPersianDigits';
 import moment from 'moment-jalaali';
 
@@ -125,10 +125,10 @@ class TripItemXl extends React.Component{
     return 'guest';
   }
   setTokenForCancel(){
-    this.setState({token:"460b152177ab02716faa0d7795ff60f12d7cbd9d"},()=>{this.setSearchParamsForCancel(this.getRole())});
+    this.setState({token:localStorage['token']},()=>{this.setSearchParamsForCancel(this.getRole())});
   }
   setTokenForDelete(){
-    this.setState({token:"460b152177ab02716faa0d7795ff60f12d7cbd9d"},()=>{this.setSearchParamsForDelete(this.getRole())});
+    this.setState({token:localStorage['token']},()=>{this.setSearchParamsForDelete(this.getRole())});
   }
   handleCancelTripButton(){
     this.setTokenForCancel();
@@ -154,7 +154,7 @@ class TripItemXl extends React.Component{
      return response.json();
    })
    .then((response) => {
-     // to do
+     this.props.changeReRenderList();
    });
   }
   deleteTrip(){
@@ -172,7 +172,7 @@ class TripItemXl extends React.Component{
      return response.json();
    })
    .then((response) => {
-     console.log(response);
+     this.props.changeReRenderList();
    });
   }
   handleDeleteTripButton(){
@@ -180,12 +180,12 @@ class TripItemXl extends React.Component{
   }
   getTripCancelButton(){
     return (
-      <Button className="request-userpanel-button" onClick={this.handleCancelTripButton.bind(this)}> لغو سفر</Button>
+      <div className="clickable-p request-item-cancel-button" onClick={this.handleCancelTripButton.bind(this)}> لغو سفر</div>
     );
   }
   getTripDeleteButton(){
     return (
-      <div></div>
+      <div className="clickable-p request-item-cancel-button" onClick={this.handleDeleteTripButton.bind(this)}> حذف سفر</div>
     );
   }
   renderTripDetail(){

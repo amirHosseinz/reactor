@@ -28,6 +28,12 @@ class UserPanelXl extends React.Component{
   }
 
   changeRequestDetail (request_detail){
+    if(request_detail.status==='no-house'){
+      this.setState({hasRequest:false});
+    }
+    else{
+      this.setState({hasRequest:true});
+    }
     this.setState({requestDetail:request_detail});
   }
 
@@ -53,7 +59,7 @@ class UserPanelXl extends React.Component{
       );
       case 'trip':
       return(
-        <TripItem reserveDetail={this.state.tripDetail}/>
+        <TripItem changeReRenderList={()=>{this.changeReRenderList()}} reserveDetail={this.state.tripDetail}/>
       );
       default:
       return null;
@@ -67,7 +73,7 @@ class UserPanelXl extends React.Component{
         );
       case 'request':
       return(
-        <Requests changeHasRequest={this.changeHasRequest.bind(this)} reRender={this.state.reRenderList} changeRequestDetail={this.changeRequestDetail.bind(this)} />
+        <Requests reRender={this.state.reRenderList} changeRequestDetail={this.changeRequestDetail.bind(this)} />
       );
       case 'trip':
       return(
@@ -82,12 +88,6 @@ class UserPanelXl extends React.Component{
     }
   }
 
-changeHasTrip(hasTrip){
-  this.setState({hasTrip:hasTrip});
-}
-changeHasRequest(hasRequest){
-  this.setState({hasRequest:hasRequest});
-}
 renderDashbordTitle(){
   switch (window.location.pathname.split('/')[window.location.pathname.split('/').length-1]){
     case 'message':
@@ -109,11 +109,11 @@ renderDashbordTitle(){
   render(){
     var selectedPanel = window.location.pathname.split('/')[window.location.pathname.split('/').length-1];
     return(
-      <div className={(selectedPanel==='request' && this.state.hasRequest===false)||(selectedPanel==='trip'&& this.state.hasTrip===false)?"requests-list-title" : "requests-list-title row-reverse"}>
+      <div className="requests-list-title">
           <div className="request-trip-message-container-margined">
             {this.showContent()}
           </div>
-          <div className="profile_static_bar">
+          <div>
             {this.renderSelectedPanel()}
           </div>
       </div>

@@ -1703,18 +1703,18 @@ box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.3);
   height: 30px;
 }
 .profile-container-margined{
-  width: 80%;
+  width: 90rem;
   margin:auto;
   margin-top: 30px;
-
-
-
 }
 .profile-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding:16px;
     border-width: 3px;
     padding-bottom: 60px;
-    height:500px;
+    height:100%;
 
 }
 .profile-avataricon{
@@ -1774,20 +1774,20 @@ margin-top: 20px;
   text-align: right;
   padding-bottom: 10px;
 }
-.profile_static_bar{
 
-}
-.list-of-request-div {
+.list-of-requests-trips-div {
   overflow-y: auto;
   border-radius: 6px 6px 6px 6px;
   border: solid;
+  background-color: white;
   border-width: 2px;
   border-color: #ececec;
-  margin: 0px !important;
-  padding: 0px !important;
-  /* height: 100%; */
-  min-height: 570px;
-  max-height: 570px;
+  /* margin: 0px !important; */
+  /* padding: 0px !important; */
+  margin-top : 60px;
+  margin-left:10px;
+  min-height: 620px;
+  max-height: 620px;
 }
 
 .list-of-request-div-xs{
@@ -1822,13 +1822,16 @@ margin-top: 20px;
 }
 .requests-list-title{
   padding-top: 14px;
-  /* display: -webkit-flex; */
-  /* -webkit-flex-direction: row;
-  flex-direction: row; */
-  /* display: flex; */
+  margin:auto !important;
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  display: flex;
+  justify-content:center;
 }
 .request-trip-message-container-margined{
   margin-top: 30px !important;
+  height : 620px;
 }
 .profile_dynamic_edit{
   border-radius: 6px 6px 6px 6px;
@@ -1845,7 +1848,7 @@ margin-top: 20px;
 }
 
 
-.profile_dynamic_edit2{
+.profile_dynamic_edit{
   border-radius: 6px 6px 6px 6px;
   border: solid;
   border-width: 2px;
@@ -2306,6 +2309,7 @@ margin-top: 20px;
   margin-top: 20px;
 }
 .relevant-button{
+  font-family:IRANSans;
   display: -webkit-flex; /* Safari */
   -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
   display: flex;
@@ -2315,10 +2319,7 @@ margin-top: 20px;
   margin-top: 50px;
 
 }
-.request-userpanel-button{
 
-
-}
 .request-detail-userpanel{
   width: 82%;
   margin: auto;
@@ -3224,7 +3225,9 @@ text-align: center;
 .request-item-cancel-button:hover{
   width:20%;
   margin-top: 25px !important;
+  margin:auto;
   border: solid;
+  border-width: 2px;
   border-color: #f54e4e;
   color: #fff;
   background-color: #f54e4e;

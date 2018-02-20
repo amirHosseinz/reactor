@@ -67,10 +67,9 @@ class RequestsXl extends React.Component{
   }
   renderData(request_list){
     this.setState({requestList:request_list},()=>{
-      console.log(this.state.requestList.request_list);
       if(request_list.request_list.length>0){
 
-        this.showRequestItemClick(request_list.request_list[0],true);
+        this.showRequestItemClick(request_list.request_list[0]);
         // this.props.changeHasRequest(true);
       }
       else{
@@ -123,7 +122,7 @@ class RequestsXl extends React.Component{
           }
       );
         return(
-          <div>
+          <div className="list-of-requests-trips-div">
             <ListGroup>{this.list}</ListGroup>
           </div>
            );
@@ -133,9 +132,7 @@ class RequestsXl extends React.Component{
   render(){
     return(
       <div>
-        <div className="list-of-request-div">
             {this.renderRequests()}
-        </div>
       </div>
     );
   }

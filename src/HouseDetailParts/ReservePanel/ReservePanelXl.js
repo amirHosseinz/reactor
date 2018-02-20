@@ -223,6 +223,7 @@ class ReservePanelXl extends React.Component{
      return response.json();
    })
    .then((bookData) => {
+     console.log(bookData);
      if(bookData.successful===true){
        window.location.href = '/dashboard/request';
      }

@@ -343,7 +343,7 @@ class RequestItemXl extends React.Component{
 renderCancelButton(){
   if(this.state.requestStatus!=="GUEST_CANCELED"){
    return (
-     <div className="clickable-p request-item-cancel-button" onClick={()=>{this.setTokenForDelete()}}><p className='request-item-cancel-button-text'>لغو درخواست</p> </div>
+     <div className="clickable-p request-item-cancel-button" onClick={()=>{this.setTokenForCancel()}}><p className='request-item-cancel-button-text'>لغو درخواست</p> </div>
    );
   }
 }
@@ -356,7 +356,7 @@ renderDeleteButton(){
     if (this.state.request!==null){
       if(this.state.requestStatus!=='no-house'){
         return (
-          <div className="request-header profile_dynamic_edit2">
+          <div className="request-header profile_dynamic_edit">
           <div className='request-status'>
             <p className="reserve-status-h1"> :وضعیت درخواست رزرو </p>
             <p className="reserve-status-h2"> {this.getRequestStatus()} </p>
@@ -472,6 +472,7 @@ renderDeleteButton(){
      return response.json();
    })
    .then((request_status) => {
+     this.props.changeReRenderList();
   });
 }
   }
