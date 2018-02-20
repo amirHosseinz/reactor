@@ -1,0 +1,30 @@
+/* general style here */
+.user-panel-main-container{
+  padding-top: 14px;
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+.request-trip-message-list-container{
+  margin-top: 30px !important;
+  height : 620px;
+}
+
+/* general style finished */
+
+/*xl style here  */
+/*xl style finished */
+
+/*md style here  */
+/*md style finished */
+
+
+/*sm style here  */
+/*sm style finished */
+
+
+/*xs style here  */
+/*xs style finished */

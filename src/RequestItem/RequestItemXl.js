@@ -358,43 +358,42 @@ renderDeleteButton(){
     if (this.state.request!==null){
       if(this.state.requestStatus!=='no-house'){
         return (
-          <div className="request-header profile_dynamic_edit">
-          <div className='request-status'>
-            <p className="reserve-status-h1"> :وضعیت درخواست رزرو </p>
-            <p className="reserve-status-h2"> {this.getRequestStatus()} </p>
-            <p className="reserve-status-descriptions">{this.getRequestStatusDiscription()} </p>
-          </div>
-          <div className="request-detail-userpanel">
-            <Divider/>
-            <div className='house-preview-linked-to-house-detail' dir="rtl">
-              <p> نام اقامتگاه : <a style={{color:'#12b2ce'}} href={"/rooms/"+ this.state.request.room.id} target="_blank">{this.state.request.room.title}</a> </p>
-              <p>شهر مقصد: {this.state.request.room.city}  </p>
-              <p> به میزبانی  {this.state.request.room.owner.first_name} {this.state.request.room.owner.last_name}</p>
-              <p> رزرو کننده: {this.state.request.guest_person.last_name} </p>
-              <p>تعداد میهمان: {englishToPersianDigits(this.state.request.number_of_guests)} نفر</p>
-              <p>تاریخ ورود: {englishToPersianDigits(moment(this.state.request.start_date).format('jYYYY/jM/jD'))}</p>
-              <p>تاریخ خروج:{englishToPersianDigits(moment(this.state.request.end_date).format('jYYYY/jM/jD'))} </p>
+          <div className="request-item-no-house-main-container">
+            <div className='request-status'>
+              <p className="request-item-request-status-h1"> :وضعیت درخواست رزرو </p>
+              <p className="request-item-request-status-h2"> {this.getRequestStatus()} </p>
+              <p className="reserve-status-descriptions">{this.getRequestStatusDiscription()} </p>
             </div>
-            <div className='request-details'>
+            <div className="request-detail-userpanel">
+              <Divider/>
+              <div className='house-preview-linked-to-house-detail' dir="rtl">
+                <p> نام اقامتگاه : <a style={{color:'#12b2ce'}} href={"/rooms/"+ this.state.request.room.id} target="_blank">{this.state.request.room.title}</a> </p>
+                <p>شهر مقصد: {this.state.request.room.city}  </p>
+                <p> به میزبانی  {this.state.request.room.owner.first_name} {this.state.request.room.owner.last_name}</p>
+                <p> رزرو کننده: {this.state.request.guest_person.last_name} </p>
+                <p>تعداد میهمان: {englishToPersianDigits(this.state.request.number_of_guests)} نفر</p>
+                <p>تاریخ ورود: {englishToPersianDigits(moment(this.state.request.start_date).format('jYYYY/jM/jD'))}</p>
+                <p>تاریخ خروج:{englishToPersianDigits(moment(this.state.request.end_date).format('jYYYY/jM/jD'))} </p>
+              </div>
+              <div className='request-details'>
+              </div>
+              <Divider/>
+              <div className='final-details'>
+                <p>جمع هزینه ها: {englishToPersianDigits(this.state.request.total_price)} تومان</p>
+              </div>
             </div>
-            <Divider/>
-            <div className='final-details'>
-              <p>جمع هزینه ها: {englishToPersianDigits(this.state.request.total_price)} تومان</p>
-            </div>
-          </div>
 
-          <div className='relevant-button'>
-            {this.getRelevantButton()}
-            {this.renderCancelButton()}
-            {this.renderDeleteButton()}
-
-          </div>
+            <div className='relevant-button'>
+              {this.getRelevantButton()}
+              {this.renderCancelButton()}
+              {this.renderDeleteButton()}
+            </div>
           </div>
         );
       }
       else{
         return(
-        <div className='no-request-container profile_dynamic_edit'>
+        <div className='request-item-no-house-main-container'>
           <p className="no-request-header">شما درخواست رزروی ندارید</p>
           <p className="no-request-main-paragraph">شما تاکنون درخواست رزروی نداشته اید. میتوانید با جستجو میان شهرها و اقامتگاه های موجود، درخواست رزرو خود را ثبت نمایید. کافی است مراحل زیر را دنبال نمایید</p>
           <div className='no-request-stage1-container'>

@@ -1,0 +1,103 @@
+/* general style here */
+.trips-item-selected{
+  border-bottom: solid;
+  border-color: #f9f9f9;
+  border-width: 3px;
+  width: 100%;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction:row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction:row;
+  cursor: pointer;
+  background-color: #f2f5f6;
+}
+.trips-item-not-selected:hover{
+  border-bottom: solid;
+  border-color: #f9f9f9;
+  border-width: 3px;
+  width: 100%;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction:row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction:row;
+  cursor: pointer;
+  background-color: #f8f8f8;
+}
+.trips-item-not-selected{
+  border-bottom: solid;
+  border-color: #f9f9f9;
+  border-width: 3px;
+  width: 100%;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction:row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction:row;
+  cursor: pointer;
+  background-color: white;
+}
+.trips-scroll-list{
+  width:100%;
+  border:0px !important;
+  padding: 0px !important;
+  border-radius: 0px !important;
+  margin: 0px !important;
+}
+
+.trips-scroll-list:hover{
+  transition-delay: .04s;
+  width:100%;
+  background-color: #f8f8f8;
+  border:0px !important;
+  padding: 0px !important;
+  border-radius: 0px !important;
+  margin: 0px !important;
+}
+.trips-item-preview{
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  float: right;
+}
+.trips-item-title{
+  font-family: IRANSans;
+  font-weight: 400;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-right: 6px;
+}
+.trips-item-city{
+  font-size: 11px;
+  font-family: IRANSans;
+  font-weight: 300;
+  color: #454545;
+  margin-right: 6px;
+}
+.trips-main-container {
+  overflow-y: auto;
+  border-radius: 6px 6px 6px 6px;
+  border: solid;
+  background-color:white;
+  border-width: 2px;
+  border-color: #ececec;
+  padding: 0px !important;
+  margin-top : 30px;
+  margin-left:10px;
+  min-height: 620px;
+  max-height: 620px;
+}
+/* general style finished*/
+
+/* xl style here */
+
+/* xl style finished */
+
+/* md style here */
+/* md style finished */
+
+/* sm style here */
+/* sm style finished */
+
+/* xs style here */
+/* xs style finished */

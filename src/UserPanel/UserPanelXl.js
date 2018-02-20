@@ -5,6 +5,7 @@ import Requests from '../Requests';
 import RequestItem from '../RequestItem.js';
 import TripItem from '../TripItem.js';
 import UserProfile from '../UserProfile.js';
+import './UserPanel.css';
 
 
 class UserPanelXl extends React.Component{
@@ -15,8 +16,6 @@ class UserPanelXl extends React.Component{
       ProfileDetail:'',
       requestDetail:'',
       tripDetail:'',
-      hasRequest : false,
-      hasTrip : false,
     };
   }
 
@@ -28,12 +27,6 @@ class UserPanelXl extends React.Component{
   }
 
   changeRequestDetail (request_detail){
-    if(request_detail.status==='no-house'){
-      this.setState({hasRequest:false});
-    }
-    else{
-      this.setState({hasRequest:true});
-    }
     this.setState({requestDetail:request_detail});
   }
 
@@ -79,10 +72,6 @@ class UserPanelXl extends React.Component{
       return(
         <Trips changeTripDetail={this.changeTripDetail.bind(this)}/>
       );
-      // case 'userprofile':
-      // return(
-      //   <UserProfile/>
-      // );
       default:
       return null;
     }
@@ -92,16 +81,16 @@ renderDashbordTitle(){
   switch (window.location.pathname.split('/')[window.location.pathname.split('/').length-1]){
     case 'message':
       return(
-        <div className="requests-list-title"> پیام‌ها </div>
+        <div className="message-list-title"> پیام‌ها </div>
       );
     case 'request':
     return(
-      <div className="requests-list-title">درخواست‌ها </div>
+      <div className="request-list-title">درخواست‌ها </div>
 
       );
     case 'trip':
     return(
-      <div className="requests-list-title">سفرها </div>
+      <div className="trip-list-title">سفرها </div>
     );
   }
 }
@@ -109,8 +98,8 @@ renderDashbordTitle(){
   render(){
     var selectedPanel = window.location.pathname.split('/')[window.location.pathname.split('/').length-1];
     return(
-      <div className="requests-list-title">
-          <div className="request-trip-message-container-margined">
+      <div className="user-panel-main-container">
+          <div className="request-trip-message-list-container">
             {this.showContent()}
           </div>
           <div>
