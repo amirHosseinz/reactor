@@ -362,9 +362,9 @@ renderDeleteButton(){
           <div className='request-status'>
             <p className="request-item-request-status-h1"> :وضعیت درخواست رزرو </p>
             <p className="request-item-request-status-h2"> {this.getRequestStatus()} </p>
-            <p className="reserve-status-descriptions">{this.getRequestStatusDiscription()} </p>
+            <p className="request-item-status-descriptions">{this.getRequestStatusDiscription()} </p>
           </div>
-          <div className="request-detail-userpanel">
+          <div className="request-item-detail">
             <Divider/>
             <div className='house-preview-linked-to-house-detail' dir="rtl">
               <p> نام اقامتگاه : <a style={{color:'#12b2ce'}} href={"/rooms/"+ this.state.request.room.id} target="_blank">{this.state.request.room.title}</a> </p>
@@ -375,14 +375,11 @@ renderDeleteButton(){
               <p>تاریخ ورود: {englishToPersianDigits(moment(this.state.request.start_date).format('jYYYY/jM/jD'))}</p>
               <p>تاریخ خروج:{englishToPersianDigits(moment(this.state.request.end_date).format('jYYYY/jM/jD'))} </p>
             </div>
-            <div className='request-details'>
-            </div>
             <Divider/>
             <div className='final-details'>
               <p>جمع هزینه ها: {englishToPersianDigits(this.state.request.total_price)} تومان</p>
             </div>
           </div>
-
           <div className='relevant-button'>
             {this.getRelevantButton()}
             {this.renderCancelButton()}

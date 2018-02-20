@@ -1,30 +1,43 @@
 /*general style here*/
-.profile_dynamic_edit{
+
+
+/*general style finished */
+
+/*xl style here  */
+.trip-item-no-house-main-container {
   border-radius: 6px 6px 6px 6px;
   border: solid;
   border-width: 2px;
   width : 1000px;
   margin : auto;
+  margin-top: 30px;
   border-color: #ececec;
   background-color: white;
-  /* height: 1170px; */
   height:100%;
-  margin-bottom:100px;
   padding-bottom: 50px;
-}
-
-.no-request-container{
-  margin:auto !important;
   font-family: IRANSans;
   font-size: 16px;
   text-align: center;
 }
-/*general style finished */
-
-/*xl style here  */
 /*xl style finished  */
 
 /*md style here  */
+.trip-item-no-house-main-container-md {
+  border-radius: 6px 6px 6px 6px;
+  border: solid;
+  border-width: 2px;
+  width : 1000px;
+  margin : auto;
+  margin-top: 30px;
+  border-color: #ececec;
+  background-color: white;
+  height:100%;
+  padding-bottom: 50px;
+  font-family: IRANSans;
+  font-size: 16px;
+  text-align: center;
+  transform : scale(0.9,0.9);
+}
 /*md style finished  */
 
 /*sm style here  */

@@ -37,6 +37,19 @@
   margin-top: 10px;
   font-weight: 400;
 }
+.request-item-status-descriptions{
+  font-family: IRANSans;
+  font-size: 14px;
+  color: #f56c4e;
+  text-align: center;
+  padding-right: 60px;
+  padding-left: 60px;
+  font-weight: 400;
+}
+.request-item-detail{
+  width: 82%;
+  margin: auto;
+}
 /*xl style finished  */
 
 

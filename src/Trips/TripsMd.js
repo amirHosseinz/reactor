@@ -88,7 +88,7 @@ class TripsMd extends React.Component{
           );
         });
         return(
-          <div className="trips-main-container">
+          <div className="trips-main-container-md">
             <ListGroup>{list}</ListGroup>
           </div>
         );

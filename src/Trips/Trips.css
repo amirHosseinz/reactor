@@ -74,6 +74,10 @@
   color: #454545;
   margin-right: 6px;
 }
+
+/* general style finished*/
+
+/* xl style here */
 .trips-main-container {
   overflow-y: auto;
   border-radius: 6px 6px 6px 6px;
@@ -82,18 +86,28 @@
   border-width: 2px;
   border-color: #ececec;
   padding: 0px !important;
-  margin-top : 30px;
+  margin-top:30px;
   margin-left:10px;
-  min-height: 620px;
-  max-height: 620px;
+  min-height: 644px;
+  max-height: 644px;
 }
-/* general style finished*/
-
-/* xl style here */
-
 /* xl style finished */
 
 /* md style here */
+.trips-main-container-md{
+  overflow-y: auto;
+  border-radius: 6px 6px 6px 6px;
+  border: solid;
+  background-color:white;
+  border-width: 2px;
+  border-color: #ececec;
+  padding: 0px !important;
+  margin-top:30px;
+  margin-left:10px;
+  min-height: 644px;
+  max-height: 644px;
+  transform: scale(0.9,0.9);
+}
 /* md style finished */
 
 /* sm style here */
