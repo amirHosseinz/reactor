@@ -1,0 +1,38 @@
+/* general styles here */
+.user-profile-main-division{
+  display : flex;
+  display : -webkit-flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+  margin-top : 100px;
+}
+.user-profile-edit-main-division{
+  width : 695px;
+  margin-right: 10px;
+  background-color: white;
+  height : 800px;
+  border:solid;
+  font-family: IRANSans !important;
+}
+
+.user-profile-in-details-main-division{
+  width : 400px;
+  height: 500px;
+  background-color :white ;
+  border:solid;
+  font-family: IRANSans !important;
+}
+/* general styles finished*/
+
+
+/* xl styles here */
+/* xl styles finished */
+
+/* md styles here */
+/* md styles finished */
+
+/* sm styles here */
+/* sm styles finished */
+
+/* xs styles here */
+/* xs styles finished */

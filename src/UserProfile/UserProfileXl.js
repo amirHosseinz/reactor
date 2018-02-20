@@ -148,66 +148,189 @@ class UserProfileXl extends React.Component{
     this.setState({confirmPassword:event.target.value});
   }
 
+
+  renderUserProfileDetailsSection(){
+    if(this.state.profileInfo!==null){
+      return(
+        <div className="user-profile-in-details-main-division">
+          <div className="user-profile-profile-picture">
+          </div>
+          <div className="user-profile-user-name">
+          </div>
+          <hr/>
+          <div className="user-profile-in-details-link">
+          </div>
+          <div className="user-profile-in-details-link">
+          </div>
+          <div className="user-profile-in-details-link">
+          </div>
+          <div className="user-profile-in-details-link">
+          </div>
+        </div>
+      );
+    }
+  }
+  renderUserProfileEditSection(){
+    return(
+      <div className="user-profile-edit-main-division">
+        <div className="user-profile-edit-main-heading">
+        </div>
+        <hr />
+        <div className="user-profile-edit-secondary-heading`">
+          <p className="user-profile-edit-secondary-heading-title">
+          </p>
+          <p className="user-profile-edit-secondary-heading-description">
+          </p>
+        </div>
+        <div className="user-profile-edit-get-data-zone">
+          <div className="user-profile-edit-input-paragraph">
+            <span className="user-profile-edit-input-paragraph-title">
+            </span>
+            <span className="user-profile-edit-input-paragraph-description">
+            </span>
+          </div>
+          <div className="user-profile-edit-input">
+          </div>
+        </div>
+        <div className="user-profile-edit-get-data-zone">
+          <div className="user-profile-edit-input-paragraph">
+            <span className="user-profile-edit-input-paragraph-title">
+            </span>
+            <span className="user-profile-edit-input-paragraph-description">
+            </span>
+          </div>
+          <div className="user-profile-edit-input">
+          </div>
+        </div>
+        <div className="user-profile-edit-get-data-zone">
+          <div className="user-profile-edit-input-paragraph">
+            <span className="user-profile-edit-input-paragraph-title">
+            </span>
+            <span className="user-profile-edit-input-paragraph-description">
+            </span>
+          </div>
+          <div className="user-profile-edit-input">
+          </div>
+        </div>
+        <div className="user-profile-edit-get-data-zone">
+          <div className="user-profile-edit-input-paragraph">
+            <span className="user-profile-edit-input-paragraph-title">
+            </span>
+            <span className="user-profile-edit-input-paragraph-description">
+            </span>
+          </div>
+          <div className="user-profile-edit-input">
+          </div>
+        </div>
+        <div className="user-profile-edit-get-data-zone">
+          <div className="user-profile-edit-input-paragraph">
+            <span className="user-profile-edit-input-paragraph-title">
+            </span>
+            <span className="user-profile-edit-input-paragraph-description">
+            </span>
+          </div>
+          <div className="user-profile-edit-input">
+          </div>
+        </div>
+        <hr />
+        <div className="user-profile-edit-secondary-heading`">
+          <p className="user-profile-edit-secondary-heading-title">
+          </p>
+          <p className="user-profile-edit-secondary-heading-description">
+          </p>
+        </div>
+        <div className="user-profile-edit-get-data-zone">
+          <div className="user-profile-edit-input-paragraph">
+            <span className="user-profile-edit-input-paragraph-title">
+            </span>
+            <span className="user-profile-edit-input-paragraph-description">
+            </span>
+          </div>
+          <div className="user-profile-edit-input">
+          </div>
+        </div>
+        <div className="user-profile-edit-get-data-zone">
+          <div className="user-profile-edit-input-paragraph">
+            <span className="user-profile-edit-input-paragraph-title">
+            </span>
+            <span className="user-profile-edit-input-paragraph-description">
+            </span>
+          </div>
+          <div className="user-profile-edit-input">
+          </div>
+        </div>
+        <hr/>
+        <div> ذخیره</div>
+      </div>
+    );
+  }
+
+
+  // <div className="profile-container">
+  //     <div className="profile-container-margined">
+  //       <div className="profile_dynamic_edit col-md-9">
+  //         <div className="edit-profile-xl row">
+  //             <p className="dashboard-header"> ویرایش حساب کاربری </p>
+  //         </div>
+  //         <div className="edit-profile-xl-inputs" dir="rtl">
+  //         <div className="edit-prof-row1 row">
+  //             <div className="col-md-4">
+  //               <label className="profile-description-textarea" for="comment"> نام:</label>
+  //               <input id='first-name' onChange={this.editFirstName.bind(this)} className="first-name edit-profle-inp form-control-tripinn"  value={this.state.firstName}/>
+  //             </div>
+  //           <div className="col-md-4">
+  //             <label className="profile-description-textarea" for="comment">  نام خانوادگی:</label>
+  //             <input id='last-name'onChange={this.editLastName.bind(this)} className="last-name edit-profle-inp form-control-tripinn"  value={this.state.lastName}/>
+  //           </div>
+  //           <div className="col-md-4">
+  //             <label className="profile-description-textarea" for="comment"> کد ملی:</label>
+  //             <input id='national-id' onChange={this.editNationalId.bind(this)} className="national-id edit-profle-inp form-control-tripinn" value={this.state.nationalId}/>
+  //           </div>
+  //         </div>
+  //         <div className="edit-prof-row1 row">
+  //
+  //           <div className="col-md-4">
+  //             <label className="profile-description-textarea" for="comment">  شماره همراه:</label>
+  //             <input id='cell-phone' onChange={this.editCellPhone.bind(this)} className="cell-phone edit-profle-inp form-control-tripinn" value={this.state.cellPhone}/>
+  //           </div>
+  //           <div className="col-md-4">
+  //             <label className="profile-description-textarea" for="comment">ایمیل:</label>
+  //             <input id='email' onChange={this.editEmail.bind(this)} className="email edit-profle-inp form-control-tripinn"  value={this.state.email}/>
+  //           </div>
+  //           <div className="col-md-4">
+  //           </div>
+  //         </div>
+  //         <div className="edit-prof-row1 row">
+  //           <div className="col-md-4">
+  //             <label className="profile-description-textarea" for="comment">رمز عبور:</label>
+  //             <input id='password'onChange={this.editPassword.bind(this)} className="password edit-profle-inp form-control-tripinn" type="password"/>
+  //           </div>
+  //           <div className="col-md-4">
+  //             <label className="profile-description-textarea" for="comment">تکرار رمز عبور:</label>
+  //             <input id='confirm-password' onChange={this.editConfirmPassword.bind(this)} className=" edit-profle-inp form-control-tripinn" type="password" value={this.state.confirmPassword}/>
+  //           </div>
+  //           <div className="col-md-4">
+  //           </div>
+  //         </div>
+  //
+  //         <div className="row">
+  //           <div className="col-md-12">
+  //             <Button className="save-edit" color="blue" onClick={this.handleSaveInfo.bind(this)}> ذخیره </Button>
+  //           </div>
+  //         </div>
+  //         </div>
+  //       </div>
+  //       <div className="profile_static_bar col-md-3">
+  //           {this.renderUserProfile()}
+  //       </div>
+  //     </div>
+  // </div>
+
   render(){
     return(
-      <div className="profile-container">
-          <div className="profile-container-margined">
-            <div className="profile_dynamic_edit col-md-9">
-              <div className="edit-profile-xl row">
-                  <p className="dashboard-header"> ویرایش حساب کاربری </p>
-              </div>
-              <div className="edit-profile-xl-inputs" dir="rtl">
-              <div className="edit-prof-row1 row">
-                  <div className="col-md-4">
-                    <label className="profile-description-textarea" for="comment"> نام:</label>
-                    <input id='first-name' onChange={this.editFirstName.bind(this)} className="first-name edit-profle-inp form-control-tripinn"  value={this.state.firstName}/>
-                  </div>
-                <div className="col-md-4">
-                  <label className="profile-description-textarea" for="comment">  نام خانوادگی:</label>
-                  <input id='last-name'onChange={this.editLastName.bind(this)} className="last-name edit-profle-inp form-control-tripinn"  value={this.state.lastName}/>
-                </div>
-                <div className="col-md-4">
-                  <label className="profile-description-textarea" for="comment"> کد ملی:</label>
-                  <input id='national-id' onChange={this.editNationalId.bind(this)} className="national-id edit-profle-inp form-control-tripinn" value={this.state.nationalId}/>
-                </div>
-              </div>
-              <div className="edit-prof-row1 row">
-
-                <div className="col-md-4">
-                  <label className="profile-description-textarea" for="comment">  شماره همراه:</label>
-                  <input id='cell-phone' onChange={this.editCellPhone.bind(this)} className="cell-phone edit-profle-inp form-control-tripinn" value={this.state.cellPhone}/>
-                </div>
-                <div className="col-md-4">
-                  <label className="profile-description-textarea" for="comment">ایمیل:</label>
-                  <input id='email' onChange={this.editEmail.bind(this)} className="email edit-profle-inp form-control-tripinn"  value={this.state.email}/>
-                </div>
-                <div className="col-md-4">
-                </div>
-              </div>
-              <div className="edit-prof-row1 row">
-                <div className="col-md-4">
-                  <label className="profile-description-textarea" for="comment">رمز عبور:</label>
-                  <input id='password'onChange={this.editPassword.bind(this)} className="password edit-profle-inp form-control-tripinn" type="password"/>
-                </div>
-                <div className="col-md-4">
-                  <label className="profile-description-textarea" for="comment">تکرار رمز عبور:</label>
-                  <input id='confirm-password' onChange={this.editConfirmPassword.bind(this)} className=" edit-profle-inp form-control-tripinn" type="password" value={this.state.confirmPassword}/>
-                </div>
-                <div className="col-md-4">
-                </div>
-              </div>
-
-              <div className="row">
-                <div className="col-md-12">
-                  <Button className="save-edit" color="blue" onClick={this.handleSaveInfo.bind(this)}> ذخیره </Button>
-                </div>
-              </div>
-              </div>
-            </div>
-            <div className="profile_static_bar col-md-3">
-                {this.renderUserProfile()}
-            </div>
-          </div>
+      <div className="user-profile-main-division">
+        {this.renderUserProfileDetailsSection()}
+        {this.renderUserProfileEditSection()}
       </div>
     );
   }
