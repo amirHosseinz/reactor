@@ -1,7 +1,7 @@
 import React from 'react';
 import {ListGroup, ListGroupItem} from 'react-bootstrap';
 import { Image } from 'semantic-ui-react';
-
+import './Trips.css';
 
 class TripsXl extends React.Component{
   constructor(props){

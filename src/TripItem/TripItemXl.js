@@ -2,6 +2,8 @@ import React from 'react';
 import { Divider } from 'semantic-ui-react';
 import {englishToPersianDigits} from '../tools/EnglishToPersianDigits';
 import moment from 'moment-jalaali';
+import './TripItem.css';
+
 
 moment.loadPersian({usePersianDigits:true , dialect:'persian-modern'});
 class TripItemXl extends React.Component{

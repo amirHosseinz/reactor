@@ -1782,9 +1782,8 @@ margin-top: 20px;
   background-color: white;
   border-width: 2px;
   border-color: #ececec;
-  /* margin: 0px !important; */
-  /* padding: 0px !important; */
-  margin-top : 60px;
+  padding: 0px !important;
+  margin-top : 30px;
   margin-left:10px;
   min-height: 620px;
   max-height: 620px;
@@ -1832,19 +1831,6 @@ margin-top: 20px;
 .request-trip-message-container-margined{
   margin-top: 30px !important;
   height : 620px;
-}
-.profile_dynamic_edit{
-  border-radius: 6px 6px 6px 6px;
-  border: solid;
-  border-width: 2px;
-  width : 1000px;
-  margin : auto;
-  border-color: #ececec;
-  background-color: white;
-  /* height: 1170px; */
-  height:100%;
-  margin-bottom:100px;
-  padding-bottom: 50px;
 }
 
 
@@ -1973,13 +1959,7 @@ margin-top: 20px;
   width: 100%;
   height: 100%;
 }
-.reserve-modal{
-  font-family : IRANSans;
-  border-radius: 4px;
-  padding: 14px;
-  width: 600px !important;
-  margin:auto;
-}
+
 .reserve-panel-total-price{
   font-family : IRANSans;
   /* text-align: center; */
@@ -2639,12 +2619,7 @@ margin-top: 20px;
   margin-right: 60px;
 }
 
-.no-request-container{
-  margin:auto !important;
-  font-family: IRANSans;
-  font-size: 16px;
-  text-align: center;
-}
+
 
 .no-request-stage1-container{
   background-color: #f7fbfc;

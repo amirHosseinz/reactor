@@ -6,6 +6,8 @@ import moment from 'moment-jalaali';
 import Modal from 'react-modal';
 import {reserveModalStyleRequests} from '../Styles.js';
 import {parsePrice3digits} from '../tools/ParsePrice3digits.js'
+import './RequestItem.css';
+
 
 class RequestItemXl extends React.Component{
   constructor(props){
@@ -399,8 +401,10 @@ renderDeleteButton(){
             <div className='no-request-stage1-description col-md-6'>
               <div className='no-request-stage1-description-image'>
                 <img src={require('../Images/no-req-pic1.png')} height="45" width="220"/>
-                </div>
-              <p className='no-request-stage1-description-text'>در صفحه جستجو شهر یا استان موردنظر خود را وارد کنید تا نتایج جستجو را مشاهده نمایید</p>
+              </div>
+              <p className='no-request-stage1-description-text'>
+                در صفحه جستجو شهر یا استان موردنظر خود را وارد کنید تا نتایج جستجو را مشاهده نمایید
+              </p>
               </div>
             <div className='no-request-stage1-image col-md-5'>
               <img src={require('../Images/no-req-pic2.png')} height="180" width="220"/>

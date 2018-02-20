@@ -1,0 +1,36 @@
+
+/*generas style here  */
+.profile_dynamic_edit{
+  border-radius: 6px 6px 6px 6px;
+  border: solid;
+  border-width: 2px;
+  width : 1000px;
+  margin : auto;
+  border-color: #ececec;
+  background-color: white;
+  /* height: 1170px; */
+  height:100%;
+  margin-bottom:100px;
+  padding-bottom: 50px;
+}
+
+.no-request-container{
+  margin:auto !important;
+  font-family: IRANSans;
+  font-size: 16px;
+  text-align: center;
+}
+
+/*general style finished */
+
+/*xl style here  */
+/*xl style finished  */
+
+/*md style here  */
+/*md style finished  */
+
+/*sm style here  */
+/*sm style finished  */
+
+/*xs style here  */
+/*x style finished  */
