@@ -10,7 +10,7 @@
   wdith :685px;
   margin-right: 10px;
   background-color: white;
-  height : 1050px;
+  height : 1200px;
   direction : rtl;
   color : #454545;
   font-family: IRANSans !important;
@@ -141,6 +141,7 @@
   border-radius: 5px;
   border:none;
   margin-top:10px;
+  margin-bottom : 20px;
   direction:rtl;
   -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;

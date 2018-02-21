@@ -14,6 +14,7 @@ class UserProfileXl extends React.Component{
       firstName:'',
       lastName:'',
       cellPhone:'',
+      oldPassword:'',
       email:'',
       password : '',
       confirmPassword:'',
@@ -100,10 +101,37 @@ class UserProfileXl extends React.Component{
     }
 }
   handleSaveInfo(){
-        this.setState({role :this.getRole()} ,()=>this.changeInfOnServer());
+        this.setState({role :this.getRole()} ,()=>this.changeInfoOnServer());
   }
-  changeInfOnServer(){
-    var request = new Request('https://www.trypinn.com/auth/api/user/edit/',{ //
+
+  handleChangePassword(){
+    this.setState({role :this.getRole()} ,()=>this.changePasswordOnServer());
+  }
+
+  changePasswordOnServer(){
+    var request = new Request('https://www.trypinn.com/auth/api/user/edit/edit_password/',{ //
+      method: 'POST',
+      body: JSON.stringify(
+        {
+          old_password:this.state.oldPassword,
+          password : this.state.password,
+          confirm_password : this.state.confirmPassword,
+        }
+      ),
+      headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+      'Authorization': 'Token '+this.state.token,})
+    });
+   fetch(request)
+   .then((response) => {
+     return response.json();
+   })
+   .then((response) => {
+     console.log(response);
+   });
+  }
+
+  changeInfoOnServer(){
+    var request=new Request('https://www.trypinn.com/auth/api/user/edit/',{ //
       method: 'POST',
       body: JSON.stringify(
         {
@@ -148,6 +176,9 @@ class UserProfileXl extends React.Component{
   editConfirmPassword(event){
     this.setState({confirmPassword:event.target.value});
   }
+  editOldPassoword(event){
+    this.setState({oldPassword:event.target.value});
+  }
 
 
   renderUserProfileDetailsSection(){
@@ -159,11 +190,11 @@ class UserProfileXl extends React.Component{
           </div>
           <hr className="user-profile-in-details-divider"/>
           <div className="user-profile-in-details-link">
-            پیام ها
+           پیام‌ها
           </div>
           <Link to="/dashboard/request">
           <div className="user-profile-in-details-link">
-            مشاهده درخواست ها
+             مشاهده درخواست‌ها
           </div>
           </Link>
           <Link to="/dashboard/trip">
@@ -172,7 +203,7 @@ class UserProfileXl extends React.Component{
             </div>
           </Link>
           <div className="user-profile-in-details-link">
-            مکان های مورد علاقه
+            مکان‌های مورد علاقه
           </div>
         </div>
       );
@@ -244,6 +275,9 @@ class UserProfileXl extends React.Component{
           </div>
           <input value={this.state.email} onChange={(event)=>{this.editEmail(event)}} className="user-profile-edit-input" />
         </div>
+        <button onClick={()=>{this.handleSaveInfo()}}className="user-profile-edit-save-changes-button">
+                    ذخیره تغییرات
+        </button>
         <hr className="user-profile-edit-divider"/>
         <div className="user-profile-edit-secondary-heading">
           <p className="user-profile-edit-secondary-heading-title">
@@ -256,87 +290,33 @@ class UserProfileXl extends React.Component{
         <div className="user-profile-edit-get-data-zone">
           <div className="user-profile-edit-input-paragraph">
             <span className="user-profile-edit-input-paragraph-title-password-section">
-           رمز عبور:
+           رمز عبور
             </span>
           </div>
-          <input value={this.state.password} onChange={(event)=>{this.editPassword(event)}} className="user-profile-edit-input-password-section" />
+          <input type="password" value={this.state.oldPassword} onChange={(event)=>{this.editOldPassoword(event)}} className="user-profile-edit-input-password-section" />
         </div>
         <div className="user-profile-edit-get-data-zone">
           <div className="user-profile-edit-input-paragraph">
             <span className="user-profile-edit-input-paragraph-title-password-section">
-             تکرار رمز عبور:
+              رمز عبور جدید
             </span>
           </div>
-          <input value={this.state.confirmPassword} onChange={(event)=>{this.editConfirmPassword(event)}}className="user-profile-edit-input-password-section"/>
+          <input type="password" value={this.state.password} onChange={(event)=>{this.editPassword(event)}}className="user-profile-edit-input-password-section"/>
         </div>
-        <hr className="user-profile-edit-divider"/>
-        <button onClick={()=>{this.handleSaveInfo()}}className="user-profile-edit-save-changes-button">
-                    ذخیره تغییرات
+        <div className="user-profile-edit-get-data-zone">
+          <div className="user-profile-edit-input-paragraph">
+            <span className="user-profile-edit-input-paragraph-title-password-section">
+               تکرار رمز عبور جدید
+            </span>
+          </div>
+          <input type="password" value={this.state.confirmPassword} onChange={(event)=>{this.editConfirmPassword(event)}}className="user-profile-edit-input-password-section"/>
+        </div>
+        <button onClick={()=>{this.handleChangePassword()}}className="user-profile-edit-save-changes-button">
+                    تغییر رمز عبور
         </button>
       </div>
     );
   }
-
-
-  // <div className="profile-container">
-  //     <div className="profile-container-margined">
-  //       <div className="profile_dynamic_edit col-md-9">
-  //         <div className="edit-profile-xl row">
-  //             <p className="dashboard-header"> ویرایش حساب کاربری </p>
-  //         </div>
-  //         <div className="edit-profile-xl-inputs" dir="rtl">
-  //         <div className="edit-prof-row1 row">
-  //             <div className="col-md-4">
-  //               <label className="profile-description-textarea" for="comment"> نام:</label>
-  //               <input id='first-name' onChange={this.editFirstName.bind(this)} className="first-name edit-profle-inp form-control-tripinn"  value={this.state.firstName}/>
-  //             </div>
-  //           <div className="col-md-4">
-  //             <label className="profile-description-textarea" for="comment">  نام خانوادگی:</label>
-  //             <input id='last-name'onChange={this.editLastName.bind(this)} className="last-name edit-profle-inp form-control-tripinn"  value={this.state.lastName}/>
-  //           </div>
-  //           <div className="col-md-4">
-  //             <label className="profile-description-textarea" for="comment"> کد ملی:</label>
-  //             <input id='national-id' onChange={this.editNationalId.bind(this)} className="national-id edit-profle-inp form-control-tripinn" value={this.state.nationalId}/>
-  //           </div>
-  //         </div>
-  //         <div className="edit-prof-row1 row">
-  //
-  //           <div className="col-md-4">
-  //             <label className="profile-description-textarea" for="comment">  شماره همراه:</label>
-  //             <input id='cell-phone' onChange={this.editCellPhone.bind(this)} className="cell-phone edit-profle-inp form-control-tripinn" value={this.state.cellPhone}/>
-  //           </div>
-  //           <div className="col-md-4">
-  //             <label className="profile-description-textarea" for="comment">ایمیل:</label>
-  //             <input id='email' onChange={this.editEmail.bind(this)} className="email edit-profle-inp form-control-tripinn"  value={this.state.email}/>
-  //           </div>
-  //           <div className="col-md-4">
-  //           </div>
-  //         </div>
-  //         <div className="edit-prof-row1 row">
-  //           <div className="col-md-4">
-  //             <label className="profile-description-textarea" for="comment">رمز عبور:</label>
-  //             <input id='password'onChange={this.editPassword.bind(this)} className="password edit-profle-inp form-control-tripinn" type="password"/>
-  //           </div>
-  //           <div className="col-md-4">
-  //             <label className="profile-description-textarea" for="comment">تکرار رمز عبور:</label>
-  //             <input id='confirm-password' onChange={this.editConfirmPassword.bind(this)} className=" edit-profle-inp form-control-tripinn" type="password" value={this.state.confirmPassword}/>
-  //           </div>
-  //           <div className="col-md-4">
-  //           </div>
-  //         </div>
-  //
-  //         <div className="row">
-  //           <div className="col-md-12">
-  //             <Button className="save-edit" color="blue" onClick={this.handleSaveInfo.bind(this)}> ذخیره </Button>
-  //           </div>
-  //         </div>
-  //         </div>
-  //       </div>
-  //       <div className="profile_static_bar col-md-3">
-  //           {this.renderUserProfile()}
-  //       </div>
-  //     </div>
-  // </div>
 
   render(){
     return(
