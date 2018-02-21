@@ -10,7 +10,7 @@ export const loginPhoneNumberStyle = {
   },
   content : {
 
-    padding                    : '0px',
+    padding  : '0px',
     margin:'auto',
     transform                  : 'translate(0%, 0%)',
     borderRadius              : '15px',
@@ -101,7 +101,7 @@ export const downloadAppModalStyle={
     backgroundColor: 'rgba(0,0,0,0.7)',
   },
   content : {
-    height : '530px',
+    height : '38rem',
     width  :'730px',
     margin : 'auto',
     transform:'translate(0%, 0%)',
@@ -151,7 +151,8 @@ export const reserveModalStyle={
     backgroundColor   : 'rgba(0, 0, 0, 0.7)'
   },
   content :{
-    height : '650px',
+    height : '46rem',
+    maxHeight : '49rem',
     width  : '620px',
     margin : 'auto' ,
     borderRadius:'15px',

@@ -247,6 +247,7 @@ class UserProfileXl extends React.Component{
             <span className="user-profile-edit-input-paragraph-title">
                شماره همراه
             </span>
+            <span> </span>
             <span className="user-profile-edit-input-paragraph-description">
           (از این شماره برای ورود به اپلیکیشن و سایت سامانه استفاده خواهد شد)
             </span>
@@ -258,6 +259,7 @@ class UserProfileXl extends React.Component{
             <span className="user-profile-edit-input-paragraph-title">
               کُد ملی
             </span>
+            <span> </span>
             <span className="user-profile-edit-input-paragraph-description">
           (ثبت کد ملی صحیح و منطبق با نام و نام خانوادگی برای رزرو ضروری می‌باشد)
             </span>
@@ -269,6 +271,7 @@ class UserProfileXl extends React.Component{
             <span className="user-profile-edit-input-paragraph-title">
             ایمیل
             </span>
+            <span> </span>
             <span className="user-profile-edit-input-paragraph-description">
             (اختیاری)
             </span>
