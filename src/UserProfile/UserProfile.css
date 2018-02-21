@@ -7,50 +7,107 @@
   margin-top : 100px;
 }
 .user-profile-edit-main-division{
-  width : 695px;
+  wdith :685px;
   margin-right: 10px;
   background-color: white;
-  height : 800px;
-  border:solid;
+  height : 1050px;
+  direction : rtl;
+  color : #454545;
   font-family: IRANSans !important;
+  border : 2px solid #e4e4e4;
+  border-radius: 7px;
+  margin-bottom: 100px;
 }
 
 .user-profile-in-details-main-division{
-  width : 400px;
+  width : 385px;
   height: 500px;
   background-color :white ;
   border:solid;
   font-family: IRANSans !important;
+  border : 2px solid #e4e4e4;
+  border-radius: 7px;
 }
 /* general styles finished*/
 
 
 /* xl styles here */
+.user-profile-profile-picture-container{
+  display: flex;
+  display : -webkit-flex;
+  justify-content: center;
+  width : 100%;
+}
 .user-profile-profile-picture{
-
   border-radius: 50% !important;
   margin-top : 30px;
+  border:solid 2px #454545;
 }
-
+.user-profile-in-details-divider{
+  width : 80%;
+  border: solid 1px #e4e4e4;
+}
 .user-profile-in-details-link{
   direction: rtl;
+  font-size: 16px;
+  line-height: 30px;
+  cursor:pointer;
+  margin-right:40px !important;
+  text-decoration: none !important;
+  outline :none !important;
+  color : #12b2ce;
+}
+.user-profile-edit-divider{
+  border : solid 1px;
+  width: 90%;
+  margin-bottom: 30px;
+  border: solid 1px #e4e4e4;
+}
+.user-profile-edit-main-heading{
+  width : 100%;
+  text-align: right!important;
+  font-size : 22px;
+  font-weight: 500;
+  margin-top : 20px;
+  margin-right : 40px;
+}
+.user-profile-edit-secondary-heading-title{
+  font-size : 18px;
+  font-weight: 500;
+  margin-right : 40px;
+  margin-bottom: 6px !important;
+
+}
+.user-profile-edit-secondary-heading-description{
+  font-size : 14px;
+  margin-right: 40px;
+  width : 86%;
+  margin-bottom: 20px !important;
 }
 .user-profile-edit-get-data-zone{
-  direction:rtl;
-  margin-right : 10px;
+  margin-right : 40px;
+  margin-top : 10px;
 }
 .user-profile-edit-input-paragraph-title{
+  font-size : 12px;
+  font-color : black !important;
+  font-weight: 600;
+}
+.user-profile-edit-input-paragraph-description{
+  font-size : 10px;
 }
 .user-profile-edit-input{
   display: flex;
   display: -webkit-flex;
   justify-content: flex-end;
+  align-items: center;
   font-family: IRANSans;
-  font-size: 16px !important;
+  font-size: 14px !important;
   display: block;
   outline:none;
-  width: 300px;
-  height: 30px;
+  width: 400px;
+  height: 40px;
+  margin-bottom : 24px;
   padding: 10px 12px;
   line-height: 1.42857143;
   color: #555;
@@ -62,6 +119,52 @@
   -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.user-profile-edit-input-paragraph-title-password-section{
+  font-size : 12px;
+  font-weight:600;
+}
+.user-profile-edit-input-password-section{
+  display: flex;
+  display: -webkit-flex;
+  justify-content: flex-end;
+  font-family: IRANSans;
+  font-size: 16px !important;
+  display: block;
+  outline:none;
+  width: 300px;
+  height: 40px;
+  padding: 10px 12px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  border:none;
+  margin-top:10px;
+  direction:rtl;
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.user-profile-edit-save-changes-button{
+  background-color: #12b2ce;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor : pointer;
+  width : 100px;
+  font-family: inherit;
+  font-weight: 500;
+  border : none;
+  height: 40px;
+  margin-right : 40px;
+  color : white;
+  text-align: center;
+  border-radius: 7px;
+}
+.user-profile-edit-save-changes-button:hover{
+
 }
 /* xl styles finished */
 

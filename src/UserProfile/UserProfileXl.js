@@ -2,6 +2,7 @@ import React from 'react';
 import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
 import { Divider,Button } from 'semantic-ui-react';
 import './UserProfile.css';
+import {Link} from 'react-router-dom';
 
 class UserProfileXl extends React.Component{
   constructor(props){
@@ -60,15 +61,15 @@ class UserProfileXl extends React.Component{
       if (this.state.profileInfo !== ''){
         if (this.state.profileInfo.user.profile_picture === null){
           return(
-            <div className="profilebox">
-              <img src={require('../HouseDetailParts/facilities/prof_avatar_tripinn.svg')}  className="profile-avataricon" alt = "" />
+            <div className="user-profile-profile-picture-container">
+              <img className="user-profile-profile-picture" src={require('../HouseDetailParts/facilities/prof_avatar_tripinn.svg')} height="200px" width="200px"  alt = "" />
             </div>
           );
         }
         else{
           return(
-            <div className="profilebox">
-              <img className="profile-avatarimg" src={"https://www.trypinn.com/" +this.state.profileInfo.user.profile_picture} alt=""/>
+            <div className="user-profile-profile-picture-container" >
+              <img className="user-profile-profile-picture" height="200px" width="200px" src={'https://www.trypinn.com/'+this.state.profileInfo.user.profile_picture} />
             </div>
           );
         }
@@ -106,11 +107,11 @@ class UserProfileXl extends React.Component{
       method: 'POST',
       body: JSON.stringify(
         {
-          first_name:document.getElementById('first-name').value,
-          last_name:document.getElementById('last-name').value,
-          cell_phone:document.getElementById('cell-phone').value,
-          email:document.getElementById('email').value,
-          national_id:document.getElementById('national-id').value,
+          first_name:this.state.firstName,
+          last_name:this.state.lastName,
+          cell_phone:this.state.cellPhone,
+          email:this.state.email,
+          national_id:this.state.nationalId,
         }
       ),
       headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
@@ -153,21 +154,23 @@ class UserProfileXl extends React.Component{
     if(this.state.profileInfo!==null){
       return(
         <div className="user-profile-in-details-main-division">
-        <div>
-        <img className="user-profile-profile-picture" height="200px" width="200px" src={'https://www.trypinn.com/'+this.state.profileInfo.user.profile_picture} />
-        </div>
+        {this.renderProfilePhoto()}
           <div className="user-profile-user-name">
           </div>
-          <hr/>
+          <hr className="user-profile-in-details-divider"/>
           <div className="user-profile-in-details-link">
             پیام ها
           </div>
+          <Link to="/dashboard/request">
           <div className="user-profile-in-details-link">
             مشاهده درخواست ها
           </div>
-          <div className="user-profile-in-details-link">
-            مشاهده سفر‌ها
-          </div>
+          </Link>
+          <Link to="/dashboard/trip">
+            <div className="user-profile-in-details-link">
+              مشاهده سفر‌ها
+            </div>
+          </Link>
           <div className="user-profile-in-details-link">
             مکان های مورد علاقه
           </div>
@@ -181,7 +184,7 @@ class UserProfileXl extends React.Component{
         <div className="user-profile-edit-main-heading">
           ویرایش حساب کاربری
         </div>
-        <hr />
+        <hr className="user-profile-edit-divider"/>
         <div className="user-profile-edit-secondary-heading`">
           <p className="user-profile-edit-secondary-heading-title">
             مشخصات کاربری
@@ -196,9 +199,7 @@ class UserProfileXl extends React.Component{
             نام
             </span>
           </div>
-          <div>
-           <input className="user-profile-edit-input"/>
-          </div>
+          <input value={this.state.firstName} onChange={(event)=>{this.editFirstName(event)}} className="user-profile-edit-input"/>
         </div>
         <div className="user-profile-edit-get-data-zone">
           <div className="user-profile-edit-input-paragraph">
@@ -208,20 +209,18 @@ class UserProfileXl extends React.Component{
             <span className="user-profile-edit-input-paragraph-description">
             </span>
           </div>
-          <div className="user-profile-edit-input">
-          </div>
+          <input value={this.state.lastName} onChange={(event)=>{this.editLastName(event)}}className="user-profile-edit-input" />
         </div>
         <div className="user-profile-edit-get-data-zone">
           <div className="user-profile-edit-input-paragraph">
             <span className="user-profile-edit-input-paragraph-title">
-             شماره همراه
+               شماره همراه
             </span>
             <span className="user-profile-edit-input-paragraph-description">
           (از این شماره برای ورود به اپلیکیشن و سایت سامانه استفاده خواهد شد)
             </span>
           </div>
-          <div className="user-profile-edit-input">
-          </div>
+          <input value={this.state.cellPhone} onChange={(event)=>{this.editCellPhone(event)}}className="user-profile-edit-input" />
         </div>
         <div className="user-profile-edit-get-data-zone">
           <div className="user-profile-edit-input-paragraph">
@@ -232,8 +231,7 @@ class UserProfileXl extends React.Component{
           (ثبت کد ملی صحیح و منطبق با نام و نام خانوادگی برای رزرو ضروری می‌باشد)
             </span>
           </div>
-          <div className="user-profile-edit-input">
-          </div>
+          <input value={this.state.nationalId} onChange={(event)=>{this.editNationalId(event)}} className="user-profile-edit-input"/>
         </div>
         <div className="user-profile-edit-get-data-zone">
           <div className="user-profile-edit-input-paragraph">
@@ -244,38 +242,37 @@ class UserProfileXl extends React.Component{
             (اختیاری)
             </span>
           </div>
-          <div className="user-profile-edit-input">
-          </div>
+          <input value={this.state.email} onChange={(event)=>{this.editEmail(event)}} className="user-profile-edit-input" />
         </div>
-        <hr />
-        <div className="user-profile-edit-secondary-heading`">
+        <hr className="user-profile-edit-divider"/>
+        <div className="user-profile-edit-secondary-heading">
           <p className="user-profile-edit-secondary-heading-title">
             رمز عبور
           </p>
           <p className="user-profile-edit-secondary-heading-description">
-            در صورت نیاز به تغییر رمز عبور،این بخش را ویرایش کنید.در غیر اینصورت رمز عبور سابق شما ثبت شده می‌ماند
+            در صورت نیاز به تغییر رمز عبور، این بخش را ویرایش کنید. در غیر اینصورت رمز عبور سابق شما ثبت شده می‌ماند.
           </p>
         </div>
         <div className="user-profile-edit-get-data-zone">
           <div className="user-profile-edit-input-paragraph">
-            <span className="user-profile-edit-input-paragraph-title">
-          : رمز عبور
+            <span className="user-profile-edit-input-paragraph-title-password-section">
+           رمز عبور:
             </span>
           </div>
-          <div className="user-profile-edit-input">
-          </div>
+          <input value={this.state.password} onChange={(event)=>{this.editPassword(event)}} className="user-profile-edit-input-password-section" />
         </div>
         <div className="user-profile-edit-get-data-zone">
           <div className="user-profile-edit-input-paragraph">
-            <span className="user-profile-edit-input-paragraph-title">
+            <span className="user-profile-edit-input-paragraph-title-password-section">
              تکرار رمز عبور:
             </span>
           </div>
-          <div className="user-profile-edit-input">
-          </div>
+          <input value={this.state.confirmPassword} onChange={(event)=>{this.editConfirmPassword(event)}}className="user-profile-edit-input-password-section"/>
         </div>
-        <hr/>
-        <div> ذخیره</div>
+        <hr className="user-profile-edit-divider"/>
+        <button onClick={()=>{this.handleSaveInfo()}}className="user-profile-edit-save-changes-button">
+                    ذخیره تغییرات
+        </button>
       </div>
     );
   }
