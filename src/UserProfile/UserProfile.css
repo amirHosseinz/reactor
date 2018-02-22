@@ -6,6 +6,10 @@
   flex-direction: row-reverse;
   margin-top : 100px;
 }
+/* general styles finished*/
+
+
+/* xl styles here */
 .user-profile-edit-main-division{
   wdith :685px;
   margin-right: 10px;
@@ -28,10 +32,6 @@
   border : 2px solid #e4e4e4;
   border-radius: 7px;
 }
-/* general styles finished*/
-
-
-/* xl styles here */
 .user-profile-profile-picture-container{
   display: flex;
   display : -webkit-flex;
@@ -170,6 +170,28 @@
 /* xl styles finished */
 
 /* md styles here */
+.user-profile-edit-main-division-md{
+  width:580px;
+  margin-right: 10px;
+  background-color: white;
+  height : 1200px;
+  direction : rtl;
+  color : #454545;
+  font-family: IRANSans !important;
+  border : 2px solid #e4e4e4;
+  border-radius: 7px;
+  margin-bottom: 100px;
+}
+
+.user-profile-in-details-main-division-md{
+  width : 340px;
+  height: 500px;
+  background-color :white ;
+  border:solid;
+  font-family: IRANSans !important;
+  border : 2px solid #e4e4e4;
+  border-radius: 7px;
+}
 /* md styles finished */
 
 /* sm styles here */
