@@ -13,7 +13,7 @@ import MaxCapacity from '../HouseDetailParts/MaxCapacity.js';
 import RulesDescription from '../HouseDetailParts/RulesDescription.js';
 import SpecialRule from  '../HouseDetailParts/SpecialRule.js';
 import GuestNumber from '../HouseDetailParts/GuestNumber';
-import {Link,Element} from 'react-scroll';
+import {Link,Element,Events} from 'react-scroll';
 import './HouseDetails.css';
 import Lightbox from 'react-images';
 
@@ -38,7 +38,7 @@ class HouseDetailsXl extends React.Component{
     };
   }
   componentDidMount=()=> {
-      document.addEventListener('scroll', this.handleScroll);
+    document.addEventListener('scroll', this.handleScroll);
     }
 
   componentWillUnmount= ()=> {
@@ -46,7 +46,7 @@ class HouseDetailsXl extends React.Component{
     }
 
   handleScroll = (event)=>{
-    if(event.pageY<600){
+    if(event.pageY<400){
       this.setState({activeLink:1});
     }
     if(event.pageY>600 && event.pageY<1000){
@@ -217,16 +217,16 @@ class HouseDetailsXl extends React.Component{
                 {({style,isSticky})=>{return(
                   <div style={style} className={isSticky?"house-details-menu-link-scrolls-sticky":"house-details-menu-link-scrolls-not-sticky housedetails-content-containers"}>
                     <div className='navigation-menu-housedetails'>
-                    <Link onClick={()=>{this.setState({activeLink:1})}} className={this.state.activeLink===1?'navigation-menu-items-active':'navigation-menu-items'} to="gallery" spy={true} smooth={true} offset={-200} duration={800}>
-                      <p  >تصاویر</p>
+                    <Link onClick={()=>{this.setState({activeLink:1})}} className={this.state.activeLink===1?'navigation-menu-items-active':'navigation-menu-items'} to="gallery" spy={false} smooth={true} offset={-200} duration={800}>
+                      <p>تصاویر</p>
                     </Link>
-                      <Link onClick={()=>{this.setState({activeLink:2})}} className={this.state.activeLink===2?'navigation-menu-items-active':'navigation-menu-items'} to="details" spy={true} smooth={true} offset={-100} duration={800}>
+                      <Link onClick={()=>{this.setState({activeLink:2})}} className={this.state.activeLink===2?'navigation-menu-items-active':'navigation-menu-items'} to="details" spy={false} smooth={true} offset={10} duration={800}>
                         <p >مشخصات</p>
                       </Link>
-                      <Link onClick={()=>{this.setState({activeLink:3})}} className={this.state.activeLink===3?'navigation-menu-items-active':'navigation-menu-items'} to="laws" spy={true} smooth={true} offset={-200} duration={800}>
+                      <Link onClick={()=>{this.setState({activeLink:3})}} className={this.state.activeLink===3?'navigation-menu-items-active':'navigation-menu-items'} to="laws" spy={false} smooth={true} offset={60} duration={800}>
                         <p>امکانات و قوانین</p>
                       </Link>
-                      <Link onClick={()=>{this.setState({activeLink:4})}} className={this.state.activeLink===4?'navigation-menu-items-active':'navigation-menu-items'} to="map" spy={true} smooth={true} offset={-200} duration={800}>
+                      <Link onClick={()=>{this.setState({activeLink:4})}} className={this.state.activeLink===4?'navigation-menu-items-active':'navigation-menu-items'} to="map" spy={false} smooth={true} offset={200} duration={800}>
                         <p>موقعیت روی نقشه</p>
                       </Link>
                     </div>
@@ -249,7 +249,7 @@ class HouseDetailsXl extends React.Component{
                   </div>
                 </div>
                 <div className= "house-details-rules housedetails-content-containers">
-                  <Element name="laws" ></Element>
+                  <Element name="laws"></Element>
                   <p className="house-details-description-heading">
                   مقررات این اقامتگاه
                   </p>

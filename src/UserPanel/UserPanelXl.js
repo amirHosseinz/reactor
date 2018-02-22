@@ -5,6 +5,7 @@ import Requests from '../Requests';
 import RequestItem from '../RequestItem.js';
 import TripItem from '../TripItem.js';
 import UserProfile from '../UserProfile.js';
+import './UserPanel.css';
 
 
 class UserPanelXl extends React.Component{
@@ -15,8 +16,6 @@ class UserPanelXl extends React.Component{
       ProfileDetail:'',
       requestDetail:'',
       tripDetail:'',
-      hasRequest : false,
-      hasTrip : false,
     };
   }
 
@@ -53,7 +52,7 @@ class UserPanelXl extends React.Component{
       );
       case 'trip':
       return(
-        <TripItem reserveDetail={this.state.tripDetail}/>
+        <TripItem changeReRenderList={()=>{this.changeReRenderList()}} reserveDetail={this.state.tripDetail}/>
       );
       default:
       return null;
@@ -67,41 +66,31 @@ class UserPanelXl extends React.Component{
         );
       case 'request':
       return(
-        <Requests changeHasRequest={this.changeHasRequest.bind(this)} reRender={this.state.reRenderList} changeRequestDetail={this.changeRequestDetail.bind(this)} />
+        <Requests reRender={this.state.reRenderList} changeRequestDetail={this.changeRequestDetail.bind(this)} />
       );
       case 'trip':
       return(
         <Trips changeTripDetail={this.changeTripDetail.bind(this)}/>
       );
-      // case 'userprofile':
-      // return(
-      //   <UserProfile/>
-      // );
       default:
       return null;
     }
   }
 
-changeHasTrip(hasTrip){
-  this.setState({hasTrip:hasTrip});
-}
-changeHasRequest(hasRequest){
-  this.setState({hasRequest:hasRequest});
-}
 renderDashbordTitle(){
   switch (window.location.pathname.split('/')[window.location.pathname.split('/').length-1]){
     case 'message':
       return(
-        <div className="requests-list-title"> پیام‌ها </div>
+        <div className="message-list-title"> پیام‌ها </div>
       );
     case 'request':
     return(
-      <div className="requests-list-title">درخواست‌ها </div>
+      <div className="request-list-title">درخواست‌ها </div>
 
       );
     case 'trip':
     return(
-      <div className="requests-list-title">سفرها </div>
+      <div className="trip-list-title">سفرها </div>
     );
   }
 }
@@ -109,11 +98,11 @@ renderDashbordTitle(){
   render(){
     var selectedPanel = window.location.pathname.split('/')[window.location.pathname.split('/').length-1];
     return(
-      <div className={(selectedPanel==='request' && this.state.hasRequest===false)||(selectedPanel==='trip'&& this.state.hasTrip===false)?"requests-list-title" : "requests-list-title row-reverse"}>
-          <div className="request-trip-message-container-margined">
+      <div className="user-panel-main-container">
+          <div className="request-trip-message-list-container">
             {this.showContent()}
           </div>
-          <div className="profile_static_bar">
+          <div>
             {this.renderSelectedPanel()}
           </div>
       </div>

@@ -400,6 +400,7 @@ padding: 0px !important;
 border-radius: 0px !important;
 margin: 0px !important;
 }
+
 .scroll-list-requests:hover{
   transition-delay: .04s;
 width:100%;
@@ -424,8 +425,8 @@ margin-left: 14px;
 }
 
 .preview-x{
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -1703,18 +1704,18 @@ box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.3);
   height: 30px;
 }
 .profile-container-margined{
-  width: 80%;
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  align-items: center;
+  width: 90rem;
   margin:auto;
-  margin-top: 30px;
-
-
-
 }
 .profile-container{
     padding:16px;
     border-width: 3px;
     padding-bottom: 60px;
-    height:500px;
+    height:100%;
 
 }
 .profile-avataricon{
@@ -1731,6 +1732,8 @@ box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.3);
   object-fit: cover;
 }
 .userprofilebox{
+  display: flex;
+  display : -webkit-flex;
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -1774,34 +1777,12 @@ margin-top: 20px;
   text-align: right;
   padding-bottom: 10px;
 }
-.profile_static_bar{
-
-}
-.list-of-request-div {
-  overflow-y: auto;
-  border-radius: 6px 6px 6px 6px;
-  border: solid;
-  border-width: 2px;
-  border-color: #ececec;
-  margin: 0px !important;
-  padding: 0px !important;
-  /* height: 100%; */
-  min-height: 570px;
-  max-height: 570px;
-}
 
 .list-of-request-div-xs{
   width: 95%;
   margin: auto;
   padding-bottom: 20px;
 
-}
-.request-list-item-city{
-  font-size: 11px;
-  font-family: IRANSans;
-  font-weight: 300;
-  color: #454545;
-  margin-right: 6px;
 }
 .request-list-xs{
   width: 100%;
@@ -1820,32 +1801,9 @@ margin-top: 20px;
   color:#484848;
   font-weight: 300;
 }
-.requests-list-title{
-  padding-top: 14px;
-  /* display: -webkit-flex; */
-  /* -webkit-flex-direction: row;
-  flex-direction: row; */
-  /* display: flex; */
-}
-.request-trip-message-container-margined{
-  margin-top: 30px !important;
-}
+
+
 .profile_dynamic_edit{
-  border-radius: 6px 6px 6px 6px;
-  border: solid;
-  border-width: 2px;
-  width : 1000px;
-  margin : auto;
-  border-color: #ececec;
-  background-color: white;
-  /* height: 1170px; */
-  height:100%;
-  margin-bottom:100px;
-  padding-bottom: 50px;
-}
-
-
-.profile_dynamic_edit2{
   border-radius: 6px 6px 6px 6px;
   border: solid;
   border-width: 2px;
@@ -1970,13 +1928,7 @@ margin-top: 20px;
   width: 100%;
   height: 100%;
 }
-.reserve-modal{
-  font-family : IRANSans;
-  border-radius: 4px;
-  padding: 14px;
-  width: 600px !important;
-  margin:auto;
-}
+
 .reserve-panel-total-price{
   font-family : IRANSans;
   /* text-align: center; */
@@ -2132,10 +2084,6 @@ margin-top: 20px;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
-.edit-profle-inp{
-  font-family: IRANSans !important;
-
-}
 
 .profile-description-textarea{
   font-family: IRANSans;
@@ -2177,13 +2125,7 @@ margin-top: 20px;
 .kolsoom{
   height: 25% !important;
 }
-.request-list-item-title{
-  font-family: IRANSans;
-  font-weight: 400;
-  font-size: 15px;
-  margin-top: 10px;
-  margin-right: 6px;
-}
+
 .map-xs{
   height: 45% !important;
   margin-bottom: 400px !important;
@@ -2194,43 +2136,7 @@ margin-top: 20px;
 .padding10{
   padding-bottom: 48px;
 }
-.userpanel-item-list-not-selected{
-  border-bottom: solid;
-  border-color: #f9f9f9;
-  border-width: 3px;
-  width: 100%;
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-direction:row; /* Safari 6.1+ */
-  display: flex;
-  flex-direction:row;
-  cursor: pointer;
-  background-color: white;
-}
 
-.userpanel-item-list-not-selected:hover{
-  border-bottom: solid;
-  border-color: #f9f9f9;
-  border-width: 3px;
-  width: 100%;
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-direction:row; /* Safari 6.1+ */
-  display: flex;
-  flex-direction:row;
-  cursor: pointer;
-  background-color: #f8f8f8;
-}
-.userpanel-item-list-selected{
-  border-bottom: solid;
-  border-color: #f9f9f9;
-  border-width: 3px;
-  width: 100%;
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-direction:row; /* Safari 6.1+ */
-  display: flex;
-  flex-direction:row;
-  cursor: pointer;
-  background-color: #f2f5f6;
-}
 .request-list-xs{
 
 }
@@ -2247,6 +2153,10 @@ margin-top: 20px;
   border-width: 0px !important;
   border: hidden !important;
 }
+.paddingtopundermap{
+  margin-bottom: 185px;
+}
+
 .reserve-status-h1{
   font-family: IRANSans;
   font-size: 20px;
@@ -2254,9 +2164,6 @@ margin-top: 20px;
   text-align: center;
   padding-top: 30px;
   font-weight: 500;
-}
-.paddingtopundermap{
-  margin-bottom: 185px;
 }
 .reserve-status-h2{
   font-family: IRANSans;
@@ -2266,14 +2173,7 @@ margin-top: 20px;
   margin-top: 10px;
   font-weight: 400;
 }
-.check-in{
-  margin-right: 15px;
-}
-.check-out{
-  margin-right: 15px;
-  margin-top: 8px;
 
-}
 .reserve-status-descriptions{
   font-family: IRANSans;
   font-size: 14px;
@@ -2306,6 +2206,7 @@ margin-top: 20px;
   margin-top: 20px;
 }
 .relevant-button{
+  font-family:IRANSans;
   display: -webkit-flex; /* Safari */
   -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
   display: flex;
@@ -2315,10 +2216,7 @@ margin-top: 20px;
   margin-top: 50px;
 
 }
-.request-userpanel-button{
 
-
-}
 .request-detail-userpanel{
   width: 82%;
   margin: auto;
@@ -2638,12 +2536,7 @@ margin-top: 20px;
   margin-right: 60px;
 }
 
-.no-request-container{
-  margin:auto !important;
-  font-family: IRANSans;
-  font-size: 16px;
-  text-align: center;
-}
+
 
 .no-request-stage1-container{
   background-color: #f7fbfc;
@@ -2798,33 +2691,6 @@ margin-top: 20px;
 .vaisa{
   border: solid;
 }
-.terms-open-panel1-text{
-  color:#2ec6cc;
-  text-align: right;
-  font-size:16px;
-  font-weight:500;
-  font-family: IRANSans;
-  margin-left: 500px;
-  margin-right: 20px;
-}
-
-.terms-open-panel-img{
-  transform: rotate(180deg);
-  float: left;
-}
-
-.terms-close-panel-img{
-  float: left;
-}
-.terms-open-panel9-text{
-  color:#2ec6cc;
-  text-align: right;
-  font-size:16px;
-  font-weight:500;
-  font-family: IRANSans;
-  margin-left: 527px;
-  margin-right: 20px;
-}
 
 .no-trip-container{
   font-family: IRANSans;
@@ -2944,7 +2810,6 @@ text-align: center;
   -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-
 }
 .input-tripinn2:focus{
   border:solid;
@@ -3252,7 +3117,9 @@ text-align: center;
 .request-item-cancel-button:hover{
   width:20%;
   margin-top: 25px !important;
+  margin:auto;
   border: solid;
+  border-width: 2px;
   border-color: #f54e4e;
   color: #fff;
   background-color: #f54e4e;

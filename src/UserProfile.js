@@ -32,7 +32,7 @@ class UserProfile extends React.Component{
   renderUserProfileSm(){
     return(
       <div className="hidden-xs hidden-md hidden-xl visible-sm">
-        <UserProfileMd />
+        <UserProfileSm />
       </div>
     );
   }

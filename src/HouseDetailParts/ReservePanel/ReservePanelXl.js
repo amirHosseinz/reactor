@@ -223,6 +223,7 @@ class ReservePanelXl extends React.Component{
      return response.json();
    })
    .then((bookData) => {
+     console.log(bookData);
      if(bookData.successful===true){
        window.location.href = '/dashboard/request';
      }
@@ -285,6 +286,8 @@ class ReservePanelXl extends React.Component{
           onRequestClose={()=>{this.setState({showPreBill:false})}}>
           <div className="pre-bill-main-division">
             <div className="pre-bill-header-section">
+            <div onClick={()=>{this.setState({showPreBill:false})}} className="close-modal-phone-number">
+            </div>
               <p>
                 جزئیات رزرو اقامتگاه
               </p>

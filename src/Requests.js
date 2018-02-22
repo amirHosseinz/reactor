@@ -3,8 +3,9 @@ import RequestsXl from './Requests/RequestsXl.js';
 import RequestsXs from './Requests/RequestsXs.js';
 import RequestsMd from './Requests/RequestsMd.js';
 import RequestsSm from './Requests/RequestsSm.js';
-class Requests extends React.Component{
 
+
+class Requests extends React.Component{
   renderRequestsXl(props){
     return(
       <div className="hidden-xs hidden-md hidden-sm visible-xl">

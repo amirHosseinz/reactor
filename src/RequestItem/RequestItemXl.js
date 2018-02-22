@@ -6,6 +6,8 @@ import moment from 'moment-jalaali';
 import Modal from 'react-modal';
 import {reserveModalStyleRequests} from '../Styles.js';
 import {parsePrice3digits} from '../tools/ParsePrice3digits.js'
+import './RequestItem.css';
+
 
 class RequestItemXl extends React.Component{
   constructor(props){
@@ -343,7 +345,7 @@ class RequestItemXl extends React.Component{
 renderCancelButton(){
   if(this.state.requestStatus!=="GUEST_CANCELED"){
    return (
-     <div className="clickable-p request-item-cancel-button" onClick={()=>{this.setTokenForDelete()}}><p className='request-item-cancel-button-text'>لغو درخواست</p> </div>
+     <div className="clickable-p request-item-cancel-button" onClick={()=>{this.setTokenForCancel()}}><p className='request-item-cancel-button-text'>لغو درخواست</p> </div>
    );
   }
 }
@@ -356,51 +358,50 @@ renderDeleteButton(){
     if (this.state.request!==null){
       if(this.state.requestStatus!=='no-house'){
         return (
-          <div className="request-header profile_dynamic_edit2">
-          <div className='request-status'>
-            <p className="reserve-status-h1"> :وضعیت درخواست رزرو </p>
-            <p className="reserve-status-h2"> {this.getRequestStatus()} </p>
-            <p className="reserve-status-descriptions">{this.getRequestStatusDiscription()} </p>
-          </div>
-          <div className="request-detail-userpanel">
-            <Divider/>
-            <div className='house-preview-linked-to-house-detail' dir="rtl">
-              <p> نام اقامتگاه : <a style={{color:'#12b2ce'}} href={"/rooms/"+ this.state.request.room.id} target="_blank">{this.state.request.room.title}</a> </p>
-              <p>شهر مقصد: {this.state.request.room.city}  </p>
-              <p> به میزبانی  {this.state.request.room.owner.first_name} {this.state.request.room.owner.last_name}</p>
-              <p> رزرو کننده: {this.state.request.guest_person.last_name} </p>
-              <p>تعداد میهمان: {englishToPersianDigits(this.state.request.number_of_guests)} نفر</p>
-              <p>تاریخ ورود: {englishToPersianDigits(moment(this.state.request.start_date).format('jYYYY/jM/jD'))}</p>
-              <p>تاریخ خروج:{englishToPersianDigits(moment(this.state.request.end_date).format('jYYYY/jM/jD'))} </p>
+          <div className="request-item-no-house-main-container">
+            <div className='request-status'>
+              <p className="request-item-request-status-h1"> :وضعیت درخواست رزرو </p>
+              <p className="request-item-request-status-h2"> {this.getRequestStatus()} </p>
+              <p className="request-item-status-descriptions">{this.getRequestStatusDiscription()} </p>
             </div>
-            <div className='request-details'>
+            <div className="request-item-detail">
+              <Divider/>
+              <div className='house-preview-linked-to-house-detail' dir="rtl">
+                <p> نام اقامتگاه : <a style={{color:'#12b2ce'}} href={"/rooms/"+ this.state.request.room.id} target="_blank">{this.state.request.room.title}</a> </p>
+                <p>شهر مقصد: {this.state.request.room.city}  </p>
+                <p> به میزبانی  {this.state.request.room.owner.first_name} {this.state.request.room.owner.last_name}</p>
+                <p> رزرو کننده: {this.state.request.guest_person.last_name} </p>
+                <p>تعداد میهمان: {englishToPersianDigits(this.state.request.number_of_guests)} نفر</p>
+                <p>تاریخ ورود: {englishToPersianDigits(moment(this.state.request.start_date).format('jYYYY/jM/jD'))}</p>
+                <p>تاریخ خروج:{englishToPersianDigits(moment(this.state.request.end_date).format('jYYYY/jM/jD'))} </p>
+              </div>
+              <Divider/>
+              <div className='final-details'>
+                <p>جمع هزینه ها: {englishToPersianDigits(this.state.request.total_price)} تومان</p>
+              </div>
             </div>
-            <Divider/>
-            <div className='final-details'>
-              <p>جمع هزینه ها: {englishToPersianDigits(this.state.request.total_price)} تومان</p>
-            </div>
-          </div>
 
-          <div className='relevant-button'>
-            {this.getRelevantButton()}
-            {this.renderCancelButton()}
-            {this.renderDeleteButton()}
-
-          </div>
+            <div className='relevant-button'>
+              {this.getRelevantButton()}
+              {this.renderCancelButton()}
+              {this.renderDeleteButton()}
+            </div>
           </div>
         );
       }
       else{
         return(
-        <div className='no-request-container profile_dynamic_edit'>
+        <div className='request-item-no-house-main-container'>
           <p className="no-request-header">شما درخواست رزروی ندارید</p>
           <p className="no-request-main-paragraph">شما تاکنون درخواست رزروی نداشته اید. میتوانید با جستجو میان شهرها و اقامتگاه های موجود، درخواست رزرو خود را ثبت نمایید. کافی است مراحل زیر را دنبال نمایید</p>
           <div className='no-request-stage1-container'>
             <div className='no-request-stage1-description col-md-6'>
               <div className='no-request-stage1-description-image'>
                 <img src={require('../Images/no-req-pic1.png')} height="45" width="220"/>
-                </div>
-              <p className='no-request-stage1-description-text'>در صفحه جستجو شهر یا استان موردنظر خود را وارد کنید تا نتایج جستجو را مشاهده نمایید</p>
+              </div>
+              <p className='no-request-stage1-description-text'>
+                در صفحه جستجو شهر یا استان موردنظر خود را وارد کنید تا نتایج جستجو را مشاهده نمایید
+              </p>
               </div>
             <div className='no-request-stage1-image col-md-5'>
               <img src={require('../Images/no-req-pic2.png')} height="180" width="220"/>
@@ -472,6 +473,7 @@ renderDeleteButton(){
      return response.json();
    })
    .then((request_status) => {
+     this.props.changeReRenderList();
   });
 }
   }

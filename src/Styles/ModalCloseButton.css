@@ -1,0 +1,115 @@
+.close-modal-phone-number {
+  position: absolute;
+  right: 24px;
+  top: 20px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+  cursor:pointer;
+}
+.close-modal-phone-number:hover{
+  opacity: 1;
+}
+.close-modal-phone-number:before, .close-modal-phone-number:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 20px;
+  width: 2px;
+  background-color: #333;
+}
+.close-modal-phone-number:before {
+  transform: rotate(45deg);
+}
+.close-modal-phone-number:after {
+  transform: rotate(-45deg);
+}
+
+
+
+
+.close-modal-verification {
+  position: absolute;
+  right: 24px;
+  top: 20px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+  cursor:pointer;
+}
+.close-modal-verification:hover{
+  opacity: 1;
+}
+.close-modal-verification:before, .close-modal-verification:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 20px;
+  width: 2px;
+  background-color: #333;
+}
+.close-modal-verification:before {
+  transform: rotate(45deg);
+}
+.close-modal-verification:after {
+  transform: rotate(-45deg);
+}
+
+
+
+.close-modal-set-password{
+  position: absolute;
+  right: 24px;
+  top: 20px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+  cursor:pointer;
+}
+.close-modal-set-password:hover{
+  opacity: 1;
+}
+.close-modal-set-password:before, .close-modal-set-password:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 20px;
+  width: 2px;
+  background-color: #333;
+}
+.close-modal-set-password:before {
+  transform: rotate(45deg);
+}
+.close-modal-set-password:after {
+  transform: rotate(-45deg);
+}
+
+
+
+
+.close-modal-sign-up{
+  position: absolute;
+  right: 24px;
+  top: 20px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+  cursor:pointer;
+}
+.close-modal-sign-up:hover{
+  opacity: 1;
+}
+.close-modal-sign-up:before, .close-modal-sign-up:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 20px;
+  width: 2px;
+  background-color: #333;
+}
+.close-modal-sign-up:before {
+  transform: rotate(45deg);
+}
+.close-modal-sign-up:after {
+  transform: rotate(-45deg);
+}

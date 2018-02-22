@@ -38,7 +38,7 @@ class TripItem extends React.Component{
   renderTripItemMd(){
     return(
       <div className="hidden-xs hidden-xl hidden-sm visible-md">
-        <TripItemMd />
+        <TripItemMd reserveDetail={this.state.trip} tripStatus={this.state.tripStatus}/>
       </div>
     );
   }

@@ -176,6 +176,7 @@ class MainPage extends React.Component{
     );
   }
   // <Route path={"/becomehost"} render = {()=> {return(this.renderBecomeHost())}}/>
+  // <Route path={"/"} render = {()=> {return(this.renderFooter())}}/>
   render(){
     this.getGuestTokenFromServer();
     document.title = "تریپین | سامانه رزرو ویلا";
@@ -193,7 +194,6 @@ class MainPage extends React.Component{
           <Route path={"/contactus"} render = {()=> {return(this.renderContactUs())}}/>
           <Route path={"/userprofile"} render={()=> {return(this.renderUserProfile())}}/>
           <Route exact path={"/search/:city"} render = {(props)=> {return(this.renderSearchResult(props))}}/>
-          <Route path={"/"} render = {()=> {return(this.renderFooter())}}/>
         </div>
       </BrowserRouter>
       </StickyContainer>

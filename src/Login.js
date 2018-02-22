@@ -14,7 +14,7 @@ class Login extends React.Component{
     }
   }
   componentWillReceiveProps(nextProps){
-    this.setState({hasAccount : nextProps.hasAccount ,hasPassword:nextProps.hasPassword})
+    this.setState({hasAccount:nextProps.hasAccount,hasPassword:nextProps.hasPassword})
   }
 
 renderLoginXl(props){
@@ -28,7 +28,7 @@ renderLoginXl(props){
 renderLoginMd(props){
   return(
     <div className="hidden-xs hidden-xl hidden-sm visible-md">
-      <LoginMd closeLoginPanel={props.closeLoginPanel.bind(this)}/>
+      <LoginMd hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword} closeLoginPanel={props.closeLoginPanel.bind(this)}/>
     </div>
   );
 }

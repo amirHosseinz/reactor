@@ -1,12 +1,7 @@
 import React from 'react';
-import { Divider,Button } from 'semantic-ui-react';
+import { Divider } from 'semantic-ui-react';
 import {ListGroup, ListGroupItem} from 'react-bootstrap';
-import 'react-virtualized/styles.css'
-import { Column, Table } from 'react-virtualized'
-import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer'
-import List from 'react-virtualized/dist/commonjs/List'
-import {Image} from 'semantic-ui-react';
-
+import './Requests.css';
 
 
 class RequestsXl extends React.Component{
@@ -67,10 +62,9 @@ class RequestsXl extends React.Component{
   }
   renderData(request_list){
     this.setState({requestList:request_list},()=>{
-      console.log(this.state.requestList.request_list);
       if(request_list.request_list.length>0){
 
-        this.showRequestItemClick(request_list.request_list[0],true);
+        this.showRequestItemClick(request_list.request_list[0]);
         // this.props.changeHasRequest(true);
       }
       else{
@@ -79,7 +73,6 @@ class RequestsXl extends React.Component{
         // this.props.changeHasRequest(false);
       }
     });
-
   }
 
   showRequestItemClick(item){
@@ -98,22 +91,23 @@ class RequestsXl extends React.Component{
             return(
               <div
                 dir="rtl"
-                className={(this.state.selected===item.id)?"userpanel-item-list-selected":"userpanel-item-list-not-selected"}
+                className={(this.state.selected===item.id)?"requests-item-selected":"requests-item-not-selected"}
                 key={item.id} onClick={() =>{
                 this.showRequestItemClick(item)
                 }}>
                   <div>
-                  <ListGroupItem className="scroll-list-requests">
-                    <div className="preview-x">
+                  <ListGroupItem className="requests-scroll-list">
+                    <div className="requests-item-preview">
                       <img
                       src={"https://www.trypinn.com/"+item.room.preview}
                       alt=""
                       height="78px;" width="80px"/>
                       <div>
-                        <div className="request-list-item-title">
+                        <div className="requests-item-title">
                           {item.room.title}
                         </div>
-                      <p className="request-list-item-city">{item.room.address} </p>
+                      <p className="requests-item-city">{item.room.address}
+                      </p>
                       </div>
                     </div>
                   </ListGroupItem>
@@ -123,7 +117,7 @@ class RequestsXl extends React.Component{
           }
       );
         return(
-          <div>
+          <div className="requests-main-container">
             <ListGroup>{this.list}</ListGroup>
           </div>
            );
@@ -133,9 +127,7 @@ class RequestsXl extends React.Component{
   render(){
     return(
       <div>
-        <div className="list-of-request-div">
-            {this.renderRequests()}
-        </div>
+        {this.renderRequests()}
       </div>
     );
   }
