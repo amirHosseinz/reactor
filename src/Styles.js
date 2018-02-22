@@ -151,7 +151,8 @@ export const reserveModalStyle={
     backgroundColor   : 'rgba(0, 0, 0, 0.7)'
   },
   content :{
-    height : '46rem',
+    height : '46em',
+    overFlow : 'hidden',
     maxHeight : '49rem',
     width  : '620px',
     margin : 'auto' ,
