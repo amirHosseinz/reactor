@@ -8,6 +8,7 @@ class UserProfileXl extends React.Component{
   constructor(props){
     super(props);
     this.state={
+      ImgHint:false,
       token:null,
       role:null,
       profileInfo:null,
@@ -58,18 +59,38 @@ class UserProfileXl extends React.Component{
       email:profile.user.email,
       nationalId:profile.user.national_id,});
   }
+  renderUploadImageHint(){
+    if(this.state.ImgHint===false){
+      return null;
+    }
+    if(this.state.ImgHint===true){
+      return(
+        <div className="profile-img-hint">
+          <img height="100px" width="100px" src={require('../Images/change-avatar-icon.svg')} />
+        </div>
+      );
+    }
+  }
+  ChangeImgHintState(){
+    this.setState({ImgHint: true,});
+  }
+  ReChangeImgHintState(){
+      this.setState({ImgHint: false,});
+  }
   renderProfilePhoto(){
       if (this.state.profileInfo !== ''){
         if (this.state.profileInfo.user.profile_picture === null){
           return(
-            <div className="user-profile-profile-picture-container">
+            <div className="user-profile-profile-picture-container" onMouseEnter={this.ChangeImgHintState.bind(this)} onMouseLeave={this.ReChangeImgHintState.bind(this)}>
               <img className="user-profile-profile-picture" src={require('../HouseDetailParts/facilities/prof_avatar_tripinn.svg')} height="200px" width="200px"  alt = "" />
+              {this.renderUploadImageHint()}
             </div>
           );
         }
         else{
           return(
-            <div className="user-profile-profile-picture-container" >
+            <div className="user-profile-profile-picture-container" onMouseEnter={this.ChangeImgHintState.bind(this)} onMouseLeave={this.ReChangeImgHintState.bind(this)}>
+              {this.renderUploadImageHint()}
               <img className="user-profile-profile-picture" height="200px" width="200px" src={'https://www.trypinn.com/'+this.state.profileInfo.user.profile_picture} />
             </div>
           );

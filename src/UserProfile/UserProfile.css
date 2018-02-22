@@ -38,11 +38,20 @@
   justify-content: center;
   width : 100%;
 }
+.user-profile-profile-picture-container:hover{
+
+}
 .user-profile-profile-picture{
   border-radius: 50% !important;
   margin-top : 30px;
-  border:solid 2px #454545;
+  border:solid 2px #8e8e8e;
 }
+.user-profile-profile-picture:hover{
+  border-radius: 50% !important;
+  margin-top : 30px;
+  background: rgba(0,0,0,0.6);
+}
+
 .user-profile-in-details-divider{
   width : 80%;
   border: solid 1px #e4e4e4;
@@ -214,6 +223,21 @@
 .user-profile-edit-save-changes-button:hover{
 
 }
+
+.profile-img-hint{
+  display : flex;
+  displaye : -webkit-flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  margin-top : 30px;
+  background-color: rgba(0,0,0,0.6);
+  height : 200px;
+  width : 200px;
+  border-radius : 50%;
+
+}
+
 /* xl styles finished */
 
 /* md styles here */
