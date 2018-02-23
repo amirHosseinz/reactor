@@ -4,7 +4,7 @@ import {Button,Divider,Checkbox} from 'semantic-ui-react';
 import Modal from 'react-modal';
 import {loginVerifySmsXl , registerNewUser , setPasswordStyle} from '../Styles.js';
 import {englishToPersianDigits, persianArabicToEnglishDigits} from '../tools/EnglishToPersianDigits';
-
+import './Login.css';
 
 class LoginXl extends React.Component{
   constructor(props){
@@ -12,6 +12,7 @@ class LoginXl extends React.Component{
     this.state={
       showSignUpOrSetPasswordModal:false,
       showVerificationModal:true,
+      showForgetPasswordModal:false,
       hasPassword : null,
       hasAccount : null,
       activeSignUpButton:false,
@@ -55,6 +56,18 @@ class LoginXl extends React.Component{
         verificationCode:null,
         phoneNumber:null,
       },
+      inputForChangePassword:{
+        cellPhone : '',
+        verificationCode:'',
+        password:'',
+        confirmPassword:'',
+      },
+      reqParamsForChangePassword:{
+        cellPhone : null,
+        verificationCode:null,
+        password:null,
+        confirmPassword:null,
+      }
     }
   }
 
@@ -88,6 +101,17 @@ class LoginXl extends React.Component{
     this.setState({token:localStorage['token']},()=>{this.setReqParamsForVerification()});
   }
 
+  setTokenForChangePassword(){
+    this.setState({token:localStorage['token']},()=>{this.setReqParamsForChangePassword()});
+  }
+
+  setReqParamsForChangePassword(){
+    var spar={verificationCode:persianArabicToEnglishDigits(this.state.inputForChangePassword.verificationCode),
+              password:this.state.inputForChangePassword.password,
+              confirmPassword:this.state.inputForChangePassword.confirmPassword,
+              cellPhone:persianArabicToEnglishDigits(this.props.cellPhone)};
+    this.setState({reqParamsForChangePassword:spar} ,()=>{this.getResponseForChangePassword()});
+  }
   setReqParamsForVerification(){
     var spar={verificationCode:persianArabicToEnglishDigits(this.state.inputForVerification.verificationCode),
                phoneNumber :localStorage['phone-number']};
@@ -163,7 +187,6 @@ class LoginXl extends React.Component{
     if(loginResponse.is_successful){
       localStorage['isLoggedIn']= 'true';
       localStorage['token'] = loginResponse.token;
-      // localStorage['token']='efjaglk;asdjf;lkdasjfsjdflk';
       this.setUserNameInHeader();
     }
     else{
@@ -414,11 +437,9 @@ class LoginXl extends React.Component{
     }
   }
   renderVerificationModal(){
-    // console.log(this.state.hasPassword);
-    // console.log(this.state.hasAccount);
     return(
       <div className="login1-modal">
-        <div className="close-modal-verification">
+        <div onClick={()=>{this.props.closeLoginPanel()}} className="close-modal-verification">
         </div>
         <p className="login-title-in-modal"> ورود / ثبت‌نام  </p>
         <div className="header-login-modal-divider">
@@ -436,8 +457,7 @@ class LoginXl extends React.Component{
                   id='verify-code'
                   maxLength="4"
                   autoFocus={true}
-                  type="numeric"
-                  />
+                  type="numeric"/>
                   <button className="header-login-modal-button-verify" onClick={this.handleVerificationClick.bind(this)}>
                     تایید کد
                   </button>
@@ -507,6 +527,28 @@ class LoginXl extends React.Component{
     var inputVerification={verificationCode : englishToPersianDigits(event.target.value)};
     this.setState({inputForVerification : inputVerification});
   }
+
+  changepasswordForChangePassword(event){
+    var inputChangePassword={password: event.target.value,
+                             confirmPassword:this.state.inputForChangePassword.confirmPassword,
+                             verificationCode:this.state.inputForChangePassword.verificationCode,}
+    this.setState({inputForChangePassword:inputChangePassword});
+  }
+
+  changeConfirmPasswordForChangePassword(event){
+    var inputChangePassword={ password:this.state.inputForChangePassword.password,
+                             confirmPassword:event.target.value,
+                             verificationCode:this.state.inputForChangePassword.verificationCode,}
+    this.setState({inputForChangePassword:inputChangePassword});
+  }
+
+  changeVerificationCodeForChangePassword(event){
+    var inputChangePassword={password: this.state.inputForChangePassword.password,
+                             confirmPassword:this.state.inputForChangePassword.confirmPassword,
+                             verificationCode:event.target.value,}
+    this.setState({inputForChangePassword:inputChangePassword});
+  }
+
   renderLoginPanel() {
     if (this.state.hasPassword !== null){
       if (!this.state.hasPassword){
@@ -531,11 +573,10 @@ class LoginXl extends React.Component{
                 autoFocus={true}
                 type="password"
                 autoComplete="off"
-                onKeyDown ={(event)=>{this.handleLoginClickByEnter(event)}}
-                >
-              </input>
+                onKeyDown ={(event)=>{this.handleLoginClickByEnter(event)}}/>
+                <p onClick={()=>{this.handleForgetPassword(); this.setState({showForgetPasswordModal:true})}} className="login-modal-forget-password-paragraph">فراموشی رمز عبور</p>
               <button color="blue" onClick={this.handleLoginClick.bind(this)} className="header-login-modal-button">
-                      ورود
+                ورود
               </button>
             </div>
             </div>
@@ -544,10 +585,93 @@ class LoginXl extends React.Component{
       }
     }
   }
+
+  handleForgetPassword(){
+    var request = new Request('https://www.trypinn.com/auth/api/user/edit/forgot_password/', {
+      method: 'POST',
+      body: JSON.stringify({
+        cell_phone : persianArabicToEnglishDigits(this.props.cellPhone),
+    }),
+      headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',})
+    });
+   fetch(request)
+   .then((response) => {
+     return response.json();
+   })
+   .then((forgetPasswordResponse) => {
+   });
+  }
+
+  renderForgetPasswordModal(){
+    return(
+      <Modal isOpen={this.state.showForgetPasswordModal}
+             onRequestClose={()=>{this.props.closeLoginPanel(); this.setState({showForgetPasswordModal:false})}}
+             style={setPasswordStyle}>
+        <div className="forget-password-modal">
+          <div onClick={()=>{this.props.closeLoginPanel(); this.setState({showForgetPasswordModal:false})}} className="close-modal-phone-number">
+          </div>
+          <div className="forget-password-title">
+          بازیابی رمز عبور
+          </div>
+          <hr className="forget-password-modal-divider"/>
+          <div className="forget-password-modal-input-zone">
+            <p className="forget-password-modal-input-paragraph">
+            کد تأیید
+            </p>
+            <input onChange={(event)=>{this.changeVerificationCodeForChangePassword(event)}} value={this.state.inputForChangePassword.verificationCode} type="numeric" className="forget-password-modal-input"/>
+          </div>
+          <div className="forget-password-modal-input-zone">
+            <p className="forget-password-modal-input-paragraph">
+            رمز عبور
+            </p>
+            <input onChange={(event)=>{this.changepasswordForChangePassword(event)}} value={this.state.inputForChangePassword.password} type="password" className="forget-password-modal-input"/>
+          </div>
+          <div className="forget-password-modal-input-zone">
+            <p className="forget-password-modal-input-paragraph">
+            تکرار رمز عبور
+            </p>
+            <input onChange={(event)=>{this.changeConfirmPasswordForChangePassword(event)}} value={this.state.inputForChangePassword.confirmPassword} type="password" className="forget-password-modal-input"/>
+          </div>
+          <div onClick={()=>{this.setTokenForChangePassword()}} className="forge-password-change-password-button"> تغییر رمز عبور</div>
+        </div>
+      </Modal>
+    );
+  }
+
+
+  getResponseForChangePassword(){
+    console.log(this.state.reqParamsForChangePassword);
+    var request = new Request('https://www.trypinn.com/auth/api/user/edit/verify_forgot_password/', {
+      method: 'POST',
+      body: JSON.stringify({
+        cell_phone : this.state.reqParamsForChangePassword.cellPhone,
+        password : this.state.reqParamsForChangePassword.password,
+        confirm_password : this.state.reqParamsForChangePassword.confirmPassword,
+        verification_code :this.state.reqParamsForChangePassword.verificationCode,
+    }),
+      headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+      'Authorization': 'Token '+this.state.token,})
+    });
+   fetch(request)
+   .then((response) => {
+     return response.json();
+   })
+   .then((changePasswordResponse) => {
+     this.handleChangePasswordResponse(changePasswordResponse);
+   });
+  }
+  handleChangePasswordResponse(changePasswordResponse){
+    if(changePasswordResponse.successful){
+      localStorage['isLoggedIn']= 'true';
+      localStorage['token'] = changePasswordResponse.token;
+      this.setUserNameInHeader();
+  }
+}
   render(){
     return(
       <div>
         {this.renderLoginPanel()}
+        {this.renderForgetPasswordModal()}
         {this.renderSignUpOrSetPasswordModal()}
       </div>
     );

@@ -11,16 +11,18 @@ class Login extends React.Component{
     this.state={
       hasAccount:null,
       hasPassword:null,
+      cellPhone:null,
+
     }
   }
   componentWillReceiveProps(nextProps){
-    this.setState({hasAccount:nextProps.hasAccount,hasPassword:nextProps.hasPassword})
+    this.setState({cellPhone:nextProps.cellPhone , hasAccount:nextProps.hasAccount,hasPassword:nextProps.hasPassword})
   }
 
 renderLoginXl(props){
   return(
     <div className="hidden-xs hidden-md hidden-sm visible-xl">
-      <LoginXl hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword} closeLoginPanel={props.closeLoginPanel.bind(this)}/>
+      <LoginXl cellPhone={this.state.cellPhone} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword} closeLoginPanel={props.closeLoginPanel.bind(this)}/>
     </div>
   );
 }
@@ -28,7 +30,7 @@ renderLoginXl(props){
 renderLoginMd(props){
   return(
     <div className="hidden-xs hidden-xl hidden-sm visible-md">
-      <LoginMd hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword} closeLoginPanel={props.closeLoginPanel.bind(this)}/>
+      <LoginMd cellPhone={this.state.cellPhone} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword} closeLoginPanel={props.closeLoginPanel.bind(this)}/>
     </div>
   );
 }
@@ -57,7 +59,6 @@ render(){
         {this.renderLoginMd(this.props)}
         {this.renderLoginSm(this.props)}
       </div>
-
     );
   }
 }

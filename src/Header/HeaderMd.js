@@ -274,7 +274,7 @@ class HeaderMD extends React.Component{
         <Modal isOpen={this.state.loginPanelVisible2}
           style={loginPasswordStyle}
           onRequestClose={()=>{this.closeLoginPanel();this.setState({loginPanelVisible2:false})}}>
-          <Login closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
+          <Login cellPhone={this.state.cellPhone} closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
         </Modal>
       );
     }
@@ -283,7 +283,7 @@ class HeaderMD extends React.Component{
         <Modal isOpen={this.state.loginPanelVisible2}
           style={loginVerifySmsXl}
           onRequestClose={()=>{this.closeLoginPanel();this.setState({loginPanelVisible2:false})}}>
-          <Login closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
+          <Login cellPhone={this.state.cellPhone} closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
         </Modal>
       );
     }
