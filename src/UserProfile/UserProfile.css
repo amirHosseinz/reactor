@@ -36,11 +36,10 @@
   display: flex;
   display : -webkit-flex;
   justify-content: center;
-  width : 100%;
+  width : 200px;
+  margin:auto;
 }
-.user-profile-profile-picture-container:hover{
 
-}
 .user-profile-profile-picture{
   border-radius: 50% !important;
   margin-top : 30px;
@@ -57,11 +56,13 @@
   border: solid 1px #e4e4e4;
 }
 .user-profile-in-details-link{
-  direction: rtl;
+  display: flex;
+  display : -webkit-flex;
+  justify-content: flex-end;
   font-size: 16px;
   line-height: 30px;
   cursor:pointer;
-  margin-right:40px !important;
+  width : 90%;
   text-decoration: none !important;
   outline :none !important;
   color : #12b2ce;
@@ -226,6 +227,7 @@
 
 .profile-img-hint{
   display : flex;
+  cursor : pointer;
   displaye : -webkit-flex;
   justify-content: center;
   align-items: center;
@@ -262,6 +264,81 @@
   font-family: IRANSans !important;
   border : 2px solid #e4e4e4;
   border-radius: 7px;
+}
+
+.user-profile-upload-photo-modal-main-division{
+  font-family: IRANSans;
+}
+.user-profile-upload-photo-modal-drop-zone{
+  display :flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 2px #454545;
+  margin:auto;
+  width : 250px;
+  height : 250px;
+  /* position:relative; */
+  /* margin-top : 100px; */
+  border-radius : 50%;
+}
+.user-profile-upload-photo-modal-image-zone{
+  border : solid 2px #d9d9d9;
+  border-radius : 50%;
+}
+.user-profile-upload-photo-modal-image{
+  border-radius : 50%;
+}
+.user-profile-upload-photo-modal-image-selection-button{
+  position:absolute;
+  display: flex;
+  cursor : pointer;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  width : 120px;
+  height : 30px;
+  background-color: #595959;
+  margin-left : 64px;
+  margin-top : 116px;
+  color : white;
+  border : none;
+  border-radius : 25px;
+}
+.user-profile-upload-photo-modal-title{
+  font-family: Shabnam;
+  font-size : 20px;
+  margin-bottom : 15px;
+  text-align: center;
+  color : #595959;
+  margin-top : 10px;
+}
+
+.user-profile-upload-photo-modal-divider{
+  border: solid 1px #d7d7d7;
+}
+.user-profile-upload-photo-modal-delete-selection{
+  margin-top : 20px;
+  cursor : pointer;
+  color : #595959;
+  text-align: center;
+}
+.user-profile-upload-photo-modal-save-selection{
+  display: flex;
+  font-size : 20px;
+  font-weight : 500;
+  display : -webkit-flex;
+  justify-content: center;
+  align-items: center;
+  color : white;
+  background-color: #12b2ce !important;
+  border : none;
+  margin : auto;
+  width : 300px;
+  height : 40px;
+  cursor : pointer;
+  margin-top : 20px;
+  border-radius : 25px;
 }
 /* md styles finished */
 

@@ -3,7 +3,9 @@ import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
 import { Divider,Button } from 'semantic-ui-react';
 import './UserProfile.css';
 import {Link} from 'react-router-dom';
-
+import Modal from 'react-modal';
+import {UserProfileUploadPhotoModal} from '../Styles.js';
+import Dropzone from 'react-dropzone';
 
 class UserProfileMd extends React.Component{
   constructor(props){
@@ -16,11 +18,13 @@ class UserProfileMd extends React.Component{
       firstName:'',
       lastName:'',
       cellPhone:'',
+      showUploadPhotoModal:false,
       oldPassword:'',
       email:'',
       password : '',
       confirmPassword:'',
       nationalId:'',
+      profilePicture : null,
     };
   }
   componentWillMount() {
@@ -54,24 +58,36 @@ class UserProfileMd extends React.Component{
   }
   renderData(profile){
     this.setState({profileInfo:profile,
+      profilePicture : "https://www.trypinn.com/" + profile.user.profile_picture,
       firstName:profile.user.first_name,
       lastName:profile.user.last_name,
       cellPhone:profile.user.cell_phone,
       email:profile.user.email,
       nationalId:profile.user.national_id,});
   }
+
   renderUploadImageHint(){
     if(this.state.ImgHint===false){
       return null;
     }
     if(this.state.ImgHint===true){
       return(
-        <div className="profile-img-hint">
+        <div onClick={()=>{this.setState({showUploadPhotoModal:true})}} className="profile-img-hint">
           <img height="100px" width="100px" src={require('../Images/change-avatar-icon.svg')} />
         </div>
       );
     }
   }
+
+  renderUploadPhotoModal(){
+    return(
+      <Modal isOpen={this.state.showUploadPhotoModal}
+             onRequestClose={()=>{this.setState({showUploadPhotoModal:false})}}
+             style={UserProfileUploadPhotoModal}>
+      </Modal>
+    );
+  }
+
   ChangeImgHintState(){
     this.setState({ImgHint: true,});
   }
@@ -347,6 +363,7 @@ class UserProfileMd extends React.Component{
   render(){
     return(
       <div className="user-profile-main-division">
+        {this.renderUploadPhotoModal()}
         {this.renderUserProfileDetailsSection()}
         {this.renderUserProfileEditSection()}
       </div>

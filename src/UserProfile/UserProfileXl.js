@@ -3,6 +3,9 @@ import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
 import { Divider,Button } from 'semantic-ui-react';
 import './UserProfile.css';
 import {Link} from 'react-router-dom';
+import Modal from 'react-modal';
+import {UserProfileUploadPhotoModal} from '../Styles.js';
+import Dropzone from 'react-dropzone';
 
 class UserProfileXl extends React.Component{
   constructor(props){
@@ -15,11 +18,14 @@ class UserProfileXl extends React.Component{
       firstName:'',
       lastName:'',
       cellPhone:'',
+      showUploadPhotoModal:false,
       oldPassword:'',
       email:'',
       password : '',
       confirmPassword:'',
       nationalId:'',
+      profilePicture : null,
+      profilePictureFile : null,
     };
   }
   componentWillMount() {
@@ -53,6 +59,7 @@ class UserProfileXl extends React.Component{
   }
   renderData(profile){
     this.setState({profileInfo:profile,
+      profilePicture : "https://www.trypinn.com/" + profile.user.profile_picture,
       firstName:profile.user.first_name,
       lastName:profile.user.last_name,
       cellPhone:profile.user.cell_phone,
@@ -65,11 +72,68 @@ class UserProfileXl extends React.Component{
     }
     if(this.state.ImgHint===true){
       return(
-        <div className="profile-img-hint">
+        <div onClick={()=>{this.setState({showUploadPhotoModal:true})}} className="profile-img-hint">
           <img height="100px" width="100px" src={require('../Images/change-avatar-icon.svg')} />
         </div>
       );
     }
+  }
+
+  onDrop(files){
+    if(files.length>0){
+      this.setState({profilePicture:files[0].preview,profilePictureFile:files[0]});
+    }
+  }
+  renderUploadPhotoModal(){
+    return(
+      <Modal isOpen={this.state.showUploadPhotoModal}
+             onRequestClose={()=>{this.setState({showUploadPhotoModal:false})}}
+             style={UserProfileUploadPhotoModal}>
+               <div className="user-profile-upload-photo-modal-main-division">
+                <div onClick={()=>{this.setState({showUploadPhotoModal:false})}} className="close-modal-phone-number">
+                </div>
+                <p className="user-profile-upload-photo-modal-title">
+                  تصویر پروفایل
+                </p>
+                <hr className="user-profile-upload-photo-modal-divider"/>
+               <Dropzone accept="image/*" className="user-profile-upload-photo-modal-drop-zone" multiple={false} onDrop={(files)=>{this.onDrop(files)}}>
+                 <div className="user-profile-upload-photo-modal-image-zone">
+                  <div className="user-profile-upload-photo-modal-image-selection-button">
+                    انتخاب تصویر
+                  </div>
+                  <img className="user-profile-upload-photo-modal-image" src={this.state.profilePicture} alt=""  height="250px" width="250px" />
+                 </div>
+               </Dropzone>
+               <p className="user-profile-upload-photo-modal-delete-selection">
+                حذف تصویر
+               </p>
+               <div onClick={()=>{this.handleChangeProfilePicture()}}className="user-profile-upload-photo-modal-save-selection">
+                ذخیره
+               </div>
+               </div>
+      </Modal>
+    );
+  }
+
+  handleChangeProfilePicture(){
+    var fd = new FormData();
+    fd.append('profile_picture' , this.state.profilePictureFile);
+    var request = new Request('https://www.trypinn.com/auth/api/user/edit/',{
+      method: 'POST',
+      body: fd,
+      headers: new Headers({'Accept': 'application/json',
+      'Authorization': 'Token '+this.state.token,})
+    });
+   fetch(request)
+   .then((response) => {
+     return response.json();
+   })
+   .then((response) => {
+     console.log(response);
+     if(response.successful){
+       window.location.reload();
+     }
+   });
   }
   ChangeImgHintState(){
     this.setState({ImgHint: true,});
@@ -345,6 +409,7 @@ class UserProfileXl extends React.Component{
   render(){
     return(
       <div className="user-profile-main-division">
+        {this.renderUploadPhotoModal()}
         {this.renderUserProfileDetailsSection()}
         {this.renderUserProfileEditSection()}
       </div>
