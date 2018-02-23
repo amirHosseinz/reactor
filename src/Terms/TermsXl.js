@@ -343,7 +343,7 @@ class TermsXl extends React.Component{
           <Collapsible onClose={this.renderClosePanel8.bind(this)} onOpen={this.renderOpenPanel8.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel8?"terms-close-panel1-text":"terms-close-panel1-text"}><span>۲-۸-</span><span> مقررات کنسل کردن رزرو و بازپرداخت </span></span> <img className={this.state.OpenPanel8?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
           <div className='terms-panel1-container'>
           <p className="terms-descriptions">
-          الف)	در صورتی که مهمان در فاصله زمانی بیشتر از ۴۸ ساعت به زمان تحویل کلید رزرو را کنسل کند، تمامی مبلغ اجاره به مهمان بازگردانده می شود. در این صورت میزبان موظف است مبلغ دریافتی جهت اجاره شب اول را ظرف مدت ۲۴ ساعت برای شرکت واریز نماید.
+                    الف)	در صورتی که مهمان در فاصله زمانی بیشتر از ۴۸ ساعت به زمان تحویل کلید رزرو را کنسل کند، تمامی مبلغ اجاره به مهمان بازگردانده می شود (به استثنا ۲۸ اسفند ماه تا ۱۳ فروردین ماه) .در این صورت میزبان موظف است مبلغ دریافتی جهت اجاره شب اول را ظرف مدت ۲۴ ساعت برای شرکت واریز نماید.
           </p>
           <p className="terms-descriptions">
           ب)	در صورتی که مهمان قبل از دریافت کلید و در زمانی کمتر از ۴۸ ساعت به آغاز زمان تحویل کلید رزرو را کنسل کند، کل مبلغ اجاره به غیر از هزینه شب اول به وی بازگردانده می شود.
