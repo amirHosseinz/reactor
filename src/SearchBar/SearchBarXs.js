@@ -1,51 +1,44 @@
 import React from 'react';
 import SearchResultItem from '../SearchResultItem';
-import { Typeahead,MenuItem,Menu,menuItemContainer} from '../tools/react-bootstrap-typeahead';
-import { Button } from 'semantic-ui-react';
-import { findDOMNode } from 'react-dom';
-import {Dropdown} from 'semantic-ui-react';
 import GuestNumber from '../GuestNumberSearchBar.js';
-import scrollToComponent from 'react-scroll-to-component';
-const TypeaheadMenuItem = menuItemContainer(MenuItem);
-const listOfCity = [
-  'اصفهان',
-  'نوشهر',
-  'گیلان',
-  'رامسر',
-  'کیش',
-  'مازندران',
-  'بابلسر',
-  'فریدون‌کنار',
-  'محمودآباد',
-  'عباس‌آباد',
-  'شاندیز',
-  'خراسان رضوی',
-  'بندر انزلی',
-  'کاشان',
-  'باغ‌بهادران',
-  'قلعه‌رودخان',
-  'مشهد',
-  'چمخاله',
-  'فومن',
-  'رضوان‌شهر',
-  'رودسر',
-  'آستارا',
-  'زیباکنار',
-  'سرخ‌رود',
-  'رویان',
-  'نور',
-  'چالوس',
-  'تنکابن',
-  'دریاکنار',
-  'ایزدشهر',
-  'کلاردشت',
-  'کلارآباد',
-  'سلمان‌شهر',
-  'نشتارود',
-  'البرز',
-];
-class SearchBarXs extends React.Component{
+import "./SearchBar.css";
+import "../Styles/MainPage-SearchBar.css";
+import Autosuggest from 'react-autosuggest';
 
+const listOfCity = [
+  {name:'اصفهان',},{name:'نوشهر',},{name: 'گیلان',},{name:'رامسر'},{name:'کیش'},{name:'مازندران'},
+  {name:'فریدون کنار'},{name:'محمودآباد'},{name:'عباس آباد'},{name:'شاندیز'},{name:'خراسان رضوی'},
+  {name:'بندر‌انزلی'},{name:'کاشان'},{name:'باغ بهادران'},{name:'قلعه رودخان'},{name:'مشهد'},
+  {name:'چمخاله'},{name:'رودسر'},{name:'فومن'},{name:'رضوان‌شهر'},{name:'زیباکنار'},
+  {name:'آستارا'},{name:'چالوس'},{name:'دریاکنار'},{name:'نور'},{name:'رویان'},{name:'بابلسر'},
+  {name:'تنکابن'},{name:'سرخ‌رود'},{name:'دریاکنار'},{name:'ایزدشهر'},{name:'البرز'},
+  {name:'سلمان شهر'},{name:'تنکابن'},{name:'کلاردشت'},{name:'نشتارود'},{name:'کلارآباد'},
+];
+
+const theme= {
+    container:                'main-page-searchbar-container',
+    containerOpen:            'main-page-searchbar-container--open',
+    input:                    'main-page-searchbar-input',
+    inputOpen:                'main-page-searchbar-input--open',
+    inputFocused:             'main-page-searchbar-input--focused',
+    suggestionsContainer:     'main-page-searchbar-suggestions-container-xl',
+    suggestionsContainerOpen: 'main-page-searchbar-suggestions-container--open',
+    suggestionsList:          'main-page-searchbar-suggestions-list',
+    suggestion:               'main-page-searchbar-suggestion',
+    suggestionFirst:          'main-page-searchbar-suggestion--first',
+    suggestionHighlighted:    'main-page-searchbar-suggestion--highlighted',
+    sectionContainer:         'main-page-searchbar-section-container',
+    sectionContainerFirst:    'main-page-searchbar-section-container--first',
+    sectionTitle:             'main-page-searchbar-section-title'
+  }
+class SearchBarXs extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={
+      city:'',
+      suggestions:[],
+    }
+  }
   renderHousesCol1 () {
     var results = [];
     var initList = this.state.houseList.map((houseItem) => {
@@ -82,118 +75,133 @@ class SearchBarXs extends React.Component{
     }
     return results;
   }
-  renderSearchBarOnlycityXs(){
-     return(
-       <div className='mobile-margined-search'>
-         <div className="main-zone-xs col-md-12">
-           <div className="row">
-             <div className="seach-top-slogan-xs-container col-md-12">
-                 <p className='slogan-xs'>تریپین</p>
-             </div>
-           <div className="row col-md-12">
-             <p className='slogan-xss'>سامانه رزرو ویلا و اقامتگاه</p>
-           </div>
-           </div>
-             <div className="searchbar-zone-mobile">
-               <Typeahead
-                 bsSize="sm"
-                 placeholder="!مقصد خود را وارد نمایید"
-                 align="right"
-                 renderMenu={(results, menuProps) => {
-                   return (
-                     <Menu {...menuProps}>
-                       {results.map((result, index) => (
-                         <TypeaheadMenuItem option={result} position={index}>
-                           {result}
-                         </TypeaheadMenuItem>
-                       ))}
-                     </Menu>
-                   );
-               }}
-                 onInputChange={(input)=> {this.setState({city:input})}}
-                 minLength={2}
-                 selectHintOnEnter={true}
-                 submitFormOnEnter={false}
-                 onKeyDown={(event)=>{this.handleSearchByEnter(event)}}
-                 emptyLabel="نتیجه‌ای یافت نشد"
-                 maxResults={5}
-                 className="typeahead-onlycity-sm"
-                 onChange={(selected) => {this.setState({city:selected[0]},()=>{this.handleClick()})
-                 }}
-                 options={listOfCity}
-                 />
-                 <Button color='blue' className="search-btn-xs" onClick={this.handleClick.bind(this)} data-reactid="99">
-                   <span className='searchicon'>
-                     <img src="http://image.ibb.co/fjdMQG/trpinn_search.png" className='search-image-xs' alt=""></img>
-                   </span>
-                 </Button>
-             </div>
-         </div>
-       </div>
-     );
+
+  onSuggestionsFetchRequested=({value})=> {
+    this.setState({
+      suggestions: this.getSuggestions(value)
+    });
   }
-  renderSearchBarXS(){
+
+  onChangeSearchBarValue = (event,{newValue, method}) => {
+    this.setState({
+      city: newValue
+    });
+  };
+
+  getSuggestions(value) {
+    const escapedValue = this.escapeRegexCharacters(value.trim());
+
+    if (escapedValue === '') {
+      return [];
+    }
+    const regex = new RegExp('^' + escapedValue, 'i');
+    return listOfCity.filter(city => regex.test(city.name));
+  }
+
+  escapeRegexCharacters(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  onSuggestionsClearRequested=() =>{
+    this.setState({
+      suggestions: []
+    });
+  }
+
+  renderSuggestion = (suggestion)=>{
     return(
-      <div className="container-fluid hidden-xl visible-xs">
-          <div className='mobile-margined-search'>
-            <div className="main-zone-xs col-md-12">
-              <div className="row">
+      <span>
+        {suggestion.name}
+      </span>
+    );
+  }
+
+  getSuggestionValue(suggestion){
+    return suggestion.name;
+  }
+
+ onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method })=>{
+   this.setState({city:suggestionValue},()=>{this.handleClick()});
+  }
+
+handleClick(){
+    if(this.state.city===''){
+      this.props.history.replace("/search/هر جا");
+    }
+    else{
+       this.props.history.replace("/search/" + this.state.city);
+    }
+  }
+  renderSearchBar(){
+    const value = this.state.city;
+    const suggestions = this.state.suggestions;
+    const inputProps = {
+    placeholder: 'مثلا نوشهر',
+    value:this.state.city,
+    onChange:this.onChangeSearchBarValue
+    }
+    return(
+      <div className="search-bar-main-division-xs">
+        <div className="search-bar-background-xs">
+        </div>
+        <div className="search-bar-contents-xs">
+          <p className="search-bar-tripinn-heading-xs">
+            تریپین
+          </p>
+          <p className="search-bar-tripinn-heading-2-xs">
+            سامانه رزرو ویلا و اقامتگاه محلی
+          </p>
+          <div className="search-bar-auto-suggest-container-xs">
+            <p className="search-bar-inter-destenation-text-xs"> مقصد را وارد کنید:
+            </p>
+            <div className="search-bar-auto-suggest-xs">
+              <div className="search-bar-auto-suggest-input-xs">
+                <Autosuggest
+                  theme={theme}
+                  highlightFirstSuggestion={true}
+                  suggestions={this.state.suggestions}
+                  onSuggestionSelected={this.onSuggestionSelected}
+                  onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                  onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                  getSuggestionValue={this.getSuggestionValue}
+                  renderSuggestion={this.renderSuggestion}
+                  inputProps={inputProps}/>
               </div>
-        {this.renderSearchBarOnlycityXs()}
-        {this.renderHousesCol1()}
-
-        <div className='mobile-margined-search'>
-          <div className="main-zone-xs col-md-12">
+              <div className="search-bar-auto-suggest-button-xs">
+                <button className="search-bar-search-button-xs" onClick={()=>{this.handleClick()}}>
+                  <span>
+                    <img src={require('../Images/search-bar-search-icon.svg')} className="search-bar-search-icon-xs" alt="search"/>
+                  </span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-  </div>
-  <div className="downlaod-app-mobile">
-    <div className='mobile-margined-search'>
-      <div className="img-iphone col-xs-5">
-        <img src={require('../Images/phone-app.png')} className='iphone' alt="اپلیکیشن تریپین"></img>
-      </div>
-      <div className="img-download col-xs-6">
-        <a href="https://cafebazaar.ir/app/com.trypinn/">
-          <img src={require('../Images/bazaar.svg')} className='bazar-ico' alt="دانلود از بازار"></img>
-        </a>
-        <img src={require('../Images/button-app-store.svg')} className='bazar-ico' alt=" دانلود از سیب‌اپ"></img>
-      </div>
-    </div>
-  </div>
-  </div>
-    );
-  }
-  renderLandingXS(){
-    return(
-      <div>
-        <div className="landing-page-mobile visible-xs hidden-xl">
-          <img src={require('../Images/trpinn-logo-white.svg')} className='landing-logo' alt=""></img>
-          <p className='logotype-landing'>تریپین</p>
-          <p className='description-landing'>سامانه رزرو ویلا و اقامت‌گاه بوم‌گردی</p>
-          <button className="landing-btn" onClick={() => scrollToComponent(this.Dis, { offset: 0, align: 'top', duration: 1500})}> دریافت اپلیکیشن </button>
+        <div className="search-bar-download-app-section-xs">
+        <div className="search-bar-download-phone-picture-xs">
+        <img height="300px" width="200px" src={require("../Images/header-download-app-modal-phone.png")} alt=""/>
         </div>
-        <div className="landing-download-area visible-xs hidden-xl">
-          <div className="download-app-modal-icons-container">
-            <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://new.sibapp.com/applications/tripinn' >
-              <img src={require('../Images/sibapp.svg')} className="download_icon_app" alt = 'دانلود از سیب‌اپ'/>
+          <div className="search-bar-app-links-section-xs">
+          <p className="search-bar-download-app-sentence">
+            تریپین را همیشه همراه خود داشته باشید:
+          </p>
+          <div className="download-app-links-xs">
+            <a className="download-app-anchor-xs" rel="noopener noreferrer"target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
+              <img src={require('../Images/1.svg')} alt = 'دانلود از کافه بازار'/>
             </a>
-            <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='https://play.google.com/store/apps/details?id=com.trypinn&hl=en' >
-              <img src={require('../Images/gplay.svg')} className="download_icon_app" alt = 'دانلود از گوگل پلی'/>
+            <a className="download-app-anchor-xs"rel="noopener noreferrer"target="_blank" href='http://new.sibapp.com/applications/tripinn' >
+              <img src={require('../Images/2.svg')} alt = 'دانلود از سیب‌اپ'/>
             </a>
-            <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
-              <img src={require('../Images/bazaar.svg')} className="download_icon_app" alt = 'دانلود از کافه بازار'/>
-            </a>
-            <section className='gallery-scroller' ref={(section) => {this.Dis = section;}}></section>
+          </div>
           </div>
         </div>
       </div>
     );
   }
-
   render(){
     return(
       <div>
+        {this.renderSearchBar()}
       </div>
     );
   }

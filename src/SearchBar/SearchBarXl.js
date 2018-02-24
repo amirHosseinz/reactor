@@ -1,15 +1,11 @@
 import React from 'react';
 import SearchResultItem from '../SearchResultItem';
-import { Typeahead,MenuItem,Menu,menuItemContainer} from '../tools/react-bootstrap-typeahead';
-import { Button } from 'semantic-ui-react';
-import { findDOMNode } from 'react-dom';
-import {Dropdown} from 'semantic-ui-react';
 import GuestNumber from '../GuestNumberSearchBar.js';
-import scrollToComponent from 'react-scroll-to-component';
 import "./SearchBar.css";
 import "../Styles/MainPage-SearchBar.css";
 import Autosuggest from 'react-autosuggest';
-const TypeaheadMenuItem = menuItemContainer(MenuItem);
+
+
 const listOfCity = [
   {name:'اصفهان',},{name:'نوشهر',},{name: 'گیلان',},{name:'رامسر'},{name:'کیش'},{name:'مازندران'},
   {name:'فریدون کنار'},{name:'محمودآباد'},{name:'عباس آباد'},{name:'شاندیز'},{name:'خراسان رضوی'},
@@ -42,17 +38,10 @@ class SearchBarXl extends React.Component{
     super(props);
     this.state = {
       token: null,
-      houseList:[],
       cityList:[],
       cityListFromServer:null,
       city:'',
       suggestions:[],
-      searchParams : {
-        location: '',
-        start_date: null,
-        end_date: null,
-        capacity: null,
-      },
     };
   }
 
@@ -151,10 +140,9 @@ class SearchBarXl extends React.Component{
    }
 
   onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method })=>{
-    // console.log(method);
     this.setState({city:suggestionValue},()=>{this.handleClick()});
-    // console.log(suggestionValue);
    }
+
   renderSearchBarVersion2(){
     const value = this.state.city;
     const suggestions = this.state.suggestions;
@@ -164,7 +152,7 @@ class SearchBarXl extends React.Component{
     onChange:this.onChangeSearchBarValue
     }
     return(
-      <div className="search-bar-main-division">
+      <div className="search-bar-main-division-xs">
         <div className="search-bar-background-xl">
         </div>
           <div className="search-bar-contents-xl">
@@ -178,7 +166,6 @@ class SearchBarXl extends React.Component{
               <p className="search-bar-inter-destenation-text"> مقصد را وارد کنید:
               </p>
               <div className="search-bar-auto-suggest">
-
                 <div className="search-bar-auto-suggest-input">
                   <Autosuggest
                     theme={theme}

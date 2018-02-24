@@ -93,6 +93,7 @@
 
 
 /* XS styles here */
+
 .header-main-division-xs{
   display : flex;
   display: -webkit-flex;
@@ -104,6 +105,7 @@
   background-color: white;
   border : solid 1px #d9d9d9;
 }
+
 .header-logo-xs{
   height : 15px;
   outline : none;
