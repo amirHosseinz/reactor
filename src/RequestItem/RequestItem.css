@@ -5,6 +5,96 @@
 /*general style finished */
 
 /*xl style here  */
+
+.request-card-container{
+   background-color: white;
+   font-family: IRANSans;
+   border: solid 2px #ececec  ;
+   border-radius: 5px;
+   height : 80%;
+   width : 600px;
+   margin-top: 30px;
+   padding-bottom: 30px;
+   margin-bottom: 40px;
+}
+.request-item-details{
+  width :80%;
+  margin-top : 40px !important;
+  height:80%;
+  display: flex;
+  flex-direction: column;
+  align-items: space-around;
+  text-align : right;
+  justify-content: space-around;
+  margin: auto;
+}
+.request-item-details-text{
+  font-weight: 600;
+}
+.request-item-details-card{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  border: solid 2px #cecece;
+  border-radius: 5px;
+  margin-bottom: 25px;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+.request-status-description-title{
+  color:#f54e4e;
+  font-weight:600;
+}
+.request-item-details-description{
+  color:#f54e4e;
+  font-weight:400;
+}
+.request-item-details-status{
+  font-weight: 500;
+  font-size: 16px;
+}
+.request-item-details-dates{
+  display: flex;
+  flex-direction: row !important;
+  justify-content: flex-end;
+}
+.request-item-details-entrance-date{
+  margin-left: 40px;
+  line-height: 2;
+}
+.request-item-details-exit-date{
+  line-height: 2;
+
+}
+.request-item-details-card-description{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.request-item-details-card-img{
+  border: solid 1px black;
+  margin-left: 20px;
+}
+.request-item-details-final-cost{
+  color:#f54e4e;
+  font-weight:600;
+}
+
+.request-item-details-extra-bold-texts{
+  font-weight: 600;
+  color: black !important;
+}
+.request-item-details-dates{
+  color: #12b2ce;
+  font-weight: 500;
+}
+
+
+
+
+
+
 .request-item-no-house-main-container{
   border-radius: 6px 6px 6px 6px;
   border: solid;
