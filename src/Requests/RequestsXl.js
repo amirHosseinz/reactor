@@ -1,6 +1,5 @@
 import React from 'react';
 import { Divider } from 'semantic-ui-react';
-import {ListGroup, ListGroupItem} from 'react-bootstrap';
 import './Requests.css';
 
 
@@ -83,51 +82,55 @@ class RequestsXl extends React.Component{
     this.setState({selectedRequest:event.target.id});
   }
 
-  renderRequests(){
-      if(this.state.requestList!==null){
-        var request_list = this.state.requestList.request_list;
-        if(request_list.length>0){
-          this.list = request_list.map((item)=>  {
-            return(
-              <div
-                dir="rtl"
-                className={(this.state.selected===item.id)?"requests-item-selected":"requests-item-not-selected"}
-                key={item.id} onClick={() =>{
-                this.showRequestItemClick(item)
-                }}>
-                  <div>
-                  <ListGroupItem className="requests-scroll-list">
-                    <div className="requests-item-preview">
-                      <img
-                      src={"https://www.trypinn.com/"+item.room.preview}
-                      alt=""
-                      height="78px;" width="80px"/>
-                      <div>
-                        <div className="requests-item-title">
-                          {item.room.title}
-                        </div>
-                      <p className="requests-item-city">{item.room.address}
-                      </p>
+  renderRequestsVersion2(){
+    if(this.state.requestList!==null){
+      var request_list = this.state.requestList.request_list;
+      if(request_list.length>0){
+        this.list = request_list.map((item)=>  {
+          return(
+            <div
+              dir="rtl"
+              className={(this.state.selected===item.id)?"requests-item-selected":"requests-item-not-selected"}
+              key={item.id} onClick={() =>{
+              this.showRequestItemClick(item)
+              }}>
+                <div>
+                  <div className="requests-item-preview">
+                    <img
+                    className="requests-item-image"
+                    src={"https://www.trypinn.com/"+item.room.preview}
+                    alt=""
+                    height="60px;" width="60px"/>
+                    <div>
+                      <div className="requests-item-title">
+                        {item.room.title}
                       </div>
+                    <p className="requests-item-city">
+                      {item.room.address}
+                    </p>
                     </div>
-                  </ListGroupItem>
                   </div>
-            </div>
-            );
-          }
-      );
-        return(
-          <div className="requests-main-container">
-            <ListGroup>{this.list}</ListGroup>
+                </div>
           </div>
-           );
+          );
         }
+      );
+      return(
+        <div className="requests-main-container">
+          <p className="requests-title">
+            درخواست ها
+          </p>
+          <hr className="requests-divider"/>
+          {this.list}
+        </div>
+         );
+      }
     }
   }
   render(){
     return(
       <div>
-        {this.renderRequests()}
+        {this.renderRequestsVersion2()}
       </div>
     );
   }
