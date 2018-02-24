@@ -194,7 +194,6 @@ class SearchBarXs extends React.Component{
   render(){
     return(
       <div>
-        {this.renderLandingXS()}
       </div>
     );
   }

@@ -509,7 +509,7 @@ class HeaderXl extends React.Component{
           <div className="header-logo-side col-md-6">
               <div className='header-logo-and-search'>
                 <div className='header-logo-container'>
-                   <Link to="/"><img src={require('../Images/tripinn_logo.svg')} className="header-logo-image" alt = 'تریپین'></img></Link>
+                   <Link to="/"><img src={require('../Images/tripinn_logo.svg')} className="header-logo-image" alt = 'تریپین'/></Link>
                 </div>
                 <div>
                   <Link className='logolink' to="/"><p className='header-logo-type'>تریپین</p></Link>

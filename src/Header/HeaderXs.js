@@ -1,9 +1,8 @@
 import React from 'react';
 import { slide as Menu} from 'react-burger-menu';
 import customBurgerIcon  from 'react-burger-menu';
-import {Button,Divider} from 'semantic-ui-react';
 import {Modal} from 'react-bootstrap';
-
+import {Link} from 'react-router-dom';
 class HeaderXs extends React.Component{
   handleLoginButtonXs(){
     this.setState({showBurgerMenu:false, showMobileLoginPanel:true});
@@ -26,8 +25,6 @@ class HeaderXs extends React.Component{
       );
     }
   }
-
-
 
   toggleBurgerMenu(){
     this.setState({showBurgerMenu:true});
@@ -84,10 +81,23 @@ class HeaderXs extends React.Component{
   //   );
   // }
           // {this.renderHeaderXs()}
+    renderHeader(){
+      return(
+        <div className="header-main-division-xs">
+            <div className="header-logo-xs">
+              <Link to="/">
+                <img height='50px' width="50px" src={require('../Images/tripinn_logo.svg')} alt = 'تریپین'/>
+              </Link>
+            </div>
+            <div className="header-burger-menu-xs">
+            </div>
+        </div>
+      );
+    }
   render(){
     return(
       <div>
-
+        {this.renderHeader()}
       </div>
     );
   }
