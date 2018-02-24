@@ -87,10 +87,10 @@ class UserProfileXl extends React.Component{
   renderUploadPhotoModal(){
     return(
       <Modal isOpen={this.state.showUploadPhotoModal}
-             onRequestClose={()=>{this.setState({showUploadPhotoModal:false})}}
+             onRequestClose={()=>{this.setState({showUploadPhotoModal:false,profilePicture:"https://www.trypinn.com/" + this.state.profileInfo.user.profile_picture})}}
              style={UserProfileUploadPhotoModal}>
                <div className="user-profile-upload-photo-modal-main-division">
-                <div onClick={()=>{this.setState({showUploadPhotoModal:false})}} className="close-modal-phone-number">
+                <div onClick={()=>{this.setState({showUploadPhotoModal:false,profilePicture:"https://www.trypinn.com/" + this.state.profileInfo.user.profile_picture})}} className="close-modal-phone-number">
                 </div>
                 <p className="user-profile-upload-photo-modal-title">
                   تصویر پروفایل
@@ -98,13 +98,13 @@ class UserProfileXl extends React.Component{
                 <hr className="user-profile-upload-photo-modal-divider"/>
                <Dropzone accept="image/*" className="user-profile-upload-photo-modal-drop-zone" multiple={false} onDrop={(files)=>{this.onDrop(files)}}>
                  <div className="user-profile-upload-photo-modal-image-zone">
-                  <div className="user-profile-upload-photo-modal-image-selection-button">
-                    انتخاب تصویر
-                  </div>
-                  <img className="user-profile-upload-photo-modal-image" src={this.state.profilePicture} alt=""  height="250px" width="250px" />
+                  <img className="user-profile-upload-photo-modal-image" src={this.state.profilePicture} alt=""  height="250px" width="250px"/>
+                    <div className="user-profile-upload-photo-modal-image-selection-button">
+                      انتخاب تصویر
+                    </div>
                  </div>
                </Dropzone>
-               <p className="user-profile-upload-photo-modal-delete-selection">
+               <p onClick={()=>{this.deleteProfilePicture()}} className="user-profile-upload-photo-modal-delete-selection">
                 حذف تصویر
                </p>
                <div onClick={()=>{this.handleChangeProfilePicture()}}className="user-profile-upload-photo-modal-save-selection">
@@ -115,6 +115,9 @@ class UserProfileXl extends React.Component{
     );
   }
 
+  deleteProfilePicture(){
+
+  }
   handleChangeProfilePicture(){
     var fd = new FormData();
     fd.append('profile_picture' , this.state.profilePictureFile);

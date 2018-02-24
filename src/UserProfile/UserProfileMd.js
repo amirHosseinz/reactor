@@ -79,13 +79,67 @@ class UserProfileMd extends React.Component{
     }
   }
 
+  onDrop(files){
+    if(files.length>0){
+      this.setState({profilePicture:files[0].preview,profilePictureFile:files[0]});
+    }
+  }
+
   renderUploadPhotoModal(){
+    if(this.state.profileInfo!==null)
+      console.log(this.state.profileInfo.user);
     return(
       <Modal isOpen={this.state.showUploadPhotoModal}
-             onRequestClose={()=>{this.setState({showUploadPhotoModal:false})}}
+             onRequestClose={()=>{this.setState({showUploadPhotoModal:false,profilePicture:"https://www.trypinn.com/" + this.state.profileInfo.user.profile_picture})}}
              style={UserProfileUploadPhotoModal}>
+               <div className="user-profile-upload-photo-modal-main-division">
+                <div onClick={()=>{this.setState({showUploadPhotoModal:false,profilePicture:"https://www.trypinn.com/" + this.state.profileInfo.user.profile_picture})}} className="close-modal-phone-number">
+                </div>
+                <p className="user-profile-upload-photo-modal-title">
+                  تصویر پروفایل
+                </p>
+                <hr className="user-profile-upload-photo-modal-divider"/>
+               <Dropzone accept="image/*" className="user-profile-upload-photo-modal-drop-zone" multiple={false} onDrop={(files)=>{this.onDrop(files)}}>
+                 <div className="user-profile-upload-photo-modal-image-zone">
+                  <img className="user-profile-upload-photo-modal-image" src={this.state.profilePicture} alt=""  height="250px" width="250px"/>
+                    <div className="user-profile-upload-photo-modal-image-selection-button">
+                      انتخاب تصویر
+                    </div>
+                 </div>
+               </Dropzone>
+               <p onClick={()=>{this.deleteProfilePicture()}} className="user-profile-upload-photo-modal-delete-selection">
+                حذف تصویر
+               </p>
+               <div onClick={()=>{this.handleChangeProfilePicture()}}className="user-profile-upload-photo-modal-save-selection">
+                ذخیره
+               </div>
+               </div>
       </Modal>
     );
+  }
+
+  deleteProfilePicture(){
+
+  }
+  handleChangeProfilePicture(){
+    var fd = new FormData();
+    fd.append('profile_picture' , this.state.profilePictureFile);
+    var request = new Request('https://www.trypinn.com/auth/api/user/edit/',{
+      method: 'POST',
+      body: fd,
+      headers: new Headers({'Accept': 'application/json',
+      'Authorization': 'Token '+this.state.token,})
+    });
+   fetch(request)
+   .then((response) => {
+     return response.json();
+   })
+   .then((response) => {
+     console.log(response);
+     if(response.successful){
+       window.location.reload();
+     }
+   });
   }
 
   ChangeImgHintState(){

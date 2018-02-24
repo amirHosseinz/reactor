@@ -277,17 +277,20 @@
   margin:auto;
   width : 250px;
   height : 250px;
-  /* position:relative; */
-  /* margin-top : 100px; */
   border-radius : 50%;
 }
 .user-profile-upload-photo-modal-image-zone{
+  display: flex;
+  display : -webkit-flex;
+  justify-content: center;
+  align-items: center;
   border : solid 2px #d9d9d9;
   border-radius : 50%;
 }
 .user-profile-upload-photo-modal-image{
   border-radius : 50%;
 }
+
 .user-profile-upload-photo-modal-image-selection-button{
   position:absolute;
   display: flex;
@@ -299,8 +302,6 @@
   width : 120px;
   height : 30px;
   background-color: #595959;
-  margin-left : 64px;
-  margin-top : 116px;
   color : white;
   border : none;
   border-radius : 25px;
