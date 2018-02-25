@@ -137,6 +137,7 @@ class UserProfileMd extends React.Component{
    .then((response) => {
      console.log(response);
      if(response.successful){
+       localStorage['user-profile-picture'] = response.user.profile_picture; 
        window.location.reload();
      }
    });
