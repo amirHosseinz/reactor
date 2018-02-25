@@ -201,6 +201,7 @@ class HeaderMD extends React.Component{
    const suggestions = this.state.suggestions;
    if(window.location.pathname!=='/'){
      const inputProps = {
+     autoFocus:true,
      placeholder: 'جستجوی مقصد...',
      value:this.state.city,
      onChange:this.onChangeSearchBarValue
@@ -411,18 +412,18 @@ class HeaderMD extends React.Component{
     if (localStorage['default-panel']!=='trip'){
       localStorage['default-panel']='trip';
     }
-    this.props.history.replace('/dashboard/trip');
+    this.props.history.push('/dashboard/trip');
   }
   handleRequestClick(){
 
     if (localStorage['default-panel']!=='request'){
       localStorage['default-panel']='request';
     }
-    this.props.history.replace('/dashboard/request');
+    this.props.history.push('/dashboard/request');
   }
 
   handleUserProfileClick(){
-    this.props.history.replace('/userprofile');
+    this.props.history.push('/userprofile');
   }
   renderRequestButton(){
     if(localStorage['isLoggedIn']==='true'){

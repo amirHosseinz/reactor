@@ -1,6 +1,4 @@
 import React from 'react';
-import {ListGroup, ListGroupItem} from 'react-bootstrap';
-import { Image } from 'semantic-ui-react';
 import './Trips.css';
 
 
@@ -67,29 +65,29 @@ class TripsXl extends React.Component{
                   key={item.id} onClick={() =>{
                   this.showTripItemClick(item)
             }}>
-              <div>
-                  <ListGroupItem className="trips-scroll-list">
-                    <div className="trips-item-preview">
-                      <img
-                      src={"https://www.trypinn.com/"+item.room.preview}
-                      alt=""
-                      height="78px;" width="80px"/>
-                      <div>
-                        <div className="trips-item-title">
-                          {item.room.title}
-                        </div>
-                      <p className="trips-item-city"> {item.room.address} </p>
-                      </div>
+                <div className="trips-item-preview">
+                  <img
+                  className="trips-item-image"
+                  src={"https://www.trypinn.com/"+item.room.preview}
+                  alt=""
+                  height="60px;" width="60px"/>
+                  <div>
+                    <div className="trips-item-title">
+                      {item.room.title}
                     </div>
-                  </ListGroupItem>
+                  <p className="trips-item-city"> {item.room.address} </p>
+                  </div>
+                </div>
               </div>
-
-            </div>
           );
         });
         return(
           <div className="trips-main-container">
-            <ListGroup>{list}</ListGroup>
+            <p className="trips-title">
+              سفر‌ها
+            </p>
+            <hr className="trips-divider"/>
+            {list}
           </div>
         );
       }
