@@ -118,7 +118,7 @@ class RequestsXl extends React.Component{
       return(
         <div className="requests-main-container">
           <p className="requests-title">
-            درخواست ها
+              درخواست‌ها
           </p>
           <hr className="requests-divider"/>
           {this.list}

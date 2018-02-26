@@ -201,6 +201,7 @@ class HeaderMD extends React.Component{
    const suggestions = this.state.suggestions;
    if(window.location.pathname!=='/'){
      const inputProps = {
+     autoFocus:true,
      placeholder: 'جستجوی مقصد...',
      value:this.state.city,
      onChange:this.onChangeSearchBarValue
@@ -367,9 +368,11 @@ class HeaderMD extends React.Component{
           <div>
             <Dropdown className="header-drop-down-texts" icon='dropdown' dir="rtl" floating={false} text={ ' سلام ' + ' ' +  localStorage['user-first-name'] } >
              <Dropdown.Menu>
-                <div className="drp-down-menu-cont">
+                <div  className="drp-down-menu-cont">
                   <div className="profile-card-up row-reverse">
-                    {this.renderUserPhoto()}
+                    <div onClick={(event)=>{event.stopPropagation()}}>
+                      {this.renderUserPhoto()}
+                    </div>
                     <div>
                     <p className="profile-card-user-name" onClick={this.handleUserProfileClick.bind(this)}>{localStorage['user-first-name'] + ' ' + localStorage['user-last-name']}</p>
                     <p className="profile-card-user-profile" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
@@ -411,18 +414,18 @@ class HeaderMD extends React.Component{
     if (localStorage['default-panel']!=='trip'){
       localStorage['default-panel']='trip';
     }
-    this.props.history.replace('/dashboard/trip');
+    this.props.history.push('/dashboard/trip');
   }
   handleRequestClick(){
 
     if (localStorage['default-panel']!=='request'){
       localStorage['default-panel']='request';
     }
-    this.props.history.replace('/dashboard/request');
+    this.props.history.push('/dashboard/request');
   }
 
   handleUserProfileClick(){
-    this.props.history.replace('/userprofile');
+    this.props.history.push('/userprofile');
   }
   renderRequestButton(){
     if(localStorage['isLoggedIn']==='true'){

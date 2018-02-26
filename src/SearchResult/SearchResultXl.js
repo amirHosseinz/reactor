@@ -68,26 +68,26 @@ class SearchResultXl extends React.Component{
     this.getDataFromServer();
     });
   }
-  getDataFromServer(){
-    var request = new Request('https://www.trypinn.com/api/search/',{
-      method: 'POST',
-      body: JSON.stringify({
-        platform: 'web',
-        location: this.state.searchParams.location,
-        start_date: (this.state.searchParams.start_date == null) ? null : this.state.searchParams.start_date.toISOString(),
-        end_date: (this.state.searchParams.end_date == null) ? null : this.state.searchParams.end_date.toISOString(),
-        capacity: this.state.searchParams.capacity,
-    }),
-      headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
-      'Authorization': 'Token '+this.state.token,})
-    });
-   fetch(request)
-   .then((response) => {
-     return response.json();
-   })
-   .then((homeData) => {
-     this.renderData(homeData);
+  getDataFromServer() {
+   var request = new Request('https://www.trypinn.com/api/v1/search/',{
+     method: 'POST',
+     body: JSON.stringify({
+       platform: 'web',
+       location: this.state.searchParams.location,
+       start_date: (this.state.searchParams.start_date == null) ? null : this.state.searchParams.start_date.toISOString(),
+       end_date: (this.state.searchParams.end_date == null) ? null : this.state.searchParams.end_date.toISOString(),
+       capacity: this.state.searchParams.capacity,
+   }),
+     headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+     'Authorization': 'Token '+this.state.token,})
    });
+  fetch(request)
+  .then((response) => {
+    return response.json();
+  })
+  .then((homeData) => {
+    this.renderData(homeData);
+  });
   }
 
   renderData(houseData) {

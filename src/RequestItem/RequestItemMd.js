@@ -354,38 +354,47 @@ renderDeleteButton(){
    return (<div></div>);
 }
 }
+
+renderRequestCardVersion2(){
+  return(
+  <div className="request-card-container">
+    <div className="request-item-details">
+      <p className="request-item-details-status">وضعیت درخواست رزرو<span> : </span>  <span className='request-item-details-text'>{this.getRequestStatus()}</span></p>
+      <p className='request-status-description-title'> <span>:</span> توضیحات </p>
+      <p className="request-item-details-description">{this.getRequestStatusDiscription()} </p>
+      <div className='request-item-details-card'>
+        <div className='request-item-details-card-description'>
+          <p className='request-item-details-card-home-name'> <span className='request-item-details-text'>نام اقامتگاه : </span> <a style={{fontWeight:'500', color:'#12b2ce'}} href={"/rooms/"+ this.state.request.room.id} target="_blank">{this.state.request.room.title}</a></p>
+          <p className='request-item-details-card-host-name'> به میزبانی  {this.state.request.room.owner.first_name} {this.state.request.room.owner.last_name}</p>
+        </div>
+        <img className='request-item-details-card-img' src={"https://www.trypinn.com"+this.state.request.room.preview} alt=""height="90px"/>
+      </div>
+      <div className='request-item-details-dates'>
+      <div className='request-item-details-exit-date'><span>:</span>تاریخ خروج <p className='request-item-details-extra-bold-texts'>{englishToPersianDigits(moment(this.state.request.end_date).format('jYYYY/jM/jD'))}</p></div>
+      <div className='request-item-details-entrance-date' ><span>:</span>تاریخ ورود<p className='request-item-details-extra-bold-texts'> {englishToPersianDigits(moment(this.state.request.start_date).format('jYYYY/jM/jD'))} </p></div>
+      </div>
+      <Divider></Divider>
+        <div className='request-item-details-extra'>
+          <p >شهر مقصد: <span className='request-item-details-extra-bold-texts'>{this.state.request.room.city}</span>  </p>
+          <p> رزرو کننده: <span className='request-item-details-extra-bold-texts'>{this.state.request.guest_person.last_name}</span> </p>
+          <p>تعداد میهمان: <span className='request-item-details-extra-bold-texts'>{englishToPersianDigits(this.state.request.number_of_guests)} نفر </span></p>
+          <p className='request-item-details-final-cost'>جمع هزینه ها: {englishToPersianDigits(this.state.request.total_price)} تومان</p>
+        </div>
+        </div>
+        <div className='relevant-button'>
+          {this.getRelevantButton()}
+          {this.renderCancelButton()}
+          {this.renderDeleteButton()}
+        </div>
+  </div>
+  );
+}
   renderRequestDetail(){
     if (this.state.request!==null){
       if(this.state.requestStatus!=='no-house'){
         return (
-          <div className="request-item-no-house-main-container-md">
-          <div className='request-status'>
-            <p className="request-item-request-status-h1"> :وضعیت درخواست رزرو </p>
-            <p className="request-item-request-status-h2"> {this.getRequestStatus()} </p>
-            <p className="request-item-status-descriptions">{this.getRequestStatusDiscription()} </p>
-          </div>
-          <div className="request-item-detail">
-            <Divider/>
-            <div className='house-preview-linked-to-house-detail' dir="rtl">
-              <p> نام اقامتگاه : <a style={{color:'#12b2ce'}} href={"/rooms/"+ this.state.request.room.id} target="_blank">{this.state.request.room.title}</a> </p>
-              <p>شهر مقصد: {this.state.request.room.city}  </p>
-              <p> به میزبانی  {this.state.request.room.owner.first_name} {this.state.request.room.owner.last_name}</p>
-              <p> رزرو کننده: {this.state.request.guest_person.last_name} </p>
-              <p>تعداد میهمان: {englishToPersianDigits(this.state.request.number_of_guests)} نفر</p>
-              <p>تاریخ ورود: {englishToPersianDigits(moment(this.state.request.start_date).format('jYYYY/jM/jD'))}</p>
-              <p>تاریخ خروج:{englishToPersianDigits(moment(this.state.request.end_date).format('jYYYY/jM/jD'))} </p>
-            </div>
-            <Divider/>
-            <div className='final-details'>
-              <p>جمع هزینه ها: {englishToPersianDigits(this.state.request.total_price)} تومان</p>
-            </div>
-          </div>
-          <div className='relevant-button'>
-            {this.getRelevantButton()}
-            {this.renderCancelButton()}
-            {this.renderDeleteButton()}
-
-          </div>
+          <div>
+          {this.renderRequestCardVersion2()}
           </div>
         );
       }

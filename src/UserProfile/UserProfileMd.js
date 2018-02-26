@@ -107,7 +107,7 @@ class UserProfileMd extends React.Component{
                     </div>
                  </div>
                </Dropzone>
-               <p onClick={()=>{this.deleteProfilePicture()}} className="user-profile-upload-photo-modal-delete-selection">
+               <p onClick={()=>{this.setState({profilePicture:null})}} className="user-profile-upload-photo-modal-delete-selection">
                 حذف تصویر
                </p>
                <div onClick={()=>{this.handleChangeProfilePicture()}}className="user-profile-upload-photo-modal-save-selection">
@@ -137,6 +137,7 @@ class UserProfileMd extends React.Component{
    .then((response) => {
      console.log(response);
      if(response.successful){
+       localStorage['user-profile-picture'] = response.user.profile_picture;
        window.location.reload();
      }
    });
@@ -274,6 +275,12 @@ class UserProfileMd extends React.Component{
   }
 
 
+  // <div className="user-profile-in-details-link">
+  //  پیام‌ها
+  // </div>
+  // <div className="user-profile-in-details-link">
+  //   مکان‌های مورد علاقه
+  // </div>
   renderUserProfileDetailsSection(){
     if(this.state.profileInfo!==null){
       return(
@@ -282,9 +289,8 @@ class UserProfileMd extends React.Component{
           <div className="user-profile-user-name">
           </div>
           <hr className="user-profile-in-details-divider"/>
-          <div className="user-profile-in-details-link">
-           پیام‌ها
-          </div>
+
+
           <Link to="/dashboard/request">
           <div className="user-profile-in-details-link">
              مشاهده درخواست‌ها
@@ -295,9 +301,8 @@ class UserProfileMd extends React.Component{
               مشاهده سفر‌ها
             </div>
           </Link>
-          <div className="user-profile-in-details-link">
-            مکان‌های مورد علاقه
-          </div>
+
+
         </div>
       );
     }
@@ -350,7 +355,7 @@ class UserProfileMd extends React.Component{
         <div className="user-profile-edit-get-data-zone">
           <div className="user-profile-edit-input-paragraph">
             <span className="user-profile-edit-input-paragraph-title">
-              کُد ملی
+          کد ملی
             </span>
             <span> </span>
             <span className="user-profile-edit-input-paragraph-description">

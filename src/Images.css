@@ -2210,10 +2210,9 @@ margin-top: 20px;
   display: -webkit-flex; /* Safari */
   -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
   display: flex;
-  margin:auto !important;
+  justify-content: center;
   flex-direction: row-reverse;
   text-align: center !important;
-  margin-top: 50px;
 
 }
 
@@ -2258,30 +2257,7 @@ margin-top: 20px;
   margin-top: 8px;
 
 }
-.main-amanities-xs{
-  margin: auto;
-}
-.map-holder-xs{
-  margin-bottom: 40px !important;
-}
-.amanities-div-xs{
-    text-align: center;
-}
-.profile-container-xs{
-  margin-top:55px;
-}
-.edit-profile-xs{
-  margin-top: -180px;
-  margin-bottom: 30px;
 
-}
-.edit-profile-xs-margined{
-  width: 84%;
-  margin: auto;
-}
-.edit-prof-xs-item{
-  margin-bottom: 20px;
-}
 
 .right-align{
   float: right !important;
@@ -3101,9 +3077,9 @@ text-align: center;
 
 
 .request-item-cancel-button{
-  width:25%;
+  width:150px;
   margin-top: 25px !important;
-  margin: auto;
+  /* margin: auto; */
   border: solid;
   border-color: #f54e4e;
   border-width: 2px;
@@ -3115,9 +3091,9 @@ text-align: center;
   color:#f54e4e;
 }
 .request-item-cancel-button:hover{
-  width:25%;
+  width:150px;
   margin-top: 25px !important;
-  margin:auto;
+  /* margin:auto; */
   border: solid;
   border-width: 2px;
   border-color: #f54e4e;
@@ -3131,13 +3107,12 @@ text-align: center;
 }
 
 .request-item-payment-button{
-  background-color: #83daeb;
-  width:20%;
-  margin: auto;
-  margin-left: -200px;
+  background-color: #12b2ce;
+  width:150px;
+  margin-left: 10px;
   margin-top: 25px !important;
   border: solid;
-  border-color:#83daeb;
+  border-color:#12b2ce;
   border-width: 2px;
   border-radius: 500px;
   padding-left: 8px;
@@ -3149,9 +3124,8 @@ text-align: center;
 
 .request-item-payment-button:hover{
   background-color: #008fb3;
-  width:20%;
-  margin: auto;
-  margin-left: -200px;
+  width:150px;
+  margin-left: 10px;
   margin-top: 25px !important;
   border: solid;
   border-color:#008fb3;

@@ -190,44 +190,47 @@ class TripItemMd extends React.Component{
       <div className="clickable-p request-item-cancel-button" onClick={this.handleDeleteTripButton.bind(this)}> حذف سفر</div>
     );
   }
+
+  renderTripCardVersion2(){
+    return(
+      <div className="request-card-container">
+        <div className="request-item-details">
+          <p className="request-item-details-status"> وضعیت سفر<span> : </span>  <span className='request-item-details-text'>{this.getTripStatus()}</span></p>
+          <p className='request-status-description-title'> <span>:</span> توضیحات </p>
+          <p className="request-item-details-description">{this.getTripStatusDescription()} </p>
+          <div className='request-item-details-card'>
+            <div className='request-item-details-card-description'>
+              <p className='request-item-details-card-home-name'> <span className='request-item-details-text'>نام اقامتگاه : </span> <a style={{fontWeight:'500', color:'#12b2ce'}} href={"/rooms/"+ this.state.trip.room.id} target="_blank">{this.state.trip.room.title}</a></p>
+              <p className='request-item-details-card-host-name'> به میزبانی  {this.state.trip.room.owner.first_name} {this.state.trip.room.owner.last_name}</p>
+            </div>
+            <img className='request-item-details-card-img' src={"https://www.trypinn.com"+this.state.trip.room.preview} alt=""height="90px"/>
+          </div>
+          <div className='request-item-details-dates'>
+          <div className='request-item-details-exit-date'><span>:</span>تاریخ خروج <p className='request-item-details-extra-bold-texts'>{englishToPersianDigits(moment(this.state.trip.end_date).format('jYYYY/jM/jD'))}</p></div>
+          <div className='request-item-details-entrance-date' ><span>:</span>تاریخ ورود<p className='request-item-details-extra-bold-texts'> {englishToPersianDigits(moment(this.state.trip.start_date).format('jYYYY/jM/jD'))} </p></div>
+          </div>
+          <Divider></Divider>
+            <div className='request-item-details-extra'>
+              <p >شهر مقصد: <span className='request-item-details-extra-bold-texts'>{this.state.trip.room.city}</span>  </p>
+              <p> رزرو کننده: <span className='request-item-details-extra-bold-texts'>{this.state.trip.guest_person.last_name}</span> </p>
+              <p>تعداد میهمان: <span className='request-item-details-extra-bold-texts'>{englishToPersianDigits(this.state.trip.number_of_guests)} نفر </span></p>
+              <p className='request-item-details-final-cost'>جمع هزینه ها: {englishToPersianDigits(this.state.trip.total_price)} تومان</p>
+            </div>
+            </div>
+            <div className='relevant-button'>
+              {this.getRelevantButton()}
+            </div>
+      </div>
+    );
+  }
+
   renderTripDetail(){
     if (this.state.trip!=null && this.state.tripStatus!=null){
       if(this.state.tripStatus!=='no-house')
       {
         return (
-            <div className="trip-item-no-house-main-container-md">
-            <div className='request-status'>
-              <p className="reserve-status-h1"> وضعیت سفر   </p>
-              <p className="reserve-status-h2"> {this.getTripStatus()} </p>
-              <p className="reserve-status-descriptions">{this.getTripStatusDescription()}</p>
-
-            </div>
-            <div className="request-detail-userpanel">
-              <Divider/>
-              <div className='house-preview-linked-to-house-detail' dir="rtl">
-                <p> نام اقامتگاه :<a style={{color:'#12b2ce'}} href={"/rooms/"+this.state.trip.room.id} target="_blank">{this.state.trip.room.title}</a>  </p>
-                <p>شهر مقصد: {this.state.trip.room.city}  </p>
-                <p> به میزبانی  {this.state.trip.room.owner.first_name} {this.state.trip.room.owner.last_name}</p>
-                <p> رزرو کننده: {this.state.trip.guest_person.last_name} </p>
-                <p>تعداد میهمان: {englishToPersianDigits(this.state.trip.number_of_guests)} </p>
-
-
-                <p> آدرس اقامت‌گاه: {this.state.trip.room.address} </p>
-
-                <p>تاریخ ورود: {moment(this.state.trip.start_date).format('jYYYY/jM/jD')}</p>
-                <p>تاریخ خروج:{moment(this.state.trip.end_date).format('jYYYY/jM/jD')} </p>
-              </div>
-              <div className='request-details'>
-              </div>
-              <Divider/>
-              <div className='final-details'>
-                <p> هزینه پرداخت شده: {englishToPersianDigits(this.state.trip.total_price)} </p>
-              </div>
-            </div>
-
-            <div className='relevant-button'>
-              {this.getRelevantButton()}
-            </div>
+          <div>
+            {this.renderTripCardVersion2()}
           </div>
         );
       }

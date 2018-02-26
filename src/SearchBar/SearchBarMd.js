@@ -159,6 +159,7 @@ class SearchBarMD extends React.Component{
     const value = this.state.city;
     const suggestions = this.state.suggestions;
     const inputProps = {
+    autoFocus:true,
     placeholder: 'مثلا نوشهر',
     value:this.state.city,
     onChange:this.onChangeSearchBarValue

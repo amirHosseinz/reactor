@@ -68,10 +68,10 @@ class SearchBarXl extends React.Component{
 
    handleClick(){
        if(this.state.city===''){
-         this.props.history.replace("/search/هر جا");
+         this.props.history.push("/search/هر جا");
        }
        else{
-          this.props.history.replace("/search/" + this.state.city);
+          this.props.history.push("/search/" + this.state.city);
        }
      }
    getCityListFromServer(){
@@ -159,6 +159,7 @@ class SearchBarXl extends React.Component{
     const value = this.state.city;
     const suggestions = this.state.suggestions;
     const inputProps = {
+    autoFocus:true,
     placeholder: 'مثلا نوشهر',
     value:this.state.city,
     onChange:this.onChangeSearchBarValue
