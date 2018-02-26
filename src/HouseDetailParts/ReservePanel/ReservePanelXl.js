@@ -42,27 +42,26 @@ class ReservePanelXl extends React.Component{
     if(this.state.reserveData.ordinary_price!==0){
       return(
         <div className="pre-bill-price-night-content row-reverse" dir="rtl">
-          <p className="pre-bill-price-night-sentence">هزینه شب های عادی
+          <p className="pre-bill-price-night-sentence">هزینه شب‌های عادی
             ({englishToPersianDigits(this.state.reserveData.ordinary_duration)} شب - {englishToPersianDigits(this.state.reserveData.number_of_guests)} نفر ) :
           </p>
           <p className="pre-bill-price-night-value">
-           {englishToPersianDigits(this.state.reserveData.ordinary_price)}
+           {parsePrice3digits(englishToPersianDigits(this.state.reserveData.ordinary_price))}
              تومان
           </p>
         </div>
       );
     }
   }
-
   renderWeekendPriceForPerPerson(){
     if(this.state.reserveData.weekend_price!==0){
       return(
         <div className="pre-bill-price-night-content row-reverse" dir="rtl">
-          <p className="pre-bill-price-night-sentence">هزینه شب های آخر هفته
+          <p className="pre-bill-price-night-sentence">هزینه شب‌های آخر هفته
             ({englishToPersianDigits(this.state.reserveData.weekend_duration)} شب - {englishToPersianDigits(this.state.reserveData.number_of_guests)} نفر ) :
           </p>
           <p className="pre-bill-price-night-value">
-             {englishToPersianDigits(this.state.reserveData.weekend_price)}
+             {englishToPersianDigits(parsePrice3digits(this.state.reserveData.weekend_price))}
                تومان
           </p>
         </div>
@@ -73,27 +72,41 @@ class ReservePanelXl extends React.Component{
     if(this.state.reserveData.special_price!==0){
       return(
         <div className="pre-bill-price-night-content row-reverse" dir="rtl">
-          <p className="pre-bill-price-night-sentence">هزینه شب های خاص
+          <p className="pre-bill-price-night-sentence">هزینه شب‌های خاص
             ({englishToPersianDigits(this.state.reserveData.special_duration)}شب - {englishToPersianDigits(this.state.reserveData.number_of_guests)} نفر) :
           </p>
           <p className="pre-bill-price-night-value">
-           {englishToPersianDigits(this.state.reserveData.special_price)}
+           {englishToPersianDigits(parsePrice3digits(this.state.reserveData.special_price))}
              تومان
           </p>
         </div>
       );
     }
   }
-
+  renderNowRuzForPerPerson(){
+    if(this.state.reserveData.nowruz_price!==0){
+      return(
+        <div className="pre-bill-price-night-content row-reverse" dir="rtl">
+          <p className="pre-bill-price-night-sentence">هزینه شب‌های نوروز
+            ({englishToPersianDigits(this.state.reserveData.nowruz_duration)}شب - {englishToPersianDigits(this.state.reserveData.number_of_guests)} نفر) :
+          </p>
+          <p className="pre-bill-price-night-value">
+           {englishToPersianDigits(parsePrice3digits(this.state.reserveData.nowruz_price))}
+             تومان
+          </p>
+        </div>
+      );
+    }
+  }
   renderOrdinaryPriceForPerNight(){
     if(this.state.reserveData.ordinary_price!==0){
       return(
         <div className="pre-bill-price-night-content row-reverse" dir="rtl">
-          <p className="pre-bill-price-night-sentence">هزینه شب های عادی
+          <p className="pre-bill-price-night-sentence">هزینه شب‌های عادی
              ( {englishToPersianDigits(this.state.reserveData.ordinary_duration)} شب ) :
           </p>
           <p className="pre-bill-price-night-value">
-             {englishToPersianDigits(this.state.reserveData.ordinary_price)}
+             {englishToPersianDigits(parsePrice3digits(this.state.reserveData.ordinary_price))}
                تومان
           </p>
         </div>
@@ -105,11 +118,11 @@ class ReservePanelXl extends React.Component{
     if(this.state.reserveData.weekend_price!==0){
       return(
         <div className="pre-bill-price-night-content row-reverse" dir="rtl">
-          <p className="pre-bill-price-night-sentence">هزینه شب های آخر هفته
+          <p className="pre-bill-price-night-sentence">هزینه شب‌های آخر هفته
             (  {englishToPersianDigits(this.state.reserveData.weekend_duration)} شب ) :
           </p>
           <p className="pre-bill-price-night-value">
-           {englishToPersianDigits(this.state.reserveData.weekend_price)}
+           {englishToPersianDigits(parsePrice3digits(this.state.reserveData.weekend_price))}
              تومان
           </p>
         </div>
@@ -120,11 +133,26 @@ class ReservePanelXl extends React.Component{
     if(this.state.reserveData.special_price!==0){
       return(
         <div className="pre-bill-price-night-content row-reverse" dir="rtl">
-          <p className="pre-bill-price-night-sentence">هزینه شب های خاص
+          <p className="pre-bill-price-night-sentence">هزینه شب‌های خاص
           (  {englishToPersianDigits(this.state.reserveData.special_duration)} شب ) :
           </p>
           <p className="pre-bill-price-night-value">
-           {englishToPersianDigits(this.state.reserveData.special_price)}
+           {englishToPersianDigits(parsePrice3digits(this.state.reserveData.special_price))}
+             تومان
+          </p>
+        </div>
+      );
+    }
+  }
+  renderNowruzPriceForPerNight(){
+    if(this.state.reserveData.nowruz_price!==0){
+      return(
+        <div className="pre-bill-price-night-content row-reverse" dir="rtl">
+          <p className="pre-bill-price-night-sentence">هزینه شب‌های نوروز
+          (  {englishToPersianDigits(this.state.reserveData.nowruz_duration)} شب ) :
+          </p>
+          <p className="pre-bill-price-night-value">
+           {englishToPersianDigits(parsePrice3digits(this.state.reserveData.nowruz_price))}
              تومان
           </p>
         </div>
@@ -138,6 +166,7 @@ class ReservePanelXl extends React.Component{
           {this.renderOrdinaryPriceForPerNight()}
           {this.renderWeekendPriceForPerNight()}
           {this.renderSpecialPriceForPerNight()}
+          {this.renderNowruzPriceForPerNight()}
         </div>
       );
     }
@@ -147,6 +176,7 @@ class ReservePanelXl extends React.Component{
           {this.renderOrdinaryPriceForPerPerson()}
           {this.renderWeekendPriceForPerPerson()}
           {this.renderSpecialPriceForPerPerson()}
+          {this.renderNowRuzForPerPerson()}
         </div>
       );
     }
@@ -154,9 +184,9 @@ class ReservePanelXl extends React.Component{
   renderTotalPrice(){
     return(
       <div className="pre-bill-price-night-content row-reverse" dir="rtl">
-      <p className="pre-bill-price-night-sentence"> جمع هزینه ها :
+      <p className="pre-bill-price-night-sentence"> جمع هزینه‌ها
       </p>
-      <p className="pre-bill-price-night-value"> {englishToPersianDigits(this.state.reserveData.total_price)}
+      <p className="pre-bill-price-night-value"> {englishToPersianDigits(parsePrice3digits(this.state.reserveData.total_price))}
       تومان
       </p>
       </div>
@@ -201,6 +231,8 @@ class ReservePanelXl extends React.Component{
      return response.json();
    })
    .then((reserve_data) => {
+     console.log('HHHHHHHHHhhhhhhhhhhhhhhhhhoooy');
+     console.log(reserve_data);
      this.setState({totalPrice:reserve_data.total_price ,reserveData:reserve_data,showPreBill:true});
    });
  }
@@ -329,7 +361,7 @@ class ReservePanelXl extends React.Component{
                     <p className="row-reverse">
                       <span className="pre-bill-date-item">  روز اقامت</span>
                       <span>
-                      {englishToPersianDigits(this.state.reserveData.ordinary_duration + this.state.reserveData.weekend_duration +this.state.reserveData.special_duration)}
+                      {englishToPersianDigits(this.state.reserveData.ordinary_duration + this.state.reserveData.weekend_duration +this.state.reserveData.special_duration +this.state.reserveData.nowruz_duration)}
                        </span>
                     </p>
                   </div>
@@ -354,7 +386,7 @@ class ReservePanelXl extends React.Component{
                   مبلغ قابل پرداخت :
                 </p>
                 <p className="pre-bill-adding-up-value">
-                  {englishToPersianDigits(this.state.totalPrice)}
+                  {englishToPersianDigits(parsePrice3digits(this.state.totalPrice))}
                   تومان
                 </p>
                 <div className="pre-bill-margin-optimizer-for-button">
