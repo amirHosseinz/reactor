@@ -280,6 +280,7 @@ class ReservePanelXl extends React.Component{
   }
   renderPreBill(){
     if(this.state.reserveData!==''){
+      console.log(this.props.homeData);
       return(
         <Modal isOpen={this.state.showPreBill}
           style={reserveModalStyle}
@@ -304,7 +305,7 @@ class ReservePanelXl extends React.Component{
                       <p> {this.props.homeData.title}</p>
                     </div>
                     <div className="pre-bill-house-address">
-                      <p>{this.props.homeData.city}، {this.props.homeData.district}</p>
+                      <p>{this.props.homeData.address}</p>
                     </div>
                   </div>
                 </div>

@@ -200,7 +200,7 @@ class TripItemMd extends React.Component{
           <p className="request-item-details-description">{this.getTripStatusDescription()} </p>
           <div className='request-item-details-card'>
             <div className='request-item-details-card-description'>
-              <p className='request-item-details-card-home-name'> <span className='request-item-details-text'>نام اقامتگاه : </span> <a style={{color:'#12b2ce'}} href={"/rooms/"+ this.state.trip.room.id} target="_blank">{this.state.trip.room.title}</a></p>
+              <p className='request-item-details-card-home-name'> <span className='request-item-details-text'>نام اقامتگاه : </span> <a style={{fontWeight:'500', color:'#12b2ce'}} href={"/rooms/"+ this.state.trip.room.id} target="_blank">{this.state.trip.room.title}</a></p>
               <p className='request-item-details-card-host-name'> به میزبانی  {this.state.trip.room.owner.first_name} {this.state.trip.room.owner.last_name}</p>
             </div>
             <img className='request-item-details-card-img' src={"https://www.trypinn.com"+this.state.trip.room.preview} alt=""height="90px"/>
@@ -223,7 +223,7 @@ class TripItemMd extends React.Component{
       </div>
     );
   }
-  
+
   renderTripDetail(){
     if (this.state.trip!=null && this.state.tripStatus!=null){
       if(this.state.tripStatus!=='no-house')

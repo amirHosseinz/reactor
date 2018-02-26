@@ -183,6 +183,7 @@ class LoginMd extends React.Component{
       this.setUserNameInHeader();
     }
   }
+  
   handleLoginResponse(loginResponse){
     if(loginResponse.is_successful){
       localStorage['isLoggedIn']= 'true';
@@ -640,7 +641,7 @@ class LoginMd extends React.Component{
   }
 
   getResponseForChangePassword(){
-    console.log(this.state.reqParamsForChangePassword);
+    // console.log(this.state.reqParamsForChangePassword);
     var request = new Request('https://www.trypinn.com/auth/api/user/edit/verify_forgot_password/', {
       method: 'POST',
       body: JSON.stringify({

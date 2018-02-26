@@ -11,43 +11,6 @@ import '../tools/calendar2/lib/css/_datepicker.css';
 import {DateRangePicker} from '../tools/calendar2';
 import Sticky from 'react-sticky';
 
-const listOfCity = [
-  'اصفهان',
-  'نوشهر',
-  'گیلان',
-  'رامسر',
-  'کیش',
-  'مازندران',
-  'بابلسر',
-  'فریدون‌کنار',
-  'محمودآباد',
-  'عباس‌آباد',
-  'شاندیز',
-  'خراسان رضوی',
-  'بندر انزلی',
-  'کاشان',
-  'باغ‌بهادران',
-  'قلعه‌رودخان',
-  'مشهد',
-  'چمخاله',
-  'فومن',
-  'رضوان‌شهر',
-  'رودسر',
-  'آستارا',
-  'زیباکنار',
-  'سرخ‌رود',
-  'رویان',
-  'نور',
-  'چالوس',
-  'تنکابن',
-  'دریاکنار',
-  'ایزدشهر',
-  'کلاردشت',
-  'کلارآباد',
-  'سلمان‌شهر',
-  'نشتارود',
-  'البرز',
-];
 class SearchResultMd extends React.Component{
   constructor(props){
     super(props);
@@ -105,10 +68,10 @@ class SearchResultMd extends React.Component{
     });
   }
   getDataFromServer(){
-    var request = new Request('https://www.trypinn.com/api/search/',{
+    var request = new Request('https://www.trypinn.com/api/v1/search/',{
       method: 'POST',
       body: JSON.stringify({
-        platform: 'web',
+        platform: 'web', 
         location: this.state.searchParams.location,
         start_date: (this.state.searchParams.start_date == null) ? null : this.state.searchParams.start_date.toISOString(),
         end_date: (this.state.searchParams.end_date == null) ? null : this.state.searchParams.end_date.toISOString(),

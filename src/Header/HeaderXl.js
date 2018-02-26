@@ -369,7 +369,9 @@ class HeaderXl extends React.Component{
              <Dropdown.Menu>
                 <div className="drp-down-menu-cont">
                   <div className="profile-card-up row-reverse">
+                  <div onClick={(event)=>{event.stopPropagation()}}>
                     {this.renderUserPhoto()}
+                  </div>
                     <div>
                     <p className="profile-card-user-name" onClick={this.handleUserProfileClick.bind(this)}>{localStorage['user-first-name'] + ' ' + localStorage['user-last-name']}</p>
                     <p className="profile-card-user-profile" onClick={this.handleUserProfileClick.bind(this)}>حساب کاربری</p>
