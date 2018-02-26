@@ -62,7 +62,7 @@ class SearchResultItem extends React.Component {
     return(
       <div>
       <div>
-        <a target="_blank" href={"/rooms/"+ this.props.room.id} className="card_anchor">
+        <a target="_blank" href={(this.props.room.type==='room')?"/rooms/"+ this.props.room.id:"/ecotourism/"+ this.props.room.id} className="card_anchor">
           <div  className="result-detail">
             <AspectRatio ratio="16/11" style={{maxWidth: '400px'}}>
                   <img src= {this.props.preview} className="imgresult" alt="پیشنمایش خانه "/>

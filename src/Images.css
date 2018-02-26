@@ -1756,6 +1756,8 @@ margin-top: 20px;
 }
 .card_anchor:link {
     color: #484848;
+    text-decoration:none;
+    outline : none;
 }
 
 /* visited link */

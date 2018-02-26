@@ -93,22 +93,46 @@ class HouseDetailsMd extends React.Component{
   getHouseId(){
     return parseInt(window.location.href.split("/")[window.location.href.split("/").length-1] , 10);
   }
+
   getDataFromServer(){
-    var request = new Request('https://www.trypinn.com/api/get/room/', {
-      method: 'POST',
-      body: JSON.stringify({
-        room_id : this.state.searchParams.id,
-    }),
-      headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
-      'Authorization': 'Token '+this.state.token,})
-    });
-   fetch(request)
-   .then((response) => {
-     return response.json();
-   })
-   .then((homeData) => {
-     this.renderData(homeData);
-   });
+    switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
+      case 'rooms':{
+        var request = new Request('https://www.trypinn.com/api/get/room/', {
+          method: 'POST',
+          body: JSON.stringify({
+            room_id : this.state.searchParams.id,
+        }),
+          headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+          'Authorization': 'Token '+this.state.token,})
+        });
+       fetch(request)
+       .then((response) => {
+         return response.json();
+       })
+       .then((homeData) => {
+         this.renderData(homeData);
+       });
+       return;
+      }
+      case 'ecotourism':{
+        var request = new Request('https://www.trypinn.com/api/get/ecotourism/', {
+          method: 'POST',
+          body: JSON.stringify({
+            ecotourism_id : this.state.searchParams.id,
+        }),
+          headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+          'Authorization': 'Token '+this.state.token,})
+        });
+       fetch(request)
+       .then((response) => {
+         return response.json();
+       })
+       .then((homeData) => {
+         this.renderData(homeData);
+       });
+       return;
+      }
+    }
   }
 
   setToken() {
@@ -150,6 +174,20 @@ class HouseDetailsMd extends React.Component{
    }
  }
 
+ renderRelevantUtilities(){
+   switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
+     case 'rooms':{
+       return (
+         <UtilitiesDescription homeData={this.state.homeData} />
+       );
+     }
+     case 'ecotourism':{
+       return(
+         <div> </div>
+       );
+     }
+   }
+ }
 
  renderGalleryLightBox(){
    var images = [];
@@ -173,6 +211,24 @@ class HouseDetailsMd extends React.Component{
    );
  }
 
+
+ renderRelevantMapDescription(){
+   switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
+     case 'rooms':{
+       return(
+         <div>
+         </div>
+       );
+     }
+     case 'ecotourism':{
+       return(
+         <p>
+          جاذبه های نزدیک
+         </p>
+       );
+     }
+   }
+ }
   renderHouseDetailsVersion2(){
     if(this.state.homeData!==''){
       return(
@@ -243,7 +299,7 @@ class HouseDetailsMd extends React.Component{
                     <p className="house-details-description-heading">
                       سایر امکانات
                     </p>
-                    <UtilitiesDescription homeData={this.state.homeData} />
+                    {this.renderRelevantUtilities()}
                   </div>
                   <div className="house-details-sleep-arrangements">
                   </div>
@@ -273,8 +329,7 @@ class HouseDetailsMd extends React.Component{
                   </div>
                   <div className="house-details-map">
                     <Element name="map"></Element>
-                    <MapDescription
-                      lat={this.state.homeData.latitude} lng={this.state.homeData.longitude} zoom={13}/>
+                    <MapDescription lat={this.state.homeData.latitude} lng={this.state.homeData.longitude} zoom={13}/>
                   </div>
                 </div>
               </div>
@@ -287,7 +342,7 @@ class HouseDetailsMd extends React.Component{
 
   render(){
     if (this.state.homeData !== ''){
-      document.title = "تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.city;
+      document.title = "تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.location;
     }
     return(
       <div>
