@@ -1048,19 +1048,6 @@ border-width: 2px;
   color: #ffffff;
 }
 
-.main-amanities-item-xs{
-  height: 30px;
-  font-family: IRANSans;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 500;
-  color: #737373;
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
-  display: flex;
-  margin: auto;
-  flex-direction: row-reverse;
-}
 .spaced-dises{
   width: 100%;
   margin: auto;

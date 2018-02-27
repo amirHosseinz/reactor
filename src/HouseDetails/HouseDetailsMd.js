@@ -174,20 +174,7 @@ class HouseDetailsMd extends React.Component{
    }
  }
 
- renderRelevantUtilities(){
-   switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
-     case 'rooms':{
-       return (
-         <UtilitiesDescription homeData={this.state.homeData} />
-       );
-     }
-     case 'ecotourism':{
-       return(
-         <div> </div>
-       );
-     }
-   }
- }
+
 
  renderGalleryLightBox(){
    var images = [];
@@ -299,7 +286,7 @@ class HouseDetailsMd extends React.Component{
                     <p className="house-details-description-heading">
                       سایر امکانات
                     </p>
-                    {this.renderRelevantUtilities()}
+                    <UtilitiesDescription homeData={this.state.homeData} />
                   </div>
                   <div className="house-details-sleep-arrangements">
                   </div>

@@ -7,9 +7,19 @@ class UtilitiesDescriptionMd extends React.Component{
   }
 
   renderUtilitiesVersion2(){
-    const privateUtilities=this.props.homeData.private_util_options;
-    const generalUtilities=this.props.homeData.general_util_options;
-    var utilities=privateUtilities.concat(generalUtilities);
+    switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
+      case 'rooms':{
+        const privateUtilities=this.props.homeData.private_util_options;
+        const generalUtilities=this.props.homeData.general_util_options;
+        var utilities=privateUtilities.concat(generalUtilities);
+        break;
+      }
+      case 'ecotourism':{
+        const generalUtilities=this.props.homeData.general_utils_options;
+        var utilities = this.props.homeData.general_utils_options;
+        break;
+      }
+    }
     var primaryListOfLists = [[],[],[],[],[],[],[],[],[]];
     var listIndex = 0;
     for (var itemIndex=0;itemIndex<utilities.length;itemIndex++){

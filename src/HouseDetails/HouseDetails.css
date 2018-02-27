@@ -84,9 +84,10 @@
   padding-left: 15px;
 }
 .paragraph-space{
-  padding-left: 0.5rem;
+  padding-left: 0.2rem;
 }
 .main-amanities{
+
 }
 .main-amanities-item{
   display: -webkit-flex; /* Safari */
@@ -104,17 +105,73 @@
   margin: 10px 0px 10px 5px;
 }
 .aminities-text{
+  direction:rtl;
   margin-top: 16px;
   font-size: 16px;
   font-weight: 400;
   margin-left: 6px;
-  margin-right: 4px;
 }
 .aminities-text-static-xl{
   margin-top: 16px;
   font-size: 16px;
   font-weight: 400;
   margin-left: 32px;
+}
+
+.main-amanities-ecotourism{
+  display: -webkit-flex;
+  -webkit-flex-direction: row-reverse;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  margin-right : -10px;
+}
+.main-amanities-ecotourism-md{
+  display: -webkit-flex;
+  -webkit-flex-direction: row-reverse;
+  display: flex;
+  margin-right : -10px;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+.main-amanities-item-ecotourism{
+  width : 166px;
+}
+
+.main-amanities-item-ecotourism-bed{
+  width : 188px;
+}
+.main-amanities-item-ecotourism-room{
+  width : 134px;
+}
+
+.main-amanities-item-ecotourism-room-md{
+  width : 120px;
+}
+.main-amanities-item-ecotourism-content{
+  display: -webkit-flex;
+  -webkit-flex-direction: row-reverse;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  font-family: IRANSans;
+  width : 100%;
+}
+.main-amanities-item-ecotourism-md{
+  width : 160px;
+}
+.amenities-text-ecotourism{
+  direction:rtl;
+  /* margin-left : 6px; */
+}
+.aminities-title-text{
+  font-weight: 500;
+  font-size : 16px;
+  margin-bottom : 2px;
+}
+.aminities-title-description{
+  font-weight: 400;
+  font-size : 12px;
 }
 .row-reverse-house-adress-type{
   display: -webkit-flex; /* Safari */

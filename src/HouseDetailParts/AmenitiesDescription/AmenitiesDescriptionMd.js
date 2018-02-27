@@ -11,61 +11,123 @@ class AmenitiesDescriptionMd extends React.Component{
           </p>
       );
     }
+  }
+  renderRelevantAmenitiesDescription(){
+    switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
+      case 'rooms':{
+        return(
+          <div className="main-amanities">
+            <div className='main-amanities-item'>
+              <img src={require('../facilities/persons.png')}  className="main-amanities-icon" alt = "" />
+              <p className='aminities-text'> {englishToPersianDigits(this.props.homeData.capacity)} </p>
+              <p className='aminities-text-static-xl'> مهمان </p>
+              <img src={require('../facilities/rooms.png')}  className="main-amanities-icon" alt = "" />
+              <p className='aminities-text'>{englishToPersianDigits(this.props.homeData.rooms_number)} </p>
+              <p className='aminities-text-static-xl'> اتاق</p>
+              <img src={require('../facilities/beds.png')}  className="main-amanities-icon" alt = "" />
+              {this.renderBeds()}
+              <p className='aminities-text-static-xl'>تخت</p>
+              <img src={require('../facilities/baths.png')}  className="main-amanities-icon" alt = "" />
+              <p className='aminities-text'> {englishToPersianDigits(this.props.homeData.bath_room_number)} </p>
+              <p className='aminities-text-static-xl'>حمام </p>
+            </div>
+          </div>
+        );
+      }
+      case 'ecotourism':{
+        return(
+          <div className="main-amanities-ecotourism-md">
+            <div className='main-amanities-item-ecotourism-room-md'>
+              <div className="main-amanities-item-ecotourism-content">
+                <img height="66px" width="66px" src={require('../facilities/rooms.svg')}  alt = "" />
+                <div className="amenities-text-ecotourism">
+                  <p className='aminities-title-text'> {englishToPersianDigits(this.props.homeData.rooms_number)}  اتاق</p>
+                  <p className="aminities-title-description"> در اقامتگاه</p>
+                </div>
+              </div>
+            </div>
+            <div className='main-amanities-item-ecotourism-bed'>
+              <div className="main-amanities-item-ecotourism-content">
+                <img height="66px" width="66px" src={require('../facilities/sleep.svg')}  alt = "" />
+                <div className="amenities-text-ecotourism">
+                  <p className='aminities-title-text'> {englishToPersianDigits(this.props.homeData.total_capacity)}  سرویس خواب</p>
+                  <p className="aminities-title-description"> {this.renderBedServiceType()}</p>
+                </div>
+              </div>
+            </div>
+            <div className='main-amanities-item-ecotourism-md'>
+              <div className="main-amanities-item-ecotourism-content">
+                <img height="66px" width="66px" src={require('../facilities/food.svg')}  alt = "" />
+                <div className="amenities-text-ecotourism">
+                  <p className='aminities-title-text'> {englishToPersianDigits(this.props.homeData.food_service_type.length)}  وعده</p>
+                  <p className="aminities-title-description">{this.renderFoodServiceType()}</p>
+                </div>
+              </div>
+            </div>
+            <div className='main-amanities-item-ecotourism-md'>
+              <div className="main-amanities-item-ecotourism-content">
+                <img height="66px" width="66px" src={require('../facilities/urbn-rural.svg')}  alt = "" />
+                <div className="amenities-text-ecotourism">
+                  <p className='aminities-title-text'> {this.renderEcoTourismType()}</p>
+                  <p className="aminities-title-description"> نوع دسترسی</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      }
     }
+  }
+
+
+  renderEcoTourismType(){
+    if(this.props.homeData.room_type.indexOf('RURAL')!==-1){
+      return 'روستایی';
+    }
+    if(this.props.homeData.room_type.indexOf('URBAN')!==-1){
+      return 'شهری';
+    }
+    if(this.props.homeData.room_type.indexOf('JUNGLE')!==-1){
+      return 'جنگلی';
+    }
+    if(this.props.homeData.room_type.indexOf('DESERT')!==-1){
+      return 'صحرایی';
+    }
+    if(this.props.homeData.room_type.indexOf('GROVE')!==-1){
+      return 'دشت';
+    }
+    if(this.props.homeData.room_type.indexOf('COASTAL')!==-1){
+      return 'ساحلی';
+    }
+  }
+  renderBedServiceType(){
+    if(this.props.homeData.general_utils_options.indexOf('BED')!==-1 && this.props.homeData.general_utils_options.indexOf('MATTRESS')!==-1){
+      return 'تخت‌خواب + سنتی';
+    }
+    if(this.props.homeData.general_utils_options.indexOf('BED')!==-1){
+      return 'تخت‌خواب';
+    }
+    if(this.props.homeData.general_utils_options.indexOf('MATTRESS')!==-1){
+      return 'سنتی';
+    }
+  }
+  renderFoodServiceType(){
+    var foodServiceType="";
+    if(this.props.homeData.food_service_type.indexOf('BREAK_FAST_INCLUDED')!==-1){
+      foodServiceType = foodServiceType + 'صبحانه';
+    }
+    if(this.props.homeData.food_service_type.indexOf('LUNCH_INCLUDED')!==-1){
+      foodServiceType = foodServiceType + '، نهار';
+    }
+    if(this.props.homeData.food_service_type.indexOf('DINNER_INCLUDED')!==-1){
+      foodServiceType = foodServiceType + '، شام';
+    }
+    return foodServiceType;
+  }
   render(){
     return(
       <div>
-        <div className="main-amanities">
-          <div className='main-amanities-item'>
-            <img src={require('../facilities/persons.png')}  className="main-amanities-icon" alt = "" />
-            <p className='aminities-text'> {englishToPersianDigits(this.props.homeData.capacity)} </p>
-            <p className='aminities-text-static-xl'> مهمان </p>
-            <img src={require('../facilities/rooms.png')}  className="main-amanities-icon" alt = "" />
-            <p className='aminities-text'>{englishToPersianDigits(this.props.homeData.rooms_number)} </p>
-            <p className='aminities-text-static-xl'> اتاق</p>
-            <img src={require('../facilities/beds.png')}  className="main-amanities-icon" alt = "" />
-            {this.renderBeds()}
-            <p className='aminities-text-static-xl'>تخت</p>
-            <img src={require('../facilities/baths.png')}  className="main-amanities-icon" alt = "" />
-            <p className='aminities-text'> {englishToPersianDigits(this.props.homeData.bath_room_number)} </p>
-            <p className='aminities-text-static-xl'>حمام </p>
-          </div>
-
-        </div>
-        <div className="hidden-xl visible-xs">
-          <div className="main-amanities-xs">
-            <div className='amanities-div-xs col-xs-3'>
-                <img src={require('../facilities/baths.png')}  className="main-amanities-icon-xs" alt = "" />
-            </div>
-            <div className='amanities-div-xs col-xs-3'>
-                <img src={require('../facilities/beds.png')}  className="main-amanities-icon-xs" alt = "" />
-            </div>
-            <div className='amanities-div-xs col-xs-3'>
-                <img src={require('../facilities/rooms.png')}  className="main-amanities-icon-xs" alt = "" />
-            </div>
-            <div className='amanities-div-xs col-xs-3'>
-               <img src={require('../facilities/persons.png')}  className="main-amanities-icon-xs" alt = "" />
-            </div>
-          </div>
-          <div className="spaced-dises">
-            <div className='main-amanities-item-xs '>
-              <p className='aminities-text-xs'> {englishToPersianDigits(this.props.homeData.bath_room_number)}</p>
-              <p className='aminities-text-xs'>  حمام </p>
-            </div>
-            <div className='main-amanities-item-xs  '>
-             {this.renderBeds()}
-              <p className='aminities-text-xs'>تخت</p>
-            </div>
-            <div className='main-amanities-item-xs '>
-              <p className='aminities-text-xs'>  {englishToPersianDigits(this.props.homeData.rooms_number)}</p>
-              <p className='aminities-text-xs'>اتاق</p>
-            </div>
-            <div className='main-amanities-item-xs '>
-              <p className='aminities-text-xs'>  {englishToPersianDigits(this.props.homeData.capacity)}</p>
-              <p className='aminities-text-xs'>مهمان</p>
-           </div>
-          </div>
-        </div>
+        {this.renderRelevantAmenitiesDescription()}
       </div>
     );
   }

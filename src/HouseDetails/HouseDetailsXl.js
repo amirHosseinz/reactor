@@ -196,22 +196,6 @@ class HouseDetailsXl extends React.Component{
    );
  }
 
- renderRelevantUtilities(){
-   switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
-     case 'rooms':{
-       return (
-         <UtilitiesDescription homeData={this.state.homeData} />
-       );
-       break;
-     }
-     case 'ecotourism':{
-       return(
-         <div> </div>
-       );
-       break;
-     }
-   }
- }
  renderTourismPlaces(){
    if(this.state.homeData.tourism_attractions.length>0)
    return(
@@ -316,7 +300,7 @@ class HouseDetailsXl extends React.Component{
                     <p className="house-details-description-heading">
                       سایر امکانات
                     </p>
-                    {this.renderRelevantUtilities()}
+                    <UtilitiesDescription homeData={this.state.homeData} />
                   </div>
                   <div className="house-details-sleep-arrangements">
                   </div>

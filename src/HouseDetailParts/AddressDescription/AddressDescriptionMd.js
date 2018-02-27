@@ -12,7 +12,7 @@ class AddressDescriptionMd extends React.Component{
       case "APT":
         return 'آپارتمان';
       default:
-        return null;
+        return 'اقامتگاه بومگردی';
     }
   }
   getServiceType(){
