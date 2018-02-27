@@ -199,7 +199,7 @@ class HouseDetailsXl extends React.Component{
  renderTourismPlaces(){
    if(this.state.homeData.tourism_attractions.length>0)
    return(
-     <div>
+     <div className="house-details-tourism-places">
        <p className="house-details-description-heading">
         جاذبه‌های نزدیک
        </p>
@@ -225,13 +225,29 @@ class HouseDetailsXl extends React.Component{
        return(
            <div>
              {this.renderTourismPlaces()}
+             {this.renderAccessibility()}
            </div>
        );
      }
    }
  }
+ renderAccessibility(){
+   if(this.state.homeData.accessibility.length>50){
+     return(
+       <div className="house-details-accessibility">
+         <p className="house-details-description-heading">
+            نحوه دسترسی
+         </p>
+         <p className="house-details-description-content">
+          {this.state.homeData.accessibility.replace('-' , '')}
+         </p>
+       </div>
+     );
+   }
+ }
   renderHouseDetailsVersion2(){
     if(this.state.homeData!==''){
+      // console.log(this.state.homeData);
       return(
         <div className="house-details-main-division">
           <div className="house-details-top-division">
@@ -294,11 +310,17 @@ class HouseDetailsXl extends React.Component{
                 <div className="house-details-amenities-description housedetails-content-containers">
                   <div className="house-details-host-info">
                     <HostInfoDescription homeData={this.state.homeData}/>
-                    <p className='house-details-description-content house-description-top'> {this.state.homeData.description} </p>
-                  </div >
+                  </div>
+                  {
+                    (this.state.homeData.description==="")?null :
+                    <div>
+                      <p className="house-details-description-heading"> درباره این خانه </p>
+                      <p className='house-details-description-content house-description-top'> {this.state.homeData.description.replace('-','').trim()} </p>
+                    </div>
+                  }
                   <div className="house-details-amenities">
                     <p className="house-details-description-heading">
-                      سایر امکانات
+                      امکانات
                     </p>
                     <UtilitiesDescription homeData={this.state.homeData} />
                   </div>

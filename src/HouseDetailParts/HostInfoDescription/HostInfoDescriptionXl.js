@@ -32,7 +32,7 @@ class HostInfoDescriptionXl extends React.Component{
               {this.renderHostPhoto()}
           </div>
           <div className="house-details-host-textbox">
-            <p className="house-details-text-name-label">میزبان: </p>
+            <p className="house-details-text-name-label">میزبان</p>
             {this.renderHost()}
           </div>
       </div>
