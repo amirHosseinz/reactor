@@ -23,8 +23,9 @@ class MainPage extends React.Component{
       houseDetail: null,
     };
   }
+
   renderSearchBar(props) {
-    return (<SearchBar {...props}/>);
+    return (<SearchBar {...props} />);
   }
   renderHeader(props){
     return (

@@ -247,6 +247,59 @@ class FacilitiesMd extends React.Component {
     }
   }
 
+
+    renderKorsi(){
+      if (this.props.utility.indexOf('KORSI') > -1) {
+        return(
+          <div className="house-details-facilities-item">
+            <img src={require('../facilities/korsi.png')}  className="house-details-facilities-other-amanities-icon" alt = "" />
+            <p className="house-details-facility-text">
+              کرسی
+            </p>
+          </div>
+        );
+      }
+    }
+
+    renderInsurance(){
+      if (this.props.utility.indexOf('GUEST_INSURANCE') > -1) {
+        return(
+          <div className="house-details-facilities-item">
+            <img src={require('../facilities/insurance.png')}  className="house-details-facilities-other-amanities-icon" alt = "" />
+            <p className="house-details-facility-text">
+              بیمه
+            </p>
+          </div>
+        );
+      }
+    }
+
+    renderHerbalTea(){
+      if (this.props.utility.indexOf('HERBAL_TEA') > -1) {
+        return(
+          <div className="house-details-facilities-item">
+            <img src={require('../facilities/herbal_tea.png')}  className="house-details-facilities-other-amanities-icon" alt = "" />
+            <p className="house-details-facility-text">
+              دمنوش
+            </p>
+          </div>
+        );
+      }
+    }
+
+    renderTower(){
+      if (this.props.utility.indexOf('MOBILE_NETWORK_COVEREGE') > -1) {
+        return(
+          <div className="house-details-facilities-item">
+            <img src={require('../facilities/mobile_tower.png')}  className="house-details-facilities-other-amanities-icon" alt = "" />
+            <p className="house-details-facility-text">
+             آنتن دهی
+            </p>
+          </div>
+        );
+      }
+    }
+
   render () {
     return(
 
@@ -271,6 +324,11 @@ class FacilitiesMd extends React.Component {
           {this.renderPingpong()}
           {this.renderPool()}
           {this.renderParking()}
+
+          {this.renderInsurance()}
+          {this.renderTower()}
+          {this.renderHerbalTea()}
+          {this.renderKorsi()}
           </div>
     );
   }

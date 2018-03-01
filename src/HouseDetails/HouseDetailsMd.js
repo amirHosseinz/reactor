@@ -250,7 +250,7 @@ class HouseDetailsMd extends React.Component{
    }
  }
   renderHouseDetailsVersion2(){
-    if(this.state.homeData!==''){
+    if(this.state.homeData!=='' && this.state.homeData!==null){
       return(
         <div className="house-details-main-division">
           <div className="house-details-top-division-md">
@@ -319,7 +319,7 @@ class HouseDetailsMd extends React.Component{
                     (this.state.homeData.description==="")?null :
                     <div>
                       <p className="house-details-description-heading"> درباره این خانه </p>
-                      <p className='house-details-description-content house-description-top'> {this.state.homeData.description.replace('-','').trim()} </p>
+                      <p className='house-details-description-content house-description-top'> {this.state.homeData.description.replace('-','')} </p>
                     </div>
                   }
                   <div className="house-details-amenities">
@@ -369,7 +369,7 @@ class HouseDetailsMd extends React.Component{
   }
 
   render(){
-    if (this.state.homeData !== ''){
+    if (this.state.homeData !== '' && this.state.homeData!==null){
       document.title = "تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.location;
     }
     return(

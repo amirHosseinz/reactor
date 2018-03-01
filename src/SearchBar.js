@@ -3,7 +3,7 @@ import SearchBarXl from './SearchBar/SearchBarXl.js';
 import SearchBarXs from './SearchBar/SearchBarXs.js';
 import SearchBarMd from './SearchBar/SearchBarMd.js';
 import SearchBarSm from './SearchBar/SearchBarSm.js';
-
+import DocumentMeta from 'react-document-meta';
 
 class SearchBar extends React.Component {
 
@@ -39,9 +39,21 @@ class SearchBar extends React.Component {
     );
   }
   render(){
+    const meta = {
+      title: '',
+      description: 'تریپین ، سامانه رزرو ویلا و اقامتگاه محلی',
+      meta: {
+        charset: 'utf-8',
+        name: {
+          keywords: 'تریپین، ویلا،رزرو، بوم گردی، اقامتگاه'
+        }
+      }
+    };
+
     document.title = "تریپین | سامانه رزرو ویلا";
     return (
       <div>
+        <DocumentMeta {...meta}/>
         {this.renderSearchBarXS(this.props)}
         {this.renderSearchBarXl(this.props)}
         {this.renderSearchBarMd(this.props)}
