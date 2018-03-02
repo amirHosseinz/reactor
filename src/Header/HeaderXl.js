@@ -14,7 +14,7 @@ import Modal from 'react-modal';
 import {Sticky} from 'react-sticky';
 import Autosuggest from 'react-autosuggest';
 import '../Styles/ModalCloseButton.css';
-// Modal.setAppElement('../index.js');
+
 
 const theme ={
   container:                'header-searchbar-container',
@@ -32,46 +32,17 @@ const theme ={
   sectionContainerFirst:    'header-searchbar-section-container--first',
   sectionTitle:             'header-searchbar-section-title',
 };
-
 const listOfCity = [
-  {name:'اصفهان',},
-  {name:'نوشهر',},
-  {name: 'گیلان',},
-  {name:'رامسر'},
-  {name:'کیش'},
-  {name:'مازندران'},
-  {name:'بابلسر'},
-  {name:'فریدون کنار'},
-  {name:'محمودآباد'},
-  {name:'عباس آباد'},
-  {name:'شاندیز'},
-  {name:'خراسان رضوی'},
-  {name:'بندر‌انزلی'},
-  {name:'کاشان'},
-  {name:'باغ بهادران'},
-  {name:'قلعه رودخان'},
-  {name:'مشهد'},
-  {name:'چمخاله'},
-  {name:'رودسر'},
-  {name:'فومن'},
-  {name:'رضوان‌شهر'},
-  {name:'زیباکنار'},
-  {name:'آستارا'},
-  {name:'چالوس'},
-  {name:'دریاکنار'},
-  {name:'نور'},
-  {name:'رویان'},
-  {name:'تنکابن'},
-  {name:'سرخ‌رود'},
-  {name:'دریاکنار'},
-  {name:'ایزدشهر'},
-  {name:'البرز'},
-  {name:'سلمان شهر'},
-  {name:'تنکابن'},
-  {name:'کلاردشت'},
-  {name:'نشتارود'},
-  {name:'کلارآباد'},
+  {name:'اصفهان',},{name:'نوشهر',},{name: 'گیلان',},{name:'رامسر'},{name:'کیش'},{name:'مازندران'},
+  {name:'فریدون کنار'},{name:'محمودآباد'},{name:'عباس آباد'},{name:'شاندیز'},{name:'خراسان رضوی'},
+  {name:'بندر انزلی'},{name:'کاشان'},{name:'باغ بهادران'},{name:'قلعه رودخان'},{name:'مشهد'},
+  {name:'چمخاله'},{name:'رودسر'},{name:'فومن'},{name:'رضوان‌شهر'},{name:'زیباکنار'},
+  {name:'آستارا'},{name:'چالوس'},{name:'دریاکنار'},{name:'نور'},{name:'رویان'},{name:'بابلسر'},
+  {name:'تنکابن'},{name:'سرخ‌رود'},{name:'دریاکنار'},{name:'ایزدشهر'},{name:'البرز'},
+  {name:'سلمان‌شهر'},{name:'تنکابن'},{name:'کلاردشت'},{name:'نشتارود'},{name:'کلارآباد'},
+  {name:'فارس'},{name:'شیراز'},{name:'یزد'},{name:'داراب'},{name:'بافق'},{name:'مرودشت'},
 ];
+
 
 class HeaderXl extends React.Component{
   constructor (props){

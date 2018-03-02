@@ -39,9 +39,9 @@ class ContactUsMD extends React.Component{
             </p>
             <p className="contact-us-address-section">
             <span>آدرس : </span>
-            <span> تهران،خیابان دادمان،تقاطع درختی، روبروی سازمان امور مالیاتی، پلاک </span>
+            <span> تهران، خیابان دادمان، تقاطع درختی، روبروی سازمان امور مالیاتی، پلاک</span>
             <span>{englishToPersianDigits("97")}،</span>
-            <span>واحد {englishToPersianDigits("2")}</span>
+            <span>واحد {englishToPersianDigits("3")}</span>
 
 
             </p>
@@ -50,7 +50,7 @@ class ContactUsMD extends React.Component{
               {englishToPersianDigits(1468694134)} : کدپستی
               </div>
               <div className="contact-us-tel-number">
-                {englishToPersianDigits("02188573037")} : تلفن
+                {englishToPersianDigits("021 - 88573037")} : تلفن
               </div>
             <div className="contact-us-email">
               <span><a className="orng-anchors" href="mailto:support@tripinn.ir"> support@tripinn.ir </a></span>

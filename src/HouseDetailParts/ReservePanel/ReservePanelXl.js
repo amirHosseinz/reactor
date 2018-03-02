@@ -265,12 +265,12 @@ class ReservePanelXl extends React.Component{
   renderReserveButton(){
     if(this.state.startDate==='' || this.state.endDate===''){
       return(
-        <button disabled className="reserve-panel-reserve-button-disabled"> رزرو </button>
+        <button disabled className="reserve-panel-reserve-button-disabled"> نمایش پیش‌فاکتور </button>
       );
     }
     else{
       return(
-        <button onClick={()=>{this.setToken()}} className="reserve-panel-reserve-button-active"> رزرو </button>
+        <button onClick={()=>{this.setToken()}} className="reserve-panel-reserve-button-active"> نمایش پیش‌فاکتور </button>
       );
     }
   }
