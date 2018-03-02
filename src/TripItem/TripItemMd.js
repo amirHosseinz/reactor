@@ -3,7 +3,7 @@ import { Divider } from 'semantic-ui-react';
 import {englishToPersianDigits} from '../tools/EnglishToPersianDigits';
 import moment from 'moment-jalaali';
 import './TripItem.css';
-
+import {Link} from 'react-router-dom';
 
 moment.loadPersian({usePersianDigits:true , dialect:'persian-modern'});
 class TripItemMd extends React.Component{
@@ -240,20 +240,19 @@ class TripItemMd extends React.Component{
           <p className="no-request-header">شما سفر تایید شده ای ندارید</p>
           <p className="no-trip-main-paragraph">تاکنون سفری برای شما به ثبت نرسیده است. شما میتوانید با ارسال درخواست رزرو به هریک از خانه های موجود ، مقدمات سفر خود را فراهم نمایید</p>
             <div className='no-trip-stages-container'>
-              <div className='no-trip-stage1-text col-md-7'>
-               <p>پس از تایید درخواست سفر شما در بخش <a className='tripinn-blue' href="/dashboard/request">درخواست ها </a>توسط میزبان و پرداخت هزینه سفر توسط شما، سفر شما در این بخش ایجاد میشود </p>
+              <div className='no-trip-stage1-text'>
+               <p>پس از تایید درخواست سفر شما در بخش <Link className='tripinn-blue' to="/dashboard/request">درخواست ها </Link>توسط میزبان و پرداخت هزینه سفر توسط شما، سفر شما در این بخش ایجاد میشود </p>
                 </div>
-             <div  className='no-trip-stage1-img col-md-5'>
-
+             <div  className='no-trip-stage1-img-md'>
                 <img src={require('../Images/no-trip-pic1.png')} height="200" width="220"/>
                </div>
               </div>
             <div className='no-trip-stages-container'>
-              <div  className='no-trip-stage2-img col-md-5'>
+              <div  className='no-trip-stage2-img'>
                 <img src={require('../Images/no-trip-pic2.png')} height="150" width="180"/>
                 </div>
-                <div  className='no-trip-stage2-text col-md-7'>
-                <p>شما میتوانید در بخش <a className='tripinn-blue' href="/dashboard/trip"> سفرها</a> آدرس دقیق مقصد خود وشماره تماس میزبان خودرا مشاهده نمایید</p>
+                <div  className='no-trip-stage2-text'>
+                <p>شما میتوانید در بخش <Link className='tripinn-blue' to="/dashboard/trip"> سفرها</Link> آدرس دقیق مقصد خود وشماره تماس میزبان خودرا مشاهده نمایید</p>
                   </div>
                 </div>
                 <div className='no-trip-stages-container'>
