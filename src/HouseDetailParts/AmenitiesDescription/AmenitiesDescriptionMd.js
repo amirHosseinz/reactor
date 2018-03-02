@@ -6,7 +6,7 @@ class AmenitiesDescriptionMd extends React.Component{
     renderBeds(){
       if(this.props.homeData.beds_number + 2 * this.props.homeData.double_beds_number){
         return(
-          <p className='aminities-text'>
+          <p className='aminities-text-md'>
           {englishToPersianDigits(this.props.homeData.beds_number + 2 * this.props.homeData.double_beds_number)}
           </p>
       );
@@ -18,18 +18,18 @@ class AmenitiesDescriptionMd extends React.Component{
         return(
           <div className="main-amanities-md">
             <div className='main-amanities-item'>
-              <img height="50px" width="50px"src={require('../facilities/guest_numbers.png')}  className="main-amanities-icon" alt = "" />
-              <p className='aminities-text'> {englishToPersianDigits(this.props.homeData.capacity)} </p>
-              <p className='aminities-text-static-xl'> مهمان </p>
-              <img height="50px" width="50px"src={require('../facilities/rooms.png')}  className="main-amanities-icon" alt = "" />
-              <p className='aminities-text'>{englishToPersianDigits(this.props.homeData.rooms_number)} </p>
-              <p className='aminities-text-static-xl'> اتاق</p>
-              <img height="50px" width="50px"src={require('../facilities/beds.png')}  className="main-amanities-icon" alt = "" />
+              <img height="46px" width="46px"src={require('../facilities/guest_numbers.png')}  className="main-amanities-icon" alt = "" />
+              <p className='aminities-text-md'> {englishToPersianDigits(this.props.homeData.capacity)} </p>
+              <p className='aminities-text-static-md'> مهمان </p>
+              <img height="46px" width="46px"src={require('../facilities/rooms.png')}  className="main-amanities-icon" alt = "" />
+              <p className='aminities-text-md'>{englishToPersianDigits(this.props.homeData.rooms_number)} </p>
+              <p className='aminities-text-static-md' > اتاق </p>
+              <img height="46px" width="46px"src={require('../facilities/beds.png')}  className="main-amanities-icon" alt = "" />
               {this.renderBeds()}
-              <p className='aminities-text-static-xl'>تخت</p>
-              <img height="50px" width="50px" src={require('../facilities/bath.png')}  className="main-amanities-icon" alt = "" />
-              <p className='aminities-text'> {englishToPersianDigits(this.props.homeData.bath_room_number)} </p>
-              <p className='aminities-text-static-xl'>حمام </p>
+              <p className='aminities-text-static-md'>تخت</p>
+              <img height="46px" width="46px" src={require('../facilities/bath.png')}  className="main-amanities-icon" alt = "" />
+              <p className='aminities-text-md'> {englishToPersianDigits(this.props.homeData.bath_room_number)} </p>
+              <p className='aminities-text-static-md'>حمام </p>
             </div>
           </div>
         );
