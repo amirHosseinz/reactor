@@ -160,6 +160,39 @@ class RequestItemMd extends React.Component{
       );
     }
   }
+
+  renderNowruzPriceForPerNight(){
+    if(this.state.request.nowruz_price!==0){
+      return(
+        <div className="pre-bill-price-night-content row-reverse" dir="rtl">
+          <p className="pre-bill-price-night-sentence">هزینه شب‌های نوروز
+          (  {englishToPersianDigits(this.state.request.nowruz_duration)} شب ) :
+          </p>
+          <p className="pre-bill-price-night-value">
+           {englishToPersianDigits(parsePrice3digits(this.state.request.nowruz_price))}
+             تومان
+          </p>
+        </div>
+      );
+    }
+  }
+
+  renderNowRuzForPerPerson(){
+    if(this.state.request.nowruz_price!==0){
+      return(
+        <div className="pre-bill-price-night-content row-reverse" dir="rtl">
+          <p className="pre-bill-price-night-sentence">هزینه شب‌های نوروز
+            ({englishToPersianDigits(this.state.request.nowruz_duration)}شب - {englishToPersianDigits(this.state.request.number_of_guests)} نفر) :
+          </p>
+          <p className="pre-bill-price-night-value">
+           {englishToPersianDigits(parsePrice3digits(this.state.request.nowruz_price))}
+             تومان
+          </p>
+        </div>
+      );
+    }
+  }
+
   renderDifferentTypesPrices(){
     if(this.state.request.room.is_price_per_person===false){
       return(
@@ -167,6 +200,7 @@ class RequestItemMd extends React.Component{
           {this.renderOrdinaryPriceForPerNight()}
           {this.renderWeekendPriceForPerNight()}
           {this.renderSpecialPriceForPerNight()}
+          {this.renderNowruzPriceForPerNight()}
         </div>
       );
     }
@@ -176,6 +210,7 @@ class RequestItemMd extends React.Component{
           {this.renderOrdinaryPriceForPerPerson()}
           {this.renderWeekendPriceForPerPerson()}
           {this.renderSpecialPriceForPerPerson()}
+          {this.renderNowRuzForPerPerson()}
         </div>
       );
     }

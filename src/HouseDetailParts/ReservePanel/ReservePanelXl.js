@@ -28,14 +28,14 @@ class ReservePanelXl extends React.Component{
       token:null,
       numberOfGuests: 1,
       requestParams :{
-        fromDate:null,
-        toDate:null,
+        fromDate:'',
+        toDate:'',
       },
       totalPrice:0,
       discountCode : '',
       focusedInput:null,
-      startDate:null,
-      endDate:null,
+      startDate:'',
+      endDate:'',
     };
   }
   renderOrdinaryPriceForPerPerson(){
@@ -231,8 +231,6 @@ class ReservePanelXl extends React.Component{
      return response.json();
    })
    .then((reserve_data) => {
-     console.log('HHHHHHHHHhhhhhhhhhhhhhhhhhoooy');
-     console.log(reserve_data);
      this.setState({totalPrice:reserve_data.total_price ,reserveData:reserve_data,showPreBill:true});
    });
  }
@@ -264,8 +262,9 @@ class ReservePanelXl extends React.Component{
 
   renderReserveButton(){
     if(this.state.startDate==='' || this.state.endDate===''){
+      console.log(this.testNode);
       return(
-        <button disabled className="reserve-panel-reserve-button-disabled"> نمایش پیش‌فاکتور </button>
+        <button onClick={()=>{this.testNode.click()}} className="reserve-panel-reserve-button-disabled"> نمایش پیش‌فاکتور </button>
       );
     }
     else{
@@ -312,7 +311,6 @@ class ReservePanelXl extends React.Component{
   }
   renderPreBill(){
     if(this.state.reserveData!==''){
-      console.log(this.props.homeData);
       return(
         <Modal isOpen={this.state.showPreBill}
           style={reserveModalStyle}
@@ -347,8 +345,8 @@ class ReservePanelXl extends React.Component{
                   <p>:تعداد مسافر</p>
                   </div>
                   <div className="pre-bill-number-of-guests-content" dir="rtl">
-                    <span> {englishToPersianDigits(this.state.numberOfGuests)}  </span>
-                    <span> نفر </span>
+                    <span> {englishToPersianDigits(this.state.numberOfGuests)}   نفر</span>
+                    <span> </span>
                   </div>
                 </div>
                 <hr/>
@@ -360,10 +358,12 @@ class ReservePanelXl extends React.Component{
                     <p className="pre-bill-date-item"> از {moment(this.state.requestParams.fromDate).format('jYYYY/jM/jD')}</p>
                     <p className="pre-bill-date-item" >تا {moment(this.state.requestParams.toDate).format('jYYYY/jM/jD')}</p>
                     <p className="row-reverse">
-                      <span className="pre-bill-date-item">  روز اقامت</span>
+                      <span >
+                        روز اقامت
+                      </span>
                       <span>
-                      {englishToPersianDigits(this.state.reserveData.ordinary_duration + this.state.reserveData.weekend_duration +this.state.reserveData.special_duration +this.state.reserveData.nowruz_duration)}
-                       </span>
+                        {englishToPersianDigits(this.state.reserveData.ordinary_duration + this.state.reserveData.weekend_duration +this.state.reserveData.special_duration +this.state.reserveData.nowruz_duration)}
+                      </span>
                     </p>
                   </div>
                 </div>
@@ -461,7 +461,7 @@ class ReservePanelXl extends React.Component{
               startDate={this.state.startDate}
               customArrowIcon={<div></div>}
               hideKeyboardShortcutsPanel={true}
-              numberOfMonths={2}
+              numberOfMonths={1}
               isRTL={true}
               anchorDirection='right'
               startDateId="your_unique_start_date_id"
@@ -495,25 +495,5 @@ class ReservePanelXl extends React.Component{
   }
 }
 
-// <DateRangePicker
-//   startDatePlaceholderText="تاریخ ورود"
-//   endDatePlaceholderText="تاریخ خروج"
-//   startDate={this.state.startDate}
-//   customArrowIcon={<div></div>}
-//   hideKeyboardShortcutsPanel={true}
-//   numberOfMonths={2}
-//   isRTL={true}
-//   anchorDirection='right'
-//   startDateId="your_unique_start_date_id"
-//   endDate={this.state.endDate}
-//   endDateId="your_unique_end_date_id"
-//   onDatesChange={({startDate,endDate})=>{this.setState({startDate:startDate,endDate:endDate})}}
-//   focusedInput={this.state.focusedInput}
-//   reopenPickerOnClearDates={true}
-//   onFocusChange={focusedInput => this.setState({focusedInput})}
-//   renderMonth={(month) => momentJalaali(month).format('jMMMM jYYYY')}
-//   renderDayContents={(day) => momentJalaali(day).format('jD')}
-//   keepOpenOnDateSelect={false}
-//   />
 
 export default ReservePanelXl;

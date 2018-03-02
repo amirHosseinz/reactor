@@ -34,8 +34,8 @@ class ReservePanelMd extends React.Component{
       totalPrice:0,
       discountCode : '',
       focusedInput:null,
-      startDate:null,
-      endDate:null,
+      startDate:'',
+      endDate:'',
     };
   }
   renderOrdinaryPriceForPerPerson(){
@@ -459,7 +459,7 @@ class ReservePanelMd extends React.Component{
               startDate={this.state.startDate}
               customArrowIcon={<div></div>}
               hideKeyboardShortcutsPanel={true}
-              numberOfMonths={2}
+              numberOfMonths={1}
               isRTL={true}
               anchorDirection='right'
               startDateId="your_unique_start_date_id"

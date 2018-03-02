@@ -402,7 +402,7 @@ class UserProfileXl extends React.Component{
         <div className="user-profile-edit-get-data-zone">
           <div className="user-profile-edit-input-paragraph">
             <span className="user-profile-edit-input-paragraph-title-password-section">
-           رمز عبور
+           رمز عبور فعلی
             </span>
           </div>
           <input type="password" value={this.state.oldPassword} onChange={(event)=>{this.editOldPassoword(event)}} className="user-profile-edit-input-password-section" />

@@ -169,7 +169,7 @@
   display: block;
 }
 .DateRangePicker_picker {
-  z-index: 10000000000 !important;
+  z-index: 1 !important;
   background-color: #fff;
   position: absolute
 }
@@ -219,12 +219,12 @@
 }
 .DayPicker {
   background: #fff;
-  z-index: 10000000000!important;
+  z-index: 1!important;
   position: relative;
   text-align: left
 }
 .DayPicker__horizontal {
-  z-index: 10000000000 !important;
+  z-index: 1 !important;
   background: #fff
 }
 .DayPicker__verticalScrollable {
@@ -234,7 +234,7 @@
   visibility: hidden
 }
 .DayPicker__withBorder {
-  z-index: 1000000000 !important;
+  z-index: 1 !important;
   box-shadow: 0 2px 6px rgba(0,0,0,.05),0 0 0 1px rgba(0,0,0,.07);
   border-radius: 8px
 }
@@ -249,13 +249,13 @@
 }
 .DayPicker_focusRegion {
   outline: 0;
-  z-index : 10000000000000!important;
+  z-index : 1!important;
 }
 .DayPicker_weekHeaders {
   margin-bottom: 5px !important;
   font-family: IRANSans;
   position: relative;
-  z-index:100000000000!important;
+  z-index:1!important;
 }
 .DayPicker_weekHeaders__horizontal {
   margin-left: 9px;
@@ -302,7 +302,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 3px;
-  z-index: 1000000000;
+  z-index: 1;
 }
 .DayPicker_transitionContainer__horizontal {
   -webkit-transition: height .2s ease-in-out;

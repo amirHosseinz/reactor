@@ -101,7 +101,7 @@ export const downloadAppModalStyle={
     backgroundColor: 'rgba(0,0,0,0.7)',
   },
   content : {
-    height : '38rem',
+    height : '540px',
     width  :'730px',
     margin : 'auto',
     transform:'translate(0%, 0%)',

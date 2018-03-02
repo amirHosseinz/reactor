@@ -13,14 +13,12 @@ class HostInfoDescriptionMd extends React.Component{
       if (this.props.homeData !== ''){
         if (this.props.homeData.owner.profile_picture === null){
           return(
-            <img src={require('../facilities/prof_avatar_tripinn.svg')}  className="house-details-host-avatar-icon" alt = "" />
+            <img height="80px" width="80px" src={require('../facilities/prof_avatar_tripinn.svg')}  className="house-details-host-avatar-icon" alt = "" />
           );
         }
         else{
           return(
-            <div className="house-details-host-photo">
-             <p><img className="house-details-host-img" src={"https://www.trypinn.com/" +this.props.homeData.owner.profile_picture} alt=""/></p>
-            </div>
+            <img height="80px" width="80px" className="house-details-host-img" src={"https://www.trypinn.com/" +this.props.homeData.owner.profile_picture} alt=""/>
           );
         }
       }
