@@ -6,6 +6,8 @@ import {Link} from 'react-router-dom';
 import Modal from 'react-modal';
 import {UserProfileUploadPhotoModal} from '../Styles.js';
 import Dropzone from 'react-dropzone';
+import {SyncLoader} from 'react-spinners';
+
 
 class UserProfileXl extends React.Component{
   constructor(props){
@@ -18,6 +20,7 @@ class UserProfileXl extends React.Component{
       firstName:'',
       lastName:'',
       cellPhone:'',
+      loading:false,
       showUploadPhotoModal:false,
       oldPassword:'',
       email:'',
@@ -84,6 +87,24 @@ class UserProfileXl extends React.Component{
       this.setState({profilePicture:files[0].preview,profilePictureFile:files[0]});
     }
   }
+
+  renderLoadingOrSelect(){
+    if(this.state.loading===false){
+      return(
+        <div className="user-profile-upload-photo-modal-image-selection-button">
+          انتخاب تصویر
+        </div>
+      );
+    }
+    else{
+      return(
+        <div className="user-profile-upload-photo-modal-loading-indicator">
+          <SyncLoader size={15} color="#26c4df" loading={true}/>
+        </div>
+      );
+    }
+  }
+
   renderUploadPhotoModal(){
     return(
       <Modal isOpen={this.state.showUploadPhotoModal}
@@ -99,22 +120,20 @@ class UserProfileXl extends React.Component{
                <Dropzone accept="image/*" className="user-profile-upload-photo-modal-drop-zone" multiple={false} onDrop={(files)=>{this.onDrop(files)}}>
                  <div className="user-profile-upload-photo-modal-image-zone">
                   <img className="user-profile-upload-photo-modal-image" src={this.state.profilePicture} alt=""  height="250px" width="250px"/>
-                    <div className="user-profile-upload-photo-modal-image-selection-button">
-                      انتخاب تصویر
-                    </div>
+                  {this.renderLoadingOrSelect()}
                  </div>
                </Dropzone>
                <p onClick={()=>{this.setState({profilePicture:null})}} className="user-profile-upload-photo-modal-delete-selection">
                 حذف تصویر
                </p>
-               <div onClick={()=>{this.handleChangeProfilePicture()}}className="user-profile-upload-photo-modal-save-selection">
+               <div onClick={()=>{this.setState({loading:true},()=>{this.handleChangeProfilePicture()})}} className="user-profile-upload-photo-modal-save-selection">
                 ذخیره
                </div>
                </div>
       </Modal>
     );
   }
-
+                 // <ClimbingBoxLoader color={'#12b2ce'} loading={true} />
   handleChangeProfilePicture(){
     var fd = new FormData();
     fd.append('profile_picture' , this.state.profilePictureFile);

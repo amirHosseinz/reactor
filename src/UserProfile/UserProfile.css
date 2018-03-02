@@ -308,6 +308,12 @@
   border : none;
   border-radius : 25px;
 }
+
+.user-profile-upload-photo-modal-loading-indicator{
+  position:absolute;
+  margin:auto;
+  z-index: 12;
+}
 .user-profile-upload-photo-modal-title{
   font-family: Shabnam;
   font-size : 20px;
