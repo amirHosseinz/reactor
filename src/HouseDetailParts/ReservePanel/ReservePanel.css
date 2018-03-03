@@ -21,6 +21,7 @@
 }
 .reserve-panel-reserve-button-disabled{
   background-color: #FF5050;
+  outline: none;
   height: 55px;
   width: 100%;
   color: white;
@@ -31,6 +32,7 @@
   border-radius: 8px;
 }
 .reserve-panel-reserve-button-active{
+  outline: none;
   background-color: #FF5050;
   height: 55px;
   width: 100%;
@@ -43,6 +45,7 @@
 }
 
 .reserve-panel-enter-number-of-guests-button{
+  outline: none;
   height: 48px;
   border: solid;
   border-color: #D9D9D9;
@@ -98,6 +101,7 @@
 }
 
 .btn-plus{
+  outline: none;
   background-color:#83daeb;
   cursor:pointer;
   border:none;
@@ -109,6 +113,7 @@
   text-decoration:none;
 }
 .btn-plus:hover{
+  outline: none;
   background-color:#00accb;
   -moz-border-radius:5px;
   -webkit-border-radius:5px;

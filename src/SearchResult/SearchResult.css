@@ -53,6 +53,7 @@
 }
 
 .search-result-filter-button{
+  outline: none;
   height: 46px;
   width: 140px;
   background-color: #f9f9f9;
