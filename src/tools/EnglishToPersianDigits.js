@@ -1,4 +1,6 @@
 export function englishToPersianDigits (input) {
+  if(input === null)
+    return input;
   if (typeof input !== "undefined") {
     input = input.toString();
     var result = '';
@@ -16,6 +18,8 @@ export function englishToPersianDigits (input) {
 }
 
 export function persianArabicToEnglishDigits (input) {
+  if(input === null)
+    return input;
   if (typeof input !== "undefined") {
     input = input.toString();
     var result = '';
