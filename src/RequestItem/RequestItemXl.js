@@ -401,7 +401,9 @@ class RequestItemXl extends React.Component{
         <div className='request-item-details-card'>
           <div className='request-item-details-card-description'>
             <p className='request-item-details-card-home-name'> <span className='request-item-details-text'>نام اقامتگاه : </span> <a style={{fontWeight:'500', color:'#12b2ce'}} href={"/rooms/"+ this.state.request.room.id} target="_blank">{this.state.request.room.title}</a></p>
-            <p className='request-item-details-card-host-name'> به میزبانی  {this.state.request.room.owner.first_name} {this.state.request.room.owner.last_name}</p>
+            <div className='request-item-details-card-host-name'>
+              به میزبانی {this.state.request.room.owner.first_name} {this.state.request.room.owner.last_name}
+            </div>
           </div>
           <img className='request-item-details-card-img' src={"https://www.trypinn.com"+this.state.request.room.preview} alt=""height="90px"/>
         </div>
