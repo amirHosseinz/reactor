@@ -31,11 +31,13 @@ class ReservePanelXl extends React.Component{
         fromDate:'',
         toDate:'',
       },
+      discountCodeAccepted:false,
+      discountCodeApplied:false,
       totalPrice:0,
       discountCode : '',
       focusedInput:null,
-      startDate:'',
-      endDate:'',
+      startDate:null,
+      endDate:null,
     };
   }
   renderOrdinaryPriceForPerPerson(){
@@ -295,10 +297,10 @@ class ReservePanelXl extends React.Component{
    })
    .then((discountResponse) => {
      if(discountResponse.discount_code_error===false){
-       this.setState({totalPrice : discountResponse.total_price});
+       this.setState({discountCodeApplied:true,discountCodeAccepted:true, totalPrice : discountResponse.total_price});
      }
      else{
-      alert("کد تخفیف وارد شده اشتباه است")
+      this.setState({discountCodeApplied:true,discountCodeAccepted:false, totalPrice : discountResponse.total_price});
      }
    });
   }
@@ -309,15 +311,25 @@ class ReservePanelXl extends React.Component{
         </p>
       );
   }
+
+  getClassNameForDiscountCodeBox(){
+    if(this.state.discountCodeAccepted===true){
+      return "pre-bill-discount-value-discount-code-accepted";
+    }
+    if(this.state.discountCodeAccepted===false){
+      return "pre-bill-discount-value-discount-code-rejected";
+    }
+  }
+
   renderPreBill(){
     if(this.state.reserveData!==''){
       return(
         <Modal isOpen={this.state.showPreBill}
           style={reserveModalStyle}
-          onRequestClose={()=>{this.setState({showPreBill:false})}}>
+          onRequestClose={()=>{this.setState({showPreBill:false,discountCode:''})}}>
           <div className="pre-bill-main-division">
             <div className="pre-bill-header-section">
-            <div onClick={()=>{this.setState({showPreBill:false})}} className="close-modal-phone-number">
+            <div onClick={()=>{this.setState({showPreBill:false,discountCode:''})}} className="close-modal-phone-number">
             </div>
               <p>
                 جزئیات رزرو اقامتگاه
@@ -373,10 +385,10 @@ class ReservePanelXl extends React.Component{
                   {this.renderTotalPrice()}
                 </div>
                   <div className="pre-bill-discount-section row-reverse" dir="rtl">
-                    <input className="pre-bill-discount-value suggestions form-control-tripinn"
+                    <input className={this.state.discountCodeApplied?this.getClassNameForDiscountCodeBox():"pre-bill-discount-value form-control-tripinn"}
                     value={this.state.discountCode}
                           placeholder="ورود کد تخفیف"
-                          onChange={(event)=>{this.setState({discountCode:event.target.value})}}/>
+                          onChange={(event)=>{this.setState({totalPrice:this.state.reserveData.total_price,discountCodeApplied:false,discountCode:event.target.value})}}/>
                         {this.renderDiscountStatus()}
                   </div>
               </div>

@@ -18,16 +18,16 @@ class AmenitiesDescriptionXl extends React.Component{
         return(
           <div className="main-amanities">
             <div className='main-amanities-item'>
-              <img height="60px" width="60px" src={require('../facilities/guest_numbers.png')}  className="main-amanities-icon" alt = "" />
+              <img height="56px" width="56px" src={require('../facilities/guest_numbers.png')}  className="main-amanities-icon" alt = "" />
               <p className='aminities-text'> {englishToPersianDigits(this.props.homeData.capacity)} </p>
               <p className='aminities-text-static-xl'> مهمان </p>
-              <img height="60px" width="60px" src={require('../facilities/rooms.png')}  className="main-amanities-icon" alt = "" />
+              <img height="56px" width="56px" src={require('../facilities/rooms.png')}  className="main-amanities-icon" alt = "" />
               <p className='aminities-text'>{englishToPersianDigits(this.props.homeData.rooms_number)} </p>
               <p className='aminities-text-static-xl'> اتاق</p>
-              <img  height="60px" width="60px" src={require('../facilities/beds.png')}  className="main-amanities-icon" alt = "" />
+              <img  height="56px" width="56px" src={require('../facilities/beds.png')}  className="main-amanities-icon" alt = "" />
               {this.renderBeds()}
               <p className='aminities-text-static-xl'>تخت</p>
-              <img height="60px" width="60px" src={require('../facilities/bath.png')}  className="main-amanities-icon" alt = "" />
+              <img height="56px" width="56px" src={require('../facilities/bath.png')}  className="main-amanities-icon" alt = "" />
               <p className='aminities-text'> {englishToPersianDigits(this.props.homeData.bath_room_number)} </p>
               <p className='aminities-text-static-xl'>حمام </p>
             </div>

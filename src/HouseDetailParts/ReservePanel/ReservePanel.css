@@ -235,3 +235,40 @@
   height : 48px;
   width : 100%;
 }
+
+
+.pre-bill-discount-value-discount-code-accepted{
+  font-family: IRANSans !important;
+  font-size: 16px !important;
+  display: block;
+  outline:none;
+  width: 180px;
+  padding: 10px 12px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  border:solid 2px green;
+  padding: 8px 10px;
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.pre-bill-discount-value-discount-code-rejected{
+  font-family: IRANSans !important;
+  font-size: 16px !important;
+  display: block;
+  outline:none;
+  width: 180px;
+  padding: 10px 12px;
+  line-height: 1.42857143;
+  color: #555;
+  padding: 8px 10px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  border:solid 2px red;
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
