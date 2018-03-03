@@ -18,6 +18,7 @@ class SuggestionsXl extends React.Component{
           email:'',
           description:'',
         },
+        errors:'',
         showResponseModal:false,
         responseIsSuccesful:false,
         token:null,
@@ -54,8 +55,10 @@ getRelevantToken(){
      return response.json();
    })
    .then((response) => {
-     this.setState({responseIsSuccesful:response.is_successful,showResponseModal:true});
-    console.log(response);
+     this.setState({responseIsSuccesful:response.is_successful,showResponseModal:true,});
+     const errors=response.errors.toString()
+     console.log(errors);
+     this.setState({errors:response.errors.toString()});
    });
   }
 
@@ -84,6 +87,24 @@ getRelevantToken(){
   Suggestionsname(event){
     this.setState({name:event.target.value});
   }
+  handleRequiredFieldsModal(){
+    if (this.state.errors.indexOf('Ensure this value has at most 100 characters') > -1) {
+      return(
+        <div>
+       نام وارد شده معتبر نمی‌باشد
+        </div>
+      );
+    }
+  }
+  handleInvalidEmailModal(){
+    if (this.state.errors.indexOf('Enter a valid email address.') > -1) {
+      return(
+        <div>
+        ایمیل وارد شده صحیح نمی‌باشد
+        </div>
+      );
+    }
+  }
 
   handleResponseModal(){
     if(this.state.responseIsSuccesful===true){
@@ -96,6 +117,7 @@ getRelevantToken(){
     else{
       return(
         <div>
+
           پیشنهاد شما با موفقیت ثبت نشد
         </div>
       );
@@ -107,6 +129,8 @@ getRelevantToken(){
       onRequestClose={()=>{this.setState({showResponseModal:false})}}
       style={suggestionResponseModalStyle}>
         {this.handleResponseModal()}
+        {this.handleInvalidEmailModal()}
+        {this.handleRequiredFieldsModal()}
       </Modal>
       // <Modal open={this.state.showResponseModal}
       //        little={true}
@@ -171,6 +195,8 @@ getRelevantToken(){
         <div>
         </div>
         {this.renderResponseModal()}
+        {this.handleInvalidEmailModal()}
+        {this.handleRequiredFieldsModal()}
       </div>
     );
   }
