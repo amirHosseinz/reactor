@@ -10,10 +10,13 @@ import MapDescription from '../HouseDetailParts/MapRenderer.js';
 import UtilitiesDescription from '../HouseDetailParts/UtilitiesDescription.js';
 import CheckInCheckOutDescription from '../HouseDetailParts/CheckInCheckOutDescription.js';
 import MaxCapacity from '../HouseDetailParts/MaxCapacity.js';
+import DifferentPrices from '../HouseDetailParts/DifferentPrices.js';
 import RulesDescription from '../HouseDetailParts/RulesDescription.js';
 import SpecialRule from  '../HouseDetailParts/SpecialRule.js';
 import GuestNumber from '../HouseDetailParts/GuestNumber';
 import {Link,Element} from 'react-scroll';
+import {parsePrice3digits} from '../tools/ParsePrice3digits.js';
+
 import './HouseDetails.css';
 import Lightbox from 'react-images';
 
@@ -273,9 +276,9 @@ class HouseDetailsMd extends React.Component{
                   <div style={style}>
                     <div className={isSticky?"house-details-reserve-panel-sticky-md housedetails-content-containers-md":"house-details-reserve-panel-not-sticky-md housedetails-content-containers-md"}>
                       <div className="house-details-reserve-panel-price-description">
-                          <p className="house-details-price-pernight-label">هزینه هرشب اقامت:</p>
+                          <p className="house-details-price-pernight-label-md"> هزینه اقامت هر شب عادی:</p>
                           <div className = "house-details-price">
-                            <span> {englishToPersianDigits(this.state.homeData.price)} </span>
+                            <span> {englishToPersianDigits(parsePrice3digits(this.state.homeData.price))} </span>
                             <span> تومان</span>
                           </div>
                       </div>
@@ -330,6 +333,12 @@ class HouseDetailsMd extends React.Component{
                   </div>
                   <div className="house-details-sleep-arrangements">
                   </div>
+                </div>
+                <div className="house-details-prices housedetails-content-containers">
+                  <p className="house-details-description-heading">
+                    هزینه اقامت هر‌شب
+                  </p>
+                  <DifferentPrices homeData={this.state.homeData}/>
                 </div>
                 <div className= "house-details-rules housedetails-content-containers">
                   <Element name="laws" ></Element>

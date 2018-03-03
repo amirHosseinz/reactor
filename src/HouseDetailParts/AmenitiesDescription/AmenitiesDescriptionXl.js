@@ -61,7 +61,7 @@ class AmenitiesDescriptionXl extends React.Component{
                 <img height="74px" width="74px" src={require('../facilities/food.svg')}  alt = "" />
                 <div className="amenities-text-ecotourism">
                   <p className='aminities-title-text'>
-                  {(this.props.homeData.food_service_type.length!==0)?englishToPersianDigits(this.props.homeData.food_service_type.length)+'وعده ':'ندارد'}
+                  {(this.props.homeData.food_service_type.length!==0)?englishToPersianDigits(this.props.homeData.food_service_type.length)+'وعده ':'بدون غذا'}
                 </p>
                   <p className="aminities-title-description">{this.renderFoodServiceType()}</p>
                 </div>

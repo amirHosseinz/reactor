@@ -1519,12 +1519,9 @@ justify-content: center;
   padding-top: 56.25%; /* 16:9 Aspect Ratio */
 }
 .imgresult{
+  /* padding-bottom:56.25%; */
+  width : 100%;
   display: inline-block;
-  max-height: 100%;
-  max-width: 100%;
-  width: auto;
-    height: auto;
-  margin: auto;
   text-align: center;
   object-fit: cover;
   border-radius: 4px 4px 0px 0px;

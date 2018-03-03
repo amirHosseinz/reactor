@@ -69,8 +69,49 @@ margin-top: 5px !important;
 .house-details-amenities{
 margin-top: 40px;
 }
+
+.house-details-prices{
+  height : 150px;
+  background-color: white;
+  margin-top : 6px;
+  border-radius : 6px;
+  border : solid 1px white;
+  padding-top : 16px;
+  padding-right:22px;
+}
+
+.house-details-different-prices-section{
+  /* margin-left : 20px; */
+  width: 130px;
+}
+.house-details-different-prices-value{
+  font-size : 20px;
+  font-weight: 400;
+  color: #01708b;
+}
+.vertical-line{
+  border-left: 2px solid #ededed;
+  height : 60px;
+  margin-top : 20px !important;
+  margin-left : 10px;
+}
+.house-details-different-prices-title{
+  font-size : 16px;
+  margin-top : 20px !important;
+  font-weight: 500;
+  margin-bottom : 8px;
+}
+.house-details-different-prices-currency{
+
+}
+.house-details-different-prices{
+  display:flex;
+  display: -webkit-flex;
+  flex-direction : row;
+}
 .house-details-rules{
-padding-bottom: 30px;
+ padding-bottom: 30px;
+ margin-top : 6px;
 }
 .house-details-sleep-arrangements{
 margin-top: 10px;
@@ -233,10 +274,12 @@ color : #008ca4;
 }
 
 .house-details-location{
+  margin-top : 6px;
 margin-bottom: 100px;
 }
 .house-details-location-description{
-margin-bottom: 10px;
+ /* margin-top : 6px;   */
+ margin-bottom: 10px;
 }
 .house-details-description-heading{
 margin-bottom : 5px !important;
@@ -402,6 +445,12 @@ color: #FF5A5A;
 .house-details-price-pernight-label{
 color: #737373;
 font-size: 16px;
+font-weight: 400;
+}
+
+.house-details-price-pernight-label-md{
+color: #737373;
+font-size: 14px;
 font-weight: 400;
 }
 

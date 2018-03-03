@@ -56,7 +56,29 @@ class SearchResultItem extends React.Component {
         return null;
     }
   }
-
+  renderRelevantRoom(){
+    switch(this.props.room.type){
+      case 'room':{
+        return(
+          <div className = "result-room-type">
+            <p className="rooms_type_result"> {this.getRoomType()} </p>
+            <p className="rooms_type_result"> {this.getServiceType()} </p>
+            <p className="rooms_type_result"> {englishToPersianDigits(this.props.room.rooms_number)}</p>
+            <p className="rooms_type_result">خوابه</p>
+          </div>
+        );
+      }
+      case 'ecotourism':{
+        return(
+          <div className = "result-room-type">
+            <p className="rooms_type_result">  اقامتگاه بوم‌گردی با </p>
+            <p className="rooms_type_result"> {englishToPersianDigits(this.props.room.rooms_number)}</p>
+            <p className="rooms_type_result">اتاق</p>
+          </div>
+        );
+      }
+    }
+  }
   render ()
    {
     return(
@@ -64,24 +86,19 @@ class SearchResultItem extends React.Component {
       <div>
         <a target="_blank" href={(this.props.room.type==='room')?"/rooms/"+ this.props.room.id:"/ecotourism/"+ this.props.room.id} className="card_anchor">
           <div  className="result-detail">
-            <AspectRatio ratio="16/11" style={{maxWidth: '400px'}}>
+            <AspectRatio ratio="16/11">
                   <img src= {this.props.preview} className="imgresult" alt="پیشنمایش خانه "/>
             </AspectRatio>
               <div className="result-without-price">
-                <div className = "result-room-type">
-                  <p className="rooms_type_result"> {this.getRoomType()} </p>
-                  <p className="rooms_type_result"> {this.getServiceType()} </p>
-                  <p className="rooms_type_result"> {englishToPersianDigits(this.props.room.rooms_number)}</p>
-                  <p className="rooms_type_result">خوابه</p>
+                <div>
+                  {this.renderRelevantRoom()}
                 </div>
                 <div className = "result-title">
                   <p>{this.title()}</p>
                 </div>
                 <div className="room_address_results">
-
                   <p>{this.props.room.address}</p>
                 </div>
-
               </div>
                 <div className = "result-price">
                   <p className="toman-per-night-result"> هر شب </p>

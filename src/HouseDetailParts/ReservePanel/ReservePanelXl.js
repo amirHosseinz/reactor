@@ -2,6 +2,7 @@ import React from 'react';
 import GuestNumber from '../GuestNumber.js';
 import {Button} from 'semantic-ui-react';
 import {englishToPersianDigits} from '../../tools/EnglishToPersianDigits';
+import {parsePrice3digits} from '../../tools/ParsePrice3digits.js';
 import {findDOMNode} from 'react-dom';
 import Modal from 'react-modal';
 
@@ -12,7 +13,6 @@ import {DateRangePicker} from '../../tools/calendar';
 import {reserveModalStyle} from '../../Styles.js';
 import momentJalaali from 'moment-jalaali';
 import moment from 'moment-jalaali';
-import {parsePrice3digits} from '../../tools/ParsePrice3digits.js';
 import './ReservePanel.css';
 
 
@@ -28,8 +28,8 @@ class ReservePanelXl extends React.Component{
       token:null,
       numberOfGuests: 1,
       requestParams :{
-        fromDate:'',
-        toDate:'',
+        fromDate:null,
+        toDate:null,
       },
       discountCodeAccepted:false,
       discountCodeApplied:false,
@@ -264,9 +264,8 @@ class ReservePanelXl extends React.Component{
 
   renderReserveButton(){
     if(this.state.startDate==='' || this.state.endDate===''){
-      console.log(this.testNode);
       return(
-        <button onClick={()=>{this.testNode.click()}} className="reserve-panel-reserve-button-disabled"> نمایش پیش‌فاکتور </button>
+        <button className="reserve-panel-reserve-button-disabled"> نمایش پیش‌فاکتور </button>
       );
     }
     else{
@@ -322,7 +321,7 @@ class ReservePanelXl extends React.Component{
   }
 
   renderPreBill(){
-    if(this.state.reserveData!==''){
+    if(this.state.reserveData!=='' && this.state.reserveData!==undefined && this.state.reserveData!==null){
       return(
         <Modal isOpen={this.state.showPreBill}
           style={reserveModalStyle}

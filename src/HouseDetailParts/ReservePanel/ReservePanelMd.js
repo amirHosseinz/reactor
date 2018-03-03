@@ -323,7 +323,7 @@ class ReservePanelMd extends React.Component{
 
 
   renderPreBill(){
-    if(this.state.reserveData!==''){
+    if(this.state.reserveData!=='' && this.state.reserveData!==undefined && this.state.reserveData!==null){
       return(
         <Modal isOpen={this.state.showPreBill}
           style={reserveModalStyle}
