@@ -266,7 +266,7 @@ class ReservePanelMd extends React.Component{
   renderReserveButton(){
     if(this.state.startDate==='' || this.state.endDate===''){
       return(
-        <button disabled className="reserve-panel-reserve-button-disabled"> نمایش پیش‌فاکتور </button>
+        <button disabled className="reserve-panel-reserve-button-active"> نمایش پیش‌فاکتور </button>
       );
     }
     else{

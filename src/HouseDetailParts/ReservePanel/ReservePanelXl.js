@@ -265,7 +265,7 @@ class ReservePanelXl extends React.Component{
   renderReserveButton(){
     if(this.state.startDate==='' || this.state.endDate===''){
       return(
-        <button className="reserve-panel-reserve-button-disabled"> نمایش پیش‌فاکتور </button>
+        <button disabled className="reserve-panel-reserve-button-active"> نمایش پیش‌فاکتور </button>
       );
     }
     else{
@@ -370,7 +370,7 @@ class ReservePanelXl extends React.Component{
                     <p className="pre-bill-date-item" >تا {moment(this.state.requestParams.toDate).format('jYYYY/jM/jD')}</p>
                     <p className="row-reverse">
                       <span >
-                        روز اقامت 
+                        روز اقامت
                       </span>
                       <span>
                          {englishToPersianDigits(this.state.reserveData.ordinary_duration + this.state.reserveData.weekend_duration +this.state.reserveData.special_duration +this.state.reserveData.nowruz_duration)}
