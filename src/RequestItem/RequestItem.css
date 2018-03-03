@@ -89,12 +89,12 @@
   color: #12b2ce;
   font-weight: 500;
 }
-
-
-
-
-
-
+.request-item-details-card-host-name{
+  display: flex;
+  display:-webkit-flex;
+  flex-direction: row;
+  direction: rtl;
+}
 .request-item-no-house-main-container{
   border-radius: 6px 6px 6px 6px;
   border: solid;

@@ -57,12 +57,14 @@ class TripItemXl extends React.Component{
         );
       case "ISSUED":
         return (
-          <span>           این رزرو نهایی شده است،
+          <span>
+          این رزرو نهایی شده است،
           تریپین سفر خوبی را
           برای شما آرزو می‌کند.
           برای داشتن بهترین
-          تجربه‌ی سفر مقررات
-          تحویل خانه را مطالعه کنید.
+          تجربه‌ی سفر
+          <Link to="/terms&conditions"> مقررات تحویل خانه </Link>
+        را مطالعه کنید
           </span>
         );
       case "IN_PROGRESS":
@@ -71,7 +73,8 @@ class TripItemXl extends React.Component{
           این سفر در حال انجام است،
 در صورت بروز هرگونه مشکل
 با پشتیبانی
-تماس بگیرید.
+<Link to="/contactUs"> تماس </Link>
+بگیرید
 
           </span>
         );

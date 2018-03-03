@@ -87,12 +87,10 @@ export const suggestionResponseModalStyle = {
   },
   content : {
     fontFamily : 'IRANSans',
-    top:'50%',
-    left:'50%',
-    right:'auto',
-    bottom:'auto',
-    marginRight:'-50%',
-    transform:'translate(-50%, -50%)',
+    height :'100px',
+    width  :'270px',
+    margin : 'auto',
+    transform:'translate(0%, 0%)',
   }
 };
 export const downloadAppModalStyle={
