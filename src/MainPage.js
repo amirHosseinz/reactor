@@ -11,6 +11,7 @@ import BecomeHost from './BecomeHost.js';
 import ContactUs from './ContactUs.js';
 import AboutUs from './AboutUs.js';
 import Terms from './Terms.js';
+import Partners from './Partners.js';
 import SearchResult from './SearchResult.js';
 import Suggestions from './Suggestions.js';
 import {StickyContainer} from 'react-sticky';
@@ -176,6 +177,11 @@ class MainPage extends React.Component{
       <Suggestions />
     );
   }
+  renderPartners(){
+    return(
+      <Partners />
+    );
+  }
   // <Route path={"/becomehost"} render = {()=> {return(this.renderBecomeHost())}}/>
   // <Route path={"/"} render = {()=> {return(this.renderFooter())}}/>
   render(){
@@ -196,6 +202,7 @@ class MainPage extends React.Component{
           <Route path={"/contactus"} render = {()=> {return(this.renderContactUs())}}/>
           <Route path={"/userprofile"} render={()=> {return(this.renderUserProfile())}}/>
           <Route exact path={"/search/:city"} render = {(props)=> {return(this.renderSearchResult(props))}}/>
+          <Route path={"/partners/"} render={()=> {return(this.renderPartners())}}/>
         </div>
       </BrowserRouter>
       </StickyContainer>
