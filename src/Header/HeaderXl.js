@@ -1,11 +1,12 @@
 import React from 'react';
 import Login from '../Login.js';
-
+import {reserveModalStyleRequests} from '../Styles.js';
 import {Link} from 'react-router-dom';
 import {Button,Divider} from 'semantic-ui-react';
 import {Dropdown} from 'semantic-ui-react';
 import './Header.css';
 import '../Styles/Header-SearchBar.css';
+import {CancelButtonModalStyle} from '../Styles.js';
 import {downloadAppModalStyle,loginPasswordStyle, loginPhoneNumberStyle, loginPanelmobileStyle , loginVerifySmsXl} from '../Styles.js';
 // import {Modal} from 'react-bootstrap';
 import {englishToPersianDigits,persianArabicToEnglishDigits} from '../tools/EnglishToPersianDigits';
@@ -331,6 +332,31 @@ class HeaderXl extends React.Component{
       );
     }
   }
+  renderOpenCancelButtonModal(){
+    this.setState({cancelModalIsOpen:true});
+    console.log('hhhhhhhhhhhhhhhhhhhhh');
+    console.log(this.state.cancelModalIsOpen);
+  }
+  renderCancelModal(){
+    return(
+
+        <Modal
+          isOpen={this.state.cancelModalIsOpen}
+          onRequestClose={()=>{this.setState({cancelModalIsOpen:false})}}
+          style={CancelButtonModalStyle}>
+          <div className='cancel-button-modal'>
+          <p className='cancel-button-modal-question'>
+          از حساب کاربری خود خارج میشوید؟
+          </p>
+            <div className='cancel-button-modal-buttons'>
+            <div className="clickable-p request-item-no-button-modal" onClick={this.handleSignOutButton.bind(this)} ><p className='request-item-cancel-button-text'>بله</p> </div>
+            <div className="clickable-p request-item-yes-button-modal"  onClick={()=>{this.setState({cancelModalIsOpen:false})}}><p className='request-item-payment-button-text'>خیر</p></div>
+            </div>
+          </div>
+        </Modal>
+
+    );
+  }
 
   signOutAndProfile(){
     return (
@@ -354,9 +380,9 @@ class HeaderXl extends React.Component{
                       {this.renderRequestButton()}
                       {this.renderTripButton()}
                     </div>
-
-                    <p className="profile-card-exit-button" onClick={this.handleSignOutButton.bind(this)}>خروج</p>
+                    <p className="profile-card-exit-button" onClick={this.renderOpenCancelButtonModal.bind(this)}>خروج</p>
                   </div>
+                  {this.renderCancelModal()}
                 </div>
              </Dropdown.Menu>
             </Dropdown>

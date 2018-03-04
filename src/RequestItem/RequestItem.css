@@ -143,12 +143,13 @@
 .cancel-button-modal-buttons{
   display: flex;
   display:-webkit-flex;
-  flex-direction: column;
-  align-content: space-around;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 .request-item-no-button-modal{
-  width:90%;
+  width:70%;
   margin-top: 5px;
+  margin-right: 10px;
   border: solid;
   border-color: #f54e4e;
   border-width: 2px;
@@ -162,7 +163,8 @@
 .request-item-yes-button-modal{
   color: white;
   background-color: #12b2ce;
-  width:90%;
+  width:70%;
+  margin-right: 10px;
   margin-top: 5px !important;
   border: solid;
   border-color:#12b2ce;
@@ -175,7 +177,8 @@
   color:#fff;
 }
 .request-item-no-button-modal:hover{
-  width:90%;
+  width:70%;
+  margin-right: 10px;
   margin-top: 5px;
   border: solid;
   border-color: #f54e4e;
@@ -193,7 +196,8 @@
 .request-item-yes-button-modal:hover{
   color: white;
   background-color: #008fb3;
-  width:90%;
+  width:70%;
+  margin-right: 10px;
   margin-top: 5px !important;
   border: solid;
   border-color:#008fb3;
@@ -209,8 +213,13 @@
   text-align: center;
 }
 .cancel-button-modal-question{
-  margin-right: 20px;
+text-align: center;
 }
+.cancel-button-modal{
+  margin-right: -15px;
+  padding-top:20px;
+}
+
 /*xl style finished  */
 
 
