@@ -100,7 +100,7 @@ export const CancelButtonModalStyle = {
   },
   content : {
     fontFamily : 'IRANSans',
-    height :'180px',
+    height :'160px',
     width  :'300px',
     margin : 'auto',
     transform:'translate(0%, 0%)',

@@ -4,13 +4,17 @@ import {englishToPersianDigits} from '../tools/EnglishToPersianDigits';
 import moment from 'moment-jalaali';
 import './TripItem.css';
 import {Link} from 'react-router-dom';
+import {CancelButtonModalStyle} from '../Styles.js';
+import Modal from 'react-modal';
 moment.loadPersian({usePersianDigits:true , dialect:'persian-modern'});
+
 class TripItemXl extends React.Component{
   constructor(props){
     super(props);
     this.state={
       trip : null,
       tripStatus : null,
+      cancelModalIsOpen:false,
       role : null,
       token : null,
     };
@@ -106,13 +110,14 @@ class TripItemXl extends React.Component{
   getRelevantButton(){
     switch (this.state.tripStatus){
       case "CANCELED_BY_GUEST":
+      console.log('inj');
         return (
-          <div className="clickable-p request-item-cancel-button" onClick={this.handleDeleteTripButton.bind(this)}>
+          <div className="clickable-p request-item-cancel-button" onClick={this.renderOpenCancelButtonModal.bind(this)}>
         <p className="request-item-cancel-button-text">   حذف سفر</p>
          </div>);
       case "CANCELED_BY_HOST":
         return (
-          <div className="clickable-p request-item-cancel-button" onClick={this.handleDeleteTripButton.bind(this)}>
+          <div className="clickable-p request-item-cancel-button" onClick={this.renderOpenCancelButtonModal.bind(this)}>
           <p className="request-item-cancel-button-text">   حذف سفر</p>
            </div>
         );
@@ -192,6 +197,29 @@ class TripItemXl extends React.Component{
     this.setTokenForDelete();
   }
 
+  renderOpenCancelButtonModal(){
+    this.setState({cancelModalIsOpen:true});
+  }
+  renderCancelModal(){
+    return(
+
+        <Modal
+          isOpen={this.state.cancelModalIsOpen}
+          onRequestClose={()=>{this.setState({cancelModalIsOpen:false})}}
+          style={CancelButtonModalStyle}>
+          <div className='cancel-button-modal'>
+          <p className='cancel-button-modal-question'>
+          آیا از لغو سفر خود مطمئن هستید؟
+          </p>
+            <div className='cancel-button-modal-buttons'>
+            <div className="clickable-p request-item-no-button-modal" onClick={this.handleDeleteTripButton.bind(this)}><p className='request-item-cancel-button-text'>لغو سفر</p> </div>
+            <div className="clickable-p request-item-yes-button-modal"  onClick={()=>{this.setState({cancelModalIsOpen:false})}}><p className='request-item-payment-button-text'>بازگشت</p></div>
+            </div>
+          </div>
+        </Modal>
+
+    );
+  }
   renderTripCardVersion2(){
     return(
       <div className="request-card-container">
@@ -221,6 +249,7 @@ class TripItemXl extends React.Component{
             <div className='relevant-button'>
               {this.getRelevantButton()}
             </div>
+            {this.renderCancelModal()}
       </div>
     );
   }

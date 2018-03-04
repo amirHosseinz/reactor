@@ -385,8 +385,6 @@ class RequestItemXl extends React.Component{
     console.log(this.state.cancelModalIsOpen);
   }
   renderCancelModal(){
-    console.log('inja');
-    console.log(this.state.cancelModalIsOpen);
     return(
 
         <Modal
@@ -394,12 +392,12 @@ class RequestItemXl extends React.Component{
           onRequestClose={()=>{this.setState({cancelModalIsOpen:false})}}
           style={CancelButtonModalStyle}>
           <div className='cancel-button-modal'>
+          <p className='cancel-button-modal-question'>
+          آیا از لغو درخواست خود مطمئن هستید؟
+          </p>
             <div className='cancel-button-modal-buttons'>
-            <p className='cancel-button-modal-question'>
-            آیا از لغو درخواست خود مطمئن هستید؟
-            </p>
-            <div className="clickable-p request-item-yes-button-modal"  onClick={()=>{this.setState({cancelModalIsOpen:false})}}><p className='request-item-payment-button-text'>بازگشت</p></div>
             <div className="clickable-p request-item-no-button-modal"onClick={()=>{this.setTokenForCancel()}}><p className='request-item-cancel-button-text'>لغو درخواست</p> </div>
+            <div className="clickable-p request-item-yes-button-modal"  onClick={()=>{this.setState({cancelModalIsOpen:false})}}><p className='request-item-payment-button-text'>بازگشت</p></div>
             </div>
           </div>
         </Modal>
@@ -408,8 +406,6 @@ class RequestItemXl extends React.Component{
   }
 
   renderCancelButton(){
-    console.log('hhhhhhhhhhhhhhhhhhhhh');
-    console.log(this.state.cancelModalIsOpen);
     if(this.state.requestStatus!=="GUEST_CANCELED"){
      return (
        <div className="clickable-p request-item-cancel-button" onClick={this.renderOpenCancelButtonModal.bind(this)}><p className='request-item-cancel-button-text'>لغو درخواست</p> </div>
@@ -532,7 +528,7 @@ class RequestItemXl extends React.Component{
     }
   }
   setTokenForCancel(){
-    this.setState({token:this.getRelevantToken()},()=>{this.handleCancelClick()});
+    this.setState({token:this.getRelevantToken(),cancelModalIsOpen:false},()=>{this.handleCancelClick()});
   }
   setTokenForDelete(){
     this.setState({token:this.getRelevantToken()},()=>{this.handleDeleteClick()});
