@@ -160,7 +160,7 @@ class SearchBarXl extends React.Component{
     const suggestions = this.state.suggestions;
     const inputProps = {
     autoFocus:true,
-    placeholder: 'مثلا نوشهر',
+    placeholder: 'مثلا اصفهان',
     value:this.state.city,
     onChange:this.onChangeSearchBarValue
     }

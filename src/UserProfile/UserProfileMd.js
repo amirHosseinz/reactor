@@ -1,5 +1,5 @@
 import React from 'react';
-import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
+import { englishToPersianDigits,persianArabicToEnglishDigits} from '../tools/EnglishToPersianDigits';
 import { Divider,Button } from 'semantic-ui-react';
 import './UserProfile.css';
 import {Link} from 'react-router-dom';
@@ -245,9 +245,9 @@ class UserProfileMd extends React.Component{
         {
           first_name:this.state.firstName,
           last_name:this.state.lastName,
-          cell_phone:this.state.cellPhone,
+          cell_phone:persianArabicToEnglishDigits(this.state.cellPhone),
           email:this.state.email,
-          national_id:this.state.nationalId,
+          national_id:persianArabicToEnglishDigits(this.state.nationalId),
         }
       ),
       headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
@@ -365,7 +365,7 @@ class UserProfileMd extends React.Component{
           (از این شماره برای ورود به اپلیکیشن و سایت سامانه استفاده خواهد شد)
             </span>
           </div>
-          <input value={this.state.cellPhone} onChange={(event)=>{this.editCellPhone(event)}}className="user-profile-edit-input" />
+          <input value={englishToPersianDigits(this.state.cellPhone)} onChange={(event)=>{this.editCellPhone(event)}}className="user-profile-edit-input" />
         </div>
         <div className="user-profile-edit-get-data-zone">
           <div className="user-profile-edit-input-paragraph">
@@ -377,7 +377,7 @@ class UserProfileMd extends React.Component{
           (ثبت کد ملی صحیح و منطبق با نام و نام خانوادگی برای رزرو ضروری می‌باشد)
             </span>
           </div>
-          <input value={this.state.nationalId} onChange={(event)=>{this.editNationalId(event)}} className="user-profile-edit-input"/>
+          <input value={englishToPersianDigits(this.state.nationalId)} onChange={(event)=>{this.editNationalId(event)}} className="user-profile-edit-input"/>
         </div>
         <div className="user-profile-edit-get-data-zone">
           <div className="user-profile-edit-input-paragraph">
@@ -406,7 +406,7 @@ class UserProfileMd extends React.Component{
         <div className="user-profile-edit-get-data-zone">
           <div className="user-profile-edit-input-paragraph">
             <span className="user-profile-edit-input-paragraph-title-password-section">
-           رمز عبور فعلی  
+           رمز عبور فعلی
             </span>
           </div>
           <input type="password" value={this.state.oldPassword} onChange={(event)=>{this.editOldPassoword(event)}} className="user-profile-edit-input-password-section" />
