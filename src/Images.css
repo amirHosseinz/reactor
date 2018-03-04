@@ -13,7 +13,6 @@
 }
 .download-app-anchor{
   margin-left:10px;
-
     height: 42px !important;
     width: 144px;
     border-radius: 5px;
@@ -38,12 +37,12 @@
 }
 
 .description-landing{
-  color: white;
-  font-size: 16px;
-  font-weight: 500;
-    font-family: IRANSans;
-    padding-top: 2px;
-    padding-bottom: 110px;
+color: white;
+font-size: 16px;
+font-weight: 500;
+  font-family: IRANSans;
+  padding-top: 2px;
+  padding-bottom: 110px;
 }
 .description-landing2{
   color: #13b2ce;
@@ -58,6 +57,7 @@
   text-align: center;
   padding-top: 120px;
 }
+
 .landing-btn {
   -webkit-border-radius: 4;
   -moz-border-radius: 4;
