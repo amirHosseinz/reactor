@@ -93,6 +93,19 @@ export const suggestionResponseModalStyle = {
     transform:'translate(0%, 0%)',
   }
 };
+export const CancelButtonModalStyle = {
+  overlay : {
+    zIndex : '10000',
+    backgroundColor: 'rgba(0,0,0,0.7)',
+  },
+  content : {
+    fontFamily : 'IRANSans',
+    height :'180px',
+    width  :'300px',
+    margin : 'auto',
+    transform:'translate(0%, 0%)',
+  }
+};
 export const downloadAppModalStyle={
   overlay : {
     zIndex : '10000',

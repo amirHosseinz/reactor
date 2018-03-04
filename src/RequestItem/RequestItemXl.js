@@ -4,6 +4,7 @@ import {englishToPersianDigits} from '../tools/EnglishToPersianDigits';
 import moment from 'moment-jalaali';
 // import {Modal} from 'react-bootstrap';
 import Modal from 'react-modal';
+import {CancelButtonModalStyle} from '../Styles.js';
 import {reserveModalStyleRequests} from '../Styles.js';
 import {parsePrice3digits} from '../tools/ParsePrice3digits.js'
 import './RequestItem.css';
@@ -14,6 +15,7 @@ class RequestItemXl extends React.Component{
     super(props);
     this.state= {
       request:null,
+      cancelModalIsOpen:false,
       showPreBill:false,
       requestStatus:null,
       token:null,
@@ -377,12 +379,43 @@ class RequestItemXl extends React.Component{
         return null;
     }
 }
+  renderOpenCancelButtonModal(){
+    this.setState({cancelModalIsOpen:true});
+    console.log('hhhhhhhhhhhhhhhhhhhhh');
+    console.log(this.state.cancelModalIsOpen);
+  }
+  renderCancelModal(){
+    console.log('inja');
+    console.log(this.state.cancelModalIsOpen);
+    return(
+
+        <Modal
+          isOpen={this.state.cancelModalIsOpen}
+          onRequestClose={()=>{this.setState({cancelModalIsOpen:false})}}
+          style={CancelButtonModalStyle}>
+          <div className='cancel-button-modal'>
+            <div className='cancel-button-modal-buttons'>
+            <p className='cancel-button-modal-question'>
+            آیا از لغو درخواست خود مطمئن هستید؟
+            </p>
+            <div className="clickable-p request-item-yes-button-modal"  onClick={()=>{this.setState({cancelModalIsOpen:false})}}><p className='request-item-payment-button-text'>بازگشت</p></div>
+            <div className="clickable-p request-item-no-button-modal"onClick={()=>{this.setTokenForCancel()}}><p className='request-item-cancel-button-text'>لغو درخواست</p> </div>
+            </div>
+          </div>
+        </Modal>
+
+    );
+  }
+
   renderCancelButton(){
+    console.log('hhhhhhhhhhhhhhhhhhhhh');
+    console.log(this.state.cancelModalIsOpen);
     if(this.state.requestStatus!=="GUEST_CANCELED"){
      return (
-       <div className="clickable-p request-item-cancel-button" onClick={()=>{this.setTokenForCancel()}}><p className='request-item-cancel-button-text'>لغو درخواست</p> </div>
+       <div className="clickable-p request-item-cancel-button" onClick={this.renderOpenCancelButtonModal.bind(this)}><p className='request-item-cancel-button-text'>لغو درخواست</p> </div>
      );
     }
+
   }
 
   renderDeleteButton(){
@@ -424,6 +457,7 @@ class RequestItemXl extends React.Component{
             {this.renderCancelButton()}
             {this.renderDeleteButton()}
           </div>
+          {this.renderCancelModal()}
     </div>
     );
   }
