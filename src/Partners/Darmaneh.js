@@ -1,7 +1,10 @@
 import React from 'react';
 import scrollToComponent from 'react-scroll-to-component';
 import './Partners.css';
-import {englishToPersianDigits} from '../tools/EnglishToPersianDigits.js'
+import {englishToPersianDigits} from '../tools/EnglishToPersianDigits.js';
+import MetaTags from 'react-meta-tags';
+
+
 class Darmaneh extends React.Component{
 
   renderLandingXS(){
@@ -14,8 +17,8 @@ class Darmaneh extends React.Component{
         <div className="tripinn-darmaneh">
           <div className="tripinn-introduction">
             <p className="introduction-paragraph">
-              تریپین بهترین و مهمان‌نوازترین میزبانان مردمی در سر تا سر کشور را کنار هم آورده تا تجربه‌ای متفاوت از آسودگی در سفر را برای شما رقم بزند.
-              در تریپین می‌توانید به راحتی اقامتگاه مورد نظر خود در طول سفر را از  بین ویلاها،  سوئیت‌ها، خانه‌های محلی، و گزینه‌های متعدد دیگر رزرو نمایید.و با امنیت خاطر سفری جذاب و خاطره انگیز را تجربه کنید.
+            تریپین بهترین و مهمان‌نوازترین میزبانان مردمی در سرتاسر کشور را کنار هم آورده تا تجربه‌ای متفاوت از آسودگی در سفر را برای شما رقم بزند.
+                        در تریپین می‌توانید به راحتی اقامتگاه مورد نظر خود در طول سفر را از بین ویلاها،  سوئیت‌ها، خانه‌های محلی و گزینه‌های متعدد دیگر رزرو نمایید و با امنیت خاطر سفری جذاب و خاطره‌انگیز را تجربه کنید
             </p>
           </div>
           <div className="discount-code-container">
@@ -82,6 +85,10 @@ class Darmaneh extends React.Component{
   render(){
     return(
       <div className="visible-xs hidden-xl">
+        <MetaTags>
+          <title>کد تخفیف برای کاربران درمانه</title>
+          <meta name="googlebot" content="noindex" />
+        </MetaTags>
         {this.renderLandingXS()}
       </div>
     );

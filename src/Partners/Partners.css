@@ -2,7 +2,7 @@
   background-color: white;
   width: 100%;
   text-align: center;
-  padding-top: 20px;
+  padding-top: 16px;
 }
 .darmaneh-landing-btn-container{
   display: flex;
@@ -145,7 +145,7 @@ user-select: none; /* Standard syntax */
 
 }
 .discount-code-container{
-  height: 230px;
+  height: 234px;
 }
 
 .darmaneh-landing-download-area{
