@@ -18,23 +18,36 @@ class Darmaneh extends React.Component{
               در تریپین می‌توانید به راحتی اقامتگاه مورد نظر خود در طول سفر را از  بین ویلاها،  سوئیت‌ها، خانه‌های محلی، و گزینه‌های متعدد دیگر رزرو نمایید.و با امنیت خاطر سفری جذاب و خاطره انگیز را تجربه کنید.
             </p>
           </div>
+          <div className="discount-code-container">
+            <div className="darmaneh-landing-btn-container">
+            <button className="darmaneh-landing-btn" onClick={() => scrollToComponent(this.Dis, { offset: 100, align: 'middle', duration: 1000})}> دریافت اپلیکیشن </button>
+            </div>
+            <div className="tripinn-darmaneh-connection">
+              کاربر گرامی درمانه، با استفاده از کد تخفیف زیر می‌توانید ویلا‌ها و اقامتگاه‌های تریپین را با ده درصد تخفیف رزرو کنید.
+            </div>
+            <div className="discount-code-input-section">
+               <img src={require('../Images/tripinn_logo.svg')} className='darmaneh-landing-logo' alt=""/>
+               <p className="discount-code-title"> کد تخفیف:darmaneh97</p>
+               <img src={require('../Images/Darmaneh  Logo.svg')} className="darmaneh-landing-logo"/>
+            </div>
+          </div>
           <div className="tripinn-features-containter">
-            <p className="tripinn-features-title">
+            <p onClick={()=>{scrollToComponent(this.refs.description, { offset: 0, align: 'top', duration: 800})}}className="tripinn-features-title">
               خدمات تریپین
             </p>
-            <div className="tripinn-introduction-container">
+            <div ref="description" className="tripinn-introduction-container">
               <p className="tripinn-introduction-title"> اقامتگاه بوم‌گردی</p>
               <div className="tripinn-boomgardi-introduction">
                 <p className="introduction-paragraph">
-                  اگر از زندگی پرهیاهوی ماشینی خسته شده اید و در سفرهای اخرهفته خود نیز هیاهوی تعطیلات اجازه ریلکسیشن کامل را به شما نمی دهد، بومگردی را تجربه کنید.
+                  اگر از زندگی پرهیاهوی ماشینی خسته شده‌اید و در سفرهای آخرهفته خود نیز شلوغی تعطیلات اجازه استراحت کامل را به شما نمی دهد، بومگردی را تجربه کنید.
                 </p>
                 <p className="introduction-paragraph">
-                  تجربه چند روز زندگی با مردم روستا در بافت روستا و با غذای محلی، به شما اجازه می دهدتا از انرژی که سادگی و میهمان نوازی این مردمان شریف به شما می دهند، لذت ببرید.
+                  تجربه چند روز زندگی با مردم روستا در بافت روستایی به همراه غذای محلی، به شما اجازه می‌دهد تا از سادگی و میهمان نوازی این مردم شریف انرژی بگیرید و لذت ببرید.
                 </p>
                 <p className="introduction-paragraph">
-                 تریپین ، مجموعه ای از بومگردی ها و اقامتگاهای محلی را در یک جا جمع آوری کرده است تا مخاطبین بتوانند قبل از سفر، اقامتگاه ها را با هم مقایسه کنند و بسته به حال و هوا و برااساس قیمت مناسب، مقصد خود را رزرو کنند. پشتیبانی
-                  {englishToPersianDigits(" 24 ")}
-                    ساعته تریپین از مهمانان خود، امنیت و آرامش خاطر را برای شما به ارمغان خواهد آورد.
+                تریپین، مجموعه‌ای از بومگردی‌ها و اقامتگاه‌های محلی را در یک جا جمع آوری کرده است تا مخاطبین بتوانند قبل از سفر، موارد متعدد را به سادگی با هم مقایسه کنند و با توجه به حال و هوا و با یک قیمت مناسب، اقامتگاه مورد نظر خود را رزرو کنند. پشتیبانی
+                                {englishToPersianDigits(" 24 ")}
+                                  ساعته تریپین از مهمانان خود، امنیت و آرامش خاطر را برای شما به ارمغان خواهد آورد.
                 </p>
               </div>
             </div>
@@ -42,23 +55,10 @@ class Darmaneh extends React.Component{
               <p className="tripinn-introduction-title"> ویلا و سوییت </p>
               <div className="tripinn-villa-introduction">
                 <p className="introduction-paragraph">
-                  تریپین با ایجاد یک پایگاه اطلاعاتی از سوییت ها و ویلاها در سراسر ایران همچون شهرهای شمالی، مشهد، باغ بهادران اصفهان، قشم و..... این امکان را به شما می دهد که مدتها قبل از سفر خود، اقامتگاه خود را با مقایسه شرایط مکانی و رفاهی از بین گزینه های مختلف انتخاب کنید و از طرفی با مشخص بودن قیمت و پشتیبانی تیم مالی و اجرایی تریپین، سفری مطمئن برای شما و همراهان و خانواده تان رقم خواهد زد.
+تریپین با ایجاد یک پایگاه اطلاعاتی از سوییت‌ها و ویلاها در سراسر ایران همچون شهرهای شمالی، مشهد، باغ‌بهادران اصفهان، قشم و . . . این امکان را به شما می دهد که مدتها قبل از سفر خود، اقامتگاه خود را با مقایسه شرایط مکانی و رفاهی از بین گزینه‌های مختلف انتخاب کنید و از طرفی با مشخص بودن قیمت و پشتیبانی تیم مالی و اجرایی تریپین، سفری مطمئن برای شما و همراهان و خانواده‌تان رقم خواهد زد.
                 </p>
               </div>
             </div>
-          </div>
-          <div className="discount-code-container">
-          <div className="darmaneh-landing-btn-container">
-          <button className="darmaneh-landing-btn" onClick={() => scrollToComponent(this.Dis, { offset: 100, align: 'middle', duration: 1000})}> دریافت اپلیکیشن </button>
-          </div>
-          <div className="tripinn-darmaneh-connection">
-            کاربر گرامی درمانه، با استفاده از کد تخفیف زیر می‌توانید ویلا‌ها و اقامتگاه‌های تریپین را با ده درصد تخفیف رزرو کنید.
-          </div>
-          <div className="discount-code-input-section">
-             <img src={require('../Images/tripinn_logo.svg')} className='darmaneh-landing-logo' alt=""/>
-             <p className="discount-code-title"> کد تخفیف:darmaneh97</p>
-             <img src={require('../Images/Darmaneh  Logo.svg')} className="darmaneh-landing-logo"/>
-          </div>
           </div>
         </div>
         <div className="darmaneh-landing-download-area">
