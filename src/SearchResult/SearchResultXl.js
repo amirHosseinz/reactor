@@ -83,7 +83,7 @@ class SearchResultXl extends React.Component{
    });
   fetch(request)
   .then((response) => {
-    // console.log(response);  
+    // console.log(response);
     return response.json();
   })
   .then((homeData) => {
@@ -266,38 +266,8 @@ class SearchResultXl extends React.Component{
       <div className="searchbarmain">
           <div className="container-fluid">
             {this.renderSearchBarInDetails()}
-            <div className="col-lg col-sm-12 mb-10">
-            </div>
-            <div className="col-lg col-sm-12 mb-10">
-            </div>
-          </div>
-
-          <div className="container-fluid hidden-xl visible-xs">
-              <div className='mobile-margined-search'>
-                <div className="main-zone-xs col-md-12">
-                  <div className="row">
-                  </div>
-            <div className='mobile-margined-search'>
-              <div className="main-zone-xs col-md-12">
-              </div>
-            </div>
           </div>
       </div>
-      <div className="downlaod-app-mobile">
-        <div className='mobile-margined-search'>
-          <div className="img-iphone col-xs-5">
-            <img src={require('../Images/phone-app.png')} className='iphone' alt="اپلیکیشن تریپین"></img>
-          </div>
-          <div className="img-download col-xs-6">
-            <a href="https://cafebazaar.ir/app/com.trypinn/">
-              <img src={require('../Images/bazaar.svg')} className='bazar-ico' alt="دانلود از بازار"></img>
-            </a>
-            <img src={require('../Images/button-app-store.svg')} className='bazar-ico' alt=" دانلود از سیب‌اپ"></img>
-          </div>
-        </div>
-       </div>
-      </div>
-    </div>
     );
   }
 }
