@@ -326,7 +326,7 @@ class Facilities extends React.Component {
           {this.renderPool()}
           {this.renderParking()}
 
-
+          
           {this.renderInsurance()}
           {this.renderTower()}
           {this.renderHerbalTea()}

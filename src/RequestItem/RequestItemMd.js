@@ -164,11 +164,12 @@ class RequestItemMd extends React.Component{
   }
 
   renderNowruzPriceForPerNight(){
+
     if(this.state.request.nowruz_price!==0){
       return(
         <div className="pre-bill-price-night-content row-reverse" dir="rtl">
           <p className="pre-bill-price-night-sentence">هزینه شب‌های نوروز
-          (  {englishToPersianDigits(this.state.request.nowruz_duration)} شب ) :
+          ({englishToPersianDigits(this.state.request.nowruz_duration)} شب ) :
           </p>
           <p className="pre-bill-price-night-value">
            {englishToPersianDigits(parsePrice3digits(this.state.request.nowruz_price))}
@@ -196,7 +197,11 @@ class RequestItemMd extends React.Component{
   }
 
   renderDifferentTypesPrices(){
-    if(this.state.request.room.is_price_per_person===false){
+    if (this.state.request.room===null)
+      var data = this.state.request.eco_room;
+    else
+      var data = this.state.request.room;
+    if(data.is_price_per_person===false){
       return(
         <div>
           {this.renderOrdinaryPriceForPerNight()}
@@ -230,6 +235,10 @@ class RequestItemMd extends React.Component{
   renderPreBill(){
     if(this.state.request!==null){
       if(this.state.requestStatus!=='no-house'){
+        if (this.state.request.room===null)
+          var data = this.state.request.eco_room;
+        else
+          var data = this.state.request.room;
         return(
           <Modal isOpen={this.state.showPreBill}
             style={reserveModalStyleRequests}
@@ -244,14 +253,14 @@ class RequestItemMd extends React.Component{
                 <div className="pre-bill-margin-content">
                   <div className="pre-bill-house-details">
                     <div className="pre-bill-house-picture">
-                        <img src={"https://www.trypinn.com"+this.state.request.room.preview} alt=""height="90px"/>
+                        <img src={"https://www.trypinn.com"+data.preview} alt=""height="90px"/>
                     </div>
                     <div>
                       <div className="pre-bill-house-title">
-                        <p> {this.state.request.room.title}</p>
+                        <p> {data.title}</p>
                       </div>
                       <div className="pre-bill-house-address">
-                        <p>{this.state.request.room.city}، {this.state.request.room.district}</p>
+                        <p>{data.location}، {data.district}</p>
                       </div>
                     </div>
                   </div>
@@ -418,6 +427,10 @@ renderDeleteButton(){
 }
 
 renderRequestCardVersion2(){
+  if (this.state.request.room===null)
+    var data = this.state.request.eco_room;
+  else
+    var data = this.state.request.room;
   return(
   <div className="request-card-container">
     <div className="request-item-details">
@@ -426,10 +439,10 @@ renderRequestCardVersion2(){
       <p className="request-item-details-description">{this.getRequestStatusDiscription()} </p>
       <div className='request-item-details-card'>
         <div className='request-item-details-card-description'>
-          <p className='request-item-details-card-home-name'> <span className='request-item-details-text'>نام اقامتگاه : </span> <a style={{fontWeight:'500', color:'#12b2ce'}} href={"/rooms/"+ this.state.request.room.id} target="_blank">{this.state.request.room.title}</a></p>
-          <p className='request-item-details-card-host-name'> به میزبانی  {this.state.request.room.owner.first_name} {this.state.request.room.owner.last_name}</p>
+          <p className='request-item-details-card-home-name'> <span className='request-item-details-text'>نام اقامتگاه : </span> <a style={{fontWeight:'500', color:'#12b2ce'}} href={"/rooms/"+ data.id} target="_blank">{data.title}</a></p>
+          <p className='request-item-details-card-host-name'> به میزبانی  {data.owner.first_name} {data.owner.last_name}</p>
         </div>
-        <img className='request-item-details-card-img' src={"https://www.trypinn.com"+this.state.request.room.preview} alt=""height="90px"/>
+        <img className='request-item-details-card-img' src={"https://www.trypinn.com"+data.preview} alt=""height="90px"/>
       </div>
       <div className='request-item-details-dates'>
       <div className='request-item-details-exit-date'><span>:</span>تاریخ خروج <p className='request-item-details-extra-bold-texts'>{englishToPersianDigits(moment(this.state.request.end_date).format('jYYYY/jM/jD'))}</p></div>
@@ -437,7 +450,7 @@ renderRequestCardVersion2(){
       </div>
       <Divider></Divider>
         <div className='request-item-details-extra'>
-          <p >شهر مقصد: <span className='request-item-details-extra-bold-texts'>{this.state.request.room.city}</span>  </p>
+          <p >شهر مقصد: <span className='request-item-details-extra-bold-texts'>{data.location}</span>  </p>
           <p> رزرو کننده: <span className='request-item-details-extra-bold-texts'>{this.state.request.guest_person.last_name}</span> </p>
           <p>تعداد میهمان: <span className='request-item-details-extra-bold-texts'>{englishToPersianDigits(this.state.request.number_of_guests)} نفر </span></p>
           <p className='request-item-details-final-cost'>جمع هزینه ها: {englishToPersianDigits(this.state.request.total_price)} تومان</p>

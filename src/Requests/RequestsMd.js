@@ -84,6 +84,10 @@ class RequestsMd extends React.Component{
       var request_list = this.state.requestList.request_list;
       if(request_list.length>0){
         this.list = request_list.map((item)=>  {
+          if(item.room ===null)
+            var data = item.eco_room;
+          else
+            var data = item.room;
           return(
             <div
               dir="rtl"
@@ -95,15 +99,15 @@ class RequestsMd extends React.Component{
                   <div className="requests-item-preview">
                     <img
                     className="requests-item-image"
-                    src={"https://www.trypinn.com/"+item.room.preview}
+                    src={"https://www.trypinn.com/"+data.preview}
                     alt=""
                     height="60px;" width="60px"/>
                     <div>
                       <div className="requests-item-title">
-                        {item.room.title}
+                        {data.title}
                       </div>
                     <p className="requests-item-city">
-                      {item.room.address}
+                      {data.address}
                     </p>
                     </div>
                   </div>
