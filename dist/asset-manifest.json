@@ -1,8 +1,8 @@
 {
-  "main.css": "static/css/main.881aebf4.css",
-  "main.css.map": "static/css/main.881aebf4.css.map",
-  "main.js": "static/js/main.428cf025.js",
-  "main.js.map": "static/js/main.428cf025.js.map",
+  "main.css": "static/css/main.ef2b0961.css",
+  "main.css.map": "static/css/main.ef2b0961.css.map",
+  "main.js": "static/js/main.f7fdd5ab.js",
+  "main.js.map": "static/js/main.f7fdd5ab.js.map",
   "static\\media\\1.svg": "static/media/1.51e77513.svg",
   "static\\media\\3.png": "static/media/3.69aa38c6.png",
   "static\\media\\Barbecue.png": "static/media/Barbecue.0f7f35ea.png",
@@ -115,5 +115,6 @@
   "static\\media\\tv.png": "static/media/tv.583188a7.png",
   "static\\media\\urbn-rural.svg": "static/media/urbn-rural.df10d5e3.svg",
   "static\\media\\wc-1.png": "static/media/wc-1.30dd8787.png",
+  "static\\media\\wc-2.png": "static/media/wc-2.dc1f80ce.png",
   "static\\media\\wifi.png": "static/media/wifi.f212a794.png"
 }
