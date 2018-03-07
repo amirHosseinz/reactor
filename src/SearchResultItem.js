@@ -83,7 +83,6 @@ class SearchResultItem extends React.Component {
    {
     return(
       <div>
-      <div>
         <a target="_blank" href={(this.props.room.type==='room')?"/rooms/"+ this.props.room.id:"/ecotourism/"+ this.props.room.id} className="card_anchor">
           <div  className="result-detail">
             <AspectRatio ratio="16/11">
@@ -110,7 +109,6 @@ class SearchResultItem extends React.Component {
             </div>
           </div>
           </a>
-      </div>
       </div>
     );
   }

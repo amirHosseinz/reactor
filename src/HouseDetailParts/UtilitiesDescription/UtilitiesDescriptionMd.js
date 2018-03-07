@@ -20,6 +20,12 @@ class UtilitiesDescriptionMd extends React.Component{
         break;
       }
     }
+    // utilities.splice( utilities.indexOf('PERGOLA'), 1);
+    // utilities.splice( utilities.indexOf('KITCHEN'), 1);
+    // utilities.splice( utilities.indexOf('SHORE_SIDE'), 1);
+    // utilities.splice( utilities.indexOf('PRIVATE_LOCK'), 1);
+    // utilities.splice( utilities.indexOf('BED'), 1);
+    // utilities.splice( utilities.indexOf('MATRESS'), 1);
     var primaryListOfLists = [[],[],[],[],[],[],[],[],[]];
     var listIndex = 0;
     for (var itemIndex=0;itemIndex<utilities.length;itemIndex++){

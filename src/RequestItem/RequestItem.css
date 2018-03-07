@@ -147,7 +147,7 @@
   justify-content: flex-end;
 }
 .request-item-no-button-modal{
-  width:70%;
+  width:140px;
   margin-top: 5px;
   margin-right: 10px;
   border: solid;
@@ -163,7 +163,7 @@
 .request-item-yes-button-modal{
   color: white;
   background-color: #12b2ce;
-  width:70%;
+  width:140px;
   margin-right: 10px;
   margin-top: 5px !important;
   border: solid;
@@ -177,7 +177,7 @@
   color:#fff;
 }
 .request-item-no-button-modal:hover{
-  width:70%;
+  width:140px;
   margin-right: 10px;
   margin-top: 5px;
   border: solid;
@@ -196,7 +196,7 @@
 .request-item-yes-button-modal:hover{
   color: white;
   background-color: #008fb3;
-  width:70%;
+  width:140px;
   margin-right: 10px;
   margin-top: 5px !important;
   border: solid;

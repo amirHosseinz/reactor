@@ -308,7 +308,6 @@ class RequestItemXl extends React.Component{
                     <button type="button"className="btn pre-bill-payment-button" onClick={this.setTokenForPayment.bind(this)}> پرداخت نهایی
                     </button>
                   </div>
-
               </div>
             </div>
           </Modal>
@@ -389,9 +388,7 @@ class RequestItemXl extends React.Component{
         return null;
     }
 }
-  renderOpenCancelButtonModal(){
-    this.setState({cancelModalIsOpen:true});
-  }
+
   renderCancelModal(){
     return(
 
@@ -416,7 +413,7 @@ class RequestItemXl extends React.Component{
   renderCancelButton(){
     if(this.state.requestStatus!=="GUEST_CANCELED"){
      return (
-       <div className="clickable-p request-item-cancel-button" onClick={this.renderOpenCancelButtonModal.bind(this)}><p className='request-item-cancel-button-text'>لغو درخواست</p> </div>
+       <div className="clickable-p request-item-cancel-button" onClick={()=>{this.setState({cancelModalIsOpen:true})}}><p className='request-item-cancel-button-text'>لغو درخواست</p> </div>
      );
     }
 

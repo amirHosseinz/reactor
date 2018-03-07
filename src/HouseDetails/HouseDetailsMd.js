@@ -14,9 +14,8 @@ import DifferentPrices from '../HouseDetailParts/DifferentPrices.js';
 import RulesDescription from '../HouseDetailParts/RulesDescription.js';
 import SpecialRule from  '../HouseDetailParts/SpecialRule.js';
 import GuestNumber from '../HouseDetailParts/GuestNumber';
-import {Link,Element} from 'react-scroll';
 import {parsePrice3digits} from '../tools/ParsePrice3digits.js';
-
+import Scrollchor from 'react-scrollchor';
 import './HouseDetails.css';
 import Lightbox from 'react-images';
 
@@ -40,28 +39,7 @@ class HouseDetailsMd extends React.Component{
       }
     };
   }
-  componentDidMount=()=> {
-      document.addEventListener('scroll', this.handleScroll);
-    }
 
-  componentWillUnmount= ()=> {
-      document.removeEventListener('scroll', this.handleScroll);
-    }
-
-  handleScroll = (event)=>{
-    if(event.pageY<400){
-      this.setState({activeLink:1});
-    }
-    if(event.pageY>600 && event.pageY<1000){
-      this.setState({activeLink:2});
-    }
-    if(event.pageY>1000 && event.pageY<1200){
-      this.setState({activeLink:3});
-    }
-    if(event.pageY>1200){
-      this.setState({activeLink:4});
-    }
-  }
   getRelevantToken(){
     if (this.state.isLoggedIn ==='true'){
       this.setState({
@@ -257,13 +235,13 @@ class HouseDetailsMd extends React.Component{
       return(
         <div className="house-details-main-division">
           <div className="house-details-top-division-md">
-            <Element name="gallery"></Element>
+            <div id="gallery-md"></div>
             <div className="house-details-gallery-md">
               {this.renderGallery()}
               {this.renderGalleryLightBox()}
             </div>
             <div className="house-details-main-information-md">
-              <Element name="details"></Element>
+              <div id="details-md"></div>
               {this.renderHomeTitle()}
               <AddressDescription homeData={this.state.homeData}/>
               <AmenitiesDescription homeData={this.state.homeData} />
@@ -296,18 +274,21 @@ class HouseDetailsMd extends React.Component{
                 {({style,isSticky})=>{return(
                   <div style={style} className={isSticky?"house-details-menu-link-scrolls-sticky-md":"house-details-menu-link-scrolls-not-sticky-md housedetails-content-containers-menu-md"}>
                     <div className='navigation-menu-housedetails'>
-                    <Link onClick={()=>{this.setState({activeLink:1})}} className={this.state.activeLink===1?'navigation-menu-items-active':'navigation-menu-items'} to="gallery" spy={true} smooth={true} offset={-200} duration={800}>
-                      <p  >تصاویر</p>
-                    </Link>
-                      <Link onClick={()=>{this.setState({activeLink:2})}} className={this.state.activeLink===2?'navigation-menu-items-active':'navigation-menu-items'} to="details" spy={true} smooth={true} offset={-100} duration={800}>
-                        <p >مشخصات</p>
-                      </Link>
-                      <Link onClick={()=>{this.setState({activeLink:3})}} className={this.state.activeLink===3?'navigation-menu-items-active':'navigation-menu-items'} to="laws" spy={true} smooth={true} offset={-200} duration={800}>
-                        <p>امکانات و قوانین</p>
-                      </Link>
-                      <Link onClick={()=>{this.setState({activeLink:4})}} className={this.state.activeLink===4?'navigation-menu-items-active':'navigation-menu-items'} to="map" spy={true} smooth={true} offset={-200} duration={800}>
-                        <p>موقعیت روی نقشه</p>
-                      </Link>
+                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: 0, duration: 800}} to="gallery-md">
+                        <p className='navigation-menu-items'>تصاویر</p>
+                      </Scrollchor>
+                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: 20, duration: 800}} to="details-md">
+                        <p className='navigation-menu-items'>مشخصات</p>
+                      </Scrollchor>
+                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: -100 , duration: 800}} to="price-md">
+                        <p className='navigation-menu-items'>قیمت</p>
+                      </Scrollchor>
+                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: -130, duration: 800}} to="laws-md">
+                        <p className='navigation-menu-items'>قوانین و مقررات  </p>
+                      </Scrollchor>
+                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset:-80, duration: 800}} to="map-md">
+                        <p className='navigation-menu-items'>موقعیت محلی</p>
+                      </Scrollchor>
                     </div>
                   </div>
                 )}}
@@ -325,15 +306,20 @@ class HouseDetailsMd extends React.Component{
                       <p className='house-details-description-content house-description-top'> {this.state.homeData.description.replace('-','')} </p>
                     </div>
                   }
+
                   <div className="house-details-amenities">
                     <p className="house-details-description-heading">
                       امکانات
                     </p>
+                    <div>
+
+                    </div>
                     <UtilitiesDescription homeData={this.state.homeData} />
                   </div>
                   <div className="house-details-sleep-arrangements">
                   </div>
                 </div>
+                <div id="price-md"></div>
                 <div className="house-details-prices housedetails-content-containers">
                   <p className="house-details-description-heading">
                     هزینه اقامت هر‌شب
@@ -341,7 +327,7 @@ class HouseDetailsMd extends React.Component{
                   <DifferentPrices homeData={this.state.homeData}/>
                 </div>
                 <div className= "house-details-rules housedetails-content-containers">
-                  <Element name="laws" ></Element>
+                  <div id="laws-md"></div>
                   <p className="house-details-description-heading">
                   مقررات این اقامتگاه
                   </p>
@@ -350,6 +336,7 @@ class HouseDetailsMd extends React.Component{
                   <RulesDescription homeData= {this.state.homeData} />
                   <SpecialRule homeData={this.state.homeData}/>
                 </div>
+                <div id="map-md"></div>
                 <div className="house-details-location housedetails-content-containers">
                   <div className="house-details-location-description">
                   {this.renderRelevantMapDescription()}
@@ -365,7 +352,6 @@ class HouseDetailsMd extends React.Component{
                   </p>
                   </div>
                   <div className="house-details-map">
-                    <Element name="map"></Element>
                     <MapDescription lat={this.state.homeData.latitude} lng={this.state.homeData.longitude} zoom={13}/>
                   </div>
                 </div>

@@ -388,12 +388,9 @@ class RequestItemMd extends React.Component{
         return null;
     }
 }
-renderOpenCancelButtonModal(){
-  this.setState({cancelModalIsOpen:true});
-}
+
 renderCancelModal(){
   return(
-
       <Modal
         isOpen={this.state.cancelModalIsOpen}
         onRequestClose={()=>{this.setState({cancelModalIsOpen:false})}}
@@ -416,7 +413,7 @@ renderCancelModal(){
 renderCancelButton(){
   if(this.state.requestStatus!=="GUEST_CANCELED"){
    return (
-     <div className="clickable-p request-item-cancel-button" onClick={this.renderOpenCancelButtonModal.bind(this)}><p className='request-item-cancel-button-text'>لغو درخواست</p> </div>
+     <div className="clickable-p request-item-cancel-button" onClick={()=>{this.setState({cancelModalIsOpen:true})}}><p className='request-item-cancel-button-text'>لغو درخواست</p> </div>
    );
   }
 }
@@ -460,6 +457,7 @@ renderRequestCardVersion2(){
           {this.getRelevantButton()}
           {this.renderCancelButton()}
           {this.renderDeleteButton()}
+          {this.renderCancelModal()}
         </div>
   </div>
   );
@@ -584,6 +582,7 @@ renderRequestCardVersion2(){
     return(
       <div>
         {this.renderPreBill()}
+        {}
         {this.renderRequestDetail()}
       </div>
     );

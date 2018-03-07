@@ -14,11 +14,11 @@ import RulesDescription from '../HouseDetailParts/RulesDescription.js';
 import DifferentPrices from '../HouseDetailParts/DifferentPrices.js';
 import SpecialRule from  '../HouseDetailParts/SpecialRule.js';
 import GuestNumber from '../HouseDetailParts/GuestNumber';
-import {Link,Element,Events} from 'react-scroll';
 import {parsePrice3digits} from '../tools/ParsePrice3digits.js';
-
+import Scrollchor from 'react-scrollchor';
 import './HouseDetails.css';
 import Lightbox from 'react-images';
+
 
 class HouseDetailsXl extends React.Component{
   constructor(props){
@@ -41,27 +41,11 @@ class HouseDetailsXl extends React.Component{
     };
   }
   componentDidMount=()=> {
-    document.addEventListener('scroll', this.handleScroll);
     }
 
   componentWillUnmount= ()=> {
-      document.removeEventListener('scroll', this.handleScroll);
     }
 
-  handleScroll = (event)=>{
-    if(event.pageY<400){
-      this.setState({activeLink:1});
-    }
-    if(event.pageY>600 && event.pageY<1000){
-      this.setState({activeLink:2});
-    }
-    if(event.pageY>1000 && event.pageY<1200){
-      this.setState({activeLink:3});
-    }
-    if(event.pageY>1200){
-      this.setState({activeLink:4});
-    }
-  }
   getRelevantToken(){
     if (this.state.isLoggedIn ==='true'){
       this.setState({
@@ -254,13 +238,13 @@ class HouseDetailsXl extends React.Component{
       return(
         <div className="house-details-main-division">
           <div className="house-details-top-division">
-            <Element name="gallery"></Element>
+            <div id="gallery"></div>
             <div className="house-details-gallery">
               {this.renderGallery()}
               {this.renderGalleryLightBox()}
             </div>
             <div className="house-details-main-information">
-              <Element name="details"></Element>
+              <div id="details"></div>
               {this.renderHomeTitle()}
               <AddressDescription homeData={this.state.homeData}/>
               <AmenitiesDescription homeData={this.state.homeData} />
@@ -293,18 +277,21 @@ class HouseDetailsXl extends React.Component{
                 {({style,isSticky})=>{return(
                   <div style={style} className={isSticky?"house-details-menu-link-scrolls-sticky":"house-details-menu-link-scrolls-not-sticky housedetails-content-containers"}>
                     <div className='navigation-menu-housedetails'>
-                    <Link onClick={()=>{this.setState({activeLink:1})}} className={this.state.activeLink===1?'navigation-menu-items-active':'navigation-menu-items'} to="gallery" spy={false} smooth={true} offset={-200} duration={800}>
-                      <p>تصاویر</p>
-                    </Link>
-                      <Link onClick={()=>{this.setState({activeLink:2})}} className={this.state.activeLink===2?'navigation-menu-items-active':'navigation-menu-items'} to="details" spy={false} smooth={true} offset={10} duration={800}>
-                        <p >مشخصات</p>
-                      </Link>
-                      <Link onClick={()=>{this.setState({activeLink:3})}} className={this.state.activeLink===3?'navigation-menu-items-active':'navigation-menu-items'} to="laws" spy={false} smooth={true} offset={60} duration={800}>
-                        <p>امکانات و قوانین</p>
-                      </Link>
-                      <Link onClick={()=>{this.setState({activeLink:4})}} className={this.state.activeLink===4?'navigation-menu-items-active':'navigation-menu-items'} to="map" spy={false} smooth={true} offset={200} duration={800}>
-                        <p>موقعیت روی نقشه</p>
-                      </Link>
+                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: 0, duration: 800}} to="gallery" >
+                        <p className='navigation-menu-items'>تصاویر</p>
+                      </Scrollchor>
+                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: 20, duration: 800}} to="details">
+                        <p className='navigation-menu-items'>مشخصات</p>
+                      </Scrollchor>
+                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: 260, duration: 800}} to="price">
+                        <p className='navigation-menu-items'>قیمت</p>
+                      </Scrollchor>
+                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: -100, duration: 800}} to="laws">
+                        <p className='navigation-menu-items'> قوانین و مقررات</p>
+                      </Scrollchor>
+                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: -80, duration: 800}} to="map">
+                        <p className='navigation-menu-items'>موقعیت محلی</p>
+                      </Scrollchor>
                     </div>
                   </div>
                 )}}
@@ -312,6 +299,7 @@ class HouseDetailsXl extends React.Component{
               <div className="house-details-contents">
                 <div className="house-details-amenities-description housedetails-content-containers">
                   <div className="house-details-host-info">
+                  <div id="price"></div>
                     <HostInfoDescription homeData={this.state.homeData}/>
                   </div>
                   {
@@ -327,6 +315,7 @@ class HouseDetailsXl extends React.Component{
                     </p>
                     <UtilitiesDescription homeData={this.state.homeData} />
                   </div>
+
                   <div className="house-details-sleep-arrangements">
                   </div>
                 </div>
@@ -336,8 +325,8 @@ class HouseDetailsXl extends React.Component{
                   </p>
                   <DifferentPrices homeData={this.state.homeData}/>
                 </div>
+                <div id="laws"></div>
                 <div className= "house-details-rules housedetails-content-containers">
-                  <Element name="laws"></Element>
                   <p className="house-details-description-heading">
                   مقررات این اقامتگاه
                   </p>
@@ -346,6 +335,7 @@ class HouseDetailsXl extends React.Component{
                   <RulesDescription homeData= {this.state.homeData} />
                   <SpecialRule homeData={this.state.homeData}/>
                 </div>
+                <div id="map"></div>
                 <div className="house-details-location housedetails-content-containers">
                   <div className="house-details-location-description">
                   {this.renderRelevantMapDescription()}
@@ -361,7 +351,6 @@ class HouseDetailsXl extends React.Component{
                   </p>
                   </div>
                   <div className="house-details-map">
-                    <Element name="map"></Element>
                     <MapDescription lat={this.state.homeData.latitude} lng={this.state.homeData.longitude} zoom={13}/>
                   </div>
                 </div>

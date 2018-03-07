@@ -60,7 +60,7 @@ class AmenitiesDescriptionMd extends React.Component{
                 <img height="66px" width="66px" src={require('../facilities/food.svg')}  alt = "" />
                 <div className="amenities-text-ecotourism">
                   <p className='aminities-title-text'>
-                    {(this.props.homeData.food_service_type.length!==0)?englishToPersianDigits(this.props.homeData.food_service_type.length)+'وعده ':'بدون غذا'}
+                    {(this.props.homeData.food_service_type.length!==0)?englishToPersianDigits(" "+ this.props.homeData.food_service_type.length+" ")+'وعده ':'بدون غذا '}
                   </p>
                   <p className="aminities-title-description">{this.renderFoodServiceType()}</p>
                 </div>
@@ -71,7 +71,7 @@ class AmenitiesDescriptionMd extends React.Component{
                 <img height="66px" width="66px" src={require('../facilities/urbn-rural.svg')}  alt = "" />
                 <div className="amenities-text-ecotourism">
                   <p className='aminities-title-text'> {this.renderEcoTourismType()}</p>
-                  <p className="aminities-title-description"> نوع دسترسی</p>
+                  <p className="aminities-title-description">محیط اطراف</p>
                 </div>
               </div>
             </div>

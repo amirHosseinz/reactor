@@ -299,7 +299,18 @@ class Facilities extends React.Component {
       );
     }
   }
-
+  renderToilet(){
+    if (this.props.utility.indexOf('ENTIRE_TOILET') > -1) {
+      return(
+        <div className="house-details-facilities-item">
+          <img src={require('../facilities/wc-2.png')}  className="house-details-facilities-other-amanities-icon" alt = "" />
+          <p className="house-details-facility-text">
+           توالت ایرانی
+          </p>
+        </div>
+      );
+    }
+  }
   render () {
     return(
 
@@ -325,8 +336,8 @@ class Facilities extends React.Component {
           {this.renderPingpong()}
           {this.renderPool()}
           {this.renderParking()}
+          {this.renderToilet()}
 
-          
           {this.renderInsurance()}
           {this.renderTower()}
           {this.renderHerbalTea()}
