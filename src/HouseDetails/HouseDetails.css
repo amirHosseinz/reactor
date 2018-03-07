@@ -201,7 +201,7 @@ justify-content: flex-start;
 }
 
 .main-amanities-item-ecotourism-bed{
-width : 188px;
+width : 194px;
 }
 .main-amanities-item-ecotourism-room{
 width : 134px;
@@ -209,6 +209,12 @@ width : 134px;
 
 .main-amanities-item-ecotourism-room-md{
 width : 120px;
+}
+.main-amanities-item-ecotourism-space-md{
+  width : 130px;
+}
+.main-amanities-item-ecotourism-space{
+  width : 140px;
 }
 .main-amanities-item-ecotourism-content{
 display: -webkit-flex;

@@ -42,7 +42,7 @@ class RequestsXl extends React.Component{
     this.setState({role :person_role},()=>this.getDataFromServer())
   }
   getDataFromServer(){
-    var request = new Request('https://www.trypinn.com/api/request/list/',{
+    var request = new Request('https://www.trypinn.com/api/v1/request/list/',{
       method: 'POST',
       body: JSON.stringify({
         platform:'web',

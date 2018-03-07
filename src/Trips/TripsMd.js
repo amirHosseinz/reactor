@@ -26,7 +26,7 @@ class TripsMd extends React.Component{
     this.setState({role :person_role } ,()=>this.getDataFromServer());
   }
   getDataFromServer(){
-    var request = new Request('https://www.trypinn.com/api/reservations/list/',{
+    var request = new Request('https://www.trypinn.com/api/v1/reservations/list/',{
       method: 'POST',
       body: JSON.stringify({
         role:this.state.role,
