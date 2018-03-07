@@ -53,6 +53,7 @@ class RequestsXl extends React.Component{
     });
    fetch(request)
    .then((response) => {
+
      return response.json();
    })
    .then((request_list) => {

@@ -38,9 +38,9 @@ class RequestItemXl extends React.Component{
           case "WAIT_FOR_HOST":
             return 'در انتظار تایید میزبان';
           case "GUEST_CANCELED":
-            return null;
+            return "لغو شده توسط مهمان";
           case "HOST_REJECTED":
-            return 'رد شده توسط مهمان';
+            return 'لغو شده توسط میزبان';
           case "WAIT_FOR_GUEST_PAY":
             return 'در انتظار پرداخت مهمان';
           case "HOST_ACCEPTED_GUEST_CANCELED":
@@ -354,6 +354,7 @@ class RequestItemXl extends React.Component{
         </span>
       case "GUEST_CANCELED":
         return <span>
+          شما این درخواست را لغو کرده اید
         </span>;
       case "HOST_REJECTED":
         return <span>
@@ -368,21 +369,21 @@ class RequestItemXl extends React.Component{
       case "HOST_ACCEPTED_GUEST_CANCELED":
         return <span>
         این درخواست توسط مهمان قبل از
-        پرداخت هزینه لغو شد.
+        پرداخت هزینه لغو شد
         </span>;
       case "HOST_ACCEPTED_GUEST_PAYED":
         return <span>
         این رزرو نهایی شده است،
 برای مشاهده‌ی جزئیات آن به بخش
 سفرها
-مراجعه کنید.
+مراجعه کنید
 
         </span>;
       case "HOST_ACCEPTED_HOST_CANCELED":
         return <span>
         متاسفانه درخواست شما
 توسط میزبان
-مورد تایید قرار نگرفت.
+مورد تایید قرار نگرفت
         </span>;
       default:
         return null;
