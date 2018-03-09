@@ -3,6 +3,8 @@ import SuggestionsXl from './Suggestions/SuggestionsXl';
 import SuggestionsXs from './Suggestions/SuggestionsXs';
 import SuggestionsMd from './Suggestions/SuggestionsMd';
 import SuggestionsSm from './Suggestions/SuggestionsSm';
+import MetaTags from 'react-meta-tags';
+
 
 class Suggestions extends React.Component{
   renderSuggestionsXs(){
@@ -39,6 +41,9 @@ class Suggestions extends React.Component{
   render(){
     return(
       <div>
+        <MetaTags>
+          <title>  تریپین | انتقادات و پیشنهادات</title>
+        </MetaTags>
         {this.renderSuggestionsXs()}
         {this.renderSuggestionsXl()}
         {this.renderSuggestionsSm()}

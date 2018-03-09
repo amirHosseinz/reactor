@@ -18,6 +18,7 @@ import {parsePrice3digits} from '../tools/ParsePrice3digits.js';
 import Scrollchor from 'react-scrollchor';
 import './HouseDetails.css';
 import Lightbox from 'react-images';
+import MetaTags from 'react-meta-tags';
 
 
 class HouseDetailsXl extends React.Component{
@@ -232,6 +233,33 @@ class HouseDetailsXl extends React.Component{
      );
    }
  }
+
+ // 
+ // <div className={isSticky?"bookmark-share-container-sticky":"bookmark-share-container-not-sticky"}>
+ //   <div className="bookmark-section">
+ //     <img className="bookmark-icon" src={true?require('../HouseDetailParts/facilities/Layer 5.png'):require('../HouseDetailParts/facilities/heart-2d56.png')}/>
+ //     <p className="bookmark-sentence">{false?"افزودن به لیست علاقه‌مندی":"حذف از لیست علاقه‌مندی"}</p>
+ //   </div>
+ //   <div className="bookmark-vertical-line">
+ //   </div>
+ //   <div className="share-section">
+ //     <div className="share-icon-container-telegram">
+ //       <a className="share-link" href={"https://telegram.me/share/url?url=http://www.tripinn.ir/"+window.location.href.split("/")[window.location.href.split("/").length-2]+"/"+this.state.homeData.id  +"&text="+this.state.homeData.title}>
+ //         <img height="24px" width="24px" className="share-icon" src={require('../HouseDetailParts/facilities/tripinn_telegram_share.png')} alt="به اشتراک گذاشتن در تلگرام"/>
+ //       </a>
+ //     </div>
+ //     <div className="share-icon-container-google-plus">
+ //       <a className="share-link" href={"https://plus.google.com/share?url=http://www.tripinn.ir/"+ window.location.href.split("/")[window.location.href.split("/").length-2] +"/" + this.state.homeData.id}>
+ //         <img height="24px" width="24px" className="share-icon" src={require('../HouseDetailParts/facilities/tripinn_google_puls_share.png')} alt="به اشتراک گذاشتن در گوگل‌پلاس"/>
+ //       </a>
+ //     </div>
+ //     <div className="share-icon-container-twitter">
+ //       <a className="share-link" href={"https://twitter.com/intent/tweet?url=http://www.tripinn.ir/"+window.location.href.split("/")[window.location.href.split("/").length-2] +"/" + this.state.homeData.id}>
+ //         <img height="24px" width="24px" className="share-icon" src={require('../HouseDetailParts/facilities/tripinn_twitter_share.png')} alt="به اشتراک گذاشتن در توییتر"/>
+ //       </a>
+ //     </div>
+ //   </div>
+ // </div>
   renderHouseDetailsVersion2(){
     if(this.state.homeData!=='' && this.state.homeData!==null){
       // console.log(this.state.homeData);
@@ -263,11 +291,14 @@ class HouseDetailsXl extends React.Component{
                             <span> تومان</span>
                           </div>
                       </div>
-                      <hr />
+                      <hr/>
                       <div className="house-details-reserve-panel-form">
                         <ReservePanel homeData={this.state.homeData}/>
                       </div>
                     </div>
+
+
+
                   </div>
                 )
               }}
@@ -363,11 +394,12 @@ class HouseDetailsXl extends React.Component{
   }
 
   render(){
-    if (this.state.homeData !== '' && this.state.homeData!==null){
-      document.title = "تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.location;
-    }
     return(
       <div>
+        <MetaTags>
+        <title>{this.state.homeData===null || this.state.homeData===''? "تریپین":"تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.location}</title>
+              <meta name="description" content={this.state.homeData.title + " آدرس :  " + this.state.homeData.location + " ,قیمت :" + this.state.homeData.price  + " ,امتیاز : " + this.state.homeData.rating} />
+        </MetaTags>
         {this.renderHouseDetailsVersion2()}
       </div>
     );

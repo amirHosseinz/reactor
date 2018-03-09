@@ -15,7 +15,24 @@ import Partners from './Partners.js';
 import SearchResult from './SearchResult.js';
 import Suggestions from './Suggestions.js';
 import {StickyContainer} from 'react-sticky';
+import sm from 'sitemap';
 
+var sitemap = sm.createSitemap ({
+      hostname: 'http://www.tripinn.ir',
+      cacheTime: 600000
+    });
+sitemap.add('/search/هر جا');
+sitemap.add('/search/کیش');
+sitemap.add('/search/نوشهر');
+sitemap.add('/search/گیلان');
+sitemap.add('/search/مازندران');
+sitemap.add('/search/اصفهان');
+sitemap.add('/search/فارس');
+
+
+sitemap.toXML( function(err, xml){ if (!err){} });
+var xml = sitemap.toString();
+console.log(xml);
 class MainPage extends React.Component{
   constructor(props){
     super(props);

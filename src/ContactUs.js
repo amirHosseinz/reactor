@@ -3,7 +3,7 @@ import ContactUsXl from './ContactUs/ContactUsXl.js';
 import ContactUsXs from './ContactUs/ContactUsXs.js';
 import ContactUsMd from './ContactUs/ContactUsMd.js';
 import ContactUsSm from './ContactUs/ContactUsSm.js';
-
+import MetaTags from 'react-meta-tags';
 
 class ContactUs extends React.Component {
   renderContactUsMd(){
@@ -40,6 +40,9 @@ class ContactUs extends React.Component {
   render(){
     return(
       <div>
+        <MetaTags>
+          <title>تریپین|تماس با ما</title>
+        </MetaTags>
         {this.renderContactUsXl()}
         {this.renderContactUsXs()}
         {this.renderContactUsSm()}
