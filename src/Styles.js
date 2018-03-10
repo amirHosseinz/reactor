@@ -214,3 +214,51 @@ export const UserProfileUploadPhotoModal={
     transform : 'translate(0%, 0%)'
   }
 }
+export const ChangePassSuccessModal={
+  overlay : {
+    zIndex : '10000',
+    position          : 'fixed',
+    top               : 0,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+    backgroundColor   : 'rgba(0, 0, 0, 0.7)'
+  },
+  content :{
+    height : '130px',
+    width  : '300px',
+    display: 'flex',
+    justifyContent : 'center',
+    alignItems : 'center',
+    flexDirection : 'column',
+    margin : 'auto' ,
+    borderRadius:'10px',
+    outline : '0',
+    padding: '5px',
+    transform : 'translate(0%, 0%)'
+  }
+}
+export const ChangePassFailedModal={
+  overlay : {
+    zIndex : '10000',
+    position          : 'fixed',
+    top               : 0,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+    backgroundColor   : 'rgba(0, 0, 0, 0.7)'
+  },
+  content :{
+    height : '250px',
+    width  : '300px',
+    display: 'flex',
+    justifyContent : 'center',
+    alignItems : 'center',
+    flexDirection : 'column',
+    margin : 'auto' ,
+    borderRadius:'10px',
+    outline : '0',
+    padding: '5px',
+    transform : 'translate(0%, 0%)'
+  }
+}

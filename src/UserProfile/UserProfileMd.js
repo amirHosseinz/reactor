@@ -7,7 +7,8 @@ import Modal from 'react-modal';
 import {UserProfileUploadPhotoModal} from '../Styles.js';
 import Dropzone from 'react-dropzone';
 import {SyncLoader} from 'react-spinners';
-
+import {ChangePassSuccessModal} from '../Styles.js';
+import {ChangePassFailedModal} from '../Styles.js';
 
 class UserProfileMd extends React.Component{
   constructor(props){
@@ -28,6 +29,10 @@ class UserProfileMd extends React.Component{
       confirmPassword:'',
       nationalId:'',
       profilePicture : null,
+      openPassConfirmationModal:false,
+      passConfirmationModal:'',
+      passConfirmation:true,
+      passConfirmationErrors:[],
     };
   }
   componentWillMount() {
@@ -235,8 +240,29 @@ class UserProfileMd extends React.Component{
    })
    .then((response) => {
      console.log(response);
+     this.setState({passConfirmation:response.successful,passConfirmationErrors:response.errors,openPassConfirmationModal:true})
+     this.setState({passConfirmationErrors:response.errors})
    });
   }
+  renderPassConfirmationModal(){
+    if(this.state.passConfirmation===true){
+    return(
+      <Modal isOpen={this.state.openPassConfirmationModal}
+            onRequestClose={()=>{this.setState({openPassConfirmationModal:false})}}
+             style={ChangePassSuccessModal}>
+             <div className='change-pass-success-container'>
+             <p>رمز عبور شما با موفقیت تغییر کرد
+             <img className='change-pass-success-tick' src={require('../Images/changePassSuccess.svg')} width="40" height="40"/>
+             </p>
+             </div>
+             <button className='change-pass-success-button' onClick={()=>{this.setState({openPassConfirmationModal:false})}}>
+             بستن
+             </button>
+
+     </Modal>
+   );
+ }
+}
 
   changeInfoOnServer(){
     var request=new Request('https://www.trypinn.com/auth/api/user/edit/',{ //
@@ -440,6 +466,7 @@ class UserProfileMd extends React.Component{
         {this.renderUploadPhotoModal()}
         {this.renderUserProfileDetailsSection()}
         {this.renderUserProfileEditSection()}
+        {this.renderPassConfirmationModal()}
       </div>
     );
   }
