@@ -68,7 +68,7 @@ class SearchResultMd extends React.Component{
     });
   }
   getDataFromServer(){
-    var request = new Request('https://www.trypinn.com/api/v1/search/',{
+    var request = new Request('https://www.trypinn.com/api/v1/search/light/',{
       method: 'POST',
       body: JSON.stringify({
         platform: 'web',

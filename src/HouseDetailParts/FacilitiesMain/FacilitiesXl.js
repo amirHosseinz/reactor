@@ -92,10 +92,10 @@ class Facilities extends React.Component {
   }
 
   renderFoosball () {
-    if (this.props.utility.indexOf('TABLE_FOOTBALL') > -1) {
+    if (this.props.utility.indexOf('TABLE_FOOTBALL')>-1) {
       return(
         <div className="house-details-facilities-item">
-          <img src={require('../facilities/foosball.png')}   className="house-details-facilities-other-amanities-icon" alt = "" />
+          <img src={require('../facilities/foosball.png')} className="house-details-facilities-other-amanities-icon" alt = "" />
           <p className="house-details-facility-text">فوتبال دستی </p>
         </div>
       );
@@ -235,7 +235,7 @@ class Facilities extends React.Component {
   }
 
   renderWifi () {
-    if (this.props.utility.indexOf('NET') > -1) {
+    if (this.props.utility.indexOf('NET') > -1 && this.props.utility.indexOf('NET')!==this.props.utility.indexOf('NETWORK')) {
       return(
         <div className="house-details-facilities-item">
           <img src={require('../facilities/wifi.png')}  className="house-details-facilities-other-amanities-icon" alt = "" />
@@ -311,14 +311,51 @@ class Facilities extends React.Component {
       );
     }
   }
+  renderCarpet(){
+    if (this.props.utility.indexOf('CARPET') > -1) {
+      return(
+        <div className="house-details-facilities-item">
+          <img src={require('../facilities/carpet.png')}  className="house-details-facilities-other-amanities-icon" alt = "" />
+          <p className="house-details-facility-text">
+            فرش
+          </p>
+        </div>
+      );
+    }
+  }
+  renderLaundry(){
+    if (this.props.utility.indexOf('WASHING_MACHINE') > -1) {
+      return(
+        <div className="house-details-facilities-item">
+          <img src={require('../facilities/laundry.png')}  className="house-details-facilities-other-amanities-icon" alt = "" />
+          <p className="house-details-facility-text">
+            ماشین لباسشویی
+          </p>
+        </div>
+      );
+    }
+  }
+  renderBilliard(){
+    if (this.props.utility.indexOf('BILLIARD') > -1) {
+      return(
+        <div className="house-details-facilities-item">
+          <img src={require('../facilities/billiard.png')}  className="house-details-facilities-other-amanities-icon" alt = "" />
+          <p className="house-details-facility-text">
+            بیلیارد
+          </p>
+        </div>
+      );
+    }
+  }
   render () {
+    // console.log(this.props.utility);
     return(
-
       <div className="row-reverse">
           {this.renderFoosball()}
           {this.renderWifi()}
           {this.renderBarbecue()}
           {this.renderHeater()}
+          {this.renderCarpet()}
           {this.renderBlanket()}
           {this.renderCanape()}
           {this.renderElevator()}
@@ -326,8 +363,10 @@ class Facilities extends React.Component {
           {this.renderPavilion()}
           {this.renderTv()}
           {this.renderForeigntoilet()}
+          {this.renderLaundry()}
           {this.renderStove()}
           {this.renderKitchenware()}
+          {this.renderBilliard()}
           {this.renderRefrig()}
           {this.renderDinnerTable()}
           {this.renderMicrowave()}
@@ -337,7 +376,6 @@ class Facilities extends React.Component {
           {this.renderPool()}
           {this.renderParking()}
           {this.renderToilet()}
-
           {this.renderInsurance()}
           {this.renderTower()}
           {this.renderHerbalTea()}

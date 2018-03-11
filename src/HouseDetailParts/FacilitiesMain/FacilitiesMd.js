@@ -235,7 +235,7 @@ class FacilitiesMd extends React.Component {
   }
 
   renderWifi () {
-    if (this.props.utility.indexOf('NET') > -1) {
+    if (this.props.utility.indexOf('NET') > -1 && this.props.utility.indexOf('NET')!==this.props.utility.indexOf('NETWORK')) {
       return(
         <div className="house-details-facilities-item">
           <img src={require('../facilities/wifi.png')}  className="house-details-facilities-other-amanities-icon" alt = "" />
@@ -311,6 +311,44 @@ class FacilitiesMd extends React.Component {
         );
       }
     }
+    renderCarpet(){
+      if (this.props.utility.indexOf('CARPET') > -1) {
+        return(
+          <div className="house-details-facilities-item">
+            <img src={require('../facilities/carpet.png')}  className="house-details-facilities-other-amanities-icon" alt = "" />
+            <p className="house-details-facility-text">
+              فرش
+            </p>
+          </div>
+        );
+      }
+    }
+
+    renderLaundry(){
+      if (this.props.utility.indexOf('WASHING_MACHINE') > -1) {
+        return(
+          <div className="house-details-facilities-item">
+            <img src={require('../facilities/laundry.png')}  className="house-details-facilities-other-amanities-icon" alt = "" />
+            <p className="house-details-facility-text">
+              ماشین لباسشویی
+            </p>
+          </div>
+        );
+      }
+    }
+
+    renderBilliard(){
+      if (this.props.utility.indexOf('BILLIARD') > -1) {
+        return(
+          <div className="house-details-facilities-item">
+            <img src={require('../facilities/billiard.png')}  className="house-details-facilities-other-amanities-icon" alt = "" />
+            <p className="house-details-facility-text">
+              بیلیارد
+            </p>
+          </div>
+        );
+      }
+    }
   render () {
     return(
 
@@ -319,15 +357,18 @@ class FacilitiesMd extends React.Component {
           {this.renderBarbecue()}
           {this.renderHeater()}
           {this.renderBlanket()}
+          {this.renderCarpet()}
           {this.renderCanape()}
           {this.renderElevator()}
           {this.renderHanger()}
           {this.renderPavilion()}
           {this.renderTv()}
+          {this.renderLaundry()}
           {this.renderForeigntoilet()}
           {this.renderStove()}
           {this.renderKitchenware()}
           {this.renderRefrig()}
+          {this.renderWifi()}
           {this.renderDinnerTable()}
           {this.renderMicrowave()}
           {this.renderTeamaker()}
@@ -336,7 +377,7 @@ class FacilitiesMd extends React.Component {
           {this.renderPool()}
           {this.renderParking()}
           {this.renderToilet()}
-          
+
           {this.renderInsurance()}
           {this.renderTower()}
           {this.renderHerbalTea()}

@@ -28,6 +28,7 @@ class HouseDetailsXl extends React.Component{
       className:'loaded',
       photoIndex: 0,
       isOpen: false,
+      isLiked : false,
       activeLink:1,
       homeData : '',
       reservePanelFixed : false,
@@ -128,6 +129,7 @@ class HouseDetailsXl extends React.Component{
   }
 
   renderData(houseData) {
+    console.log(houseData);
     this.setState({homeData:houseData.room});
   }
 
@@ -179,8 +181,7 @@ class HouseDetailsXl extends React.Component{
     onClickThumbnail={(currentImageIndex)=>{this.setState({lightboxCurrentImage:currentImageIndex})}}
     showThumbnails={true}
     onClickNext={()=>{this.setState((prevState)=>{return({lightboxCurrentImage:(prevState.lightboxCurrentImage+1)%imagesLength})})}}
-    onClose={()=>{this.setState({lightboxIsOpen:false})}}
-/>
+    onClose={()=>{this.setState({lightboxIsOpen:false})}}/>
    );
  }
 
@@ -219,6 +220,99 @@ class HouseDetailsXl extends React.Component{
      }
    }
  }
+
+ handleLike(){
+   switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
+     case 'rooms':{
+       var request = new Request('https://www.trypinn.com/bookmark/api/like/', {
+         method: 'POST',
+         body: JSON.stringify({
+           room_id : this.state.homeData.id,
+       }),
+         headers: new Headers({'Accept':'application/json','Content-Type': 'application/json',
+         'Authorization':'Token '+this.state.token,})
+       });
+      fetch(request)
+      .then((response) => {
+        return response.json();
+      })
+      .then((likeResponse) => {
+        if(likeResponse.successful===true){
+          this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
+        }
+      });
+       break;
+     }
+     case 'ecotourism':{
+       var request = new Request('https://www.trypinn.com/bookmark/api/like/', {
+         method: 'POST',
+         body: JSON.stringify({
+           eco_room_id : this.state.homeData.id,
+       }),
+         headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+         'Authorization': 'Token '+this.state.token,})
+       });
+      fetch(request)
+      .then((response) => {
+        return response.json();
+      })
+      .then((likeResponse) => {
+        console.log(likeResponse);
+        // if(likeResponse.successful===true){
+        //   this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
+        // }
+      });
+       break;
+     }
+   }
+ }
+
+ handleUnlike(){
+   switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
+     case 'rooms':{
+       var request = new Request('https://www.trypinn.com/bookmark/api/unlike/', {
+         method: 'POST',
+         body: JSON.stringify({
+           room_id : this.state.homeData.id,
+       }),
+         headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+         'Authorization': 'Token '+this.state.token,})
+       });
+      fetch(request)
+      .then((response) => {
+        console.log(response);
+        return response.json();
+      })
+      .then((unlikeResponse) => {
+        if(unlikeResponse.successful===true){
+          this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
+        }
+      });
+       break;
+     }
+     case 'ecotourism':{
+       var request = new Request('https://www.trypinn.com/bookmark/api/unlike/', {
+         method: 'POST',
+         body: JSON.stringify({
+           eco_room_id : this.state.homeData.id,
+       }),
+         headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+         'Authorization': 'Token '+this.state.token,})
+       });
+      fetch(request)
+      .then((response) => {
+        console.log(response);
+        return response.json();
+      })
+      .then((unlikeResponse) => {
+        if(unlikeResponse.successful===true){
+          this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
+        }
+      });
+       break;
+     }
+   }
+ }
  renderAccessibility(){
    if(this.state.homeData.accessibility.length>50){
      return(
@@ -234,11 +328,10 @@ class HouseDetailsXl extends React.Component{
    }
  }
 
- // 
  // <div className={isSticky?"bookmark-share-container-sticky":"bookmark-share-container-not-sticky"}>
  //   <div className="bookmark-section">
- //     <img className="bookmark-icon" src={true?require('../HouseDetailParts/facilities/Layer 5.png'):require('../HouseDetailParts/facilities/heart-2d56.png')}/>
- //     <p className="bookmark-sentence">{false?"افزودن به لیست علاقه‌مندی":"حذف از لیست علاقه‌مندی"}</p>
+ //     <img className="bookmark-icon" onClick={this.state.isLiked?()=>{this.handleUnlike()}:()=>{this.handleLike()}} src={this.state.isLiked?require('../HouseDetailParts/facilities/Layer 5.png'):require('../HouseDetailParts/facilities/heart-2d56.png')}/>
+ //     <p className="bookmark-sentence">{!this.state.isLiked?"افزودن به لیست علاقه‌مندی":"حذف از لیست علاقه‌مندی"}</p>
  //   </div>
  //   <div className="bookmark-vertical-line">
  //   </div>
@@ -262,7 +355,6 @@ class HouseDetailsXl extends React.Component{
  // </div>
   renderHouseDetailsVersion2(){
     if(this.state.homeData!=='' && this.state.homeData!==null){
-      // console.log(this.state.homeData);
       return(
         <div className="house-details-main-division">
           <div className="house-details-top-division">
@@ -308,19 +400,19 @@ class HouseDetailsXl extends React.Component{
                 {({style,isSticky})=>{return(
                   <div style={style} className={isSticky?"house-details-menu-link-scrolls-sticky":"house-details-menu-link-scrolls-not-sticky housedetails-content-containers"}>
                     <div className='navigation-menu-housedetails'>
-                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: 0, duration: 800}} to="gallery" >
+                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: 0, duration: 400}} to="gallery" >
                         <p className='navigation-menu-items'>تصاویر</p>
                       </Scrollchor>
-                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: 20, duration: 800}} to="details">
+                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: 20, duration: 400}} to="details">
                         <p className='navigation-menu-items'>مشخصات</p>
                       </Scrollchor>
-                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: 260, duration: 800}} to="price">
+                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset:-100, duration: 400}} to="price">
                         <p className='navigation-menu-items'>قیمت</p>
                       </Scrollchor>
-                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: -100, duration: 800}} to="laws">
+                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: -100, duration: 400}} to="laws">
                         <p className='navigation-menu-items'> قوانین و مقررات</p>
                       </Scrollchor>
-                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: -80, duration: 800}} to="map">
+                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: -80, duration: 400}} to="map">
                         <p className='navigation-menu-items'>موقعیت محلی</p>
                       </Scrollchor>
                     </div>
@@ -330,7 +422,7 @@ class HouseDetailsXl extends React.Component{
               <div className="house-details-contents">
                 <div className="house-details-amenities-description housedetails-content-containers">
                   <div className="house-details-host-info">
-                  <div id="price"></div>
+
                     <HostInfoDescription homeData={this.state.homeData}/>
                   </div>
                   {
@@ -346,10 +438,10 @@ class HouseDetailsXl extends React.Component{
                     </p>
                     <UtilitiesDescription homeData={this.state.homeData} />
                   </div>
-
                   <div className="house-details-sleep-arrangements">
                   </div>
                 </div>
+                <div id="price"></div>
                 <div className="house-details-prices housedetails-content-containers">
                   <p className="house-details-description-heading">
                     هزینه اقامت هر‌شب
