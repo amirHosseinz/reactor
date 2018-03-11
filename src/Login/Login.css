@@ -40,6 +40,7 @@
   color : #a1a1a1;
   font-size : 12px;
   text-align:right;
+  direction: rtl;
 }
 
 .forget-password-modal-input{
