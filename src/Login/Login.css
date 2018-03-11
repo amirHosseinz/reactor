@@ -93,10 +93,14 @@
   font-family: IRANSans;
   font-size: 14px;
   margin-top: 9px;
-  margin-bottom: -5px;
+  /* margin-bottom: -5px; */
+  line-height: 20px;
+
 }
 .log-in-false-pass-hide{
-display: none;
+/* display: none; */
+margin-top : 9px;
+visibility: hidden;
 }
 /* general style finished */
 

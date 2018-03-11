@@ -200,6 +200,7 @@ class LoginXl extends React.Component{
   getRole(){
     return 'guest';
   }
+
   getUserInfo(){
     if(localStorage['isLoggedIn']==='true'){
       this.setState({passIsNotCorrect:true},()=>{this.setSearchParamsForUserInfo(this.getRole())});
@@ -558,7 +559,7 @@ class LoginXl extends React.Component{
       else{
         return (
           <div className="login1-modal">
-            <div className="close-modal-phone-number">
+            <div onClick={()=>{this.props.closeLoginPanel()}}className="close-modal-phone-number">
             </div>
             <p className="login-title-in-modal"> ورود </p>
             <div className="header-login-modal-divider">

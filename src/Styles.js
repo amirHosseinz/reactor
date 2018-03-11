@@ -131,7 +131,7 @@ export const loginPasswordStyle = {
     backgroundColor   : 'rgba(0, 0, 0, 0.7)'
   },
   content :{
-    height : '360px',
+    height : '390px',
     width  : '400px',
     margin: 'auto',
     outline                    : '0',
