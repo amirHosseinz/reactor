@@ -481,8 +481,10 @@ class HeaderXl extends React.Component{
           {this.renderLoginPanelFirstStep()}
           <div className="header-logo-side col-md-6">
               <div className='header-logo-and-search'>
+                <div itemscope itemtype="http://schema.org/Organization">
                 <div className='header-logo-container'>
-                   <Link to="/"><img src={require('../Images/tripinn_logo.svg')} className="header-logo-image" alt = 'تریپین'></img></Link>
+                   <Link to="/"><img itemprop="logo" src={require('../Images/tripinn_logo.svg')} className="header-logo-image" alt = 'tripinn logo'></img></Link>
+                </div>
                 </div>
                 <div>
                   <Link className='logolink' to="/"><p className='header-logo-type'>تریپین</p></Link>
