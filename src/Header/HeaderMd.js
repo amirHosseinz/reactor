@@ -482,11 +482,13 @@ class HeaderMD extends React.Component{
           {this.renderLoginPanelFirstStep()}
           <div className="header-logo-side col-md-4">
               <div className='header-logo-and-search'>
-                <div itemscope itemtype="http://schema.org/Organization">
                   <div className='header-logo-container'>
-                     <Link to="/"><img itemprop="logo" src={require('../Images/tripinn_logo.svg')} className="header-logo-image" alt = 'tripinn logo'></img></Link>
+                     <Link to="/">
+                      <div itemscope={true} itemtype="http://schema.org/Organization">
+                        <img itemprop="logo" src={require('../Images/tripinn_logo.svg')} className="header-logo-image" alt = 'tripinn logo'/>
+                      </div>
+                     </Link>
                   </div>
-                </div>
                 <div>
                   <Link className='logolink' to="/"><p className='header-logo-type'>تریپین</p></Link>
                 </div>
