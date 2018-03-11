@@ -10,6 +10,7 @@ class LoginMd extends React.Component{
   constructor(props){
   super(props);
     this.state={
+      passIsNotCorrect:false,
       showSignUpOrSetPasswordModal:false,
       showVerificationModal:true,
       showForgetPasswordModal:false,
@@ -183,7 +184,7 @@ class LoginMd extends React.Component{
       this.setUserNameInHeader();
     }
   }
-  
+
   handleLoginResponse(loginResponse){
     if(loginResponse.is_successful){
       localStorage['isLoggedIn']= 'true';
@@ -192,7 +193,7 @@ class LoginMd extends React.Component{
       this.setUserNameInHeader();
     }
     else{
-      alert('رمز عبور وارد شده نادرست است. لطفا دوباره تلاش کنید');
+      this.setState({passIsNotCorrect:true});
     }
   }
   setUserNameInHeader(){
@@ -481,7 +482,7 @@ class LoginMd extends React.Component{
 
   changePasswordForLogin(event){
     var inputlogin ={password:event.target.value};
-    this.setState({inputForLogin : inputlogin});
+    this.setState({inputForLogin : inputlogin , passIsNotCorrect:false});
   }
   changePasswordForSetPassword(event){
     var inputSetPassword = {password : event.target.value ,
@@ -577,10 +578,11 @@ class LoginMd extends React.Component{
                 type="password"
                 autoComplete="off"
                 onKeyDown ={(event)=>{this.handleLoginClickByEnter(event)}}/>
-              <p onClick={()=>{this.handleForgetPassword(); this.setState({showForgetPasswordModal:true})}} className="login-modal-forget-password-paragraph"> فراموشی رمز عبور</p>
+                <p className={this.state.passIsNotCorrect?"log-in-false-pass-visible":"log-in-false-pass-hide"}>رمز عبور وارد شده اشتباه است.</p>
               <button color="blue" onClick={this.handleLoginClick.bind(this)} className="header-login-modal-button">
-                      ورود
+                ورود
               </button>
+              <p onClick={()=>{this.handleForgetPassword(); this.setState({showForgetPasswordModal:true})}} className="login-modal-forget-password-paragraph">فراموشی رمز عبور</p>
             </div>
             </div>
           </div>

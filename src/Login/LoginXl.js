@@ -10,6 +10,7 @@ class LoginXl extends React.Component{
   constructor(props){
   super(props);
     this.state={
+      passIsNotCorrect:false,
       showSignUpOrSetPasswordModal:false,
       showVerificationModal:true,
       showForgetPasswordModal:false,
@@ -190,7 +191,7 @@ class LoginXl extends React.Component{
       this.setUserNameInHeader();
     }
     else{
-      alert('رمز عبور وارد شده نادرست است. لطفا دوباره تلاش کنید');
+      this.setState({passIsNotCorrect:true});
     }
   }
   setUserNameInHeader(){
@@ -201,7 +202,7 @@ class LoginXl extends React.Component{
   }
   getUserInfo(){
     if(localStorage['isLoggedIn']==='true'){
-      this.setState({token:localStorage['token']},()=>{this.setSearchParamsForUserInfo(this.getRole())});
+      this.setState({passIsNotCorrect:true},()=>{this.setSearchParamsForUserInfo(this.getRole())});
     }
   }
   setSearchParamsForUserInfo(person_role){
@@ -477,7 +478,7 @@ class LoginXl extends React.Component{
 
   changePasswordForLogin(event){
     var inputlogin ={password:event.target.value};
-    this.setState({inputForLogin : inputlogin});
+    this.setState({inputForLogin : inputlogin, passIsNotCorrect:false});
   }
   changePasswordForSetPassword(event){
     var inputSetPassword = {password : event.target.value ,
@@ -574,10 +575,11 @@ class LoginXl extends React.Component{
                 type="password"
                 autoComplete="off"
                 onKeyDown ={(event)=>{this.handleLoginClickByEnter(event)}}/>
-                <p onClick={()=>{this.handleForgetPassword(); this.setState({showForgetPasswordModal:true})}} className="login-modal-forget-password-paragraph">فراموشی رمز عبور</p>
+                <p className={this.state.passIsNotCorrect?"log-in-false-pass-visible":"log-in-false-pass-hide"}>رمز عبور وارد شده اشتباه است.</p>
               <button color="blue" onClick={this.handleLoginClick.bind(this)} className="header-login-modal-button">
                 ورود
               </button>
+              <p onClick={()=>{this.handleForgetPassword(); this.setState({showForgetPasswordModal:true})}} className="login-modal-forget-password-paragraph">فراموشی رمز عبور</p>
             </div>
             </div>
           </div>

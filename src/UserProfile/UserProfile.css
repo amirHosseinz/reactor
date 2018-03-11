@@ -207,6 +207,7 @@
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 .user-profile-edit-save-changes-button{
+  outline: none;
   background-color: #12b2ce;
   display: flex;
   flex-direction: row;
@@ -348,6 +349,34 @@
   cursor : pointer;
   margin-top : 20px;
   border-radius : 25px;
+}
+.change-pass-success-container{
+  font-family: IRANSans;
+  margin: 20px;
+  text-align: center;
+}
+.change-pass-success-tick{
+  margin-left: 10px;
+}
+.change-pass-success-button{
+  outline: none;
+  background-color: #12b2ce !important;
+  /* display: flex!important;
+  flex-direction: row!important;
+  justify-content: center!important;
+  align-items: center!important; */
+  margin: auto !important;
+  cursor : pointer!important;
+  width : 100px;
+  font-family: IRANSans;
+  font-weight: 500;
+  border : none;
+  height: 38px;
+  margin-top: -5px !important;
+  /* margin-right : 40px!important; */
+  color : white!important;
+  text-align: center!important;
+  border-radius: 7px!important;
 }
 /* md styles finished */
 

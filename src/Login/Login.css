@@ -1,6 +1,8 @@
 /* general style here */
 .login-modal-forget-password-paragraph{
   color : #12b2ce;
+  text-align: center;
+  margin-bottom: 20px!important;
   margin-top: 10px;
   cursor : pointer;
 }
@@ -38,6 +40,7 @@
   color : #a1a1a1;
   font-size : 12px;
   text-align:right;
+  direction: rtl;
 }
 
 .forget-password-modal-input{
@@ -84,6 +87,16 @@
   background-color: #0fb9dc;
   color : white;
   width : 300px;
+}
+.log-in-false-pass-visible{
+  color:#f54e4e;
+  font-family: IRANSans;
+  font-size: 14px;
+  margin-top: 9px;
+  margin-bottom: -5px;
+}
+.log-in-false-pass-hide{
+display: none;
 }
 /* general style finished */
 

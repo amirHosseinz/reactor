@@ -5,6 +5,8 @@ import './UserProfile.css';
 import {Link} from 'react-router-dom';
 import Modal from 'react-modal';
 import {UserProfileUploadPhotoModal} from '../Styles.js';
+import {ChangePassSuccessModal} from '../Styles.js';
+import {ChangePassFailedModal} from '../Styles.js';
 import Dropzone from 'react-dropzone';
 import {SyncLoader} from 'react-spinners';
 
@@ -29,6 +31,10 @@ class UserProfileXl extends React.Component{
       nationalId:'',
       profilePicture : null,
       profilePictureFile : null,
+      openPassConfirmationModal:false,
+      passConfirmationModal:'',
+      passConfirmation:true,
+      passConfirmationErrors:[],
     };
   }
   componentWillMount() {
@@ -231,10 +237,96 @@ class UserProfileXl extends React.Component{
      return response.json();
    })
    .then((response) => {
-     console.log(response);
+     console.log(response)
+     this.setState({passConfirmation:response.successful,passConfirmationErrors:response.errors,openPassConfirmationModal:true})
+     this.setState({passConfirmationErrors:response.errors})
    });
   }
+  handleChangePassErrors(){
+    if (this.state.passConfirmationErrors.indexOf("Your password can't be too similar to your other personal information.") > -1) {
+      return(
+        <div>
+       کلمه عبور شما مشابه دیگر اطلاعات کاربری شماست
+        </div>
+      );
+    }
+    else if (this.state.passConfirmationErrors.indexOf("Your password must contain at least 10 characters.") > -1) {
+      return(
+        <div>
+        رمز عبور شما باید بیش از 6 کارکتر باشد
+        </div>
+      );
+    }
+    else if (this.state.passConfirmationErrors.indexOf("Your password can't be entirely numeric.") > -1) {
+      return(
+        <div>
+    کلمه عبور شما باید حداقل شامل یک حرف باشد
+        </div>
+      );
+    }
+    else if (this.state.passConfirmationErrors.indexOf("invalid_password") > -1) {
+      return(
+        <div>
+    کلمه عبور وارد شده صحیح نمی‌باشد
+        </div>
+      );
+    }
+    else if (this.state.passConfirmationErrors.indexOf("not_match") > -1) {
+      return(
+        <div>
+    تکرار کلمه عبور وارد شده صحیح نمی‌باشد
+        </div>
+      );
+    }
+    else if (this.state.passConfirmationErrors.indexOf("Your password can't be a commonly used password.") > -1) {
+      return(
+        <div>
+        کلمه عبور وارد شده معتبر نمی‌باشد
+        </div>
+      );
+    }
+    else if (this.state.passConfirmationErrors.length===0) {
+      return(
+        <div>
+        لطفا از پر شدن تمام فیلدها اطمینان حاصل نمایید
+          </div>
+      );
+    }
+  }
+   renderPassConfirmationModal(){
+     if(this.state.passConfirmation===true){
+     return(
+       <Modal isOpen={this.state.openPassConfirmationModal}
+             onRequestClose={()=>{this.setState({openPassConfirmationModal:false})}}
+              style={ChangePassSuccessModal}>
+              <div className='change-pass-success-container'>
+              <p>رمز عبور شما با موفقیت تغییر کرد
+              <img className='change-pass-success-tick' src={require('../Images/changePassSuccess.svg')} width="40" height="40"/>
+              </p>
+              </div>
+              <button className='change-pass-success-button' onClick={()=>{this.setState({openPassConfirmationModal:false})}}>
+              بستن
+              </button>
 
+      </Modal>
+    );
+  }
+  // else if (this.state.passConfirmation===false) {
+  //   return(
+  //     <Modal isOpen={this.state.openPassConfirmationModal}
+  //           onRequestClose={()=>{this.setState({openPassConfirmationModal:false})}}
+  //            style={ChangePassFailedModal}>
+  //            <div>
+  //
+  //            </div>
+  //            <div>
+  //          {this.handleChangePassErrors()}
+  //           </div>
+  //
+  //    </Modal>
+  //  );
+  // }
+   }
   changeInfoOnServer(){
     var request=new Request('https://www.trypinn.com/auth/api/user/edit/',{ //
       method: 'POST',
@@ -284,6 +376,7 @@ class UserProfileXl extends React.Component{
   editOldPassoword(event){
     this.setState({oldPassword:event.target.value});
   }
+
 
   // <div className="user-profile-in-details-link">
   //  پیام‌ها
@@ -423,7 +516,7 @@ class UserProfileXl extends React.Component{
           </div>
           <input type="password" value={this.state.confirmPassword} onChange={(event)=>{this.editConfirmPassword(event)}}className="user-profile-edit-input-password-section"/>
         </div>
-        <button onClick={()=>{this.handleChangePassword()}}className="user-profile-edit-save-changes-button">
+        <button onClick={()=>{this.handleChangePassword()}} className="user-profile-edit-save-changes-button">
                     تغییر رمز عبور
         </button>
       </div>
@@ -436,6 +529,8 @@ class UserProfileXl extends React.Component{
         {this.renderUploadPhotoModal()}
         {this.renderUserProfileDetailsSection()}
         {this.renderUserProfileEditSection()}
+        {this.renderPassConfirmationModal()}
+
       </div>
     );
   }
