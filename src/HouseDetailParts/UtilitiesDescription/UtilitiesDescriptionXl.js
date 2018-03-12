@@ -20,14 +20,14 @@ class UtilitiesDescriptionXl extends React.Component{
         break;
       }
     }
-    utilities.reverse();
-    utilities.splice( utilities.indexOf('PERGOLA'), 1);
-    utilities.splice( utilities.indexOf('KITCHEN'), 1);
-    utilities.splice( utilities.indexOf('SHORE_SIDE'), 1);
-    utilities.splice( utilities.indexOf('PRIVATE_LOCK'), 1);
-    utilities.splice( utilities.indexOf('BED'), 1);
-    utilities.splice( utilities.indexOf('MATRESS'), 1);
 
+    utilities.reverse();
+    // utilities.splice( utilities.indexOf('PERGOLA'), 1);
+    // utilities.splice( utilities.indexOf('KITCHEN'), 1);
+    // utilities.splice( utilities.indexOf('SHORE_SIDE'), 1);
+    // utilities.splice( utilities.indexOf('PRIVATE_LOCK'), 1);
+    // utilities.splice( utilities.indexOf('BED'), 1);
+    // utilities.splice( utilities.indexOf('MATRESS'), 1);
 
     var primaryListOfLists = [[],[],[],[],[],[],[],[],[]];
     var listIndex = 0;
@@ -61,6 +61,9 @@ class UtilitiesDescriptionXl extends React.Component{
     listOfUtilitiesString.splice(0,1);
     var listOfUtilitiesStringSecondRow = listOfUtilitiesString;
 
+    // console.log(listOfUtilitiesStringFirstRow);
+    // console.log(listOfUtilitiesStringSecondRow);
+
     return(
       <div>
         <div className="housedetails-utilities-container">
@@ -82,9 +85,9 @@ class UtilitiesDescriptionXl extends React.Component{
           )}
         </Collapsible>
       </div>
-
     );
   }
+
   render(){
     return(
       <div>

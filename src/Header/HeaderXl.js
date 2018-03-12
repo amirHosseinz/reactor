@@ -429,6 +429,7 @@ class HeaderXl extends React.Component{
       );
     }
   }
+  
   renderDownloadAppModal(){
     return(
       <Modal isOpen={this.state.showDownloadAppModal}

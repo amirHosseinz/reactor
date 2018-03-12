@@ -129,7 +129,7 @@ class HouseDetailsXl extends React.Component{
   }
 
   renderData(houseData) {
-    console.log(houseData);
+    // console.log(houseData);
     this.setState({homeData:houseData.room});
   }
 
@@ -257,7 +257,7 @@ class HouseDetailsXl extends React.Component{
         return response.json();
       })
       .then((likeResponse) => {
-        console.log(likeResponse);
+        // console.log(likeResponse);
         // if(likeResponse.successful===true){
         //   this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
         // }
