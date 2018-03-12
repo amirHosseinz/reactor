@@ -186,6 +186,7 @@ class LoginXl extends React.Component{
   }
   handleLoginResponse(loginResponse){
     if(loginResponse.is_successful){
+      console.log(loginResponse);
       localStorage['isLoggedIn']= 'true';
       localStorage['token'] = loginResponse.token;
       this.setUserNameInHeader();
@@ -195,7 +196,7 @@ class LoginXl extends React.Component{
     }
   }
   setUserNameInHeader(){
-    this.getUserInfo();
+    this.setState({token:localStorage['token']},()=>{this.getUserInfo();});
   }
   getRole(){
     return 'guest';
@@ -203,7 +204,8 @@ class LoginXl extends React.Component{
 
   getUserInfo(){
     if(localStorage['isLoggedIn']==='true'){
-      this.setState({passIsNotCorrect:true},()=>{this.setSearchParamsForUserInfo(this.getRole())});
+      this.setSearchParamsForUserInfo(this.getRole());
+      // this.setState({passIsNotCorrect:true},()=>{this.setSearchParamsForUserInfo(this.getRole())});
     }
   }
   setSearchParamsForUserInfo(person_role){
@@ -220,6 +222,7 @@ class LoginXl extends React.Component{
      return response.json();
    })
    .then((data) => {
+     // console.log(data);
      localStorage['user-first-name']=data.user.first_name;
      localStorage['user-last-name']=data.user.last_name;
      localStorage['user-username']=data.user.username;

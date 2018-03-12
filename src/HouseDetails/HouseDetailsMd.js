@@ -30,6 +30,7 @@ class HouseDetailsMd extends React.Component{
       isOpen: false,
       activeLink:1,
       homeData : '',
+      isLiked: false,
       reservePanelFixed : false,
       scrollListFixed:false,
       showReservePanel : true,
@@ -233,10 +234,102 @@ class HouseDetailsMd extends React.Component{
    }
  }
 
+ handleLike(){
+   switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
+     case 'rooms':{
+       var request = new Request('https://www.trypinn.com/bookmark/api/like/', {
+         method: 'POST',
+         body: JSON.stringify({
+           room_id : this.state.homeData.id,
+       }),
+         headers: new Headers({'Accept':'application/json','Content-Type': 'application/json',
+         'Authorization':'Token '+this.state.token,})
+       });
+      fetch(request)
+      .then((response) => {
+        return response.json();
+      })
+      .then((likeResponse) => {
+        if(likeResponse.successful===true){
+          this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
+        }
+      });
+       break;
+     }
+     case 'ecotourism':{
+       var request = new Request('https://www.trypinn.com/bookmark/api/like/', {
+         method: 'POST',
+         body: JSON.stringify({
+           eco_room_id : this.state.homeData.id,
+       }),
+         headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+         'Authorization': 'Token '+this.state.token,})
+       });
+      fetch(request)
+      .then((response) => {
+        return response.json();
+      })
+      .then((likeResponse) => {
+        console.log(likeResponse);
+        if(likeResponse.successful===true){
+          this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
+        }
+      });
+       break;
+     }
+   }
+ }
+
+ handleUnlike(){
+   switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
+     case 'rooms':{
+       var request = new Request('https://www.trypinn.com/bookmark/api/unlike/', {
+         method: 'POST',
+         body: JSON.stringify({
+           room_id : this.state.homeData.id,
+       }),
+         headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+         'Authorization': 'Token '+this.state.token,})
+       });
+      fetch(request)
+      .then((response) => {
+        console.log(response);
+        return response.json();
+      })
+      .then((unlikeResponse) => {
+        if(unlikeResponse.successful===true){
+          this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
+        }
+      });
+       break;
+     }
+     case 'ecotourism':{
+       var request = new Request('https://www.trypinn.com/bookmark/api/unlike/', {
+         method: 'POST',
+         body: JSON.stringify({
+           eco_room_id : this.state.homeData.id,
+       }),
+         headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+         'Authorization': 'Token '+this.state.token,})
+       });
+      fetch(request)
+      .then((response) => {
+        console.log(response);
+        return response.json();
+      })
+      .then((unlikeResponse) => {
+        if(unlikeResponse.successful===true){
+          this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
+        }
+      });
+       break;
+     }
+   }
+ }
  // <div className={isSticky?"bookmark-share-container-sticky-md":"bookmark-share-container-not-sticky-md"}>
  //   <div className="bookmark-section">
- //     <img className="bookmark-icon" src={true?require('../HouseDetailParts/facilities/Layer 5.png'):require('../HouseDetailParts/facilities/heart-2d56.png')}/>
- //     <p className="bookmark-sentence">{false?"افزودن به لیست علاقه‌مندی":"حذف از لیست علاقه‌مندی"}</p>
+ //     <img className="bookmark-icon" onClick={this.state.isLiked?()=>{this.handleUnlike()}:()=>{this.handleLike()}} src={this.state.isLiked?require('../HouseDetailParts/facilities/Layer 5.png'):require('../HouseDetailParts/facilities/heart-2d56.png')}/>
+ //     <p className="bookmark-sentence">{!this.state.isLiked?"افزودن به لیست علاقه‌مندی":"حذف از لیست علاقه‌مندی"}</p>
  //   </div>
  //   <div className="bookmark-vertical-line">
  //   </div>
@@ -293,8 +386,6 @@ class HouseDetailsMd extends React.Component{
                         <ReservePanel homeData={this.state.homeData}/>
                       </div>
                     </div>
-
-
 
                   </div>
                 )

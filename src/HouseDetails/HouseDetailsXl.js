@@ -130,7 +130,7 @@ class HouseDetailsXl extends React.Component{
 
   renderData(houseData) {
     // console.log(houseData);
-    this.setState({homeData:houseData.room});
+    this.setState({homeData:houseData.room,isLiked :houseData.room.is_liked});
   }
 
    renderHomeTitle()
@@ -257,10 +257,10 @@ class HouseDetailsXl extends React.Component{
         return response.json();
       })
       .then((likeResponse) => {
-        // console.log(likeResponse);
-        // if(likeResponse.successful===true){
-        //   this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
-        // }
+        console.log(likeResponse);
+        if(likeResponse.successful===true){
+          this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
+        }
       });
        break;
      }
@@ -328,6 +328,7 @@ class HouseDetailsXl extends React.Component{
    }
  }
 
+ 
  // <div className={isSticky?"bookmark-share-container-sticky":"bookmark-share-container-not-sticky"}>
  //   <div className="bookmark-section">
  //     <img className="bookmark-icon" onClick={this.state.isLiked?()=>{this.handleUnlike()}:()=>{this.handleLike()}} src={this.state.isLiked?require('../HouseDetailParts/facilities/Layer 5.png'):require('../HouseDetailParts/facilities/heart-2d56.png')}/>
@@ -355,6 +356,7 @@ class HouseDetailsXl extends React.Component{
  // </div>
   renderHouseDetailsVersion2(){
     if(this.state.homeData!=='' && this.state.homeData!==null){
+      // console.log(this.state.isLiked);
       return(
         <div className="house-details-main-division">
           <div className="house-details-top-division">
@@ -388,7 +390,6 @@ class HouseDetailsXl extends React.Component{
                         <ReservePanel homeData={this.state.homeData}/>
                       </div>
                     </div>
-
 
 
                   </div>
