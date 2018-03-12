@@ -1,15 +1,8 @@
 import React from 'react';
-import SearchResultItem from '../SearchResultItem';
-import { Typeahead,MenuItem,Menu,menuItemContainer} from '../tools/react-bootstrap-typeahead';
-import { Button } from 'semantic-ui-react';
-import { findDOMNode } from 'react-dom';
-import {Dropdown} from 'semantic-ui-react';
-import GuestNumber from '../GuestNumberSearchBar.js';
-import scrollToComponent from 'react-scroll-to-component';
 import "./SearchBar.css";
 import "../Styles/MainPage-SearchBar.css";
 import Autosuggest from 'react-autosuggest';
-const TypeaheadMenuItem = menuItemContainer(MenuItem);
+import MetaTags from 'react-meta-tags';
 const listOfCity = [
   {name:'اصفهان',},{name:'نوشهر',},{name: 'گیلان',},{name:'رامسر'},{name:'کیش'},{name:'مازندران'},
   {name:'فریدون کنار'},{name:'محمودآباد'},{name:'عباس آباد'},{name:'شاندیز'},{name:'خراسان رضوی'},
@@ -211,6 +204,9 @@ class SearchBarMD extends React.Component{
   render(){
     return(
       <div>
+        <MetaTags>
+          <title>تریپین | سامانه رزرو ویلا و اقامتگاه محلی</title>
+        </MetaTags>
         {this.renderSearchBarVersion2()}
       </div>
     );
