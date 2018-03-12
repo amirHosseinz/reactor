@@ -328,7 +328,7 @@ class HouseDetailsXl extends React.Component{
    }
  }
 
- 
+
  // <div className={isSticky?"bookmark-share-container-sticky":"bookmark-share-container-not-sticky"}>
  //   <div className="bookmark-section">
  //     <img className="bookmark-icon" onClick={this.state.isLiked?()=>{this.handleUnlike()}:()=>{this.handleLike()}} src={this.state.isLiked?require('../HouseDetailParts/facilities/Layer 5.png'):require('../HouseDetailParts/facilities/heart-2d56.png')}/>
@@ -401,20 +401,20 @@ class HouseDetailsXl extends React.Component{
                 {({style,isSticky})=>{return(
                   <div style={style} className={isSticky?"house-details-menu-link-scrolls-sticky":"house-details-menu-link-scrolls-not-sticky housedetails-content-containers"}>
                     <div className='navigation-menu-housedetails'>
-                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: 0, duration: 400}} to="gallery" >
-                        <p className='navigation-menu-items'>تصاویر</p>
+                      <Scrollchor  className="navigation-link" disableHistory={true} animate={{offset: 0, duration: 400}} to="gallery" >
+                        <p onClick={()=>{this.setState({activeLink:1})}} className={(this.state.activeLink===1)?"navigation-menu-items-active":'navigation-menu-items'}>تصاویر</p>
                       </Scrollchor>
-                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: 20, duration: 400}} to="details">
-                        <p className='navigation-menu-items'>مشخصات</p>
+                      <Scrollchor  className="navigation-link" disableHistory={true} animate={{offset: 20, duration: 400}} to="details">
+                        <p onClick={()=>{this.setState({activeLink:2})}} className={(this.state.activeLink===2)?"navigation-menu-items-active":'navigation-menu-items'}>مشخصات</p>
                       </Scrollchor>
-                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset:-100, duration: 400}} to="price">
-                        <p className='navigation-menu-items'>قیمت</p>
+                      <Scrollchor  className="navigation-link" disableHistory={true} animate={{offset:-100, duration: 400}} to="price">
+                        <p onClick={()=>{this.setState({activeLink:3})}} className={(this.state.activeLink===3)?"navigation-menu-items-active":'navigation-menu-items'}>قیمت</p>
                       </Scrollchor>
-                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: -100, duration: 400}} to="laws">
-                        <p className='navigation-menu-items'> قوانین و مقررات</p>
+                      <Scrollchor  className="navigation-link" disableHistory={true} animate={{offset: -100, duration: 400}} to="laws">
+                        <p onClick={()=>{this.setState({activeLink:4})}} className={(this.state.activeLink===4)?"navigation-menu-items-active":'navigation-menu-items'}> قوانین و مقررات</p>
                       </Scrollchor>
                       <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: -80, duration: 400}} to="map">
-                        <p className='navigation-menu-items'>موقعیت محلی</p>
+                        <p onClick={()=>{this.setState({activeLink:5})}} className={(this.state.activeLink===5)?"navigation-menu-items-active":'navigation-menu-items'}>موقعیت محلی</p>
                       </Scrollchor>
                     </div>
                   </div>

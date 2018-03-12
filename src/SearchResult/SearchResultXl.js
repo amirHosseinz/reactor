@@ -10,7 +10,7 @@ import '../tools/calendar/initialize.js';
 import '../tools/calendar2/lib/css/_datepicker.css';
 import {DateRangePicker} from '../tools/calendar2';
 import Sticky from 'react-sticky';
-
+import {PulseLoader} from 'react-spinners';
 
 class SearchResultXl extends React.Component{
   constructor(props){
@@ -23,6 +23,7 @@ class SearchResultXl extends React.Component{
       numberOfGuests: 1,
       OpenDropDown:false,
       Counter:false,
+      itemsLoaded:false,
       startDate:null,
       endDate:null,
       searchParams : {
@@ -63,8 +64,7 @@ class SearchResultXl extends React.Component{
       capacity: this.state.numberOfGuests,
     };
     this.setState({
-      searchParams: spar
-    },() => {
+      searchParams: spar,itemsLoaded:false},() => {
     this.getDataFromServer();
     });
   }
@@ -83,19 +83,16 @@ class SearchResultXl extends React.Component{
    });
   fetch(request)
   .then((response) => {
-    // console.log(response);
     return response.json();
   })
   .then((homeData) => {
-    // console.log(homeData);
     this.renderData(homeData);
   });
   }
 
   renderData(houseData) {
    this.setState({
-     houseList: houseData.room,
-   });
+     houseList: houseData.room,itemsLoaded:true});
   }
   getRelevantToken(){
     return localStorage['token'];
@@ -206,8 +203,8 @@ class SearchResultXl extends React.Component{
           <div className="render-houses-row">
             <div className="padding-search-results-top">
             </div>
-            <div className="renderresults-main">
-              {this.renderHousesCol5()}
+            <div className="">
+              {this.renderHouseItems()}
             </div>
             <div className="padding-search-results">
             </div>
@@ -216,6 +213,18 @@ class SearchResultXl extends React.Component{
     );
   }
 
+  renderHouseItems(){;
+    if(this.state.itemsLoaded===true) {
+      return this.renderHousesCol5();
+    }
+    else{
+      return (
+        <div className="search-result-loading-item">
+          <PulseLoader color="#12b2ce" size={15} loading={!this.state.itemsLoaded} />
+        </div>
+      );
+    }
+  }
 
   renderHousesCol5 () {
     var results = [];
@@ -258,6 +267,7 @@ class SearchResultXl extends React.Component{
       );
     }
     return results;
+
   }
 
 
