@@ -429,7 +429,7 @@ class HeaderXl extends React.Component{
       );
     }
   }
-  
+
   renderDownloadAppModal(){
     return(
       <Modal isOpen={this.state.showDownloadAppModal}
@@ -451,6 +451,9 @@ class HeaderXl extends React.Component{
                       </a>
                       <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='https://play.google.com/store/apps/details?id=com.trypinn&hl=en' >
                         <img src={require('../Images/3.png')} className="download_icon_app" alt = 'دانلود از گوگل پلی'/>
+                      </a>
+                      <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='https://myket.ir/app/com.trypinn' >
+                        <img src={require('../Images/MYKET72 copy.svg')} className="download_icon_app" alt = 'دانلود از مایکت'/>
                       </a>
                     </div>
                     <p className="header-downlaod-app-modal-download-label">نسخه iOS </p>
