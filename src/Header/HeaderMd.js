@@ -484,8 +484,8 @@ class HeaderMD extends React.Component{
               <div className='header-logo-and-search'>
                   <div className='header-logo-container'>
                      <Link to="/">
-                      <div itemscope="" itemtype="http://schema.org/Organization">
-                        <img itemprop="logo" src={require('../Images/tripinn_logo.svg')} className="header-logo-image" alt = 'tripinn logo'/>
+                      <div itemScope itemType="http://schema.org/Organization">
+                        <img itemProp="logo" src={require('../Images/tripinn_logo.svg')} className="header-logo-image" alt = 'tripinn logo'/>
                       </div>
                      </Link>
                   </div>
