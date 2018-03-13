@@ -487,7 +487,7 @@ class HeaderXl extends React.Component{
               <div className='header-logo-and-search'>
                 <div className='header-logo-container'>
                    <Link to="/">
-                    <div itemScope itemType="http://schema.org/Organization">
+                    <div itemScope={true} itemType="http://schema.org/Organization">
                       <img itemProp="logo" src={require('../Images/tripinn_logo.svg')} className="header-logo-image" alt = 'tripinn logo'/>
                     </div>
                    </Link>

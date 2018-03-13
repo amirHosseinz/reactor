@@ -218,7 +218,7 @@ class SearchResultXl extends React.Component{
       return this.renderHousesCol5();
     }
     else{
-      return (
+      return(
         <div className="search-result-loading-item">
           <PulseLoader color="#12b2ce" size={15} loading={!this.state.itemsLoaded} />
         </div>
