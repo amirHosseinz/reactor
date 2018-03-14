@@ -243,6 +243,7 @@ class UserProfileXl extends React.Component{
    });
   }
   handleChangePassErrors(){
+    // console.log(this.state.passConfirmationErrors);
     if (this.state.passConfirmationErrors.indexOf("Your password can't be too similar to your other personal information.") > -1) {
       return(
         <div>
@@ -304,29 +305,25 @@ class UserProfileXl extends React.Component{
               <img className='change-pass-success-tick' src={require('../Images/changePassSuccess.svg')} width="40" height="40"/>
               </p>
               </div>
-              <button className='change-pass-success-button' onClick={()=>{this.setState({openPassConfirmationModal:false})}}>
+              <button className='change-pass-success-button' onClick={()=>{this.setState({openPassConfirmationModal:false});window.location.reload()}}>
               بستن
               </button>
-
       </Modal>
     );
   }
-  // else if (this.state.passConfirmation===false) {
-  //   return(
-  //     <Modal isOpen={this.state.openPassConfirmationModal}
-  //           onRequestClose={()=>{this.setState({openPassConfirmationModal:false})}}
-  //            style={ChangePassFailedModal}>
-  //            <div>
-  //
-  //            </div>
-  //            <div>
-  //          {this.handleChangePassErrors()}
-  //           </div>
-  //
-  //    </Modal>
-  //  );
-  // }
-   }
+  else {
+    return(
+      <Modal isOpen={this.state.openPassConfirmationModal}
+            onRequestClose={()=>{this.setState({openPassConfirmationModal:false})}}
+             style={ChangePassFailedModal}>
+             <div>
+              {this.handleChangePassErrors()}
+            </div>
+
+     </Modal>
+   );
+  }
+ }
   changeInfoOnServer(){
     var request=new Request('https://www.trypinn.com/auth/api/user/edit/',{ //
       method: 'POST',

@@ -255,7 +255,7 @@ class UserProfileMd extends React.Component{
              <img className='change-pass-success-tick' src={require('../Images/changePassSuccess.svg')} width="40" height="40"/>
              </p>
              </div>
-             <button className='change-pass-success-button' onClick={()=>{this.setState({openPassConfirmationModal:false})}}>
+             <button className='change-pass-success-button' onClick={()=>{this.setState({openPassConfirmationModal:false});window.location.reload()}}>
              بستن
              </button>
 

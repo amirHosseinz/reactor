@@ -49,6 +49,7 @@
     "react-scrollchor": "^4.2.1",
     "react-search-bar": "^2.2.0",
     "react-slick": "^0.16.0",
+    "react-snap": "^1.11.4",
     "react-spinners": "^0.2.6",
     "react-stars": "^2.2.5",
     "react-sticky": "^6.0.1",
@@ -72,6 +73,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "dev": "babel-node server.js --presets es2015,stage-2",
+    "postbuild": "react-snap",
     "serve": "nodemon server.js --exec babel-node --presets es2015,stage-2",
     "production": "webpack -p --progress"
   },

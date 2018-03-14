@@ -8,7 +8,6 @@ import './Header.css';
 import '../Styles/Header-SearchBar.css';
 import {CancelButtonModalStyle} from '../Styles.js';
 import {downloadAppModalStyle,loginPasswordStyle, loginPhoneNumberStyle, loginPanelmobileStyle , loginVerifySmsXl} from '../Styles.js';
-// import {Modal} from 'react-bootstrap';
 import {englishToPersianDigits,persianArabicToEnglishDigits} from '../tools/EnglishToPersianDigits';
 import {Image} from 'react-bootstrap';
 import Modal from 'react-modal';
@@ -33,6 +32,7 @@ const theme ={
   sectionContainerFirst:    'header-searchbar-section-container--first',
   sectionTitle:             'header-searchbar-section-title',
 };
+
 const listOfCity = [
   {name:'اصفهان',},{name:'نوشهر',},{name: 'گیلان',},{name:'رامسر'},{name:'کیش'},{name:'مازندران'},
   {name:'فریدون کنار'},{name:'محمودآباد'},{name:'عباس آباد'},{name:'شاندیز'},{name:'خراسان رضوی'},
