@@ -15,6 +15,7 @@ app.use(handleRender);
 
 function handleRender(req, res) {
   // const html = renderToString(<MainPage />);
+  // res.send(html);
   res.send(renderFullPage());
 }
 

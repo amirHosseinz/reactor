@@ -5,7 +5,6 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "bootstrap-jalali-datepicker": "^1.0.1",
-    "chromium": "^1.0.2",
     "datepicker": "0.0.0",
     "express": "^4.16.2",
     "google-maps-react": "^1.1.2",
@@ -71,10 +70,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "react-snap",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "dev": "babel-node server.js --presets es2015,stage-2",
-    "postbuild": "react-snap",
     "serve": "nodemon server.js --exec babel-node --presets es2015,stage-2",
     "production": "webpack -p --progress"
   },

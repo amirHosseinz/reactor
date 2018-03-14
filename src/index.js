@@ -1,5 +1,6 @@
 import React from 'react';
-import {hydrate,render} from 'react-dom';
+import ReactDOM from 'react-dom';
+// import ReactDOMServer from 'react-dom/server';
 import MainPage from './MainPage.js';
 import 'semantic-ui-css/semantic.min.css';
 import 'react-aspect-ratio/aspect-ratio.css';
@@ -13,9 +14,4 @@ class Main extends React.Component{
   }
 }
 
-const rootElement = document.getElementById('root');
-if (rootElement.hasChildNodes()) {
-  hydrate(<Main />, rootElement);
-} else {
-  render(<Main />, rootElement);
-}
+ReactDOM.hydrate(<Main />, document.getElementById('root'));
