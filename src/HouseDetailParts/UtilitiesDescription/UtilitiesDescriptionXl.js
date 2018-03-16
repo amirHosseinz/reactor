@@ -21,7 +21,7 @@ class UtilitiesDescriptionXl extends React.Component{
       }
     }
 
-    utilities.reverse();
+    // utilities.reverse();
     // utilities.splice( utilities.indexOf('PERGOLA'), 1);
     // utilities.splice( utilities.indexOf('KITCHEN'), 1);
     // utilities.splice( utilities.indexOf('SHORE_SIDE'), 1);

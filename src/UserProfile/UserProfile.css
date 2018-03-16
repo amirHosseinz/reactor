@@ -4,24 +4,13 @@
   display : -webkit-flex;
   justify-content: center;
   flex-direction: row-reverse;
-  margin-top : 100px;
+  margin-top : 50px;
 }
 /* general styles finished*/
 
 
 /* xl styles here */
-.user-profile-edit-main-division{
-  wdith :685px;
-  margin-right: 10px;
-  background-color: white;
-  height : 1200px;
-  direction : rtl;
-  color : #454545;
-  font-family: IRANSans !important;
-  border : 2px solid #e4e4e4;
-  border-radius: 7px;
-  margin-bottom: 100px;
-}
+
 
 .user-profile-in-details-main-division{
   width : 385px;
@@ -377,6 +366,220 @@
   color : white!important;
   text-align: center!important;
   border-radius: 7px!important;
+}
+
+.user-panel-section-edit-profile-version{
+  width :600px;
+  margin-right: 10px;
+  background-color: white;
+  height : 1200px;
+  direction : rtl;
+  color : #454545;
+  font-family: IRANSans !important;
+  border : 2px solid #e4e4e4;
+  border-radius: 7px;
+  margin-bottom: 100px;
+}
+
+.user-panel-section-bookmark-version{
+  width :600px;
+  margin-right: 10px;
+  background-color: white;
+  direction : rtl;
+  color : #454545;
+  font-family: IRANSans !important;
+  border : 2px solid #e4e4e4;
+  border-radius: 7px;
+  margin-bottom: 100px;
+}
+
+.user-panel-section-edit-profile-version-md{
+  width :560px;
+  margin-right: 10px;
+  background-color: white;
+  height : 1200px;
+  direction : rtl;
+  color : #454545;
+  font-family: IRANSans !important;
+  border : 2px solid #e4e4e4;
+  border-radius: 7px;
+  margin-bottom: 100px;
+}
+
+.user-panel-section-bookmark-version-md{
+  width :560px;
+  margin-right: 10px;
+  background-color: white;
+  direction : rtl;
+  color : #454545;
+  font-family: IRANSans !important;
+  border : 2px solid #e4e4e4;
+  border-radius: 7px;
+  margin-bottom: 100px;
+}
+.user-panel-section-header{
+  display: flex;
+  display : -webkit-flex;
+  width : 100%;
+  /* margin-bottom : 30px; */
+}
+.bookmark-list-container{
+  overflow-y : auto;
+  height : 540px;
+}
+.user-panel-section-header-button-selected{
+  width : 300px;
+  cursor:pointer;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
+  height : 50px !important;
+  border-bottom: solid 2px #e4e4e4;
+  font-size : 18px;
+  color : #1FA0C1;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+
+}
+.user-panel-section-header-button{
+  background-color: #efefef;
+  color : #454545;
+  width : 300px;
+  cursor:pointer;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
+  height : 50px !important;
+  border-bottom: solid 2px #e4e4e4;
+  font-size : 18px;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+.user-profile-edit-main-division{
+  margin-top:30px ;
+}
+.user-panel-section-vertical-line{
+  border-left: 2px solid #e4e4e4;
+  height: 50px;
+}
+.user-panel-section-header-title{
+
+}
+.bookmark-list-main-division{
+  /* margin-top: 10px; */
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction:column;
+}
+
+.bookmark-item{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  align-items: center;
+  height: 134px;
+  width : 100%;
+}
+.bookmark-item-data{
+  display: flex;
+  display: -webkit-flex;
+  justify-content: flex-start;
+  align-items: center;
+  width :96%;
+}
+.bookmark-item-description {
+  height:100px;
+  margin-right : 10px;
+}
+.bookmark-item-divider {
+  width: 96%;
+  margin-top:0px;
+  margin-bottom:0px;
+  border : solid 1px #e4e4e4;
+}
+.bookmark-item-preview{
+  margin-top : 10px !important;
+  height: 110px;
+  width: 150px;
+  /* object-fit : fill; */
+}
+.bookmark-item-link{
+  text-decoration: none !important;
+}
+.bookmark-item-title{
+  color : #1FA0C1;
+  font-size : 17px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-top : 10px!important;
+  /* margin-bottom : 10px !important;
+  margin-top : 0px !important; */
+}
+.bookmark-item-type{
+  font-size : 12px;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction:row;
+  margin-top : 4px;
+  margin-bottom: 2px !important;
+}
+.bookmark-item-delete-button{
+  font-size : 12px;
+  color : #f54e4e;
+  cursor : pointer;
+}
+.bookmark-item-bottom-section{
+  display: flex;
+  display :-webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction:row;
+  justify-content: space-between;
+  width : 400px;
+  margin-top : 20px;
+}
+
+.bookmark-item-price{
+  font-size: 16px;
+  font-weight: 500;
+}
+.bookmark-item-price-description{
+  font-size : 14px;
+  font-weight: 200;
+}
+
+.bookmark-list-main-division-md{
+
+}
+.bookmark-list-empty-icon{
+  display:flex;
+  display:-webkit-flex;
+  height : 500px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  -webkit-flex-direction:column;
+}
+.no-bookmark-icon {
+  height: 160px;
+}
+.no-bookmark-description{
+  margin-top : 30px;
+  font-size : 20px;
+  font-weight: 500;
+  color : #454545;
 }
 /* md styles finished */
 

@@ -6,7 +6,7 @@ import moment from 'moment-jalaali';
 import Modal from 'react-modal';
 import {CancelButtonModalStyle} from '../Styles.js';
 import {reserveModalStyleRequests} from '../Styles.js';
-import {parsePrice3digits} from '../tools/ParsePrice3digits.js'
+import {parsePrice3digits} from '../tools/ParsePrice3digits.js';
 import './RequestItem.css';
 
 

@@ -5,7 +5,7 @@ import Header from './Header.js';
 import Footer from './Footer.js';
 import UserProfile from './UserProfile.js';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter,Route} from 'react-router-dom';
+import {BrowserRouter,Route,Redirect} from 'react-router-dom';
 import UserPanel from './UserPanel';
 import BecomeHost from './BecomeHost.js';
 import ContactUs from './ContactUs.js';
@@ -202,6 +202,7 @@ class MainPage extends React.Component{
           <Route path={"/suggestions&comments"} render = {()=> {return(this.renderSuggestions())}}/>
           <Route path={"/terms&conditions"} render={()=> {return(this.renderTerms())}}/>
           <Route path={"/contactus"} render = {()=> {return(this.renderContactUs())}}/>
+          <Route exact path="/search/" render={() => {return(<Redirect to="/search/هر جا"/>)}}/>
           <Route path={"/userprofile"} render={()=> {return(this.renderUserProfile())}}/>
           <Route exact path={"/search/:city"} render = {(props)=> {return(this.renderSearchResult(props))}}/>
           <Route path={"/partners/"} render={()=> {return(this.renderPartners())}}/>
