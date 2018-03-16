@@ -5,12 +5,13 @@ import Header from './Header.js';
 import Footer from './Footer.js';
 import UserProfile from './UserProfile.js';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter,Route,Redirect} from 'react-router-dom';
+import {BrowserRouter,Route,Redirect,Switch} from 'react-router-dom';
 import UserPanel from './UserPanel';
 import BecomeHost from './BecomeHost.js';
 import ContactUs from './ContactUs.js';
 import AboutUs from './AboutUs.js';
 import Terms from './Terms.js';
+import Error404Page from './Error404Page.js';
 import Partners from './Partners.js';
 import SearchResult from './SearchResult.js';
 import Suggestions from './Suggestions.js';
@@ -183,6 +184,11 @@ class MainPage extends React.Component{
       <Partners />
     );
   }
+  renderError404Page(){
+    return(
+      <Error404Page />
+    );
+  }
   // <Route path={"/becomehost"} render = {()=> {return(this.renderBecomeHost())}}/>
   // <Route path={"/"} render = {()=> {return(this.renderFooter())}}/>
   render(){
@@ -194,18 +200,21 @@ class MainPage extends React.Component{
       <BrowserRouter>
         <div className="main">
           <Route path={"/"} render = {(props)=> {return (this.renderHeader(props))}}/>
-          <Route exact path={'/'} render={(props)=> {return (this.renderSearchBar(props))}}/>
-          <Route path={'/dashboard'} render={()=>{return(this.renderUserPanel())}}/>
-          <Route path={'/rooms/' + this.getHouseId()} render ={()=> {return (this.renderHouseDetails())}}/>
-          <Route path={'/ecotourism/' + this.getHouseId()} render ={()=> {return (this.renderHouseDetails())}}/>
-          <Route path={"/aboutus"} render = {()=> {return(this.renderAboutUs())}}/>
-          <Route path={"/suggestions&comments"} render = {()=> {return(this.renderSuggestions())}}/>
-          <Route path={"/terms&conditions"} render={()=> {return(this.renderTerms())}}/>
-          <Route path={"/contactus"} render = {()=> {return(this.renderContactUs())}}/>
-          <Route exact path="/search/" render={() => {return(<Redirect to="/search/هر جا"/>)}}/>
-          <Route path={"/userprofile"} render={()=> {return(this.renderUserProfile())}}/>
-          <Route exact path={"/search/:city"} render = {(props)=> {return(this.renderSearchResult(props))}}/>
-          <Route path={"/partners/"} render={()=> {return(this.renderPartners())}}/>
+          <Switch>
+            <Route exact path={'/'} render={(props)=> {return (this.renderSearchBar(props))}}/>
+            <Route path={'/dashboard'} render={()=>{return(this.renderUserPanel())}}/>
+            <Route path={'/rooms/' + this.getHouseId()} render ={()=> {return (this.renderHouseDetails())}}/>
+            <Route path={'/ecotourism/' + this.getHouseId()} render ={()=> {return (this.renderHouseDetails())}}/>
+            <Route path={"/aboutus"} render = {()=> {return(this.renderAboutUs())}}/>
+            <Route path={"/suggestions&comments"} render = {()=> {return(this.renderSuggestions())}}/>
+            <Route path={"/terms&conditions"} render={()=> {return(this.renderTerms())}}/>
+            <Route path={"/contactus"} render = {()=> {return(this.renderContactUs())}}/>
+            <Route exact path="/search/" render={() => {return(<Redirect to="/search/هر جا"/>)}}/>
+            <Route path={"/userprofile"} render={()=> {return(this.renderUserProfile())}}/>
+            <Route exact path={"/search/:city"} render = {(props)=> {return(this.renderSearchResult(props))}}/>
+            <Route path={"/partners/"} render={()=> {return(this.renderPartners())}}/>
+            <Route render={()=> {return(this.renderError404Page())}} />
+          </Switch>
         </div>
       </BrowserRouter>
       </StickyContainer>

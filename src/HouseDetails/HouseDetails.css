@@ -460,6 +460,13 @@ color: #737373;
 font-size: 16px;
 font-weight: 400;
 }
+.house-details-price-pernight-ecotourism {
+  text-align:right;
+  color : #737373;
+  font-weight: 500;
+  font-size : 12px !important;
+  margin-top : -12px !important;
+}
 
 .house-details-price-pernight-label-md{
 color: #737373;

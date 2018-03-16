@@ -350,7 +350,10 @@ class HouseDetailsMd extends React.Component{
                   <div style={style}>
                     <div className={isSticky?"house-details-reserve-panel-sticky-md housedetails-content-containers-md":"house-details-reserve-panel-not-sticky-md housedetails-content-containers-md"}>
                       <div className="house-details-reserve-panel-price-description">
+                        <div>
                           <p className="house-details-price-pernight-label-md"> هزینه اقامت هر شب عادی:</p>
+                          <p className="house-details-price-pernight-ecotourism">{this.state.homeData.type==="room"?"" :  "( به ازای هر نفر )" }</p>
+                        </div>
                           <div className = "house-details-price">
                             <span> {englishToPersianDigits(parsePrice3digits(this.state.homeData.price))} </span>
                             <span> تومان</span>
