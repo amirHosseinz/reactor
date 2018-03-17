@@ -206,6 +206,7 @@ class SearchBarXl extends React.Component{
       <div>
         <MetaTags>
           <title>تریپین | سامانه رزرو ویلا و اقامتگاه محلی</title>
+          <meta property="og:title" content="تریپین" />
         </MetaTags>
         {this.renderSearchBarVersion2()}
       </div>
