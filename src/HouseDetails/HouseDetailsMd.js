@@ -19,7 +19,7 @@ import Scrollchor from 'react-scrollchor';
 import './HouseDetails.css';
 import Lightbox from 'react-images';
 import MetaTags from 'react-meta-tags';
-
+import {Link} from 'react-router-dom';
 
 class HouseDetailsMd extends React.Component{
   constructor(props){
@@ -326,6 +326,29 @@ class HouseDetailsMd extends React.Component{
      }
    }
  }
+ renderAddressBreadCrumbList(){
+   var position = this.state.homeData.location_hierarchy.length + 1;
+   var breadCrumbList = this.state.homeData.location_hierarchy.map((item)=>{
+     position = position - 1;
+     return(
+       <li itemProp="itemListElement" itemScope itemType="http://schema.org/ListItem" className="address-bread-crumb-list-item">
+        <Link itemProp="item" className="address-bread-crumb-list-link" to={"/search/" + item}>
+          <div itemProp="name" className="address-bread-crumb-list-item-name">
+            {item}
+          </div>
+        </Link>
+        <meta itemProp="position" content={position} />
+         {item!==this.state.homeData.location_hierarchy[this.state.homeData.location_hierarchy.length-1]?<div className="address-bread-crumb-list-left-arrow"></div>:<div></div>}
+       </li>
+     )
+   });
+   return (
+     <ol itemScope={true} itemType={"http://schema.org/BreadcrumbList"} className="address-bread-crumb-list">
+      {breadCrumbList}
+     </ol>
+   );
+ }
+
   renderHouseDetailsVersion2(){
     if(this.state.homeData!=='' && this.state.homeData!==null){
       return(
@@ -337,8 +360,9 @@ class HouseDetailsMd extends React.Component{
               {this.renderGalleryLightBox()}
             </div>
             <div className="house-details-main-information-md">
-              <div id="details-md"></div>
+              {this.renderAddressBreadCrumbList()}
               {this.renderHomeTitle()}
+              <div id="details-md"></div>
               <AddressDescription homeData={this.state.homeData}/>
               <AmenitiesDescription homeData={this.state.homeData} />
             </div>
@@ -394,14 +418,14 @@ class HouseDetailsMd extends React.Component{
               }}
             </Sticky>
             <div>
-              <Sticky topOffset={500}>
+              <Sticky topOffset={540}>
                 {({style,isSticky})=>{return(
                   <div style={style} className={isSticky?"house-details-menu-link-scrolls-sticky-md":"house-details-menu-link-scrolls-not-sticky-md housedetails-content-containers-menu-md"}>
                     <div className='navigation-menu-housedetails'>
                       <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: 0, duration: 400}} to="gallery-md">
                         <p onClick={()=>{this.setState({activeLink:1})}} className={(this.state.activeLink===1)?"navigation-menu-items-active":'navigation-menu-items'}>تصاویر</p>
                       </Scrollchor>
-                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: 20, duration: 400}} to="details-md">
+                      <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: -24, duration: 400}} to="details-md">
                         <p onClick={()=>{this.setState({activeLink:2})}} className={(this.state.activeLink===2)?"navigation-menu-items-active":'navigation-menu-items'}>مشخصات</p>
                       </Scrollchor>
                       <Scrollchor className="navigation-link" disableHistory={true} animate={{offset: -90 , duration: 400}} to="price-md">

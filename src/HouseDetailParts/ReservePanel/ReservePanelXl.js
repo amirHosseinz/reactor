@@ -233,6 +233,7 @@ class ReservePanelXl extends React.Component{
         });
        fetch(request)
        .then((response) => {
+         // console.log(response);
          return response.json();
        })
        .then((reserve_data) => {

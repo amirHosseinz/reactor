@@ -194,7 +194,7 @@ class MainPage extends React.Component{
   render(){
     this.getGuestTokenFromServer();
     // generateSiteMap();
-    document.title = "تریپین | سامانه رزرو ویلا";
+    document.title=" تریپین | سامانه رزرو ویلا و اقامتگاه محلی";
     return(
       <StickyContainer>
       <BrowserRouter>

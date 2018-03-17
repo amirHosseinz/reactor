@@ -36,9 +36,6 @@ class AddressDescriptionXl extends React.Component{
           <p className="paragraph-space">در</p>
           <p className="paragraph-space">{this.props.homeData.address}</p>
         </div>
-        <div className='visible-xs hidden-xl'>
-          <p>{this.props.homeData.address}</p>
-        </div>
       </div>
     );
   }

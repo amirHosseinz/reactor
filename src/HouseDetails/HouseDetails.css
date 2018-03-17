@@ -6,7 +6,7 @@ color : #454545 ;
 background-color: #F5F5F5;
 }
 .house-details-top-division{
-height : 700px;
+height : 720px;
 width: 100%;
 background-color: white;
 }
@@ -23,7 +23,7 @@ margin-right:auto;
 background-color: white;
 }
 .house-details-main-information{
-height: 220px;
+/* height: 260px; */
 width: 1080px;
 margin: auto;
 }
@@ -119,7 +119,7 @@ margin-top : 6px;
 .house-detail-titles{
 font-size: 2rem;
 font-weight: 600;
-margin-top: 2.2rem !important ;
+margin-top: 10px ;
 margin-bottom: 0.4rem;
 color: #454545;
 padding-left: 15px;
@@ -572,7 +572,7 @@ box-shadow: -1px 0px 31px -13px rgba(0,0,0,0.98);
 cursor: pointer;
 }
 .house-details-top-division-md{
-height : 550px;
+height : 570px;
 width: 100%;
 background-color: white;
 }
@@ -849,6 +849,66 @@ border-radius : 6px;
   justify-content: flex-start;
   align-items: center;
 }
+
+.address-bread-crumb-list {
+  display : flex!important;
+  display : -webkit-flex!important;
+  flex-direction: row!important;
+  -webkit-flex-direction : row!important;
+  justify-content: flex-end!important;
+  margin-top : 20px;
+}
+
+.address-bread-crumb-list-left-arrow {
+  display:inline-block!important;
+  position:relative !important;
+  width:20px !important;
+  /* height:2px; */
+  /* border-radius:100%; */
+  background:rgba(0,0,0,0);
+  /* box-sizing:content-box; */
+}
+
+.address-bread-crumb-list-left-arrow:before {
+  position:absolute !important;
+  content:'';
+  /* margin:auto; */
+  /* height : 6px;
+  width : 6px; */
+  width:calc(30px/3.5) !important;
+  height:calc(30px/3.5)!important;
+  background:rgba(0,0,0,0)!important;
+  border:2px solid #666666;
+  border-right:none;
+  border-top:none;
+  top:6px;
+  bottom:0px;
+  left:8px;
+  right:0;
+  transform:rotate(45deg);
+  /* box-sizing:content-box; */
+}
+
+
+
+.address-bread-crumb-list-item-name{
+
+}
+.address-bread-crumb-list-item {
+  display : flex !important;
+  display : -webkit-flex!important;
+  flex-direction: row!important;
+  -webkit-flex-direction : row!important;
+  /* margin-top : 10px; */
+}
+.address-bread-crumb-list-link{
+  text-decoration: none!important;
+  color : #454545;
+}
+.address-bread-crumb-list-link:hover{
+  color : #12b2ce;
+}
+
 /* SM styles here */
 
 

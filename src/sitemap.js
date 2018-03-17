@@ -5,14 +5,14 @@ var sitemap = sm.createSitemap ({
      });
 
 export const generateSiteMap=()=>{
-
-  sitemap.add('/search/هر جا');
-  sitemap.add('/search/کیش');
-  sitemap.add('/search/نوشهر');
-  sitemap.add('/search/گیلان');
-  sitemap.add('/search/مازندران');
-  sitemap.add('/search/اصفهان');
-  sitemap.add('/search/فارس');
+  //
+  // sitemap.add({url : '/search/هر جا'});
+  // sitemap.add({url : '/search/کیش'});
+  // sitemap.add({url : '/search/نوشهر'});
+  // sitemap.add({url : '/search/گیلان'});
+  // sitemap.add({url : '/search/مازندران'});
+  // sitemap.add({url : '/search/اصفهان'});
+  // sitemap.add({url : '/search/فارس'});
   getDataFromServer();
 }
 
@@ -39,11 +39,11 @@ fetch(request)
   for (var homeCounter=0;homeCounter<homeData.total_count;homeCounter++){
     switch(homeData.room[homeCounter].type){
       case 'room':{
-        sitemap.add('/rooms/' + homeData.room[homeCounter].id);
+        sitemap.add({url : '/rooms/' + homeData.room[homeCounter].id , img:[{url:'https://www.trypinn.com/' + homeData.room[homeCounter].preview}]});
         break;
       }
       case 'ecotourism':{
-        sitemap.add('/ecotourism/' + homeData.room[homeCounter].id);
+        sitemap.add({url : '/ecotourism/' + homeData.room[homeCounter].id });
       }
     }
   }
