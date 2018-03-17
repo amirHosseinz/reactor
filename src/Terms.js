@@ -59,7 +59,7 @@ class Terms extends React.Component {
     return(
       <div>
       <MetaTags>
-        <title> تریپین|قوانین و مقررات </title>
+        <title> قوانین و مقررات تریپین</title>
       </MetaTags>
         {this.renderTermsXl()}
         {this.renderTermsXs()}

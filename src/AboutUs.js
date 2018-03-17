@@ -48,7 +48,7 @@ class AboutUs extends React.Component {
     return(
       <div>
         <MetaTags>
-          <title> تریپین|درباره ما</title>
+          <title> تریپین | درباره ما</title>
         </MetaTags>
         {this.renderAboutUsXl()}
         {this.renderAboutUsMd()}

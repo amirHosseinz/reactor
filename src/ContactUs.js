@@ -41,7 +41,7 @@ class ContactUs extends React.Component {
     return(
       <div>
         <MetaTags>
-          <title>تریپین|تماس با ما</title>
+          <title>تریپین | تماس با ما</title>
         </MetaTags>
         {this.renderContactUsXl()}
         {this.renderContactUsXs()}

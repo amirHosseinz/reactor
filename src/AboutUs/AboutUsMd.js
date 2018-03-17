@@ -23,7 +23,7 @@ class AboutUsMD extends React.Component{
        <Link className="anchor-about-us" to="/search/اصفهان">اصفهان </Link> ,
        <Link className="anchor-about-us" to="/search/البرز">البرز</Link> ,
        <Link className="anchor-about-us" to="/search/فارس"> فارس</Link>,
-       <Link className="anchor-about-us" to="/search/خراسان رضوی"> خراسان رضوی</Link> ,
+       <Link className="anchor-about-us" to="/search/خراسان رضوی">خراسان رضوی</Link>,
        <Link className="anchor-about-us" to="/search/مازندران" > مازندران</Link> ,
        <Link className="anchor-about-us" to="/search/گیلان">گیلان</Link> و
        <Link className="anchor-about-us" to="/search/کیش"> جزیره کیش</Link> فعال است.

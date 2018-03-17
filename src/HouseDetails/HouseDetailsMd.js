@@ -515,6 +515,7 @@ class HouseDetailsMd extends React.Component{
     <MetaTags>
       <title>{this.state.homeData===null || this.state.homeData===''? "تریپین":"تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.location}</title>
       <meta name="description" content={this.state.homeData.title + " آدرس :  " + this.state.homeData.location + " ,قیمت :" + this.state.homeData.price  + " ,امتیاز : " + this.state.homeData.rating} />
+      <meta property="og:image" content={"https://www.trypinn.com" + this.state.homeData.preview_high}/>
     </MetaTags>
     return(
       <div>

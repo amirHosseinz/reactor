@@ -11,7 +11,7 @@ import '../tools/calendar2/lib/css/_datepicker.css';
 import {DateRangePicker} from '../tools/calendar2';
 import Sticky from 'react-sticky';
 import {PulseLoader} from 'react-spinners';
-
+import MetaTags from 'react-meta-tags';
 
 class SearchResultMd extends React.Component{
   constructor(props){
@@ -266,14 +266,16 @@ class SearchResultMd extends React.Component{
   render(){
     return(
       <div className="searchbarmain">
-          <div className="container-fluid">
-            {this.renderSearchBarInDetails()}
-            <div className="col-lg col-sm-12 mb-10">
-            </div>
-            <div className="col-lg col-sm-12 mb-10">
-            </div>
+        <MetaTags>
+          <title>  رزرو ویلا و اقامتگاه بوم‌گردی در {this.readCityFromURL()} | تریپین</title>
+        </MetaTags>
+        <div className="container-fluid">
+          {this.renderSearchBarInDetails()}
+          <div className="col-lg col-sm-12 mb-10">
           </div>
-
+          <div className="col-lg col-sm-12 mb-10">
+          </div>
+        </div>
           <div className="container-fluid hidden-xl visible-xs">
               <div className='mobile-margined-search'>
                 <div className="main-zone-xs col-md-12">

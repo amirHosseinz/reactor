@@ -471,19 +471,27 @@ class HeaderMD extends React.Component{
     return(
       <div className='header container'>
        <div className='hearder-child-margined'>
-          <div className="header-menu col-md-8">
+          <div className="header-menu">
             {this.renderMainMenu()}
             {this.renderLoginButton()}
-            <div className="row-reverse">
-              <Link className="header-link" to="/suggestions&comments"><p className='logo-menu-font'>ثبت شکایات </p></Link>
-              <Link className="header-link" to="/contactus"><p className='logo-menu-font'> تماس با ما </p></Link>
-              <Link className="header-link" to="/aboutus"><p className='logo-menu-font'>درباره ما </p></Link>
-              <Link className="header-link" to="/terms&conditions"><p className='logo-menu-font'>قوانین </p></Link>
+            <ul className="header-link-list">
+              <li className="header-link-item">
+                <Link className="header-link" to="/suggestions&comments"><p className='logo-menu-font'>ثبت شکایات </p></Link>
+              </li>
+              <li className="header-link-item">
+                <Link className="header-link" to="/contactus"><p className='logo-menu-font'> تماس با ما </p></Link>
+              </li>
+              <li className="header-link-item">
+                <Link className="header-link" to="/aboutus"><p className='logo-menu-font'>درباره ما </p></Link>
+              </li>
+              <li className="header-link-item">
+                <Link className="header-link" to="/terms&conditions"><p className='logo-menu-font'>قوانین </p></Link>
+              </li>
               {this.renderGetApplicationButton()}
-            </div>
+            </ul>
           </div>
           {this.renderLoginPanelFirstStep()}
-          <div className="header-logo-side col-md-4">
+          <div className="header-logo-side">
               <div className='header-logo-and-search'>
                   <div className='header-logo-container'>
                    <div itemScope={true} itemType="http://schema.org/Organization">

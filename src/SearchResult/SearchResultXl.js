@@ -11,6 +11,8 @@ import '../tools/calendar2/lib/css/_datepicker.css';
 import {DateRangePicker} from '../tools/calendar2';
 import Sticky from 'react-sticky';
 import {PulseLoader} from 'react-spinners';
+import MetaTags from 'react-meta-tags';
+
 
 class SearchResultXl extends React.Component{
   constructor(props){
@@ -274,9 +276,12 @@ class SearchResultXl extends React.Component{
   render(){
     return(
       <div className="searchbarmain">
-          <div className="container-fluid">
-            {this.renderSearchBarInDetails()}
-          </div>
+        <MetaTags>
+          <title>  رزرو ویلا و اقامتگاه بوم‌گردی در {this.readCityFromURL()} | تریپین</title>
+        </MetaTags>
+        <div className="container-fluid">
+          {this.renderSearchBarInDetails()}
+        </div>
       </div>
     );
   }
