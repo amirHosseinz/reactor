@@ -76,8 +76,7 @@ class HeaderMD extends React.Component{
     localStorage['user-first-name']='';
     localStorage['user-last-name']='';
     localStorage['default-panel']='';
-    // window.location.href = '/';
-    this.getGuestTokenFromServer();
+    this.getGuestTokenFromServer()
   }
 
   getGuestTokenFromServer(){
@@ -93,7 +92,12 @@ class HeaderMD extends React.Component{
      })
      .then((response) => {
        localStorage['token']= response.token;
-       window.location.reload();
+       if(window.href.pathname==='/userprofile'){
+         window.location.href = '/';
+       }
+       else{
+         window.location.reload();
+       }
      });
     }
   }

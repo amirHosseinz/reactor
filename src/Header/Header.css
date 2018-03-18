@@ -21,6 +21,7 @@
     flex-direction: row;
     -webkit-flex-direction:row;
     width:98%;
+    height : 50px;
     margin: auto;
   }
 

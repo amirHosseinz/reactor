@@ -93,7 +93,13 @@ class HeaderXl extends React.Component{
      })
      .then((response) => {
        localStorage['token']= response.token;
-       window.location.reload();
+       console.log(window.location.pathname);
+       if(window.location.pathname==='/userprofile'){
+         window.location.href = '/';
+       }
+       else{
+         window.location.reload();
+       }
      });
     }
   }

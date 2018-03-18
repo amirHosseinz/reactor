@@ -68,7 +68,9 @@ class LoginXl extends React.Component{
         verificationCode:null,
         password:null,
         confirmPassword:null,
-      }
+      },
+      forgetPasswordInputHasError:false,
+      forgetPasswordInputError:'خطایی وجود ندارد',
     }
   }
 
@@ -622,7 +624,7 @@ class LoginXl extends React.Component{
           <hr className="forget-password-modal-divider"/>
           <div className="forget-password-modal-input-zone">
             <p className="forget-password-modal-input-paragraph">
-            کد تأیید
+              کد تأیید ارسال شده به تلفن همراه شما
             </p>
             <input onChange={(event)=>{this.changeVerificationCodeForChangePassword(event)}} value={this.state.inputForChangePassword.verificationCode} type="numeric" className="forget-password-modal-input"/>
           </div>
@@ -638,7 +640,10 @@ class LoginXl extends React.Component{
             </p>
             <input onChange={(event)=>{this.changeConfirmPasswordForChangePassword(event)}} value={this.state.inputForChangePassword.confirmPassword} type="password" className="forget-password-modal-input"/>
           </div>
-          <div onClick={()=>{this.setTokenForChangePassword()}} className="forge-password-change-password-button"> تغییر رمز عبور</div>
+          <div className={this.state.forgetPasswordInputHasError?"error-message-in-forget-password-modal":"error-message-in-forget-password-modal-hidden"}>
+            {this.state.forgetPasswordInputError}
+          </div>
+          <div onClick={()=>{this.handleChangePasswordRequest()}} className="forge-password-change-password-button"> تغییر رمز عبور</div>
         </div>
       </Modal>
     );
@@ -673,6 +678,23 @@ class LoginXl extends React.Component{
       this.setUserNameInHeader();
   }
 }
+
+handleChangePasswordRequest(){
+  if(this.state.inputForChangePassword.verificationCode===''){
+    this.setState({forgetPasswordInputHasError:true , forgetPasswordInputError:'لطفا کد تأیید فرستاده به گوشی همراه خود را وارد کنید'});
+    return;
+  }
+  if(this.state.inputForChangePassword.password===''){
+    this.setState({forgetPasswordInputHasError:true,forgetPasswordInputError:'لطفا رمز عبور خود را وارد کنید'});
+    return;
+  }
+  if(this.state.inputForChangePassword.confirmPassword!==this.state.inputForChangePassword.password){
+    this.setState({forgetPasswordInputHasError:true,forgetPasswordInputError:'رمز عبور و تکرار آن یکسان نیستند'})
+    return;
+  }
+  this.setTokenForChangePassword();
+}
+
   render(){
     return(
       <div>

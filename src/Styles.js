@@ -50,7 +50,7 @@ export const setPasswordStyle ={
     backgroundColor   : 'rgba(0, 0, 0, 0.0)'
   },
   content : {
-    height : '470px',
+    height : '460px',
     width  : '400px',
     margin: 'auto',
     outline                    : '0',

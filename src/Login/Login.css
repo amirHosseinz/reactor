@@ -79,7 +79,7 @@
   justify-content: center;
   align-items: center;
   margin-left : 50px;
-  margin-top : 20px;
+  margin-top : 10px;
   border-radius : 25px;
   font-family : IRANSans;
   font-size : 20px;
@@ -87,6 +87,7 @@
   background-color: #0fb9dc;
   color : white;
   width : 300px;
+  cursor : pointer;
 }
 .log-in-false-pass-visible{
   color:#f54e4e;
@@ -95,12 +96,33 @@
   margin-top: 9px;
   /* margin-bottom: -5px; */
   line-height: 20px;
-
 }
 .log-in-false-pass-hide{
-/* display: none; */
-margin-top : 9px;
-visibility: hidden;
+  color:#f54e4e;
+  font-family: IRANSans;
+  font-size: 14px;
+  text-align : right;
+  margin-bottom:10px;
+  visibility: hidden;
+}
+
+.error-message-in-forget-password-modal {
+  color:#f54e4e;
+  font-family: IRANSans;
+  font-size: 14px;
+  text-align : right;
+  margin-bottom:10px;
+  line-height: 20px;
+}
+
+.error-message-in-forget-password-modal-hidden {
+  color:#f54e4e;
+  font-family: IRANSans;
+  font-size: 14px;
+  text-align : right;
+  margin-bottom:10px;
+  visibility: hidden;
+  line-height: 20px;
 }
 /* general style finished */
 
