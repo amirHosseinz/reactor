@@ -391,7 +391,7 @@ class HouseDetailsXl extends React.Component{
                      <div className={isSticky?"bookmark-share-container-sticky":"bookmark-share-container-not-sticky"}>
                        <div className="bookmark-section">
                          <img className="bookmark-icon" onClick={this.state.isLiked?()=>{this.handleUnlike()}:()=>{this.handleLike()}} src={this.state.isLiked?require('../HouseDetailParts/facilities/Layer 5.png'):require('../HouseDetailParts/facilities/heart-2d56.png')}/>
-                         <p className="bookmark-sentence">{!this.state.isLiked?"افزودن به لیست علاقه‌مندی":"حذف از لیست علاقه‌مندی"}</p>
+                         <p onClick={this.state.isLiked?()=>{this.handleUnlike()}:()=>{this.handleLike()}} className="bookmark-sentence">{!this.state.isLiked?"افزودن به لیست علاقه‌مندی":"حذف از لیست علاقه‌مندی"}</p>
                        </div>
                        <div className="bookmark-vertical-line">
                        </div>
