@@ -5,8 +5,11 @@ import './UserProfile.css';
 import {Link} from 'react-router-dom';
 import Modal from 'react-modal';
 import {UserProfileUploadPhotoModal} from '../Styles.js';
+import {ChangePassSuccessModal} from '../Styles.js';
+import {ChangePassFailedModal} from '../Styles.js';
 import Dropzone from 'react-dropzone';
 import {SyncLoader} from 'react-spinners';
+import {parsePrice3digits} from '../tools/ParsePrice3digits.js';
 
 
 class UserProfileXl extends React.Component{
@@ -16,6 +19,7 @@ class UserProfileXl extends React.Component{
       ImgHint:false,
       token:null,
       role:null,
+      selectedPanel:"bookmark-list",
       profileInfo:null,
       firstName:'',
       lastName:'',
@@ -26,9 +30,14 @@ class UserProfileXl extends React.Component{
       email:'',
       password : '',
       confirmPassword:'',
+      bookmarkList:null,
       nationalId:'',
       profilePicture : null,
       profilePictureFile : null,
+      openPassConfirmationModal:false,
+      passConfirmationModal:'',
+      passConfirmation:true,
+      passConfirmationErrors:[],
     };
   }
   componentWillMount() {
@@ -58,6 +67,22 @@ class UserProfileXl extends React.Component{
    })
    .then((profile) => {
      this.renderData(profile);
+   });
+   this.getBookmarkListFromServer();
+  }
+  getBookmarkListFromServer(){
+    var request = new Request('https://www.trypinn.com/bookmark/api/list/',{ //
+      method: 'POST',
+      headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+      'Authorization': 'Token '+ this.state.token,})
+    });
+   fetch(request)
+   .then((response) => {
+     return response.json();
+   })
+   .then((list) => {
+     // console.log(list);
+     this.setState({bookmarkList:list.faved_rooms});
    });
   }
   renderData(profile){
@@ -148,7 +173,7 @@ class UserProfileXl extends React.Component{
      return response.json();
    })
    .then((response) => {
-     console.log(response);
+     // console.log(response);
      if(response.successful){
        localStorage['user-profile-picture'] = response.user.profile_picture;
        window.location.reload();
@@ -231,10 +256,93 @@ class UserProfileXl extends React.Component{
      return response.json();
    })
    .then((response) => {
-     console.log(response);
+     // console.log(response);
+     this.setState({passConfirmation:response.successful,passConfirmationErrors:response.errors,openPassConfirmationModal:true})
+     this.setState({passConfirmationErrors:response.errors})
    });
   }
+  handleChangePassErrors(){
+    // console.log(this.state.passConfirmationErrors);
+    if (this.state.passConfirmationErrors.indexOf("Your password can't be too similar to your other personal information.") > -1) {
+      return(
+        <div>
+       کلمه عبور شما مشابه دیگر اطلاعات کاربری شماست
+        </div>
+      );
+    }
+    else if (this.state.passConfirmationErrors.indexOf("Your password must contain at least 10 characters.") > -1) {
+      return(
+        <div>
+        رمز عبور شما باید بیش از 6 کارکتر باشد
+        </div>
+      );
+    }
+    else if (this.state.passConfirmationErrors.indexOf("Your password can't be entirely numeric.") > -1) {
+      return(
+        <div>
+    کلمه عبور شما باید حداقل شامل یک حرف باشد
+        </div>
+      );
+    }
+    else if (this.state.passConfirmationErrors.indexOf("invalid_password") > -1) {
+      return(
+        <div>
+    کلمه عبور وارد شده صحیح نمی‌باشد
+        </div>
+      );
+    }
+    else if (this.state.passConfirmationErrors.indexOf("not_match") > -1) {
+      return(
+        <div>
+    تکرار کلمه عبور وارد شده صحیح نمی‌باشد
+        </div>
+      );
+    }
+    else if (this.state.passConfirmationErrors.indexOf("Your password can't be a commonly used password.") > -1) {
+      return(
+        <div>
+        کلمه عبور وارد شده معتبر نمی‌باشد
+        </div>
+      );
+    }
+    else if (this.state.passConfirmationErrors.length===0) {
+      return(
+        <div>
+        لطفا از پر شدن تمام فیلدها اطمینان حاصل نمایید
+          </div>
+      );
+    }
+  }
+   renderPassConfirmationModal(){
+     if(this.state.passConfirmation===true){
+     return(
+       <Modal isOpen={this.state.openPassConfirmationModal}
+             onRequestClose={()=>{this.setState({openPassConfirmationModal:false})}}
+              style={ChangePassSuccessModal}>
+              <div className='change-pass-success-container'>
+              <p>رمز عبور شما با موفقیت تغییر کرد
+              <img className='change-pass-success-tick' src={require('../Images/changePassSuccess.svg')} width="40" height="40"/>
+              </p>
+              </div>
+              <button className='change-pass-success-button' onClick={()=>{this.setState({openPassConfirmationModal:false});window.location.reload()}}>
+              بستن
+              </button>
+      </Modal>
+    );
+  }
+  else {
+    return(
+      <Modal isOpen={this.state.openPassConfirmationModal}
+            onRequestClose={()=>{this.setState({openPassConfirmationModal:false})}}
+             style={ChangePassFailedModal}>
+             <div>
+              {this.handleChangePassErrors()}
+            </div>
 
+     </Modal>
+   );
+  }
+ }
   changeInfoOnServer(){
     var request=new Request('https://www.trypinn.com/auth/api/user/edit/',{ //
       method: 'POST',
@@ -285,6 +393,7 @@ class UserProfileXl extends React.Component{
     this.setState({oldPassword:event.target.value});
   }
 
+
   // <div className="user-profile-in-details-link">
   //  پیام‌ها
   // </div>
@@ -311,20 +420,61 @@ class UserProfileXl extends React.Component{
               مشاهده سفر‌ها
             </div>
           </Link>
-
-
-
         </div>
       );
     }
   }
-  renderUserProfileEditSection(){
-    return(
-      <div className="user-profile-edit-main-division">
-        <div className="user-profile-edit-main-heading">
-          ویرایش حساب کاربری
-        </div>
-        <hr className="user-profile-edit-divider"/>
+
+  handleUnlike(event,data){
+    switch(data.type){
+      case "room":{
+        var request = new Request('https://www.trypinn.com/bookmark/api/unlike/', {
+          method: 'POST',
+          body: JSON.stringify({
+            room_id : data.id,
+        }),
+          headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+          'Authorization': 'Token '+this.state.token,})
+        });
+        fetch(request)
+        .then((response) => {
+          return response.json();
+        })
+        .then((unlikeResponse) => {
+          // console.log(unlikeResponse);
+          if(unlikeResponse.successful===true){
+            this.getBookmarkListFromServer()
+          }
+        });
+        break;
+      }
+      case "ecotourism":{
+        var request = new Request('https://www.trypinn.com/bookmark/api/unlike/', {
+          method: 'POST',
+          body: JSON.stringify({
+            eco_room_id : data.id,
+        }),
+          headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
+          'Authorization': 'Token '+this.state.token,})
+        });
+        fetch(request)
+        .then((response) => {
+          return response.json();
+        })
+        .then((unlikeResponse) => {
+          // console.log(unlikeResponse);
+          if(unlikeResponse.successful===true){
+            this.getBookmarkListFromServer()
+          }
+        });
+        break;
+      }
+    }
+  }
+  renderRelevantPanel(){
+    if(this.state.selectedPanel==="edit-profile"){
+      return(
+        <div className="user-profile-edit-main-division">
         <div className="user-profile-edit-secondary-heading`">
           <p className="user-profile-edit-secondary-heading-title">
             مشخصات کاربری
@@ -423,19 +573,148 @@ class UserProfileXl extends React.Component{
           </div>
           <input type="password" value={this.state.confirmPassword} onChange={(event)=>{this.editConfirmPassword(event)}}className="user-profile-edit-input-password-section"/>
         </div>
-        <button onClick={()=>{this.handleChangePassword()}}className="user-profile-edit-save-changes-button">
+        <button onClick={()=>{this.handleChangePassword()}} className="user-profile-edit-save-changes-button">
                     تغییر رمز عبور
         </button>
+        </div>
+      );
+    }
+    if(this.state.selectedPanel==="bookmark-list"){
+      if(this.state.bookmarkList!==null){
+        if(this.state.bookmarkList.length!==0){
+          return(
+            <div className="bookmark-list-main-division">
+              {this.renderBookmarkList()}
+            </div>
+          );
+        }
+        else{
+          return(
+            <div className="bookmark-list-empty-icon">
+              <img className="no-bookmark-icon" src={require("../Images/nobookmark.png")} alt="" />
+              <p className="no-bookmark-description"> لیست علاقه‌مندی های شما خالی است</p>
+            </div>
+          );
+        }
+      }
+    }
+  }
+
+    renderBookmarkList(){
+      var list =
+        this.state.bookmarkList.map((item)=>{
+        if(item.room===null){
+          var data = item.eco_room;
+        }
+        else{
+          var data = item.room;
+        }
+        return(
+          <div id={data.id}>
+            <div className="bookmark-item">
+              <div className="bookmark-item-data">
+              <img src={"https://www.trypinn.com"+data.preview} alt={data.title} className="bookmark-item-preview"/>
+              <div className="bookmark-item-description">
+                <a href={"/"+ (data.type==="room"?"rooms/":"ecotourism/") + data.id } target="_blank" className = "bookmark-item-link">
+                  <p className="bookmark-item-title">
+                    {data.title}
+                  </p>
+                </a>
+                {this.renderRelevantRoom(data)}
+                <p className="bookmark-item-type">
+                  {data.address}
+                </p>
+                <div className="bookmark-item-bottom-section">
+                <p onClick={(event)=>{this.handleUnlike(event,data)}} className="bookmark-item-delete-button">
+                  حذف از لیست
+                </p>
+                <p className="bookmark-item-price-details">
+                <span className="bookmark-item-price">
+                   {englishToPersianDigits(parsePrice3digits(data.price))} تومان
+                </span>
+                <span className="bookmark-item-price-description">
+                {data.type==="room"?"/ هر شب عادی"  : "/ هر نفر هر شب"}
+                </span>
+                </p>
+                </div>
+              </div>
+              </div>
+            </div>
+            <hr className="bookmark-item-divider"/>
+          </div>
+      );
+      }
+    );
+    return <div className="bookmark-list-container"> {list} </div>;
+    }
+    getRoomType(data){
+      switch(data.room_type){
+        case "HOUSE":
+          return 'خانه';
+        case "SUITE":
+          return 'سوییت';
+        case "VILLA":
+          return 'ویلای';
+        case "APT":
+          return 'آپارتمان';
+        default:
+          return null;
+      }
+    }
+    getServiceType(data){
+      switch(data.service_type){
+        case "ENTIRE_HOME":
+          return ' دربست ';
+        case "PRIVATE_ROOM":
+          return ' اتاق اختصاصی';
+        case "SHARED_ROOM":
+          return ' اتاق مشترک';
+        default :
+          return null;
+      }
+    }
+    renderRelevantRoom(data){
+      switch(data.type){
+        case 'room':{
+          return(
+              <p className="bookmark-item-type"> {this.getRoomType(data)} {this.getServiceType(data)}</p>
+          );
+        }
+        case 'ecotourism':{
+          return(
+              <p className="bookmark-item-type"> اقامتگاه بوم‌گردی</p>
+          );
+        }
+      }
+    }
+  renderUserProfileEditSectionVersion2(){
+    return(
+      <div className={this.state.selectedPanel==='edit-profile'?"user-panel-section-edit-profile-version":"user-panel-section-bookmark-version"}>
+        <div className="user-panel-section-header">
+          <div onClick={()=>{this.setState({selectedPanel:"bookmark-list"});this.getBookmarkListFromServer()}} className={this.state.selectedPanel==="bookmark-list"? "user-panel-section-header-button-selected":"user-panel-section-header-button"}>
+            <p className="user-panel-section-header-title">
+              لیست علاقه‌مندی‌ها
+            </p>
+          </div>
+          <div className="user-panel-section-vertical-line"></div>
+          <div onClick={()=>{this.setState({selectedPanel:"edit-profile"})}} className={this.state.selectedPanel==="edit-profile"? "user-panel-section-header-button-selected":"user-panel-section-header-button"}>
+            <p className="user-panel-section-header-title">
+              ویرایش پروفایل
+            </p>
+          </div>
+        </div>
+        {this.renderRelevantPanel()}
       </div>
     );
   }
-
   render(){
     return(
       <div className="user-profile-main-division">
         {this.renderUploadPhotoModal()}
         {this.renderUserProfileDetailsSection()}
-        {this.renderUserProfileEditSection()}
+        {this.renderUserProfileEditSectionVersion2()}
+        {this.renderPassConfirmationModal()}
+
       </div>
     );
   }

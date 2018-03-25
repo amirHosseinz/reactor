@@ -10,6 +10,8 @@ import '../tools/calendar/initialize.js';
 import '../tools/calendar2/lib/css/_datepicker.css';
 import {DateRangePicker} from '../tools/calendar2';
 import Sticky from 'react-sticky';
+import {PulseLoader} from 'react-spinners';
+import MetaTags from 'react-meta-tags';
 
 
 class SearchResultXl extends React.Component{
@@ -23,6 +25,7 @@ class SearchResultXl extends React.Component{
       numberOfGuests: 1,
       OpenDropDown:false,
       Counter:false,
+      itemsLoaded:false,
       startDate:null,
       endDate:null,
       searchParams : {
@@ -63,13 +66,12 @@ class SearchResultXl extends React.Component{
       capacity: this.state.numberOfGuests,
     };
     this.setState({
-      searchParams: spar
-    },() => {
+      searchParams: spar,itemsLoaded:false},() => {
     this.getDataFromServer();
     });
   }
   getDataFromServer() {
-   var request = new Request('https://www.trypinn.com/api/v1/search/',{
+   var request = new Request('https://www.trypinn.com/api/v1/search/light/',{
      method: 'POST',
      body: JSON.stringify({
        platform: 'web',
@@ -83,19 +85,16 @@ class SearchResultXl extends React.Component{
    });
   fetch(request)
   .then((response) => {
-    // console.log(response);  
     return response.json();
   })
   .then((homeData) => {
-    console.log(homeData);
     this.renderData(homeData);
   });
   }
 
   renderData(houseData) {
    this.setState({
-     houseList: houseData.room,
-   });
+     houseList: houseData.room,itemsLoaded:true});
   }
   getRelevantToken(){
     return localStorage['token'];
@@ -206,8 +205,8 @@ class SearchResultXl extends React.Component{
           <div className="render-houses-row">
             <div className="padding-search-results-top">
             </div>
-            <div className="renderresults-main">
-              {this.renderHousesCol5()}
+            <div className="">
+              {this.renderHouseItems()}
             </div>
             <div className="padding-search-results">
             </div>
@@ -216,6 +215,18 @@ class SearchResultXl extends React.Component{
     );
   }
 
+  renderHouseItems(){;
+    if(this.state.itemsLoaded===true) {
+      return this.renderHousesCol5();
+    }
+    else{
+      return(
+        <div className="search-result-loading-item">
+          <PulseLoader color="#12b2ce" size={15} loading={!this.state.itemsLoaded} />
+        </div>
+      );
+    }
+  }
 
   renderHousesCol5 () {
     var results = [];
@@ -258,46 +269,20 @@ class SearchResultXl extends React.Component{
       );
     }
     return results;
+
   }
 
 
   render(){
     return(
       <div className="searchbarmain">
-          <div className="container-fluid">
-            {this.renderSearchBarInDetails()}
-            <div className="col-lg col-sm-12 mb-10">
-            </div>
-            <div className="col-lg col-sm-12 mb-10">
-            </div>
-          </div>
-
-          <div className="container-fluid hidden-xl visible-xs">
-              <div className='mobile-margined-search'>
-                <div className="main-zone-xs col-md-12">
-                  <div className="row">
-                  </div>
-            <div className='mobile-margined-search'>
-              <div className="main-zone-xs col-md-12">
-              </div>
-            </div>
-          </div>
-      </div>
-      <div className="downlaod-app-mobile">
-        <div className='mobile-margined-search'>
-          <div className="img-iphone col-xs-5">
-            <img src={require('../Images/phone-app.png')} className='iphone' alt="اپلیکیشن تریپین"></img>
-          </div>
-          <div className="img-download col-xs-6">
-            <a href="https://cafebazaar.ir/app/com.trypinn/">
-              <img src={require('../Images/bazaar.svg')} className='bazar-ico' alt="دانلود از بازار"></img>
-            </a>
-            <img src={require('../Images/button-app-store.svg')} className='bazar-ico' alt=" دانلود از سیب‌اپ"></img>
-          </div>
+        <MetaTags>
+          <title>  رزرو ویلا و اقامتگاه بوم‌گردی در {this.readCityFromURL()} | تریپین</title>
+        </MetaTags>
+        <div className="container-fluid">
+          {this.renderSearchBarInDetails()}
         </div>
-       </div>
       </div>
-    </div>
     );
   }
 }

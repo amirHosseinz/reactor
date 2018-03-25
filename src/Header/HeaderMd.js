@@ -39,8 +39,8 @@ const listOfCity = [
   {name:'بندر انزلی'},{name:'کاشان'},{name:'باغ بهادران'},{name:'قلعه رودخان'},{name:'مشهد'},
   {name:'چمخاله'},{name:'رودسر'},{name:'فومن'},{name:'رضوان‌شهر'},{name:'زیباکنار'},
   {name:'آستارا'},{name:'چالوس'},{name:'دریاکنار'},{name:'نور'},{name:'رویان'},{name:'بابلسر'},
-  {name:'تنکابن'},{name:'سرخ‌رود'},{name:'دریاکنار'},{name:'ایزدشهر'},{name:'البرز'},
-  {name:'سلمان‌شهر'},{name:'تنکابن'},{name:'کلاردشت'},{name:'نشتارود'},{name:'کلارآباد'},
+  {name:'تنکابن'},{name:'سرخ‌رود'},{name:'دریاکنار'},{name:'ایزدشهر'},{name:'البرز'},{name:'گلستان'},
+  {name:'سلمان‌شهر'},{name:'کلاردشت'},{name:'نشتارود'},{name:'کلارآباد'},
   {name:'فارس'},{name:'شیراز'},{name:'یزد'},{name:'داراب'},{name:'بافق'},{name:'مرودشت'},
 ];
 
@@ -76,8 +76,7 @@ class HeaderMD extends React.Component{
     localStorage['user-first-name']='';
     localStorage['user-last-name']='';
     localStorage['default-panel']='';
-    // window.location.href = '/';
-    this.getGuestTokenFromServer();
+    this.getGuestTokenFromServer()
   }
 
   getGuestTokenFromServer(){
@@ -93,7 +92,12 @@ class HeaderMD extends React.Component{
      })
      .then((response) => {
        localStorage['token']= response.token;
-       window.location.reload();
+       if(window.href.pathname==='/userprofile'){
+         window.location.href = '/';
+       }
+       else{
+         window.location.reload();
+       }
      });
     }
   }
@@ -452,6 +456,9 @@ class HeaderMD extends React.Component{
                       <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='https://play.google.com/store/apps/details?id=com.trypinn&hl=en' >
                         <img src={require('../Images/3.png')} className="download_icon_app" alt = 'دانلود از گوگل پلی'/>
                       </a>
+                      <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='https://myket.ir/app/com.trypinn' >
+                        <img src={require('../Images/MYKET72 copy.svg')} className="download_icon_app" alt = 'دانلود از مایکت'/>
+                      </a>
                     </div>
                     <p className="header-downlaod-app-modal-download-label">نسخه iOS </p>
                     <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://new.sibapp.com/applications/tripinn' >
@@ -468,23 +475,35 @@ class HeaderMD extends React.Component{
     return(
       <div className='header container'>
        <div className='hearder-child-margined'>
-          <div className="header-menu col-md-8">
+          <div className="header-menu">
             {this.renderMainMenu()}
             {this.renderLoginButton()}
-            <div className="row-reverse">
-              <Link className="header-link" to="/suggestions&comments"><p className='logo-menu-font'>ثبت شکایات </p></Link>
-              <Link className="header-link" to="/contactus"><p className='logo-menu-font'> تماس با ما </p></Link>
-              <Link className="header-link" to="/aboutus"><p className='logo-menu-font'>درباره ما </p></Link>
-              <Link className="header-link" to="/terms&conditions"><p className='logo-menu-font'>قوانین </p></Link>
+            <ul className="header-link-list">
+              <li className="header-link-item">
+                <Link className="header-link" to="/suggestions&comments"><p className='logo-menu-font'>ثبت شکایات </p></Link>
+              </li>
+              <li className="header-link-item">
+                <Link className="header-link" to="/contactus"><p className='logo-menu-font'> تماس با ما </p></Link>
+              </li>
+              <li className="header-link-item">
+                <Link className="header-link" to="/aboutus"><p className='logo-menu-font'>درباره ما </p></Link>
+              </li>
+              <li className="header-link-item">
+                <Link className="header-link" to="/terms&conditions"><p className='logo-menu-font'>قوانین </p></Link>
+              </li>
               {this.renderGetApplicationButton()}
-            </div>
+            </ul>
           </div>
           {this.renderLoginPanelFirstStep()}
-          <div className="header-logo-side col-md-4">
+          <div className="header-logo-side">
               <div className='header-logo-and-search'>
-                <div className='header-logo-container'>
-                   <Link to="/"><img src={require('../Images/tripinn_logo.svg')} className="header-logo-image" alt = 'تریپین'></img></Link>
-                </div>
+                  <div className='header-logo-container'>
+                   <div itemScope={true} itemType="http://schema.org/Organization">
+                     <Link itemProp="url" to="/">
+                        <img itemProp="logo" src={require('../Images/tripinn_logo.svg')} className="header-logo-image" alt = 'tripinn logo'/>
+                     </Link>
+                   </div>
+                  </div>
                 <div>
                   <Link className='logolink' to="/"><p className='header-logo-type'>تریپین</p></Link>
                 </div>

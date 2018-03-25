@@ -10,6 +10,8 @@ import '../tools/calendar/initialize.js';
 import '../tools/calendar2/lib/css/_datepicker.css';
 import {DateRangePicker} from '../tools/calendar2';
 import Sticky from 'react-sticky';
+import {PulseLoader} from 'react-spinners';
+import MetaTags from 'react-meta-tags';
 
 class SearchResultMd extends React.Component{
   constructor(props){
@@ -21,6 +23,7 @@ class SearchResultMd extends React.Component{
       showGuestNumberPicker:false,
       numberOfGuests: 1,
       OpenDropDown:false,
+      itemsLoaded:false,
       Counter:false,
       startDate:null,
       endDate:null,
@@ -62,13 +65,11 @@ class SearchResultMd extends React.Component{
       capacity: this.state.numberOfGuests,
     };
     this.setState({
-      searchParams: spar
-    },() => {
-    this.getDataFromServer();
+      searchParams: spar,itemsLoaded:false},() => {this.getDataFromServer();
     });
   }
   getDataFromServer(){
-    var request = new Request('https://www.trypinn.com/api/v1/search/',{
+    var request = new Request('https://www.trypinn.com/api/v1/search/light/',{
       method: 'POST',
       body: JSON.stringify({
         platform: 'web',
@@ -91,8 +92,7 @@ class SearchResultMd extends React.Component{
 
   renderData(houseData) {
    this.setState({
-     houseList: houseData.room,
-   });
+     houseList: houseData.room,itemsLoaded:true});
   }
   getRelevantToken(){
     return localStorage['token'];
@@ -204,14 +204,27 @@ class SearchResultMd extends React.Component{
           <div className="render-houses-row-md">
             <div className="padding-search-results-top">
             </div>
-            <div className="renderresults-main">
-              {this.renderHousesCol3()}
+            <div className="">
+              {this.renderHouseItems()}
             </div>
             <div className="padding-search-results">
             </div>
           </div>
       </div>
     );
+  }
+
+  renderHouseItems(){;
+    if(this.state.itemsLoaded===true) {
+      return this.renderHousesCol3();
+    }
+    else{
+      return (
+        <div className="search-result-loading-item">
+          <PulseLoader color="#12b2ce" size={15} loading={!this.state.itemsLoaded} />
+        </div>
+      );
+    }
   }
   renderHousesCol3 () {
     var results = [];
@@ -253,14 +266,16 @@ class SearchResultMd extends React.Component{
   render(){
     return(
       <div className="searchbarmain">
-          <div className="container-fluid">
-            {this.renderSearchBarInDetails()}
-            <div className="col-lg col-sm-12 mb-10">
-            </div>
-            <div className="col-lg col-sm-12 mb-10">
-            </div>
+        <MetaTags>
+          <title>  رزرو ویلا و اقامتگاه بوم‌گردی در {this.readCityFromURL()} | تریپین</title>
+        </MetaTags>
+        <div className="container-fluid">
+          {this.renderSearchBarInDetails()}
+          <div className="col-lg col-sm-12 mb-10">
           </div>
-
+          <div className="col-lg col-sm-12 mb-10">
+          </div>
+        </div>
           <div className="container-fluid hidden-xl visible-xs">
               <div className='mobile-margined-search'>
                 <div className="main-zone-xs col-md-12">

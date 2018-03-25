@@ -10,6 +10,7 @@ class LoginMd extends React.Component{
   constructor(props){
   super(props);
     this.state={
+      passIsNotCorrect:false,
       showSignUpOrSetPasswordModal:false,
       showVerificationModal:true,
       showForgetPasswordModal:false,
@@ -68,6 +69,8 @@ class LoginMd extends React.Component{
         password:null,
         confirmPassword:null,
       },
+      forgetPasswordInputHasError:false,
+      forgetPasswordInputError:'خطایی وجود ندارد',
     }
   }
 
@@ -183,7 +186,7 @@ class LoginMd extends React.Component{
       this.setUserNameInHeader();
     }
   }
-  
+
   handleLoginResponse(loginResponse){
     if(loginResponse.is_successful){
       localStorage['isLoggedIn']= 'true';
@@ -192,7 +195,7 @@ class LoginMd extends React.Component{
       this.setUserNameInHeader();
     }
     else{
-      alert('رمز عبور وارد شده نادرست است. لطفا دوباره تلاش کنید');
+      this.setState({passIsNotCorrect:true});
     }
   }
   setUserNameInHeader(){
@@ -481,7 +484,7 @@ class LoginMd extends React.Component{
 
   changePasswordForLogin(event){
     var inputlogin ={password:event.target.value};
-    this.setState({inputForLogin : inputlogin});
+    this.setState({inputForLogin : inputlogin , passIsNotCorrect:false});
   }
   changePasswordForSetPassword(event){
     var inputSetPassword = {password : event.target.value ,
@@ -560,7 +563,7 @@ class LoginMd extends React.Component{
       else{
         return (
           <div className="login1-modal">
-            <div className="close-modal-phone-number">
+            <div onClick={()=>{this.props.closeLoginPanel()}} className="close-modal-phone-number">
             </div>
             <p className="login-title-in-modal"> ورود </p>
             <div className="header-login-modal-divider">
@@ -577,10 +580,11 @@ class LoginMd extends React.Component{
                 type="password"
                 autoComplete="off"
                 onKeyDown ={(event)=>{this.handleLoginClickByEnter(event)}}/>
-              <p onClick={()=>{this.handleForgetPassword(); this.setState({showForgetPasswordModal:true})}} className="login-modal-forget-password-paragraph"> فراموشی رمز عبور</p>
+                <p className={this.state.passIsNotCorrect?"log-in-false-pass-visible":"log-in-false-pass-hide"}>رمز عبور وارد شده اشتباه است.</p>
               <button color="blue" onClick={this.handleLoginClick.bind(this)} className="header-login-modal-button">
-                      ورود
+                ورود
               </button>
+              <p onClick={()=>{this.handleForgetPassword(); this.setState({showForgetPasswordModal:true})}} className="login-modal-forget-password-paragraph">فراموشی رمز عبور</p>
             </div>
             </div>
           </div>
@@ -618,7 +622,7 @@ class LoginMd extends React.Component{
           <hr className="forget-password-modal-divider"/>
           <div className="forget-password-modal-input-zone">
             <p className="forget-password-modal-input-paragraph">
-            کد تأیید
+            کد تأیید ارسال شده به تلفن همراه شما
             </p>
             <input onChange={(event)=>{this.changeVerificationCodeForChangePassword(event)}} type="numeric" className="forget-password-modal-input"/>
           </div>
@@ -634,10 +638,29 @@ class LoginMd extends React.Component{
             </p>
             <input onChange={(event)=>{this.changeConfirmPasswordForChangePassword(event)}} type="password" className="forget-password-modal-input"/>
           </div>
-          <div  onClick={()=>{this.setTokenForChangePassword()}} className="forge-password-change-password-button"> تغییر رمز عبور</div>
+          <div className={this.state.forgetPasswordInputHasError?"error-message-in-forget-password-modal":"error-message-in-forget-password-modal-hidden"}>
+            {this.state.forgetPasswordInputError}
+          </div>
+          <div  onClick={()=>{this.handleChangePasswordRequest()}} className="forge-password-change-password-button"> تغییر رمز عبور</div>
         </div>
       </Modal>
     );
+  }
+
+  handleChangePasswordRequest(){
+    if(this.state.inputForChangePassword.verificationCode===''){
+      this.setState({forgetPasswordInputHasError:true , forgetPasswordInputError:'لطفا کد تأیید فرستاده به گوشی همراه خود را وارد کنید'});
+      return;
+    }
+    if(this.state.inputForChangePassword.password===''){
+      this.setState({forgetPasswordInputHasError:true,forgetPasswordInputError:'لطفا رمز عبور خود را وارد کنید'});
+      return;
+    }
+    if(this.state.inputForChangePassword.confirmPassword!==this.state.inputForChangePassword.password){
+      this.setState({forgetPasswordInputHasError:true,forgetPasswordInputError:'رمز عبور و تکرار آن یکسان نیستند'})
+      return;
+    }
+    this.setTokenForChangePassword();
   }
 
   getResponseForChangePassword(){

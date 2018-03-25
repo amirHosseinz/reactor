@@ -20,6 +20,7 @@ class UtilitiesDescriptionMd extends React.Component{
         break;
       }
     }
+
     var primaryListOfLists = [[],[],[],[],[],[],[],[],[]];
     var listIndex = 0;
     for (var itemIndex=0;itemIndex<utilities.length;itemIndex++){
@@ -57,7 +58,6 @@ class UtilitiesDescriptionMd extends React.Component{
         <Collapsible
         trigger={<div className="house-details-utilities-see-more-items">نمایش تمام امکانات </div>}
         triggerWhenOpen=""
-        // transitionTime={1000}
         lazyRender={true}
         easing='steps(1,end);'>
           {listOfUtilitiesStringSecondRow.map(
@@ -71,9 +71,9 @@ class UtilitiesDescriptionMd extends React.Component{
           )}
         </Collapsible>
       </div>
-
     );
   }
+
   render(){
     return(
       <div>

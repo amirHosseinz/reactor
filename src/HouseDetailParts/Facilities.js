@@ -6,6 +6,7 @@ import FacilitiesSm from './FacilitiesMain/FacilitiesSm.js';
 import './FacilitiesMain/Facilities.css';
 class Facilities extends React.Component{
 
+
   renderFacilitiesMd(utility){
     return(
       <div className="hidden-xs hidden-xl hidden-sm visible-md">

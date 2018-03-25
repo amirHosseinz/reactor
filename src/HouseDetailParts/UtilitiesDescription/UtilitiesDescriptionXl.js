@@ -21,6 +21,14 @@ class UtilitiesDescriptionXl extends React.Component{
       }
     }
 
+    // utilities.reverse();
+    // utilities.splice( utilities.indexOf('PERGOLA'), 1);
+    // utilities.splice( utilities.indexOf('KITCHEN'), 1);
+    // utilities.splice( utilities.indexOf('SHORE_SIDE'), 1);
+    // utilities.splice( utilities.indexOf('PRIVATE_LOCK'), 1);
+    // utilities.splice( utilities.indexOf('BED'), 1);
+    // utilities.splice( utilities.indexOf('MATRESS'), 1);
+
     var primaryListOfLists = [[],[],[],[],[],[],[],[],[]];
     var listIndex = 0;
     for (var itemIndex=0;itemIndex<utilities.length;itemIndex++){
@@ -43,12 +51,18 @@ class UtilitiesDescriptionXl extends React.Component{
       var string="";
       for (var i=0;i<secondaryListOfLists[listIndex].length;i++){
         string += (secondaryListOfLists[listIndex][i]);
+
       }
+
       listOfUtilitiesString.push(string);
     }
+
     var listOfUtilitiesStringFirstRow = listOfUtilitiesString[0];
     listOfUtilitiesString.splice(0,1);
     var listOfUtilitiesStringSecondRow = listOfUtilitiesString;
+
+    // console.log(listOfUtilitiesStringFirstRow);
+    // console.log(listOfUtilitiesStringSecondRow);
 
     return(
       <div>
@@ -58,7 +72,6 @@ class UtilitiesDescriptionXl extends React.Component{
         <Collapsible
         trigger={<div className="house-details-utilities-see-more-items">نمایش تمام امکانات </div>}
         triggerWhenOpen=""
-        // transitionTime={1000}
         lazyRender={true}
         easing='steps(1,end);'>
           {listOfUtilitiesStringSecondRow.map(
@@ -72,9 +85,9 @@ class UtilitiesDescriptionXl extends React.Component{
           )}
         </Collapsible>
       </div>
-
     );
   }
+
   render(){
     return(
       <div>

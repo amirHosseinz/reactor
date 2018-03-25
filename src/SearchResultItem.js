@@ -2,6 +2,7 @@ import React from 'react';
 import './Images.css';
 import { englishToPersianDigits } from './tools/EnglishToPersianDigits';
 import AspectRatio from 'react-aspect-ratio';
+import {parsePrice3digits} from './tools/ParsePrice3digits.js';
 
 
 class SearchResultItem extends React.Component {
@@ -14,7 +15,7 @@ class SearchResultItem extends React.Component {
   }
 
   price () {
-    return englishToPersianDigits(this.props.room.price);
+    return englishToPersianDigits(parsePrice3digits(this.props.room.price));
   }
 
   rating(){
@@ -83,7 +84,6 @@ class SearchResultItem extends React.Component {
    {
     return(
       <div>
-      <div>
         <a target="_blank" href={(this.props.room.type==='room')?"/rooms/"+ this.props.room.id:"/ecotourism/"+ this.props.room.id} className="card_anchor">
           <div  className="result-detail">
             <AspectRatio ratio="16/11">
@@ -103,14 +103,13 @@ class SearchResultItem extends React.Component {
                 <div className = "result-price">
                   <p className="toman-per-night-result"> هر شب </p>
                   <p className="toman-per-night-result">/</p>
-                  <p className="toman-result">تومان  </p>
+                  <p className="toman-result"> تومان  </p>
                   <p className="toman-result"> {this.price()}</p>
                 </div>
             <div className="result-card-margins">
             </div>
           </div>
           </a>
-      </div>
       </div>
     );
   }

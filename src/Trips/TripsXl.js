@@ -26,7 +26,7 @@ class TripsXl extends React.Component{
     this.setState({role :person_role } ,()=>this.getDataFromServer());
   }
   getDataFromServer(){
-    var request = new Request('https://www.trypinn.com/api/reservations/list/',{
+    var request = new Request('https://www.trypinn.com/api/v1/reservations/list/',{
       method: 'POST',
       body: JSON.stringify({
         role:this.state.role,
@@ -39,6 +39,7 @@ class TripsXl extends React.Component{
      return response.json();
    })
    .then((trips) => {
+     console.log(trips);
      this.renderData(trips);
      if(trips.reserve_list.length>0){
        this.showTripItemClick(trips.reserve_list[0]);
@@ -59,6 +60,11 @@ class TripsXl extends React.Component{
       var reserve_list = this.state.tripList.reserve_list;
       if(reserve_list.length>0){
         var list = reserve_list.map((item) => {
+          if(item.room ===null)
+            var data = item.eco_room;
+          else
+            var data = item.room;
+
           return (
             <div  dir="rtl"
                   className={(this.state.selected===item.id)?"trips-item-selected":"trips-item-not-selected"}
@@ -68,14 +74,14 @@ class TripsXl extends React.Component{
                 <div className="trips-item-preview">
                   <img
                   className="trips-item-image"
-                  src={"https://www.trypinn.com/"+item.room.preview}
+                  src={"https://www.trypinn.com/"+data.preview}
                   alt=""
                   height="60px;" width="60px"/>
                   <div>
                     <div className="trips-item-title">
-                      {item.room.title}
+                      {data.title}
                     </div>
-                  <p className="trips-item-city"> {item.room.address} </p>
+                  <p className="trips-item-city"> {data.address} </p>
                   </div>
                 </div>
               </div>

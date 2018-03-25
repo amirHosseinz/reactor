@@ -24,6 +24,7 @@ class UtilitiesDescription extends React.Component{
   }
 
   renderUtilitiesXl(props){
+    // console.log(props);
     return(
       <div className="hidden-xs hidden-md hidden-sm visible-xl">
         <UtilitiesDescriptionXl {...props}/>

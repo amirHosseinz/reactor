@@ -16,7 +16,12 @@
   }
 
 .hearder-child-margined{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction:row;
     width:98%;
+    height : 50px;
     margin: auto;
   }
 
@@ -33,22 +38,23 @@
 
 .header-logo-side{
 }
-.header-link{
+.header-link-list{
+  display: flex;
+  padding-left : 0px;
+  display: -webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction:row;
+}
+.header-link-item{
+  list-style-type: none;
+}
+.header-link {
   text-decoration :none !important;
 }
-.header-link:hover{
-  text-decoration :none !important;
-}
-.header-link:visited{
-  text-decoration :none !important;
-}
-.header-link:link{
-  text-decoration :none !important;
-}
-
 .header-menu{
   font-family: IRANSans;
   width:100%;
+  float : left;
   margin: auto;
   display: -webkit-flex; /* Safari */
   -webkit-flex-direction: row; /* Safari 6.1+ */

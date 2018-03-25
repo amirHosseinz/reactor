@@ -55,33 +55,46 @@ class AmenitiesDescriptionMd extends React.Component{
                 </div>
               </div>
             </div>
+            <div className='main-amanities-item-ecotourism-space-md'>
+              <div className="main-amanities-item-ecotourism-content">
+                <img height="66px" width="66px" src={require('../facilities/urbn-rural.svg')}  alt = "" />
+                <div className="amenities-text-ecotourism">
+                  <p className='aminities-title-text'> {this.renderEcoTourismType()}</p>
+                  <p className="aminities-title-description">محیط اطراف</p>
+                </div>
+              </div>
+            </div>
             <div className='main-amanities-item-ecotourism-md'>
               <div className="main-amanities-item-ecotourism-content">
                 <img height="66px" width="66px" src={require('../facilities/food.svg')}  alt = "" />
                 <div className="amenities-text-ecotourism">
                   <p className='aminities-title-text'>
-                    {(this.props.homeData.food_service_type.length!==0)?englishToPersianDigits(this.props.homeData.food_service_type.length)+'وعده ':'بدون غذا'}
+                    {(this.props.homeData.food_service_type.length!==0)?englishToPersianDigits(" " + this.getNumberOfMeals() +" ")+'وعده ':'بدون غذا '}
                   </p>
                   <p className="aminities-title-description">{this.renderFoodServiceType()}</p>
                 </div>
               </div>
             </div>
-            <div className='main-amanities-item-ecotourism-md'>
-              <div className="main-amanities-item-ecotourism-content">
-                <img height="66px" width="66px" src={require('../facilities/urbn-rural.svg')}  alt = "" />
-                <div className="amenities-text-ecotourism">
-                  <p className='aminities-title-text'> {this.renderEcoTourismType()}</p>
-                  <p className="aminities-title-description"> نوع دسترسی</p>
-                </div>
-              </div>
-            </div>
+
           </div>
         );
       }
     }
   }
 
-
+  getNumberOfMeals(){
+    var getNumberOfMeals=0;
+    if(this.props.homeData.food_service_type.indexOf('BREAK_FAST_INCLUDED')!==-1){
+      getNumberOfMeals = getNumberOfMeals + 1;
+    }
+    if(this.props.homeData.food_service_type.indexOf('LUNCH_INCLUDED')!==-1){
+      getNumberOfMeals = getNumberOfMeals + 1;
+    }
+    if(this.props.homeData.food_service_type.indexOf('DINNER_INCLUDED')!==-1){
+      getNumberOfMeals = getNumberOfMeals + 1;
+    }
+    return getNumberOfMeals;
+  }
   renderEcoTourismType(){
     if(this.props.homeData.room_type.indexOf('RURAL')!==-1){
       return 'روستایی';

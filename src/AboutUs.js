@@ -5,6 +5,7 @@ import AboutUsXl from './AboutUs/AboutUsXl.js';
 import AboutUsMd from './AboutUs/AboutUsMd.js';
 import AboutUsXs from './AboutUs/AboutUsXs.js';
 import AboutUsSm from './AboutUs/AboutUsSm.js';
+import MetaTags from 'react-meta-tags';
 
 class AboutUs extends React.Component {
   constructor(props){
@@ -35,7 +36,7 @@ class AboutUs extends React.Component {
       </div>
     );
   }
-  
+
   renderAboutUsXs(){
     return(
       <div className="hidden-xl hidden-md hidden-sm visible-xs">
@@ -46,6 +47,9 @@ class AboutUs extends React.Component {
   render(){
     return(
       <div>
+        <MetaTags>
+          <title> تریپین | درباره ما</title>
+        </MetaTags>
         {this.renderAboutUsXl()}
         {this.renderAboutUsMd()}
         {this.renderAboutUsXs()}

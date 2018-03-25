@@ -10,6 +10,7 @@ class LoginXl extends React.Component{
   constructor(props){
   super(props);
     this.state={
+      passIsNotCorrect:false,
       showSignUpOrSetPasswordModal:false,
       showVerificationModal:true,
       showForgetPasswordModal:false,
@@ -67,7 +68,9 @@ class LoginXl extends React.Component{
         verificationCode:null,
         password:null,
         confirmPassword:null,
-      }
+      },
+      forgetPasswordInputHasError:false,
+      forgetPasswordInputError:'خطایی وجود ندارد',
     }
   }
 
@@ -185,23 +188,26 @@ class LoginXl extends React.Component{
   }
   handleLoginResponse(loginResponse){
     if(loginResponse.is_successful){
+      console.log(loginResponse);
       localStorage['isLoggedIn']= 'true';
       localStorage['token'] = loginResponse.token;
       this.setUserNameInHeader();
     }
     else{
-      alert('رمز عبور وارد شده نادرست است. لطفا دوباره تلاش کنید');
+      this.setState({passIsNotCorrect:true});
     }
   }
   setUserNameInHeader(){
-    this.getUserInfo();
+    this.setState({token:localStorage['token']},()=>{this.getUserInfo();});
   }
   getRole(){
     return 'guest';
   }
+
   getUserInfo(){
     if(localStorage['isLoggedIn']==='true'){
-      this.setState({token:localStorage['token']},()=>{this.setSearchParamsForUserInfo(this.getRole())});
+      this.setSearchParamsForUserInfo(this.getRole());
+      // this.setState({passIsNotCorrect:true},()=>{this.setSearchParamsForUserInfo(this.getRole())});
     }
   }
   setSearchParamsForUserInfo(person_role){
@@ -218,6 +224,7 @@ class LoginXl extends React.Component{
      return response.json();
    })
    .then((data) => {
+     // console.log(data);
      localStorage['user-first-name']=data.user.first_name;
      localStorage['user-last-name']=data.user.last_name;
      localStorage['user-username']=data.user.username;
@@ -477,7 +484,7 @@ class LoginXl extends React.Component{
 
   changePasswordForLogin(event){
     var inputlogin ={password:event.target.value};
-    this.setState({inputForLogin : inputlogin});
+    this.setState({inputForLogin : inputlogin, passIsNotCorrect:false});
   }
   changePasswordForSetPassword(event){
     var inputSetPassword = {password : event.target.value ,
@@ -557,7 +564,7 @@ class LoginXl extends React.Component{
       else{
         return (
           <div className="login1-modal">
-            <div className="close-modal-phone-number">
+            <div onClick={()=>{this.props.closeLoginPanel()}}className="close-modal-phone-number">
             </div>
             <p className="login-title-in-modal"> ورود </p>
             <div className="header-login-modal-divider">
@@ -574,10 +581,11 @@ class LoginXl extends React.Component{
                 type="password"
                 autoComplete="off"
                 onKeyDown ={(event)=>{this.handleLoginClickByEnter(event)}}/>
-                <p onClick={()=>{this.handleForgetPassword(); this.setState({showForgetPasswordModal:true})}} className="login-modal-forget-password-paragraph">فراموشی رمز عبور</p>
+                <p className={this.state.passIsNotCorrect?"log-in-false-pass-visible":"log-in-false-pass-hide"}>رمز عبور وارد شده اشتباه است.</p>
               <button color="blue" onClick={this.handleLoginClick.bind(this)} className="header-login-modal-button">
                 ورود
               </button>
+              <p onClick={()=>{this.handleForgetPassword(); this.setState({showForgetPasswordModal:true})}} className="login-modal-forget-password-paragraph">فراموشی رمز عبور</p>
             </div>
             </div>
           </div>
@@ -616,7 +624,7 @@ class LoginXl extends React.Component{
           <hr className="forget-password-modal-divider"/>
           <div className="forget-password-modal-input-zone">
             <p className="forget-password-modal-input-paragraph">
-            کد تأیید
+              کد تأیید ارسال شده به تلفن همراه شما
             </p>
             <input onChange={(event)=>{this.changeVerificationCodeForChangePassword(event)}} value={this.state.inputForChangePassword.verificationCode} type="numeric" className="forget-password-modal-input"/>
           </div>
@@ -632,7 +640,10 @@ class LoginXl extends React.Component{
             </p>
             <input onChange={(event)=>{this.changeConfirmPasswordForChangePassword(event)}} value={this.state.inputForChangePassword.confirmPassword} type="password" className="forget-password-modal-input"/>
           </div>
-          <div onClick={()=>{this.setTokenForChangePassword()}} className="forge-password-change-password-button"> تغییر رمز عبور</div>
+          <div className={this.state.forgetPasswordInputHasError?"error-message-in-forget-password-modal":"error-message-in-forget-password-modal-hidden"}>
+            {this.state.forgetPasswordInputError}
+          </div>
+          <div onClick={()=>{this.handleChangePasswordRequest()}} className="forge-password-change-password-button"> تغییر رمز عبور</div>
         </div>
       </Modal>
     );
@@ -667,6 +678,23 @@ class LoginXl extends React.Component{
       this.setUserNameInHeader();
   }
 }
+
+handleChangePasswordRequest(){
+  if(this.state.inputForChangePassword.verificationCode===''){
+    this.setState({forgetPasswordInputHasError:true , forgetPasswordInputError:'لطفا کد تأیید فرستاده به گوشی همراه خود را وارد کنید'});
+    return;
+  }
+  if(this.state.inputForChangePassword.password===''){
+    this.setState({forgetPasswordInputHasError:true,forgetPasswordInputError:'لطفا رمز عبور خود را وارد کنید'});
+    return;
+  }
+  if(this.state.inputForChangePassword.confirmPassword!==this.state.inputForChangePassword.password){
+    this.setState({forgetPasswordInputHasError:true,forgetPasswordInputError:'رمز عبور و تکرار آن یکسان نیستند'})
+    return;
+  }
+  this.setTokenForChangePassword();
+}
+
   render(){
     return(
       <div>

@@ -5,6 +5,7 @@ import moment from 'moment-jalaali';
 // import {Modal} from 'react-bootstrap';
 import Modal from 'react-modal';
 import {reserveModalStyleRequests} from '../Styles.js';
+import {CancelButtonModalStyle} from '../Styles.js';
 import {parsePrice3digits} from '../tools/ParsePrice3digits.js'
 import './RequestItem.css';
 
@@ -15,6 +16,7 @@ class RequestItemMd extends React.Component{
     this.state= {
       request:null,
       showPreBill:false,
+      cancelModalIsOpen:false,
       requestStatus:null,
       token:null,
       totalPrice:null,
@@ -36,9 +38,9 @@ class RequestItemMd extends React.Component{
           case "WAIT_FOR_HOST":
             return 'در انتظار تایید میزبان';
           case "GUEST_CANCELED":
-            return null;
+            return "رد شده توسط مهمان";
           case "HOST_REJECTED":
-            return 'رد شده توسط مهمان';
+            return 'رد شده توسط میزبان';
           case "WAIT_FOR_GUEST_PAY":
             return 'در انتظار پرداخت مهمان';
           case "HOST_ACCEPTED_GUEST_CANCELED":
@@ -162,11 +164,12 @@ class RequestItemMd extends React.Component{
   }
 
   renderNowruzPriceForPerNight(){
+
     if(this.state.request.nowruz_price!==0){
       return(
         <div className="pre-bill-price-night-content row-reverse" dir="rtl">
           <p className="pre-bill-price-night-sentence">هزینه شب‌های نوروز
-          (  {englishToPersianDigits(this.state.request.nowruz_duration)} شب ) :
+          ({englishToPersianDigits(this.state.request.nowruz_duration)} شب ) :
           </p>
           <p className="pre-bill-price-night-value">
            {englishToPersianDigits(parsePrice3digits(this.state.request.nowruz_price))}
@@ -194,7 +197,11 @@ class RequestItemMd extends React.Component{
   }
 
   renderDifferentTypesPrices(){
-    if(this.state.request.room.is_price_per_person===false){
+    if (this.state.request.room===null)
+      var data = this.state.request.eco_room;
+    else
+      var data = this.state.request.room;
+    if(data.is_price_per_person===false){
       return(
         <div>
           {this.renderOrdinaryPriceForPerNight()}
@@ -228,6 +235,10 @@ class RequestItemMd extends React.Component{
   renderPreBill(){
     if(this.state.request!==null){
       if(this.state.requestStatus!=='no-house'){
+        if (this.state.request.room===null)
+          var data = this.state.request.eco_room;
+        else
+          var data = this.state.request.room;
         return(
           <Modal isOpen={this.state.showPreBill}
             style={reserveModalStyleRequests}
@@ -242,14 +253,14 @@ class RequestItemMd extends React.Component{
                 <div className="pre-bill-margin-content">
                   <div className="pre-bill-house-details">
                     <div className="pre-bill-house-picture">
-                        <img src={"https://www.trypinn.com"+this.state.request.room.preview} alt=""height="90px"/>
+                        <img src={"https://www.trypinn.com"+data.preview} alt=""height="90px"/>
                     </div>
                     <div>
                       <div className="pre-bill-house-title">
-                        <p> {this.state.request.room.title}</p>
+                        <p> {data.title}</p>
                       </div>
                       <div className="pre-bill-house-address">
-                        <p>{this.state.request.room.city}، {this.state.request.room.district}</p>
+                        <p>{data.location}، {data.district}</p>
                       </div>
                     </div>
                   </div>
@@ -343,6 +354,7 @@ class RequestItemMd extends React.Component{
         </span>
       case "GUEST_CANCELED":
         return <span>
+          شما این درخواست را لغو کرده اید
         </span>;
       case "HOST_REJECTED":
         return <span>
@@ -357,30 +369,52 @@ class RequestItemMd extends React.Component{
       case "HOST_ACCEPTED_GUEST_CANCELED":
         return <span>
         این درخواست توسط مهمان قبل از
-        پرداخت هزینه لغو شد.
+        پرداخت هزینه لغو شد
         </span>;
       case "HOST_ACCEPTED_GUEST_PAYED":
         return <span>
         این رزرو نهایی شده است،
 برای مشاهده‌ی جزئیات آن به بخش
 سفرها
-مراجعه کنید.
+مراجعه کنید
 
         </span>;
       case "HOST_ACCEPTED_HOST_CANCELED":
         return <span>
         متاسفانه درخواست شما
 توسط میزبان
-مورد تایید قرار نگرفت.
+مورد تایید قرار نگرفت
         </span>;
       default:
         return null;
     }
 }
+
+renderCancelModal(){
+  return(
+      <Modal
+        isOpen={this.state.cancelModalIsOpen}
+        onRequestClose={()=>{this.setState({cancelModalIsOpen:false})}}
+        style={CancelButtonModalStyle}>
+        <div onClick={()=>{this.setState({cancelModalIsOpen:false})}} className="close-modal-phone-number">
+        </div>
+        <div className='cancel-button-modal'>
+          <div className='cancel-button-modal-buttons'>
+          <p className='cancel-button-modal-question'>
+          آیا از لغو درخواست خود مطمئن هستید؟
+          </p>
+          <div className="clickable-p request-item-yes-button-modal"  onClick={()=>{this.setState({cancelModalIsOpen:false})}}><p className='request-item-payment-button-text'>بازگشت</p></div>
+          <div className="clickable-p request-item-no-button-modal"onClick={()=>{this.setTokenForCancel()}}><p className='request-item-cancel-button-text'>لغو درخواست</p> </div>
+          </div>
+        </div>
+      </Modal>
+
+  );
+}
 renderCancelButton(){
   if(this.state.requestStatus!=="GUEST_CANCELED"){
    return (
-     <div className="clickable-p request-item-cancel-button" onClick={()=>{this.setTokenForCancel()}}><p className='request-item-cancel-button-text'>لغو درخواست</p> </div>
+     <div className="clickable-p request-item-cancel-button" onClick={()=>{this.setState({cancelModalIsOpen:true})}}><p className='request-item-cancel-button-text'>لغو درخواست</p> </div>
    );
   }
 }
@@ -391,6 +425,10 @@ renderDeleteButton(){
 }
 
 renderRequestCardVersion2(){
+  if (this.state.request.room===null)
+    var data = this.state.request.eco_room;
+  else
+    var data = this.state.request.room;
   return(
   <div className="request-card-container">
     <div className="request-item-details">
@@ -399,10 +437,10 @@ renderRequestCardVersion2(){
       <p className="request-item-details-description">{this.getRequestStatusDiscription()} </p>
       <div className='request-item-details-card'>
         <div className='request-item-details-card-description'>
-          <p className='request-item-details-card-home-name'> <span className='request-item-details-text'>نام اقامتگاه : </span> <a style={{fontWeight:'500', color:'#12b2ce'}} href={"/rooms/"+ this.state.request.room.id} target="_blank">{this.state.request.room.title}</a></p>
-          <p className='request-item-details-card-host-name'> به میزبانی  {this.state.request.room.owner.first_name} {this.state.request.room.owner.last_name}</p>
+          <p className='request-item-details-card-home-name'> <span className='request-item-details-text'>نام اقامتگاه : </span> <a style={{fontWeight:'500', color:'#12b2ce'}} href={"/rooms/"+ data.id} target="_blank">{data.title}</a></p>
+          <p className='request-item-details-card-host-name'> به میزبانی  {data.owner.first_name} {data.owner.last_name}</p>
         </div>
-        <img className='request-item-details-card-img' src={"https://www.trypinn.com"+this.state.request.room.preview} alt=""height="90px"/>
+        <img className='request-item-details-card-img' src={"https://www.trypinn.com"+data.preview} alt=""height="90px"/>
       </div>
       <div className='request-item-details-dates'>
       <div className='request-item-details-exit-date'><span>:</span>تاریخ خروج <p className='request-item-details-extra-bold-texts'>{englishToPersianDigits(moment(this.state.request.end_date).format('jYYYY/jM/jD'))}</p></div>
@@ -410,7 +448,7 @@ renderRequestCardVersion2(){
       </div>
       <Divider></Divider>
         <div className='request-item-details-extra'>
-          <p >شهر مقصد: <span className='request-item-details-extra-bold-texts'>{this.state.request.room.city}</span>  </p>
+          <p >شهر مقصد: <span className='request-item-details-extra-bold-texts'>{data.location}</span>  </p>
           <p> رزرو کننده: <span className='request-item-details-extra-bold-texts'>{this.state.request.guest_person.last_name}</span> </p>
           <p>تعداد میهمان: <span className='request-item-details-extra-bold-texts'>{englishToPersianDigits(this.state.request.number_of_guests)} نفر </span></p>
           <p className='request-item-details-final-cost'>جمع هزینه ها: {englishToPersianDigits(this.state.request.total_price)} تومان</p>
@@ -420,6 +458,7 @@ renderRequestCardVersion2(){
           {this.getRelevantButton()}
           {this.renderCancelButton()}
           {this.renderDeleteButton()}
+          {this.renderCancelModal()}
         </div>
   </div>
   );
@@ -544,6 +583,7 @@ renderRequestCardVersion2(){
     return(
       <div>
         {this.renderPreBill()}
+        {}
         {this.renderRequestDetail()}
       </div>
     );

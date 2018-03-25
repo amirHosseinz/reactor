@@ -3,7 +3,7 @@ import TermsXs from './Terms/TermsXs.js';
 import TermsXl from './Terms/TermsXl.js';
 import TermsSm from './Terms/TermsSm.js';
 import TermsMd from './Terms/TermsMd.js';
-
+import MetaTags from 'react-meta-tags';
 
 class Terms extends React.Component {
   constructor(props) {
@@ -58,6 +58,9 @@ class Terms extends React.Component {
   render(){
     return(
       <div>
+      <MetaTags>
+        <title> قوانین و مقررات تریپین</title>
+      </MetaTags>
         {this.renderTermsXl()}
         {this.renderTermsXs()}
         {this.renderTermsMd()}

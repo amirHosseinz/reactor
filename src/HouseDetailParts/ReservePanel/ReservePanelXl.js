@@ -45,10 +45,10 @@ class ReservePanelXl extends React.Component{
       return(
         <div className="pre-bill-price-night-content row-reverse" dir="rtl">
           <p className="pre-bill-price-night-sentence">هزینه شب‌های عادی
-            ({englishToPersianDigits(this.state.reserveData.ordinary_duration)} شب - {englishToPersianDigits(this.state.reserveData.number_of_guests)} نفر ) :
+            ({englishToPersianDigits(this.state.reserveData.ordinary_duration)} شب - {englishToPersianDigits(this.state.numberOfGuests)} نفر ) :
           </p>
           <p className="pre-bill-price-night-value">
-           {parsePrice3digits(englishToPersianDigits(this.state.reserveData.ordinary_price))}
+           {englishToPersianDigits(parsePrice3digits(this.state.reserveData.ordinary_price))}
              تومان
           </p>
         </div>
@@ -60,7 +60,7 @@ class ReservePanelXl extends React.Component{
       return(
         <div className="pre-bill-price-night-content row-reverse" dir="rtl">
           <p className="pre-bill-price-night-sentence">هزینه شب‌های آخر هفته
-            ({englishToPersianDigits(this.state.reserveData.weekend_duration)} شب - {englishToPersianDigits(this.state.reserveData.number_of_guests)} نفر ) :
+            ({englishToPersianDigits(this.state.reserveData.weekend_duration)} شب - {englishToPersianDigits(this.state.numberOfGuests)} نفر ) :
           </p>
           <p className="pre-bill-price-night-value">
              {englishToPersianDigits(parsePrice3digits(this.state.reserveData.weekend_price))}
@@ -90,7 +90,7 @@ class ReservePanelXl extends React.Component{
       return(
         <div className="pre-bill-price-night-content row-reverse" dir="rtl">
           <p className="pre-bill-price-night-sentence">هزینه شب‌های نوروز
-            ({englishToPersianDigits(this.state.reserveData.nowruz_duration)}شب - {englishToPersianDigits(this.state.reserveData.number_of_guests)} نفر) :
+            ({englishToPersianDigits(this.state.reserveData.nowruz_duration)}شب - {englishToPersianDigits(this.state.numberOfGuests)} نفر) :
           </p>
           <p className="pre-bill-price-night-value">
            {englishToPersianDigits(parsePrice3digits(this.state.reserveData.nowruz_price))}
@@ -215,93 +215,190 @@ class ReservePanelXl extends React.Component{
   }
 
   getDataFromServer(){
-    var request = new Request('https://www.trypinn.com/api/room/get_price/', {
-      method: 'POST',
-      body: JSON.stringify({
-        room_id : this.props.homeData.id,
-        platform:'web',
-        start_date : this.state.requestParams.fromDate,
-        end_date : this.state.requestParams.toDate,
-        number_of_guests : this.state.numberOfGuests,
-        discount_code: this.state.discountCode,
-    }),
-      headers: new Headers({'Accept': 'application/json','Content-Type':'application/json',
-      'Authorization': 'Token '+this.state.token,})
-    });
-   fetch(request)
-   .then((response) => {
-     return response.json();
-   })
-   .then((reserve_data) => {
-     this.setState({totalPrice:reserve_data.total_price ,reserveData:reserve_data,showPreBill:true});
-   });
+    switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
+      case 'rooms':{
+        var request = new Request('https://www.trypinn.com/api/room/get_price/',{
+          method: 'POST',
+          body: JSON.stringify({
+            room_id:this.props.homeData.id,
+            start_date:this.state.requestParams.fromDate,
+            end_date:this.state.requestParams.toDate,
+            number_of_guests:this.state.numberOfGuests,
+            discount_code:this.state.discountCode,
+            platform:'web',
+        }),
+          headers: new Headers({'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Token '+this.state.token,})
+        });
+       fetch(request)
+       .then((response) => {
+         // console.log(response);
+         return response.json();
+       })
+       .then((reserve_data) => {
+          this.setState({totalPrice:reserve_data.total_price ,reserveData:reserve_data,showPreBill:true});
+       });
+        return;
+      }
+      case 'ecotourism':{
+        var request = new Request('https://www.trypinn.com/api/room/get_price/',{
+          method: 'POST',
+          body: JSON.stringify({
+            eco_room_id:this.props.homeData.id,
+            start_date:this.state.requestParams.fromDate,
+            end_date:this.state.requestParams.toDate,
+            number_of_guests:this.state.numberOfGuests,
+            discount_code:this.state.discountCode,
+            platform:'web',
+        }),
+          headers: new Headers({'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Token '+this.state.token,})
+        });
+       fetch(request)
+       .then((response) => {
+         return response.json();
+       })
+       .then((reserve_data) => {
+         this.setState({totalPrice:reserve_data.total_price ,reserveData:reserve_data,showPreBill:true});
+       });
+        return;
+      }
+    }
  }
 
  sendBookRequest(){
-    var request = new Request('https://www.trypinn.com/api/room/request/book/', {
-      method: 'POST',
-      body: JSON.stringify({
-        room_id : this.props.homeData.id,
-        start_date : this.state.requestParams.fromDate,
-        end_date : this.state.requestParams.toDate,
-        number_of_guests : this.state.numberOfGuests,
-        discount_code: this.state.discountCode,
-    }),
-      headers: new Headers({'Accept': 'application/json','Content-Type':'application/json',
-      'Authorization': 'Token '+this.state.token,})
-    });
-   fetch(request)
-   .then((response) => {
-     return response.json();
-   })
-   .then((bookData) => {
-     console.log(bookData);
-     if(bookData.successful===true){
-       window.location.href = '/dashboard/request';
+   switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
+     case 'rooms':{
+       var request = new Request('https://www.trypinn.com/api/room/request/book/', {
+         method: 'POST',
+         body: JSON.stringify({
+           room_id : this.props.homeData.id,
+           start_date : this.state.requestParams.fromDate,
+           end_date : this.state.requestParams.toDate,
+           number_of_guests : this.state.numberOfGuests,
+           discount_code: this.state.discountCode,
+       }),
+         headers: new Headers({'Accept': 'application/json','Content-Type':'application/json',
+         'Authorization': 'Token '+this.state.token,})
+       });
+      fetch(request)
+      .then((response) => {
+        return response.json();
+      })
+      .then((bookData) => {
+        console.log(bookData);
+        if(bookData.successful===true){
+          window.location.href = '/dashboard/request';
+        }
+      });
+       break;
      }
-   });
+
+     case 'ecotourism':{
+       var request = new Request('https://www.trypinn.com/api/ecoroom/request/book/', {
+         method: 'POST',
+         body: JSON.stringify({
+           eco_room_id : this.props.homeData.id,
+           start_date : this.state.requestParams.fromDate,
+           end_date : this.state.requestParams.toDate,
+           number_of_guests : this.state.numberOfGuests,
+           discount_code: this.state.discountCode,
+       }),
+         headers: new Headers({'Accept': 'application/json','Content-Type':'application/json',
+         'Authorization': 'Token '+this.state.token,})
+       });
+      fetch(request)
+      .then((response) => {
+        return response.json();
+      })
+      .then((bookData) => {
+        console.log(bookData);
+        if(bookData.successful===true){
+          window.location.href = '/dashboard/request';
+        }
+      });
+       break;
+     }
+   }
+
   }
 
   renderReserveButton(){
     if(this.state.startDate==='' || this.state.endDate===''){
       return(
-        <button disabled className="reserve-panel-reserve-button-active"> نمایش پیش‌فاکتور </button>
+        <button disabled className="reserve-panel-reserve-button-active">  محاسبه هزینه </button>
       );
     }
     else{
       return(
-        <button onClick={()=>{this.setToken()}} className="reserve-panel-reserve-button-active"> نمایش پیش‌فاکتور </button>
+        <button onClick={()=>{this.setToken()}} className="reserve-panel-reserve-button-active"> محاسبه هزینه </button>
       );
     }
   }
 
   UpdatePrice(){
-    var request = new Request('https://www.trypinn.com/api/room/get_price/',{
-      method: 'POST',
-      body: JSON.stringify({
-        room_id:this.props.homeData.id,
-        start_date:this.state.requestParams.fromDate,
-        end_date:this.state.requestParams.toDate,
-        number_of_guests:this.state.numberOfGuests,
-        discount_code:this.state.discountCode,
-        platform:'web',
-    }),
-      headers: new Headers({'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization': 'Token '+this.state.token,})
-    });
-   fetch(request)
-   .then((response) => {
-     return response.json();
-   })
-   .then((discountResponse) => {
-     if(discountResponse.discount_code_error===false){
-       this.setState({discountCodeApplied:true,discountCodeAccepted:true, totalPrice : discountResponse.total_price});
-     }
-     else{
-      this.setState({discountCodeApplied:true,discountCodeAccepted:false, totalPrice : discountResponse.total_price});
-     }
-   });
+    switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
+      case 'rooms':{
+        var request = new Request('https://www.trypinn.com/api/room/get_price/',{
+          method: 'POST',
+          body: JSON.stringify({
+            room_id:this.props.homeData.id,
+            start_date:this.state.requestParams.fromDate,
+            end_date:this.state.requestParams.toDate,
+            number_of_guests:this.state.numberOfGuests,
+            discount_code:this.state.discountCode,
+            platform:'web',
+        }),
+          headers: new Headers({'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Token '+this.state.token,})
+        });
+       fetch(request)
+       .then((response) => {
+         return response.json();
+       })
+       .then((discountResponse) => {
+         if(discountResponse.discount_code_error===false){
+           this.setState({discountCodeApplied:true,discountCodeAccepted:true, totalPrice : discountResponse.total_price});
+         }
+         else{
+          this.setState({discountCodeApplied:true,discountCodeAccepted:false, totalPrice : discountResponse.total_price});
+         }
+       });
+        break;
+      }
+      case 'ecotourism':{
+        var request = new Request('https://www.trypinn.com/api/room/get_price/',{
+          method: 'POST',
+          body: JSON.stringify({
+            eco_room_id:this.props.homeData.id,
+            start_date:this.state.requestParams.fromDate,
+            end_date:this.state.requestParams.toDate,
+            number_of_guests:this.state.numberOfGuests,
+            discount_code:this.state.discountCode,
+            platform:'web',
+        }),
+          headers: new Headers({'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Token '+this.state.token,})
+        });
+       fetch(request)
+       .then((response) => {
+         return response.json();
+       })
+       .then((discountResponse) => {
+         if(discountResponse.discount_code_error===false){
+           this.setState({discountCodeApplied:true,discountCodeAccepted:true, totalPrice : discountResponse.total_price});
+         }
+         else{
+          this.setState({discountCodeApplied:true,discountCodeAccepted:false, totalPrice : discountResponse.total_price});
+         }
+       });
+        break;
+      }
+    }
   }
   renderDiscountStatus(){
       return (

@@ -1,23 +1,16 @@
 import React from 'react';
-import SearchResultItem from '../SearchResultItem';
-import { Typeahead,MenuItem,Menu,menuItemContainer} from '../tools/react-bootstrap-typeahead';
-import { Button } from 'semantic-ui-react';
-import { findDOMNode } from 'react-dom';
-import {Dropdown} from 'semantic-ui-react';
-import GuestNumber from '../GuestNumberSearchBar.js';
-import scrollToComponent from 'react-scroll-to-component';
 import "./SearchBar.css";
 import "../Styles/MainPage-SearchBar.css";
 import Autosuggest from 'react-autosuggest';
-const TypeaheadMenuItem = menuItemContainer(MenuItem);
+import MetaTags from 'react-meta-tags';
 const listOfCity = [
   {name:'اصفهان',},{name:'نوشهر',},{name: 'گیلان',},{name:'رامسر'},{name:'کیش'},{name:'مازندران'},
   {name:'فریدون کنار'},{name:'محمودآباد'},{name:'عباس آباد'},{name:'شاندیز'},{name:'خراسان رضوی'},
   {name:'بندر انزلی'},{name:'کاشان'},{name:'باغ بهادران'},{name:'قلعه رودخان'},{name:'مشهد'},
   {name:'چمخاله'},{name:'رودسر'},{name:'فومن'},{name:'رضوان‌شهر'},{name:'زیباکنار'},
   {name:'آستارا'},{name:'چالوس'},{name:'دریاکنار'},{name:'نور'},{name:'رویان'},{name:'بابلسر'},
-  {name:'تنکابن'},{name:'سرخ‌رود'},{name:'دریاکنار'},{name:'ایزدشهر'},{name:'البرز'},
-  {name:'سلمان‌شهر'},{name:'تنکابن'},{name:'کلاردشت'},{name:'نشتارود'},{name:'کلارآباد'},
+  {name:'تنکابن'},{name:'سرخ‌رود'},{name:'دریاکنار'},{name:'ایزدشهر'},{name:'البرز'},{name:'گلستان'},
+  {name:'سلمان‌شهر'},{name:'کلاردشت'},{name:'نشتارود'},{name:'کلارآباد'},
   {name:'فارس'},{name:'شیراز'},{name:'یزد'},{name:'داراب'},{name:'بافق'},{name:'مرودشت'},
 ];
 
@@ -211,6 +204,9 @@ class SearchBarMD extends React.Component{
   render(){
     return(
       <div>
+        <MetaTags>
+          <title>تریپین | سامانه رزرو ویلا و اقامتگاه محلی</title>
+        </MetaTags>
         {this.renderSearchBarVersion2()}
       </div>
     );

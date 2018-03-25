@@ -42,7 +42,7 @@ class RequestsXl extends React.Component{
     this.setState({role :person_role},()=>this.getDataFromServer())
   }
   getDataFromServer(){
-    var request = new Request('https://www.trypinn.com/api/request/list/',{
+    var request = new Request('https://www.trypinn.com/api/v1/request/list/',{
       method: 'POST',
       body: JSON.stringify({
         platform:'web',
@@ -53,6 +53,7 @@ class RequestsXl extends React.Component{
     });
    fetch(request)
    .then((response) => {
+
      return response.json();
    })
    .then((request_list) => {
@@ -87,6 +88,10 @@ class RequestsXl extends React.Component{
       var request_list = this.state.requestList.request_list;
       if(request_list.length>0){
         this.list = request_list.map((item)=>  {
+          if(item.room ===null)
+            var data = item.eco_room;
+          else
+            var data = item.room;
           return(
             <div
               dir="rtl"
@@ -98,15 +103,15 @@ class RequestsXl extends React.Component{
                   <div className="requests-item-preview">
                     <img
                     className="requests-item-image"
-                    src={"https://www.trypinn.com/"+item.room.preview}
+                    src={"https://www.trypinn.com/"+ data.preview}
                     alt=""
                     height="60px;" width="60px"/>
                     <div>
                       <div className="requests-item-title">
-                        {item.room.title}
+                        {data.title}
                       </div>
                     <p className="requests-item-city">
-                      {item.room.address}
+                      {data.address}
                     </p>
                     </div>
                   </div>

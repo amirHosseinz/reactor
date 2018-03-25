@@ -192,6 +192,10 @@ class TripItemMd extends React.Component{
   }
 
   renderTripCardVersion2(){
+    if (this.state.trip.room===null)
+      var data = this.state.trip.eco_room;
+    else
+      var data = this.state.trip.room;
     return(
       <div className="request-card-container">
         <div className="request-item-details">
@@ -200,10 +204,10 @@ class TripItemMd extends React.Component{
           <p className="request-item-details-description">{this.getTripStatusDescription()} </p>
           <div className='request-item-details-card'>
             <div className='request-item-details-card-description'>
-              <p className='request-item-details-card-home-name'> <span className='request-item-details-text'>نام اقامتگاه : </span> <a style={{fontWeight:'500', color:'#12b2ce'}} href={"/rooms/"+ this.state.trip.room.id} target="_blank">{this.state.trip.room.title}</a></p>
-              <p className='request-item-details-card-host-name'> به میزبانی  {this.state.trip.room.owner.first_name} {this.state.trip.room.owner.last_name}</p>
+              <p className='request-item-details-card-home-name'> <span className='request-item-details-text'>نام اقامتگاه : </span> <a style={{fontWeight:'500', color:'#12b2ce'}} href={"/rooms/"+ data.id} target="_blank">{data.title}</a></p>
+              <p className='request-item-details-card-host-name'> به میزبانی  {data.owner.first_name} {data.owner.last_name}</p>
             </div>
-            <img className='request-item-details-card-img' src={"https://www.trypinn.com"+this.state.trip.room.preview} alt=""height="90px"/>
+            <img className='request-item-details-card-img' src={"https://www.trypinn.com"+data.preview} alt=""height="90px"/>
           </div>
           <div className='request-item-details-dates'>
           <div className='request-item-details-exit-date'><span>:</span>تاریخ خروج <p className='request-item-details-extra-bold-texts'>{englishToPersianDigits(moment(this.state.trip.end_date).format('jYYYY/jM/jD'))}</p></div>
@@ -211,7 +215,7 @@ class TripItemMd extends React.Component{
           </div>
           <Divider></Divider>
             <div className='request-item-details-extra'>
-              <p >شهر مقصد: <span className='request-item-details-extra-bold-texts'>{this.state.trip.room.city}</span>  </p>
+              <p >شهر مقصد: <span className='request-item-details-extra-bold-texts'>{data.location}</span>  </p>
               <p> رزرو کننده: <span className='request-item-details-extra-bold-texts'>{this.state.trip.guest_person.last_name}</span> </p>
               <p>تعداد میهمان: <span className='request-item-details-extra-bold-texts'>{englishToPersianDigits(this.state.trip.number_of_guests)} نفر </span></p>
               <p className='request-item-details-final-cost'>جمع هزینه ها: {englishToPersianDigits(this.state.trip.total_price)} تومان</p>

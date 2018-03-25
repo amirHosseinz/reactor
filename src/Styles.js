@@ -50,7 +50,7 @@ export const setPasswordStyle ={
     backgroundColor   : 'rgba(0, 0, 0, 0.0)'
   },
   content : {
-    height : '470px',
+    height : '460px',
     width  : '400px',
     margin: 'auto',
     outline                    : '0',
@@ -93,6 +93,19 @@ export const suggestionResponseModalStyle = {
     transform:'translate(0%, 0%)',
   }
 };
+export const CancelButtonModalStyle = {
+  overlay : {
+    zIndex : '10000',
+    backgroundColor: 'rgba(0,0,0,0.7)',
+  },
+  content : {
+    fontFamily : 'IRANSans',
+    height :'160px',
+    width  :'300px',
+    margin : 'auto',
+    transform:'translate(0%, 0%)',
+  }
+};
 export const downloadAppModalStyle={
   overlay : {
     zIndex : '10000',
@@ -118,7 +131,7 @@ export const loginPasswordStyle = {
     backgroundColor   : 'rgba(0, 0, 0, 0.7)'
   },
   content :{
-    height : '360px',
+    height : '390px',
     width  : '400px',
     margin: 'auto',
     outline                    : '0',
@@ -196,6 +209,54 @@ export const UserProfileUploadPhotoModal={
     width  : '380px',
     margin : 'auto' ,
     borderRadius:'15px',
+    outline : '0',
+    padding: '5px',
+    transform : 'translate(0%, 0%)'
+  }
+}
+export const ChangePassSuccessModal={
+  overlay : {
+    zIndex : '10000',
+    position          : 'fixed',
+    top               : 0,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+    backgroundColor   : 'rgba(0, 0, 0, 0.7)'
+  },
+  content :{
+    height : '130px',
+    width  : '300px',
+    display: 'flex',
+    justifyContent : 'center',
+    alignItems : 'center',
+    flexDirection : 'column',
+    margin : 'auto' ,
+    borderRadius:'10px',
+    outline : '0',
+    padding: '5px',
+    transform : 'translate(0%, 0%)'
+  }
+}
+export const ChangePassFailedModal={
+  overlay : {
+    zIndex : '10000',
+    position          : 'fixed',
+    top               : 0,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+    backgroundColor   : 'rgba(0, 0, 0, 0.7)'
+  },
+  content :{
+    height : '250px',
+    width  : '300px',
+    display: 'flex',
+    justifyContent : 'center',
+    alignItems : 'center',
+    flexDirection : 'column',
+    margin : 'auto' ,
+    borderRadius:'10px',
     outline : '0',
     padding: '5px',
     transform : 'translate(0%, 0%)'

@@ -168,7 +168,7 @@ class SearchBarXs extends React.Component{
     return(
       <div>
         <div className="landing-page-mobile visible-xs hidden-xl">
-          <img src={require('../Images/trpinn-logo-white.svg')} className='landing-logo' alt=""></img>
+          <img src={require('../Images/trpinn-logo-white.svg')} className='landing-logo' alt=""/>
           <p className='logotype-landing'>تریپین</p>
           <p className='description-landing'>سامانه رزرو ویلا و اقامت‌گاه بوم‌گردی</p>
           <button className="landing-btn" onClick={() => scrollToComponent(this.Dis, { offset: 0, align: 'top', duration: 1500})}> دریافت اپلیکیشن </button>
