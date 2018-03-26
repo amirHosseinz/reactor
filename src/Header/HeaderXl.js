@@ -108,9 +108,10 @@ class HeaderXl extends React.Component{
   handleLoginButton(){
     this.setState({loginPanelVisible:true});
   }
+
   getUserHasPasswordByEnter(event){
     if(event.key === 'Enter'){
-      this.setState({wrongPhoneNumber:false}); 
+      this.setState({wrongPhoneNumber:false});
       this.getUserHasPassword();
     }
     if (['0','1','2','3','4','5','6','7','8','9'].indexOf(event.key)===-1){
@@ -211,9 +212,9 @@ class HeaderXl extends React.Component{
       <div className="login-modal-main">
         <Modal isOpen={this.state.loginPanelVisible}
           style={loginPhoneNumberStyle}
-          onRequestClose={()=>{this.setState({loginPanelVisible:false,cellPhone:'',phoneNumberLoading:false})}}>
+          onRequestClose={()=>{this.setState({wrongPhoneNumber:false , loginPanelVisible:false,cellPhone:'',phoneNumberLoading:false})}}>
           <div className="login1-modal">
-            <div onClick={()=>{this.setState({loginPanelVisible:false,cellPhone:'',phoneNumberLoading:false})}} className="close-modal-phone-number">
+            <div onClick={()=>{this.setState({wrongPhoneNumber:false , loginPanelVisible:false,cellPhone:'',phoneNumberLoading:false})}} className="close-modal-phone-number">
             </div>
             <p className="login-title-in-modal"> ورود / ثبت‌نام  </p>
             <div className="header-login-modal-divider">
@@ -552,9 +553,9 @@ class HeaderXl extends React.Component{
 
   render(){
     return(
-      <div>
+      <header>
         {this.renderRelevantHeaderBasedOnURL()}
-      </div>
+      </header>
     );
   }
 }

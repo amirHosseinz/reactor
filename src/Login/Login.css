@@ -94,15 +94,15 @@
   font-family: IRANSans;
   font-size: 14px;
   margin-top: 9px;
-  /* margin-bottom: -5px; */
   line-height: 20px;
+  visibility: visible;
 }
 .log-in-false-pass-hide{
   color:#f54e4e;
   font-family: IRANSans;
   font-size: 14px;
-  text-align : right;
-  margin-bottom:10px;
+  margin-top: 9px;
+  line-height: 20px;
   visibility: hidden;
 }
 

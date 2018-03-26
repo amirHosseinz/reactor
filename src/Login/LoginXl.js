@@ -5,6 +5,8 @@ import Modal from 'react-modal';
 import {loginVerifySmsXl , registerNewUser , setPasswordStyle} from '../Styles.js';
 import {englishToPersianDigits, persianArabicToEnglishDigits} from '../tools/EnglishToPersianDigits';
 import './Login.css';
+import {ClipLoader} from 'react-spinners';
+
 
 class LoginXl extends React.Component{
   constructor(props){
@@ -71,6 +73,7 @@ class LoginXl extends React.Component{
       },
       forgetPasswordInputHasError:false,
       forgetPasswordInputError:'خطایی وجود ندارد',
+      loginLoading : false,
     }
   }
 
@@ -123,7 +126,7 @@ class LoginXl extends React.Component{
   setReqParamsForLogin(){
     var spar = {phoneNumber:localStorage['phone-number'],
                 password : this.state.inputForLogin.password,};
-   this.setState({reqParamsForLogin:spar},()=>{this.getResponseForLogin()});
+   this.setState({reqParamsForLogin:spar,loginLoading:true},()=>{this.getResponseForLogin()});
   }
   setReqParamsForSignup(){
     var spar = {phoneNumber:localStorage['phone-number'],
@@ -173,6 +176,7 @@ class LoginXl extends React.Component{
     });
    fetch(request)
    .then((response) => {
+     this.setState({loginLoading:false});
      return response.json();
    })
    .then((loginResponse) => {
@@ -564,7 +568,7 @@ class LoginXl extends React.Component{
       else{
         return (
           <div className="login1-modal">
-            <div onClick={()=>{this.props.closeLoginPanel()}}className="close-modal-phone-number">
+            <div onClick={()=>{this.props.closeLoginPanel()}} className="close-modal-phone-number">
             </div>
             <p className="login-title-in-modal"> ورود </p>
             <div className="header-login-modal-divider">
@@ -583,7 +587,7 @@ class LoginXl extends React.Component{
                 onKeyDown ={(event)=>{this.handleLoginClickByEnter(event)}}/>
                 <p className={this.state.passIsNotCorrect?"log-in-false-pass-visible":"log-in-false-pass-hide"}>رمز عبور وارد شده اشتباه است.</p>
               <button color="blue" onClick={this.handleLoginClick.bind(this)} className="header-login-modal-button">
-                ورود
+                {this.state.loginLoading===true ? <ClipLoader color="white"/> : "ورود" }
               </button>
               <p onClick={()=>{this.handleForgetPassword(); this.setState({showForgetPasswordModal:true})}} className="login-modal-forget-password-paragraph">فراموشی رمز عبور</p>
             </div>

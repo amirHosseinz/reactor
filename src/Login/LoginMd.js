@@ -5,6 +5,8 @@ import Modal from 'react-modal';
 import {loginVerifySmsXl , registerNewUser , setPasswordStyle} from '../Styles.js';
 import {englishToPersianDigits, persianArabicToEnglishDigits} from '../tools/EnglishToPersianDigits';
 import './Login.css';
+import {ClipLoader} from 'react-spinners';
+
 
 class LoginMd extends React.Component{
   constructor(props){
@@ -71,6 +73,8 @@ class LoginMd extends React.Component{
       },
       forgetPasswordInputHasError:false,
       forgetPasswordInputError:'خطایی وجود ندارد',
+
+      loginLoading : false,
     }
   }
 
@@ -123,7 +127,7 @@ class LoginMd extends React.Component{
   setReqParamsForLogin(){
     var spar = {phoneNumber:localStorage['phone-number'],
                 password : this.state.inputForLogin.password,};
-   this.setState({reqParamsForLogin:spar},()=>{this.getResponseForLogin()});
+   this.setState({reqParamsForLogin:spar,loginLoading:true},()=>{this.getResponseForLogin()});
   }
   setReqParamsForSignup(){
     var spar = {phoneNumber:localStorage['phone-number'],
@@ -176,6 +180,7 @@ class LoginMd extends React.Component{
      return response.json();
    })
    .then((loginResponse) => {
+     this.setState({loginLoading:false});
      this.handleLoginResponse(loginResponse);
    });
   }
@@ -582,7 +587,7 @@ class LoginMd extends React.Component{
                 onKeyDown ={(event)=>{this.handleLoginClickByEnter(event)}}/>
                 <p className={this.state.passIsNotCorrect?"log-in-false-pass-visible":"log-in-false-pass-hide"}>رمز عبور وارد شده اشتباه است.</p>
               <button color="blue" onClick={this.handleLoginClick.bind(this)} className="header-login-modal-button">
-                ورود
+                {this.state.loginLoading===true ? <ClipLoader color="white"/> : "ورود" }
               </button>
               <p onClick={()=>{this.handleForgetPassword(); this.setState({showForgetPasswordModal:true})}} className="login-modal-forget-password-paragraph">فراموشی رمز عبور</p>
             </div>

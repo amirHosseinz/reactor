@@ -210,9 +210,9 @@ class HeaderMD extends React.Component{
       <div className="login-modal-main">
         <Modal isOpen={this.state.loginPanelVisible}
           style={loginPhoneNumberStyle}
-          onRequestClose={()=>{this.setState({loginPanelVisible:false,cellPhone:''})}}>
+          onRequestClose={()=>{this.setState({wrongPhoneNumber:false , loginPanelVisible:false,cellPhone:''})}}>
           <div className="login1-modal">
-            <div onClick={()=>{this.setState({loginPanelVisible:false,cellPhone:''})}} className="close-modal-phone-number">
+            <div onClick={()=>{this.setState({wrongPhoneNumber:false , loginPanelVisible:false,cellPhone:''})}} className="close-modal-phone-number">
             </div>
             <p className="login-title-in-modal"> ورود / ثبت‌نام  </p>
             <div className="header-login-modal-divider">
@@ -550,9 +550,9 @@ class HeaderMD extends React.Component{
 
   render(){
     return(
-      <div>
+      <header>
         {this.renderRelevantHeaderBasedOnURL()}
-      </div>
+      </header>
     );
   }
 }
