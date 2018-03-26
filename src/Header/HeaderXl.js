@@ -14,6 +14,7 @@ import Modal from 'react-modal';
 import {Sticky} from 'react-sticky';
 import Autosuggest from 'react-autosuggest';
 import '../Styles/ModalCloseButton.css';
+import {ClipLoader} from 'react-spinners';
 
 
 const theme ={
@@ -64,6 +65,8 @@ class HeaderXl extends React.Component{
       searchParams:{
       phoneNumber: null,
       showMobileLoginPanel:false,
+      phoneNumberLoading : false,
+      wrongPhoneNumber : false,
       },
     };
   }
@@ -93,7 +96,6 @@ class HeaderXl extends React.Component{
      })
      .then((response) => {
        localStorage['token']= response.token;
-       console.log(window.location.pathname);
        if(window.location.pathname==='/userprofile'){
          window.location.href = '/';
        }
@@ -107,11 +109,12 @@ class HeaderXl extends React.Component{
     this.setState({loginPanelVisible:true});
   }
   getUserHasPasswordByEnter(event){
-    // console.log(event.key);
     if(event.key === 'Enter'){
+      this.setState({wrongPhoneNumber:false}); 
       this.getUserHasPassword();
     }
     if (['0','1','2','3','4','5','6','7','8','9'].indexOf(event.key)===-1){
+      this.setState({wrongPhoneNumber:false});
       if(event.key!=="Backspace"){
         event.preventDefault();
       }
@@ -208,9 +211,9 @@ class HeaderXl extends React.Component{
       <div className="login-modal-main">
         <Modal isOpen={this.state.loginPanelVisible}
           style={loginPhoneNumberStyle}
-          onRequestClose={()=>{this.setState({loginPanelVisible:false,cellPhone:''})}}>
+          onRequestClose={()=>{this.setState({loginPanelVisible:false,cellPhone:'',phoneNumberLoading:false})}}>
           <div className="login1-modal">
-            <div onClick={()=>{this.setState({loginPanelVisible:false,cellPhone:''})}} className="close-modal-phone-number">
+            <div onClick={()=>{this.setState({loginPanelVisible:false,cellPhone:'',phoneNumberLoading:false})}} className="close-modal-phone-number">
             </div>
             <p className="login-title-in-modal"> ورود / ثبت‌نام  </p>
             <div className="header-login-modal-divider">
@@ -227,16 +230,18 @@ class HeaderXl extends React.Component{
                       onChange={(event)=>{this.setState({cellPhone:englishToPersianDigits(event.target.value)})}}
                       autoComplete="off"
                       autoFocus={true}
-                      className="header-login-modal-input"
+                      className={this.state.wrongPhoneNumber===true ? "header-login-modal-input-wrong" : "header-login-modal-input"}
                       placeholder="مثال: ۰۹۱۲۰۰۰۰۰۰۰"
                       type="text"
                       onKeyDown ={(event)=> {this.getUserHasPasswordByEnter(event)}}
                       />
                       <br/>
                       <br/>
+                        <div className={this.state.wrongPhoneNumber===true ? "header-login-modal-input-error-visible" : "header-login-modal-input-error-hidden"}>شماره تلفن وارد شده اشتباه است </div>
                       <button className="header-login-modal-button" onClick={this.getUserHasPassword.bind(this)}>
-                        ادامه
+                        {this.state.phoneNumberLoading===true? <ClipLoader color="white"/> : "ادامه"}
                       </button>
+
                 </div>
               </div>
             </div>
@@ -302,9 +307,10 @@ class HeaderXl extends React.Component{
   setToken(){
     this.getRelevantToken();
   }
+
   setSearchParams(){
     var spar = {phoneNumber:persianArabicToEnglishDigits(this.state.cellPhone)};
-    this.setState({searchParams:spar},()=>{this.getDataFromServer()})
+    this.setState({searchParams:spar,phoneNumberLoading:true},()=>{this.getDataFromServer()})
   }
     getDataFromServer(){
       var request = new Request('https://www.trypinn.com/auth/api/user/check_account/', {
@@ -317,13 +323,25 @@ class HeaderXl extends React.Component{
       });
      fetch(request)
      .then((response) => {
-       return response.json();
+       this.setState({phoneNumberLoading:false});
+       if(response.status!==500 && response.status!== 400){
+         return response.json();
+       }
+       else{
+         this.setState({wrongPhoneNumber:true});
+         return;
+       }
      })
      .then((loginStatus) => {
-       localStorage['phone-number'] = this.state.searchParams.phoneNumber;
-       this.setState({hasPassword: loginStatus.has_pass,hasAccount:loginStatus.has_account});
-       this.setState({loginPanelVisible2 : true});
-       this.setState({loginPanelVisible: false});
+       if(loginStatus.is_successful===false){
+         this.setState({wrongPhoneNumber:true});
+       }
+       else{
+         localStorage['phone-number'] = this.state.searchParams.phoneNumber;
+         this.setState({hasPassword: loginStatus.has_pass,hasAccount:loginStatus.has_account});
+         this.setState({loginPanelVisible2 : true});
+         this.setState({loginPanelVisible: false});
+       }
      });
   }
   closeLoginPanel(){

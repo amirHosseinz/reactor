@@ -2880,6 +2880,21 @@ text-align: center;
   font-family: IRANSans;
   color: #454545 !important;
 }
+
+.header-login-modal-input-wrong{
+  height: 48px;
+  width: 100%;
+  border: solid;
+  outline : none;
+  border-color: #f54e4e;
+  border-width: 2px;
+  border-radius: 4px;
+  padding-right: 20px;
+  padding-right: 20px;
+  font-size: 18px;
+  font-family: IRANSans;
+  color: #454545 !important;
+}
 .header-login-modal-input-verify{
   height: 48px;
   width: 200px;
@@ -2922,6 +2937,10 @@ text-align: center;
   font-size: 18px;
   font-family: IRANSans;
   font-weight: 500;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header-login-modal-button:hover{

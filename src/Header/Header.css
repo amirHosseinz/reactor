@@ -81,7 +81,18 @@
   color: #12b2ce;
 }
 
-
+.header-login-modal-input-error-visible {
+  margin : auto ;
+  visibility: visible;
+  color : red;
+  font-family: IRANSans;
+}
+.header-login-modal-input-error-hidden {
+  visibility: hidden;
+  margin : auto ;
+  color : red;
+  font-family: IRANSans;
+}
 /* general styles finished */
 
 

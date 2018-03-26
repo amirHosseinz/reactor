@@ -143,14 +143,14 @@ class HouseDetailsXl extends React.Component{
  renderGallery(){
    var imageList = this.state.homeData.images.map(
      image=>{return(
-        <img src={"https://www.trypinn.com"+image.image} className="house-details-preview" width="540" height="480" alt = ""/>
+        <img src={"https://www.trypinn.com"+image.image} className="house-details-preview" width="540" height="480" alt = {image.title==="Room Picture"?"" :image.title} />
      )}
    );
    if(this.state.homeData!==''){
      return(
           <div onClick={()=>{this.setState({lightboxIsOpen:true})}} className="house-details-gallery">
 
-            <img src={"https://www.trypinn.com"+ this.state.homeData.preview_high} className="house-details-preview" width="540" height="480" alt = ""/>
+            <img src={"https://www.trypinn.com"+ this.state.homeData.preview_high} className="house-details-preview" width="540" height="480" alt ={this.state.homeData.title}/>
             <div className="row-reverse">
               {imageList}
             </div>
@@ -508,13 +508,29 @@ class HouseDetailsXl extends React.Component{
     }
   }
 
+  renderTitle(){
+    if (this.state.homeData===null || this.state.homeData===''){
+      return "";
+    }
+    else{
+      if(this.state.homeData.page_title===null){
+        return this.state.homeData.title +  " در " + this.state.homeData.location + ' | ' + "تریپین";
+      }
+      else{
+        return this.state.homeData.page_title + " | " + this.state.homeData.location + ' | ' + "تریپین";
+      }
+    }
+  }
+
   render(){
     return(
       <div>
         <MetaTags>
-        <title>{this.state.homeData===null || this.state.homeData===''? "تریپین":"تریپین | "  + this.state.homeData.title +  " در " + this.state.homeData.location}</title>
-         <meta name="description" content={this.state.homeData.title + " آدرس :  " + this.state.homeData.location + " ,قیمت :" + this.state.homeData.price  + " ,امتیاز : " + this.state.homeData.rating} />
-         <meta property="og:image" content={"https://www.trypinn.com" + this.state.homeData.preview_high}/>
+          <title>
+            {this.renderTitle()}
+          </title>
+           <meta name="description" content={this.state.homeData.title + " آدرس :  " + this.state.homeData.location + " ,قیمت :" + this.state.homeData.price  + " ,امتیاز : " + this.state.homeData.rating} />
+           <meta property="og:image" content={"https://www.trypinn.com" + this.state.homeData.preview_high}/>
         </MetaTags>
         {this.renderHouseDetailsVersion2()}
       </div>
