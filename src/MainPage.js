@@ -18,6 +18,7 @@ import Suggestions from './Suggestions.js';
 import {StickyContainer} from 'react-sticky';
 // import {generateSiteMap} from './sitemap.js';
 
+
 class MainPage extends React.Component{
   constructor(props){
     super(props);
@@ -213,7 +214,7 @@ class MainPage extends React.Component{
             <Route path={"/userprofile"} render={()=> {return(this.renderUserProfile())}}/>
             <Route exact path={"/search/:city"} render = {(props)=> {return(this.renderSearchResult(props))}}/>
             <Route path={"/partners/"} render={()=> {return(this.renderPartners())}}/>
-            <Route render={()=> {return(this.renderError404Page())}} />
+            <Route render={()=> {return(this.renderError404Page())}}/>
           </Switch>
         </div>
       </BrowserRouter>

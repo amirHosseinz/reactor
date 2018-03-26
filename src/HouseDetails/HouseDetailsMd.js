@@ -398,17 +398,17 @@ class HouseDetailsMd extends React.Component{
                       <div className="share-section">
                       <div className="share-icon-container-telegram">
                         <a className="share-link" href={"https://telegram.me/share/url?url=http://www.tripinn.ir/"+window.location.href.split("/")[window.location.href.split("/").length-2]+"/"+this.state.homeData.id  +"&text="+this.state.homeData.title}>
-                          <img height="24px" width="24px" className="share-icon" src={require('../HouseDetailParts/facilities/tripinn_telegram_share.png')} alt="به اشتراک گذاشتن در تلگرام"/>
+                          <img width="24px" className="share-icon" src={require('../HouseDetailParts/facilities/tripinn_telegram_share.png')} alt="به اشتراک گذاشتن در تلگرام"/>
                         </a>
                       </div>
                       <div className="share-icon-container-google-plus">
                         <a className="share-link" href={"https://plus.google.com/share?url=http://www.tripinn.ir/"+ window.location.href.split("/")[window.location.href.split("/").length-2] +"/" + this.state.homeData.id}>
-                          <img height="24px" width="24px" className="share-icon" src={require('../HouseDetailParts/facilities/tripinn_google_puls_share.png')} alt="به اشتراک گذاشتن در گوگل‌پلاس"/>
+                          <img width="24px" className="share-icon" src={require('../HouseDetailParts/facilities/tripinn_google_puls_share.png')} alt="به اشتراک گذاشتن در گوگل‌پلاس"/>
                         </a>
                       </div>
                       <div className="share-icon-container-twitter">
                         <a className="share-link" href={"https://twitter.com/intent/tweet?url=http://www.tripinn.ir/"+window.location.href.split("/")[window.location.href.split("/").length-2] +"/" + this.state.homeData.id}>
-                          <img height="24px" width="24px" className="share-icon" src={require('../HouseDetailParts/facilities/tripinn_twitter_share.png')} alt="به اشتراک گذاشتن در توییتر"/>
+                          <img width="24px" className="share-icon" src={require('../HouseDetailParts/facilities/tripinn_twitter_share.png')} alt="به اشتراک گذاشتن در توییتر"/>
                         </a>
                       </div>
                       </div>
