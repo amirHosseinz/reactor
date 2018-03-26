@@ -3031,6 +3031,10 @@ text-align: center;
 .setpass-password{
   width: 320px;
 }
+.setpass-password-wrong {
+  width : 320px;
+  border : solid 1px red;
+}
 .modal-signup-items{
 
   height: 80px;
