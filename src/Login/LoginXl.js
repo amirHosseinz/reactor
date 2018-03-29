@@ -14,7 +14,7 @@ class LoginXl extends React.Component{
       passIsNotCorrect:false,
       showSignUpOrSetPasswordModal:false,
       showVerificationModal:true,
-      showForgetPasswordModal:true,
+      showForgetPasswordModal:false,
       hasPassword : null,
       hasAccount : null,
       activeSignUpButton:false,
@@ -710,7 +710,7 @@ class LoginXl extends React.Component{
       return;
     }
     if(changePasswordResponse.errors.indexOf("This password is too common.")!==-1) {
-      this.setState({forgetPasswordInputHasError:true , forgetPasswordInputError:'رمز عبورانتخاب شده معتبر نیست'});
+      this.setState({forgetPasswordInputHasError:true , forgetPasswordInputError:'رمز عبور انتخاب شده معتبر نیست'});
       return;
     }
   }

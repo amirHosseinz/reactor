@@ -174,7 +174,6 @@ class SearchBarMD extends React.Component{
               <p className="search-bar-inter-destenation-text"> مقصد را وارد کنید:
               </p>
               <div className="search-bar-auto-suggest">
-
                 <div className="search-bar-auto-suggest-input">
                   <Autosuggest
                     theme={theme}

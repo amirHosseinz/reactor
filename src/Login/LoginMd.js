@@ -116,7 +116,7 @@ class LoginMd extends React.Component{
               password:this.state.inputForChangePassword.password,
               confirmPassword:this.state.inputForChangePassword.confirmPassword,
               cellPhone:persianArabicToEnglishDigits(this.props.cellPhone)};
-    this.setState({reqParamsForChangePassword:spar} ,()=>{this.getResponseForChangePassword()});
+    this.setState({reqParamsForChangePassword:spar,forgetPasswordLoading:true} ,()=>{this.getResponseForChangePassword()});
   }
 
   setReqParamsForVerification(){
@@ -693,6 +693,7 @@ class LoginMd extends React.Component{
     });
    fetch(request)
    .then((response) => {
+     this.setState({forgetPasswordLoading:false});
      return response.json();
    })
    .then((changePasswordResponse) => {
@@ -724,7 +725,7 @@ class LoginMd extends React.Component{
       return;
     }
     if(changePasswordResponse.errors.indexOf("This password is too common.")!==-1) {
-      this.setState({forgetPasswordInputHasError:true , forgetPasswordInputError:'رمز عبورانتخاب شده معتبر نیست'});
+      this.setState({forgetPasswordInputHasError:true , forgetPasswordInputError:'رمز عبور انتخاب شده معتبر نیست'});
       return;
     }
   }
