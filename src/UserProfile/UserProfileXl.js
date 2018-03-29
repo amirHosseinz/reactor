@@ -270,7 +270,7 @@ class UserProfileXl extends React.Component{
         </div>
       );
     }
-    else if (this.state.passConfirmationErrors.indexOf("Your password must contain at least 10 characters.") > -1) {
+    else if (this.state.passConfirmationErrors.indexOf("Your password must contain at least 6 characters.") > -1) {
       return(
         <div>
         رمز عبور شما باید بیش از 6 کارکتر باشد

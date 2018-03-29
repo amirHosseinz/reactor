@@ -1,6 +1,5 @@
 import React from 'react';
-import {Button,Divider,Checkbox} from 'semantic-ui-react';
-// import {Modal} from 'react-bootstrap';
+import {Checkbox} from 'semantic-ui-react';
 import Modal from 'react-modal';
 import {loginVerifySmsXl , registerNewUser , setPasswordStyle} from '../Styles.js';
 import {englishToPersianDigits, persianArabicToEnglishDigits} from '../tools/EnglishToPersianDigits';
@@ -15,7 +14,7 @@ class LoginXl extends React.Component{
       passIsNotCorrect:false,
       showSignUpOrSetPasswordModal:false,
       showVerificationModal:true,
-      showForgetPasswordModal:false,
+      showForgetPasswordModal:true,
       hasPassword : null,
       hasAccount : null,
       activeSignUpButton:false,
@@ -74,6 +73,7 @@ class LoginXl extends React.Component{
       forgetPasswordInputHasError:false,
       forgetPasswordInputError:'خطایی وجود ندارد',
       loginLoading : false,
+      forgetPasswordLoading : false,
     }
   }
 
@@ -116,7 +116,7 @@ class LoginXl extends React.Component{
               password:this.state.inputForChangePassword.password,
               confirmPassword:this.state.inputForChangePassword.confirmPassword,
               cellPhone:persianArabicToEnglishDigits(this.props.cellPhone)};
-    this.setState({reqParamsForChangePassword:spar} ,()=>{this.getResponseForChangePassword()});
+    this.setState({reqParamsForChangePassword:spar,forgetPasswordLoading:true} ,()=>{this.getResponseForChangePassword()});
   }
   setReqParamsForVerification(){
     var spar={verificationCode:persianArabicToEnglishDigits(this.state.inputForVerification.verificationCode),
@@ -318,7 +318,7 @@ class LoginXl extends React.Component{
                     <div className="header-login-modal-content-container">
                       <p  className="enter-phone-number-inmodal">شما کاربر تریپین بوده‌اید. برای استفاده از سایت تریپین کافی است رمز عبور خود را تعیین نمایید</p>
                       <div>
-                     <div dir="rtl" className="header-login-modal-verify-button-input-container"   onKeyDown={(event)=>{this.handleSetPasswordClickByenter(event)}}>
+                     <div dir="rtl" className="header-login-modal-verify-button-input-container" onKeyDown={(event)=>{this.handleSetPasswordClickByenter(event)}}>
                        <div className="modal-signup-items">
                          <p className="header-login-modal-input-label-right-align">رمز عبور </p>
                            <input id='password'
@@ -556,7 +556,7 @@ class LoginXl extends React.Component{
   changeVerificationCodeForChangePassword(event){
     var inputChangePassword={password: this.state.inputForChangePassword.password,
                              confirmPassword:this.state.inputForChangePassword.confirmPassword,
-                             verificationCode:event.target.value,}
+                             verificationCode:englishToPersianDigits(event.target.value),}
     this.setState({inputForChangePassword:inputChangePassword});
   }
 
@@ -599,6 +599,13 @@ class LoginXl extends React.Component{
     }
   }
 
+  checkInputIsNumber(event){
+    if (['0','1','2','3','4','5','6','7','8','9'].indexOf(event.key)===-1){
+      if(event.key!=="Backspace" && event.key!=="Tab"){
+        event.preventDefault();
+      }
+    }
+  }
   handleForgetPassword(){
     var request = new Request('https://www.trypinn.com/auth/api/user/edit/forgot_password/', {
       method: 'POST',
@@ -631,7 +638,7 @@ class LoginXl extends React.Component{
             <p className="forget-password-modal-input-paragraph">
               کد تأیید ارسال شده به تلفن همراه شما
             </p>
-            <input onChange={(event)=>{this.changeVerificationCodeForChangePassword(event)}} value={this.state.inputForChangePassword.verificationCode} type="numeric" className="forget-password-modal-input"/>
+            <input maxLength={4} onKeyDown={(event)=>{this.checkInputIsNumber(event)}} onChange={(event)=>{this.changeVerificationCodeForChangePassword(event)}} value={this.state.inputForChangePassword.verificationCode} type="numeric" className="forget-password-modal-input"/>
           </div>
           <div className="forget-password-modal-input-zone">
             <p className="forget-password-modal-input-paragraph">
@@ -648,7 +655,9 @@ class LoginXl extends React.Component{
           <div className={this.state.forgetPasswordInputHasError?"error-message-in-forget-password-modal":"error-message-in-forget-password-modal-hidden"}>
             {this.state.forgetPasswordInputError}
           </div>
-          <div onClick={()=>{this.handleChangePasswordRequest()}} className="forge-password-change-password-button"> تغییر رمز عبور</div>
+          <div onClick={()=>{this.handleChangePasswordRequest()}} className="forge-password-change-password-button">
+            {this.state.forgetPasswordLoading ? <ClipLoader color="white" /> : "تغییر رمز عبور"}
+          </div>
         </div>
       </Modal>
     );
@@ -663,13 +672,13 @@ class LoginXl extends React.Component{
         cell_phone : this.state.reqParamsForChangePassword.cellPhone,
         password : this.state.reqParamsForChangePassword.password,
         confirm_password : this.state.reqParamsForChangePassword.confirmPassword,
-        verification_code :this.state.reqParamsForChangePassword.verificationCode,
-    }),
+        verification_code :persianArabicToEnglishDigits(this.state.reqParamsForChangePassword.verificationCode)}),
       headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
       'Authorization': 'Token '+this.state.token,})
     });
    fetch(request)
    .then((response) => {
+     this.setState({forgetPasswordLoading:false});
      return response.json();
    })
    .then((changePasswordResponse) => {
@@ -677,10 +686,33 @@ class LoginXl extends React.Component{
    });
   }
   handleChangePasswordResponse(changePasswordResponse){
+    console.log(changePasswordResponse);
     if(changePasswordResponse.successful){
       localStorage['isLoggedIn']= 'true';
       localStorage['token'] = changePasswordResponse.token;
       this.setUserNameInHeader();
+  }
+  else{
+    if(changePasswordResponse.errors.indexOf("verification_code is required.")!==-1) {
+      this.setState({forgetPasswordInputHasError:true , forgetPasswordInputError:'کد تأیید وارد شده نادرست است'});
+      return;
+    }
+    if(changePasswordResponse.errors.indexOf("This password is too short. It must contain at least 6 characters.")!==-1) {
+      this.setState({forgetPasswordInputHasError:true , forgetPasswordInputError:'رمز عبور شما باید حداقل دارای شش کاراکتر باشد'});
+      return;
+    }
+    if(changePasswordResponse.errors.indexOf("This password is entirely numeric.")!==-1) {
+      this.setState({forgetPasswordInputHasError:true , forgetPasswordInputError:'کلمه عبور شما باید حداقل شامل یک حرف باشد'});
+      return;
+    }
+    if(changePasswordResponse.errors.indexOf("The password is too similar to the username.")!==-1) {
+      this.setState({forgetPasswordInputHasError:true , forgetPasswordInputError:'کلمه عبور شما مشابه دیگر اطلاعات کاربری شماست'});
+      return;
+    }
+    if(changePasswordResponse.errors.indexOf("This password is too common.")!==-1) {
+      this.setState({forgetPasswordInputHasError:true , forgetPasswordInputError:'رمز عبورانتخاب شده معتبر نیست'});
+      return;
+    }
   }
 }
 

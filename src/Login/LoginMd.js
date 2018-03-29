@@ -73,7 +73,7 @@ class LoginMd extends React.Component{
       },
       forgetPasswordInputHasError:false,
       forgetPasswordInputError:'خطایی وجود ندارد',
-
+      forgetPasswordLoading : false,
       loginLoading : false,
     }
   }
@@ -557,7 +557,7 @@ class LoginMd extends React.Component{
   changeVerificationCodeForChangePassword(event){
     var inputChangePassword={password: this.state.inputForChangePassword.password,
                              confirmPassword:this.state.inputForChangePassword.confirmPassword,
-                             verificationCode:event.target.value,}
+                             verificationCode:englishToPersianDigits(event.target.value),}
     this.setState({inputForChangePassword:inputChangePassword});
   }
   renderLoginPanel() {
@@ -613,6 +613,15 @@ class LoginMd extends React.Component{
    .then((forgetPasswordResponse) => {
    });
   }
+
+  checkInputIsNumber(event){
+    if (['0','1','2','3','4','5','6','7','8','9'].indexOf(event.key)===-1){
+      if(event.key!=="Backspace" && event.key!=="Tab"){
+        event.preventDefault();
+      }
+    }
+  }
+
   renderForgetPasswordModal(){
     return(
       <Modal isOpen={this.state.showForgetPasswordModal}
@@ -629,24 +638,26 @@ class LoginMd extends React.Component{
             <p className="forget-password-modal-input-paragraph">
             کد تأیید ارسال شده به تلفن همراه شما
             </p>
-            <input onChange={(event)=>{this.changeVerificationCodeForChangePassword(event)}} type="numeric" className="forget-password-modal-input"/>
+            <input maxLength={4} onKeyDown={(event)=>{this.checkInputIsNumber(event)}} value={this.state.inputForChangePassword.verificationCode} onChange={(event)=>{this.changeVerificationCodeForChangePassword(event)}} type="numeric" className="forget-password-modal-input"/>
           </div>
           <div className="forget-password-modal-input-zone">
             <p className="forget-password-modal-input-paragraph">
             رمز عبور
             </p>
-            <input onChange={(event)=>{this.changepasswordForChangePassword(event)}} type="password" className="forget-password-modal-input"/>
+            <input onChange={(event)=>{this.changepasswordForChangePassword(event)}} value={this.state.inputForChangePassword.password} type="password" className="forget-password-modal-input"/>
           </div>
           <div className="forget-password-modal-input-zone">
             <p className="forget-password-modal-input-paragraph">
             تکرار رمز عبور
             </p>
-            <input onChange={(event)=>{this.changeConfirmPasswordForChangePassword(event)}} type="password" className="forget-password-modal-input"/>
+            <input onChange={(event)=>{this.changeConfirmPasswordForChangePassword(event)}} value = {this.state.inputForChangePassword.confirmPassword} type="password" className="forget-password-modal-input"/>
           </div>
           <div className={this.state.forgetPasswordInputHasError?"error-message-in-forget-password-modal":"error-message-in-forget-password-modal-hidden"}>
             {this.state.forgetPasswordInputError}
           </div>
-          <div  onClick={()=>{this.handleChangePasswordRequest()}} className="forge-password-change-password-button"> تغییر رمز عبور</div>
+          <div  onClick={()=>{this.handleChangePasswordRequest()}} className="forge-password-change-password-button">
+            {this.state.forgetPasswordLoading ? <ClipLoader color="white" /> : "تغییر رمز عبور"}
+          </div>
         </div>
       </Modal>
     );
@@ -669,14 +680,13 @@ class LoginMd extends React.Component{
   }
 
   getResponseForChangePassword(){
-    // console.log(this.state.reqParamsForChangePassword);
     var request = new Request('https://www.trypinn.com/auth/api/user/edit/verify_forgot_password/', {
       method: 'POST',
       body: JSON.stringify({
         cell_phone : this.state.reqParamsForChangePassword.cellPhone,
         password : this.state.reqParamsForChangePassword.password,
         confirm_password : this.state.reqParamsForChangePassword.confirmPassword,
-        verification_code :this.state.reqParamsForChangePassword.verificationCode,
+        verification_code :persianArabicToEnglishDigits(this.state.reqParamsForChangePassword.verificationCode),
     }),
       headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
       'Authorization': 'Token '+this.state.token,})
@@ -695,6 +705,28 @@ class LoginMd extends React.Component{
       localStorage['isLoggedIn']= 'true';
       localStorage['token'] = changePasswordResponse.token;
       this.setUserNameInHeader();
+  }
+  else{
+    if(changePasswordResponse.errors.indexOf("verification_code is required.")!==-1) {
+      this.setState({forgetPasswordInputHasError:true , forgetPasswordInputError:'کد تأیید وارد شده نادرست است'});
+      return;
+    }
+    if(changePasswordResponse.errors.indexOf("This password is too short. It must contain at least 6 characters.")!==-1) {
+      this.setState({forgetPasswordInputHasError:true , forgetPasswordInputError:'رمز عبور شما باید حداقل دارای شش کاراکتر باشد'});
+      return;
+    }
+    if(changePasswordResponse.errors.indexOf("This password is entirely numeric.")!==-1) {
+      this.setState({forgetPasswordInputHasError:true , forgetPasswordInputError:'کلمه عبور شما باید حداقل شامل یک حرف باشد'});
+      return;
+    }
+    if(changePasswordResponse.errors.indexOf("The password is too similar to the username.")!==-1) {
+      this.setState({forgetPasswordInputHasError:true , forgetPasswordInputError:'کلمه عبور شما مشابه دیگر اطلاعات کاربری شماست'});
+      return;
+    }
+    if(changePasswordResponse.errors.indexOf("This password is too common.")!==-1) {
+      this.setState({forgetPasswordInputHasError:true , forgetPasswordInputError:'رمز عبورانتخاب شده معتبر نیست'});
+      return;
+    }
   }
 }
 

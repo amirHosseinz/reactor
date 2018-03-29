@@ -107,7 +107,7 @@
 }
 
 .error-message-in-forget-password-modal {
-  color:#f54e4e;
+  color: red;
   font-family: IRANSans;
   font-size: 14px;
   text-align : right;
