@@ -124,6 +124,83 @@
   visibility: hidden;
   line-height: 20px;
 }
+
+.set-pass-error-hidden {
+  visibility: hidden;
+  font-family: IRANSans;
+  font-size:14px;
+  margin-top : 0px;
+  color: red;
+}
+
+.set-pass-error-visible {
+  visibility: visible;
+  margin-top : 0px !important;
+  font-family: IRANSans;
+  font-size: 14px;
+  color: red;
+}
+
+.set-pass-password-wrong {
+  float: right;
+  height: 32px;
+  outline: none;
+  width : 344px;
+  padding: 2px 10px 2px;
+  border: solid 2px red;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  font-family: IRANSans;
+  font-weight: 400;
+  font-size: 14px;
+  color: #454545;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: #f2f2f2;
+}
+.set-pass-password-wrong:focus {
+  /* float: right; */
+  height: 32px;
+  outline: none;
+  width : 344px;
+  padding: 2px 10px 2px;
+  border: solid 2px red;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  font-family: IRANSans;
+  font-weight: 400;
+  font-size: 14px;
+  color: #454545;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: #f2f2f2;
+}
+
+.set-pass-password-right:focus {
+  border : solid 2px #7ad6e8;
+  outline: none;
+  background-color: #f2f7f9;
+  padding: 0px 8px 0px;
+  width : 344px;
+  height: 32px;
+}
+.set-pass-password-right {
+  /* float: right; */
+  height: 32px;
+  outline: none;
+  width : 344px;
+  padding: 2px 10px 2px;
+  border: none;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  font-family: IRANSans;
+  font-weight: 400;
+  font-size: 14px;
+  color: #454545;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: #f2f2f2;
+}
 /* general style finished */
 
 /* xl style here */

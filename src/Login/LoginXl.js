@@ -74,6 +74,13 @@ class LoginXl extends React.Component{
       forgetPasswordInputError:'خطایی وجود ندارد',
       loginLoading : false,
       forgetPasswordLoading : false,
+      setPasswordLoading : false,
+      signUpLoading : false,
+
+
+      setPasswordModalPasswordIsWrong : false,
+      setPasswordModalConfirmPasswordIsWrong : false,
+      setPasswordInputError : 'خطایی وجود ندارد',
     }
   }
 
@@ -90,6 +97,14 @@ class LoginXl extends React.Component{
     this.setTokenForSignup();
   }
   handleSetPasswordClick(){
+    if(this.state.inputForSetPassword.password===''){
+      this.setState({setPasswordModalPasswordIsWrong:true , setPasswordInputError:"لطفا رمز عبور خود را وارد کنید" });
+      return;
+    }
+    if(this.state.inputForSetPassword.confirmPassword!==this.state.inputForSetPassword.password){
+      this.setState({setPasswordModalConfirmPasswordIsWrong:true , setPasswordInputError:"رمز عبور وارد شده و تکرار آن یکسان نیستند"});
+      return;
+    }
     this.setTokenForSetPassword();
   }
   setTokenForSetPassword(){
@@ -142,7 +157,7 @@ class LoginXl extends React.Component{
                 password:this.state.inputForSetPassword.password,
                 confirmPassword:this.state.inputForSetPassword.confirmPassword,
                 verificationCode:persianArabicToEnglishDigits(this.state.inputForVerification.verificationCode)};
-    this.setState({reqParamsForSetPassword:spar},()=>{this.getResponseForSetPassword()});
+    this.setState({reqParamsForSetPassword:spar,setPasswordLoading:true},()=>{this.getResponseForSetPassword()});
   }
   getResponseForSetPassword(){
     var request = new Request('https://www.trypinn.com/auth/api/user/login/', {
@@ -158,9 +173,11 @@ class LoginXl extends React.Component{
     });
    fetch(request)
    .then((response) => {
+     this.setState({setPasswordLoading:false});
      return response.json();
    })
    .then((setPasswordResponse) => {
+     console.log(setPasswordResponse);
      this.handleSetPasswordResponse(setPasswordResponse);
    });
   }
@@ -188,6 +205,24 @@ class LoginXl extends React.Component{
       localStorage['isLoggedIn']= 'true';
       localStorage['token'] = setPasswordResponse.token;
       this.setUserNameInHeader();
+    }
+    else {
+      if(setPasswordResponse.errors.indexOf("This password is too short. It must contain at least 6 characters.")!==-1) {
+        this.setState({setPasswordModalPasswordIsWrong:true , setPasswordInputError:'رمز عبور شما باید حداقل دارای شش کاراکتر باشد'});
+        return;
+      }
+      if(setPasswordResponse.errors.indexOf("This password is entirely numeric.")!==-1) {
+        this.setState({setPasswordModalPasswordIsWrong:true , setPasswordInputError:'کلمه عبور شما باید حداقل شامل یک حرف باشد'});
+        return;
+      }
+      if(setPasswordResponse.errors.indexOf("The password is too similar to the username.")!==-1) {
+        this.setState({setPasswordModalPasswordIsWrong:true , setPasswordInputError:'کلمه عبور شما مشابه دیگر اطلاعات کاربری شماست'});
+        return;
+      }
+      if(setPasswordResponse.errors.indexOf("This password is too common.")!==-1) {
+        this.setState({setPasswordModalPasswordIsWrong:true , setPasswordInputError:'رمز عبور انتخاب شده معتبر نیست'});
+        return;
+      }
     }
   }
   handleLoginResponse(loginResponse){
@@ -316,13 +351,15 @@ class LoginXl extends React.Component{
                   <div className="header-login-modal-divider">
                   </div>
                     <div className="header-login-modal-content-container">
-                      <p  className="enter-phone-number-inmodal">شما کاربر تریپین بوده‌اید. برای استفاده از سایت تریپین کافی است رمز عبور خود را تعیین نمایید</p>
+                      <p  className="enter-phone-number-inmodal">
+                      کاربر گرامی شما در اپلیکیشن تریپین ثبت نام کرده‌اید. لطفاً برای حساب کاربری خود یک رمز عبور اختصاص دهید
+                      </p>
                       <div>
                      <div dir="rtl" className="header-login-modal-verify-button-input-container" onKeyDown={(event)=>{this.handleSetPasswordClickByenter(event)}}>
                        <div className="modal-signup-items">
                          <p className="header-login-modal-input-label-right-align">رمز عبور </p>
                            <input id='password'
-                           className="setpass-password  input-tripinn2"
+                           className={this.state.setPasswordModalPasswordIsWrong ? "set-pass-password-wrong" : "set-pass-password-right"}
                            type="password"
                            autoFocus={true}
                            value={this.state.inputForSetPassword.password}
@@ -331,13 +368,16 @@ class LoginXl extends React.Component{
                        <div className="modal-signup-items">
                          <p className="header-login-modal-input-label-right-align">تکرار رمز عبور</p>
                           <input id='confirm-password'
-                            className="setpass-password  input-tripinn2"
+                              className={this.state.setPasswordModalConfirmPasswordIsWrong ? "set-pass-password-wrong" : "set-pass-password-right"}
                               type="password"
                               value={this.state.inputForSetPassword.confirmPassword}
                               onChange={this.changeConfirmPasswordForSetPassword.bind(this)}/>
                        </div>
-                       <button  onClick={this.handleSetPasswordClick.bind(this)} className="header-login-modal-button-new-user">
-                         ذخیره
+                       <div className={this.state.setPasswordModalPasswordIsWrong || this.state.setPasswordModalConfirmPasswordIsWrong ? "set-pass-error-visible": "set-pass-error-hidden"}>
+                          {this.state.setPasswordInputError}
+                        </div>
+                       <button onClick={this.handleSetPasswordClick.bind(this)} className="header-login-modal-button-new-user">
+                           {this.state.setPasswordLoading ? <ClipLoader color="white" /> : "ذخیره "}
                        </button>
                        </div>
                      </div>
@@ -374,8 +414,7 @@ class LoginXl extends React.Component{
                      <input value={this.state.inputForSignUp.firstName}
                        onChange={this.changeFirstNameForSignUp.bind(this)}
                        className="singup-fa-input input-tripinn2"
-                       autoFox1cus={true}
-                     />
+                       autoFocus={true}/>
                    </div>
                    <div className="modal-signup-items">
                      <p className="header-login-modal-input-label-right-align"> نام خانوادگی</p>
@@ -494,13 +533,13 @@ class LoginXl extends React.Component{
     var inputSetPassword = {password : event.target.value ,
       confirmPassword : this.state.inputForSetPassword.confirmPassword,
       }
-    this.setState({inputForSetPassword:inputSetPassword});
+    this.setState({setPasswordModalPasswordIsWrong:false , inputForSetPassword:inputSetPassword});
   }
   changeConfirmPasswordForSetPassword(event){
     var inputSetPassword = {password : this.state.inputForSetPassword.password,
       confirmPassword : event.target.value,
       }
-    this.setState({inputForSetPassword:inputSetPassword});
+    this.setState({setPasswordModalConfirmPasswordIsWrong:false , inputForSetPassword:inputSetPassword});
   }
   changePasswordForSignUp(event){
     var inputSignUp={password : event.target.value ,
@@ -534,6 +573,7 @@ class LoginXl extends React.Component{
                }
     this.setState({inputForSignUp : inputSignUp});
   }
+
   changeVerificationCode(event){
     var inputVerification={verificationCode : englishToPersianDigits(event.target.value)};
     this.setState({inputForVerification : inputVerification});
@@ -665,7 +705,6 @@ class LoginXl extends React.Component{
 
 
   getResponseForChangePassword(){
-    console.log(this.state.reqParamsForChangePassword);
     var request = new Request('https://www.trypinn.com/auth/api/user/edit/verify_forgot_password/', {
       method: 'POST',
       body: JSON.stringify({

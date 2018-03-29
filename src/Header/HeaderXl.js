@@ -242,7 +242,6 @@ class HeaderXl extends React.Component{
                       <button className="header-login-modal-button" onClick={this.getUserHasPassword.bind(this)}>
                         {this.state.phoneNumberLoading===true? <ClipLoader color="white"/> : "ادامه"}
                       </button>
-
                 </div>
               </div>
             </div>

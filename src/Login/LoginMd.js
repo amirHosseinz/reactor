@@ -75,6 +75,13 @@ class LoginMd extends React.Component{
       forgetPasswordInputError:'خطایی وجود ندارد',
       forgetPasswordLoading : false,
       loginLoading : false,
+      setPasswordLoading : false,
+      signUpLoading : false,
+
+
+      setPasswordModalPasswordIsWrong : false,
+      setPasswordModalConfirmPasswordIsWrong : false,
+      setPasswordInputError : 'خطایی وجود ندارد',
     }
   }
 
@@ -91,6 +98,14 @@ class LoginMd extends React.Component{
     this.setTokenForSignup();
   }
   handleSetPasswordClick(){
+    if(this.state.inputForSetPassword.password===''){
+      this.setState({setPasswordModalPasswordIsWrong:true , setPasswordInputError:"لطفا رمز عبور خود را وارد کنید" });
+      return;
+    }
+    if(this.state.inputForSetPassword.confirmPassword!==this.state.inputForSetPassword.password){
+      this.setState({setPasswordModalConfirmPasswordIsWrong:true, setPasswordInputError:"رمز عبور وارد شده و تکرار آن یکسان نیستند"});
+      return;
+    }
     this.setTokenForSetPassword();
   }
   setTokenForSetPassword(){
@@ -143,7 +158,7 @@ class LoginMd extends React.Component{
                 password:this.state.inputForSetPassword.password,
                 confirmPassword:this.state.inputForSetPassword.confirmPassword,
                 verificationCode:persianArabicToEnglishDigits(this.state.inputForVerification.verificationCode)};
-    this.setState({reqParamsForSetPassword:spar},()=>{this.getResponseForSetPassword()});
+    this.setState({reqParamsForSetPassword:spar,setPasswordLoading:true},()=>{this.getResponseForSetPassword()});
   }
   getResponseForSetPassword(){
     var request = new Request('https://www.trypinn.com/auth/api/user/login/', {
@@ -159,6 +174,7 @@ class LoginMd extends React.Component{
     });
    fetch(request)
    .then((response) => {
+     this.setState({setPasswordLoading:false});
      return response.json();
    })
    .then((setPasswordResponse) => {
@@ -189,6 +205,24 @@ class LoginMd extends React.Component{
       localStorage['isLoggedIn']= 'true';
       localStorage['token'] = setPasswordResponse.token;
       this.setUserNameInHeader();
+    }
+    else {
+      if(setPasswordResponse.errors.indexOf("This password is too short. It must contain at least 6 characters.")!==-1) {
+        this.setState({setPasswordModalPasswordIsWrong:true , setPasswordInputError:'رمز عبور شما باید حداقل دارای شش کاراکتر باشد'});
+        return;
+      }
+      if(setPasswordResponse.errors.indexOf("This password is entirely numeric.")!==-1) {
+        this.setState({setPasswordModalPasswordIsWrong:true , setPasswordInputError:'کلمه عبور شما باید حداقل شامل یک حرف باشد'});
+        return;
+      }
+      if(setPasswordResponse.errors.indexOf("The password is too similar to the username.")!==-1) {
+        this.setState({setPasswordModalPasswordIsWrong:true , setPasswordInputError:'کلمه عبور شما مشابه دیگر اطلاعات کاربری شماست'});
+        return;
+      }
+      if(setPasswordResponse.errors.indexOf("This password is too common.")!==-1) {
+        this.setState({setPasswordModalPasswordIsWrong:true , setPasswordInputError:'رمز عبور انتخاب شده معتبر نیست'});
+        return;
+      }
     }
   }
 
@@ -315,13 +349,15 @@ class LoginMd extends React.Component{
                   <div className="header-login-modal-divider">
                   </div>
                     <div className="header-login-modal-content-container">
-                      <p  className="enter-phone-number-inmodal">شما کاربر تریپین بوده‌اید. برای استفاده از سایت تریپین کافی است رمز عبور خود را تعیین نمایید</p>
+                      <p  className="enter-phone-number-inmodal">
+                        کاربر گرامی شما در اپلیکیشن تریپین ثبت نام کرده‌اید. لطفاً برای حساب کاربری خود یک رمز عبور اختصاص دهید
+                      </p>
                       <div>
                      <div dir="rtl" className="header-login-modal-verify-button-input-container"   onKeyDown={(event)=>{this.handleSetPasswordClickByenter(event)}}>
                        <div className="modal-signup-items">
                          <p className="header-login-modal-input-label-right-align">رمز عبور </p>
                            <input id='password'
-                           className="setpass-password  input-tripinn2"
+                           className={this.state.setPasswordModalPasswordIsWrong ? "set-pass-password-wrong" : "set-pass-password-right"}
                            type="password"
                            autoFocus={true}
                            value={this.state.inputForSetPassword.password}
@@ -330,13 +366,16 @@ class LoginMd extends React.Component{
                        <div className="modal-signup-items">
                          <p className="header-login-modal-input-label-right-align">تکرار رمز عبور</p>
                           <input id='confirm-password'
-                            className="setpass-password  input-tripinn2"
+                              className={this.state.setPasswordModalConfirmPasswordIsWrong ? "set-pass-password-wrong" : "set-pass-password-right"}
                               type="password"
                               value={this.state.inputForSetPassword.confirmPassword}
                               onChange={this.changeConfirmPasswordForSetPassword.bind(this)}/>
                        </div>
-                       <button  onClick={this.handleSetPasswordClick.bind(this)} className="header-login-modal-button-new-user">
-                         ذخیره
+                       <div className={this.state.setPasswordModalPasswordIsWrong || this.state.setPasswordModalConfirmPasswordIsWrong ? "set-pass-error-visible": "set-pass-error-hidden"}>
+                          {this.state.setPasswordInputError}
+                        </div>
+                       <button onClick={this.handleSetPasswordClick.bind(this)} className="header-login-modal-button-new-user">
+                           {this.state.setPasswordLoading ? <ClipLoader color="white" /> : "ذخیره "}
                        </button>
                        </div>
                      </div>
@@ -598,7 +637,6 @@ class LoginMd extends React.Component{
     }
   }
   handleForgetPassword(){
-    console.log(this.props.cellPhone);
     var request = new Request('https://www.trypinn.com/auth/api/user/edit/forgot_password/', {
       method: 'POST',
       body: JSON.stringify({
