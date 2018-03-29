@@ -201,6 +201,89 @@
   text-overflow: clip;
   background: #f2f2f2;
 }
+
+.sign-up-password-wrong {
+  float: right;
+  height: 32px;
+  outline: none;
+  width : 344px;
+  padding: 2px 10px 2px;
+  border: solid 2px red;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  font-family: IRANSans;
+  font-weight: 400;
+  font-size: 14px;
+  color: #454545;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: #f2f2f2;
+  text-align: right;
+}
+.sign-up-password-wrong:focus {
+  /* float: right; */
+  height: 32px;
+  outline: none;
+  width : 344px;
+  padding: 2px 10px 2px;
+  border: solid 2px red;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  font-family: IRANSans;
+  font-weight: 400;
+  font-size: 14px;
+  color: #454545;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: #f2f2f2;
+  text-align: right;
+}
+
+.sign-up-password-right:focus {
+  border : solid 2px #7ad6e8;
+  outline: none;
+  background-color: #f2f7f9;
+  padding: 0px 8px 0px;
+  width : 344px;
+  height: 32px;
+  text-align: right;
+}
+.sign-up-password-right {
+  /* float: right; */
+  height: 32px;
+  outline: none;
+  width : 344px;
+  padding: 2px 10px 2px;
+  border: none;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  font-family: IRANSans;
+  font-weight: 400;
+  font-size: 14px;
+  color: #454545;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: #f2f2f2;
+  text-align: right;
+}
+
+.sign-up-error-hidden {
+  visibility: hidden;
+  float : right;
+  font-family: IRANSans;
+  font-size:14px;
+  margin-top : 0px;
+  color: red;
+}
+
+.sign-up-error-visible {
+  visibility: visible;
+  float : right;
+  margin-top : 0px !important;
+  font-family: IRANSans;
+  font-size: 14px;
+  color: red;
+}
 /* general style finished */
 
 /* xl style here */

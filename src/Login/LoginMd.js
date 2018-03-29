@@ -82,6 +82,13 @@ class LoginMd extends React.Component{
       setPasswordModalPasswordIsWrong : false,
       setPasswordModalConfirmPasswordIsWrong : false,
       setPasswordInputError : 'خطایی وجود ندارد',
+
+
+      signUpModalpasswordIsWrong : false,
+      signUpModalConfirmPasswordIsWrong : false,
+      signUpModalFirstNameIsWrong : false,
+      signUpModalLastNameIsWrong : false,
+      signUpModalInputError : 'خطایی وجود ندارد',
     }
   }
 
@@ -95,6 +102,27 @@ class LoginMd extends React.Component{
     this.setTokenForLogin();
   }
   handleSignupClick(){
+    if(this.state.inputForSignUp.firstName===''){
+      this.setState({signUpModalFirstNameIsWrong:true,signUpModalInputError : 'پر کردن تمام بخش ها اجباری است'});
+    }
+    if(this.state.inputForSignUp.lastName===''){
+      this.setState({signUpModalLastNameIsWrong:true,signUpModalInputError : 'پر کردن تمام بخش ها اجباری است'});
+    }
+    if(this.state.inputForSignUp.password===''){
+      this.setState({signUpModalpasswordIsWrong:true,signUpModalInputError : 'پر کردن تمام بخش ها اجباری است'});
+    }
+    if(this.state.inputForSignUp.confirmPassword===''){
+      this.setState({signUpModalConfirmPasswordIsWrong:true,signUpModalInputError : 'پر کردن تمام بخش ها اجباری است'});
+      return;
+    }
+    if(this.state.inputForSignUp.confirmPassword !== this.state.inputForSignUp.password){
+      this.setState({signUpModalConfirmPasswordIsWrong:true,signUpModalInputError : 'رمز عبور وارد شده و تکرار آن یکسان نیستند'});
+      return;
+    }
+    if(this.state.activeSignUpButton===false){
+      this.setState({signUpModalConfirmPasswordIsWrong:true,signUpModalInputError : ' برای ثبت‌نام موافقت با قوانین تریپین ضروری است'});
+      return;
+    }
     this.setTokenForSignup();
   }
   handleSetPasswordClick(){
@@ -151,7 +179,7 @@ class LoginMd extends React.Component{
                 verificationCode:persianArabicToEnglishDigits(this.state.inputForVerification.verificationCode),
                 firstName : this.state.inputForSignUp.firstName,
                 lastName : this.state.inputForSignUp.lastName};
-    this.setState({reqParamsForSignup:spar},()=>{this.getResponseForSignUp()});
+    this.setState({reqParamsForSignup:spar,signUpLoading:true},()=>{this.getResponseForSignUp()});
   }
   setReqParamsForSetPassword(){
     var spar = {phoneNumber:localStorage['phone-number'],
@@ -285,6 +313,7 @@ class LoginMd extends React.Component{
     });
    fetch(request)
    .then((response) => {
+     this.setState({signUpLoading : false});
      return response.json();
    })
    .then((signUpresponse) => {
@@ -296,6 +325,24 @@ class LoginMd extends React.Component{
       localStorage['isLoggedIn']= 'true';
       localStorage['token'] = signUpresponse.token;
       this.setUserNameInHeader();
+    }
+    else{
+      if(signUpresponse.errors.indexOf("This password is too short. It must contain at least 6 characters.")!==-1) {
+        this.setState({signUpModalpasswordIsWrong:true , signUpModalInputError:'رمز عبور شما باید حداقل دارای شش کاراکتر باشد'});
+        return;
+      }
+      if(signUpresponse.errors.indexOf("This password is entirely numeric.")!==-1) {
+        this.setState({signUpModalpasswordIsWrong:true , signUpModalInputError:'کلمه عبور شما باید حداقل شامل یک حرف باشد'});
+        return;
+      }
+      if(signUpresponse.errors.indexOf("The password is too similar to the username.")!==-1) {
+        this.setState({signUpModalpasswordIsWrong:true , signUpModalInputError:'کلمه عبور شما مشابه دیگر اطلاعات کاربری شماست'});
+        return;
+      }
+      if(signUpresponse.errors.indexOf("This password is too common.")!==-1) {
+        this.setState({signUpModalpasswordIsWrong:true , signUpModalInputError:'رمز عبور انتخاب شده معتبر نیست'});
+        return;
+      }
     }
   }
   getResponseForVerification(){
@@ -411,21 +458,21 @@ class LoginMd extends React.Component{
                      <p className="header-login-modal-input-label-right-align">نام </p>
                      <input value={this.state.inputForSignUp.firstName}
                        onChange={this.changeFirstNameForSignUp.bind(this)}
-                       className="singup-fa-input input-tripinn2"
-                       autoFox1cus={true}
+                       className={this.state.signUpModalFirstNameIsWrong ? "sign-up-password-wrong":"sign-up-password-right" }
+                       autoFocus={true}
                      />
                    </div>
                    <div className="modal-signup-items">
                      <p className="header-login-modal-input-label-right-align"> نام خانوادگی</p>
                      <input value={this.state.inputForSignUp.lastName}
                      onChange={this.changeLastNameForSignUp.bind(this)}
-                     className="singup-fa-input input-tripinn2"
+                     className={this.state.signUpModalLastNameIsWrong ? "sign-up-password-wrong":"sign-up-password-right" }
                      />
                    </div>
                    <div className="modal-signup-items">
                     <p className="header-login-modal-input-label-right-align">رمز عبور </p>
                     <input id='password'
-                     className="login-password  input-tripinn2"
+                     className={this.state.signUpModalpasswordIsWrong ? "sign-up-password-wrong":"sign-up-password-right" }
                      type="password"
                      value={this.state.inputForSignUp.password}
                      onChange={this.changePasswordForSignUp.bind(this)}/>
@@ -433,7 +480,7 @@ class LoginMd extends React.Component{
                    <div className="modal-signup-items">
                     <p className="header-login-modal-input-label-right-align"> تکرار رمز عبور </p>
                     <input id='confirm-password'
-                       className="login-password  input-tripinn2"
+                       className={this.state.signUpModalConfirmPasswordIsWrong ? "sign-up-password-wrong":"sign-up-password-right" }
                        type="password"
                        value={this.state.inputForSignUp.confirmPassword}
                        onChange={this.changeConfirmPasswordForSignUp.bind(this)}/>
@@ -443,11 +490,14 @@ class LoginMd extends React.Component{
                          onChange={(event)=>{this.activateSignUpButton(event)}}
                          />
                        <div className='sign-up-modal-aggreement-sentence'>
-                         <span>.</span><span>با </span ><span onClick={()=>{window.open('/terms&conditions')}} className='sign-up-modal-link-to-rules'> قوانین و مقررات</span> <span> تریپین موافقم </span>
+                         <span>با </span ><span onClick={()=>{window.open('/terms&conditions')}} className='sign-up-modal-link-to-rules'> قوانین و مقررات</span> <span> تریپین موافقم </span>
                        </div>
                    </div>
-                   <button className="header-login-modal-button-new-user"  disabled={!this.state.activeSignUpButton} onClick={this.handleSignupClick.bind(this)}>
-                        ثبت‌نام و ورود
+                   <div className={this.state.signUpModalLastNameIsWrong || this.state.signUpModalFirstNameIsWrong || this.state.signUpModalpasswordIsWrong || this.state.signUpModalConfirmPasswordIsWrong ? "sign-up-error-visible" : "sign-up-error-hidden"}>
+                    {this.state.signUpModalInputError}
+                   </div>
+                   <button className="header-login-modal-button-new-user" onClick={this.handleSignupClick.bind(this)}>
+                      {this.state.signUpLoading ? <ClipLoader color="white"/> : "ثبت‌نام و ورود"}
                    </button>
                  </div>
 
@@ -548,7 +598,7 @@ class LoginMd extends React.Component{
                  firstName : this.state.inputForSignUp.firstName,
                  lastName : this.state.inputForSignUp.lastName
                }
-    this.setState({inputForSignUp : inputSignUp});
+    this.setState({inputForSignUp : inputSignUp,signUpModalpasswordIsWrong:false});
   }
   changeConfirmPasswordForSignUp(event){
     var inputSignUp={password : this.state.inputForSignUp.password ,
@@ -556,7 +606,7 @@ class LoginMd extends React.Component{
                  firstName : this.state.inputForSignUp.firstName,
                  lastName : this.state.inputForSignUp.lastName
                }
-    this.setState({inputForSignUp : inputSignUp});
+    this.setState({inputForSignUp : inputSignUp,signUpModalConfirmPasswordIsWrong:false,});
   }
   changeFirstNameForSignUp(event){
     var inputSignUp={password : this.state.inputForSignUp.password ,
@@ -564,7 +614,7 @@ class LoginMd extends React.Component{
                  firstName : event.target.value,
                  lastName : this.state.inputForSignUp.lastName
                }
-    this.setState({inputForSignUp : inputSignUp});
+    this.setState({inputForSignUp : inputSignUp,signUpModalFirstNameIsWrong:false});
   }
   changeLastNameForSignUp(event){
     var inputSignUp={password :this.state.inputForSignUp.password ,
@@ -572,7 +622,7 @@ class LoginMd extends React.Component{
                  firstName : this.state.inputForSignUp.firstName,
                  lastName : event.target.value,
                }
-    this.setState({inputForSignUp : inputSignUp});
+    this.setState({inputForSignUp : inputSignUp,signUpModalLastNameIsWrong:false});
   }
   changeVerificationCode(event){
     var inputVerification={verificationCode : englishToPersianDigits(event.target.value)};
