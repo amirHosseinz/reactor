@@ -16,7 +16,6 @@ import Autosuggest from 'react-autosuggest';
 import '../Styles/ModalCloseButton.css';
 import {ClipLoader} from 'react-spinners';
 
-
 const theme ={
   container:                'header-searchbar-container',
   containerOpen:            'header-searchbar-container--open',
@@ -456,7 +455,7 @@ class HeaderXl extends React.Component{
 
   renderDownloadAppModal(){
     return(
-      <Modal isOpen={this.state.showDownloadAppModal}
+        <Modal isOpen={this.state.showDownloadAppModal}
             style={downloadAppModalStyle}
              onRequestClose={()=>{this.setState({showDownloadAppModal:false})}}>
               <div className="header-downlaod-app-modal-container">

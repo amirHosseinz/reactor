@@ -6,8 +6,10 @@ import './TripItem.css';
 import {Link} from 'react-router-dom';
 import {CancelButtonModalStyle} from '../Styles.js';
 import Modal from 'react-modal';
-moment.loadPersian({usePersianDigits:true , dialect:'persian-modern'});
+import Fade from 'react-reveal/Fade';
 
+
+moment.loadPersian({usePersianDigits:true , dialect:'persian-modern'});
 class TripItemXl extends React.Component{
   constructor(props){
     super(props);
@@ -276,26 +278,31 @@ class TripItemXl extends React.Component{
               <div className='no-trip-stage1-text col-md-7'>
                <p>پس از تایید درخواست سفر شما در بخش <Link className='tripinn-blue' to="/dashboard/request">درخواست ها </Link>توسط میزبان و پرداخت هزینه سفر توسط شما، سفر شما در این بخش ایجاد میشود </p>
                 </div>
-             <div  className='no-trip-stage1-img col-md-5'>
-
-                <img src={require('../Images/no-trip-pic1.png')} height="200" width="220"/>
+              <Fade right={true}>
+               <div className='no-trip-stage1-img col-md-5'>
+                 <img src={require('../Images/no-trip-pic1.png')} height="200" width="220"/>
                </div>
+              </Fade>
               </div>
             <div className='no-trip-stages-container'>
-              <div  className='no-trip-stage2-img col-md-5'>
-                <img src={require('../Images/no-trip-pic2.png')} height="150" width="180"/>
+              <Fade left={true}>
+                <div  className='no-trip-stage2-img col-md-5'>
+                  <img src={require('../Images/no-trip-pic2.png')} height="150" width="180"/>
                 </div>
-                <div  className='no-trip-stage2-text col-md-7'>
+              </Fade>
+                <div className='no-trip-stage2-text col-md-7'>
                 <p>شما میتوانید در بخش <Link className='tripinn-blue' to="/dashboard/trip"> سفرها</Link> آدرس دقیق مقصد خود وشماره تماس میزبان خودرا مشاهده نمایید</p>
                   </div>
                 </div>
                 <div className='no-trip-stages-container'>
                   <div  className='no-trip-stage3-text col-md-7'>
-                  <p>همچنین هنوز هم میتوانید سفر خودرا لغو نمایید. به خاطر داشته باشید با لغو سفر خود، <span className="mizban-color"> هزینه یک شب از اقامت شما کم خواهد شد </span> و مابقی مبلغ به شما عودت خواهد شد</p>
+                    <p>همچنین هنوز هم میتوانید سفر خودرا لغو نمایید. به خاطر داشته باشید با لغو سفر خود، <span className="mizban-color"> هزینه یک شب از اقامت شما کم خواهد شد </span> و مابقی مبلغ به شما عودت خواهد شد</p>
+                  </div>
+                  <Fade right={true}>
+                    <div className='no-trip-stage3-img col-md-5'>
+                      <img src={require('../Images/no-trip-pic3.png')} height="190" width="160"/>
                     </div>
-            <div  className='no-trip-stage3-img col-md-5'>
-              <img src={require('../Images/no-trip-pic3.png')} height="190" width="160"/>
-              </div>
+                  </Fade>
             </div>
           </div>
         );

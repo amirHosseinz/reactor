@@ -489,9 +489,6 @@ renderRequestCardVersion2(){
             <div className='no-request-stage1-image col-md-5'>
               <img src={require('../Images/no-req-pic2.png')} height="180" width="220"/>
               </div>
-            <div className='no-request-stage1-number col-md-1'>
-              ۱
-              </div>
             </div>
             <div className='no-request-stage2-container'>
               <div className='no-request-stage2-description col-md-10'>
@@ -502,9 +499,6 @@ renderRequestCardVersion2(){
                  با مقایسه نتایج و انتخاب هر نتیجه وارد صفحه جزئیات خانه خواهید شد و تمام امکانات و مشخصات آن را مشاهده خواهید کرد
                  </p>
                 </div>
-              <div className='no-request-stage2-number col-md-1'>
-              ۲
-               </div>
               </div>
           <div className='no-request-stage3-container'>
             <div className='no-request-stage3-image col-md-3'>
@@ -512,9 +506,6 @@ renderRequestCardVersion2(){
               </div>
             <div className='no-request-stage3-text col-md-8'>
              با انتخاب تعداد مهمان ها و تاریخ ورود و خروج هزینه نهایی رزرو خانه به شما نمایش داده خواهد شد. کافی است روی دکمه رزرو کلیک کنید تا درخواست شما ثبت شود
-             </div>
-            <div className='no-request-stage3-number col-md-1'>
-            ۳
              </div>
             </div>
           <div className='no-request-stage4-container'>
@@ -524,9 +515,6 @@ renderRequestCardVersion2(){
              <div className='no-request-stage4-image col-md-4'>
                    <img src={require('../Images/no-req-pic5.png')} height="180" width="200"/>
                </div>
-               <div className='no-request-stage4-number col-md-1'>
-               ۴
-                </div>
            </div>
           </div>
         );
