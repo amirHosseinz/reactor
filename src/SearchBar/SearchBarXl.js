@@ -149,10 +149,7 @@ class SearchBarXl extends React.Component{
    }
 
   onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method })=>{
-    ReactGA.event({
-      category: 'User',
-      action: 'Search For City'
-    });
+    ReactGA.event({category: 'User',action: 'Search For City'});
     this.setState({city:suggestionValue},()=>{this.handleClick()});
     // console.log(suggestionValue);
    }
