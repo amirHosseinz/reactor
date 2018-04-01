@@ -3,6 +3,10 @@ import "./SearchBar.css";
 import "../Styles/MainPage-SearchBar.css";
 import Autosuggest from 'react-autosuggest';
 import MetaTags from 'react-meta-tags';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-115538071-1');
+ReactGA.pageview(window.location.pathname);
+
 const listOfCity = [
   {name:'اصفهان',},{name:'نوشهر',},{name: 'گیلان',},{name:'رامسر'},{name:'کیش'},{name:'مازندران'},
   {name:'فریدون کنار'},{name:'محمودآباد'},{name:'عباس آباد'},{name:'شاندیز'},{name:'خراسان رضوی'},
@@ -146,7 +150,10 @@ class SearchBarMD extends React.Component{
    }
 
   onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method })=>{
-    // console.log(method);
+    ReactGA.event({
+      category: 'User',
+      action: 'Search For City'
+    });
     this.setState({city:suggestionValue},()=>{this.handleClick()});
     // console.log(suggestionValue);
    }

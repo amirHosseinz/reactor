@@ -8,7 +8,6 @@ import {Dropdown} from 'semantic-ui-react';
 import './Header.css';
 import '../Styles/Header-SearchBar.css';
 import {downloadAppModalStyle,loginPasswordStyle, loginPhoneNumberStyle, loginPanelmobileStyle , loginVerifySmsXl} from '../Styles.js';
-// import {Modal} from 'react-bootstrap';
 import {englishToPersianDigits,persianArabicToEnglishDigits} from '../tools/EnglishToPersianDigits';
 import {Image} from 'react-bootstrap';
 import Modal from 'react-modal';

@@ -3,6 +3,9 @@ import MetaTags from 'react-meta-tags';
 import "./SearchBar.css";
 import "../Styles/MainPage-SearchBar.css";
 import Autosuggest from 'react-autosuggest';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-115538071-1');
+ReactGA.pageview(window.location.pathname);
 
 
 const listOfCity = [
@@ -146,7 +149,10 @@ class SearchBarXl extends React.Component{
    }
 
   onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method })=>{
-    // console.log(method);
+    ReactGA.event({
+      category: 'User',
+      action: 'Search For City'
+    });
     this.setState({city:suggestionValue},()=>{this.handleClick()});
     // console.log(suggestionValue);
    }
