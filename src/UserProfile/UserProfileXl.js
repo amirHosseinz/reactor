@@ -8,8 +8,10 @@ import {UserProfileUploadPhotoModal} from '../Styles.js';
 import {ChangePassSuccessModal} from '../Styles.js';
 import {ChangePassFailedModal} from '../Styles.js';
 import Dropzone from 'react-dropzone';
-import {SyncLoader} from 'react-spinners';
+import {SyncLoader , ClipLoader} from 'react-spinners';
 import {parsePrice3digits} from '../tools/ParsePrice3digits.js';
+import Fade from 'react-reveal';
+import MetaTags from 'react-meta-tags';
 
 
 class UserProfileXl extends React.Component{
@@ -19,7 +21,7 @@ class UserProfileXl extends React.Component{
       ImgHint:false,
       token:null,
       role:null,
-      selectedPanel:"bookmark-list",
+      selectedPanel:"edit-profile",
       profileInfo:null,
       firstName:'',
       lastName:'',
@@ -35,11 +37,25 @@ class UserProfileXl extends React.Component{
       profilePicture : null,
       profilePictureFile : null,
       openPassConfirmationModal:false,
-      passConfirmationModal:'',
-      passConfirmation:true,
-      passConfirmationErrors:[],
+      openEditConfirmationModal : false,
+
+      editProfileLoading: false,
+      editPasswordLoading : false,
+      editProfileEmailHasError : false,
+      editProfileCellPhoneHasError : false,
+      editProfileNationalIdHasError : false,
+
+      editProfileInputHasError : false,
+      editProfileInputError :'خطایی وجود ندارد',
+
+      changePasswordOldPassHasError : false,
+      changePasswordNewPassHasError : false,
+      changePasswordConfirmPassHasError : false,
+      changePasswordInputHasError : false,
+      changePasswordInputError : 'خطایی وجود ندارد',
     };
   }
+
   componentWillMount() {
       this.setState({token:this.getRelevantToken()},()=>{this.setSearchParams(this.getRole())});
   }
@@ -52,9 +68,11 @@ class UserProfileXl extends React.Component{
   getRole(){
     return 'guest';
   }
+
   setSearchParams(person_role){
     this.setState({role :person_role } ,()=>this.getDataFromServer());
   }
+
   getDataFromServer(){
     var request = new Request('https://www.trypinn.com/auth/api/user/get_info/',{ //
       method: 'POST',
@@ -70,6 +88,7 @@ class UserProfileXl extends React.Component{
    });
    this.getBookmarkListFromServer();
   }
+
   getBookmarkListFromServer(){
     var request = new Request('https://www.trypinn.com/bookmark/api/list/',{ //
       method: 'POST',
@@ -81,11 +100,11 @@ class UserProfileXl extends React.Component{
      return response.json();
    })
    .then((list) => {
-     // console.log(list);
      this.setState({bookmarkList:list.faved_rooms});
    });
   }
-  renderData(profile){
+
+  renderData(profile) {
     this.setState({profileInfo:profile,
       profilePicture : "https://www.trypinn.com/" + profile.user.profile_picture,
       firstName:profile.user.first_name,
@@ -94,6 +113,7 @@ class UserProfileXl extends React.Component{
       email:profile.user.email,
       nationalId:profile.user.national_id,});
   }
+
   renderUploadImageHint(){
     if(this.state.ImgHint===false){
       return null;
@@ -158,7 +178,7 @@ class UserProfileXl extends React.Component{
       </Modal>
     );
   }
-                 // <ClimbingBoxLoader color={'#12b2ce'} loading={true} />
+
   handleChangeProfilePicture(){
     var fd = new FormData();
     fd.append('profile_picture' , this.state.profilePictureFile);
@@ -231,11 +251,28 @@ class UserProfileXl extends React.Component{
     }
 }
   handleSaveInfo(){
-        this.setState({role :this.getRole()} ,()=>this.changeInfoOnServer());
+        this.setState({role :this.getRole(),editProfileLoading:true} ,()=>this.changeInfoOnServer());
   }
 
   handleChangePassword(){
-    this.setState({role :this.getRole()} ,()=>this.changePasswordOnServer());
+    if(this.state.oldPassword===''){
+      this.setState({changePasswordInputHasError : true, changePasswordOldPassHasError:true,changePasswordInputError:'لطفا همه فیلد های لازم را پر کنید'});
+    }
+    if(this.state.password===''){
+      this.setState({changePasswordInputHasError : true, changePasswordNewPassHasError:true,changePasswordInputError:'لطفا همه فیلد های لازم را پر کنید'});
+    }
+    if(this.state.confirmPassword===''){
+      this.setState({changePasswordInputHasError : true, changePasswordConfirmPassHasError:true,changePasswordInputError:'لطفا همه فیلد های لازم را پر کنید'});
+      return;
+    }
+    if(this.state.oldPassword!=='' && this.state.password!=='' && this.state.confirmPassword !== ''){
+      if(this.state.confirmPassword!== this.state.password){
+          this.setState({changePasswordInputHasError : true, changePasswordConfirmPassHasError:true,changePasswordInputError:'رمز عبور جدید و تکرار آن یکسان نیستند'},);
+      }
+    }
+    if(this.state.oldPassword!=='' && this.state.password!=='' && this.state.confirmPassword !== '' && this.state.confirmPassword===this.state.password){
+      this.setState({role :this.getRole(),editPasswordLoading:true} ,()=>this.changePasswordOnServer());
+    }
   }
 
   changePasswordOnServer(){
@@ -253,96 +290,87 @@ class UserProfileXl extends React.Component{
     });
    fetch(request)
    .then((response) => {
+     this.setState({editPasswordLoading:false});
      return response.json();
    })
    .then((response) => {
-     // console.log(response);
-     this.setState({passConfirmation:response.successful,passConfirmationErrors:response.errors,openPassConfirmationModal:true})
-     this.setState({passConfirmationErrors:response.errors})
-   });
+     this.handleChangePasswordResponse(response);
+   })
+   .catch((error)=> {
+        if(error.message==="NetworkError when attempting to fetch resource."){
+          this.setState({editPasswordLoading:false,changePasswordInputError:'خطا در برقراری ارتباط با سرور', changePasswordInputHasError:true});
+        }
+      });
   }
-  handleChangePassErrors(){
-    // console.log(this.state.passConfirmationErrors);
-    if (this.state.passConfirmationErrors.indexOf("Your password can't be too similar to your other personal information.") > -1) {
-      return(
-        <div>
-       کلمه عبور شما مشابه دیگر اطلاعات کاربری شماست
-        </div>
-      );
-    }
-    else if (this.state.passConfirmationErrors.indexOf("Your password must contain at least 6 characters.") > -1) {
-      return(
-        <div>
-        رمز عبور شما باید بیش از 6 کارکتر باشد
-        </div>
-      );
-    }
-    else if (this.state.passConfirmationErrors.indexOf("Your password can't be entirely numeric.") > -1) {
-      return(
-        <div>
-    کلمه عبور شما باید حداقل شامل یک حرف باشد
-        </div>
-      );
-    }
-    else if (this.state.passConfirmationErrors.indexOf("invalid_password") > -1) {
-      return(
-        <div>
-    کلمه عبور وارد شده صحیح نمی‌باشد
-        </div>
-      );
-    }
-    else if (this.state.passConfirmationErrors.indexOf("not_match") > -1) {
-      return(
-        <div>
-    تکرار کلمه عبور وارد شده صحیح نمی‌باشد
-        </div>
-      );
-    }
-    else if (this.state.passConfirmationErrors.indexOf("Your password can't be a commonly used password.") > -1) {
-      return(
-        <div>
-        کلمه عبور وارد شده معتبر نمی‌باشد
-        </div>
-      );
-    }
-    else if (this.state.passConfirmationErrors.length===0) {
-      return(
-        <div>
-        لطفا از پر شدن تمام فیلدها اطمینان حاصل نمایید
-          </div>
-      );
-    }
-  }
-   renderPassConfirmationModal(){
-     if(this.state.passConfirmation===true){
-     return(
-       <Modal isOpen={this.state.openPassConfirmationModal}
-             onRequestClose={()=>{this.setState({openPassConfirmationModal:false})}}
-              style={ChangePassSuccessModal}>
-              <div className='change-pass-success-container'>
-              <p>رمز عبور شما با موفقیت تغییر کرد
-              <img className='change-pass-success-tick' src={require('../Images/changePassSuccess.svg')} width="40" height="40"/>
-              </p>
-              </div>
-              <button className='change-pass-success-button' onClick={()=>{this.setState({openPassConfirmationModal:false});window.location.reload()}}>
-              بستن
-              </button>
-      </Modal>
-    );
-  }
-  else {
-    return(
-      <Modal isOpen={this.state.openPassConfirmationModal}
-            onRequestClose={()=>{this.setState({openPassConfirmationModal:false})}}
-             style={ChangePassFailedModal}>
-             <div>
-              {this.handleChangePassErrors()}
-            </div>
 
-     </Modal>
-   );
+  handleChangePasswordResponse(response) {
+    if(response.successful){
+      this.setState({openPassConfirmationModal:true});
+    }
+    else {
+      if(response.errors.indexOf("invalid_password" )!==-1) {
+        this.setState({changePasswordOldPassHasError:true , changePasswordInputHasError:true , changePasswordInputError:'رمز عبور وارد شده اشتباه است'});
+        return;
+      }
+      if(response.errors.indexOf("This password is too short. It must contain at least 6 characters.")!==-1) {
+        this.setState({changePasswordNewPassHasError : true, changePasswordInputHasError:true , changePasswordInputError:'رمز عبور شما باید حداقل دارای شش کاراکتر باشد'});
+        return;
+      }
+      if(response.errors.indexOf("This password is entirely numeric.")!==-1) {
+        this.setState({changePasswordNewPassHasError : true, changePasswordInputHasError:true , changePasswordInputError:'کلمه عبور شما باید حداقل شامل یک حرف باشد'});
+        return;
+      }
+      if(response.errors.indexOf("The password is too similar to the username.")!==-1) {
+        this.setState({changePasswordNewPassHasError : true, changePasswordInputHasError:true , changePasswordInputError:'کلمه عبور شما مشابه دیگر اطلاعات کاربری شماست'});
+        return;
+      }
+      if(response.errors.indexOf("This password is too common.")!==-1) {
+        this.setState({changePasswordNewPassHasError : true, changePasswordInputHasError:true , changePasswordInputError:'رمز عبور انتخاب شده معتبر نیست'});
+        return;
+      }
+    }
   }
- }
+
+   renderEditConfirmationModal(){
+     if(this.state.openEditConfirmationModal) {
+       return(
+         <Modal isOpen={this.state.openEditConfirmationModal}
+                onRequestClose={()=>{this.setState({openEditConfirmationModal:false})}}
+                style={ChangePassSuccessModal}>
+            <div className='change-pass-success-container'>
+              <p>
+                اطلاعات کاربری شما با موفقیت تغییر کرد
+              </p>
+              <img className='change-pass-success-tick' src={require('../Images/changePassSuccess.svg')} width="40" height="40"/>
+              <button className='change-pass-success-button' onClick={()=>{this.setState({openEditConfirmationModal:false})}}>
+                بستن
+              </button>
+            </div>
+          </Modal>
+       );
+     }
+   }
+
+   renderPassConfirmationModal(){
+     if(this.state.openPassConfirmationModal===true){
+       return(
+         <Modal isOpen={this.state.openPassConfirmationModal}
+         onRequestClose={()=>{this.setState({openPassConfirmationModal:false,password : "" , confirmPassword: "" , oldPassword : ""})}}
+                style={ChangePassSuccessModal}>
+          <div className='change-pass-success-container'>
+            <p>
+              رمز عبور شما با موفقیت تغییر کرد
+            </p>
+            <img className='change-pass-success-tick' src={require('../Images/changePassSuccess.svg')} width="40" height="40"/>
+            <button className='change-pass-success-button' onClick={()=>{this.setState({openPassConfirmationModal:false,password : "" , confirmPassword:"" , oldPassword : ""})}}>
+              بستن
+            </button>
+          </div>
+        </Modal>
+      );
+    }
+  }
+
   changeInfoOnServer(){
     var request=new Request('https://www.trypinn.com/auth/api/user/edit/',{ //
       method: 'POST',
@@ -360,14 +388,43 @@ class UserProfileXl extends React.Component{
     });
    fetch(request)
    .then((response) => {
+     this.setState({editProfileLoading:false});
      return response.json();
    })
    .then((response) => {
-     localStorage['user-first-name']=this.state.firstName;
-     localStorage['user-last-name']=this.state.lastName;
-     window.location.reload();
-   });
+     if(response.successful){
+       this.setState({openEditConfirmationModal:true,editProfileInputHasError:false,});
+       localStorage['user-first-name']=this.state.firstName;
+       localStorage['user-last-name']=this.state.lastName;
+     }
+     else{
+       if(response.errors.indexOf('cell_phone')!==-1){
+         this.setState({editProfileLoading:false,editProfileCellPhoneHasError:true,editProfileInputError : 'شماره تلفن وارد شده اشتباه است'});
+       }
+       if(response.errors.indexOf('invalid_email')!==-1){
+         this.setState({editProfileLoading:false,editProfileEmailHasError:true ,editProfileInputError : 'ایمیل وارد شده اشتباه است'});
+       }
+       if(response.errors.indexOf('invalid_national_id')!==-1){
+         this.setState({editProfileLoading:false,editProfileNationalIdHasError:true , editProfileInputError :'کد ملی وارد شده اشتباه است'});
+       }
+       if(response.errors.indexOf('exist_email')!==-1){
+         this.setState({editProfileLoading:false,editProfileEmailHasError:true , editProfileInputError :'ایمیل وارد شده قبلا توسط شخص دیگری استفاده شده است'});
+       }
+       if(response.errors.indexOf('exist_national_id')!==-1){
+         this.setState({editProfileLoading:false,editProfileNationalIdHasError:true , editProfileInputError :'شماره ملی وارد شده قبلا توسط شخص دیگری استفاده شده است'});
+       }
+       if(this.state.editProfileEmailHasError || this.state.editProfileNationalIdHasError || this.state.editProfileCellPhoneHasError){
+         this.setState({editProfileInputHasError : true});
+       }
+     }
+   })
+   .catch((error)=> {
+        if(error.message==="NetworkError when attempting to fetch resource."){
+          this.setState({editProfileLoading:false,editProfileInputError:'خطا در برقراری ارتباط با سرور', editProfileInputHasError:true});
+        }
+      });
   }
+
   editFirstName(event){
     this.setState({firstName : event.target.value});
   }
@@ -393,13 +450,6 @@ class UserProfileXl extends React.Component{
     this.setState({oldPassword:event.target.value});
   }
 
-
-  // <div className="user-profile-in-details-link">
-  //  پیام‌ها
-  // </div>
-  // <div className="user-profile-in-details-link">
-  //   مکان‌های مورد علاقه
-  // </div>
   renderUserProfileDetailsSection(){
     if(this.state.profileInfo!==null){
       return(
@@ -475,7 +525,7 @@ class UserProfileXl extends React.Component{
     if(this.state.selectedPanel==="edit-profile"){
       return(
         <div className="user-profile-edit-main-division">
-        <div className="user-profile-edit-secondary-heading`">
+        <div className="user-profile-edit-secondary-heading">
           <p className="user-profile-edit-secondary-heading-title">
             مشخصات کاربری
           </p>
@@ -483,7 +533,7 @@ class UserProfileXl extends React.Component{
            بر اساس قوانین، اطلاعات مندرج شما در این سامانه محفوظ خواهد ماند.
           </p>
         </div>
-        <div className="user-profile-edit-get-data-zone">
+        <div onKeyDown={()=>{this.setState({editProfileInputHasError:this.state.editProfileEmailHasError || this.state.editProfileNationalIdHasError || this.state.editProfileCellPhoneHasError })}} className="user-profile-edit-get-data-zone">
           <div className="user-profile-edit-input-paragraph">
             <span className="user-profile-edit-input-paragraph-title">
             نام
@@ -511,7 +561,7 @@ class UserProfileXl extends React.Component{
           (از این شماره برای ورود به اپلیکیشن و سایت سامانه استفاده خواهد شد)
             </span>
           </div>
-          <input value={englishToPersianDigits(this.state.cellPhone)} onChange={(event)=>{this.editCellPhone(event)}}className="user-profile-edit-input" />
+          <input onKeyDown={(event)=>{this.setState({editProfileCellPhoneHasError:false})}} value={englishToPersianDigits(this.state.cellPhone)} onChange={(event)=>{this.editCellPhone(event)}} className={this.state.editProfileCellPhoneHasError ? "user-profile-edit-input-wrong": "user-profile-edit-input"} />
         </div>
         <div className="user-profile-edit-get-data-zone">
           <div className="user-profile-edit-input-paragraph">
@@ -523,7 +573,7 @@ class UserProfileXl extends React.Component{
           (ثبت کد ملی صحیح و منطبق با نام و نام خانوادگی برای رزرو ضروری می‌باشد)
             </span>
           </div>
-          <input value={englishToPersianDigits(this.state.nationalId)} onChange={(event)=>{this.editNationalId(event)}} className="user-profile-edit-input"/>
+          <input onKeyDown={(event)=>{this.setState({editProfileNationalIdHasError:false})}} value={englishToPersianDigits(this.state.nationalId)} onChange={(event)=>{this.editNationalId(event)}} className={this.state.editProfileNationalIdHasError ? "user-profile-edit-input-wrong": "user-profile-edit-input"}/>
         </div>
         <div className="user-profile-edit-get-data-zone">
           <div className="user-profile-edit-input-paragraph">
@@ -535,10 +585,15 @@ class UserProfileXl extends React.Component{
             (اختیاری)
             </span>
           </div>
-          <input value={this.state.email} onChange={(event)=>{this.editEmail(event)}} className="user-profile-edit-input" />
+          <input onKeyDown={(event)=>{this.setState({editProfileEmailHasError:false})}} value={this.state.email} onChange={(event)=>{this.editEmail(event)}} className={this.state.editProfileEmailHasError ? "user-profile-edit-input-wrong": "user-profile-edit-input"} />
         </div>
+        <Fade bottom={true} collapse={false} when={this.state.editProfileInputHasError}>
+          <div className="edit-profile-input-error-visible">
+            {this.state.editProfileInputError}
+          </div>
+        </Fade>
         <button onClick={()=>{this.handleSaveInfo()}}className="user-profile-edit-save-changes-button">
-                    ذخیره تغییرات
+          {this.state.editProfileLoading ? <ClipLoader size={30} color="white"/> : "ذخیره تغییرات"}
         </button>
         <hr className="user-profile-edit-divider"/>
         <div className="user-profile-edit-secondary-heading">
@@ -555,7 +610,7 @@ class UserProfileXl extends React.Component{
            رمز عبور فعلی
             </span>
           </div>
-          <input type="password" value={this.state.oldPassword} onChange={(event)=>{this.editOldPassoword(event)}} className="user-profile-edit-input-password-section" />
+            <input onKeyDown={()=>{this.setState({changePasswordOldPassHasError:false})}} type="password" value={this.state.oldPassword} onChange={(event)=>{this.editOldPassoword(event)}} className={this.state.changePasswordOldPassHasError ?"user-profile-edit-input-password-section-wrong" :"user-profile-edit-input-password-section" } />
         </div>
         <div className="user-profile-edit-get-data-zone">
           <div className="user-profile-edit-input-paragraph">
@@ -563,7 +618,7 @@ class UserProfileXl extends React.Component{
               رمز عبور جدید
             </span>
           </div>
-          <input type="password" value={this.state.password} onChange={(event)=>{this.editPassword(event)}}className="user-profile-edit-input-password-section"/>
+          <input onKeyDown={()=>{this.setState({changePasswordNewPassHasError:false})}}  type="password" value={this.state.password} onChange={(event)=>{this.editPassword(event)}} className={this.state.changePasswordNewPassHasError ?"user-profile-edit-input-password-section-wrong" :"user-profile-edit-input-password-section" }/>
         </div>
         <div className="user-profile-edit-get-data-zone">
           <div className="user-profile-edit-input-paragraph">
@@ -571,10 +626,15 @@ class UserProfileXl extends React.Component{
                تکرار رمز عبور جدید
             </span>
           </div>
-          <input type="password" value={this.state.confirmPassword} onChange={(event)=>{this.editConfirmPassword(event)}}className="user-profile-edit-input-password-section"/>
+          <input onKeyDown={()=>{this.setState({changePasswordConfirmPassHasError:false})}} type="password" value={this.state.confirmPassword} onChange={(event)=>{this.editConfirmPassword(event)}} className={this.state.changePasswordConfirmPassHasError ?"user-profile-edit-input-password-section-wrong" :"user-profile-edit-input-password-section" }/>
         </div>
-        <button onClick={()=>{this.handleChangePassword()}} className="user-profile-edit-save-changes-button">
-                    تغییر رمز عبور
+        <Fade bottom={true} collapse={false} when={this.state.changePasswordInputHasError}>
+          <div className="edit-profile-input-error-visible">
+            {this.state.changePasswordInputError}
+          </div>
+        </Fade>
+        <button onClick={()=>{this.setState({changePasswordInputHasError:false},()=>{this.handleChangePassword()})}} className="user-profile-edit-save-changes-button">
+          {this.state.editPasswordLoading ? <ClipLoader color="white" size={30}/> : "تغییر رمز عبور"}
         </button>
         </div>
       );
@@ -710,11 +770,15 @@ class UserProfileXl extends React.Component{
   render(){
     return(
       <div className="user-profile-main-division">
+        <meta name="description" content="noindex"/>
+        <MetaTags>
+          <title> تریپین | حساب کاربری من</title>
+        </MetaTags>
         {this.renderUploadPhotoModal()}
         {this.renderUserProfileDetailsSection()}
         {this.renderUserProfileEditSectionVersion2()}
         {this.renderPassConfirmationModal()}
-
+        {this.renderEditConfirmationModal()}
       </div>
     );
   }

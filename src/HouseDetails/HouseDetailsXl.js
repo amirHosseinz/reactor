@@ -21,6 +21,7 @@ import Lightbox from 'react-images';
 import MetaTags from 'react-meta-tags';
 import {Link} from 'react-router-dom';
 
+
 class HouseDetailsXl extends React.Component{
   constructor(props){
     super(props);
@@ -221,6 +222,11 @@ class HouseDetailsXl extends React.Component{
  }
 
  handleLike(){
+   if(localStorage['isLoggedIn']==="false") {
+    this.props.enableTriggerLogin();
+    return;
+   }
+   this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
    switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
      case 'rooms':{
        var request = new Request('https://www.trypinn.com/bookmark/api/like/', {
@@ -237,7 +243,7 @@ class HouseDetailsXl extends React.Component{
       })
       .then((likeResponse) => {
         if(likeResponse.successful===true){
-          this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
+          // this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
         }
       });
        break;
@@ -267,6 +273,7 @@ class HouseDetailsXl extends React.Component{
  }
 
  handleUnlike(){
+   this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
    switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
      case 'rooms':{
        var request = new Request('https://www.trypinn.com/bookmark/api/unlike/', {
@@ -284,7 +291,7 @@ class HouseDetailsXl extends React.Component{
       })
       .then((unlikeResponse) => {
         if(unlikeResponse.successful===true){
-          this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
+          // this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
         }
       });
        break;

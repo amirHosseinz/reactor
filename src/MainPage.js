@@ -23,17 +23,23 @@ class MainPage extends React.Component{
   constructor(props){
     super(props);
     this.state ={
-      loginPanelVisible: false,
-      houseDetail: null,
+      triggerLogin : false,
     };
   }
 
+  enableTriggerLogin(){
+    this.setState({triggerLogin:true});
+  }
+
+  disableTriggerLogin(){
+    this.setState({triggerLogin:false});
+  }
   renderSearchBar(props) {
     return (<SearchBar {...props} />);
   }
   renderHeader(props){
     return (
-      <Header {...props}/>
+      <Header {...props} triggerLogin={this.state.triggerLogin} disableTriggerLogin={this.disableTriggerLogin.bind(this)}/>
     );
   }
   renderFooter() {
@@ -45,7 +51,7 @@ class MainPage extends React.Component{
   }
   renderHouseDetails() {
     return(
-      <HouseDetails houseDetail={this.state.houseDetail}/>
+      <HouseDetails enableTriggerLogin={this.enableTriggerLogin.bind(this)}/>
     );
   }
   getHouseId(){
@@ -77,7 +83,6 @@ class MainPage extends React.Component{
     <ContactUs/>
   ) ;
   }
-
   getGuestTokenFromServer(){
     if (localStorage['isLoggedIn']!=='true'){
       var request = new Request('https://www.trypinn.com/auth/api/user/login_guest/',{

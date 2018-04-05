@@ -187,7 +187,7 @@ class SearchResultXl extends React.Component{
                           startDateId="your_unique_start_date_id"
                           endDate={this.state.endDate}
                           endDateId="your_unique_end_date_id"
-                          onDatesChange={({startDate,endDate})=>{this.setState({startDate:startDate,endDate:endDate})}}
+                          onDatesChange={({startDate,endDate})=>{this.setState({startDate:startDate,endDate:endDate},()=>{this.handleClick()})}}
                           focusedInput={this.state.focusedInput}
                           reopenPickerOnClearDates={true}
                           onFocusChange={focusedInput => this.setState({focusedInput})}

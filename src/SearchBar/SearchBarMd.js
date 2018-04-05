@@ -9,7 +9,7 @@ ReactGA.pageview(window.location.pathname);
 
 const listOfCity = [
   {name:'اصفهان',},{name:'نوشهر',},{name: 'گیلان',},{name:'رامسر'},{name:'کیش'},{name:'مازندران'},
-  {name:'فریدون کنار'},{name:'محمودآباد'},{name:'عباس آباد'},{name:'شاندیز'},{name:'خراسان رضوی'},
+  {name:'فریدون‌کنار'},{name:'محمودآباد'},{name:'عباس آباد'},{name:'شاندیز'},{name:'خراسان رضوی'},
   {name:'بندر انزلی'},{name:'کاشان'},{name:'باغ بهادران'},{name:'قلعه رودخان'},{name:'مشهد'},
   {name:'چمخاله'},{name:'رودسر'},{name:'فومن'},{name:'رضوان‌شهر'},{name:'زیباکنار'},
   {name:'آستارا'},{name:'چالوس'},{name:'دریاکنار'},{name:'نور'},{name:'رویان'},{name:'بابلسر'},
@@ -22,7 +22,7 @@ const listOfCity = [
 const theme= {
     container:                'main-page-searchbar-container',
     containerOpen:            'main-page-searchbar-container--open',
-    input:                    'main-page-searchbar-input',
+    input:                    'main-page-searchbar-input-md',
     inputOpen:                'main-page-searchbar-input--open',
     inputFocused:             'main-page-searchbar-input--focused',
     suggestionsContainer:     'main-page-searchbar-suggestions-container-md',

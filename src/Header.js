@@ -37,8 +37,7 @@ class Header extends React.Component{
     );
   }
 
-  render()
-  {
+  render() {
     return (
       <div>
         {this.renderHeaderXl(this.props)}

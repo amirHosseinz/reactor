@@ -38,12 +38,13 @@
   position: absolute;
   font-size: 1rem;
 }
+
 .search-bar-auto-suggest-input{
   width: 680px !important;
 }
 .main-page-searchbar-container{
   height: 70px !important;
-  width: 680px !important;
+  /* width: 680px !important; */
 }
 
 .main-page-searchbar-container--open{
@@ -53,6 +54,17 @@
   font-family: Shabnam !important;
   height: 70px !important;
   width: 680px !important;
+  font-size: 24px !important;
+  border: none !important;
+  padding: 0px 30px !important;
+  margin-top: 3px !important;
+  background-color: transparent !important;
+}
+
+.main-page-searchbar-input-md{
+  font-family: Shabnam !important;
+  height: 70px !important;
+  width: 510px !important;
   font-size: 24px !important;
   border: none !important;
   padding: 0px 30px !important;
@@ -111,6 +123,7 @@
   background-color: #05bedd;
   border-radius: 15px 0px 0px 15px;
   border: none;
+  cursor : pointer;
 }
 .search-bar-search-button:hover{
   background-color: #1ba7be;

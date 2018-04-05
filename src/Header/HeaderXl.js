@@ -35,7 +35,7 @@ const theme ={
 
 const listOfCity = [
   {name:'اصفهان',},{name:'نوشهر',},{name: 'گیلان',},{name:'رامسر'},{name:'کیش'},{name:'مازندران'},
-  {name:'فریدون کنار'},{name:'محمودآباد'},{name:'عباس آباد'},{name:'شاندیز'},{name:'خراسان رضوی'},
+  {name:'فریدون‌کنار'},{name:'محمودآباد'},{name:'عباس آباد'},{name:'شاندیز'},{name:'خراسان رضوی'},
   {name:'بندر انزلی'},{name:'کاشان'},{name:'باغ بهادران'},{name:'قلعه رودخان'},{name:'مشهد'},
   {name:'چمخاله'},{name:'رودسر'},{name:'فومن'},{name:'رضوان‌شهر'},{name:'زیباکنار'},
   {name:'آستارا'},{name:'چالوس'},{name:'دریاکنار'},{name:'نور'},{name:'رویان'},{name:'بابلسر'},
@@ -72,13 +72,19 @@ class HeaderXl extends React.Component{
   componentDidMount(){
     this.interval = setInterval(() => this.reloadHeader(), 1000);
   }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.triggerLogin===true){
+      this.setState({loginPanelVisible:true},()=>{this.props.disableTriggerLogin()});
+      this.setState({loginPanelVisible:false,});
+    }
+  }
   handleSignOutButton(){
     localStorage['isLoggedIn']='false';
     localStorage['user-profile-picture']='';
     localStorage['user-first-name']='';
     localStorage['user-last-name']='';
     localStorage['default-panel']='';
-    // window.location.href = '/';
     this.getGuestTokenFromServer();
   }
 
@@ -87,7 +93,7 @@ class HeaderXl extends React.Component{
       var request = new Request('https://www.trypinn.com/auth/api/user/login_guest/',{
         method: 'POST',
         headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
-                              })
+        })
       });
      fetch(request)
      .then((response) => {
@@ -291,6 +297,7 @@ class HeaderXl extends React.Component{
     if (this.state.isLoggedIn!== localStorage['isLoggedIn']){
       this.setState({isLoggedIn:localStorage['isLoggedIn']});
     }
+
   }
   getUserHasPassword(){
     this.setToken();
@@ -343,6 +350,7 @@ class HeaderXl extends React.Component{
        }
      });
   }
+
   closeLoginPanel(){
     this.setState({loginPanelVisible2:false,cellPhone:''});
   }

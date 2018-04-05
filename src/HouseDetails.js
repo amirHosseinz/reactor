@@ -6,44 +6,45 @@ import HouseDetailsSm from './HouseDetails/HouseDetailsSm.js';
 
 
 class HouseDetails extends React.Component {
-  renderHouseDetailsXl(){
+  renderHouseDetailsXl(props){
     return(
       <div className="hidden-xs hidden-md hidden-sm visible-xl">
-        <HouseDetailsXl />
+        <HouseDetailsXl {...props}/>
       </div>
     );
   }
 
-  renderHouseDetailsMd(){
+  renderHouseDetailsMd(props){
     return(
       <div className="hidden-xs hidden-xl hidden-sm visible-md">
-        <HouseDetailsMd />
+        <HouseDetailsMd {...props}/>
       </div>
     );
   }
 
-  renderHouseDetailsXs(){
+  renderHouseDetailsXs(props){
     return(
       <div className="hidden-xl hidden-md hidden-sm visible-xs">
-        <HouseDetailsXs />
+        <HouseDetailsXs {...props}/>
       </div>
     );
   }
 
-  renderHouseDetailsSm(){
+  renderHouseDetailsSm(props){
     return(
       <div className="hidden-xs hidden-md hidden-xl visible-sm">
-        <HouseDetailsSm />
+        <HouseDetailsSm {...props}/>
       </div>
     );
   }
+
   render(){
     return(
       <div>
-        {this.renderHouseDetailsXl()}
-        {this.renderHouseDetailsXs()}
-        {this.renderHouseDetailsMd()}
-        {this.renderHouseDetailsSm()}
+        {this.renderHouseDetailsXl(this.props)}
+        {this.renderHouseDetailsXs(this.props)}
+        {this.renderHouseDetailsMd(this.props)}
+        {this.renderHouseDetailsSm(this.props)}
       </div>
     );
 }

@@ -225,7 +225,7 @@ export const ChangePassSuccessModal={
     backgroundColor   : 'rgba(0, 0, 0, 0.7)'
   },
   content :{
-    height : '130px',
+    height : '160px',
     width  : '300px',
     display: 'flex',
     justifyContent : 'center',

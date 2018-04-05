@@ -21,6 +21,7 @@ import Lightbox from 'react-images';
 import MetaTags from 'react-meta-tags';
 import {Link} from 'react-router-dom';
 
+
 class HouseDetailsMd extends React.Component{
   constructor(props){
     super(props);
@@ -235,8 +236,13 @@ class HouseDetailsMd extends React.Component{
  }
 
  handleLike(){
+   if(localStorage['isLoggedIn']==="false") {
+    this.props.enableTriggerLogin();
+    return;
+   }
+   this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
    switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
-     case 'rooms':{
+     case 'rooms' : {
        var request = new Request('https://www.trypinn.com/bookmark/api/like/', {
          method: 'POST',
          body: JSON.stringify({
@@ -251,7 +257,6 @@ class HouseDetailsMd extends React.Component{
       })
       .then((likeResponse) => {
         if(likeResponse.successful===true){
-          this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
         }
       });
        break;
@@ -270,9 +275,7 @@ class HouseDetailsMd extends React.Component{
         return response.json();
       })
       .then((likeResponse) => {
-        console.log(likeResponse);
         if(likeResponse.successful===true){
-          this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
         }
       });
        break;
@@ -281,6 +284,7 @@ class HouseDetailsMd extends React.Component{
  }
 
  handleUnlike(){
+   this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
    switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
      case 'rooms':{
        var request = new Request('https://www.trypinn.com/bookmark/api/unlike/', {
@@ -298,7 +302,7 @@ class HouseDetailsMd extends React.Component{
       })
       .then((unlikeResponse) => {
         if(unlikeResponse.successful===true){
-          this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
+          // this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
         }
       });
        break;

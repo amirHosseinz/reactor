@@ -10,7 +10,7 @@ ReactGA.pageview(window.location.pathname);
 
 const listOfCity = [
   {name:'اصفهان',},{name:'نوشهر',},{name: 'گیلان',},{name:'رامسر'},{name:'کیش'},{name:'مازندران'},
-  {name:'فریدون کنار'},{name:'محمودآباد'},{name:'عباس آباد'},{name:'شاندیز'},{name:'خراسان رضوی'},
+  {name:'فریدون‌کنار'},{name:'محمودآباد'},{name:'عباس آباد'},{name:'شاندیز'},{name:'خراسان رضوی'},
   {name:'بندر انزلی'},{name:'کاشان'},{name:'باغ بهادران'},{name:'قلعه رودخان'},{name:'مشهد'},
   {name:'چمخاله'},{name:'رودسر'},{name:'فومن'},{name:'رضوان‌شهر'},{name:'زیباکنار'},
   {name:'آستارا'},{name:'چالوس'},{name:'دریاکنار'},{name:'نور'},{name:'رویان'},{name:'بابلسر'},
@@ -151,7 +151,6 @@ class SearchBarXl extends React.Component{
   onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method })=>{
     ReactGA.event({category: 'User',action: 'Search For City'});
     this.setState({city:suggestionValue},()=>{this.handleClick()});
-    // console.log(suggestionValue);
    }
   renderSearchBarVersion2(){
     const value = this.state.city;
@@ -177,7 +176,6 @@ class SearchBarXl extends React.Component{
               <p className="search-bar-inter-destenation-text"> مقصد را وارد کنید:
               </p>
               <div className="search-bar-auto-suggest">
-
                 <div className="search-bar-auto-suggest-input">
                   <Autosuggest
                     theme={theme}
