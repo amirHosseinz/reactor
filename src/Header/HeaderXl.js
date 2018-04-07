@@ -15,8 +15,10 @@ import {Sticky} from 'react-sticky';
 import Autosuggest from 'react-autosuggest';
 import '../Styles/ModalCloseButton.css';
 import {ClipLoader} from 'react-spinners';
+import Fade from 'react-reveal';
 
-const theme ={
+
+const theme = {
   container:                'header-searchbar-container',
   containerOpen:            'header-searchbar-container--open',
   input:                    'header-searchbar-input',
@@ -69,7 +71,7 @@ class HeaderXl extends React.Component{
       },
     };
   }
-  componentDidMount(){
+  componentDidMount() {
     this.interval = setInterval(() => this.reloadHeader(), 1000);
   }
 
@@ -89,7 +91,7 @@ class HeaderXl extends React.Component{
   }
 
   getGuestTokenFromServer(){
-    if (localStorage['isLoggedIn']!=='true'){
+    if (localStorage['isLoggedIn']!=='true') {
       var request = new Request('https://www.trypinn.com/auth/api/user/login_guest/',{
         method: 'POST',
         headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
@@ -243,7 +245,9 @@ class HeaderXl extends React.Component{
                       />
                       <br/>
                       <br/>
-                        <div className={this.state.wrongPhoneNumber===true ? "header-login-modal-input-error-visible" : "header-login-modal-input-error-hidden"}>شماره تلفن وارد شده اشتباه است </div>
+                        <Fade bottom={true} collapse={false} when={this.state.wrongPhoneNumber}>
+                          <div className={this.state.wrongPhoneNumber===true ? "header-login-modal-input-error-visible" : "header-login-modal-input-error-hidden"}>شماره تلفن وارد شده اشتباه است </div>
+                        </Fade>
                       <button className="header-login-modal-button" onClick={this.getUserHasPassword.bind(this)}>
                         {this.state.phoneNumberLoading===true? <ClipLoader color="white"/> : "ادامه"}
                       </button>

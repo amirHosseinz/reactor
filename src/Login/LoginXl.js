@@ -5,6 +5,7 @@ import {loginVerifySmsXl , registerNewUser , setPasswordStyle} from '../Styles.j
 import {englishToPersianDigits, persianArabicToEnglishDigits} from '../tools/EnglishToPersianDigits';
 import './Login.css';
 import {ClipLoader} from 'react-spinners';
+import Fade from 'react-reveal';
 
 
 class LoginXl extends React.Component{
@@ -76,6 +77,7 @@ class LoginXl extends React.Component{
       forgetPasswordLoading : false,
       setPasswordLoading : false,
       signUpLoading : false,
+      verificationLoading : false,
 
       setPasswordModalPasswordIsWrong : false,
       setPasswordModalConfirmPasswordIsWrong : false,
@@ -163,7 +165,7 @@ class LoginXl extends React.Component{
   setReqParamsForVerification(){
     var spar={verificationCode:persianArabicToEnglishDigits(this.state.inputForVerification.verificationCode),
                phoneNumber :localStorage['phone-number']};
-    this.setState({reqParamsForVerification:spar} ,()=>{this.getResponseForVerification()});
+    this.setState({reqParamsForVerification:spar,verificationLoading:true} ,()=>{this.getResponseForVerification()});
   }
   setReqParamsForLogin(){
     var spar = {phoneNumber:localStorage['phone-number'],
@@ -358,6 +360,7 @@ class LoginXl extends React.Component{
     });
    fetch(request)
    .then((response) => {
+     this.setState({verificationLoading:false});
      return response.json();
    })
    .then((verificationResponse) => {
@@ -419,9 +422,11 @@ class LoginXl extends React.Component{
                               value={this.state.inputForSetPassword.confirmPassword}
                               onChange={this.changeConfirmPasswordForSetPassword.bind(this)}/>
                        </div>
-                       <div className={this.state.setPasswordModalPasswordIsWrong || this.state.setPasswordModalConfirmPasswordIsWrong ? "set-pass-error-visible": "set-pass-error-hidden"}>
-                          {this.state.setPasswordInputError}
-                        </div>
+                       <Fade bottom={true} collapse={false} when={this.state.setPasswordModalPasswordIsWrong || this.state.setPasswordModalConfirmPasswordIsWrong}>
+                         <p className="set-pass-error-visible">
+                            {this.state.setPasswordInputError}
+                          </p>
+                       </Fade>
                        <button onClick={this.handleSetPasswordClick.bind(this)} className="header-login-modal-button-new-user">
                            {this.state.setPasswordLoading ? <ClipLoader color="white" /> : "ذخیره "}
                        </button>
@@ -492,9 +497,11 @@ class LoginXl extends React.Component{
                          <span>با </span ><span onClick={()=>{window.open('/terms&conditions')}} className='sign-up-modal-link-to-rules'> قوانین و مقررات</span> <span> تریپین موافقم </span>
                        </div>
                    </div>
-                   <div className={this.state.signUpModalLastNameIsWrong || this.state.signUpModalFirstNameIsWrong || this.state.signUpModalpasswordIsWrong || this.state.signUpModalConfirmPasswordIsWrong ? "sign-up-error-visible" : "sign-up-error-hidden"}>
-                    {this.state.signUpModalInputError}
-                   </div>
+                   <Fade bottom={true} collapse={false} when={this.state.signUpModalLastNameIsWrong || this.state.signUpModalFirstNameIsWrong || this.state.signUpModalpasswordIsWrong || this.state.signUpModalConfirmPasswordIsWrong}>
+                     <div className= "sign-up-error-visible">
+                      {this.state.signUpModalInputError}
+                     </div>
+                   </Fade>
                    <button className="header-login-modal-button-new-user" onClick={this.handleSignupClick.bind(this)}>
                       {this.state.signUpLoading ? <ClipLoader color="white"/> : "ثبت‌نام و ورود"}
                    </button>
@@ -556,7 +563,7 @@ class LoginXl extends React.Component{
                   autoFocus={true}
                   type="numeric"/>
                   <button className="header-login-modal-button-verify" onClick={this.handleVerificationClick.bind(this)}>
-                    تایید کد
+                    {this.state.verificationLoading ? <ClipLoader color="white" size={30}/> : "تأیید کد" }
                   </button>
             </div>
           </div>
@@ -673,7 +680,11 @@ class LoginXl extends React.Component{
                 type="password"
                 autoComplete="off"
                 onKeyDown ={(event)=>{this.handleLoginClickByEnter(event)}}/>
-                <p className={this.state.passIsNotCorrect?"log-in-false-pass-visible":"log-in-false-pass-hide"}>رمز عبور وارد شده اشتباه است.</p>
+                <Fade bottom={true} collapse={false} when={this.state.passIsNotCorrect}>
+                  <p className="log-in-false-pass-visible">
+                    رمز عبور وارد شده اشتباه است
+                  </p>
+                </Fade>
               <button color="blue" onClick={this.handleLoginClick.bind(this)} className="header-login-modal-button">
                 {this.state.loginLoading===true ? <ClipLoader color="white"/> : "ورود" }
               </button>
@@ -739,9 +750,11 @@ class LoginXl extends React.Component{
             </p>
             <input onChange={(event)=>{this.changeConfirmPasswordForChangePassword(event)}} value={this.state.inputForChangePassword.confirmPassword} type="password" className="forget-password-modal-input"/>
           </div>
-          <div className={this.state.forgetPasswordInputHasError?"error-message-in-forget-password-modal":"error-message-in-forget-password-modal-hidden"}>
-            {this.state.forgetPasswordInputError}
-          </div>
+          <Fade bottom={true} collapse={false} when={this.state.forgetPasswordInputHasError}>
+            <div className="error-message-in-forget-password-modal">
+              {this.state.forgetPasswordInputError}
+            </div>
+          </Fade>
           <div onClick={()=>{this.handleChangePasswordRequest()}} className="forge-password-change-password-button">
             {this.state.forgetPasswordLoading ? <ClipLoader color="white" /> : "تغییر رمز عبور"}
           </div>

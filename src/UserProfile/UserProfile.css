@@ -498,8 +498,8 @@
   /* margin-bottom : 30px; */
 }
 .bookmark-list-container{
-  overflow-y : auto;
-  height : 540px;
+  /* overflow-y : auto; */
+  height : 447px;
 }
 .user-panel-section-header-button-selected{
   width : 300px;
@@ -640,7 +640,7 @@
 .bookmark-list-empty-icon{
   display:flex;
   display:-webkit-flex;
-  height : 500px;
+  height : 447px;
   justify-content: center;
   align-items: center;
   flex-direction: column;

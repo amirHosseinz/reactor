@@ -9,11 +9,11 @@ import Modal from 'react-modal';
 import '../../tools/calendar/initialize.js';
 import '../../tools/calendar2/lib/css/_datepicker.css';
 import {DateRangePicker} from '../../tools/calendar';
-
 import {reserveModalStyle} from '../../Styles.js';
 import momentJalaali from 'moment-jalaali';
 import moment from 'moment-jalaali';
 import './ReservePanel.css';
+import Fade from 'react-reveal';
 
 
 moment.loadPersian({usePersianDigits:false , dialect:'persian-modern'});
@@ -36,8 +36,9 @@ class ReservePanelXl extends React.Component{
       totalPrice:0,
       discountCode : '',
       focusedInput:null,
-      startDate:null,
-      endDate:null,
+      dateNotSelected:false,
+      startDate:'',
+      endDate:'',
     };
   }
   renderOrdinaryPriceForPerPerson(){
@@ -200,9 +201,9 @@ class ReservePanelXl extends React.Component{
 
   setToken() {
     this.setState({
+      dateNotSelected:false,
       token : localStorage['token'],
-    },
-      ()=>this.setSearchParams(this.getDataFromUser()));
+    },()=>this.setSearchParams(this.getDataFromUser()));
   }
   getDataFromUser(){
       return({fromDate :this.state.startDate,
@@ -215,6 +216,10 @@ class ReservePanelXl extends React.Component{
   }
 
   getDataFromServer(){
+    if(this.state.requestParams.fromDate=== '' || this.state.requestParams.toDate=== ''){
+      this.setState({dateNotSelected:true});
+      return;
+    }
     switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
       case 'rooms':{
         var request = new Request('https://www.trypinn.com/api/room/get_price/',{
@@ -326,16 +331,9 @@ class ReservePanelXl extends React.Component{
   }
 
   renderReserveButton(){
-    if(this.state.startDate==='' || this.state.endDate===''){
-      return(
-        <button disabled className="reserve-panel-reserve-button-active">  محاسبه هزینه </button>
-      );
-    }
-    else{
-      return(
-        <button onClick={()=>{this.setToken()}} className="reserve-panel-reserve-button-active"> محاسبه هزینه </button>
-      );
-    }
+    return(
+      <button onClick={()=>{this.setToken()}} className="reserve-panel-reserve-button-active"> محاسبه هزینه </button>
+    );
   }
 
   UpdatePrice(){
@@ -570,6 +568,7 @@ class ReservePanelXl extends React.Component{
               customArrowIcon={<div></div>}
               hideKeyboardShortcutsPanel={true}
               numberOfMonths={1}
+              readOnly={true}
               isRTL={true}
               anchorDirection='right'
               startDateId="your_unique_start_date_id"
@@ -585,6 +584,11 @@ class ReservePanelXl extends React.Component{
               />
             </div>
         </div>
+        <Fade bottom={true} when={this.state.dateNotSelected}>
+        <p className="reserve-panel-error">
+          لطفا تاریخ مورد نظر خود را انتخاب کنید
+        </p>
+        </Fade>
         <div className="reserve-panel-reserve-button-division">
           {this.renderReserveButton()}
         </div>

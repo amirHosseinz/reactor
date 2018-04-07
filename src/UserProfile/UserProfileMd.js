@@ -11,6 +11,7 @@ import {ChangePassSuccessModal,ChangePassFailedModal} from '../Styles.js';
 import {parsePrice3digits} from '../tools/ParsePrice3digits.js';
 import Fade from 'react-reveal';
 import MetaTags from 'react-meta-tags';
+import ScrollArea from 'react-scrollbar';
 
 
 class UserProfileMd extends React.Component{
@@ -474,7 +475,19 @@ class UserProfileMd extends React.Component{
     }
   }
 
-  handleUnlike(event,data){
+  removeItemFromList(item){
+    var tempList = this.state.bookmarkList;
+    for (var itemCounter=0 ; itemCounter<tempList.length;itemCounter++){
+      if(item.id===tempList[itemCounter].id){
+        tempList.splice(itemCounter, 1);
+      }
+    }
+    this.setState({bookmarkList:tempList});
+  }
+
+
+  handleUnlike(event,data,item){
+    this.removeItemFromList(item);
     switch(data.type){
       case "room":{
         var request = new Request('https://www.trypinn.com/bookmark/api/unlike/', {
@@ -490,9 +503,8 @@ class UserProfileMd extends React.Component{
           return response.json();
         })
         .then((unlikeResponse) => {
-          // console.log(unlikeResponse);
           if(unlikeResponse.successful===true){
-            this.getBookmarkListFromServer()
+            // this.getBookmarkListFromServer();
           }
         });
         break;
@@ -513,7 +525,7 @@ class UserProfileMd extends React.Component{
         .then((unlikeResponse) => {
           // console.log(unlikeResponse);
           if(unlikeResponse.successful===true){
-            this.getBookmarkListFromServer()
+            // this.getBookmarkListFromServer();
           }
         });
         break;
@@ -707,7 +719,7 @@ class UserProfileMd extends React.Component{
         var data = item.room;
       }
       return(
-        <div id={data.id}>
+        <div key={data.id}>
           <div className="bookmark-item">
             <div className="bookmark-item-data">
             <img src={"https://www.trypinn.com"+data.preview} alt={data.title} className="bookmark-item-preview"/>
@@ -722,7 +734,7 @@ class UserProfileMd extends React.Component{
                 {data.address}
               </p>
               <div className="bookmark-item-bottom-section">
-              <p onClick={(event)=>{this.handleUnlike(event,data)}} className="bookmark-item-delete-button">
+              <p onClick={(event)=>{this.handleUnlike(event,data,item)}} className="bookmark-item-delete-button">
                 حذف از لیست
               </p>
               <p className="bookmark-item-price-details">
@@ -742,7 +754,12 @@ class UserProfileMd extends React.Component{
       );
     }
   );
-    return <div className="bookmark-list-container">{list}</div>
+  return(
+    <ScrollArea smoothScrolling={false} stopScrollPropagation={true} speed={1} className="bookmark-list-container" horizontal={false}>
+      {list}
+    </ScrollArea>
+  );
+
   }
   renderUserProfileEditSectionVersion2(){
     return(

@@ -12,7 +12,7 @@ import {SyncLoader , ClipLoader} from 'react-spinners';
 import {parsePrice3digits} from '../tools/ParsePrice3digits.js';
 import Fade from 'react-reveal';
 import MetaTags from 'react-meta-tags';
-
+import ScrollArea from 'react-scrollbar';
 
 class UserProfileXl extends React.Component{
   constructor(props){
@@ -475,7 +475,18 @@ class UserProfileXl extends React.Component{
     }
   }
 
-  handleUnlike(event,data){
+  removeItemFromList(item){
+    var tempList = this.state.bookmarkList;
+    for (var itemCounter=0 ; itemCounter<tempList.length;itemCounter++){
+      if(item.id===tempList[itemCounter].id){
+        tempList.splice(itemCounter, 1);
+      }
+    }
+    this.setState({bookmarkList:tempList});
+  }
+
+  handleUnlike(event,data,item){
+    this.removeItemFromList(item);
     switch(data.type){
       case "room":{
         var request = new Request('https://www.trypinn.com/bookmark/api/unlike/', {
@@ -491,9 +502,8 @@ class UserProfileXl extends React.Component{
           return response.json();
         })
         .then((unlikeResponse) => {
-          // console.log(unlikeResponse);
           if(unlikeResponse.successful===true){
-            this.getBookmarkListFromServer()
+            // this.getBookmarkListFromServer()
           }
         });
         break;
@@ -514,7 +524,7 @@ class UserProfileXl extends React.Component{
         .then((unlikeResponse) => {
           // console.log(unlikeResponse);
           if(unlikeResponse.successful===true){
-            this.getBookmarkListFromServer()
+            // this.getBookmarkListFromServer()
           }
         });
         break;
@@ -670,42 +680,46 @@ class UserProfileXl extends React.Component{
           var data = item.room;
         }
         return(
-          <div id={data.id}>
-            <div className="bookmark-item">
-              <div className="bookmark-item-data">
-              <img src={"https://www.trypinn.com"+data.preview} alt={data.title} className="bookmark-item-preview"/>
-              <div className="bookmark-item-description">
-                <a href={"/"+ (data.type==="room"?"rooms/":"ecotourism/") + data.id } target="_blank" className = "bookmark-item-link">
-                  <p className="bookmark-item-title">
-                    {data.title}
+            <div>
+              <div className="bookmark-item">
+                <div className="bookmark-item-data">
+                <img src={"https://www.trypinn.com"+data.preview} alt={data.title} className="bookmark-item-preview"/>
+                <div className="bookmark-item-description">
+                  <a href={"/"+ (data.type==="room"?"rooms/":"ecotourism/") + data.id } target="_blank" className = "bookmark-item-link">
+                    <p className="bookmark-item-title">
+                      {data.title}
+                    </p>
+                  </a>
+                  {this.renderRelevantRoom(data)}
+                  <p className="bookmark-item-type">
+                    {data.address}
                   </p>
-                </a>
-                {this.renderRelevantRoom(data)}
-                <p className="bookmark-item-type">
-                  {data.address}
-                </p>
-                <div className="bookmark-item-bottom-section">
-                <p onClick={(event)=>{this.handleUnlike(event,data)}} className="bookmark-item-delete-button">
-                  حذف از لیست
-                </p>
-                <p className="bookmark-item-price-details">
-                <span className="bookmark-item-price">
-                   {englishToPersianDigits(parsePrice3digits(data.price))} تومان
-                </span>
-                <span className="bookmark-item-price-description">
-                {data.type==="room"?"/ هر شب عادی"  : "/ هر نفر هر شب"}
-                </span>
-                </p>
+                  <div className="bookmark-item-bottom-section">
+                  <p onClick={(event)=>{this.handleUnlike(event,data,item)}} className="bookmark-item-delete-button">
+                    حذف از لیست
+                  </p>
+                  <p className="bookmark-item-price-details">
+                  <span className="bookmark-item-price">
+                     {englishToPersianDigits(parsePrice3digits(data.price))} تومان
+                  </span>
+                  <span className="bookmark-item-price-description">
+                  {data.type==="room"?"/ هر شب عادی"  : "/ هر نفر هر شب"}
+                  </span>
+                  </p>
+                  </div>
+                </div>
                 </div>
               </div>
-              </div>
+              <hr className="bookmark-item-divider"/>
             </div>
-            <hr className="bookmark-item-divider"/>
-          </div>
       );
       }
     );
-    return <div className="bookmark-list-container"> {list} </div>;
+    return (
+      <ScrollArea smoothScrolling={false} stopScrollPropagation={true} speed={1} className="bookmark-list-container" horizontal={false}>
+        {list}
+      </ScrollArea>
+    );
     }
     getRoomType(data){
       switch(data.room_type){

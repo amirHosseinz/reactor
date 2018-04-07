@@ -70,7 +70,7 @@ export const registerNewUser = {
     backgroundColor   : 'rgba(0, 0, 0, 0.0)'
   },
   content : {
-    height : '560px',
+    height : '520px',
     width  : '400px',
     margin: 'auto',
     outline                    : '0',

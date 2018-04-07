@@ -15,6 +15,7 @@ import {Sticky} from 'react-sticky';
 import Autosuggest from 'react-autosuggest';
 import '../Styles/ModalCloseButton.css';
 import {ClipLoader} from 'react-spinners';
+import Fade from 'react-reveal';
 
 
 const theme ={
@@ -242,7 +243,9 @@ class HeaderMD extends React.Component{
                       />
                       <br/>
                       <br/>
+                      <Fade bottom={true} collapse={false} when={this.state.wrongPhoneNumber}>
                         <div className={this.state.wrongPhoneNumber===true ? "header-login-modal-input-error-visible" : "header-login-modal-input-error-hidden"}>شماره تلفن وارد شده اشتباه است </div>
+                      </Fade>
                       <button className="header-login-modal-button" onClick={this.getUserHasPassword.bind(this)}>
                         {this.state.phoneNumberLoading===true? <ClipLoader color="white"/> : "ادامه"}
                       </button>

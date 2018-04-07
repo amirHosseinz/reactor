@@ -12,6 +12,8 @@ import {DateRangePicker} from '../tools/calendar2';
 import Sticky from 'react-sticky';
 import {PulseLoader} from 'react-spinners';
 import MetaTags from 'react-meta-tags';
+import Fade from 'react-reveal';
+
 
 class SearchResultMd extends React.Component{
   constructor(props){

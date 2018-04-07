@@ -449,7 +449,6 @@ class HouseDetailsMd extends React.Component{
                 <div className="house-details-amenities-description housedetails-content-containers">
                   <div className="house-details-host-info">
                     <HostInfoDescription homeData={this.state.homeData}/>
-                    <p className='house-details-description-content house-description-top'> {this.state.homeData.description} </p>
                   </div >
                   {
                     (this.state.homeData.description==="")?null :
