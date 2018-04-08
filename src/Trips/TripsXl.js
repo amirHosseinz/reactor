@@ -39,7 +39,6 @@ class TripsXl extends React.Component{
      return response.json();
    })
    .then((trips) => {
-     console.log(trips);
      this.renderData(trips);
      if(trips.reserve_list.length>0){
        this.showTripItemClick(trips.reserve_list[0]);

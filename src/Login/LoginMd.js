@@ -552,7 +552,7 @@ class LoginMd extends React.Component{
         </div>
           <div className="header-login-modal-content-container">
             <p className="enter-verify-number-inmodal">
-            :کد تایید پیامک شده را وارد نمایید
+            کد تایید پیامک شده را وارد نمایید
            </p>
             <div dir="rtl" className="header-login-modal-verify-button-input-container" >
               <input
@@ -669,7 +669,7 @@ class LoginMd extends React.Component{
             <div className="header-login-modal-divider">
             </div>
             <div className="header-login-modal-content-container">
-            <p className="enter-phone-number-inmodal">:رمز عبور خود را وارد کنید </p>
+            <p className="enter-phone-number-inmodal">رمز عبور خود را وارد کنید </p>
               <div dir="rtl" className="header-login-modal-verify-button-input-container" >
                 <input
                 className={this.state.passIsNotCorrect ? "header-login-modal-input-wrong": "header-login-modal-input"}

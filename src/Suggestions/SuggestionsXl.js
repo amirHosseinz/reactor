@@ -156,7 +156,7 @@ getRelevantToken(){
               <span>
                 <label className='suggestions-labels'>
                   <div className="suggestions-label-text-area">
-                    نام:
+                    نام
                   </div>
                 <input type="text" className='suggestions input-tripinn1' value={this.state.name} onChange={(event)=>{this.Suggestionsname(event)}} />
                 </label>
@@ -166,7 +166,7 @@ getRelevantToken(){
                 <span>
                   <label className='suggestions-labels'>
                     <div className="suggestions-label-text-area">
-                      ایمیل:
+                      ایمیل
                     </div>
                   <input type="text" className='suggestions input-tripinn1' value={this.state.email} onChange={(event)=>{this.SuggestionsEmail(event)}}/>
                   </label>
@@ -176,14 +176,14 @@ getRelevantToken(){
                 <span>
                   <label className='suggestions-labels'>
                     <div className="suggestions-label-text-area">
-                      موضوع:
+                      موضوع
                     </div>
                   <input type="text" className='suggestions input-tripinn1' value={this.state.subject} onChange={(event)=>{this.SuggestionsSubject(event)}}/>
                   </label>
                 </span>
               </div>
               <div className="suggestions-description-container">
-                <label className="suggstions-description-textarea">توضیحات:</label>
+                <label className="suggstions-description-textarea">توضیحات</label>
                   <textarea style={{minHeight:"150px",minWidth:"80%" ,maxHeight:"150px" ,maxWidth:"80%"}} wrap="hard" className="suggestions form-control-tripinn" rows="5"  value={this.state.description} onChange={(event)=>{this.SuggestionsDescription(event)}} />
               </div>
               <div className='suggestions-save-button-container'>

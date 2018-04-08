@@ -112,7 +112,7 @@
 
 /* xl style here */
 .trips-main-container {
-  overflow-y: auto;
+  /* overflow-y: auto; */
   border-radius: 6px 6px 6px 6px;
   border: solid;
   background-color:white;
@@ -135,7 +135,7 @@
 
 /* md style here */
 .trips-main-container-md{
-  overflow-y: auto;
+  /* overflow-y: auto; */
   border-radius: 6px 6px 6px 6px;
   border: solid;
   background-color:white;

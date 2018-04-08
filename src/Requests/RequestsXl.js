@@ -1,7 +1,7 @@
 import React from 'react';
 import { Divider } from 'semantic-ui-react';
 import './Requests.css';
-
+import ScrollArea from 'react-scrollbar';;
 
 class RequestsXl extends React.Component{
   constructor(props){
@@ -126,7 +126,9 @@ class RequestsXl extends React.Component{
               درخواست‌ها
           </p>
           <hr className="requests-divider"/>
-          {this.list}
+          <ScrollArea className="requests-list-main-container" smoothScrolling={false} stopScrollPropagation={true} speed={1} horizontal={false}>
+            {this.list}
+          </ScrollArea>
         </div>
          );
       }

@@ -227,9 +227,9 @@ class HeaderXl extends React.Component{
             <div className="header-login-modal-divider">
             </div>
               <div className="header-login-modal-content-container">
-                <p className="enter-phone-number-inmodal"> :برای ورود یا ثبت‌نام شماره تلفن همراه خود را وارد کنید </p>
+                <p className="enter-phone-number-inmodal"> برای ورود یا ثبت‌نام شماره تلفن همراه خود را وارد کنید </p>
                 <div dir="rtl">
-                  <p className="header-login-modal-input-label"> شماره موبایل: </p>
+                  <p className="header-login-modal-input-label"> شماره موبایل </p>
                   <input
                       maxLength="11"
                       id="tel-number"
@@ -435,7 +435,7 @@ class HeaderXl extends React.Component{
   renderRequestButton(){
     if(localStorage['isLoggedIn']==='true'){
       return(
-        <p className="profile-card-user-requests" onClick={this.handleRequestClick.bind(this)}>درخواست های من</p>
+        <p className="profile-card-user-requests" onClick={this.handleRequestClick.bind(this)}>درخواست‌های من</p>
       );
     }
   }

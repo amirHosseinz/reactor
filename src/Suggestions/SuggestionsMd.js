@@ -143,9 +143,9 @@ getRelevantToken(){
            ما همواره آماده‌ایم تا انتقادات، پیشنهادات و شکایات شما را دریافت نماییم و در کمترین زمان آن را پیگیری کنیم. شما می‌توانید از راه‌های ارتباطی زیر با ما در تماس باشید یا به صورت مستقیم نظرات خود را در همین صفحه ثبت کنید.
            </p>
            <p className='suggestions-paragraphs'>
-               <span> روابط عمومی تریپین : </span><span>{englishToPersianDigits('88573037 - 021')} </span>
+               <span> روابط عمومی تریپین</span><span>{englishToPersianDigits('88573037 - 021')} </span>
             </p>
-           <p className='suggestions-paragraphs'><span> ایمیل :  </span><span> support@tripinn.ir </span></p>
+           <p className='suggestions-paragraphs'><span> ایمیل  </span><span> support@tripinn.ir </span></p>
            <p className='suggestions-paragraphs'>
           ما در تریپین تمام تلاش خود را به‌کار خواهیم بست تا به بهترین شکل پیگیر درخواست‌های شما کاربران گرامی باشیم.
            </p>
@@ -155,7 +155,7 @@ getRelevantToken(){
               <span>
                 <label className='suggestions-labels'>
                   <div className="suggestions-label-text-area">
-                    نام:
+                    نام
                   </div>
                 <input type="text" className='suggestions input-tripinn1' value={this.state.name} onChange={(event)=>{this.Suggestionsname(event)}} />
                 </label>
@@ -182,7 +182,7 @@ getRelevantToken(){
                 </span>
               </div>
               <div className="suggestions-description-container">
-                <label className="suggstions-description-textarea">توضیحات:</label>
+                <label className="suggstions-description-textarea">توضیحات</label>
                   <textarea style={{minHeight:"150px",minWidth:"80%" ,maxHeight:"150px" ,maxWidth:"80%"}} wrap="hard" className="suggestions form-control-tripinn" rows="5"  value={this.state.description} onChange={(event)=>{this.SuggestionsDescription(event)}} />
               </div>
               <div className='suggestions-save-button-container'>
