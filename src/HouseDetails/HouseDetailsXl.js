@@ -380,7 +380,7 @@ class HouseDetailsXl extends React.Component{
                       <div className="house-details-reserve-panel-price-description">
                         <div>
                           <p className="house-details-price-pernight-label">هزینه اقامت هر شب عادی:</p>
-                          <p className="house-details-price-pernight-ecotourism">{this.state.homeData.type==="room"?"" :  "( به ازای هر نفر )" }</p>
+                          <p className="house-details-price-pernight-ecotourism">{this.state.homeData.is_price_per_person===false ? "" :  "( به ازای هر نفر )" }</p>
                         </div>
                           <div className = "house-details-price">
                             <span> {englishToPersianDigits(parsePrice3digits(this.state.homeData.price))} </span>

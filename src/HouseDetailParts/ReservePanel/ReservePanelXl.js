@@ -1,11 +1,8 @@
 import React from 'react';
 import GuestNumber from '../GuestNumber.js';
-import {Button} from 'semantic-ui-react';
 import {englishToPersianDigits} from '../../tools/EnglishToPersianDigits';
 import {parsePrice3digits} from '../../tools/ParsePrice3digits.js';
-import {findDOMNode} from 'react-dom';
 import Modal from 'react-modal';
-
 import '../../tools/calendar/initialize.js';
 import '../../tools/calendar2/lib/css/_datepicker.css';
 import {DateRangePicker} from '../../tools/calendar';
@@ -14,6 +11,7 @@ import momentJalaali from 'moment-jalaali';
 import moment from 'moment-jalaali';
 import './ReservePanel.css';
 import Fade from 'react-reveal';
+import {ClipLoader} from 'react-spinners';
 
 
 moment.loadPersian({usePersianDigits:false , dialect:'persian-modern'});
@@ -39,6 +37,7 @@ class ReservePanelXl extends React.Component{
       dateNotSelected:false,
       startDate:null,
       endDate:null,
+      priceLoading : false,
     };
   }
   renderOrdinaryPriceForPerPerson(){
@@ -211,13 +210,14 @@ class ReservePanelXl extends React.Component{
               numberOfGuests : this.state.numberOfGuests,
               discountCode : ''});
   }
+
   setSearchParams(reqpar){
-    this.setState({requestParams:reqpar},() => {this.getDataFromServer()});
+    this.setState({requestParams:reqpar,priceLoading:true,},() => {this.getDataFromServer()});
   }
 
   getDataFromServer(){
     if(this.state.requestParams.fromDate=== null || this.state.requestParams.toDate=== null){
-      this.setState({dateNotSelected:true});
+      this.setState({dateNotSelected:true,priceLoading:false,});
       return;
     }
     switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
@@ -238,11 +238,14 @@ class ReservePanelXl extends React.Component{
         });
        fetch(request)
        .then((response) => {
-         // console.log(response);
+         this.setState({priceLoading:false});
          return response.json();
        })
        .then((reserve_data) => {
           this.setState({totalPrice:reserve_data.total_price ,reserveData:reserve_data,showPreBill:true});
+       })
+       .catch((error)=>{
+         this.setState({priceLoading:false});
        });
         return;
       }
@@ -263,10 +266,14 @@ class ReservePanelXl extends React.Component{
         });
        fetch(request)
        .then((response) => {
+         this.setState({priceLoading:false});
          return response.json();
        })
        .then((reserve_data) => {
          this.setState({totalPrice:reserve_data.total_price ,reserveData:reserve_data,showPreBill:true});
+       })
+       .catch((error)=>{
+         this.setState({priceLoading:false});
        });
         return;
       }
@@ -293,7 +300,6 @@ class ReservePanelXl extends React.Component{
         return response.json();
       })
       .then((bookData) => {
-        console.log(bookData);
         if(bookData.successful===true){
           window.location.href = '/dashboard/request';
         }
@@ -319,7 +325,6 @@ class ReservePanelXl extends React.Component{
         return response.json();
       })
       .then((bookData) => {
-        console.log(bookData);
         if(bookData.successful===true){
           window.location.href = '/dashboard/request';
         }
@@ -332,7 +337,9 @@ class ReservePanelXl extends React.Component{
 
   renderReserveButton(){
     return(
-      <button onClick={()=>{this.setToken()}} className="reserve-panel-reserve-button-active"> محاسبه هزینه </button>
+      <button onClick={()=>{this.setToken()}} className="reserve-panel-reserve-button-active">
+          {this.state.priceLoading===true ? <ClipLoader color="white" size={35}/> : "محاسبه هزینه"}
+      </button>
     );
   }
 

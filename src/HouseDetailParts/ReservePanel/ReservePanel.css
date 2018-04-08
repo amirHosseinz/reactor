@@ -32,6 +32,12 @@
   border-radius: 8px;
 }
 .reserve-panel-reserve-button-active{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction : row;
+  justify-content: center;
+  align-items: center;
   outline: none;
   background-color: #FF5050;
   height: 55px;
