@@ -226,7 +226,7 @@ class HouseDetailsXl extends React.Component{
     this.props.enableTriggerLogin();
     return;
    }
-   this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
+   this.setState((prevState,props)=>({isLiked:true}));
    switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
      case 'rooms':{
        var request = new Request('https://www.trypinn.com/bookmark/api/like/', {
@@ -262,9 +262,7 @@ class HouseDetailsXl extends React.Component{
         return response.json();
       })
       .then((likeResponse) => {
-        console.log(likeResponse);
         if(likeResponse.successful===true){
-          this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
         }
       });
        break;
@@ -273,7 +271,7 @@ class HouseDetailsXl extends React.Component{
  }
 
  handleUnlike(){
-   this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
+   this.setState((prevState,props)=>({isLiked:false}));
    switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
      case 'rooms':{
        var request = new Request('https://www.trypinn.com/bookmark/api/unlike/', {
@@ -307,12 +305,10 @@ class HouseDetailsXl extends React.Component{
        });
       fetch(request)
       .then((response) => {
-        console.log(response);
         return response.json();
       })
       .then((unlikeResponse) => {
         if(unlikeResponse.successful===true){
-          this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
         }
       });
        break;
@@ -358,6 +354,7 @@ class HouseDetailsXl extends React.Component{
   }
   renderHouseDetailsVersion2(){
     if(this.state.homeData!=='' && this.state.homeData!==null){
+      // console.log(this.state.homeData);
       return(
         <div className="house-details-main-division">
           <div className="house-details-top-division">

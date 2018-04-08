@@ -6,7 +6,6 @@ import 'react-responsive-modal/lib/react-responsive-modal.css';
 import Modal from 'react-modal';
 import {suggestionResponseModalStyle} from '../Styles.js';
 import './Suggestions.css';
-Modal.setAppElement('#root');
 class SuggestionsMd extends React.Component{
   constructor(props){
   super(props);
@@ -132,12 +131,6 @@ getRelevantToken(){
         {this.handleInvalidEmailModal()}
         {this.handleRequiredFieldsModal()}
       </Modal>
-      // <Modal open={this.state.showResponseModal}
-      //        little={true}
-      //        showCloseIcon={false}
-      //        onClose={()=>{this.setState({showResponseModal:false})}}>
-      //    {this.handleResponseModal()}
-      // </Modal>
     );
   }
   render(){
@@ -146,11 +139,16 @@ getRelevantToken(){
         <div className='suggestions-cadre-md'>
           <div className='suggestions-text-area'>
            <p className='suggestions-header'><span>ثبت </span><span  className="shekayat-color">شکایات</span></p>
-           <p className='suggestions-paragraphs'>ما همواره آماده ایم تا انتقادات، پیشنهادات و شکایات شما را دریافت نماییم و در کمترین زمان آن را پیگیری کنیم<br/>شما میتوانید از راه های ارتباطی زیر با ما در ارتباط باشید یا به صورت مستقیم شکایت ، پیشنهادات و انتقاد های خود را در همین صفحه ثبت کنید</p>
-           <p className='suggestions-paragraphs'>روابط عمومی تریپین :
-            <span>{englishToPersianDigits('02188573037')} </span></p>
-           <p className='suggestions-paragraphs'><span> support@tripinn.ir </span><span>:ایمیل </span></p>
-           <p className='suggestions-paragraphs'>ما در تریپین تمام تلاش خود را بکار خواهیم بست تا به بهترین شکل پیگیر درخواست های شما کاربران گرامی باشیم </p>
+           <p className='suggestions-paragraphs'>
+           ما همواره آماده‌ایم تا انتقادات، پیشنهادات و شکایات شما را دریافت نماییم و در کمترین زمان آن را پیگیری کنیم. شما می‌توانید از راه‌های ارتباطی زیر با ما در تماس باشید یا به صورت مستقیم نظرات خود را در همین صفحه ثبت کنید.
+           </p>
+           <p className='suggestions-paragraphs'>
+               <span> روابط عمومی تریپین : </span><span>{englishToPersianDigits('88573037 - 021')} </span>
+            </p>
+           <p className='suggestions-paragraphs'><span> ایمیل :  </span><span> support@tripinn.ir </span></p>
+           <p className='suggestions-paragraphs'>
+          ما در تریپین تمام تلاش خود را به‌کار خواهیم بست تا به بهترین شکل پیگیر درخواست‌های شما کاربران گرامی باشیم.
+           </p>
           </div>
           <div className='suggestions-form'>
             <div className="suggstions-input-item">

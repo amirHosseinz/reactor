@@ -165,7 +165,9 @@ class SearchResultMd extends React.Component{
                         <span>
                           <img src={require('../Images/guest-number-icon.png')} className='guest-number-icon' alt=""/>
                         </span>
+                        <span className="guest-number-text">
                          {englishToPersianDigits(this.state.numberOfGuests)} مهمان
+                        </span>
                       </button>
                       <div className="serach-result-number-of-guests-input">
                         {this.renderGuest()}

@@ -173,7 +173,7 @@ class SearchBarXl extends React.Component{
               سامانه رزرو ویلا و اقامتگاه محلی
             </p>
             <div className="search-bar-auto-suggest-container-xl">
-              <p className="search-bar-inter-destenation-text"> مقصد را وارد کنید:
+              <p className="search-bar-inter-destenation-text"> مقصد را وارد کنید
               </p>
               <div className="search-bar-auto-suggest">
                 <div className="search-bar-auto-suggest-input">

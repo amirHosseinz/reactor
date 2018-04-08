@@ -10,6 +10,7 @@
 }
 .anchor-about-us{
   color:#12b2ce;
+  text-decoration: none!important;
   font-weight: 500;
 }
 .anchor-about-us:hover{

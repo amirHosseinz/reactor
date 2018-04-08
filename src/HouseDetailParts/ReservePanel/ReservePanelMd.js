@@ -36,8 +36,8 @@ class ReservePanelMd extends React.Component{
       discountCode : '',
       focusedInput:null,
       dateNotSelected:false,
-      startDate:'',
-      endDate:'',
+      startDate:null,
+      endDate:null,
     };
   }
   renderOrdinaryPriceForPerPerson(){
@@ -218,7 +218,7 @@ class ReservePanelMd extends React.Component{
   }
 
   getDataFromServer(){
-    if(this.state.requestParams.fromDate=== '' || this.state.requestParams.toDate=== ''){
+    if(this.state.requestParams.fromDate=== null || this.state.requestParams.toDate=== null){
       this.setState({dateNotSelected:true});
       return;
     }

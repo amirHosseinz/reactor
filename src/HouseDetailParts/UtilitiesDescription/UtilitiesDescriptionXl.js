@@ -21,23 +21,25 @@ class UtilitiesDescriptionXl extends React.Component{
       }
     }
 
-    // utilities.reverse();
-    // utilities.splice( utilities.indexOf('PERGOLA'), 1);
-    // utilities.splice( utilities.indexOf('KITCHEN'), 1);
-    // utilities.splice( utilities.indexOf('SHORE_SIDE'), 1);
-    // utilities.splice( utilities.indexOf('PRIVATE_LOCK'), 1);
-    // utilities.splice( utilities.indexOf('BED'), 1);
-    // utilities.splice( utilities.indexOf('MATRESS'), 1);
-
+    var subUtilities=[];
+    for (var itemCounter=utilities.length-1;itemCounter>=0;itemCounter--){
+      if(["COOKING_UTILS",'PERGOLA','KITCHEN','SHORE_SIDE','PRIVATE_LOCK','BED','MATTRESS'].indexOf(utilities[itemCounter])===-1){
+        subUtilities.push(utilities[itemCounter]);
+      }
+    }
+    if(this.props.homeData.toilets_number>0){
+      subUtilities.push("ENTIRE_TOILET");
+    }
+    console.log(subUtilities);
     var primaryListOfLists = [[],[],[],[],[],[],[],[],[]];
     var listIndex = 0;
-    for (var itemIndex=0;itemIndex<utilities.length;itemIndex++){
+    for (var itemIndex=0;itemIndex<subUtilities.length;itemIndex++){
         if(primaryListOfLists[listIndex].length===3){
           listIndex++;
-          primaryListOfLists[listIndex].push(utilities[itemIndex]);
+          primaryListOfLists[listIndex].push(subUtilities[itemIndex]);
         }
         else{
-          primaryListOfLists[listIndex].push(utilities[itemIndex]);
+          primaryListOfLists[listIndex].push(subUtilities[itemIndex]);
         }
     }
     var secondaryListOfLists = [];
@@ -60,10 +62,6 @@ class UtilitiesDescriptionXl extends React.Component{
     var listOfUtilitiesStringFirstRow = listOfUtilitiesString[0];
     listOfUtilitiesString.splice(0,1);
     var listOfUtilitiesStringSecondRow = listOfUtilitiesString;
-
-    // console.log(listOfUtilitiesStringFirstRow);
-    // console.log(listOfUtilitiesStringSecondRow);
-
     return(
       <div>
         <div className="housedetails-utilities-container">
@@ -78,7 +76,7 @@ class UtilitiesDescriptionXl extends React.Component{
             (utility)=>{
               return(
                   <div>
-                    <Facilities utility={utility}/>
+                    <Facilities toiletsNumber={this.props.homeData.toilets_number} utility={utility}/>
                   </div>
               );
             }

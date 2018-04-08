@@ -7,34 +7,34 @@ import './FacilitiesMain/Facilities.css';
 class Facilities extends React.Component{
 
 
-  renderFacilitiesMd(utility){
+  renderFacilitiesMd(props){
     return(
       <div className="hidden-xs hidden-xl hidden-sm visible-md">
-        <FacilitiesMd utility={utility}/>
+        <FacilitiesMd {...props}/>
       </div>
     );
   }
 
-  renderFacilitiesSm(utility){
+  renderFacilitiesSm(props){
     return(
       <div className="hidden-xs hidden-md hidden-xl visible-sm">
-        <FacilitiesSm utility={utility}/>
+        <FacilitiesSm {...props}/>
       </div>
     );
   }
 
-  renderFacilitiesXl(utility){
+  renderFacilitiesXl(props){
     return(
       <div className="hidden-xs hidden-md hidden-sm visible-xl">
-        <FacilitiesXl utility={utility}/>
+        <FacilitiesXl {...props}/>
       </div>
     );
   }
 
-  renderFacilitiesXs(utility){
+  renderFacilitiesXs(props){
     return(
       <div className="hidden-xl hidden-md hidden-sm visible-xs">
-        <FacilitiesXs utility={utility}/>
+        <FacilitiesXs {...props}/>
       </div>
     );
   }
@@ -42,10 +42,10 @@ class Facilities extends React.Component{
   render(){
     return(
       <div>
-        {this.renderFacilitiesXl(this.props.utility)}
-        {this.renderFacilitiesXs(this.props.utility)}
-        {this.renderFacilitiesMd(this.props.utility)}
-        {this.renderFacilitiesSm(this.props.utility)}
+        {this.renderFacilitiesXl(this.props)}
+        {this.renderFacilitiesXs(this.props)}
+        {this.renderFacilitiesMd(this.props)}
+        {this.renderFacilitiesSm(this.props)}
       </div>
     );
   }

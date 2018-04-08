@@ -223,14 +223,26 @@ class FacilitiesMd extends React.Component {
 
   renderForeigntoilet () {
     if (this.props.utility.indexOf('FOREIGN_TOILET') > -1) {
-      return(
-        <div className="house-details-facilities-item">
-        <img src={require('../facilities/wc-1.png')}   className="house-details-facilities-other-amanities-icon" alt = "" />
-        <p className="house-details-facility-text">
-        توالت فرنگی
-        </p>
-        </div>
-      );
+      if(this.props.utility.indexOf('ENTIRE_FOREIGN_TOILET') > -1){
+        return(
+          <div className="house-details-facilities-item">
+          <img src={require('../facilities/wc-1.png')}   className="house-details-facilities-other-amanities-icon" alt = "" />
+          <p className="house-details-facility-text">
+          توالت فرنگی
+          </p>
+          </div>
+        );
+      }
+      else{
+        return(
+          <div className="house-details-facilities-item">
+          <img src={require('../facilities/wc-1.png')}   className="house-details-facilities-other-amanities-icon" alt = "" />
+          <p className="house-details-facility-text">
+          توالت فرنگی (مشترک)
+          </p>
+          </div>
+        );
+      }
     }
   }
 
@@ -310,6 +322,16 @@ class FacilitiesMd extends React.Component {
           </div>
         );
       }
+      if (this.props.utility.indexOf('SHARED_TOILET') > -1) {
+        return(
+          <div className="house-details-facilities-item">
+            <img src={require('../facilities/wc-2.png')}  className="house-details-facilities-other-amanities-icon" alt = "" />
+            <p className="house-details-facility-text">
+          توالت ایرانی (مشترک)
+            </p>
+          </div>
+        );
+      }
     }
     renderCarpet(){
       if (this.props.utility.indexOf('CARPET') > -1) {
@@ -349,40 +371,64 @@ class FacilitiesMd extends React.Component {
         );
       }
     }
+    renderBath(){
+      if (this.props.utility.indexOf('ENTIRE_BATHROOM') > -1 ) {
+        return(
+          <div className="house-details-facilities-item">
+            <img src={require('../facilities/baths.png')}  className="house-details-facilities-other-amanities-icon" alt = "" />
+            <p className="house-details-facility-text">
+              حمام
+            </p>
+          </div>
+        );
+      }
+      if (this.props.utility.indexOf('SHARED_BATHROOM') > -1 ) {
+        return(
+          <div className="house-details-facilities-item">
+            <img src={require('../facilities/baths.png')}  className="house-details-facilities-other-amanities-icon" alt = "" />
+            <p className="house-details-facility-text">
+              حمام (مشترک)
+            </p>
+          </div>
+        );
+      }
+    }
+
   render () {
     return(
 
       <div className="row-reverse">
-          {this.renderFoosball()}
-          {this.renderBarbecue()}
-          {this.renderHeater()}
-          {this.renderBlanket()}
-          {this.renderCarpet()}
-          {this.renderCanape()}
-          {this.renderElevator()}
-          {this.renderHanger()}
-          {this.renderPavilion()}
-          {this.renderTv()}
-          {this.renderLaundry()}
-          {this.renderForeigntoilet()}
-          {this.renderStove()}
-          {this.renderKitchenware()}
-          {this.renderRefrig()}
-          {this.renderWifi()}
-          {this.renderDinnerTable()}
-          {this.renderMicrowave()}
-          {this.renderTeamaker()}
-          {this.renderConditioner()}
-          {this.renderPingpong()}
-          {this.renderPool()}
-          {this.renderParking()}
-          {this.renderToilet()}
-
-          {this.renderInsurance()}
-          {this.renderTower()}
-          {this.renderHerbalTea()}
-          {this.renderKorsi()}
-          </div>
+        {this.renderFoosball()}
+        {this.renderWifi()}
+        {this.renderBarbecue()}
+        {this.renderHeater()}
+        {this.renderCarpet()}
+        {this.renderBlanket()}
+        {this.renderCanape()}
+        {this.renderElevator()}
+        {this.renderHanger()}
+        {this.renderPavilion()}
+        {this.renderTv()}
+        {this.renderForeigntoilet()}
+        {this.renderLaundry()}
+        {this.renderStove()}
+        {this.renderKitchenware()}
+        {this.renderBilliard()}
+        {this.renderRefrig()}
+        {this.renderBath()}
+        {this.renderDinnerTable()}
+        {this.renderMicrowave()}
+        {this.renderTeamaker()}
+        {this.renderConditioner()}
+        {this.renderPingpong()}
+        {this.renderPool()}
+        {this.renderParking()}
+        {this.renderToilet()}
+        {this.renderInsurance()}
+        {this.renderTower()}
+        {this.renderHerbalTea()}
+        {this.renderKorsi()}
+      </div>
     );
   }
 }

@@ -318,12 +318,10 @@ class HouseDetailsMd extends React.Component{
        });
       fetch(request)
       .then((response) => {
-        console.log(response);
         return response.json();
       })
       .then((unlikeResponse) => {
         if(unlikeResponse.successful===true){
-          this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
         }
       });
        break;
