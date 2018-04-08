@@ -30,7 +30,6 @@ class UtilitiesDescriptionMd extends React.Component{
     if(this.props.homeData.toilets_number>0){
       subUtilities.push("ENTIRE_TOILET");
     }
-    
     var primaryListOfLists = [[],[],[],[],[],[],[],[],[]];
     var listIndex = 0;
     for (var itemIndex=0;itemIndex<subUtilities.length;itemIndex++){
@@ -39,7 +38,7 @@ class UtilitiesDescriptionMd extends React.Component{
           primaryListOfLists[listIndex].push(subUtilities[itemIndex]);
         }
         else{
-          primaryListOfLists[listIndex].push(utilities[itemIndex]);
+          primaryListOfLists[listIndex].push(subUtilities[itemIndex]);
         }
     }
     var secondaryListOfLists = [];

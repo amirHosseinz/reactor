@@ -391,6 +391,7 @@ class Facilities extends React.Component {
       );
     }
   }
+  
   render () {
     return(
       <div className="row-reverse">
