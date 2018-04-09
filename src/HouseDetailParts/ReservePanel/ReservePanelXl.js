@@ -281,6 +281,11 @@ class ReservePanelXl extends React.Component{
  }
 
  sendBookRequest(){
+   if(localStorage['isLoggedIn']==="false"){
+     this.props.setTriggerLoginOrigin('book-request');
+     this.props.enableTriggerLogin();
+     return;
+   }
    switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
      case 'rooms':{
        var request = new Request('https://www.trypinn.com/api/room/request/book/', {
@@ -504,7 +509,8 @@ class ReservePanelXl extends React.Component{
                   تومان
                 </p>
                 <div className="pre-bill-margin-optimizer-for-button">
-                  <button type="button"className="btn pre-bill-payment-button" onClick={this.sendBookRequest.bind(this)}>ارسال درخواست
+                  <button type="button"className="btn pre-bill-payment-button" onClick={()=>{this.sendBookRequest()}}>
+                    ارسال درخواست
                   </button>
                 </div>
             </div>

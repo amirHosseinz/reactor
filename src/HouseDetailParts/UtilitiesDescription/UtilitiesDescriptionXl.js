@@ -30,7 +30,6 @@ class UtilitiesDescriptionXl extends React.Component{
     if(this.props.homeData.toilets_number>0){
       subUtilities.push("ENTIRE_TOILET");
     }
-    console.log(subUtilities);
     var primaryListOfLists = [[],[],[],[],[],[],[],[],[]];
     var listIndex = 0;
     for (var itemIndex=0;itemIndex<subUtilities.length;itemIndex++){

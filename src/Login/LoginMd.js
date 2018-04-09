@@ -295,7 +295,13 @@ class LoginMd extends React.Component{
      localStorage['user-last-name']=data.user.last_name;
      localStorage['user-username']=data.user.username;
      localStorage['user-profile-picture']=data.user.profile_picture;
-     window.location.reload();
+     if(this.props.triggerLoginOrigin==="book-request") {
+       this.props.setTriggerLoginOrigin('');
+       this.props.closeLoginPanel();
+     }
+     else{
+       window.location.reload();
+     }
    });
   }
   getResponseForSignUp(){

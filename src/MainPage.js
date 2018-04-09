@@ -24,6 +24,7 @@ class MainPage extends React.Component{
     super(props);
     this.state ={
       triggerLogin : false,
+      triggerLoginOrigin : '',
     };
   }
 
@@ -34,12 +35,17 @@ class MainPage extends React.Component{
   disableTriggerLogin(){
     this.setState({triggerLogin:false});
   }
+
+  setTriggerLoginOrigin(origin){
+    this.setState({triggerLoginOrigin:origin});
+  }
+
   renderSearchBar(props) {
     return (<SearchBar {...props} />);
   }
   renderHeader(props){
     return (
-      <Header {...props} triggerLogin={this.state.triggerLogin} disableTriggerLogin={this.disableTriggerLogin.bind(this)}/>
+      <Header {...props} setTriggerLoginOrigin={(origin)=>{this.setTriggerLoginOrigin(origin)}} triggerLoginOrigin={this.state.triggerLoginOrigin} triggerLogin={this.state.triggerLogin} disableTriggerLogin={this.disableTriggerLogin.bind(this)}/>
     );
   }
   renderFooter() {
@@ -51,7 +57,7 @@ class MainPage extends React.Component{
   }
   renderHouseDetails() {
     return(
-      <HouseDetails enableTriggerLogin={this.enableTriggerLogin.bind(this)}/>
+      <HouseDetails setTriggerLoginOrigin={(origin)=>{this.setTriggerLoginOrigin(origin)}} enableTriggerLogin={this.enableTriggerLogin.bind(this)}/>
     );
   }
   getHouseId(){

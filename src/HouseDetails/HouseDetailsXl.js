@@ -44,9 +44,27 @@ class HouseDetailsXl extends React.Component{
     };
   }
 
-  componentDidMount=()=> {
-    }
+  componentDidMount() {
+    window.addEventListener("scroll", (event)=>{this.handleScroll(event)});
+  }
 
+  handleScroll(event) {
+    if(window.scrollY<400){
+      this.setState({activeLink:1});
+    }
+    if(window.scrollY > 400 && window.scrollY<1000){
+      this.setState({activeLink:2});
+    }
+    if(window.scrollY > 1000 && window.scrollY<1200){
+      this.setState({activeLink:3});
+    }
+    if(window.scrollY > 1200 && window.scrollY<1450){
+      this.setState({activeLink:4});
+    }
+    if(window.scrollY > 1450){
+      this.setState({activeLink:5});
+    }
+  }
 
   getRelevantToken(){
     if (this.state.isLoggedIn ==='true'){
@@ -284,7 +302,6 @@ class HouseDetailsXl extends React.Component{
        });
       fetch(request)
       .then((response) => {
-        console.log(response);
         return response.json();
       })
       .then((unlikeResponse) => {
@@ -330,7 +347,6 @@ class HouseDetailsXl extends React.Component{
    }
  }
   renderAddressBreadCrumbList(){
-    // console.log(this.state.homeData.location_hierarchy);
     var position = this.state.homeData.location_hierarchy.length + 1;
     var breadCrumbList = this.state.homeData.location_hierarchy.map((item)=>{
       position = position - 1;
@@ -359,10 +375,10 @@ class HouseDetailsXl extends React.Component{
         <div className="house-details-main-division">
           <div className="house-details-top-division">
             <div id="gallery"></div>
-            <div className="house-details-gallery">
-              {this.renderGallery()}
-              {this.renderGalleryLightBox()}
-            </div>
+              <div className="house-details-gallery">
+                {this.renderGallery()}
+                {this.renderGalleryLightBox()}
+              </div>
             <div className="house-details-main-information">
               {this.renderAddressBreadCrumbList()}
               {this.renderHomeTitle()}
@@ -389,7 +405,7 @@ class HouseDetailsXl extends React.Component{
                       </div>
                       <hr/>
                       <div className="house-details-reserve-panel-form">
-                        <ReservePanel homeData={this.state.homeData}/>
+                        <ReservePanel setTriggerLoginOrigin={(origin)=>{this.props.setTriggerLoginOrigin(origin)}} enableTriggerLogin={this.props.enableTriggerLogin.bind(this)} homeData={this.state.homeData}/>
                       </div>
                     </div>
                      <div className={isSticky?"bookmark-share-container-sticky":"bookmark-share-container-not-sticky"}>
@@ -417,7 +433,6 @@ class HouseDetailsXl extends React.Component{
                          </div>
                        </div>
                      </div>
-
                   </div>
                 )
               }}
@@ -447,27 +462,26 @@ class HouseDetailsXl extends React.Component{
                 )}}
               </Sticky>
               <div className="house-details-contents">
-                <div className="house-details-amenities-description housedetails-content-containers">
-                  <div className="house-details-host-info">
-
-                    <HostInfoDescription homeData={this.state.homeData}/>
-                  </div>
-                  {
-                    (this.state.homeData.description==="")?null :
-                    <div>
-                      <p className="house-details-description-heading"> درباره این خانه </p>
-                      <p className='house-details-description-content house-description-top'> {this.state.homeData.description.replace('-','')} </p>
+                  <div className="house-details-amenities-description housedetails-content-containers">
+                    <div className="house-details-host-info">
+                      <HostInfoDescription homeData={this.state.homeData}/>
                     </div>
-                  }
-                  <div className="house-details-amenities">
-                    <p className="house-details-description-heading">
-                      امکانات
-                    </p>
-                    <UtilitiesDescription homeData={this.state.homeData} />
+                    {
+                      (this.state.homeData.description==="")?null :
+                      <div>
+                        <p className="house-details-description-heading"> درباره این خانه </p>
+                        <p className='house-details-description-content house-description-top'> {this.state.homeData.description.replace('-','')} </p>
+                      </div>
+                    }
+                    <div className="house-details-amenities">
+                      <p className="house-details-description-heading">
+                        امکانات
+                      </p>
+                      <UtilitiesDescription homeData={this.state.homeData} />
+                    </div>
+                    <div className="house-details-sleep-arrangements">
+                    </div>
                   </div>
-                  <div className="house-details-sleep-arrangements">
-                  </div>
-                </div>
                 <div id="price"></div>
                 <div className="house-details-prices housedetails-content-containers">
                   <p className="house-details-description-heading">
@@ -476,33 +490,33 @@ class HouseDetailsXl extends React.Component{
                   <DifferentPrices homeData={this.state.homeData}/>
                 </div>
                 <div id="laws"></div>
-                <div className= "house-details-rules housedetails-content-containers">
-                  <p className="house-details-description-heading">
-                  مقررات این اقامتگاه
-                  </p>
-                  <CheckInCheckOutDescription homeData={this.state.homeData}/>
-                  <MaxCapacity homeData={this.state.homeData}/>
-                  <RulesDescription homeData= {this.state.homeData} />
-                  <SpecialRule homeData={this.state.homeData}/>
-                </div>
+                  <div className= "house-details-rules housedetails-content-containers">
+                    <p className="house-details-description-heading">
+                    مقررات این اقامتگاه
+                    </p>
+                    <CheckInCheckOutDescription homeData={this.state.homeData}/>
+                    <MaxCapacity homeData={this.state.homeData}/>
+                    <RulesDescription homeData= {this.state.homeData} />
+                    <SpecialRule homeData={this.state.homeData}/>
+                  </div>
                 <div id="map"></div>
-                <div className="house-details-location housedetails-content-containers">
-                  <div className="house-details-location-description">
-                  {this.renderRelevantMapDescription()}
-                  <p className="house-details-description-heading">
-                    موقعیت اقامتگاه
-                  </p>
-                  <p className="house-details-description-content">
-                    در نقشه زیر می توانید موقعیت حدودی اقامتگاه را مشاهده نمایید.
-                    پس از
-                    <span> رزرو اقامتگاه </span>
-                    موقعیت و آدرس دقیق اقامتگاه و شماره تلفن میزبان
-                    در اختیار شما قرار خواهد گرفت.
-                  </p>
-                  </div>
-                  <div className="house-details-map">
-                    <MapDescription lat={this.state.homeData.latitude} lng={this.state.homeData.longitude} zoom={13}/>
-                  </div>
+                  <div className="house-details-location housedetails-content-containers">
+                    <div className="house-details-location-description">
+                      {this.renderRelevantMapDescription()}
+                      <p className="house-details-description-heading">
+                        موقعیت اقامتگاه
+                      </p>
+                      <p className="house-details-description-content">
+                        در نقشه زیر می توانید موقعیت حدودی اقامتگاه را مشاهده نمایید.
+                        پس از
+                        <span> رزرو اقامتگاه </span>
+                        موقعیت و آدرس دقیق اقامتگاه و شماره تلفن میزبان
+                        در اختیار شما قرار خواهد گرفت.
+                      </p>
+                    </div>
+                      <div className="house-details-map">
+                        <MapDescription lat={this.state.homeData.latitude} lng={this.state.homeData.longitude} zoom={13}/>
+                      </div>
                 </div>
               </div>
             </div>

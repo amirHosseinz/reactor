@@ -206,7 +206,6 @@ class LoginXl extends React.Component{
      return response.json();
    })
    .then((setPasswordResponse) => {
-     console.log(setPasswordResponse);
      this.handleSetPasswordResponse(setPasswordResponse);
    });
   }
@@ -256,7 +255,6 @@ class LoginXl extends React.Component{
   }
   handleLoginResponse(loginResponse){
     if(loginResponse.is_successful){
-      console.log(loginResponse);
       localStorage['isLoggedIn']= 'true';
       localStorage['token'] = loginResponse.token;
       this.setUserNameInHeader();
@@ -292,12 +290,17 @@ class LoginXl extends React.Component{
      return response.json();
    })
    .then((data) => {
-     // console.log(data);
      localStorage['user-first-name']=data.user.first_name;
      localStorage['user-last-name']=data.user.last_name;
      localStorage['user-username']=data.user.username;
      localStorage['user-profile-picture']=data.user.profile_picture;
-     window.location.reload();
+     if(this.props.triggerLoginOrigin==="book-request"){
+       this.props.setTriggerLoginOrigin('');
+       this.props.closeLoginPanel();
+     }
+     else{
+       window.location.reload();
+     }
    });
   }
   getResponseForSignUp(){
@@ -785,7 +788,6 @@ class LoginXl extends React.Component{
    });
   }
   handleChangePasswordResponse(changePasswordResponse){
-    console.log(changePasswordResponse);
     if(changePasswordResponse.successful){
       localStorage['isLoggedIn']= 'true';
       localStorage['token'] = changePasswordResponse.token;

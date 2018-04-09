@@ -284,6 +284,11 @@ class ReservePanelMd extends React.Component{
  }
 
  sendBookRequest(){
+   if(localStorage['isLoggedIn']==="false"){
+     this.props.setTriggerLoginOrigin('book-request');
+     this.props.enableTriggerLogin();
+     return;
+   }
    switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
      case 'rooms':{
        var request = new Request('https://www.trypinn.com/api/room/request/book/', {

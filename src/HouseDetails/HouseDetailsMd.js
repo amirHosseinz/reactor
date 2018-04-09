@@ -61,6 +61,27 @@ class HouseDetailsMd extends React.Component{
     }
   }
 
+  componentDidMount() {
+    window.addEventListener("scroll", (event)=>{this.handleScroll(event)});
+  }
+
+  handleScroll(event) {
+    if(window.scrollY<400){
+      this.setState({activeLink:1});
+    }
+    if(window.scrollY > 400 && window.scrollY<850){
+      this.setState({activeLink:2});
+    }
+    if(window.scrollY > 850 && window.scrollY<1050){
+      this.setState({activeLink:3});
+    }
+    if(window.scrollY > 1050 && window.scrollY<1450){
+      this.setState({activeLink:4});
+    }
+    if(window.scrollY > 1450){
+      this.setState({activeLink:5});
+    }
+  }
   componentWillMount() {
     this.getRelevantToken();
   }
@@ -387,7 +408,7 @@ class HouseDetailsMd extends React.Component{
                       </div>
                       <hr />
                       <div className="house-details-reserve-panel-form">
-                        <ReservePanel homeData={this.state.homeData}/>
+                        <ReservePanel setTriggerLoginOrigin={(origin)=>{this.props.setTriggerLoginOrigin(origin)}} enableTriggerLogin={this.props.enableTriggerLogin.bind(this)} homeData={this.state.homeData}/>
                       </div>
                     </div>
                     <div className={isSticky?"bookmark-share-container-sticky-md":"bookmark-share-container-not-sticky-md"}>

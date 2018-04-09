@@ -337,7 +337,7 @@ margin-right: 8px;
 }
 .house-details-host-img{
 border:solid;
-object-fit: cover;
+object-fit:fill;
 border-radius: 50%;
 border-color: #bdbdbd;
 border-width: 2px;

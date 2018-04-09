@@ -4,7 +4,6 @@ import GuestNumberSearchBar from '../GuestNumberSearchBar.js'
 import {Dropdown} from 'semantic-ui-react';
 import "./SearchResult.css";
 import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
-
 import momentJalaali from 'moment-jalaali';
 import '../tools/calendar/initialize.js';
 import '../tools/calendar2/lib/css/_datepicker.css';

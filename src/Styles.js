@@ -153,7 +153,7 @@ export const loginPanelmobileStyle = {
 }
 export const reserveModalStyle={
   overlay : {
-    zIndex : '10000',
+    zIndex : '1000',
     position          : 'fixed',
     top               : 0,
     left              : 0,

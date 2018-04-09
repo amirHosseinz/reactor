@@ -3,7 +3,7 @@ import './Images.css';
 import { englishToPersianDigits } from './tools/EnglishToPersianDigits';
 import AspectRatio from 'react-aspect-ratio';
 import {parsePrice3digits} from './tools/ParsePrice3digits.js';
-
+import LazyLoad from 'react-lazyload';
 
 class SearchResultItem extends React.Component {
   constructor(props){
@@ -87,7 +87,7 @@ class SearchResultItem extends React.Component {
         <a target="_blank" href={(this.props.room.type==='room')?"/rooms/"+ this.props.room.id:"/ecotourism/"+ this.props.room.id} className="card_anchor">
           <div  className="result-detail">
             <AspectRatio ratio="16/11">
-                  <img src= {this.props.preview} className="imgresult" alt="پیشنمایش خانه "/>
+              <img src= {this.props.preview} className="imgresult"/>
             </AspectRatio>
               <div className="result-without-price">
                 <div>

@@ -22,7 +22,7 @@ class Login extends React.Component{
 renderLoginXl(props){
   return(
     <div className="hidden-xs hidden-md hidden-sm visible-xl">
-      <LoginXl cellPhone={this.state.cellPhone} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword} closeLoginPanel={props.closeLoginPanel.bind(this)}/>
+      <LoginXl {...props} cellPhone={this.state.cellPhone} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword} closeLoginPanel={props.closeLoginPanel.bind(this)}/>
     </div>
   );
 }
@@ -30,7 +30,7 @@ renderLoginXl(props){
 renderLoginMd(props){
   return(
     <div className="hidden-xs hidden-xl hidden-sm visible-md">
-      <LoginMd cellPhone={this.state.cellPhone} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword} closeLoginPanel={props.closeLoginPanel.bind(this)}/>
+      <LoginMd {...props} cellPhone={this.state.cellPhone} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword} closeLoginPanel={props.closeLoginPanel.bind(this)}/>
     </div>
   );
 }
@@ -38,7 +38,7 @@ renderLoginMd(props){
 renderLoginSm(props){
   return(
     <div className="hidden-xs hidden-md hidden-xl visible-sm">
-      <LoginSm closeLoginPanel={props.closeLoginPanel.bind(this)}/>
+      <LoginSm {...props} closeLoginPanel={props.closeLoginPanel.bind(this)}/>
     </div>
   );
 }
@@ -46,7 +46,7 @@ renderLoginSm(props){
 renderLoginXs(props){
   return(
     <div className="hidden-xl hidden-md hidden-sm visible-xs">
-      <LoginXs closeLoginPanel={props.closeLoginPanel.bind(this)}/>
+      <LoginXs {...props} closeLoginPanel={props.closeLoginPanel.bind(this)}/>
     </div>
   );
 }
