@@ -23,7 +23,7 @@ class UserProfileMd extends React.Component{
       role:null,
       profileInfo:null,
       firstName:'',
-      selectedPanel:'edit-profile',
+      selectedPanel:'bookmark-list',
       lastName:'',
       bookmarkList:null,
       loading:false,

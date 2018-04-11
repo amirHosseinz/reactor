@@ -21,7 +21,7 @@ class UserProfileXl extends React.Component{
       ImgHint:false,
       token:null,
       role:null,
-      selectedPanel:"edit-profile",
+      selectedPanel:"bookmark-list",
       profileInfo:null,
       firstName:'',
       lastName:'',

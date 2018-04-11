@@ -58,10 +58,8 @@ class SearchBarXl extends React.Component{
     return localStorage['token'];
   }
   componentWillMount(){
-    document.body.style.backgroundColor = "#f8f8f8";
     this.setState({
-      token : this.getRelevantToken(),
-    }, );
+      token : this.getRelevantToken()});
   }
 
    handleClick(){
@@ -73,7 +71,7 @@ class SearchBarXl extends React.Component{
        }
      }
    getCityListFromServer(){
-     var request = new Request('https://www.trypinn.com/api/homepage/',{
+     var request = new Request('https://www.trypinn.com/api/v1/homepage/',{
        method: 'POST',
        body: JSON.stringify({
          platform:'web',
@@ -101,7 +99,7 @@ class SearchBarXl extends React.Component{
      for (var i=0 ; i<list.length ; i++) {
        list2.push(list[i].text);
      }
-     this.setState({cityList : list2});
+     // this.setState({cityList : list2});
    }
 
    onSuggestionsFetchRequested=({value})=> {

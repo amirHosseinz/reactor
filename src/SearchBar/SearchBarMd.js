@@ -59,10 +59,8 @@ class SearchBarMD extends React.Component{
     return localStorage['token'];
   }
   componentWillMount(){
-    document.body.style.backgroundColor = "#f8f8f8";
     this.setState({
-      token : this.getRelevantToken(),
-    }, );
+      token : this.getRelevantToken()});
   }
 
    handleClick(){

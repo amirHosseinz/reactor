@@ -542,7 +542,7 @@ class HouseDetailsMd extends React.Component{
         return this.state.homeData.title +  " در " + this.state.homeData.location + ' | ' + "تریپین";
       }
       else{
-        return this.state.homeData.page_title + " | " + this.state.homeData.location + ' | ' + "تریپین";
+        return this.state.homeData.page_title + " | " + "تریپین";
       }
     }
   }

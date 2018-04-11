@@ -226,19 +226,29 @@ class Facilities extends React.Component {
       if(this.props.utility.indexOf('ENTIRE_FOREIGN_TOILET') > -1){
         return(
           <div className="house-details-facilities-item">
-          <img src={require('../facilities/wc-1.png')}   className="house-details-facilities-other-amanities-icon" alt = "" />
-          <p className="house-details-facility-text">
-          توالت فرنگی
-          </p>
+            <img src={require('../facilities/wc-1.png')}   className="house-details-facilities-other-amanities-icon" alt = "" />
+            <p className="house-details-facility-text">
+            توالت فرنگی
+            </p>
           </div>
         );
       }
-      else{
+      else if(this.props.utility.indexOf('SHARED_FOREIGN_TOILET') > -1){
         return(
           <div className="house-details-facilities-item">
           <img src={require('../facilities/wc-1.png')}   className="house-details-facilities-other-amanities-icon" alt = "" />
           <p className="house-details-facility-text">
           توالت فرنگی (مشترک)
+          </p>
+          </div>
+        );
+      }
+      else {
+        return(
+          <div className="house-details-facilities-item">
+          <img src={require('../facilities/wc-1.png')}   className="house-details-facilities-other-amanities-icon" alt = "" />
+          <p className="house-details-facility-text">
+            توالت فرنگی
           </p>
           </div>
         );
@@ -391,7 +401,7 @@ class Facilities extends React.Component {
       );
     }
   }
-  
+
   render () {
     return(
       <div className="row-reverse">
