@@ -39,6 +39,8 @@ export const generateSiteMap=()=>{
   sitemap.add({url : '/search/سلمان‌شهر',priority : 1,lastmod:new Date()});
   sitemap.add({url : '/search/ایزدشهر',priority : 1,lastmod:new Date()});
   sitemap.add({url : '/search/عباس‌آباد',priority : 1,lastmod:new Date()});
+  sitemap.add({url : '/search/کرمانشاه',priority : 1,lastmod:new Date()});
+  sitemap.add({url : '/search/همدان',priority : 1,lastmod:new Date()});
   sitemap.add({url : '/aboutus',priority : 1,lastmod:new Date()});
   sitemap.add({url : '/contactus',priority : 1,lastmod:new Date()});
   sitemap.add({url : '/terms&conditions',priority : 1,lastmod:new Date()});
@@ -80,7 +82,7 @@ fetch(request)
       case 'ecotourism':{
         sitemap.add({url : '/ecotourism/' + homeData.room[homeCounter].id ,
         lastmod:new Date(),
-        priority:0.9 ,
+        priority:0.9,
         img:[{url:'https://www.trypinn.com/' + homeData.room[homeCounter].preview}]
       }
     );
