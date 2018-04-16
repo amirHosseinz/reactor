@@ -261,7 +261,7 @@ class HouseDetailsMd extends React.Component{
     this.props.enableTriggerLogin();
     return;
    }
-   this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
+   this.setState((prevState,props)=>({isLiked:true}));
    switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
      case 'rooms' : {
        var request = new Request('https://www.trypinn.com/bookmark/api/like/', {

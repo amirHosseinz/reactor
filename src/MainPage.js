@@ -101,6 +101,7 @@ class MainPage extends React.Component{
        return response.json();
      })
      .then((response) => {
+       localStorage['isLoggedIn'] = "false";
        localStorage['token']= response.token;
      });
     }
