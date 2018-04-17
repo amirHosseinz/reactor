@@ -17,7 +17,7 @@ const listOfCity = [
   {name:'تنکابن'},{name:'سرخ‌رود'},{name:'دریاکنار'},{name:'ایزدشهر'},{name:'البرز'},{name:'گلستان'},
   {name:'سلمان‌شهر'},{name:'کلاردشت'},{name:'نشتارود'},{name:'کلارآباد'},
   {name:'فارس'},{name:'شیراز'},{name:'یزد'},{name:'داراب'},{name:'بافق'},{name:'مرودشت'},
-  {name : 'کرمانشاه'},{name : 'همدان'}
+  {name : 'کرمانشاه'},{name : 'همدان'},{name : 'کردان'},
 ];
 const theme= {
     container:                'main-page-searchbar-container',
