@@ -252,4 +252,118 @@
 
 
 /* XS styles here */
+.landing-main {
+  font-family: Shabnam;
+  display: flex;
+  display : -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+}
+
+.landing-intro {
+  padding-top :60%;
+  width : 100%;
+  display: flex;
+  display : -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  background: linear-gradient(#22c9b9, #22c3d5);
+}
+
+.intro-text {
+  position:absolute;
+  bottom : 0;
+  right : 0;
+  left : 0;
+  top : 30px;
+  color : white;
+  text-align: justify;
+}
+.primary-title {
+   font-weight: bold;
+   direction: rtl;
+   font-size : 36px;
+   width : 94%;
+   margin-top : 20px !important;
+   margin : auto;
+   margin-bottom : 18px;
+}
+
+.secondary-title {
+  direction: rtl;
+  font-size : 28px;
+  width : 94%;
+  margin : auto;
+  margin-bottom: 14px;
+}
+
+.description-paragraph {
+  text-align: justify;
+  direction: rtl;
+  font-size : 16px;
+  width : 94%;
+  margin : auto;
+}
+
+.intro-picture {
+  height : 210px;
+  margin:auto;
+  margin-top : 20px;
+}
+
+.landing-download-intro{
+  height : 530px;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction : column;
+  color : #545454;
+  border-bottom: 1px #545454;
+}
+
+.landing-download-title {
+  font-family: IRANSans;
+  font-size : 24px;
+  color : #454545;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom : 0px !important;
+  margin-top : -30px !important;
+}
+
+.landing-download-description {
+  direction: rtl;
+  font-size: 20px;
+  width : 78%;
+  margin:auto;
+  text-align: justify;
+}
+
+.download-picture {
+  width : 70%;
+  margin: auto;
+}
+.landing-download-links{
+  margin-top : 30px;
+}
+
+.landing-download-os {
+  font-family: Shabnam;
+  font-size : 20px;
+  text-align : right;
+  font-weight: bold;
+  direction : rtl;
+  margin-top : 8px ;
+  margin-bottom : 10px;
+}
+
+.landing-download-section {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction :column;
+  align-items: center;
+  justify-content: space-between;
+  width : 100%;
+}
 /* XS styles Finished */

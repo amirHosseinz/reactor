@@ -16,6 +16,7 @@ import Partners from './Partners.js';
 import SearchResult from './SearchResult.js';
 import Suggestions from './Suggestions.js';
 import {StickyContainer} from 'react-sticky';
+import Social from './Campaign/Social.js';
 // import {generateSiteMap} from './sitemap.js';
 
 
@@ -202,6 +203,13 @@ class MainPage extends React.Component{
       <Error404Page />
     );
   }
+
+  renderSocial(props){
+    return(
+      <Social {...props}/>
+    );
+  }
+
   // <Route path={"/becomehost"} render = {()=> {return(this.renderBecomeHost())}}/>
   // <Route path={"/"} render = {()=> {return(this.renderFooter())}}/>
   render(){
@@ -222,6 +230,7 @@ class MainPage extends React.Component{
             <Route path={"/suggestions&comments"} render = {()=> {return(this.renderSuggestions())}}/>
             <Route path={"/terms&conditions"} render={()=> {return(this.renderTerms())}}/>
             <Route path={"/contactus"} render = {()=> {return(this.renderContactUs())}}/>
+            <Route path={"/social"} render={(props)=>{return(this.renderSocial(props))}}/>
             <Route exact path="/search/" render={() => {return(<Redirect to="/search/هر جا"/>)}}/>
             <Route path={"/userprofile"} render={()=> {return(this.renderUserProfile())}}/>
             <Route exact path={"/search/:city"} render = {(props)=> {return(this.renderSearchResult(props))}}/>
