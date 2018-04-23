@@ -5,7 +5,7 @@ import Header from './Header.js';
 import Footer from './Footer.js';
 import UserProfile from './UserProfile.js';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter,Route,Redirect,Switch} from 'react-router-dom';
+import {BrowserRouter,Route,Redirect,Switch,MemoryRouter} from 'react-router-dom';
 import UserPanel from './UserPanel';
 import BecomeHost from './BecomeHost.js';
 import ContactUs from './ContactUs.js';
@@ -17,6 +17,7 @@ import SearchResult from './SearchResult.js';
 import Suggestions from './Suggestions.js';
 import {StickyContainer} from 'react-sticky';
 import Social from './Campaign/Social.js';
+import Digiato from './Digiato.js';
 // import {generateSiteMap} from './sitemap.js';
 
 
@@ -210,6 +211,13 @@ class MainPage extends React.Component{
     );
   }
 
+  renderDigiato(props){
+    return(
+      <Digiato {...props}/>
+    );
+
+  }
+
   // <Route path={"/becomehost"} render = {()=> {return(this.renderBecomeHost())}}/>
   // <Route path={"/"} render = {()=> {return(this.renderFooter())}}/>
   render(){
@@ -231,6 +239,7 @@ class MainPage extends React.Component{
             <Route path={"/terms&conditions"} render={()=> {return(this.renderTerms())}}/>
             <Route path={"/contactus"} render = {()=> {return(this.renderContactUs())}}/>
             <Route path={"/social"} render={(props)=>{return(this.renderSocial(props))}}/>
+            <Route path={"/digiatodl"} render={(props)=>{return(this.renderDigiato(props))}}/>
             <Route exact path="/search/" render={() => {return(<Redirect to="/search/هر جا"/>)}}/>
             <Route path={"/userprofile"} render={()=> {return(this.renderUserProfile())}}/>
             <Route exact path={"/search/:city"} render = {(props)=> {return(this.renderSearchResult(props))}}/>
