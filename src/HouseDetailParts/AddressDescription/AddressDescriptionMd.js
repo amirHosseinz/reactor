@@ -12,7 +12,7 @@ class AddressDescriptionMd extends React.Component{
       case "APT":
         return 'آپارتمان';
       default:
-        return 'اقامتگاه بومگردی';
+        return 'اقامتگاه بوم‌گردی';
     }
   }
   getServiceType(){
@@ -30,7 +30,7 @@ class AddressDescriptionMd extends React.Component{
   render(){
     return(
       <div>
-        <div className='row-reverse-house-adress-type visible-xl hidden-xs'>
+        <div className='row-reverse-house-adress-type'>
           <p className="paragraph-space">{this.getRoomType()}</p>
           <p className="paragraph-space">{this.getServiceType()}</p>
           <p className="paragraph-space">در</p>

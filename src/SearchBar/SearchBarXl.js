@@ -169,7 +169,7 @@ class SearchBarXl extends React.Component{
               تریپین
             </p>
             <p className="search-bar-tripinn-heading-2">
-              سامانه رزرو ویلا و اقامتگاه محلی
+              رزرو آنلاین ویلا و اقامتگاه بوم‌گردی
             </p>
             <div className="search-bar-auto-suggest-container-xl">
               <p className="search-bar-inter-destenation-text"> مقصد را وارد کنید

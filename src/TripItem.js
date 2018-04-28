@@ -3,6 +3,7 @@ import TripItemXl from './TripItem/TripItemXl.js';
 import TripItemXs from './TripItem/TripItemXs.js';
 import TripItemMd from './TripItem/TripItemMd.js';
 import TripItemSm from './TripItem/TripItemSm.js';
+import MetaTags from 'react-meta-tags';
 
 
 class TripItem extends React.Component{
@@ -54,6 +55,9 @@ class TripItem extends React.Component{
   render(){
     return(
       <div>
+        <MetaTags>
+          <title>تریپین | سفر‌های من</title>
+        </MetaTags>
         {this.renderTripItemMd()}
         {this.renderTripItemXs()}
         {this.renderTripItemXl()}

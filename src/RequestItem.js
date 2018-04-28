@@ -3,8 +3,9 @@ import RequestItemMd from './RequestItem/RequestItemMd';
 import RequestItemSm from './RequestItem/RequestItemSm';
 import RequestItemXl from './RequestItem/RequestItemXl';
 import RequestItemXs from './RequestItem/RequestItemXs';
+import MetaTags from 'react-meta-tags';
 
-// moment.loadPersian({usePersianDigits:true , dialect:'persian-modern'});
+
 class RequestItem extends React.Component{
   constructor(props){
     super(props);
@@ -54,6 +55,9 @@ class RequestItem extends React.Component{
   render(){
     return(
       <div>
+        <MetaTags>
+          <title> تریپین | درخواست‌های من</title>
+        </MetaTags>
         {this.renderRequestItemMd(this.props)}
         {this.renderRequestItemXs(this.props)}
         {this.renderRequestItemXl(this.props)}

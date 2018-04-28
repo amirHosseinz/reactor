@@ -273,10 +273,10 @@ class TripItemXl extends React.Component{
         return(
           <div className='trip-item-no-house-main-container'>
           <p className="no-request-header">شما سفر تایید شده ای ندارید</p>
-          <p className="no-trip-main-paragraph">تاکنون سفری برای شما به ثبت نرسیده است. شما میتوانید با ارسال درخواست رزرو به هریک از خانه های موجود ، مقدمات سفر خود را فراهم نمایید</p>
+          <p className="no-trip-main-paragraph">تاکنون سفری برای شما به ثبت نرسیده است. شما می‌توانید با ارسال درخواست رزرو به هریک از خانه‌های موجود، مقدمات سفر خود را فراهم نمایید</p>
             <div className='no-trip-stages-container'>
               <div className='no-trip-stage1-text col-md-7'>
-               <p>پس از تایید درخواست سفر شما در بخش <Link className='tripinn-blue' to="/dashboard/request">درخواست ها </Link>توسط میزبان و پرداخت هزینه سفر توسط شما، سفر شما در این بخش ایجاد میشود </p>
+               <p>پس از تایید درخواست سفر شما در بخش <Link className='tripinn-blue' to="/dashboard/request">درخواست‌ها </Link>توسط میزبان و پرداخت هزینه سفر توسط شما، سفر شما در این بخش ایجاد می‌شود </p>
                 </div>
               <Fade right={true}>
                <div className='no-trip-stage1-img col-md-5'>
@@ -291,12 +291,16 @@ class TripItemXl extends React.Component{
                 </div>
               </Fade>
                 <div className='no-trip-stage2-text col-md-7'>
-                <p>شما میتوانید در بخش <Link className='tripinn-blue' to="/dashboard/trip"> سفرها</Link> آدرس دقیق مقصد خود وشماره تماس میزبان خودرا مشاهده نمایید</p>
+                <p>شما می‌توانید در بخش <Link className='tripinn-blue' to="/dashboard/trip">سفر‌ها</Link> آدرس دقیق مقصد خود وشماره تماس میزبان خودرا مشاهده نمایید</p>
                   </div>
                 </div>
                 <div className='no-trip-stages-container'>
                   <div  className='no-trip-stage3-text col-md-7'>
-                    <p>همچنین هنوز هم میتوانید سفر خودرا لغو نمایید. به خاطر داشته باشید با لغو سفر خود، <span className="mizban-color"> هزینه یک شب از اقامت شما کم خواهد شد </span> و مابقی مبلغ به شما عودت خواهد شد</p>
+                    <p>
+                      همچنین هنوز هم می‌توانید سفر خودرا لغو نمایید. به خاطر داشته باشید با لغو سفر خود
+                      ،<Link className="tripinn-blue" to="/terms&conditions"> مقررات لغو سفر</Link> اعمال خواهد شد
+                    </p>
+                    <span className="mizban-color"></span>
                   </div>
                   <Fade right={true}>
                     <div className='no-trip-stage3-img col-md-5'>
