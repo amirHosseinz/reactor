@@ -1,5 +1,7 @@
 import sm from 'sitemap';
-// import fs from 'fs';
+import {productionURL} from'./Data.js';
+
+
 var fs = require('file-system');
 var sitemap = sm.createSitemap ({
        hostname: 'http://www.tripinn.ir',
@@ -49,7 +51,7 @@ export const generateSiteMap=()=>{
 }
 
 const getDataFromServer=()=> {
- var request = new Request('https://www.trypinn.com/api/v1/search/',{
+ var request = new Request(productionURL + 'api/v1/search/',{
    method: 'POST',
    body: JSON.stringify({
      platform: 'web',

@@ -6,8 +6,9 @@ import 'react-responsive-modal/lib/react-responsive-modal.css';
 import Modal from 'react-modal';
 import {suggestionResponseModalStyle} from '../Styles.js';
 import './Suggestions.css';
+import {productionURL} from'../Data.js';
 
-Modal.setAppElement('#root');
+
 class SuggestionsXl extends React.Component{
   constructor(props){
   super(props);
@@ -28,7 +29,6 @@ class SuggestionsXl extends React.Component{
         description:'',
       };
 }
-
 componentWillMount() {
     this.setState({token:this.getRelevantToken()});
 }
@@ -38,7 +38,7 @@ getRelevantToken(){
 }
 
   sendSuggestion(){
-    var request = new Request('https://www.trypinn.com/api/suggestion-submit/',{ //
+    var request = new Request(productionURL+'api/suggestion-submit/',{ //
       method: 'POST',
       body: JSON.stringify(
         {

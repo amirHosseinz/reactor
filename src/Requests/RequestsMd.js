@@ -2,6 +2,7 @@ import React from 'react';
 import { Divider } from 'semantic-ui-react';
 import './Requests.css';
 import ScrollArea from 'react-scrollbar';
+import {productionURL} from'../Data.js';
 
 
 class RequestsMd extends React.Component{
@@ -43,7 +44,7 @@ class RequestsMd extends React.Component{
     this.setState({role :person_role},()=>this.getDataFromServer())
   }
   getDataFromServer(){
-    var request = new Request('https://www.trypinn.com/api/v1/request/list/',{
+    var request = new Request(productionURL + 'api/v1/request/list/',{
       method: 'POST',
       body: JSON.stringify({
         platform:'web',

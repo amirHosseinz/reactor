@@ -5,6 +5,7 @@ import moment from 'moment-jalaali';
 import './TripItem.css';
 import {Link} from 'react-router-dom';
 import Fade from 'react-reveal/Fade';
+import {productionURL} from'../Data.js';
 
 
 moment.loadPersian({usePersianDigits:true , dialect:'persian-modern'});
@@ -144,7 +145,7 @@ class TripItemMd extends React.Component{
     this.setState({role:person_role},()=>this.deleteTrip())
   }
   cancelTrip (){
-    var request = new Request('https://www.trypinn.com/api/reservation/cancel/',{
+    var request = new Request(productionURL + 'api/reservation/cancel/',{
       method: 'POST',
       body: JSON.stringify({
         role:this.state.role,
@@ -162,7 +163,7 @@ class TripItemMd extends React.Component{
    });
   }
   deleteTrip(){
-    var request = new Request('https://www.trypinn.com/api/reservation/archive/',{
+    var request = new Request(productionURL + 'api/reservation/archive/',{
       method: 'POST',
       body: JSON.stringify({
         role:this.state.role,

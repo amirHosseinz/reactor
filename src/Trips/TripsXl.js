@@ -1,5 +1,6 @@
 import React from 'react';
 import './Trips.css';
+import {productionURL} from'../Data.js';
 
 
 class TripsXl extends React.Component{
@@ -26,7 +27,7 @@ class TripsXl extends React.Component{
     this.setState({role :person_role } ,()=>this.getDataFromServer());
   }
   getDataFromServer(){
-    var request = new Request('https://www.trypinn.com/api/v1/reservations/list/',{
+    var request = new Request(productionURL + 'api/v1/reservations/list/',{
       method: 'POST',
       body: JSON.stringify({
         role:this.state.role,

@@ -6,6 +6,9 @@ import 'react-responsive-modal/lib/react-responsive-modal.css';
 import Modal from 'react-modal';
 import {suggestionResponseModalStyle} from '../Styles.js';
 import './Suggestions.css';
+import {productionURL} from'../Data.js'
+
+
 class SuggestionsMd extends React.Component{
   constructor(props){
   super(props);
@@ -36,7 +39,7 @@ getRelevantToken(){
 }
 
   sendSuggestion(){
-    var request = new Request('https://www.trypinn.com/api/suggestion-submit/',{ //
+    var request = new Request(productionURL + 'api/suggestion-submit/',{ //
       method: 'POST',
       body: JSON.stringify(
         {

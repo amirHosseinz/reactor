@@ -20,6 +20,7 @@ import './HouseDetails.css';
 import Lightbox from 'react-images';
 import MetaTags from 'react-meta-tags';
 import {Link} from 'react-router-dom';
+import {productionURL} from'../Data.js';
 
 
 class HouseDetailsMd extends React.Component{
@@ -103,7 +104,7 @@ class HouseDetailsMd extends React.Component{
   getDataFromServer(){
     switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
       case 'rooms':{
-        var request = new Request('https://www.trypinn.com/api/get/room/', {
+        var request = new Request(productionURL + 'api/get/room/', {
           method: 'POST',
           body: JSON.stringify({
             room_id : this.state.searchParams.id,
@@ -121,7 +122,7 @@ class HouseDetailsMd extends React.Component{
        return;
       }
       case 'ecotourism':{
-        var request = new Request('https://www.trypinn.com/api/get/ecotourism/', {
+        var request = new Request(productionURL + 'api/get/ecotourism/', {
           method: 'POST',
           body: JSON.stringify({
             ecotourism_id : this.state.searchParams.id,
@@ -264,7 +265,7 @@ class HouseDetailsMd extends React.Component{
    this.setState((prevState,props)=>({isLiked:true}));
    switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
      case 'rooms' : {
-       var request = new Request('https://www.trypinn.com/bookmark/api/like/', {
+       var request = new Request(productionURL + 'bookmark/api/like/', {
          method: 'POST',
          body: JSON.stringify({
            room_id : this.state.homeData.id,
@@ -283,7 +284,7 @@ class HouseDetailsMd extends React.Component{
        break;
      }
      case 'ecotourism':{
-       var request = new Request('https://www.trypinn.com/bookmark/api/like/', {
+       var request = new Request(productionURL + 'bookmark/api/like/', {
          method: 'POST',
          body: JSON.stringify({
            eco_room_id : this.state.homeData.id,
@@ -308,7 +309,7 @@ class HouseDetailsMd extends React.Component{
    this.setState((prevState,props)=>({isLiked:!prevState.isLiked}));
    switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
      case 'rooms':{
-       var request = new Request('https://www.trypinn.com/bookmark/api/unlike/', {
+       var request = new Request(productionURL + 'bookmark/api/unlike/', {
          method: 'POST',
          body: JSON.stringify({
            room_id : this.state.homeData.id,
@@ -329,7 +330,7 @@ class HouseDetailsMd extends React.Component{
        break;
      }
      case 'ecotourism':{
-       var request = new Request('https://www.trypinn.com/bookmark/api/unlike/', {
+       var request = new Request(productionURL + 'bookmark/api/unlike/', {
          method: 'POST',
          body: JSON.stringify({
            eco_room_id : this.state.homeData.id,

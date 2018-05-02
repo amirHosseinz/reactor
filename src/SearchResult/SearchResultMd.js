@@ -4,7 +4,6 @@ import GuestNumberSearchBar from '../GuestNumberSearchBar.js'
 import {Dropdown} from 'semantic-ui-react';
 import "./SearchResult.css";
 import { englishToPersianDigits } from '../tools/EnglishToPersianDigits';
-
 import momentJalaali from 'moment-jalaali';
 import '../tools/calendar/initialize.js';
 import '../tools/calendar2/lib/css/_datepicker.css';
@@ -13,6 +12,7 @@ import Sticky from 'react-sticky';
 import {PulseLoader} from 'react-spinners';
 import MetaTags from 'react-meta-tags';
 import Fade from 'react-reveal';
+import {productionURL} from'../Data.js';
 
 
 class SearchResultMd extends React.Component{
@@ -71,7 +71,7 @@ class SearchResultMd extends React.Component{
     });
   }
   getDataFromServer(){
-    var request = new Request('https://www.trypinn.com/api/v1/search/light/',{
+    var request = new Request(productionURL + 'api/v1/search/light/',{
       method: 'POST',
       body: JSON.stringify({
         platform: 'web',

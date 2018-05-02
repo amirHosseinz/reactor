@@ -12,6 +12,7 @@ import moment from 'moment-jalaali';
 import './ReservePanel.css';
 import Fade from 'react-reveal';
 import {ClipLoader} from 'react-spinners';
+import {productionURL} from'../../Data.js';
 
 
 moment.loadPersian({usePersianDigits:false , dialect:'persian-modern'});
@@ -222,7 +223,7 @@ class ReservePanelXl extends React.Component{
     }
     switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
       case 'rooms':{
-        var request = new Request('https://www.trypinn.com/api/room/get_price/',{
+        var request = new Request(productionURL + 'api/room/get_price/',{
           method: 'POST',
           body: JSON.stringify({
             room_id:this.props.homeData.id,
@@ -250,7 +251,7 @@ class ReservePanelXl extends React.Component{
         return;
       }
       case 'ecotourism':{
-        var request = new Request('https://www.trypinn.com/api/room/get_price/',{
+        var request = new Request(productionURL + 'api/room/get_price/',{
           method: 'POST',
           body: JSON.stringify({
             eco_room_id:this.props.homeData.id,
@@ -288,7 +289,7 @@ class ReservePanelXl extends React.Component{
    }
    switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
      case 'rooms':{
-       var request = new Request('https://www.trypinn.com/api/room/request/book/', {
+       var request = new Request(productionURL + 'api/room/request/book/', {
          method: 'POST',
          body: JSON.stringify({
            room_id : this.props.homeData.id,
@@ -313,7 +314,7 @@ class ReservePanelXl extends React.Component{
      }
 
      case 'ecotourism':{
-       var request = new Request('https://www.trypinn.com/api/ecoroom/request/book/', {
+       var request = new Request(productionURL +'api/ecoroom/request/book/', {
          method: 'POST',
          body: JSON.stringify({
            eco_room_id : this.props.homeData.id,
@@ -351,7 +352,7 @@ class ReservePanelXl extends React.Component{
   UpdatePrice(){
     switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
       case 'rooms':{
-        var request = new Request('https://www.trypinn.com/api/room/get_price/',{
+        var request = new Request(productionURL + 'api/room/get_price/',{
           method: 'POST',
           body: JSON.stringify({
             room_id:this.props.homeData.id,
@@ -380,7 +381,7 @@ class ReservePanelXl extends React.Component{
         break;
       }
       case 'ecotourism':{
-        var request = new Request('https://www.trypinn.com/api/room/get_price/',{
+        var request = new Request(productionURL + 'api/room/get_price/',{
           method: 'POST',
           body: JSON.stringify({
             eco_room_id:this.props.homeData.id,

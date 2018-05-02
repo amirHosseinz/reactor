@@ -6,6 +6,7 @@ import {englishToPersianDigits, persianArabicToEnglishDigits} from '../tools/Eng
 import './Login.css';
 import {ClipLoader} from 'react-spinners';
 import Fade from 'react-reveal';
+import {productionURL} from'../Data.js';
 
 
 class LoginXl extends React.Component{
@@ -189,7 +190,7 @@ class LoginXl extends React.Component{
     this.setState({reqParamsForSetPassword:spar,setPasswordLoading:true},()=>{this.getResponseForSetPassword()});
   }
   getResponseForSetPassword(){
-    var request = new Request('https://www.trypinn.com/auth/api/user/login/', {
+    var request = new Request(productionURL + 'auth/api/user/login/', {
       method: 'POST',
       body: JSON.stringify({
         cell_phone : this.state.reqParamsForSetPassword.phoneNumber,
@@ -210,7 +211,7 @@ class LoginXl extends React.Component{
    });
   }
   getResponseForLogin(){
-    var request = new Request('https://www.trypinn.com/auth/api/user/login/', {
+    var request = new Request(productionURL + 'auth/api/user/login/', {
       method: 'POST',
       body: JSON.stringify({
         cell_phone:this.state.reqParamsForLogin.phoneNumber,
@@ -280,7 +281,7 @@ class LoginXl extends React.Component{
     this.setState({role :person_role} ,()=>this.getUserInfoFromServer());
   }
   getUserInfoFromServer(){
-    var request = new Request('https://www.trypinn.com/auth/api/user/get_info/',{ //
+    var request = new Request(productionURL + 'auth/api/user/get_info/',{ //
       method: 'POST',
       headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
       'Authorization': 'Token '+ this.state.token,})
@@ -304,7 +305,7 @@ class LoginXl extends React.Component{
    });
   }
   getResponseForSignUp(){
-    var request = new Request('https://www.trypinn.com/auth/api/signup/set_account/', {
+    var request = new Request(productionURL + 'auth/api/signup/set_account/', {
       method: 'POST',
       body: JSON.stringify({
         cell_phone : this.state.reqParamsForSignup.phoneNumber,
@@ -352,7 +353,7 @@ class LoginXl extends React.Component{
     }
   }
   getResponseForVerification(){
-    var request = new Request('https://www.trypinn.com/auth/api/user/verification/', {
+    var request = new Request(productionURL + 'auth/api/user/verification/', {
       method: 'POST',
       body: JSON.stringify({
         cell_phone : this.state.reqParamsForVerification.phoneNumber,
@@ -708,7 +709,7 @@ class LoginXl extends React.Component{
     }
   }
   handleForgetPassword(){
-    var request = new Request('https://www.trypinn.com/auth/api/user/edit/forgot_password/', {
+    var request = new Request(productionURL + 'auth/api/user/edit/forgot_password/', {
       method: 'POST',
       body: JSON.stringify({
         cell_phone : persianArabicToEnglishDigits(this.props.cellPhone),
@@ -768,7 +769,7 @@ class LoginXl extends React.Component{
 
 
   getResponseForChangePassword(){
-    var request = new Request('https://www.trypinn.com/auth/api/user/edit/verify_forgot_password/', {
+    var request = new Request(productionURL + 'auth/api/user/edit/verify_forgot_password/', {
       method: 'POST',
       body: JSON.stringify({
         cell_phone : this.state.reqParamsForChangePassword.cellPhone,

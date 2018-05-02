@@ -16,6 +16,7 @@ import Autosuggest from 'react-autosuggest';
 import '../Styles/ModalCloseButton.css';
 import {ClipLoader} from 'react-spinners';
 import Fade from 'react-reveal';
+import {productionURL} from'../Data.js';
 
 
 const theme ={
@@ -92,7 +93,7 @@ class HeaderMD extends React.Component{
 
   getGuestTokenFromServer(){
     if (localStorage['isLoggedIn']!=='true'){
-      var request = new Request('https://www.trypinn.com/auth/api/user/login_guest/',{
+      var request = new Request(productionURL + 'auth/api/user/login_guest/',{
         method: 'POST',
         headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
                               })
@@ -326,7 +327,7 @@ class HeaderMD extends React.Component{
     this.setState({searchParams:spar,phoneNumberLoading:true},()=>{this.getDataFromServer()})
   }
     getDataFromServer(){
-      var request = new Request('https://www.trypinn.com/auth/api/user/check_account/', {
+      var request = new Request(productionURL + 'auth/api/user/check_account/', {
         method: 'POST',
         body: JSON.stringify({
           cell_phone : this.state.searchParams.phoneNumber,

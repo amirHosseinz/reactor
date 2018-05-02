@@ -12,6 +12,7 @@ import {parsePrice3digits} from '../tools/ParsePrice3digits.js';
 import Fade from 'react-reveal';
 import MetaTags from 'react-meta-tags';
 import ScrollArea from 'react-scrollbar';
+import {productionURL} from'../Data.js';
 
 
 class UserProfileMd extends React.Component{
@@ -71,7 +72,7 @@ class UserProfileMd extends React.Component{
     this.setState({role :person_role } ,()=>this.getDataFromServer());
   }
   getDataFromServer(){
-    var request = new Request('https://www.trypinn.com/auth/api/user/get_info/',{ //
+    var request = new Request(productionURL + 'auth/api/user/get_info/',{ //
       method: 'POST',
       headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
       'Authorization': 'Token '+ this.state.token,})
@@ -86,7 +87,7 @@ class UserProfileMd extends React.Component{
   this.getBookmarkListFromServer();
   }
   getBookmarkListFromServer(){
-    var request = new Request('https://www.trypinn.com/bookmark/api/list/',{ //
+    var request = new Request(productionURL + 'bookmark/api/list/',{ //
       method: 'POST',
       headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
       'Authorization': 'Token '+ this.state.token,})
@@ -179,7 +180,7 @@ class UserProfileMd extends React.Component{
   handleChangeProfilePicture(){
     var fd = new FormData();
     fd.append('profile_picture' , this.state.profilePictureFile);
-    var request = new Request('https://www.trypinn.com/auth/api/user/edit/',{
+    var request = new Request(productionURL + 'auth/api/user/edit/',{
       method: 'POST',
       body: fd,
       headers: new Headers({'Accept': 'application/json',
@@ -275,7 +276,7 @@ class UserProfileMd extends React.Component{
   }
 
   changePasswordOnServer(){
-    var request = new Request('https://www.trypinn.com/auth/api/user/edit/edit_password/',{ //
+    var request = new Request(productionURL + 'auth/api/user/edit/edit_password/',{ //
       method: 'POST',
       body: JSON.stringify(
         {
@@ -371,7 +372,7 @@ class UserProfileMd extends React.Component{
  }
 
   changeInfoOnServer(){
-    var request=new Request('https://www.trypinn.com/auth/api/user/edit/',{ //
+    var request=new Request(productionURL + 'auth/api/user/edit/',{ //
       method: 'POST',
       body: JSON.stringify(
         {
@@ -490,7 +491,7 @@ class UserProfileMd extends React.Component{
     this.removeItemFromList(item);
     switch(data.type){
       case "room":{
-        var request = new Request('https://www.trypinn.com/bookmark/api/unlike/', {
+        var request = new Request(productionURL + 'bookmark/api/unlike/', {
           method: 'POST',
           body: JSON.stringify({
             room_id : data.id,
@@ -510,7 +511,7 @@ class UserProfileMd extends React.Component{
         break;
       }
       case "ecotourism":{
-        var request = new Request('https://www.trypinn.com/bookmark/api/unlike/', {
+        var request = new Request(productionURL + 'bookmark/api/unlike/', {
           method: 'POST',
           body: JSON.stringify({
             eco_room_id : data.id,

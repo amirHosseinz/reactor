@@ -11,6 +11,7 @@ import {DateRangePicker} from '../tools/calendar2';
 import Sticky from 'react-sticky';
 import {PulseLoader} from 'react-spinners';
 import MetaTags from 'react-meta-tags';
+import {productionURL} from'../Data.js';
 
 
 class SearchResultXl extends React.Component{
@@ -70,7 +71,7 @@ class SearchResultXl extends React.Component{
     });
   }
   getDataFromServer() {
-   var request = new Request('https://www.trypinn.com/api/v1/search/light/',{
+   var request = new Request(productionURL + 'api/v1/search/light/',{
      method: 'POST',
      body: JSON.stringify({
        platform: 'web',

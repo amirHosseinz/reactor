@@ -19,6 +19,7 @@ import {StickyContainer} from 'react-sticky';
 import Social from './Campaign/Social.js';
 import Digiato from './Digiato.js';
 // import {generateSiteMap} from './sitemap.js';
+import {productionURL} from'./Data.js';
 
 
 class MainPage extends React.Component{
@@ -70,7 +71,6 @@ class MainPage extends React.Component{
       <UserPanel />
     );
   }
-
   renderBecomeHost(){
   return(
     <BecomeHost/>
@@ -93,7 +93,7 @@ class MainPage extends React.Component{
   }
   getGuestTokenFromServer(){
     if (localStorage['isLoggedIn']!=='true'){
-      var request = new Request('https://www.trypinn.com/auth/api/user/login_guest/',{
+      var request = new Request(productionURL + 'auth/api/user/login_guest/',{
         method: 'POST',
         headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
                               })
@@ -109,7 +109,7 @@ class MainPage extends React.Component{
     }
     else{
       if(localStorage['user-username']===undefined){
-        var request = new Request('https://www.trypinn.com/api/validate/user/',{
+        var request = new Request(productionURL + 'api/validate/user/',{
           method: 'POST',
           body: JSON.stringify({
             username : null,
@@ -143,7 +143,7 @@ class MainPage extends React.Component{
        });
       }
       else{
-        var request = new Request('https://www.trypinn.com/api/validate/user/',{
+        var request = new Request(productionURL + 'api/validate/user/',{
           method: 'POST',
           body: JSON.stringify({
             username : localStorage['user-username'],

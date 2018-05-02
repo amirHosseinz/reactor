@@ -4,10 +4,11 @@ import "./SearchBar.css";
 import "../Styles/MainPage-SearchBar.css";
 import Autosuggest from 'react-autosuggest';
 import ReactGA from 'react-ga';
+import {productionURL} from'../Data.js';
+
+
 ReactGA.initialize('UA-115538071-1');
 ReactGA.pageview(window.location.pathname);
-
-
 const listOfCity = [
   {name:'اصفهان',},{name:'نوشهر',},{name: 'گیلان',},{name:'رامسر'},{name:'کیش'},{name:'مازندران'},
   {name:'فریدون‌کنار'},{name:'محمودآباد'},{name:'عباس آباد'},{name:'شاندیز'},{name:'خراسان رضوی'},
@@ -72,7 +73,7 @@ class SearchBarXl extends React.Component{
        }
      }
    getCityListFromServer(){
-     var request = new Request('https://www.trypinn.com/api/v1/homepage/',{
+     var request = new Request(productionURL + 'api/v1/homepage/',{
        method: 'POST',
        body: JSON.stringify({
          platform:'web',

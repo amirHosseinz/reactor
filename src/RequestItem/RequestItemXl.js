@@ -8,6 +8,7 @@ import {CancelButtonModalStyle} from '../Styles.js';
 import {reserveModalStyleRequests} from '../Styles.js';
 import {parsePrice3digits} from '../tools/ParsePrice3digits.js';
 import './RequestItem.css';
+import {productionURL} from'../Data.js';
 
 
 class RequestItemXl extends React.Component{
@@ -323,7 +324,7 @@ class RequestItemXl extends React.Component{
 
 
   sendPaymentRequestToServer(){
-    var request = new Request('https://www.trypinn.com/api/payment/web_payment_request/',{
+    var request = new Request(productionURL + 'api/payment/web_payment_request/',{
       method: 'POST',
       body: JSON.stringify({
         request_id: this.state.request.id,
@@ -534,7 +535,7 @@ class RequestItemXl extends React.Component{
   }
   handleCancelClick(){
     if(this.state.request!=null){
-    var request = new Request('https://www.trypinn.com/api/request/cancel/',{
+    var request = new Request(productionURL + 'api/request/cancel/',{
       method: 'POST',
       body: JSON.stringify({
       request_id:this.state.request.id,
@@ -554,7 +555,7 @@ class RequestItemXl extends React.Component{
 }
   }
   handleDeleteClick(){
-    var request = new Request('https://www.trypinn.com/api/request/archive/',{
+    var request = new Request(productionURL + 'api/request/archive/',{
       method: 'POST',
       body: JSON.stringify({
       request_id:this.state.request.id,
