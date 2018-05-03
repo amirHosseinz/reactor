@@ -14,6 +14,12 @@ import Fade from 'react-reveal';
 import MetaTags from 'react-meta-tags';
 import ScrollArea from 'react-scrollbar';
 import {productionURL} from'../Data.js';
+import BookmarkList from '../UserProfileParts/BookmarkList.js';
+import EditPassword from '../UserProfileParts/EditPassword.js';
+import FinanceAccount from '../UserProfileParts/FinanceAccount.js';
+import EditProfile from '../UserProfileParts/EditProfile.js';
+import LinkTab from '../UserProfileParts/LinkTab.js';
+import {Route} from 'react-router-dom';
 
 
 class UserProfileXl extends React.Component{
@@ -783,18 +789,47 @@ class UserProfileXl extends React.Component{
       </div>
     );
   }
+
+  // <meta name="description" content="noindex"/>
+  // <MetaTags>
+  //   <title> تریپین | حساب کاربری من</title>
+  // </MetaTags>
+  // {this.renderUploadPhotoModal()}
+  // {this.renderUserProfileDetailsSection()}
+  // {this.renderUserProfileEditSectionVersion2()}
+  // {this.renderPassConfirmationModal()}
+  // {this.renderEditConfirmationModal()}
+  renderFinanceAccount(){
+    return(
+      <FinanceAccount />
+    );
+  }
+
+  renderBookmark(){
+    return (
+      <BookmarkList />
+    );
+  }
+
+  renderEditProfile() {
+    return(
+      <EditProfile />
+    );
+  }
+
+  renderEditPassword() {
+    return (
+      <EditPassword />
+    );
+  }
   render(){
     return(
       <div className="user-profile-main-division">
-        <meta name="description" content="noindex"/>
-        <MetaTags>
-          <title> تریپین | حساب کاربری من</title>
-        </MetaTags>
-        {this.renderUploadPhotoModal()}
         {this.renderUserProfileDetailsSection()}
-        {this.renderUserProfileEditSectionVersion2()}
-        {this.renderPassConfirmationModal()}
-        {this.renderEditConfirmationModal()}
+        <Route exact={true} path="/profile/financeaccount" render={()=>{return(this.renderFinanceAccount())}}/>
+        <Route exact={true} path="/profile/bookmarklist" render={()=>{return(this.renderBookmark())}}/>
+        <Route exact={true} path="/profile/editpassword" render={()=>{return(this.renderEditPassword())}}/>
+        <Route exact={true} path="/profile/editprofile" render={()=>{return(this.renderEditProfile())}}/>
       </div>
     );
   }

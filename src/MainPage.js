@@ -241,7 +241,7 @@ class MainPage extends React.Component{
             <Route path={"/social"} render={(props)=>{return(this.renderSocial(props))}}/>
             <Route path={"/digiatodl"} render={(props)=>{return(this.renderDigiato(props))}}/>
             <Route exact path="/search/" render={() => {return(<Redirect to="/search/هر جا"/>)}}/>
-            <Route path={"/userprofile"} render={()=> {return(this.renderUserProfile())}}/>
+            <Route exact={true} path={"/profile/:part"} render={()=> {return(this.renderUserProfile())}}/>
             <Route exact path={"/search/:city"} render = {(props)=> {return(this.renderSearchResult(props))}}/>
             <Route path={"/partners/"} render={()=> {return(this.renderPartners())}}/>
             <Route render={()=> {return(this.renderError404Page())}}/>
