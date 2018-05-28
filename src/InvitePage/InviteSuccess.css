@@ -112,9 +112,9 @@
 }
 
 .invite-success-image-container {
-  position : absolute;
-  margin-right: 450px;
-  margin-top :90px;
+  /* position : absolute; */
+  margin-right: 490px;
+  margin-top :-480px;
 }
 
 .invite-success-image {

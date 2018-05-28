@@ -14,7 +14,7 @@ class InviteSuccessXl extends React.Component{
       window.location.pathname.split('/')[window.location.pathname.split('/').length-1]
     );
   }
-  
+
   renderInviteSuccessXl(){
     return(
       <div className="invite-success-main-division">
@@ -65,9 +65,9 @@ class InviteSuccessXl extends React.Component{
             ورود به وبسایت تریپین
           </button>
           </a>
-        </div>
-        <div className="invite-success-image-container">
-          <img src={require('./mobile.png')} className="invite-success-image"/>
+          <div className="invite-success-image-container">
+            <img src={require('./mobile.png')} className="invite-success-image"/>
+          </div>
         </div>
       </div>
     );

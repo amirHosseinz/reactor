@@ -74,12 +74,12 @@ class InviteFriendMd extends React.Component{
               <div className="referral-link-box">
                 <div className="referral-link">
                   <p className="referral-link-description">
-                    {"www.tripinn.ir/user/" + this.state.referralCode}
+                    {"www.tripinn.ir/users/" + this.state.referralCode}
                   </p>
                 </div>
                 <div className="referral-box-vertical-line">
                 </div>
-                <CopyToClipboard text={"http://www.tripinn.ir/user/" + this.state.referralCode}>
+                <CopyToClipboard text={"http://www.tripinn.ir/users/" + this.state.referralCode}>
                   <div onClick={()=>{this.setState({copyMessage:"کپی شد"},()=>{this.incrementNumberOfSharing()})}} className="copy-button">
                     {this.state.copyMessage}
                   </div>
@@ -129,9 +129,9 @@ class InviteFriendMd extends React.Component{
               <p className="share-info-value"> {englishToPersianDigits(parsePrice3digits(this.state.GiftCredit))} تومان</p>
             </div>
           </div>
-        </div>
-        <div className="invite-friend-background">
-          <img src={require('./invite_to_tripinn.png')} className="invite-friend-image"/>
+          <div className="invite-friend-background-md">
+            <img src={require('./invite_to_tripinn.png')} className="invite-friend-image"/>
+          </div>
         </div>
       </div>
     );

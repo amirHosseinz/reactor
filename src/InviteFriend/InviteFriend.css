@@ -230,10 +230,16 @@
 
 .invite-friend-background{
   z-index : -1;
-  position:absolute;
-  margin-top : -60px;
-  margin-right : 600px;
+  position:relative;
+  margin-top : -580px;
+  margin-right : 610px;
+}
 
+.invite-friend-background-md{
+  z-index : -1;
+  position:relative;
+  margin-top : -580px;
+  margin-right : 610px;
 }
 
 .invite-friend-image {

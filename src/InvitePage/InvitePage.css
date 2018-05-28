@@ -28,6 +28,7 @@
   border-radius : 0px 6px 6px 6px;
   margin-top : 30px;
   background-color: white;
+  z-index : 1;
 }
 
 .invite-page-title{
@@ -139,14 +140,12 @@
 }
 
 .invite-page-image-container{
-  position : absolute;
-  margin-right : 387px;
-  margin-top : -50px;
-  z-index: 0;
+  margin-right : 408px;
+  margin-top : -524px;
 }
 
 .invite-page-image{
-  height : 340px;
+  height : 320px;
 }
 
 /* XS styles here */

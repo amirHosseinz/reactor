@@ -86,7 +86,10 @@ class InvitePageXl extends React.Component {
            this.setState({recaptchaSolved:false,error:"کد معرف استفاده شده اشتباه است"})
          }
        }
-     });
+     })
+     // .catch((exception)=>{
+     //   console.log(exception);
+     // });
     }
     else {
       this.setState({recaptchaSolved:false,error:"لطفا عبارت من ربات نیستم را تأیید کنید"});
@@ -155,12 +158,12 @@ class InvitePageXl extends React.Component {
           <button onClick={()=> {this.setState({error:""},()=>{this.registerReferralCode()})}} className="referral-register-button">
             ادامه
           </button>
-          <div className="invite-page-image-container">
-            <img src={require("./invite-friend.png")}  className="invite-page-image"/>
-          </div>
           <Fade bottom={true} collapse={true} when={!this.state.recaptchaSolved}>
             <p className="recaptcha-error"> {this.state.error}</p>
           </Fade>
+          <div className="invite-page-image-container">
+            <img src={require("./invite-friend.png")}  className="invite-page-image"/>
+          </div>
         </div>
       </div>
     );

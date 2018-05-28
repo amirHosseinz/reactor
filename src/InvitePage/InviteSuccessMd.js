@@ -63,9 +63,9 @@ class InviteSuccessMd extends React.Component{
           <button onClick={()=>{this.props.history.replace('/')}} className="web-enter-button">
             ورود به وبسایت تریپین
           </button>
-        </div>
-        <div className="invite-success-image-container">
-          <img src={require('./mobile.png')} className="invite-success-image"/>
+          <div className="invite-success-image-container">
+            <img src={require('./mobile.png')} className="invite-success-image"/>
+          </div>
         </div>
       </div>
     );

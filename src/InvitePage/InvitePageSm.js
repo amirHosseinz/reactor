@@ -24,7 +24,7 @@ class InvitePageXs extends React.Component{
     },()=>{this.getReferrerFromServer()});
   }
 
-  getReferrerFromServer(){
+  getReferrerFromServer(){ 
     var request = new Request(productionURL + 'finance/api/get_referrer/',{
       method: 'POST',
       body: JSON.stringify({

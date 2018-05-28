@@ -131,12 +131,12 @@ class InvitePageMd extends React.Component {
           <button onClick={()=> {this.setState({error:""},()=>{this.registerReferralCode()})}} className="referral-register-button">
             ادامه
           </button>
-          <div className="invite-page-image-container">
-            <img src={require("./invite-friend.png")}  className="invite-page-image"/>
-          </div>
           <Fade bottom={true} collapse={true} when={!this.state.recaptchaSolved}>
             <p className="recaptcha-error"> {this.state.error}</p>
           </Fade>
+          <div className="invite-page-image-container">
+            <img src={require("./invite-friend.png")}  className="invite-page-image"/>
+          </div>
         </div>
       </div>
     );
