@@ -182,7 +182,6 @@ class RequestItemXl extends React.Component{
   }
 
   renderNowRuzForPerPerson(){
-    // console.log(this.state.request);
     if(this.state.request.nowruz_price!==0){
       return(
         <div className="pre-bill-price-night-content row-reverse" dir="rtl">
@@ -203,6 +202,7 @@ class RequestItemXl extends React.Component{
       var data = this.state.request.eco_room;
     else
       var data = this.state.request.room;
+    // console.log(this.state.request);
     if(data.is_price_per_person===false){
       return(
         <div>
@@ -322,7 +322,6 @@ class RequestItemXl extends React.Component{
     this.setState({token:this.getRelevantToken()},()=>{this.sendPaymentRequestToServer()});
   }
 
-
   sendPaymentRequestToServer(){
     var request = new Request(productionURL + 'api/payment/web_payment_request/',{
       method: 'POST',
@@ -330,6 +329,7 @@ class RequestItemXl extends React.Component{
         request_id: this.state.request.id,
         mobile: null,
         email: null,
+        platform : 'web',
     }),
       headers: new Headers({'Accept': 'application/json',
       'Content-Type': 'application/json',
@@ -340,9 +340,10 @@ class RequestItemXl extends React.Component{
      return response.json();
    })
    .then((paymentResponse) => {
+     console.log(paymentResponse);
      if (paymentResponse.is_successful===true){
        localStorage['default-panel']='trip';
-       window.location.href = paymentResponse.payment_url;
+       // window.location.href = paymentResponse.payment_url;
      }
    });
   }
@@ -393,7 +394,6 @@ class RequestItemXl extends React.Component{
 
   renderCancelModal(){
     return(
-
         <Modal
           isOpen={this.state.cancelModalIsOpen}
           onRequestClose={()=>{this.setState({cancelModalIsOpen:false})}}
@@ -432,7 +432,6 @@ class RequestItemXl extends React.Component{
       var data = this.state.request.eco_room;
     else
       var data = this.state.request.room;
-
     return(
     <div className="request-card-container">
       <div className="request-item-details">

@@ -10,25 +10,35 @@ class LinkTab extends React.Component{
 
   renderLinkTabXl(props) {
     return (
-      <LinkTabXl {...props} className="visible-xl hidden-md hidden-xs hidden-sm"/>
+      <div className="visible-xl hidden-md hidden-xs hidden-sm">
+        <LinkTabXl {...props}/>
+      </div>
     );
   }
 
   renderLinkTabXs(props) {
     return (
-      <LinkTabXs {...props} className="hidden-xl hidden-md visible-xs hidden-sm"/>
+      <div className="hidden-xl hidden-md visible-xs hidden-sm">
+        <LinkTabXs {...props} />
+      </div>
+
     );
   }
 
   renderLinkTabMd(props) {
-    return (
-      <LinkTabMd {...props} className="hidden-xl visible-md hidden-xs hidden-sm"/>
+    return(
+      <div className="hidden-xl visible-md hidden-xs hidden-sm">
+        <LinkTabMd {...props}/>
+      </div>
     );
   }
 
   renderLinkTabSm(props) {
     return (
-      <LinkTabSm {...props} className="hidden-xl hidden-md hidden-xs visible-sm"/>
+      <div className="hidden-xl hidden-md hidden-xs visible-sm">
+        <LinkTabSm {...props}/>
+      </div>
+
     );
   }
   render(){

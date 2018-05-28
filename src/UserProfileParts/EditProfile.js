@@ -10,25 +10,36 @@ class EditProfile extends React.Component{
 
   renderEditProfileXl(props) {
     return (
-      <EditProfileXl {...props} className="visible-xl hidden-md hidden-xs hidden-sm"/>
+      <div className="visible-xl hidden-md hidden-xs hidden-sm">
+        <EditProfileXl {...props}/>
+      </div>
+
     );
   }
 
   renderEditProfileXs(props) {
     return (
-      <EditProfileXs {...props} className="hidden-xl hidden-md visible-xs hidden-sm"/>
+      <div className="hidden-xl hidden-md visible-xs hidden-sm">
+        <EditProfileXs {...props} />
+      </div>
+
     );
   }
 
   renderEditProfileMd(props) {
     return (
-      <EditProfileMd {...props} className="hidden-xl visible-md hidden-xs hidden-sm"/>
+      <div className="hidden-xl visible-md hidden-xs hidden-sm">
+        <EditProfileMd {...props}/>
+      </div>
+
     );
   }
 
   renderEditProfileSm(props) {
     return (
-      <EditProfileSm {...props} className="hidden-xl hidden-md hidden-xs visible-sm"/>
+      <div className="hidden-xl hidden-md hidden-xs visible-sm">
+        <EditProfileSm {...props}/>
+      </div>
     );
   }
   render(){

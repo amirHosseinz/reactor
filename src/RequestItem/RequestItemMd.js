@@ -330,6 +330,7 @@ class RequestItemMd extends React.Component{
         request_id: this.state.request.id,
         mobile: null,
         email: null,
+        platform : 'web',
     }),
       headers: new Headers({'Accept': 'application/json',
       'Content-Type': 'application/json',

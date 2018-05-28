@@ -1,0 +1,286 @@
+.invite-page-main-division{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction : row;
+  -webkit-flex-direction :row;
+  justify-content: center;
+  width : 100%;
+  height : 100vh;
+  background-image: url("background.png");
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+.invite-page-main-box{
+  display: flex;
+  /* background-color: #fff; */
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction : column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  height : 580px;
+  width: 800px;
+  border : 1px solid #454545;
+  padding-top : 50px;
+  padding-right : 50px;
+  border : 1px solid #454545;
+  border-radius : 0px 6px 6px 6px;
+  margin-top : 30px;
+  background-color: white;
+}
+
+.invite-page-title{
+  font-family: IRANSans;
+  font-size : 30px;
+  font-weight: bold;
+}
+
+.invite-page-description {
+  font-family: IRANSans;
+  font-size : 14px;
+  color : #454545;
+  width : 54%;
+  direction: rtl;
+  margin-bottom : 26px;
+}
+
+.referral-section {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row-reverse;
+  -webkit-flex-direction:row-reverse;
+  justify-content: center;
+  align-items: center;
+  margin-bottom : 30px;
+}
+
+.phone-number-input {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction:row;
+  padding-right: 20px;
+  align-items: center;
+  font-family: IRANSans;
+  border : 1px solid #e1e1e1;
+  border-radius : 6px;
+  height : 40px;
+  width : 200px;
+  margin-left : 10px;
+}
+
+.invite-referral-code {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction:row;
+  justify-content: center;
+  align-items: center;
+  font-family: IRANSans;
+  border : 1px solid #e1e1e1;
+  border-radius : 6px;
+  height : 40px;
+  width : 160px;
+  direction : rtl;
+}
+
+.referral-important-points{
+  margin-top : 30px;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction:column;
+}
+
+.referral-point {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row-reverse;
+  -webkit-flex-direction:row-reverse;
+  margin-bottom : 10px;
+}
+
+.empty-circle{
+  margin-left: 10px;
+  height: 10px;
+  width : 10px;
+  border : solid 1px #454545;
+  border-radius : 50%;
+}
+
+.point-text {
+  font-family: IRANSans;
+  font-size : 12px;
+  font-weight: bold;
+  color: #454545;
+}
+
+.referral-register-button {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction:row;
+  justify-content: center;
+  align-items: center;
+  height : 40px;
+  width : 160px;
+  border-radius: 7px;
+  font-family: IRANSans;
+  font-size : 16px;
+  font-weight: bold;
+  color :white;
+  background-color: #ef5964;
+  border :none;
+  outline : none!important;
+  margin-top : 20px;
+}
+
+.invite-page-image-container{
+  position : absolute;
+  margin-right : 387px;
+  margin-top : -50px;
+  z-index: 0;
+}
+
+.invite-page-image{
+  height : 340px;
+}
+
+/* XS styles here */
+.invite-page-main-division-xs {
+  width : 100%;
+  display: flex;
+  display : -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction:column;
+  align-items: center;
+}
+
+.invite-page-image-container-xs{
+  width : 100%;
+}
+
+.invite-page-image-xs {
+    width : 100%;
+}
+
+.invite-page-title-xs {
+  font-family: IRANSans;
+  font-weight: bold;
+  font-size : 26px;
+  width : 90%;
+  text-align: center;
+}
+
+.invite-page-description-xs {
+  font-family: IRANSans;
+  font-size : 16px;
+  margin-bottom : 2px;
+  width : 300px;
+  text-align: justify;
+  direction: rtl;
+}
+
+.enter-phone-number-section{
+  width : 300px;
+  text-align: right;
+  margin-top : 30px;
+}
+
+.phone-number-input-title-xs {
+  font-family: IRANSans;
+  font-size : 14px;
+  color :#545454;
+}
+.phone-number-input-xs{
+  height : 40px;
+  padding-right : 12px;
+  width : 300px;
+  font-family: IRANSans;
+  border : solid 1px #e1e1e1;
+  border-radius :6px;
+  margin-top : 10px;
+  font-size : 16px;
+  direction : rtl;
+  background-color: #efefef;
+  outline: none!important;
+}
+
+.Recaptcha-xs{
+  margin-top : 20px !important;
+}
+
+.invite-page-button-xs{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction:row;
+  justify-content: center;
+  align-items: center;
+  height : 40px;
+  width : 300px;
+  border-radius: 7px;
+  font-family: IRANSans;
+  font-size : 16px;
+  font-weight: bold;
+  color :white;
+  background-color: #ef5964;
+  border :none;
+  outline : none!important;
+  margin-top : 10px;
+}
+
+.invite-page-point-section-xs{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction:column;
+  align-items: center;
+  height : 320px;
+  width : 100%;
+  background-color: #efefef;
+  margin-top : 40px;
+  padding-top : 40px;
+  background-image: url("background.png");
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+.invite-page-point-xs {
+  /* display: flex;
+  display: -webkit-flex; */
+  /* flex-direction: row-reverse; */
+  /* -webkit-flex-direction:row-reverse; */
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  width : 320px;
+}
+
+.invite-page-empty-circle-xs{
+  margin-left : 10px;
+  border: solid 1px #454545;
+  height: 15px !important;
+  width : 15px !important;
+  border-radius: 50%;
+  margin-top : 3px;
+}
+
+.invite-page-point-text-xs{
+  font-family: IRANSans;
+  font-size : 14px;
+  font-weight: bold;
+  direction: rtl;
+  text-align: right;
+}
+
+.recaptcha-error {
+  font-family: IRANSans;
+  font-size : 18px;
+  direction : rtl;
+  color : red;
+  margin-top : 12px !important;
+}
+/* XS styles finished */

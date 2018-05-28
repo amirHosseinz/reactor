@@ -44,12 +44,17 @@
   display: -webkit-flex;
   flex-direction: row;
   -webkit-flex-direction:row;
+  text-decoration :none !important;
+  outline: none!important;
 }
 .header-link-item{
   list-style-type: none;
+  text-decoration :none !important;
+  outline: none!important;
 }
 .header-link {
   text-decoration :none !important;
+  outline: none!important;
 }
 .header-menu{
   font-family: IRANSans;

@@ -1,0 +1,241 @@
+.invite-friend-main-division{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row-reverse;
+  -webkit-flex-direction : row-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+.invite-friend-content {
+  border : 2px solid #e1e1e1;
+  border-radius: 7px;
+  margin-top : 30px;
+  height : 650px;
+  width : 1100px;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction : column;
+  padding-top: 80px;
+  padding-right : 80px;
+  align-items: flex-end;
+}
+
+.invite-friend-title {
+  font-family: IRANSans;
+  font-weight: bold;
+  font-size: 32px;
+  margin-bottom : 14px;
+}
+
+.invite-friend-description{
+  font-family: IRANSans;
+  direction: rtl;
+  color : #454545;
+  width : 60%;
+  font-size: 16px;
+  margin-bottom : 30px;
+}
+.invite-friend-main-link-box{
+  background-color:#fff;
+  border : 2px solid #e1e1e1;
+  border-radius : 7px;
+  height : 200px;
+  width : 700px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction : column;
+  -webkit-flex-direction:column;
+  display: -webkit-flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding : 20px;
+}
+
+.referral-link-share{
+  display: flex;
+  display: -webkit-flex;
+  -webkit-flex-direction:row-reverse;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  -webkit-flex-direction : row-reverse;
+}
+.referral-link-box{
+  margin-top : 10px;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-flex-direction:row-reverse;
+  flex-direction: row-reverse;
+  border : 2px solid #e1e1e1;
+  height : 40px;
+  width : 360px;
+  border-radius: 6px;
+  padding-bottom: 2px;
+  margin-left : 10px;
+  margin-bottom : 20px;
+}
+.referral-link{
+  height : 36px;
+  width : 320px;
+  background-color: #f9f9f9;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction:row;
+  justify-content: left;
+  align-items: center;
+  padding-left : 8px;
+}
+
+.copy-button{
+  font-family: IRANSans;
+  font-weight: bold;
+  color : #454545;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height : 38px;
+  background-color: #e1e1e1;
+  width : 100px;
+}
+
+.referral-code-explanation{
+    font-size: 12;
+    color:  gray;
+    font-family: IRANSans;
+}
+.referral-code{
+  font-family: IRANSans;
+  margin-bottom : 4px;
+  font-size : 18px;
+  font-weight: bold;
+  direction: rtl;
+}
+.referral-box-vertical-line {
+  border-left: 2px solid #e4e4e4;
+  height: 38px;
+}
+.referral-share-button-telegram{
+  height: 40px;
+  margin-top : 10px;
+  width : 130px;
+  display: flex;
+  outline : none!important;
+  display : -webkit-flex;
+  flex-direction: row-reverse;
+  -webkit-flex-direction :row-reverse;
+  justify-content: center;
+  align-items: center;
+  background-color: #3DAEDE;
+  border : none;
+  border-radius : 6px;
+  margin-left : 10px;
+}
+
+.referral-title {
+  font-family: IRANSans;
+  font-size : 14px;
+  font-weight: bold;
+  direction: rtl;
+  margin-bottom : 0px;
+}
+.referral-share-button-vertical-line {
+  margin-left : 24px;
+  margin-right :16px;
+  border-left: 1px solid white;
+  height: 20px;
+}
+.referral-box-image {
+  height : 20px;
+}
+.referral-share-button-text{
+  font-family: IRANSans;
+  color : white;
+  font-size : 14px;
+  font-weight: bold;
+}
+.referral-share-button-twitter{
+  height: 40px;
+  width : 130px;
+  display: flex;
+  margin-top : 10px;
+  outline : none!important;
+  display : -webkit-flex;
+  flex-direction: row-reverse;
+  -webkit-flex-direction :row-reverse;
+  justify-content: center;
+  align-items: center;
+  background-color: #4099FF;
+  border : none;
+  border-radius : 6px;
+}
+
+.number-of-installs {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row-reverse;
+  -webkit-flex-direction:row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  height : 46px;
+  width : 380px;
+  margin-right : 40px;
+
+}
+
+.number-of-trips {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row-reverse;
+  -webkit-flex-direction:row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  height : 46px;
+  width : 380px;
+  margin-right : 40px;
+}
+
+.total-gift {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row-reverse;
+  -webkit-flex-direction:row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  height : 46px;
+  width : 380px;
+  margin-right : 40px;
+}
+
+.share-info-description{
+  font-family: IRANSans;
+  margin-top : 14px !important;
+  margin-right : 6px;
+}
+
+.share-info-value {
+  direction: rtl;
+  margin-left : 8px;
+  font-family: IRANSans;
+}
+
+.invite-friend-background{
+  z-index : -1;
+  position:absolute;
+  margin-top : -60px;
+  margin-right : 600px;
+
+}
+
+.invite-friend-image {
+  height: 420px;
+}

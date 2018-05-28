@@ -17,9 +17,11 @@ import SearchResult from './SearchResult.js';
 import Suggestions from './Suggestions.js';
 import {StickyContainer} from 'react-sticky';
 import Social from './Campaign/Social.js';
-import Digiato from './Digiato.js';
 // import {generateSiteMap} from './sitemap.js';
 import {productionURL} from'./Data.js';
+import InviteFriend from './InviteFriend.js';
+import InvitePage from './InvitePage.js';
+import InviteSuccess from './InviteSuccess.js';
 
 
 class MainPage extends React.Component{
@@ -211,13 +213,23 @@ class MainPage extends React.Component{
     );
   }
 
-  renderDigiato(props){
-    return(
-      <Digiato {...props}/>
+  renderInviteFriend(props) {
+    return (
+      <InviteFriend {...props}/>
     );
-
   }
 
+  renderInvitePage(props){
+    return (
+      <InvitePage {...props}/>
+    );
+  }
+
+  renderInviteSuccess(props){
+    return(
+      <InviteSuccess {...props}/>
+    );
+  }
   // <Route path={"/becomehost"} render = {()=> {return(this.renderBecomeHost())}}/>
   // <Route path={"/"} render = {()=> {return(this.renderFooter())}}/>
   render(){
@@ -238,8 +250,10 @@ class MainPage extends React.Component{
             <Route path={"/suggestions&comments"} render = {()=> {return(this.renderSuggestions())}}/>
             <Route path={"/terms&conditions"} render={()=> {return(this.renderTerms())}}/>
             <Route path={"/contactus"} render = {()=> {return(this.renderContactUs())}}/>
+            <Route path={"/user/invitefriend"} render={(props)=>{return(this.renderInviteFriend())}}/>
+            <Route path={"/users/:user"} render={(props)=>{return(this.renderInvitePage(props))}} />
+            <Route path={"/register/success/:phone"} render={(props)=>{return(this.renderInviteSuccess(props))}}/>
             <Route path={"/social"} render={(props)=>{return(this.renderSocial(props))}}/>
-            <Route path={"/digiatodl"} render={(props)=>{return(this.renderDigiato(props))}}/>
             <Route exact path="/search/" render={() => {return(<Redirect to="/search/هر جا"/>)}}/>
             <Route exact={true} path={"/profile/:part"} render={()=> {return(this.renderUserProfile())}}/>
             <Route exact path={"/search/:city"} render = {(props)=> {return(this.renderSearchResult(props))}}/>

@@ -10,32 +10,42 @@ class EditPassword extends React.Component{
 
   renderEditPasswordXl(props) {
     return (
-      <EditPasswordXl {...props} className="visible-xl hidden-md hidden-xs hidden-sm"/>
+      <div className="visible-xl hidden-md hidden-xs hidden-sm">
+        <EditPasswordXl {...props}/>
+      </div>
     );
   }
 
   renderEditPasswordXs(props) {
     return (
-      <EditPasswordXs {...props} className="hidden-xl hidden-md visible-xs hidden-sm"/>
+      <div className="hidden-xl hidden-md visible-xs hidden-sm">
+        <EditPasswordXs {...props}/>
+      </div>
+
     );
   }
 
   renderEditPasswordMd(props) {
     return (
-      <EditPasswordMd {...props} className="hidden-xl visible-md hidden-xs hidden-sm"/>
+      <div className="hidden-xl visible-md hidden-xs hidden-sm">
+        <EditPasswordMd {...props} />
+      </div>
     );
   }
 
   renderEditPasswordSm(props) {
     return (
-      <EditPasswordSm {...props} className="hidden-xl hidden-md hidden-xs visible-sm"/>
+      <div className="hidden-xl hidden-md hidden-xs visible-sm">
+        <EditPasswordSm {...props} />
+      </div>
+
     );
   }
   render(){
     return (
       <div>
       <MetaTags>
-        <title> تریپین |‌ فهرست مورد علاقه ها </title>
+        <title> تریپین | ویرایش رمز عبور </title>
       </MetaTags>
         {this.renderEditPasswordXl(this.props)}
         {this.renderEditPasswordXs(this.props)}

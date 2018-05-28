@@ -434,8 +434,9 @@ class HeaderMD extends React.Component{
   }
 
   handleUserProfileClick(){
-    this.props.history.push('/userprofile');
+    this.props.history.push('/profile/editprofile');
   }
+
   renderRequestButton(){
     if(localStorage['isLoggedIn']==='true'){
       return(
@@ -525,6 +526,17 @@ class HeaderMD extends React.Component{
               <li className="header-link-item">
                 <Link className="header-link" to="/terms&conditions"><p className='logo-menu-font'>قوانین </p></Link>
               </li>
+              <li className="header-link-item">
+                <Link className="header-link" to="/user/invitefriend"><p className='logo-menu-font'>اعتبار هدیه </p></Link>
+              </li>
+              {
+                localStorage['isLoggedIn']==="true"?
+              <li className="header-link-item">
+                <Link className="header-link" to="/user/invitefriend"><p className='logo-menu-font'>اعتبار هدیه </p></Link>
+              </li>
+                  :
+                  <div></div>
+            }
               {this.renderGetApplicationButton()}
             </ul>
           </div>

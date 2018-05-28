@@ -9,25 +9,33 @@ import MetaTags from 'react-meta-tags';
 class BookmarkList extends React.Component{
   renderBookmarkListXl(props) {
     return (
-      <BookmarkListXl {...props} className="visible-xl hidden-md hidden-xs hidden-sm"/>
+      <div className="visible-xl hidden-md hidden-xs hidden-sm">
+        <BookmarkListXl {...props} />
+      </div>
     );
   }
 
   renderBookmarkListXs(props) {
     return (
-      <BookmarkListXs {...props} className="hidden-xl hidden-md visible-xs hidden-sm"/>
+      <div className="hidden-xl hidden-md visible-xs hidden-sm">
+        <BookmarkListXs {...props}/>
+      </div>
     );
   }
 
   renderBookmarkListMd(props) {
     return (
-      <BookmarkListMd {...props} className="hidden-xl visible-md hidden-xs hidden-sm"/>
+      <div className="hidden-xl visible-md hidden-xs hidden-sm">
+        <BookmarkListMd {...props}/>
+      </div>
     );
   }
 
   renderBookmarkListSm(props) {
     return (
-      <BookmarkListSm {...props} className="hidden-xl hidden-md hidden-xs visible-sm"/>
+      <div className="hidden-xl hidden-md hidden-xs visible-sm">
+        <BookmarkListSm {...props}/>
+      </div>
     );
   }
   render(){

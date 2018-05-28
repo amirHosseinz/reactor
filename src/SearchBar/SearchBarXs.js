@@ -31,13 +31,13 @@ class SearchBarXs extends React.Component{
           <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://cafebazaar.ir/app/com.trypinn/' >
             <img src={require('../Images/logos/bazaar.png')} className="download_icon_app_bazaar" alt = 'دانلود از کافه بازار'/>
           </a>
-          <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='https://myket.ir/app/com.trypinn' >
+          <a className="download-app-anchor" rel="noopener noreferrer"target="_blank" href='https://myket.ir/app/com.trypinn' >
             <img src={require('../Images/logos/myket.png')} className="download_icon_app_myket" alt = 'دانلود از مایکت'/>
           </a>
           <a className="download-app-anchor" rel="noopener noreferrer"target="_blank" href='https://play.google.com/store/apps/details?id=com.trypinn&hl=en' >
             <img src={require('../Images/logos/googleplay.png')} className="download_icon_app_google" alt = 'دانلود از گوگل پلی'/>
           </a>
-          <a className="download-app-anchor"rel="noopener noreferrer"target="_blank" href='http://new.sibapp.com/applications/tripinn' >
+          <a className="download-app-anchor" rel="noopener noreferrer"target="_blank" href='http://new.sibapp.com/applications/tripinn' >
             <img src={require('../Images/logos/sibapp.png')} className="download_icon_app_sibapp" alt = 'دانلود از سیب‌اپ'/>
           </a>
           <div style={{height:"40px"}}>

@@ -10,25 +10,36 @@ class FinanceAccount extends React.Component{
 
   renderFinanceAccountXl(props) {
     return (
-      <FinanceAccountXl {...props} className="visible-xl hidden-md hidden-xs hidden-sm"/>
+      <div className="visible-xl hidden-md hidden-xs hidden-sm">
+        <FinanceAccountXl {...props} />
+      </div>
     );
   }
 
   renderFinanceAccountXs(props) {
     return (
-      <FinanceAccountXs {...props} className="hidden-xl hidden-md visible-xs hidden-sm"/>
+      <div className="hidden-xl hidden-md visible-xs hidden-sm">
+        <FinanceAccountXs {...props} />
+      </div>
+
     );
   }
 
   renderFinanceAccountMd(props) {
     return (
-      <FinanceAccountMd {...props} className="hidden-xl visible-md hidden-xs hidden-sm"/>
+      <div className="hidden-xl visible-md hidden-xs hidden-sm">
+        <FinanceAccountMd {...props} />
+      </div>
+
     );
   }
 
   renderFinanceAccountSm(props) {
     return (
-      <FinanceAccountSm {...props} className="hidden-xl hidden-md hidden-xs visible-sm"/>
+      <div className="hidden-xl hidden-md hidden-xs visible-sm">
+        <FinanceAccountSm {...props}/>
+      </div>
+
     );
   }
   render(){
