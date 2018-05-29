@@ -575,17 +575,23 @@ class LoginMd extends React.Component{
                   maxLength="4"
                   autoFocus={true}
                   type="numeric"/>
-              <p className="enter-verify-number-inmodal">
-               کد معرف (اختیاری)
-              </p>
-              <input
-                onKeyDown= {(event)=>{this.handleVerificationClickByEnter(event)}}
-                 value={this.state.inputForVerification.referralCode}
-                 onChange={(event)=>{this.changeReferralCode(event)}}
-                 className="header-login-modal-input-verify"
-                 id='referral-code'
-                 maxLength="6"
-                 autoFocus={false}/>
+                  {this.state.hasAccount ===false?
+                    <div>
+                    <p className="enter-verify-number-inmodal">
+                     کد معرف (اختیاری)
+                    </p>
+                    <input onKeyDown={(event)=>{this.handleVerificationClickByEnter(event)}}
+                       value={this.state.inputForVerification.referralCode}
+                       onChange={(event)=>{this.changeReferralCode(event)}}
+                       className="header-login-modal-input-verify"
+                       id='referral-code'
+                       maxLength="6"
+                       autoFocus={false}/>
+                    </div>
+                     :
+                     <div>
+                     </div>
+                   }
                <button className="header-login-modal-button-verify" onClick={this.handleVerificationClick.bind(this)}>
                  {this.state.verificationLoading ? <ClipLoader color="white" size={30}/> : "تأیید کد" }
                </button>
