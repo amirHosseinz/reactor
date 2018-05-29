@@ -12,17 +12,17 @@ class Login extends React.Component{
       hasAccount:null,
       hasPassword:null,
       cellPhone:null,
-
+      referralCode : null,
     }
   }
   componentWillReceiveProps(nextProps){
-    this.setState({cellPhone:nextProps.cellPhone , hasAccount:nextProps.hasAccount,hasPassword:nextProps.hasPassword})
+    this.setState({referralCode:nextProps.referralCode, cellPhone:nextProps.cellPhone , hasAccount:nextProps.hasAccount,hasPassword:nextProps.hasPassword})
   }
 
 renderLoginXl(props){
   return(
     <div className="hidden-xs hidden-md hidden-sm visible-xl">
-      <LoginXl {...props} cellPhone={this.state.cellPhone} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword} closeLoginPanel={props.closeLoginPanel.bind(this)}/>
+      <LoginXl {...props} referralCode={this.state.referralCode} cellPhone={this.state.cellPhone} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword} closeLoginPanel={props.closeLoginPanel.bind(this)}/>
     </div>
   );
 }
@@ -30,7 +30,7 @@ renderLoginXl(props){
 renderLoginMd(props){
   return(
     <div className="hidden-xs hidden-xl hidden-sm visible-md">
-      <LoginMd {...props} cellPhone={this.state.cellPhone} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword} closeLoginPanel={props.closeLoginPanel.bind(this)}/>
+      <LoginMd {...props} referralCode={this.state.referralCode} cellPhone={this.state.cellPhone} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword} closeLoginPanel={props.closeLoginPanel.bind(this)}/>
     </div>
   );
 }
@@ -38,7 +38,7 @@ renderLoginMd(props){
 renderLoginSm(props){
   return(
     <div className="hidden-xs hidden-md hidden-xl visible-sm">
-      <LoginSm {...props} closeLoginPanel={props.closeLoginPanel.bind(this)}/>
+      <LoginSm {...props} referralCode={this.state.referralCode} closeLoginPanel={props.closeLoginPanel.bind(this)}/>
     </div>
   );
 }
@@ -46,7 +46,7 @@ renderLoginSm(props){
 renderLoginXs(props){
   return(
     <div className="hidden-xl hidden-md hidden-sm visible-xs">
-      <LoginXs {...props} closeLoginPanel={props.closeLoginPanel.bind(this)}/>
+      <LoginXs {...props} referralCode={this.state.referralCode} closeLoginPanel={props.closeLoginPanel.bind(this)}/>
     </div>
   );
 }

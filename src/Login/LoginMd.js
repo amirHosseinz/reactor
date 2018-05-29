@@ -13,7 +13,7 @@ import {productionURL} from'../Data.js';
 class LoginMd extends React.Component{
   constructor(props){
   super(props);
-    this.state={
+    this.state = {
       passIsNotCorrect:false,
       showSignUpOrSetPasswordModal:false,
       showVerificationModal:true,
@@ -36,6 +36,7 @@ class LoginMd extends React.Component{
       },
       inputForVerification:{
         verificationCode:'',
+        referralCode: '',
       },
       role : null,
       reqParamsForLogin:{
@@ -60,6 +61,7 @@ class LoginMd extends React.Component{
       reqParamsForVerification:{
         verificationCode:null,
         phoneNumber:null,
+        referralCode:null,
       },
       inputForChangePassword:{
         cellPhone : '',
@@ -98,7 +100,9 @@ class LoginMd extends React.Component{
     this.setState({requestList:request_list});
   }
   componentWillReceiveProps(nextProps){
-    this.setState({hasAccount : nextProps.hasAccount ,hasPassword:nextProps.hasPassword})
+    var inputVerification = {verificationCode: "" , referralCode:nextProps.referralCode}
+    this.setState({hasAccount : nextProps.hasAccount ,hasPassword:nextProps.hasPassword,
+                   inputForVerification:inputVerification});
   }
   handleLoginClick(){
     this.setTokenForLogin();
@@ -166,7 +170,7 @@ class LoginMd extends React.Component{
 
   setReqParamsForVerification(){
     var spar={verificationCode:persianArabicToEnglishDigits(this.state.inputForVerification.verificationCode),
-               phoneNumber :localStorage['phone-number']};
+               referralCode:this.state.inputForVerification.referralCode, phoneNumber :localStorage['phone-number']};
     this.setState({reqParamsForVerification:spar,verificationLoading:true} ,()=>{this.getResponseForVerification()});
   }
   setReqParamsForLogin(){
@@ -359,6 +363,7 @@ class LoginMd extends React.Component{
       body: JSON.stringify({
         cell_phone : this.state.reqParamsForVerification.phoneNumber,
         verification_code:this.state.reqParamsForVerification.verificationCode,
+        referral_code  : this.state.reqParamsForVerification.referralCode,
     }),
       headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
       'Authorization': 'Token '+this.state.token,})
@@ -549,19 +554,18 @@ class LoginMd extends React.Component{
     }
   }
   renderVerificationModal(){
-    // console.log(this.state.hasAccount);
     return(
       <div className="login1-modal">
-      <div onClick={()=>{this.props.closeLoginPanel()}} className="close-modal-verification">
-      </div>
+        <div onClick={()=>{this.props.closeLoginPanel()}} className="close-modal-verification">
+        </div>
         <p className="login-title-in-modal"> ورود / ثبت‌نام  </p>
         <div className="header-login-modal-divider">
         </div>
           <div className="header-login-modal-content-container">
-            <p className="enter-verify-number-inmodal">
-            کد تایید پیامک شده را وارد نمایید
-           </p>
-            <div dir="rtl" className="header-login-modal-verify-button-input-container" >
+            <div className="header-login-modal-verify-button-input-container" >
+              <p className="enter-verify-number-inmodal">
+               کد تایید پیامک شده به تلفن همراه
+              </p>
               <input
               onKeyDown= {(event)=>{this.handleVerificationClickByEnter(event)}}
                   value={this.state.inputForVerification.verificationCode}
@@ -570,16 +574,25 @@ class LoginMd extends React.Component{
                   id='verify-code'
                   maxLength="4"
                   autoFocus={true}
-                  type="numeric"
-                  />
-                  <button className="header-login-modal-button-verify" onClick={this.handleVerificationClick.bind(this)}>
-                    {this.state.verificationLoading ? <ClipLoader color="white" size={30}/> : "تأیید کد" }
-                  </button>
+                  type="numeric"/>
+              <p className="enter-verify-number-inmodal">
+               کد معرف (اختیاری)
+              </p>
+              <input
+                onKeyDown= {(event)=>{this.handleVerificationClickByEnter(event)}}
+                 value={this.state.inputForVerification.referralCode}
+                 onChange={(event)=>{this.changeReferralCode(event)}}
+                 className="header-login-modal-input-verify"
+                 id='referral-code'
+                 maxLength="6"
+                 autoFocus={false}/>
+               <button className="header-login-modal-button-verify" onClick={this.handleVerificationClick.bind(this)}>
+                 {this.state.verificationLoading ? <ClipLoader color="white" size={30}/> : "تأیید کد" }
+               </button>
             </div>
           </div>
         </div>
-  );
-    // </Modal>
+      );
   }
 
   handleLoginClickByEnter(event){
@@ -637,8 +650,19 @@ class LoginMd extends React.Component{
                }
     this.setState({inputForSignUp : inputSignUp,signUpModalLastNameIsWrong:false});
   }
+
   changeVerificationCode(event){
-    var inputVerification={verificationCode : englishToPersianDigits(event.target.value)};
+    var inputVerification={verificationCode : englishToPersianDigits(event.target.value),
+    referralCode : this.state.inputForVerification.referralCode
+  };
+    this.setState({inputForVerification : inputVerification});
+  }
+
+  changeReferralCode (event) {
+    var inputVerification = {
+      verificationCode: this.state.inputForVerification.verificationCode,
+      referralCode : event.target.value.toUpperCase()
+    }
     this.setState({inputForVerification : inputVerification});
   }
 

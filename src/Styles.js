@@ -30,7 +30,7 @@ export const loginVerifySmsXl = {
     backgroundColor   : 'rgba(0, 0, 0, 0.7)'
   },
   content : {
-    height : '300px',
+    height : '400px',
     width  : '400px',
     margin: 'auto',
     outline                    : '0',

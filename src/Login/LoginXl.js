@@ -35,6 +35,7 @@ class LoginXl extends React.Component{
       },
       inputForVerification:{
         verificationCode:'',
+        referralCode : '' ,
       },
       role : null,
       reqParamsForLogin:{
@@ -59,6 +60,7 @@ class LoginXl extends React.Component{
       reqParamsForVerification:{
         verificationCode:null,
         phoneNumber:null,
+        referralCode:null,
       },
       inputForChangePassword:{
         cellPhone : '',
@@ -97,7 +99,9 @@ class LoginXl extends React.Component{
     this.setState({requestList:request_list});
   }
   componentWillReceiveProps(nextProps){
-    this.setState({hasAccount : nextProps.hasAccount ,hasPassword:nextProps.hasPassword})
+    var inputVerification = {verificationCode: "" , referralCode:nextProps.referralCode}
+    this.setState({hasAccount : nextProps.hasAccount ,hasPassword:nextProps.hasPassword,
+                   inputForVerification:inputVerification});
   }
   handleLoginClick(){
     this.setTokenForLogin();
@@ -165,7 +169,7 @@ class LoginXl extends React.Component{
   }
   setReqParamsForVerification(){
     var spar={verificationCode:persianArabicToEnglishDigits(this.state.inputForVerification.verificationCode),
-               phoneNumber :localStorage['phone-number']};
+              referralCode:this.state.inputForVerification.referralCode, phoneNumber :localStorage['phone-number']};
     this.setState({reqParamsForVerification:spar,verificationLoading:true} ,()=>{this.getResponseForVerification()});
   }
   setReqParamsForLogin(){
@@ -358,6 +362,7 @@ class LoginXl extends React.Component{
       body: JSON.stringify({
         cell_phone : this.state.reqParamsForVerification.phoneNumber,
         verification_code:this.state.reqParamsForVerification.verificationCode,
+        referral_code  : this.state.reqParamsForVerification.referralCode,
     }),
       headers: new Headers({'Accept': 'application/json','Content-Type': 'application/json',
       'Authorization': 'Token '+this.state.token,})
@@ -553,10 +558,10 @@ class LoginXl extends React.Component{
         <div className="header-login-modal-divider">
         </div>
           <div className="header-login-modal-content-container">
-            <p className="enter-verify-number-inmodal">
-             تایید پیامک شده را وارد نمایید
-           </p>
-            <div dir="rtl" className="header-login-modal-verify-button-input-container" >
+            <div className="header-login-modal-verify-button-input-container" >
+              <p className="enter-verify-number-inmodal">
+               کد تایید پیامک شده به تلفن همراه
+              </p>
               <input
               onKeyDown= {(event)=>{this.handleVerificationClickByEnter(event)}}
                   value={this.state.inputForVerification.verificationCode}
@@ -566,9 +571,20 @@ class LoginXl extends React.Component{
                   maxLength="4"
                   autoFocus={true}
                   type="numeric"/>
-                  <button className="header-login-modal-button-verify" onClick={this.handleVerificationClick.bind(this)}>
-                    {this.state.verificationLoading ? <ClipLoader color="white" size={30}/> : "تأیید کد" }
-                  </button>
+              <p className="enter-verify-number-inmodal">
+               کد معرف (اختیاری)
+              </p>
+              <input
+                onKeyDown= {(event)=>{this.handleVerificationClickByEnter(event)}}
+                 value={this.state.inputForVerification.referralCode}
+                 onChange={(event)=>{this.changeReferralCode(event)}}
+                 className="header-login-modal-input-verify"
+                 id='referral-code'
+                 maxLength="6"
+                 autoFocus={false}/>
+                 <button className="header-login-modal-button-verify" onClick={this.handleVerificationClick.bind(this)}>
+                   {this.state.verificationLoading ? <ClipLoader color="white" size={30}/> : "تأیید کد" }
+                 </button>
             </div>
           </div>
         </div>
@@ -633,7 +649,17 @@ class LoginXl extends React.Component{
   }
 
   changeVerificationCode(event){
-    var inputVerification={verificationCode : englishToPersianDigits(event.target.value)};
+    var inputVerification={verificationCode : englishToPersianDigits(event.target.value),
+    referralCode : this.state.inputForVerification.referralCode
+  };
+    this.setState({inputForVerification : inputVerification});
+  }
+
+  changeReferralCode (event) {
+    var inputVerification = {
+      verificationCode: this.state.inputForVerification.verificationCode,
+      referralCode : event.target.value.toUpperCase()
+    }
     this.setState({inputForVerification : inputVerification});
   }
 

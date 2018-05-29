@@ -69,6 +69,7 @@ class HeaderMD extends React.Component{
       showMobileLoginPanel:false,
       phoneNumberLoading: false,
       wrongPhoneNumber : false,
+      referralCode : "",
       },
     };
   }
@@ -267,7 +268,14 @@ class HeaderMD extends React.Component{
         <Modal isOpen={this.state.loginPanelVisible2}
           style={loginPasswordStyle}
           onRequestClose={()=>{this.closeLoginPanel();this.setState({loginPanelVisible2:false})}}>
-          <Login setTriggerLoginOrigin={(origin)=>{this.props.setTriggerLoginOrigin(origin)}} triggerLoginOrigin={this.props.triggerLoginOrigin} cellPhone={this.state.cellPhone} closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
+          <Login
+                 referralCode = {this.state.referralCode}
+                 setTriggerLoginOrigin={(origin)=>{this.props.setTriggerLoginOrigin(origin)}}
+                 triggerLoginOrigin={this.props.triggerLoginOrigin}
+                 cellPhone={this.state.cellPhone}
+                 closeLoginPanel={this.closeLoginPanel.bind(this)}
+                 hasAccount={this.state.hasAccount}
+                 hasPassword={this.state.hasPassword}/>
         </Modal>
       );
     }
@@ -276,7 +284,13 @@ class HeaderMD extends React.Component{
         <Modal isOpen={this.state.loginPanelVisible2}
           style={loginVerifySmsXl}
           onRequestClose={()=>{this.closeLoginPanel();this.setState({loginPanelVisible2:false})}}>
-          <Login setTriggerLoginOrigin={(origin)=>{this.props.setTriggerLoginOrigin(origin)}} triggerLoginOrigin={this.props.triggerLoginOrigin} cellPhone={this.state.cellPhone} closeLoginPanel={this.closeLoginPanel.bind(this)} hasAccount={this.state.hasAccount} hasPassword={this.state.hasPassword}/>
+          <Login referralCode = {this.state.referralCode}
+                 setTriggerLoginOrigin={(origin)=>{this.props.setTriggerLoginOrigin(origin)}}
+                 triggerLoginOrigin={this.props.triggerLoginOrigin}
+                 cellPhone={this.state.cellPhone}
+                 closeLoginPanel={this.closeLoginPanel.bind(this)}
+                 hasAccount={this.state.hasAccount}
+                 hasPassword={this.state.hasPassword}/>
         </Modal>
       );
     }
@@ -352,7 +366,8 @@ class HeaderMD extends React.Component{
        }
        else{
          localStorage['phone-number'] = this.state.searchParams.phoneNumber;
-         this.setState({hasPassword: loginStatus.has_pass,hasAccount:loginStatus.has_account});
+         this.setState({hasPassword: loginStatus.has_pass,hasAccount:loginStatus.has_account,
+           referralCode:loginStatus.install_referral_code});
          this.setState({loginPanelVisible2 : true});
          this.setState({loginPanelVisible: false});
        }
