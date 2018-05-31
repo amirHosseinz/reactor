@@ -126,7 +126,13 @@ class InviteFriendMd extends React.Component{
             </div>
             <div className="total-gift">
               <p className="share-info-description">مجموع هدایای دریافتی شما</p>
-              <p className="share-info-value"> {englishToPersianDigits(parsePrice3digits(this.state.GiftCredit))} تومان</p>
+              <p className="share-info-value">
+              {this.state.giftCredit===0 ?
+                "صفر تومان"
+                 :
+                 englishToPersianDigits(parsePrice3digits(this.state.giftCredit))
+              }
+               </p>
             </div>
           </div>
           <div className="invite-friend-background-md">

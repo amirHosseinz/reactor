@@ -12,7 +12,7 @@ class InviteFriendXl extends React.Component{
       referralCode : "",
       numberOfInstalls : "",
       numberOfTrips : "",
-      GiftCredit : "",
+      giftCredit : 0,
       copyMessage:"کپی لینک",
       shared : false,
     }
@@ -35,7 +35,7 @@ class InviteFriendXl extends React.Component{
    .then((response) => {
      this.setState({numberOfTrips:response.number_of_referring_reserved,
                     numberOfInstalls:response.number_of_referring_installed,
-                    GiftCredit:response.gift_credit,referralCode:response.referral_code})
+                    giftCredit:response.gift_credit,referralCode:response.referral_code})
    });
   }
 
@@ -126,7 +126,13 @@ class InviteFriendXl extends React.Component{
             </div>
             <div className="total-gift">
               <p className="share-info-description">مجموع هدایای دریافتی شما</p>
-              <p className="share-info-value"> {englishToPersianDigits(parsePrice3digits(this.state.GiftCredit))} تومان</p>
+              <p className="share-info-value">
+               {this.state.giftCredit===0 ?
+                 "صفر تومان"
+                  :
+                  englishToPersianDigits(parsePrice3digits(this.state.giftCredit))
+               }
+               </p>
             </div>
           </div>
           <div className="invite-friend-background">

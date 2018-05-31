@@ -32,7 +32,7 @@ class FinanceAccountMd extends React.Component{
      return response.json();
    })
    .then((response) => {
-     this.setState({credit:response.credit , giftCredit:response.gift_credit});
+     this.setState({credit:response.credit, giftCredit:response.gift_credit});
    })
    .catch((error)=> {
       });
@@ -92,14 +92,24 @@ class FinanceAccountMd extends React.Component{
       <div className="finance-account-wallet">
         <div className="finance-account-wallet-header-section">
           <p className="finance-account-wallet-header-description"> مجموع اعتبار قابل استفاده در تریپین</p>
-          <p className="finance-account-wallet-header-value">{englishToPersianDigits(parsePrice3digits(this.state.credit + this.state.giftCredit))} تومان</p>
+          <p className="finance-account-wallet-header-value">
+            {this.state.credit + this.state.giftCredit===0 ?
+              "صفر تومان"
+               :
+              englishToPersianDigits(parsePrice3digits(this.state.credit + this.state.giftCredit))+ " تومان "
+            }
+          </p>
           <hr className="finance-account-walltet-divider"/>
         </div>
         <div className="finance-account-wallet-details">
           <div className="finance-account-credit">
             <img src={require('./coin_icon.svg')} className="finance-account-wallet-icon"/>
             <p className="finance-account-credit-description">
-                {englishToPersianDigits(parsePrice3digits(this.state.credit))} تومان
+              {this.state.credit===0?
+                 "صفر تومان"
+                :
+                englishToPersianDigits(parsePrice3digits(this.state.credit)) + " تومان "
+              }
             </p>
             <p className="finance-account-credit-description">
               موجودی حساب
@@ -107,15 +117,17 @@ class FinanceAccountMd extends React.Component{
             <p className="finance-account-details-description">
               با افزایش موجودی در حساب تریپینی با سرعت بیشتری رزرو کنید
             </p>
-            <button className="finance-account-charge-credit-button">
-              <p className="finance-account-credit-button-content">افزایش اعتبار</p>
-            </button>
+
           </div>
           <img src={require('./PlusSign.svg')} className="finance-account-plus-sign"/>
           <div className="finance-account-credit">
             <img src={require('./gift_icon.svg')} className="finance-account-wallet-icon"/>
             <p className="finance-account-credit-description">
-                {englishToPersianDigits(parsePrice3digits(this.state.giftCredit))} تومان
+              {this.state.giftCredit===0?
+                 "صفر تومان"
+                :
+                englishToPersianDigits(parsePrice3digits(this.state.giftCredit)) + " تومان "
+              }
             </p>
             <p className="finance-account-credit-description">
                 اعتبار هدیه
@@ -123,14 +135,21 @@ class FinanceAccountMd extends React.Component{
             <p className="finance-account-details-description">
               با معرفی تریپین به دوستانتان اعتبار هدیه دریافت کنید و با آن به سفر بروید
             </p>
+            <a target="_blank" href={"/user/invitefriend"}>
             <button className="finance-account-get-gift-credit-button">
               <p className="finance-account-credit-button-content"> دریافت هدیه</p>
             </button>
+            </a>
           </div>
         </div>
       </div>
     );
   }
+
+
+  // <button className="finance-account-charge-credit-button">
+  //   <p className="finance-account-credit-button-content">افزایش اعتبار</p>
+  // </button>
 
   renderTransactions(){
     return (
