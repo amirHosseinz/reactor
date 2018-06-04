@@ -9,101 +9,10 @@ class TermsXl extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      OpenPanel1:false,
-      OpenPanel2:false,
-      OpenPanel3:false,
-      OpenPanel4:false,
-      OpenPanel5:false,
-      OpenPanel6:false,
-      OpenPanel7:false,
-      OpenPanel8:false,
-      OpenPanel9:false,
-      OpenPanel10:false,
-      OpenPanel11:false,
+      openPanel:0,
         };
   }
 
-
-  renderOpenPanel1(){
-    this.setState({OpenPanel1:true});
-  }
-  renderClosePanel1(){
-    this.setState({OpenPanel1:false});
-  }
-
-  renderOpenPanel2(){
-    this.setState({OpenPanel2:true});
-  }
-
-  renderClosePanel2(){
-    this.setState({OpenPanel2:false});
-  }
-
-  renderOpenPanel3(){
-    this.setState({OpenPanel3:true});
-  }
-
-  renderClosePanel3(){
-    this.setState({OpenPanel3:false});
-  }
-
-  renderOpenPanel4(){
-    this.setState({OpenPanel4:true});
-  }
-
-  renderClosePanel4(){
-    this.setState({OpenPanel4:false});
-  }
-
-  renderOpenPanel5(){
-    this.setState({OpenPanel5:true});
-  }
-
-  renderClosePanel5(){
-    this.setState({OpenPanel5:false});
-  }
-  renderOpenPanel6(){
-    this.setState({OpenPanel6:true});
-  }
-
-  renderClosePanel6(){
-    this.setState({OpenPanel6:false});
-  }
-  renderOpenPanel7(){
-    this.setState({OpenPanel7:true});
-  }
-
-  renderClosePanel7(){
-    this.setState({OpenPanel7:false});
-  }
-  renderOpenPanel8(){
-    this.setState({OpenPanel8:true});
-  }
-
-  renderClosePanel8(){
-    this.setState({OpenPanel8:false});
-  }
-  renderOpenPanel9(){
-    this.setState({OpenPanel9:true});
-  }
-
-  renderClosePanel9(){
-    this.setState({OpenPanel9:false});
-  }
-  renderOpenPanel10(){
-    this.setState({OpenPanel10:true});
-  }
-
-  renderClosePanel10(){
-    this.setState({OpenPanel10:false});
-  }
-  renderOpenPanel11(){
-    this.setState({OpenPanel11:true});
-  }
-
-  renderClosePanel11(){
-    this.setState({OpenPanel11:false});
-  }
   render(){
     return(
       <div className='terms-cadre-xl'>
@@ -132,44 +41,62 @@ class TermsXl extends React.Component{
           قوانین استفاده از خدمات تریپین به شرح زیر میباشد. استفاده از تریپین به منزله قبول این قوانین خواهد بود
           </p>
 
-          <Collapsible onClose={this.renderClosePanel1.bind(this)} onOpen={this.renderOpenPanel1.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel1?"terms-close-panel1-text":"terms-close-panel1-text"}><span>{englishToPersianDigits("1-")}</span> <span> مقررات ثبت نام و تأیید حساب کاربری</span></span> <img className={this.state.OpenPanel1?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
-          <div className='terms-panel1-container'>
-
-                    <p className="terms-descriptions">
-                    برای عضویت در تریپین و استفاده از تمامی خدمات آن، لازم است هر کاربر یک حساب کاربری در تریپین ایجاد نماید. برای ایجاد حساب کاربری شرایط زیر الزامی است و قوانین زیر بر آن اعمال می‌شود:
-                    </p>
-                    <p className="terms-descriptions">
-                    الف)
-                      داشتن ۱۸سال تمام شمسی.
-                    </p>
-                    <p className="terms-descriptions">
-                    ب)
-                    تکمیل فرم مشخصات.
-                    </p>
-                    <p className="terms-descriptions">
-                    ج)
-                    حساب کاربری افراد تنها در صورتی فعال می‌شود که شماره تلفن همراه معتبر در زمان ثبت نام ارائه کرده و کد ارسالی توسط تریپین را وارد نمایند.
-                    </p>
-                    <p className="terms-descriptions">
-                    د)
-                      مسئولیت صحت اطلاعات وارد شده به عهده صاحب حساب کاربری می‌باشد. وارد کردن اطلاعات نادرست وغلط ممکن است منجر به محرومیت کاربر از خدمات تریپین شود و کاربر نمی‌تواند به این موضوع معترض شود.
-                    </p>
-                    <p className="terms-descriptions">
-                    ه)
-                    هر فرد تنها می‌تواند یک حساب کاربری داشته باشد.
-                    </p>
-                    <p className="terms-descriptions">
-                    و)
-                    هر کاربر با ثبت نام در تریپین و ایجاد حساب کاربری به نام خود، صحت انتساب تمام پیام‌های صادره از حساب کاربری خویش را پذیرفته و در نتیجه حق هرگونه اعتراض یا ادعای آتی (مبنی بر انکار، تردید یا جعل پیام های ارسالی) را از خویش سلب و ساقط می‌نماید.
-                    </p>
-                    <p className="terms-descriptions">
-                    ز)
-                    در صورت عدم همکاری کاربر و ارائه ندادن اطلاعات مربوطه - در شرایط خاص که ممکن است احراز هویت کاربر از جانب شرکت ضروری تشخیص داده شود- شرکت حق انسداد حساب کاربر را خواهد داشت.
-                    </p>
-          </div>
+          <Collapsible
+                       onClose={()=>{this.setState({openPanel:0})}}
+                       onOpen={()=>{this.setState({openPanel:1})}}
+                       trigger={
+                       <div className="terms-panel-box">
+                         <span className={this.state.openPanel===1?"terms-close-panel1-text":"terms-close-panel1-text"}>
+                            <span>{englishToPersianDigits("1-")}</span>
+                            <span> مقررات ثبت نام و تأیید حساب کاربری</span>
+                         </span>
+                         <img className={this.state.openPanel===1?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40"/>
+                         </div>}>
+            <div className='terms-panel1-container'>
+                      <p className="terms-descriptions">
+                      برای عضویت در تریپین و استفاده از تمامی خدمات آن، لازم است هر کاربر یک حساب کاربری در تریپین ایجاد نماید. برای ایجاد حساب کاربری شرایط زیر الزامی است و قوانین زیر بر آن اعمال می‌شود:
+                      </p>
+                      <p className="terms-descriptions">
+                      الف)
+                        داشتن ۱۸سال تمام شمسی.
+                      </p>
+                      <p className="terms-descriptions">
+                      ب)
+                      تکمیل فرم مشخصات.
+                      </p>
+                      <p className="terms-descriptions">
+                      ج)
+                      حساب کاربری افراد تنها در صورتی فعال می‌شود که شماره تلفن همراه معتبر در زمان ثبت نام ارائه کرده و کد ارسالی توسط تریپین را وارد نمایند.
+                      </p>
+                      <p className="terms-descriptions">
+                      د)
+                        مسئولیت صحت اطلاعات وارد شده به عهده صاحب حساب کاربری می‌باشد. وارد کردن اطلاعات نادرست وغلط ممکن است منجر به محرومیت کاربر از خدمات تریپین شود و کاربر نمی‌تواند به این موضوع معترض شود.
+                      </p>
+                      <p className="terms-descriptions">
+                      ه)
+                      هر فرد تنها می‌تواند یک حساب کاربری داشته باشد.
+                      </p>
+                      <p className="terms-descriptions">
+                      و)
+                      هر کاربر با ثبت نام در تریپین و ایجاد حساب کاربری به نام خود، صحت انتساب تمام پیام‌های صادره از حساب کاربری خویش را پذیرفته و در نتیجه حق هرگونه اعتراض یا ادعای آتی (مبنی بر انکار، تردید یا جعل پیام های ارسالی) را از خویش سلب و ساقط می‌نماید.
+                      </p>
+                      <p className="terms-descriptions">
+                      ز)
+                      در صورت عدم همکاری کاربر و ارائه ندادن اطلاعات مربوطه - در شرایط خاص که ممکن است احراز هویت کاربر از جانب شرکت ضروری تشخیص داده شود- شرکت حق انسداد حساب کاربر را خواهد داشت.
+                      </p>
+            </div>
           </Collapsible>
 
-          <Collapsible onClose={this.renderClosePanel2.bind(this)} onOpen={this.renderOpenPanel2.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel2?"terms-close-panel1-text":"terms-close-panel1-text"}><span> {englishToPersianDigits("2-")} </span> <span>   مقررات ثبت اقامتگاه</span></span> <img className={this.state.OpenPanel2?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
+          <Collapsible onClose={()=>{this.setState({openPanel:0})}}
+                       onOpen={()=>{this.setState({openPanel:2})}}
+                       trigger={
+                         <div className="terms-panel-box">
+                         <span className={this.state.openPanel===2?"terms-close-panel1-text":"terms-close-panel1-text"}>
+                          <span> {englishToPersianDigits("2-")}</span>
+                          <span>مقررات ثبت اقامتگاه</span>
+                         </span>
+                          <img className={this.state.openPanel===2?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" />
+                          </div>}>
           <div className='terms-panel1-container'>
 
 
@@ -229,7 +156,17 @@ class TermsXl extends React.Component{
           </div>
           </Collapsible>
 
-          <Collapsible onClose={this.renderClosePanel3.bind(this)} onOpen={this.renderOpenPanel3.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel3?"terms-close-panel1-text":"terms-close-panel1-text"}><span>{englishToPersianDigits("4-")}</span><span> مقررات رزرو </span></span> <img className={this.state.OpenPanel3?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
+          <Collapsible
+                  onClose={()=>{this.setState({openPanel:0})}}
+                  onOpen={()=>{this.setState({openPanel:3})}}
+                  trigger={
+                    <div className="terms-panel-box">
+                      <span className={this.state.openPanel===3?"terms-close-panel1-text":"terms-close-panel1-text"}>
+                        <span>{englishToPersianDigits("4-")}</span>
+                        <span> مقررات رزرو </span>
+                      </span>
+                      <img className={this.state.openPanel===3?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" />
+                      </div>}>
           <div className='terms-panel1-container'>
 
 
@@ -262,7 +199,17 @@ class TermsXl extends React.Component{
           </div>
           </Collapsible>
 
-          <Collapsible onClose={this.renderClosePanel4.bind(this)} onOpen={this.renderOpenPanel4.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel4?"terms-close-panel1-text":"terms-close-panel1-text"}><span>{englishToPersianDigits("4-")}</span><span> مقررات تحویل خانه </span></span> <img className={this.state.OpenPanel4?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
+          <Collapsible
+                  onClose={()=>{this.setState({openPanel:0})}}
+                  onOpen={()=>{this.setState({openPanel:4})}}
+                  trigger={
+                      <div className="terms-panel-box">
+                        <span className={this.state.openPanel===4?"terms-close-panel1-text":"terms-close-panel1-text"}>
+                          <span>{englishToPersianDigits("4-")}</span>
+                          <span> مقررات تحویل خانه </span>
+                        </span>
+                        <img className={this.state.openPanel===4?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" />
+                      </div>}>
           <div className='terms-panel1-container'>
 
 
@@ -297,7 +244,16 @@ class TermsXl extends React.Component{
           </div>
           </Collapsible>
 
-          <Collapsible onClose={this.renderClosePanel5.bind(this)} onOpen={this.renderOpenPanel5.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel5?"terms-close-panel1-text":"terms-close-panel1-text"}><span>{englishToPersianDigits("5-")}</span><span>مقررات نقد و امتیازدهی</span></span> <img className={this.state.OpenPanel5?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
+          <Collapsible onClose={()=>{this.setState({openPanel:0})}}
+                       onOpen={()=>{this.setState({openPanel:5})}}
+                       trigger={
+                         <div className="terms-panel-box">
+                           <span className={this.state.openPanel===5?"terms-close-panel1-text":"terms-close-panel1-text"}>
+                             <span>{englishToPersianDigits("5-")}</span>
+                             <span>مقررات نقد و امتیازدهی</span>
+                           </span>
+                           <img className={this.state.openPanel===5?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" />
+                         </div>}>
           <div className='terms-panel1-container'>
 
                     <p className="terms-descriptions">
@@ -313,7 +269,16 @@ class TermsXl extends React.Component{
           </div>
           </Collapsible>
 
-          <Collapsible onClose={this.renderClosePanel6.bind(this)} onOpen={this.renderOpenPanel6.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel6?"terms-close-panel1-text":"terms-close-panel1-text"}>  <span>{englishToPersianDigits("6-")}</span><span> مقررات مالی مهمان </span></span> <img className={this.state.OpenPanel6?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
+          <Collapsible onClose={()=>{this.setState({openPanel:0})}}
+                       onOpen={()=>{this.setState({openPanel:6})}}
+                       trigger={
+                         <div className="terms-panel-box">
+                            <span className={this.state.openPanel===6?"terms-close-panel1-text":"terms-close-panel1-text"}>
+                                <span>{englishToPersianDigits("6-")}</span>
+                                <span> مقررات مالی مهمان </span>
+                              </span>
+                            <img className={this.state.openPanel===6?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" />
+                            </div>}>
           <div className='terms-panel1-container'>
 
 
@@ -327,7 +292,16 @@ class TermsXl extends React.Component{
           </div>
           </Collapsible>
 
-          <Collapsible onClose={this.renderClosePanel7.bind(this)} onOpen={this.renderOpenPanel7.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel7?"terms-close-panel1-text":"terms-close-panel1-text"}><span> {englishToPersianDigits("7-")}</span> <span>مقررات مالی میزبان  </span></span> <img className={this.state.OpenPanel7?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
+          <Collapsible onClose={()=>{this.setState({openPanel:0})}}
+                       onOpen={()=>{this.setState({openPanel:7})}}
+                       trigger={
+                         <div className="terms-panel-box">
+                           <span className={this.state.openPanel===7?"terms-close-panel1-text":"terms-close-panel1-text"}>
+                              <span> {englishToPersianDigits("7-")}</span>
+                              <span>مقررات مالی میزبان  </span>
+                           </span>
+                           <img className={this.state.openPanel===7?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" />
+                         </div>}>
           <div className='terms-panel1-container'>
 
                 <p className="terms-descriptions">
@@ -340,7 +314,16 @@ class TermsXl extends React.Component{
           </div>
           </Collapsible>
 
-          <Collapsible onClose={this.renderClosePanel8.bind(this)} onOpen={this.renderOpenPanel8.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel8?"terms-close-panel1-text":"terms-close-panel1-text"}><span>{englishToPersianDigits("8-")}</span><span> مقررات کنسل کردن رزرو و بازپرداخت </span></span> <img className={this.state.OpenPanel8?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
+          <Collapsible onClose={()=>{this.setState({openPanel:0})}}
+                       onOpen={()=>{this.setState({openPanel:8})}}
+                       trigger={
+                         <div className="terms-panel-box">
+                            <span className={this.state.openPanel===8?"terms-close-panel1-text":"terms-close-panel1-text"}>
+                                <span>{englishToPersianDigits("8-")}</span>
+                                <span> مقررات کنسل کردن رزرو و بازپرداخت </span>
+                            </span>
+                            <img className={this.state.openPanel===8?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" />
+                         </div>}>
           <div className='terms-panel1-container'>
           <p className="terms-descriptions">
                     الف)	در صورتی که مهمان در فاصله زمانی بیشتر از ۴۸ ساعت به زمان تحویل کلید رزرو را کنسل کند، تمامی مبلغ اجاره به مهمان بازگردانده می شود (به استثنا ۲۸ اسفند ماه تا ۱۳ فروردین ماه) .در این صورت میزبان موظف است مبلغ دریافتی جهت اجاره شب اول را ظرف مدت ۲۴ ساعت برای شرکت واریز نماید.
@@ -360,7 +343,16 @@ class TermsXl extends React.Component{
           </div>
           </Collapsible>
 
-          <Collapsible onClose={this.renderClosePanel9.bind(this)} onOpen={this.renderOpenPanel9.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel9?"terms-close-panel1-text":"terms-close-panel1-text"}><span>{englishToPersianDigits("9-")}</span><span> مقررات مربوط به اعمال غیرقانونی </span></span> <img className={this.state.OpenPanel9?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
+          <Collapsible onClose={()=>{this.setState({openPanel:0})}}
+                       onOpen={()=>{this.setState({openPanel:9})}}
+                       trigger={
+                         <div className="terms-panel-box">
+                            <span className={this.state.openPanel===9?"terms-close-panel1-text":"terms-close-panel1-text"}>
+                              <span>{englishToPersianDigits("9-")}</span>
+                              <span> مقررات مربوط به اعمال غیرقانونی </span>
+                            </span>
+                             <img className={this.state.openPanel===9?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" />
+                         </div>}>
           <div className='terms-panel1-container'>
           <p className="terms-descriptions">
           الف)	میزبانان و مهمانان به طور کامل مسئول تمامی اعمال خویش بر اساس قوانین جمهوری اسلامی ایران خواهند بود.
@@ -377,7 +369,16 @@ class TermsXl extends React.Component{
           </div>
           </Collapsible>
 
-          <Collapsible onClose={this.renderClosePanel10.bind(this)} onOpen={this.renderOpenPanel10.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel10?"terms-close-panel1-text":"terms-close-panel1-text"}><span>{englishToPersianDigits("10-")}</span><span> لغو قرارداد و حساب کاربری </span></span> <img className={this.state.OpenPanel10?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
+          <Collapsible onClose={()=>{this.setState({openPanel:0})}}
+                       onOpen={()=>{this.setState({openPanel:10})}}
+                       trigger={
+                         <div className="terms-panel-box">
+                          <span className={this.state.openPanel===10?"terms-close-panel1-text":"terms-close-panel1-text"}>
+                            <span>{englishToPersianDigits("10-")}</span>
+                            <span> لغو قرارداد و حساب کاربری </span>
+                          </span>
+                          <img className={this.state.openPanel===10?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" />
+                         </div>}>
           <div className='terms-panel1-container'>
           <p className="terms-descriptions">
           الف)	این قرارداد با حذف حساب کاربری ملغی خواهد شد.
@@ -401,22 +402,31 @@ class TermsXl extends React.Component{
           </div>
           </Collapsible>
 
-          <Collapsible onClose={this.renderClosePanel11.bind(this)} onOpen={this.renderOpenPanel11.bind(this)} trigger={<div className="terms-panel-box"><span className={this.state.OpenPanel11?"terms-close-panel1-text":"terms-close-panel1-text"}><span>{englishToPersianDigits("11-")}</span> <span>حریم خصوصی و محتویات</span></span><img className={this.state.OpenPanel11?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" /></div>}>
-          <div className='terms-panel1-container'>
+          <Collapsible onClose={()=>{this.setState({openPanel:0})}}
+                       onOpen={()=>{this.setState({openPanel:11})}}
+                       trigger={
+                         <div className="terms-panel-box">
+                           <span className={this.state.openPanel===11?"terms-close-panel1-text":"terms-close-panel1-text"}>
+                              <span>{englishToPersianDigits("11-")}</span>
+                              <span>حریم خصوصی و محتویات</span>
+                           </span>
+                           <img className={this.state.openPanel===11?"terms-open-panel-img":"terms-close-panel-img"} src={require('../Images/angle-down copy.svg')} width="40" height="40" />
+                         </div>}>
+            <div className='terms-panel1-container'>
 
-                    <p className="terms-descriptions">
-                    الف)	تریپین در حفاظت از اطلاعات شخصی کاربران تمامی تلاش خود را به کار خواهد بست.
-                    </p>
-                    <p className="terms-descriptions">
-                    ب)	پس از نهایی شدن رزرو، اطلاعات نام، نام خانوادگی و شماره تماس میزبان و مهمان اقامتگاه مورد رزرو در اختیار طرفین رزرو قرار خواهد گرفت. در این مورد میزبان علاوه بر اطلاعات ذکر‌ شده، به شماره‌ی ملی مهمان نیز دسترسی خواهد داشت.
-                    </p>
-                    <p className="terms-descriptions">
-                    ج)	به منظور بهبود خدمات، تریپین مجاز است از تمامی اطلاعات و محتوای‌ تولید‌شده توسط کاربران خود با حفط بی‌نشان بودن داده‌ها استفاده کند.
-                    </p>
-                    <p className="terms-descriptions">
-                    د)	در صورت درخواست مراجع قضایی، تریپین اطلاعات حساب شما را در اختیار مرجع قضایی مربوطه قرار خواهد داد.
-                    </p>
-          </div>
+                      <p className="terms-descriptions">
+                      الف)	تریپین در حفاظت از اطلاعات شخصی کاربران تمامی تلاش خود را به کار خواهد بست.
+                      </p>
+                      <p className="terms-descriptions">
+                      ب)	پس از نهایی شدن رزرو، اطلاعات نام، نام خانوادگی و شماره تماس میزبان و مهمان اقامتگاه مورد رزرو در اختیار طرفین رزرو قرار خواهد گرفت. در این مورد میزبان علاوه بر اطلاعات ذکر‌ شده، به شماره‌ی ملی مهمان نیز دسترسی خواهد داشت.
+                      </p>
+                      <p className="terms-descriptions">
+                      ج)	به منظور بهبود خدمات، تریپین مجاز است از تمامی اطلاعات و محتوای‌ تولید‌شده توسط کاربران خود با حفط بی‌نشان بودن داده‌ها استفاده کند.
+                      </p>
+                      <p className="terms-descriptions">
+                      د)	در صورت درخواست مراجع قضایی، تریپین اطلاعات حساب شما را در اختیار مرجع قضایی مربوطه قرار خواهد داد.
+                      </p>
+            </div>
           </Collapsible>
           </div>
           </div>

@@ -36,16 +36,60 @@ class AboutUsXl extends React.Component{
          {" خراسان رضوی"}
        </Link>
        ،
+       <Link className="anchor-about-us" to="/search/خراسان جنوبی">
+         {" خراسان جنوبی"}
+       </Link>
+       ،
        <Link className="anchor-about-us" to="/search/مازندران">
          {" مازندران"}
        </Link>
        ،
        <Link className="anchor-about-us" to="/search/گیلان">
-         {" گیلان "}
+         {" گیلان"}
+       </Link>
+      ،
+       <Link className="anchor-about-us" to="/search/یزد">
+         {" یزد"}
+       </Link>
+       ،
+       <Link className="anchor-about-us" to="/search/تهران">
+         {" تهران"}
+       </Link>
+       ،
+       <Link className="anchor-about-us" to="/search/آذربایجان شرقی">
+         {" آذربایجان شرقی"}
+       </Link>
+       ،
+       <Link className="anchor-about-us" to="/search/کرمانشاه">
+         {" کرمانشاه"}
+       </Link>
+       ،
+       <Link className="anchor-about-us" to="/search/کردستان">
+         {" کردستان"}
+       </Link>
+       ،
+       <Link className="anchor-about-us" to="/search/کرمان">
+         {" کرمان"}
+       </Link>
+       ،
+       <Link className="anchor-about-us" to="/search/گلستان">
+         {" گلستان"}
+       </Link>
+       ،
+       <Link className="anchor-about-us" to="/search/همدان">
+         {" همدان"}
+       </Link>
+       ،
+       <Link className="anchor-about-us" to="/search/سمنان">
+         {" سمنان"}
+       </Link>
+         ،
+       <Link className="anchor-about-us" to="/search/کیش">
+        {" جزیره کیش" }
        </Link>
        و
-       <Link className="anchor-about-us" to="/search/کیش">
-        {" جزیره کیش " }
+       <Link className="anchor-about-us" to="/search/قشم">
+        {" قشم " }
        </Link>
        فعال است.
        </p>

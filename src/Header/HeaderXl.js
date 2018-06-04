@@ -539,14 +539,9 @@ class HeaderXl extends React.Component{
               <li className="header-link-item">
                 <Link className="header-link" to="/terms&conditions"><p className='logo-menu-font'>قوانین </p></Link>
               </li>
-              {
-                localStorage['isLoggedIn']==="true"?
-              <li className="header-link-item">
-                <Link className="header-link" to="/user/invitefriend"><p className='logo-menu-font'>اعتبار هدیه </p></Link>
-              </li>
-                  :
-                  <div></div>
-            }
+
+
+
               {this.renderGetApplicationButton()}
             </ul>
           </div>
@@ -571,6 +566,14 @@ class HeaderXl extends React.Component{
     );
   }
 
+//   {
+//     localStorage['isLoggedIn']==="true"?
+//   <li className="header-link-item">
+//     <Link className="header-link" to="/user/invitefriend"><p className='logo-menu-font'>اعتبار هدیه </p></Link>
+//   </li>
+//       :
+//       <div></div>
+// }
   renderRelevantHeaderBasedOnURL(){
       return(
         <Sticky>

@@ -20,33 +20,78 @@ class AboutUsMD extends React.Component{
         <div className='about-us-main-paragraph'>
         <p className="dabout-us-descriptions">
            اگر به دنبال امکان مقایسه و بررسی اقامتگاه های تفریحی هستید، تریپین بهترین انتخاب شما است. پیش از آغاز سفر محل اقامت مورد نظر خود را آنلاین رزرو کنید و در طول مسافرت همراهی تیم پشتیبانی ما را در کنار خود داشته باشید. تریپین متعلق به شرکت طراحی و راهبری فناوران دانش سامان آریا به شماره ثبت {englishToPersianDigits(515951 )}  است و در حال حاضر در استان‌های
-        <Link className="anchor-about-us" to="/search/اصفهان">
-          {" اصفهان"}
-        </Link>
-        ،
-        <Link className="anchor-about-us" to="/search/البرز">
-          {" البرز"}
-        </Link>
-        ،
-        <Link className="anchor-about-us" to="/search/فارس">
-          {" فارس"}
-        </Link>
-        ،
-        <Link className="anchor-about-us" to="/search/خراسان رضوی">
-          {" خراسان رضوی"}
-        </Link>
-        ،
-        <Link className="anchor-about-us" to="/search/مازندران">
-          {" مازندران"}
-        </Link>
-        ،
-        <Link className="anchor-about-us" to="/search/گیلان">
-          {" گیلان "}
-        </Link>
-        و
-        <Link className="anchor-about-us" to="/search/کیش">
-         {" جزیره کیش " }
-        </Link>
+           <Link className="anchor-about-us" to="/search/اصفهان">
+             {" اصفهان"}
+           </Link>
+           ،
+           <Link className="anchor-about-us" to="/search/البرز">
+             {" البرز"}
+           </Link>
+           ،
+           <Link className="anchor-about-us" to="/search/فارس">
+             {" فارس"}
+           </Link>
+           ،
+           <Link className="anchor-about-us" to="/search/خراسان رضوی">
+             {" خراسان رضوی"}
+           </Link>
+           ،
+           <Link className="anchor-about-us" to="/search/خراسان جنوبی">
+             {" خراسان جنوبی"}
+           </Link>
+           ،
+           <Link className="anchor-about-us" to="/search/مازندران">
+             {" مازندران"}
+           </Link>
+           ،
+           <Link className="anchor-about-us" to="/search/گیلان">
+             {" گیلان"}
+           </Link>
+          ،
+           <Link className="anchor-about-us" to="/search/یزد">
+             {" یزد"}
+           </Link>
+           ،
+           <Link className="anchor-about-us" to="/search/تهران">
+             {" تهران"}
+           </Link>
+           ،
+           <Link className="anchor-about-us" to="/search/آذربایجان شرقی">
+             {" آذربایجان شرقی"}
+           </Link>
+           ،
+           <Link className="anchor-about-us" to="/search/کرمانشاه">
+             {" کرمانشاه"}
+           </Link>
+           ،
+           <Link className="anchor-about-us" to="/search/کردستان">
+             {" کردستان"}
+           </Link>
+           ،
+           <Link className="anchor-about-us" to="/search/کرمان">
+             {" کرمان"}
+           </Link>
+           ،
+           <Link className="anchor-about-us" to="/search/گلستان">
+             {" گلستان"}
+           </Link>
+           ،
+           <Link className="anchor-about-us" to="/search/همدان">
+             {" همدان"}
+           </Link>
+           ،
+           <Link className="anchor-about-us" to="/search/سمنان">
+             {" سمنان"}
+           </Link>
+             ،
+           <Link className="anchor-about-us" to="/search/کیش">
+            {" جزیره کیش" }
+           </Link>
+           و
+           <Link className="anchor-about-us" to="/search/قشم">
+            {" قشم " }
+           </Link>
+
         فعال است.
         </p>
         </div>

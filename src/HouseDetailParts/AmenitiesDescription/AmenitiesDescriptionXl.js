@@ -4,14 +4,21 @@ import {englishToPersianDigits } from '../../tools/EnglishToPersianDigits.js';
 
 class AmenitiesDescriptionXl extends React.Component{
     renderBeds(){
-      if(this.props.homeData.beds_number + 2 * this.props.homeData.double_beds_number){
+      if(this.props.homeData.beds_number + 2 * this.props.homeData.double_beds_number !==0){
         return(
           <p className='aminities-text'>
           {englishToPersianDigits(this.props.homeData.beds_number + 2 * this.props.homeData.double_beds_number)}
           </p>
       );
     }
+    else {
+      return (
+        <p className='aminities-text'>
+         بدون
+        </p>
+      );
     }
+  }
   renderRelevantAmenitiesDescription(){
     switch(window.location.href.split("/")[window.location.href.split("/").length-2]){
       case 'rooms':{

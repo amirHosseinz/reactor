@@ -11,8 +11,8 @@ class FinanceAccountMd extends React.Component{
     super(props);
     this.state = {
       selectedTab : "wallet",
-      credit : null,
-      giftCredit : null,
+      credit : 0,
+      giftCredit : 0,
       transactionList : [],
     }
   }
@@ -114,9 +114,8 @@ class FinanceAccountMd extends React.Component{
             <p className="finance-account-credit-description">
               موجودی حساب
             </p>
-            <p className="finance-account-details-description">
-              با افزایش موجودی در حساب تریپینی با سرعت بیشتری رزرو کنید
-            </p>
+
+
 
           </div>
           <img src={require('./PlusSign.svg')} className="finance-account-plus-sign"/>
@@ -132,20 +131,30 @@ class FinanceAccountMd extends React.Component{
             <p className="finance-account-credit-description">
                 اعتبار هدیه
             </p>
-            <p className="finance-account-details-description">
-              با معرفی تریپین به دوستانتان اعتبار هدیه دریافت کنید و با آن به سفر بروید
-            </p>
-            <a target="_blank" href={"/user/invitefriend"}>
-            <button className="finance-account-get-gift-credit-button">
-              <p className="finance-account-credit-button-content"> دریافت هدیه</p>
-            </button>
-            </a>
+
+
+
           </div>
         </div>
       </div>
     );
   }
 
+
+
+  // <p className="finance-account-details-description">
+  //   با افزایش موجودی در حساب تریپینی با سرعت بیشتری رزرو کنید
+  // </p>
+
+
+  // <p className="finance-account-details-description">
+  //   با معرفی تریپین به دوستانتان اعتبار هدیه دریافت کنید و با آن به سفر بروید
+  // </p>
+  // <a target="_blank" href={"/user/invitefriend"}>
+  //   <button className="finance-account-get-gift-credit-button">
+  //     <p className="finance-account-credit-button-content"> دریافت هدیه</p>
+  //   </button>
+  // </a>
 
   // <button className="finance-account-charge-credit-button">
   //   <p className="finance-account-credit-button-content">افزایش اعتبار</p>
