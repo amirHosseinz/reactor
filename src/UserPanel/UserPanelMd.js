@@ -20,7 +20,7 @@ class UserPanelMd extends React.Component{
   }
 
   componentWillMount(){
-    document.body.style.backgroundColor = "#f8f8f8";
+    // document.body.style.backgroundColor = "#f8f8f8";
   }
   handleNameChange(event) {
     this.setState({Name: event.target.value});

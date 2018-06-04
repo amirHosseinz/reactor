@@ -268,6 +268,7 @@ class LoginMd extends React.Component{
       this.setUserNameInHeader();
     }
     else{
+      this.refs.password.select();
       this.setState({passIsNotCorrect:true});
     }
   }
@@ -715,6 +716,7 @@ class LoginMd extends React.Component{
                 id='password'
                 autoFocus={true}
                 type="password"
+                ref="password"
                 autoComplete="off"
                 onKeyDown ={(event)=>{this.handleLoginClickByEnter(event)}}/>
                 <Fade bottom={true} collapse={false} when={this.state.passIsNotCorrect}>

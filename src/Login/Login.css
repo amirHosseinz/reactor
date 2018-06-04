@@ -96,6 +96,8 @@
   margin-top: 12px !important;
   line-height: 20px;
   visibility: visible;
+  margin-left : 160px;
+
 }
 
 .error-message-in-forget-password-modal {

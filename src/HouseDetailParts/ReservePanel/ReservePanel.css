@@ -247,6 +247,13 @@
   width : 100%;
 }
 
+.reserve-panel-date-picker-input-error{
+  border : 2px solid red !important;
+  border-radius : 8px;
+  height : 48px;
+  width : 100%;
+}
+
 
 .pre-bill-discount-value-discount-code-accepted{
   font-family: IRANSans !important;
@@ -289,4 +296,12 @@
   font-family: IRANSans;
   font-size : 14px;
   color : red;
+}
+
+.duration-text{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction : row-reverse;
+  -webkit-flex-direction:row-reverse;
+  direction : rtl;
 }

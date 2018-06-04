@@ -480,11 +480,8 @@ class ReservePanelMd extends React.Component{
                   <div className="pre-bill-dates-content">
                     <p className="pre-bill-date-item"> از {moment(this.state.requestParams.fromDate).format('jYYYY/jM/jD')}</p>
                     <p className="pre-bill-date-item" >تا {moment(this.state.requestParams.toDate).format('jYYYY/jM/jD')}</p>
-                    <p className="row-reverse">
-                      <span className="pre-bill-date-item">  روز اقامت</span>
-                      <span>
-                      {englishToPersianDigits(this.state.reserveData.ordinary_duration + this.state.reserveData.weekend_duration +this.state.reserveData.special_duration +this.state.reserveData.nowruz_duration)}
-                       </span>
+                    <p className="duration-text">
+                      <span className="pre-bill-date-item"> {englishToPersianDigits(this.state.reserveData.ordinary_duration + this.state.reserveData.weekend_duration +this.state.reserveData.special_duration +this.state.reserveData.nowruz_duration)} روز اقامت  </span>
                     </p>
                   </div>
                 </div>
@@ -575,7 +572,7 @@ class ReservePanelMd extends React.Component{
           <p className="reserve-panel-description">
             تاریخ ورود و خروج
           </p>
-          <div className="reserve-panel-date-picker-input">
+          <div className={this.state.dateNotSelected ? "reserve-panel-date-picker-input-error": "reserve-panel-date-picker-input"}>
             <DateRangePicker
               startDatePlaceholderText="تاریخ ورود"
               endDatePlaceholderText="تاریخ خروج"

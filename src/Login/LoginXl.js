@@ -233,6 +233,7 @@ class LoginXl extends React.Component{
      this.handleLoginResponse(loginResponse);
    });
   }
+
   handleSetPasswordResponse(setPasswordResponse){
     if(setPasswordResponse.is_successful){
       localStorage['isLoggedIn']= 'true';
@@ -265,6 +266,7 @@ class LoginXl extends React.Component{
       this.setUserNameInHeader();
     }
     else{
+      this.refs.password.select();
       this.setState({passIsNotCorrect:true});
     }
   }
@@ -712,6 +714,7 @@ class LoginXl extends React.Component{
                 onChange={this.changePasswordForLogin.bind(this)}
                 value={this.state.inputForLogin.password}
                 id='password'
+                ref='password'
                 autoFocus={true}
                 type="password"
                 autoComplete="off"

@@ -121,7 +121,7 @@ class FinanceAccountXl extends React.Component{
           </div>
           <img src={require('./PlusSign.svg')} className="finance-account-plus-sign"/>
           <div className="finance-account-credit">
-            <img src={require('./gift_icon.svg')} className="finance-account-wallet-icon"/>
+            <img src={require('./gift_icon.svg')} className="finance-account-gift-icon"/>
             <p className="finance-account-credit-description">
               {this.state.giftCredit===0?
                  "صفر تومان"
@@ -129,7 +129,7 @@ class FinanceAccountXl extends React.Component{
                 englishToPersianDigits(parsePrice3digits(this.state.giftCredit)) + " تومان "
               }
             </p>
-            <p className="finance-account-credit-description">
+            <p className="finance-account-gift-credit-description">
                 اعتبار هدیه
             </p>
 

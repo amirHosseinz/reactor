@@ -93,8 +93,7 @@ class SearchResultMd extends React.Component{
   }
 
   renderData(houseData) {
-   this.setState({
-     houseList: houseData.room,itemsLoaded:true});
+   this.setState({houseList: houseData.room,itemsLoaded:true,city:houseData.selected_location});
   }
   getRelevantToken(){
     return localStorage['token'];
