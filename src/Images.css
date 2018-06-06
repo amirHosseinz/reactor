@@ -2937,7 +2937,7 @@ text-align: center;
 }
 .header-login-modal-input-verify{
   height: 48px;
-  width: 200px;
+  width: 280px;
   border: solid;
   border-color: #b7b7b7;
   border-width: 1px;
@@ -3012,7 +3012,7 @@ text-align: center;
   margin-top: 20px;
   background-color: #0fb9dc;
   border: none;
-  width: 110px;
+  width: 200px;
   height: 48px;
   text-align: center;
   border-radius: 25px;

@@ -79,7 +79,6 @@ class EditPasswordXl extends React.Component{
   }
 
   handleChangePasswordResponse(response) {
-    console.log(response);
     if(response.successful){
       this.setState({openPassConfirmationModal:true});
     }
@@ -112,14 +111,14 @@ class EditPasswordXl extends React.Component{
    if(this.state.openPassConfirmationModal===true){
      return(
        <Modal isOpen={this.state.openPassConfirmationModal}
-       onRequestClose={()=>{this.setState({openPassConfirmationModal:false,password : "" , confirmPassword: "" , oldPassword : ""})}}
+       onRequestClose={()=>{window.location.reload()}}
               style={ChangePassSuccessModal}>
         <div className='change-pass-success-container'>
           <p>
             رمز عبور شما با موفقیت تغییر کرد
           </p>
           <img className='change-pass-success-tick' src={require('../../Images/changePassSuccess.svg')} width="40" height="40"/>
-          <button className='change-pass-success-button' onClick={()=>{this.setState({openPassConfirmationModal:false,password : "" , confirmPassword:"" , oldPassword : ""})}}>
+          <button className='change-pass-success-button' onClick={()=>{window.location.reload()}}>
             بستن
           </button>
         </div>

@@ -76,7 +76,7 @@ class ReservePanelXl extends React.Component{
       return(
         <div className="pre-bill-price-night-content row-reverse" dir="rtl">
           <p className="pre-bill-price-night-sentence">هزینه شب‌های خاص
-            ({englishToPersianDigits(this.state.reserveData.special_duration)}شب - {englishToPersianDigits(this.state.reserveData.number_of_guests)} نفر) :
+            ({englishToPersianDigits(this.state.reserveData.special_duration)}شب - {englishToPersianDigits(this.state.numberOfGuests)} نفر) :
           </p>
           <p className="pre-bill-price-night-value">
            {englishToPersianDigits(parsePrice3digits(this.state.reserveData.special_price))}
@@ -478,7 +478,7 @@ class ReservePanelXl extends React.Component{
                     <p className="pre-bill-date-item" >تا {moment(this.state.requestParams.toDate).format('jYYYY/jM/jD')}</p>
                     <p className="duration-text">
                       <span >
-                    {" " + englishToPersianDigits(this.state.reserveData.ordinary_duration + this.state.reserveData.weekend_duration +this.state.reserveData.special_duration +this.state.reserveData.nowruz_duration) + " "}     روز اقامت 
+                    {" " + englishToPersianDigits(this.state.reserveData.ordinary_duration + this.state.reserveData.weekend_duration +this.state.reserveData.special_duration +this.state.reserveData.nowruz_duration) + " "}     روز اقامت
                       </span>
                     </p>
                   </div>

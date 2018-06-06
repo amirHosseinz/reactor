@@ -9,7 +9,6 @@ var sitemap = sm.createSitemap ({
      });
 
 export const generateSiteMap=()=>{
-  //
   sitemap.add({url : '/search/شیراز',priority : 1 , lastmod:new Date()});
   sitemap.add({url : '/search/کیش',priority : 1,lastmod:new Date()});
   sitemap.add({url : '/search/نوشهر',priority : 1,lastmod:new Date()});

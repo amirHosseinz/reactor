@@ -13,7 +13,7 @@ import EditPassword from '../UserProfileParts/EditPassword.js';
 import FinanceAccount from '../UserProfileParts/FinanceAccount.js';
 import EditProfile from '../UserProfileParts/EditProfile.js';
 import LinkTab from '../UserProfileParts/LinkTab.js';
-import {Route} from 'react-router-dom';
+import {Route, Redirect} from 'react-router-dom';
 
 
 class UserProfileMd extends React.Component{
@@ -259,15 +259,20 @@ class UserProfileMd extends React.Component{
     }
 
   render(){
-    return(
-      <div className="user-profile-main-division-md">
-        {this.renderLinkTab()}
-        <Route exact={true} path="/profile/financeaccount" render={()=>{return(this.renderFinanceAccount())}}/>
-        <Route exact={true} path="/profile/bookmarklist" render={()=>{return(this.renderBookmark())}}/>
-        <Route exact={true} path="/profile/editpassword" render={()=>{return(this.renderEditPassword())}}/>
-        <Route exact={true} path="/profile/editprofile" render={()=>{return(this.renderEditProfile())}}/>
-      </div>
-    );
+    if(localStorage['isLoggedIn']==="true"){
+      return(
+        <div className="user-profile-main-division">
+          {this.renderLinkTab()}
+          <Route exact={true} path="/profile/financeaccount" render={()=>{return(this.renderFinanceAccount())}}/>
+          <Route exact={true} path="/profile/bookmarklist" render={()=>{return(this.renderBookmark())}}/>
+          <Route exact={true} path="/profile/editpassword" render={()=>{return(this.renderEditPassword())}}/>
+          <Route exact={true} path="/profile/editprofile" render={()=>{return(this.renderEditProfile())}}/>
+        </div>
+      );
+    }
+    else {
+      return <Redirect to="/" />
+    }
   }
 }
 

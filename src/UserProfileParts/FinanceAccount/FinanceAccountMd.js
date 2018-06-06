@@ -222,7 +222,7 @@ class FinanceAccountMd extends React.Component{
         var reserve = transaction.earning_description.ecotourism.title
       }
       return (
-        <span dir="rtl"> پیش‌پرداخت برای رزرو {reserve}</span>
+        <span dir="rtl"> پرداخت نهایی برای رزرو {reserve}</span>
       );
     }
     if(transaction.transaction_type==="TRAVEL"){

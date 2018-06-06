@@ -252,10 +252,10 @@
   z-index : 1!important;
 }
 .DayPicker_weekHeaders {
-  margin-bottom: 5px !important;
+  /* margin-bottom: 6px !important; */
   font-family: IRANSans;
   position: relative;
-  z-index:1!important;
+  z-index:1000!important;
 }
 .DayPicker_weekHeaders__horizontal {
   margin-left: 9px;

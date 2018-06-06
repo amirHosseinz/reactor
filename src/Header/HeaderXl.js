@@ -65,6 +65,7 @@ class HeaderXl extends React.Component{
       loginPanelVisible2:false,
       hasPassword: null,
       hasAccount:null,
+      hasName : null,
       searchParams:{
       phoneNumber: null,
       showMobileLoginPanel:false,
@@ -106,12 +107,7 @@ class HeaderXl extends React.Component{
      })
      .then((response) => {
        localStorage['token']= response.token;
-       if(window.location.pathname==='/userprofile'){
-         window.location.href = '/';
-       }
-       else{
-         window.location.reload();
-       }
+       window.location.reload();
      });
     }
   }
@@ -270,6 +266,7 @@ class HeaderXl extends React.Component{
           style={loginPasswordStyle}
           onRequestClose={()=>{this.closeLoginPanel();this.setState({loginPanelVisible2:false})}}>
           <Login referralCode={this.state.referralCode}
+                 hasName={this.state.hasName}
                  setTriggerLoginOrigin={(origin)=>{this.props.setTriggerLoginOrigin(origin)}}
                  triggerLoginOrigin={this.props.triggerLoginOrigin}
                  cellPhone={this.state.cellPhone}
@@ -285,6 +282,7 @@ class HeaderXl extends React.Component{
           style={loginVerifySmsXl}
           onRequestClose={()=>{this.closeLoginPanel();this.setState({loginPanelVisible2:false})}}>
           <Login referralCode={this.state.referralCode}
+                 hasName={this.state.hasName}
                  setTriggerLoginOrigin={(origin)=>{this.props.setTriggerLoginOrigin(origin)}}
                  triggerLoginOrigin={this.props.triggerLoginOrigin}
                  cellPhone={this.state.cellPhone}
@@ -362,8 +360,9 @@ class HeaderXl extends React.Component{
          this.setState({wrongPhoneNumber:true});
        }
        else{
+
          localStorage['phone-number'] = this.state.searchParams.phoneNumber;
-         this.setState({hasPassword: loginStatus.has_pass,hasAccount:loginStatus.has_account,
+         this.setState({hasPassword: loginStatus.has_pass,hasAccount:loginStatus.has_account,hasName:loginStatus.has_name,
          referralCode:loginStatus.install_referral_code});
          this.setState({loginPanelVisible2 : true});
          this.setState({loginPanelVisible: false});

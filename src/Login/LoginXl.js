@@ -19,6 +19,7 @@ class LoginXl extends React.Component{
       showForgetPasswordModal:false,
       hasPassword : null,
       hasAccount : null,
+      hasName : null,
       activeSignUpButton:false,
       inputForLogin:{
         password:'',
@@ -91,7 +92,12 @@ class LoginXl extends React.Component{
       signUpModalFirstNameIsWrong : false,
       signUpModalLastNameIsWrong : false,
       signUpModalInputError : 'خطایی وجود ندارد',
+      signUpNotAgreedToTerms : false,
 
+
+      verificationModalInputError : 'خطایی وجود ندارد',
+      verificationModalVerificationIsWrong : false,
+      verificationModalRefferalCodeIsWrong : false,
     }
   }
 
@@ -100,7 +106,7 @@ class LoginXl extends React.Component{
   }
   componentWillReceiveProps(nextProps){
     var inputVerification = {verificationCode: "" , referralCode:nextProps.referralCode}
-    this.setState({hasAccount : nextProps.hasAccount ,hasPassword:nextProps.hasPassword,
+    this.setState({hasName:nextProps.hasName, hasAccount : nextProps.hasAccount ,hasPassword:nextProps.hasPassword,
                    inputForVerification:inputVerification});
   }
   handleLoginClick(){
@@ -121,11 +127,11 @@ class LoginXl extends React.Component{
       return;
     }
     if(this.state.inputForSignUp.confirmPassword !== this.state.inputForSignUp.password){
-      this.setState({signUpModalConfirmPasswordIsWrong:true,signUpModalInputError : 'رمز عبور وارد شده و تکرار آن یکسان نیستند'});
+      this.setState({signUpModalInputError : 'رمز عبور وارد شده و تکرار آن یکسان نیستند'});
       return;
     }
     if(this.state.activeSignUpButton===false){
-      this.setState({signUpModalConfirmPasswordIsWrong:true,signUpModalInputError : ' برای ثبت‌نام موافقت با قوانین تریپین ضروری است'});
+      this.setState({signUpNotAgreedToTerms :true, signUpModalInputError : ' برای ثبت‌نام موافقت با قوانین تریپین ضروری است'});
       return;
     }
     this.setTokenForSignup();
@@ -379,18 +385,23 @@ class LoginXl extends React.Component{
        this.setState({showSignUpOrSetPasswordModal:true,showVerificationModal:false});
      }
      else{
-       alert('کد تایید وارد شده نامعتبر است. لطفا دوباره تلاش کنید');
+       if(verificationResponse.errors.indexOf('referral code is incorrect')!==-1){
+         this.setState({verificationModalRefferalCodeIsWrong:true,verificationModalInputError:'کد معرف وارد شده اشتباه است'});
+       }
+       else{
+         this.setState({verificationModalVerificationIsWrong:true,verificationModalInputError:'کد تایید وارد شده اشتباه است'})
+       }
      }
    });
   }
   handleSetPasswordClickByenter(event){
    if(event.key==='Enter'){
      if(this.state.inputForSetPassword.password===''){
-       alert('لطفا رمز عبور خود را وارد نمایید');
+       this.setState({setPasswordModalPasswordIsWrong:true , setPasswordInputError:"لطفا رمز عبور خود را وارد کنید" });
      }
      else{
        if(this.state.inputForSetPassword.confirmPassword!==this.state.inputForSetPassword.password){
-         alert('رمز عبور و تکرار آن یکسان نیستند');
+         this.setState({setPasswordModalConfirmPasswordIsWrong:true , setPasswordInputError:"رمز عبور و تکرار آن یکسان نیستند" });
        }
        else{
          this.handleSetPasswordClick();
@@ -455,7 +466,7 @@ class LoginXl extends React.Component{
     }
   }
   activateSignUpButton(event){
-    this.setState((prevState,props)=>({activeSignUpButton:!prevState.activeSignUpButton}));
+    this.setState((prevState,props)=>({activeSignUpButton:!prevState.activeSignUpButton,signUpNotAgreedToTerms:false}));
   }
   renderSignUpModal(){
     return(
@@ -474,6 +485,7 @@ class LoginXl extends React.Component{
                    <div className="modal-signup-items" >
                      <p className="header-login-modal-input-label-right-align">نام </p>
                      <input value={this.state.inputForSignUp.firstName}
+                       maxLength={20}
                        onChange={this.changeFirstNameForSignUp.bind(this)}
                        className={this.state.signUpModalFirstNameIsWrong ? "sign-up-password-wrong":"sign-up-password-right" }
                        autoFocus={true}/>
@@ -481,6 +493,7 @@ class LoginXl extends React.Component{
                    <div className="modal-signup-items">
                      <p className="header-login-modal-input-label-right-align"> نام خانوادگی</p>
                      <input value={this.state.inputForSignUp.lastName}
+                     maxLength={20}
                      onChange={this.changeLastNameForSignUp.bind(this)}
                      className={this.state.signUpModalLastNameIsWrong ? "sign-up-password-wrong":"sign-up-password-right"}
                      />
@@ -508,7 +521,7 @@ class LoginXl extends React.Component{
                          <span>با </span ><span onClick={()=>{window.open('/terms&conditions')}} className='sign-up-modal-link-to-rules'> قوانین و مقررات</span> <span> تریپین موافقم </span>
                        </div>
                    </div>
-                   <Fade bottom={true} collapse={false} when={this.state.signUpModalLastNameIsWrong || this.state.signUpModalFirstNameIsWrong || this.state.signUpModalpasswordIsWrong || this.state.signUpModalConfirmPasswordIsWrong}>
+                   <Fade bottom={true} collapse={false} when={this.state.signUpNotAgreedToTerms || this.state.signUpModalLastNameIsWrong || this.state.signUpModalFirstNameIsWrong || this.state.signUpModalpasswordIsWrong || this.state.signUpModalConfirmPasswordIsWrong}>
                      <div className= "sign-up-error-visible">
                       {this.state.signUpModalInputError}
                      </div>
@@ -524,7 +537,16 @@ class LoginXl extends React.Component{
   renderSignUpOrSetPasswordModal(){
     if(this.state.showSignUpOrSetPasswordModal===true){
       if(this.state.hasAccount){
-        return (this.renderSetPasswordModal());
+        if(this.state.hasName){
+          return (
+            this.renderSetPasswordModal()
+          );
+        }
+        else{
+          return (
+            this.renderSignUpModal()
+          );
+        }
         }
         else {
           return (this.renderSignUpModal());
@@ -533,7 +555,7 @@ class LoginXl extends React.Component{
   }
   handleVerificationClick(){
     if(this.state.inputForVerification.verificationCode.length<4){
-      alert('لطفا کد تایید را به طور کامل وارد نمایید');
+      this.setState({verificationModalVerificationIsWrong:true, verificationModalInputError:'لطفا کد تایید خود را به طور کامل وارد کنید'});
     }
     else{
       this.setTokenForVerification();
@@ -573,23 +595,28 @@ class LoginXl extends React.Component{
                   maxLength="4"
                   autoFocus={true}
                   type="numeric"/>
-              {this.state.hasAccount ===false?
-                <div>
-                <p className="enter-verify-number-inmodal">
-                 کد معرف (اختیاری)
-                </p>
-                <input onKeyDown={(event)=>{this.handleVerificationClickByEnter(event)}}
-                   value={this.state.inputForVerification.referralCode}
-                   onChange={(event)=>{this.changeReferralCode(event)}}
-                   className="header-login-modal-input-verify"
-                   id='referral-code'
-                   maxLength="6"
-                   autoFocus={false}/>
-                </div>
-                 :
-                 <div>
-                 </div>
-               }
+                {this.state.hasAccount===false ?
+                  <div className="referral-code-verification-section">
+                    <p className="enter-verify-number-inmodal">
+                     کد معرف (اختیاری)
+                    </p>
+                    <input
+                       value={this.state.inputForVerification.referralCode}
+                       onChange={(event)=>{this.changeReferralCode(event)}}
+                       className="header-login-modal-input-verify-referral"
+                       id='referral-code'
+                       maxLength="6"
+                       autoFocus={false}/>
+                  </div>
+                   :
+                   <div>
+                   </div>
+                 }
+                 <Fade bottom={true} collapse={false} when={this.state.verificationModalRefferalCodeIsWrong || this.state.verificationModalVerificationIsWrong}>
+                  <p className={this.state.verificationModalRefferalCodeIsWrong || this.state.verificationModalVerificationIsWrong?"verification-input-error-visible":"verification-input-error-hidden"}>
+                    {this.state.verificationModalInputError}
+                  </p>
+                 </Fade>
                  <button className="header-login-modal-button-verify" onClick={this.handleVerificationClick.bind(this)}>
                    {this.state.verificationLoading ? <ClipLoader color="white" size={30}/> : "تأیید کد" }
                  </button>
@@ -660,7 +687,7 @@ class LoginXl extends React.Component{
     var inputVerification={verificationCode : englishToPersianDigits(event.target.value),
     referralCode : this.state.inputForVerification.referralCode
   };
-    this.setState({inputForVerification : inputVerification});
+    this.setState({verificationModalVerificationIsWrong:false, inputForVerification : inputVerification});
   }
 
   changeReferralCode (event) {
@@ -668,7 +695,7 @@ class LoginXl extends React.Component{
       verificationCode: this.state.inputForVerification.verificationCode,
       referralCode : event.target.value.toUpperCase()
     }
-    this.setState({inputForVerification : inputVerification});
+    this.setState({verificationModalRefferalCodeIsWrong:false, inputForVerification : inputVerification});
   }
 
   changepasswordForChangePassword(event){
