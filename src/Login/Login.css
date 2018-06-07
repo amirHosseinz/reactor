@@ -285,7 +285,7 @@
   display: -webkit-flex;
   flex-direction: row-reverse;
   -webkit-flex-direction : row-reverse;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   margin-top : 20px;
   align-items: center;
   justify-content: center;
@@ -307,6 +307,7 @@
   color: #454545 !important;
   text-align: center;
   margin-right : 10px;
+  margin-top : 10px;  
 }
 
 .verification-input-error-hidden {

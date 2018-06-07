@@ -17,7 +17,7 @@ import SearchResult from './SearchResult.js';
 import Suggestions from './Suggestions.js';
 import {StickyContainer} from 'react-sticky';
 import Social from './Campaign/Social.js';
-import {generateSiteMap} from './sitemap.js';
+// import {generateSiteMap} from './sitemap.js';
 import {productionURL} from'./Data.js';
 import InviteFriend from './InviteFriend.js';
 import InvitePage from './InvitePage.js';
@@ -234,7 +234,7 @@ class MainPage extends React.Component{
   // <Route path={"/"} render = {()=> {return(this.renderFooter())}}/>
   render(){
     this.getGuestTokenFromServer();
-    generateSiteMap();
+    // generateSiteMap();
     document.title=" تریپین | سامانه رزرو ویلا و اقامتگاه محلی";
     return(
       <StickyContainer>
