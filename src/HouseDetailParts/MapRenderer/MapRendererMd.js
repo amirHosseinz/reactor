@@ -1,31 +1,25 @@
 import React from 'react';
-import { withScriptjs ,withGoogleMap, GoogleMap,Circle , Marker } from "react-google-maps";
+import { Map, Path, TileLayer,Circle} from 'react-leaflet';
 
-const MyMapComponent = withScriptjs(withGoogleMap((props) =>{
-  // console.log(props);
-  return(
-    <GoogleMap
-      defaultZoom={props.zoom}
-      defaultCenter={{lat:props.lat,lng:props.lng}}>
-      <Circle options={{fillOpacity:0.5,fillColor:"#12b2ce",strokeColor:"#12b2ce"}} radius={1000} defaultCenter={{lat:props.lat,lng:props.lng}}/>
-    </GoogleMap>
-  );
-}))
 
 class MapRendererMd extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state ={
+      lat: this.props.lat,
+      lng: this.props.lng,
+      zoom: 13,
+    }
+  }
+
   render(){
+    const position = [this.state.lat, this.state.lng]
     return(
-      <div>
-        <MyMapComponent
-          lat={this.props.lat}
-          lng={this.props.lng}
-          zoom={this.props.zoom}
-          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYdvxvYa5_HuFrQMlTNWpbhan7nqIJuOE&v=3.exp&libraries=geometry,drawing,places"
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `300px`}} />}
-          mapElement={<div style={{ height: `100%`}} />}>
-          </MyMapComponent>
-      </div>
+      <Map id="mapid-md" className="leaflet-map" center={position} zoom={this.state.zoom}>
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
+        <Circle fillColor="#12b2ce" radius={600} center={position}/>
+      </Map>
     );
   }
 }

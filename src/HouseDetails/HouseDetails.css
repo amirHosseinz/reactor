@@ -310,8 +310,9 @@ width: 95%;
 margin-top: 20px;
 }
 .house-details-map{
-margin-top : 40px !important;
-z-index: -1000 !important;
+  margin-top : 40px !important;
+  width : 400px !important;
+  height : 400px !important;
 }
 .house-details-host-information{
 display: -webkit-flex; /* Safari */
@@ -907,6 +908,16 @@ border-radius : 6px;
 }
 .address-bread-crumb-list-link:hover{
   color : #12b2ce;
+}
+
+#mapid{
+  height : 400px;
+  width : 640px
+}
+
+#mapid-md{
+  height : 400px;
+  width :540px
 }
 
 /* SM styles here */
