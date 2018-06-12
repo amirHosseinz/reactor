@@ -15,7 +15,7 @@ class MapRendererMd extends React.Component{
   render(){
     const position = [this.state.lat, this.state.lng]
     return(
-      <Map id="mapid-md" className="leaflet-map" center={position} zoom={this.state.zoom}>
+      <Map scrollWheelZoom={false} touchZoom={false} id="mapid-md" className="leaflet-map" center={position} zoom={this.state.zoom}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
         <Circle fillColor="#12b2ce" radius={600} center={position}/>

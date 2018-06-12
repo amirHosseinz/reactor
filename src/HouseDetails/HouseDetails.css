@@ -912,12 +912,16 @@ border-radius : 6px;
 
 #mapid{
   height : 400px;
-  width : 640px
+  width : 640px;
+  z-index: 0;
+  cursor : pointer !important;
 }
 
 #mapid-md{
   height : 400px;
-  width :540px
+  width :540px;
+  z-index: 0;
+  cursor : pointer !important;
 }
 
 /* SM styles here */
