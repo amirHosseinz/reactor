@@ -1,20 +1,10 @@
 import React from 'react';
-import { withScriptjs ,withGoogleMap, GoogleMap,Marker } from "react-google-maps";
 import {Image,Divider} from 'semantic-ui-react';
 import {englishToPersianDigits} from '../tools/EnglishToPersianDigits.js';
 import './ContactUs.css';
+import { Map, Path, TileLayer, Marker} from 'react-leaflet';
 
 
-const MyMapComponent = withScriptjs(withGoogleMap((props) =>{
-  return(
-    <GoogleMap
-      defaultZoom={props.zoom}
-      defaultCenter={{lat:props.lat,lng:props.lng}}>
-      <Marker defaultPosition={{lat:props.lat,lng:props.lng}}
-      defaultIcon={require('../Images/pin.png')}/>
-    </GoogleMap>
-  );
-}));
 class ContactUsMD extends React.Component{
   componentWillMount(){
     document.body.backgroundColor="#f8f8f8";
@@ -24,7 +14,7 @@ class ContactUsMD extends React.Component{
     return (
       <div className="contact-us-main-division-md">
         <div className="contact-us-map-section col-md-4">
-          <Map />
+          <TripinnMap />
         </div>
         <div className="contact-us-main-division-content col-md-8">
           <div className="contact-us-main-division-content-text">
@@ -83,18 +73,16 @@ class ContactUsMD extends React.Component{
     );
   }
 }
-class Map extends React.Component{
+
+class TripinnMap extends React.Component{
   render(){
+    const position = [35.765068, 51.354639]
     return(
-      <MyMapComponent
-        lat={35.765068}
-        lng={51.354639}
-        zoom={16}
-        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYdvxvYa5_HuFrQMlTNWpbhan7nqIJuOE&v=3.exp&libraries=geometry,drawing,places"
-        loadingElement={<div style={{height:`100%`}} />}
-        containerElement={<div style={{height:'600px',width:'400px'}} />}
-        mapElement={<div style={{height:'80%'}} />}>
-        </MyMapComponent>
+      <Map scrollWheelZoom={false} touchZoom={false} id="tripinn-map-md" className="leaflet-map" center={position} zoom={17}>
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
+        <Marker position={position}/>
+      </Map>
     );
   }
 }

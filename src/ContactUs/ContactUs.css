@@ -46,6 +46,20 @@
   margin: auto;
   margin-bottom: 15px;
 }
+
+#tripinn-map {
+  height : 484px;
+  width : 420px;
+  z-index: 0;
+  cursor : pointer !important;
+}
+
+#tripinn-map-md {
+  height : 484px;
+  width : 380px;
+  z-index: 0;
+  cursor : pointer !important;
+}
 /* MD styles Finished here*/
 
 
